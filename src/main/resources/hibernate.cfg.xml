@@ -3,7 +3,7 @@
 <hibernate-configuration>
   <session-factory>
     <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-    <property name="hibernate.connection.url">jdbc:postgresql://192.2.1.70:5432/miyake_pasantia</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/miyake_pasantia</property>
     <property name="hibernate.connection.username">postgres</property>
     <property name="hibernate.connection.password">admin</property>
     <property name="hibernate.default_schema">public</property>

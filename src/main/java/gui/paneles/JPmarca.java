@@ -26,34 +26,32 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
-
 public class JPmarca extends javax.swing.JPanel {
 
     private List resultList;
     private int pos;
     public final String rutaJasper = "/reportes/ReporteMarca.jasper";
     private Integer tabCrud;
-    
-    
+
     public JPmarca() {
         this(0);
     }
-    
+
     public JPmarca(Integer tabCrud) {
         this.tabCrud = tabCrud;
         initComponents();
-        
-        setTableCellAlignment(JLabel.CENTER,tablaConsultaMarca);
-        setTableCellAlignment(JLabel.CENTER,tablaModifMarca);
-        setTableCellAlignment(JLabel.CENTER,tablaDeletMarca);
+
+        setTableCellAlignment(JLabel.CENTER, tablaConsultaMarca);
+        setTableCellAlignment(JLabel.CENTER, tablaModifMarca);
+        setTableCellAlignment(JLabel.CENTER, tablaDeletMarca);
         tablaConsultaMarca.getTableHeader().setReorderingAllowed(false);
         tablaModifMarca.getTableHeader().setReorderingAllowed(false);
         tablaDeletMarca.getTableHeader().setReorderingAllowed(false);
-        
+
         tablaModifMarca.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent lse) {
                 if (!lse.getValueIsAdjusting()) {
-                    
+
                     pos = tablaModifMarca.getSelectedRow();
                     if (pos == -1) {
                         return;
@@ -61,20 +59,20 @@ public class JPmarca extends javax.swing.JPanel {
                     Marca m = (Marca) resultList.get(pos);
                     nomb_a_Modf.setText(m.getNombre());
                     idMarca.setText(m.getIdMarca().toString());
-                    
+
                 }
             }
         });
-        
+
         tablaDeletMarca.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent lse) {
                 if (!lse.getValueIsAdjusting()) {
-                    
+
                     if (tablaDeletMarca.getSelectedRow() == -1) {
                         return;
                     }
                     pos = tablaDeletMarca.getSelectedRow();
-                    
+
                 }
             }
         });
@@ -96,6 +94,9 @@ public class JPmarca extends javax.swing.JPanel {
         jLabel15 = new javax.swing.JLabel();
         bt_GenerarReporte = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tablaCrearMarca = new org.jdesktop.swingx.JXTable();
+        jPanel6 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         nuevMark = new javax.swing.JTextField();
         bCrear = new javax.swing.JButton();
@@ -147,7 +148,7 @@ public class JPmarca extends javax.swing.JPanel {
                 {null, null}
             },
             new String [] {
-                "ID Marca", "Nombre Marca"
+                "ID MARCA", "NOMBRE MARCA"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -177,13 +178,13 @@ public class JPmarca extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77)
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
                 .addComponent(bt_GenerarReporte)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(160, Short.MAX_VALUE))
+            .addComponent(jScrollPane1)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,10 +194,35 @@ public class JPmarca extends javax.swing.JPanel {
                     .addComponent(jLabel15)
                     .addComponent(bt_GenerarReporte))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE))
         );
 
         panelScrudMarca.addTab("Consultar", jPanel1);
+
+        jPanel2.setLayout(new java.awt.BorderLayout());
+
+        tablaCrearMarca.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "ID MARCA", "NOMBRE MARCA"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(tablaCrearMarca);
+
+        jPanel2.add(jScrollPane4, java.awt.BorderLayout.CENTER);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1418697743_label_new red.png"))); // NOI18N
         jLabel1.setText("Nombre Marca:");
@@ -209,35 +235,37 @@ public class JPmarca extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel1)
-                        .addGap(39, 39, 39)
-                        .addComponent(nuevMark, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(189, 189, 189)
-                        .addComponent(bCrear)))
-                .addContainerGap(359, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(bCrear))
+                    .addComponent(jLabel1)
+                    .addComponent(nuevMark, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(nuevMark, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(59, 59, 59)
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jLabel1)
+                .addGap(21, 21, 21)
+                .addComponent(nuevMark, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63)
                 .addComponent(bCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(142, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel2.add(jPanel6, java.awt.BorderLayout.WEST);
+
         panelScrudMarca.addTab("Crear", jPanel2);
+
+        jPanel3.setLayout(new java.awt.BorderLayout());
 
         tablaModifMarca.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -274,7 +302,7 @@ public class JPmarca extends javax.swing.JPanel {
                 {null, null}
             },
             new String [] {
-                "ID Marca", "Nombre Marca"
+                "ID MARCA", "NOMBRE MARCA"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -288,6 +316,8 @@ public class JPmarca extends javax.swing.JPanel {
         tablaModifMarca.setHorizontalScrollEnabled(true);
         tablaModifMarca.setSortable(false);
         jScrollPane2.setViewportView(tablaModifMarca);
+
+        jPanel3.add(jScrollPane2, java.awt.BorderLayout.CENTER);
 
         jLabel3.setText("ID Marca:");
 
@@ -310,17 +340,15 @@ public class JPmarca extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nomb_a_Modf))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(idMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(bModfmark))
-                        .addGap(0, 33, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(nomb_a_Modf))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -331,40 +359,19 @@ public class JPmarca extends javax.swing.JPanel {
                     .addComponent(idMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(nomb_a_Modf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(68, 68, 68)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(nomb_a_Modf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addComponent(bModfmark)
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jPanel3.add(jPanel5, java.awt.BorderLayout.EAST);
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1416622346_xmag.png"))); // NOI18N
         jLabel17.setText("Para realizar Busqueda: Haga Click en la tabla + CTRL F");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel17)))
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel17)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-        );
+        jPanel3.add(jLabel17, java.awt.BorderLayout.NORTH);
 
         panelScrudMarca.addTab("Modificar", jPanel3);
 
@@ -402,7 +409,7 @@ public class JPmarca extends javax.swing.JPanel {
                 {null, null}
             },
             new String [] {
-                "ID Marca", "Nombre Marca"
+                "ID MARCA", "NOMBRE MARCA"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -433,14 +440,14 @@ public class JPmarca extends javax.swing.JPanel {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(deletMark)
-                .addGap(2, 2, 2))
+                .addContainerGap())
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(347, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -449,10 +456,10 @@ public class JPmarca extends javax.swing.JPanel {
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(deletMark)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 336, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
         );
 
         panelScrudMarca.addTab("Eliminar", jPanel4);
@@ -465,12 +472,18 @@ public class JPmarca extends javax.swing.JPanel {
     private void bCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearActionPerformed
         if (!nuevMark.getText().equals("")) {
             if (JOptionPane.showConfirmDialog(this, "¿Está seguro de crear la"
-                + " nueva marca con nombre : " + nuevMark.getText() + "?",
-                "Información", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                    + " nueva marca con nombre : " + nuevMark.getText() + "?",
+                    "Información", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 
-            ObjectModelDAO.saveObject(new Marca(nuevMark.getText()));
+                
+                ObjectModelDAO.saveObject(new Marca(nuevMark.getText()));
 
-        }
+                String sql = "FROM Marca m order by m.idMarca asc";
+                resultList = ObjectModelDAO.getResultQuery(sql);
+                JavaUtil.displayResult(resultList, tablaCrearMarca);
+                tablaCrearMarca.setEditable(false);
+                tablaCrearMarca.setRowSelectionInterval(resultList.size()-1, resultList.size()-1);
+            }
         }
     }//GEN-LAST:event_bCrearActionPerformed
 
@@ -481,19 +494,19 @@ public class JPmarca extends javax.swing.JPanel {
 
         String valor = tablaModifMarca.getValueAt(tablaModifMarca.getSelectedRow(), 1).toString();//1 por el nombre
         if (JOptionPane.showConfirmDialog(null, "¿Está seguro de modificar la"
-            + " Marca " + valor + "?", "Información", JOptionPane.YES_NO_OPTION)
-        == JOptionPane.YES_OPTION) {
+                + " Marca " + valor + "?", "Información", JOptionPane.YES_NO_OPTION)
+                == JOptionPane.YES_OPTION) {
 
-        int posOr = this.pos;
-        Marca m = (Marca) resultList.get(posOr);
-        m.setNombre(nomb_a_Modf.getText());
-        ObjectModelDAO.updateObject(m);
+            int posOr = this.pos;
+            Marca m = (Marca) resultList.get(posOr);
+            m.setNombre(nomb_a_Modf.getText());
+            ObjectModelDAO.updateObject(m);
 
-        String sql = "FROM Marca m order by m.idMarca asc";
-        resultList = ObjectModelDAO.getResultQuery(sql);
-        JavaUtil.displayResult(resultList, tablaModifMarca);
-        tablaModifMarca.setEditable(false);
-        tablaModifMarca.setRowSelectionInterval(posOr, posOr);
+            String sql = "FROM Marca m order by m.idMarca asc";
+            resultList = ObjectModelDAO.getResultQuery(sql);
+            JavaUtil.displayResult(resultList, tablaModifMarca);
+            tablaModifMarca.setEditable(false);
+            tablaModifMarca.setRowSelectionInterval(posOr, posOr);
         }
     }//GEN-LAST:event_bModfmarkActionPerformed
 
@@ -504,33 +517,32 @@ public class JPmarca extends javax.swing.JPanel {
 
         String valor = tablaDeletMarca.getValueAt(tablaDeletMarca.getSelectedRow(), 1).toString();//1 por el nombre
         if (JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar la"
-            + " Division " + valor + "?", "Información", JOptionPane.YES_NO_OPTION)
-        == JOptionPane.YES_OPTION) {
+                + " Division " + valor + "?", "Información", JOptionPane.YES_NO_OPTION)
+                == JOptionPane.YES_OPTION) {
 
-        ObjectModelDAO.deleteObject(resultList.get(pos));
+            ObjectModelDAO.deleteObject(resultList.get(pos));
 
-        String sql = "FROM Marca m order by m.idMarca asc";
-        resultList = ObjectModelDAO.getResultQuery(sql);
-        JavaUtil.displayResult(resultList, tablaDeletMarca);
+            String sql = "FROM Marca m order by m.idMarca asc";
+            resultList = ObjectModelDAO.getResultQuery(sql);
+            JavaUtil.displayResult(resultList, tablaDeletMarca);
 
         }
     }//GEN-LAST:event_deletMarkActionPerformed
 
     private void panelScrudMarcaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_panelScrudMarcaStateChanged
 
-         if (panelScrudMarca.getTabCount() != 4) {
+        if (panelScrudMarca.getTabCount() != 4) {
             return;
         }
 
         //verifica si debe abrir un panel desde la llamada
         if (this.tabCrud != null) {
-            int tabCrud=this.tabCrud.intValue();
+            int tabCrud = this.tabCrud.intValue();
             this.tabCrud = null;
             panelScrudMarca.setSelectedIndex(tabCrud);
             return;
         }
-        
-        
+
         if (panelScrudMarca.getSelectedIndex() == 0) {
             String sql = "FROM Marca m order by m.idMarca asc";
             List resultList = ObjectModelDAO.getResultQuery(sql);
@@ -541,6 +553,12 @@ public class JPmarca extends javax.swing.JPanel {
 
         if (panelScrudMarca.getSelectedIndex() == 1) {
             nuevMark.setText("");
+
+            String sql = "FROM Marca m order by m.idMarca asc";
+            resultList = ObjectModelDAO.getResultQuery(sql);
+            JavaUtil.displayResult(resultList, tablaCrearMarca);
+            pos = -1;
+            tablaCrearMarca.setEditable(false);
         }
 
         if (panelScrudMarca.getSelectedIndex() == 2) {
@@ -562,13 +580,13 @@ public class JPmarca extends javax.swing.JPanel {
             tablaDeletMarca.setEditable(false);
         }
     }//GEN-LAST:event_panelScrudMarcaStateChanged
-private void generarReporte() {
+    private void generarReporte() {
         try {
             JasperPrint jasperPrint = null;
             Map<String, Object> parametro = new HashMap<>();
 
             TableModelReport dataSourse = new TableModelReport(tablaConsultaMarca.getModel());
-          
+
             parametro.put("REPORT_DATA_SOURSE", dataSourse);
             JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream(rutaJasper));
             jasperPrint = JasperFillManager.fillReport(reporte, parametro, dataSourse);
@@ -581,7 +599,7 @@ private void generarReporte() {
     }
 
     private void bt_GenerarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_GenerarReporteActionPerformed
-      generarReporte();
+        generarReporte();
     }//GEN-LAST:event_bt_GenerarReporteActionPerformed
 
 
@@ -602,13 +620,16 @@ private void generarReporte() {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextField nomb_a_Modf;
     private javax.swing.JTextField nuevMark;
     private javax.swing.JTabbedPane panelScrudMarca;
     private org.jdesktop.swingx.JXTable tablaConsultaMarca;
+    private org.jdesktop.swingx.JXTable tablaCrearMarca;
     private org.jdesktop.swingx.JXTable tablaDeletMarca;
     private org.jdesktop.swingx.JXTable tablaModifMarca;
     // End of variables declaration//GEN-END:variables

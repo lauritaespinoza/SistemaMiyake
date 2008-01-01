@@ -40,6 +40,7 @@ public class JPclasificacion extends javax.swing.JPanel {
     private int pos;
     public final String rutaJasper = "/reportes/ReporteClasificacion.jasper";
     private Integer tabCrud;
+    
     public JPclasificacion() {
         this(0);
     }
@@ -104,12 +105,15 @@ public class JPclasificacion extends javax.swing.JPanel {
         bt_GenerarReporte = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
-        nuevClasf = new javax.swing.JTextField();
+        jPanel6 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        bCrear = new javax.swing.JButton();
+        nuevClasf = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         cb_dep = new javax.swing.JComboBox();
         b_CrearDept = new javax.swing.JButton();
+        bCrear = new javax.swing.JButton();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        tablaCrearClasificacion = new org.jdesktop.swingx.JXTable();
         jScrollPane6 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -149,7 +153,7 @@ public class JPclasificacion extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "Id Clasificación", "Nombre Clasificación", "Departamento"
+                "ID CLASIFICACION", "NOMBRE CLASIFICACION", "DEPARTAMENTO"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -179,13 +183,13 @@ public class JPclasificacion extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 676, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel11)
                 .addGap(95, 95, 95)
                 .addComponent(bt_GenerarReporte)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(163, Short.MAX_VALUE))
+            .addComponent(jScrollPane1)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,24 +199,19 @@ public class JPclasificacion extends javax.swing.JPanel {
                     .addComponent(jLabel11)
                     .addComponent(bt_GenerarReporte))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE))
         );
 
         jScrollPane2.setViewportView(jPanel1);
 
         panelScrudClasif.addTab("Consultar", jScrollPane2);
 
+        jPanel2.setLayout(new java.awt.BorderLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/clasificacion.png"))); // NOI18N
         jLabel1.setText("Nombre Clasificación:");
 
-        bCrear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415656550_Add.png"))); // NOI18N
-        bCrear.setText("Crear Clasificación");
-        bCrear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bCrearActionPerformed(evt);
-            }
-        });
-
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/departamento.png"))); // NOI18N
         jLabel2.setText("Nombre Departamento");
 
         b_CrearDept.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415656550_Add.png"))); // NOI18N
@@ -224,45 +223,71 @@ public class JPclasificacion extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nuevClasf)
-                            .addComponent(cb_dep, 0, 193, Short.MAX_VALUE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(169, 169, 169)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(b_CrearDept, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bCrear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(342, Short.MAX_VALUE))
+        bCrear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415656550_Add.png"))); // NOI18N
+        bCrear.setText("Crear Clasificación");
+        bCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCrearActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bCrear, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                    .addComponent(cb_dep, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nuevClasf)
+                    .addComponent(b_CrearDept, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(nuevClasf))
-                .addGap(44, 44, 44)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(cb_dep))
-                .addGap(38, 38, 38)
-                .addComponent(b_CrearDept, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(nuevClasf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(cb_dep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
+                .addComponent(b_CrearDept)
+                .addGap(43, 43, 43)
                 .addComponent(bCrear)
-                .addGap(117, 117, 117))
+                .addGap(37, 37, 37))
         );
+
+        jPanel2.add(jPanel6, java.awt.BorderLayout.WEST);
+
+        tablaCrearClasificacion.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "ID CLASIFICACION", "NOMBRE CLASIFICACION", "DEPARTAMENTO"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane8.setViewportView(tablaCrearClasificacion);
+
+        jPanel2.add(jScrollPane8, java.awt.BorderLayout.CENTER);
 
         jScrollPane5.setViewportView(jPanel2);
 
@@ -278,7 +303,7 @@ public class JPclasificacion extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "Id Clasificación", "Nombre", "Departamento"
+                "ID CLASIFICACION", "NOMBRE CLASIFICACION", "DEPARTAMENTO"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -299,8 +324,10 @@ public class JPclasificacion extends javax.swing.JPanel {
 
         idClasificacion.setText("ID Clasificacion");
 
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/clasificacion.png"))); // NOI18N
         jLabel5.setText("Nombre Clasificación");
 
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/departamento.png"))); // NOI18N
         jLabel6.setText("Nombre Departamento");
 
         b_CrearDept1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415656550_Add.png"))); // NOI18N
@@ -336,19 +363,15 @@ public class JPclasificacion extends javax.swing.JPanel {
                         .addGap(34, 34, 34))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(cb_clasificacionModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(modfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(b_CrearDept1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cb_clasificacionModificar, javax.swing.GroupLayout.Alignment.LEADING, 0, 182, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(modfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(b_CrearDept1))
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -369,7 +392,7 @@ public class JPclasificacion extends javax.swing.JPanel {
                 .addComponent(b_CrearDept1)
                 .addGap(26, 26, 26)
                 .addComponent(jButton1)
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addContainerGap(214, Short.MAX_VALUE))
         );
 
         jPanel3.add(jPanel5, java.awt.BorderLayout.EAST);
@@ -399,7 +422,7 @@ public class JPclasificacion extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "Id Clasificación", "Nombre", "Departamento"
+                "ID CLASIFICACION", "NOMBRE CLASIFICACION", "DEPARTAMENTO"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -422,27 +445,28 @@ public class JPclasificacion extends javax.swing.JPanel {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
-                .addGap(14, 14, 14)
-                .addComponent(bDeletClasif)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(bDeletClasif))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bDeletClasif)
-                .addGap(298, 298, 298))
-            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(bDeletClasif)
+                        .addContainerGap())
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)))
         );
 
         jScrollPane7.setViewportView(jPanel4);
@@ -462,9 +486,13 @@ public class JPclasificacion extends javax.swing.JPanel {
                 
                 ObjectModelDAO.saveObject(new Clasificacion(
                         nuevClasf.getText(),
-                        (Departamento) resultList_clasificacion.get(cb_dep.getSelectedIndex()))
+                        (Departamento) resultList_departamento.get(cb_dep.getSelectedIndex()))
                 );
-                
+            String sql = "FROM Clasificacion c order by c.idClasificacion asc";
+            resultList_clasificacion = ObjectModelDAO.getResultQuery(sql);
+            JavaUtil.displayResult(resultList_clasificacion, tablaCrearClasificacion);
+            tablaCrearClasificacion.setEditable(false);
+            tablaCrearClasificacion.setRowSelectionInterval(resultList_clasificacion.size()-1, resultList_clasificacion.size()-1);
             }
         }
     }//GEN-LAST:event_bCrearActionPerformed
@@ -556,24 +584,26 @@ public class JPclasificacion extends javax.swing.JPanel {
             this.tabCrud = null;
             panelScrudClasif.setSelectedIndex(tabCrud);
             return;
-        }
-        
+        }       
         
         if (panelScrudClasif.getSelectedIndex() == 0) {
             String sql = "FROM Clasificacion c order by c.idClasificacion asc";
-            List resultList = ObjectModelDAO.getResultQuery(sql);
-            
+            List resultList = ObjectModelDAO.getResultQuery(sql);            
             JavaUtil.displayResult(resultList, listadoClasif);
             listadoClasif.setEditable(false);
         }
         if (panelScrudClasif.getSelectedIndex() == 1) {
             nuevClasf.setText("");
-            resultList_clasificacion = ObjectModelDAO.getResultQuery("FROM Departamento d order by d.idDepartamento asc");
+            resultList_departamento = ObjectModelDAO.getResultQuery("FROM Departamento d order by d.idDepartamento asc");
             cb_dep.removeAllItems();
-            for (Object object : resultList_clasificacion) {
+            for (Object object : resultList_departamento) {
                 Departamento d = (Departamento) object;
                 cb_dep.addItem(d.getNombre());
             }
+            String sql = "FROM Clasificacion c order by c.idClasificacion asc";
+            resultList_clasificacion = ObjectModelDAO.getResultQuery(sql);
+            JavaUtil.displayResult(resultList_clasificacion, tablaCrearClasificacion);
+            tablaCrearClasificacion.setEditable(false);
             
         }
         if (panelScrudClasif.getSelectedIndex() == 2) {
@@ -649,6 +679,7 @@ public class JPclasificacion extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -656,10 +687,12 @@ public class JPclasificacion extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private org.jdesktop.swingx.JXTable listadoClasif;
     private javax.swing.JTextField modfNombre;
     private javax.swing.JTextField nuevClasf;
     private javax.swing.JTabbedPane panelScrudClasif;
+    private org.jdesktop.swingx.JXTable tablaCrearClasificacion;
     private org.jdesktop.swingx.JXTable tablaDeletClasif;
     private org.jdesktop.swingx.JXTable tablaModfClasif;
     // End of variables declaration//GEN-END:variables

@@ -100,12 +100,15 @@ public class JPdepartamento extends javax.swing.JPanel {
         bt_GenerarReporte = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        tablaCrearDepartamento = new org.jdesktop.swingx.JXTable();
+        jPanel6 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        bCrear = new javax.swing.JButton();
         nuevDep = new javax.swing.JTextField();
-        cb_divisionCrear = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
+        cb_divisionCrear = new javax.swing.JComboBox();
         bCrearDivision = new javax.swing.JButton();
+        bCrear = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -143,7 +146,7 @@ public class JPdepartamento extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "ID Departamento", "Nombre", "Division"
+                "ID DEPARTAMENTO", "NOMBRE DEPARTAMENTO", "DIVISION"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -160,6 +163,7 @@ public class JPdepartamento extends javax.swing.JPanel {
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1416622346_xmag.png"))); // NOI18N
         jLabel14.setText("Para realizar Busqueda: Haga Click en la tabla + CTRL F");
 
+        bt_GenerarReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Reporte.png"))); // NOI18N
         bt_GenerarReporte.setText("Generar Reporte");
         bt_GenerarReporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,7 +175,7 @@ public class JPdepartamento extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel14)
@@ -186,23 +190,43 @@ public class JPdepartamento extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel14)
                     .addComponent(bt_GenerarReporte))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE))
         );
 
         jScrollPane4.setViewportView(jPanel1);
 
         panelScrudDep.addTab("Consultar", jScrollPane4);
 
-        jLabel1.setText("Nombre del Departamento");
+        jPanel2.setLayout(new java.awt.BorderLayout());
 
-        bCrear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415656550_Add.png"))); // NOI18N
-        bCrear.setText("Crear Departamento");
-        bCrear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bCrearActionPerformed(evt);
+        tablaCrearDepartamento.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "ID DEPARTAMENTO", "NOMBRE DEPARTAMENTO", "DIVISION"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
+        jScrollPane8.setViewportView(tablaCrearDepartamento);
 
+        jPanel2.add(jScrollPane8, java.awt.BorderLayout.CENTER);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/departamento.png"))); // NOI18N
+        jLabel1.setText("Nombre del Departamento");
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/division.png"))); // NOI18N
         jLabel2.setText("Nombre de division");
 
         bCrearDivision.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415656550_Add.png"))); // NOI18N
@@ -213,47 +237,49 @@ public class JPdepartamento extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(nuevDep, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cb_divisionCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(bCrearDivision)
-                        .addGap(18, 18, 18)
-                        .addComponent(bCrear)))
-                .addContainerGap(184, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        bCrear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415656550_Add.png"))); // NOI18N
+        bCrear.setText("Crear Departamento");
+        bCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCrearActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(nuevDep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(cb_divisionCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bCrearDivision)
-                    .addComponent(bCrear))
-                .addContainerGap(257, Short.MAX_VALUE))
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(bCrear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cb_divisionCrear, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(nuevDep))
+                    .addComponent(bCrearDivision))
+                .addGap(25, 25, 25))
         );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jLabel1)
+                .addGap(21, 21, 21)
+                .addComponent(nuevDep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(jLabel2)
+                .addGap(21, 21, 21)
+                .addComponent(cb_divisionCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(bCrearDivision)
+                .addGap(34, 34, 34)
+                .addComponent(bCrear)
+                .addContainerGap(509, Short.MAX_VALUE))
+        );
+
+        jPanel2.add(jPanel6, java.awt.BorderLayout.WEST);
 
         jScrollPane5.setViewportView(jPanel2);
 
@@ -269,7 +295,7 @@ public class JPdepartamento extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "ID Departamento", "Nombre", "Division"
+                "ID DEPARTAMENTO", "NOMBRE DEPARTAMENTO", "DIVISION"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -290,8 +316,10 @@ public class JPdepartamento extends javax.swing.JPanel {
 
         idDepartamento.setText("ID Departamento");
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/departamento.png"))); // NOI18N
         jLabel3.setText("Nombre Departamento");
 
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/division.png"))); // NOI18N
         jLabel4.setText("Division a la que Pertenece");
 
         bCrearDivision1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415656550_Add.png"))); // NOI18N
@@ -317,28 +345,26 @@ public class JPdepartamento extends javax.swing.JPanel {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(bCrearDivision1))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(bModificar))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(modfNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(idDepartamento))))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(modfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(cb_divisionModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(bCrearDivision1))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(bModificar)))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cb_divisionModificar, javax.swing.GroupLayout.Alignment.LEADING, 0, 166, Short.MAX_VALUE))))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -360,7 +386,7 @@ public class JPdepartamento extends javax.swing.JPanel {
                 .addComponent(bCrearDivision1)
                 .addGap(29, 29, 29)
                 .addComponent(bModificar)
-                .addContainerGap(164, Short.MAX_VALUE))
+                .addContainerGap(538, Short.MAX_VALUE))
         );
 
         jPanel3.add(jPanel5, java.awt.BorderLayout.EAST);
@@ -381,7 +407,7 @@ public class JPdepartamento extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "ID Departamento", "Nombre", "Division"
+                "ID DEPARTAMENTO", "NOMBRE DEPARTAMENTO", "DIVISION"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -416,24 +442,22 @@ public class JPdepartamento extends javax.swing.JPanel {
                 .addComponent(jLabel16)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 567, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(bDelet_dep)
-                .addContainerGap())
+                .addGap(18, 18, 18))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 805, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(bDelet_dep, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 107, Short.MAX_VALUE))
+                        .addComponent(bDelet_dep, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         jScrollPane7.setViewportView(jPanel4);
@@ -456,18 +480,23 @@ public class JPdepartamento extends javax.swing.JPanel {
                         (Division) resultList_division.get(cb_divisionCrear.getSelectedIndex()))
                 );
 
+                String sql = "FROM Departamento d order by d.idDepartamento asc";
+                resultList_departamento = ObjectModelDAO.getResultQuery(sql);
+                JavaUtil.displayResult(resultList_departamento, tablaCrearDepartamento);
+                tablaCrearDepartamento.setEditable(false);
+                tablaCrearDepartamento.setRowSelectionInterval(resultList_departamento.size()-1, resultList_departamento.size()-1);
             }
         }
     }//GEN-LAST:event_bCrearActionPerformed
 
     private void bCrearDivisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearDivisionActionPerformed
         createJDialogGeneric(new JPdivision(1));
-         resultList_division = ObjectModelDAO.getResultQuery("FROM Division d order by d.idDivision asc");
-            cb_divisionCrear.removeAllItems();
-            for (Object object : resultList_division) {
-                Division d = (Division) object;
-                cb_divisionCrear.addItem(d.getNombre());
-            }
+        resultList_division = ObjectModelDAO.getResultQuery("FROM Division d order by d.idDivision asc");
+        cb_divisionCrear.removeAllItems();
+        for (Object object : resultList_division) {
+            Division d = (Division) object;
+            cb_divisionCrear.addItem(d.getNombre());
+        }
 
     }//GEN-LAST:event_bCrearDivisionActionPerformed
 
@@ -554,6 +583,10 @@ public class JPdepartamento extends javax.swing.JPanel {
                 Division d = (Division) object;
                 cb_divisionCrear.addItem(d.getNombre());
             }
+            String sql = "FROM Departamento d order by d.idDepartamento asc";
+            resultList_departamento = ObjectModelDAO.getResultQuery(sql);
+            JavaUtil.displayResult(resultList_departamento, tablaCrearDepartamento);
+            tablaCrearDepartamento.setEditable(false);
         }
 
         if (panelScrudDep.getSelectedIndex() == 2) {
@@ -630,6 +663,7 @@ public class JPdepartamento extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -637,10 +671,12 @@ public class JPdepartamento extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private org.jdesktop.swingx.JXTable listadoDepartamentos;
     private javax.swing.JTextField modfNombre;
     private javax.swing.JTextField nuevDep;
     private javax.swing.JTabbedPane panelScrudDep;
+    private org.jdesktop.swingx.JXTable tablaCrearDepartamento;
     private org.jdesktop.swingx.JXTable tablaDeletDep;
     private org.jdesktop.swingx.JXTable tablaModfDep;
     // End of variables declaration//GEN-END:variables

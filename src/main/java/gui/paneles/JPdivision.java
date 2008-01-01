@@ -31,10 +31,11 @@ public class JPdivision extends javax.swing.JPanel {
     private int pos;
     public final String rutaJasper = "/reportes/ReporteDivision.jasper";
     private Integer tabCrud;
+
     public JPdivision() {
         this(0);
     }
-    
+
     public JPdivision(Integer tabCrud) {
         this.tabCrud = tabCrud;
         initComponents();
@@ -46,7 +47,6 @@ public class JPdivision extends javax.swing.JPanel {
         tablaModificarDivision.getTableHeader().setReorderingAllowed(false);
         tablaEliminarDivision.getTableHeader().setReorderingAllowed(false);
 
-        
         tablaModificarDivision.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent lse) {
                 if (!lse.getValueIsAdjusting()) {
@@ -95,9 +95,12 @@ public class JPdivision extends javax.swing.JPanel {
         bt_GenerarReporte = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         tf_nombre = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        tablaCrearDivision = new org.jdesktop.swingx.JXTable();
         jScrollPane6 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -166,7 +169,7 @@ public class JPdivision extends javax.swing.JPanel {
                 .addComponent(jLabel15)
                 .addGap(42, 42, 42)
                 .addComponent(bt_GenerarReporte)
-                .addContainerGap(146, Short.MAX_VALUE))
+                .addContainerGap(366, Short.MAX_VALUE))
             .addComponent(jScrollPane1)
         );
         jPanel2Layout.setVerticalGroup(
@@ -177,13 +180,15 @@ public class JPdivision extends javax.swing.JPanel {
                     .addComponent(jLabel15)
                     .addComponent(bt_GenerarReporte))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
                 .addGap(7, 7, 7))
         );
 
         jScrollPane4.setViewportView(jPanel2);
 
         panelScrudDiv.addTab("Consultar", jScrollPane4);
+
+        jPanel1.setLayout(new java.awt.BorderLayout());
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1418698083_Card_file.png"))); // NOI18N
         jLabel3.setText("Nombre de Division :");
@@ -202,33 +207,54 @@ public class JPdivision extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabel3)
-                        .addGap(35, 35, 35)
-                        .addComponent(tf_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(143, 143, 143)
-                        .addComponent(jButton1)))
-                .addContainerGap(227, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(tf_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51)
-                .addComponent(jButton1)
-                .addContainerGap(224, Short.MAX_VALUE))
+                    .addComponent(tf_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(tf_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(jButton1)
+                .addContainerGap(212, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel6, java.awt.BorderLayout.WEST);
+
+        tablaCrearDivision.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "ID DIVISION", "NOMBRE"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane8.setViewportView(tablaCrearDivision);
+
+        jPanel1.add(jScrollPane8, java.awt.BorderLayout.CENTER);
 
         jScrollPane5.setViewportView(jPanel1);
 
@@ -311,7 +337,7 @@ public class JPdivision extends javax.swing.JPanel {
                 .addComponent(tf_nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addComponent(jButton2)
-                .addContainerGap(231, Short.MAX_VALUE))
+                .addContainerGap(331, Short.MAX_VALUE))
         );
 
         jPanel3.add(jPanel5, java.awt.BorderLayout.EAST);
@@ -363,28 +389,26 @@ public class JPdivision extends javax.swing.JPanel {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE)
-                        .addGap(18, 18, 18))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 737, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton3)
                 .addContainerGap())
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(546, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jButton3)
-                .addContainerGap(341, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jButton3)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         jScrollPane7.setViewportView(jPanel4);
@@ -408,6 +432,11 @@ public class JPdivision extends javax.swing.JPanel {
 
                 ObjectModelDAO.saveObject(new Division(tf_nombre.getText()));
 
+                String sql = "FROM Division d order by d.idDivision asc";
+                resultList = ObjectModelDAO.getResultQuery(sql);
+                JavaUtil.displayResult(resultList, tablaCrearDivision);
+                tablaCrearDivision.setEditable(false);
+                tablaCrearDivision.setRowSelectionInterval(resultList.size()-1, resultList.size()-1);
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -468,19 +497,18 @@ public class JPdivision extends javax.swing.JPanel {
 
     private void panelScrudDivStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_panelScrudDivStateChanged
 
-          if (panelScrudDiv.getTabCount() != 4) {
+        if (panelScrudDiv.getTabCount() != 4) {
             return;
         }
 
         //verifica si debe abrir un panel desde la llamada
         if (this.tabCrud != null) {
-            int tabCrud=this.tabCrud.intValue();
+            int tabCrud = this.tabCrud.intValue();
             this.tabCrud = null;
             panelScrudDiv.setSelectedIndex(tabCrud);
             return;
         }
-        
-        
+
         if (panelScrudDiv.getSelectedIndex() == 0) {
             String sql = "FROM Division d order by d.idDivision asc";
             List resultList = ObjectModelDAO.getResultQuery(sql);
@@ -491,6 +519,10 @@ public class JPdivision extends javax.swing.JPanel {
 
         if (panelScrudDiv.getSelectedIndex() == 1) {
             tf_nombre.setText("");
+            String sql = "FROM Division d order by d.idDivision asc";
+            resultList = ObjectModelDAO.getResultQuery(sql);
+            JavaUtil.displayResult(resultList, tablaCrearDivision);
+            tablaCrearDivision.setEditable(false);
         }
 
         if (panelScrudDiv.getSelectedIndex() == 2) {
@@ -553,6 +585,7 @@ public class JPdivision extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -560,9 +593,11 @@ public class JPdivision extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JLabel lb_numero;
     private javax.swing.JTabbedPane panelScrudDiv;
     private org.jdesktop.swingx.JXTable tablaConsultaDivision;
+    private org.jdesktop.swingx.JXTable tablaCrearDivision;
     private org.jdesktop.swingx.JXTable tablaEliminarDivision;
     private org.jdesktop.swingx.JXTable tablaModificarDivision;
     private javax.swing.JTextField tf_nombre;

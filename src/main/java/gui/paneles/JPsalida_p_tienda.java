@@ -406,7 +406,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
         );
         panelTablaLayout.setVerticalGroup(
             panelTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
         );
 
         jPanel3.add(panelTabla, java.awt.BorderLayout.CENTER);
