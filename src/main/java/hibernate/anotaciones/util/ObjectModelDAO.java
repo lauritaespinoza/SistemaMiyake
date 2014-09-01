@@ -1,26 +1,26 @@
 package hibernate.anotaciones.util;
 
 import java.util.List;
+import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.jboss.logging.annotations.Param;
 
-public  class ObjectModelDAO {
+public class ObjectModelDAO {
 
     private static Session sesion;
     private static Transaction tx;
 
-    public static Integer saveObject(Object objModel) throws HibernateException {
+    public static Integer saveObject(Object objModel) {
         Integer id = -1;
 
         try {
             iniciaOperacion();
             id = (Integer) sesion.save(objModel);
-        } catch (HibernateException he) {
-            manejaExcepcion(he);
-            throw he;
-        } finally {
+        } catch (HibernateException ex) {
+            manejaExcepcion(ex);
+        }finally {
             terminaOperacion();
         }
 
@@ -43,38 +43,38 @@ public  class ObjectModelDAO {
         }
     }
 
-    public static void updateObject(Object objModel) throws HibernateException {
+    public static void updateObject(Object objModel){
         try {
             iniciaOperacion();
             sesion.update(objModel);
-        } catch (HibernateException he) {
-            manejaExcepcion(he);
-            throw he;
-        } finally {
+        } catch (HibernateException ex) {
+            manejaExcepcion(ex);
+        }finally {
             terminaOperacion();
         }
     }
 
-    public static void deleteObject(Object objModel) throws HibernateException {
+    public static void deleteObject(Object objModel) {
         try {
             iniciaOperacion();
             sesion.delete(objModel);
             tx.commit();
-        } catch (HibernateException he) {
-            manejaExcepcion(he);
-            throw he;
+        } catch (HibernateException ex) {
+            manejaExcepcion(ex);
         } finally {
             terminaOperacion();
         }
     }
 
-    public static <T> T getObject(int idObject, Class<T> type) throws HibernateException, ClassNotFoundException {
+    public static <T> T getObject(int idObject, Class<T> type) {
         //hacer que se insancie el objeto de la clase de argumento ** 
 
         T objModel = null;
         try {
             iniciaOperacion();
             objModel = (T) sesion.get(type, idObject);
+        } catch (HibernateException ex) {
+            manejaExcepcion(ex);
         } finally {
             terminaOperacion();
         }
@@ -99,12 +99,14 @@ public  class ObjectModelDAO {
      * @throws HibernateException
      * @see DirectorioPK
      */
-    public static List<List> getResultQuery(String SQL) throws HibernateException {
+    public static List<List> getResultQuery(String SQL) {
         List<List> listaObjectos = null;
 
         try {
             iniciaOperacion();
             listaObjectos = sesion.createQuery(SQL).list(); //ejemplo : "from Contacto"
+        } catch (HibernateException ex) {
+            manejaExcepcion(ex);
         } finally {
             terminaOperacion();
         }
@@ -112,24 +114,37 @@ public  class ObjectModelDAO {
         return listaObjectos;
     }
 
-    private static void iniciaOperacion() throws HibernateException {
-        //System.out.println("\t\t\t\t save5 " + sesion);
-        sesion = HibernateUtil.getSessionFactory().openSession();
-        //System.out.println("\t\t\t\t save6 " + sesion);
-        //sesion = HibernateUtil.getSessionFactory().getCurrentSession();
-        //System.out.println("\t\t\t\t save7 " + sesion);
-        tx = sesion.beginTransaction();
-        //System.out.println("\t\t\t\t save8 " + sesion);
+    private static void iniciaOperacion() {
+        try {
+            //System.out.println("\t\t\t\t save5 " + sesion);
+            sesion = HibernateUtil.getSessionFactory().openSession();
+            //System.out.println("\t\t\t\t save6 " + sesion);
+            //sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+            //System.out.println("\t\t\t\t save7 " + sesion);
+            tx = sesion.beginTransaction();
+            //System.out.println("\t\t\t\t save8 " + sesion);
+        } catch (HibernateException ex) {
+            manejaExcepcion(ex);
+        }
     }
 
     private static void manejaExcepcion(HibernateException he) throws HibernateException {
-        tx.rollback();
+        if (tx.isParticipating()) {
+            tx.rollback();
+            JOptionPane.showMessageDialog(null, "rollback");
+        }
+
+        JOptionPane.showMessageDialog(null,he , "Error", JOptionPane.ERROR_MESSAGE);
         throw new HibernateException("Ocurrió un error en la capa de acceso a datos \n\t", he);
     }
 
     private static void terminaOperacion() {
-        tx.commit();
-        sesion.close();
+        try {
+            tx.commit();
+            sesion.close();
+        } catch (HibernateException ex) {
+            manejaExcepcion(ex);
+        }
     }
 
     /*
