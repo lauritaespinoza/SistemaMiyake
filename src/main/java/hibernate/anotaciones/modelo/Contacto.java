@@ -68,7 +68,7 @@ public class Contacto implements Serializable {
         this.correo = correo;
         this.telefono = telefono;
     }
-
+ 
     public Contacto(Integer idContacto) {
         this.idContacto = idContacto;
     }
