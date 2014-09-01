@@ -44,7 +44,7 @@ public class Seguro implements Serializable {
     private String descripcion;
     @JoinColumn(name = "id_contacto", referencedColumnName = "id_contacto")
     @ManyToOne
-    private Contacto idContacto;
+    private Contacto contacto;
 
     public Seguro() {
     }
@@ -55,7 +55,7 @@ public class Seguro implements Serializable {
 
     public Seguro(String descripcion, Contacto idContacto) {
         this.descripcion = descripcion;
-        this.idContacto = idContacto;
+        this.contacto = idContacto;
     }
 
     public Integer getId() {
@@ -74,12 +74,12 @@ public class Seguro implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public Contacto getIdContacto() {
-        return idContacto;
+    public Contacto getContacto() {
+        return contacto;
     }
 
-    public void setIdContacto(Contacto idContacto) {
-        this.idContacto = idContacto;
+    public void setContacto(Contacto contacto) {
+        this.contacto = contacto;
     }
 
     @Override

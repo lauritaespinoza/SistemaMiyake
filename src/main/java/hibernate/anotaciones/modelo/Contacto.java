@@ -53,7 +53,7 @@ public class Contacto implements Serializable {
     @Size(max = 2147483647)
     @Column(name = "telefono")
     private String telefono;
-    @OneToMany(mappedBy = "idContacto")
+    @OneToMany(mappedBy = "contacto")
     private Collection<Seguro> seguroCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "contacto")
     private Collection<Directorio> directorioCollection;

@@ -404,15 +404,19 @@ public class Ventana extends javax.swing.JFrame {
         try {
             switch (jTabbedPane2.getSelectedIndex()) {
                 case 0:
-                    dao.saveObject(new Contacto(jTextField1.getText(), jTextField2.getText(), jTextField3.getText()));
+                    dao.saveObject(
+                            new Contacto(
+                                    jTextField1.getText(), jTextField2.getText(), jTextField3.getText()
+                            )
+                    );
                     break;
                 case 1:
 
                     dao.saveObject(
                             new Directorio(
                                     new SimpleDateFormat("yyyy-MM-dd").parse(jTextField4.getText()),
-                                    dao.getObject(new Long(jComboBox3.getSelectedItem().toString()), Contacto.class),
-                                    dao.getObject(new Long(jComboBox4.getSelectedItem().toString()), Contacto.class)
+                                    dao.getObject(Integer.parseInt(jComboBox3.getSelectedItem().toString()), Contacto.class),
+                                    dao.getObject(Integer.parseInt(jComboBox4.getSelectedItem().toString()), Contacto.class)
                             )
                     );
 
@@ -421,7 +425,7 @@ public class Ventana extends javax.swing.JFrame {
                     dao.saveObject(
                             new Seguro(
                                     jTextArea1.getText(),
-                                    dao.getObject(new Long(jComboBox5.getSelectedItem().toString()), Contacto.class)
+                                    dao.getObject(Integer.parseInt(jComboBox5.getSelectedItem().toString()), Contacto.class)
                             )
                     );
                     break;
@@ -479,7 +483,7 @@ public class Ventana extends javax.swing.JFrame {
         } else if (o instanceof Seguro) {
             Seguro s = (Seguro) o;
             oneRow.add(s.getId());
-            oneRow.add(s.getIdContacto());
+            oneRow.add(s.getContacto().getIdContacto());
             oneRow.add(s.getDescripcion());
         }
         return oneRow;

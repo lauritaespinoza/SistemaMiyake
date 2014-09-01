@@ -11,12 +11,12 @@ public  class ObjectModelDAO {
     private static Session sesion;
     private static Transaction tx;
 
-    public static long saveObject(Object objModel) throws HibernateException {
-        long id = -1;
+    public static Integer saveObject(Object objModel) throws HibernateException {
+        Integer id = -1;
 
         try {
             iniciaOperacion();
-            id = (Long) sesion.save(objModel);
+            id = (Integer) sesion.save(objModel);
         } catch (HibernateException he) {
             manejaExcepcion(he);
             throw he;
@@ -68,7 +68,7 @@ public  class ObjectModelDAO {
         }
     }
 
-    public static <T> T getObject(long idObject, Class<T> type) throws HibernateException, ClassNotFoundException {
+    public static <T> T getObject(int idObject, Class<T> type) throws HibernateException, ClassNotFoundException {
         //hacer que se insancie el objeto de la clase de argumento ** 
 
         T objModel = null;
