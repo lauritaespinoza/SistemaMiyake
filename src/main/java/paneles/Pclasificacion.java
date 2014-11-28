@@ -33,7 +33,7 @@ public class Pclasificacion extends javax.swing.JPanel {
     private int pos;
     
     public Pclasificacion() {
-        this(0 );
+        this(0);
     }
     
     public Pclasificacion(int tabCrud) {
