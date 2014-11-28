@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="com.mycompany_modulofacturacion2_jar_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>modelos.EntradaProveedor</class>
+    <class>modelos.InventarioDiario</class>
+    <class>modelos.Importador</class>
+    <class>modelos.SalidaParaTiendaDetalle</class>
+    <class>modelos.Factura</class>
+    <class>modelos.SalidaEntreTiendasDetalle</class>
+    <class>modelos.Marca</class>
+    <class>modelos.ConteoMercanciaEntradaDetalles</class>
+    <class>modelos.SalidaEntreTiendas</class>
+    <class>modelos.Ubicacion</class>
+    <class>modelos.SalidaParaTienda</class>
+    <class>modelos.InventarioTienda</class>
+    <class>modelos.NotaCreditoDebito</class>
+    <class>modelos.PedidoProveedor</class>
+    <class>modelos.PedidoTienda</class>
+    <class>modelos.Bultos</class>
+    <class>modelos.Clasificacion</class>
+    <class>modelos.Contacto</class>
+    <class>modelos.Proveedor</class>
+    <class>modelos.InventarioDiarioDetalle</class>
+    <class>modelos.ConteoMercanciaEntrada</class>
+    <class>modelos.Producto</class>
+    <class>modelos.Almacen</class>
+    <class>modelos.Usuario</class>
+    <class>modelos.Division</class>
+    <class>modelos.ModificacionPrecioDetalle</class>
+    <class>modelos.Departamento</class>
+    <class>modelos.ModificacionPrecio</class>
+    <class>modelos.NotaCreditoDebitoDetalle</class>
+    <class>modelos.Clasificacion_1</class>
+    <class>modelos.Departamento_1</class>
+    <class>modelos.Division_1</class>
+    <class>modelos.Contacto_1</class>
+    <class>modelos.Ubicacion_1</class>
+    <class>modelos.PrecioProductoTienda</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://192.2.1.70:5432/miyake_pasantia"/>
+      <property name="javax.persistence.jdbc.password" value="admin"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.user" value="postgres"/>
+    </properties>
+  </persistence-unit>
+</persistence>

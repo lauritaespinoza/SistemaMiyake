@@ -1,82 +1,100 @@
 package hibernate.anotaciones.util;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.transaction.Transactional;
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.jboss.logging.annotations.Param;
 
-public class ObjectModelDAO {
+public abstract class ObjectModelDAO {
 
-    private static Session sesion;
-    private static Transaction tx;
+//    private static Session sesion;//es posible hacer una lista?
+   // private static List<Session> sesiones = new ArrayList<>();
+//    private static Transaction tx;
+//    private static Thread hilo;
+//    public static String estado() {
+//        return "tx: " + tx + "\nsesion: " + sesion;
+//    }
 
-    public static Integer saveObject(Object objModel) {
-        Integer id = -1;
+//    public static List<Session> getSesiones() {
+//       // return sesiones;
+//    }
 
+    //normalmente regresa un Integer, si es compuesta regresa el embedded
+    public static Object saveObject(Object objModel) {
+
+        Object id = -1;
+        Session newSession = null;
         try {
-            iniciaOperacion();
-            id = (Integer) sesion.save(objModel);
+            newSession = HibernateUtil.getSessionFactory().openSession();
+            newSession.beginTransaction();
+
+            id = newSession.save(objModel);
+
+            newSession.getTransaction().commit();
         } catch (HibernateException ex) {
-            manejaExcepcion(ex);
-        }finally {
-            terminaOperacion();
+            manejaExcepcion(ex, newSession, newSession.getTransaction());
+        } finally {
+            terminate(newSession);
         }
 
         return id;
     }
 
-    public ObjectModelDAO() {
-    }
-
-    /**
-     *
-     * @param sw
-     * <blockquote><pre>
-     *     true: para iniciar operacion
-     * </pre></blockquote><p>
-     */
-    public ObjectModelDAO(boolean sw) {
-        if (sw) {
-            iniciaOperacion();
-        }
-    }
-
-    public static void updateObject(Object objModel){
+    public static void updateObject(Object objModel) {
+        Session newSession = null;
         try {
-            iniciaOperacion();
-            sesion.update(objModel);
+            newSession = HibernateUtil.getSessionFactory().openSession();
+            newSession.beginTransaction();
+
+            newSession.update(objModel);
+
+            newSession.getTransaction().commit();
         } catch (HibernateException ex) {
-            manejaExcepcion(ex);
-        }finally {
-            terminaOperacion();
+            manejaExcepcion(ex, newSession, newSession.getTransaction());
+        } finally {
+            terminate(newSession);
         }
     }
 
     public static void deleteObject(Object objModel) {
+        Session newSession = null;
         try {
-            iniciaOperacion();
-            sesion.delete(objModel);
-            tx.commit();
+            newSession = HibernateUtil.getSessionFactory().openSession();
+            newSession.beginTransaction();
+
+            newSession.delete(objModel);
+
+            newSession.getTransaction().commit();
         } catch (HibernateException ex) {
-            manejaExcepcion(ex);
+            manejaExcepcion(ex, newSession, newSession.getTransaction());
         } finally {
-            terminaOperacion();
+            terminate(newSession);
         }
     }
 
-    public static <T> T getObject(int idObject, Class<T> type) {
+    public static <T> T getObject(Serializable idObject, Class<T> type) {
         //hacer que se insancie el objeto de la clase de argumento ** 
 
         T objModel = null;
+        Session newSession = null;
         try {
-            iniciaOperacion();
-            objModel = (T) sesion.get(type, idObject);
+            newSession = HibernateUtil.getSessionFactory().openSession();
+            newSession.beginTransaction();
+
+            objModel = (T) newSession.get(type, idObject);
+
+            newSession.getTransaction().commit();
         } catch (HibernateException ex) {
-            manejaExcepcion(ex);
+            manejaExcepcion(ex, newSession, newSession.getTransaction());
         } finally {
-            terminaOperacion();
+            terminate(newSession);
         }
 
         return objModel;
@@ -94,124 +112,170 @@ public class ObjectModelDAO {
      *     String str = "abc";
      * </pre></blockquote><p>
      *
-     * @param SQL
+     * @param tarjet
      * @return Lista con los campos de consulta
      * @throws HibernateException
      * @see DirectorioPK
      */
-    public static List<List> getResultQuery(String SQL) {
+    public static List<List> getResultQuery(Object tarjet) {
+        if (tarjet == null) {
+            return null;
+        }
+
         List<List> listaObjectos = null;
+        DaoQuery DaoQ = null;
+        DaoCriteria DaoC = null;
+        Session oldSession = null;
 
         try {
-            iniciaOperacion();
-            listaObjectos = sesion.createQuery(SQL).list(); //ejemplo : "from Contacto"
+            if (tarjet instanceof String) {
+                DaoQ = createQueryDAO((String) tarjet);
+                listaObjectos = DaoQ == null ? null : DaoQ.getQuery().list();//ejemplo : "from Contacto"
+                oldSession = DaoQ.getSession();
+            }
+            if (tarjet instanceof DaoQuery) {
+                DaoQ = (DaoQuery) tarjet;
+                listaObjectos = DaoQ.getQuery().list();
+                oldSession = DaoQ.getSession();
+            }
+            if (tarjet instanceof DaoCriteria) {
+                DaoC = (DaoCriteria) tarjet;
+                listaObjectos = DaoC.getCriteria().list();
+                oldSession = DaoC.getSession();
+            }
+
+            oldSession.getTransaction().commit();
         } catch (HibernateException ex) {
-            manejaExcepcion(ex);
+            manejaExcepcion(ex, oldSession, oldSession.getTransaction());
         } finally {
-            terminaOperacion();
+            terminate(oldSession);
         }
 
         return listaObjectos;
     }
 
-    private static void iniciaOperacion() {
+    public static List<List> getResultQueryString(String SQL) {
+        if (SQL == null) {
+            return null;
+        }
+
+        List<List> listaObjectos = null;
+        Session newSession = null;
         try {
-            //System.out.println("\t\t\t\t save5 " + sesion);
-            sesion = HibernateUtil.getSessionFactory().openSession();
-            //System.out.println("\t\t\t\t save6 " + sesion);
-            //sesion = HibernateUtil.getSessionFactory().getCurrentSession();
-            //System.out.println("\t\t\t\t save7 " + sesion);
-            tx = sesion.beginTransaction();
-            //System.out.println("\t\t\t\t save8 " + sesion);
+            newSession = HibernateUtil.getSessionFactory().openSession();
+            newSession.beginTransaction();
+
+            listaObjectos = newSession.createSQLQuery(SQL).list();
+            newSession.getTransaction().commit();
         } catch (HibernateException ex) {
-            manejaExcepcion(ex);
+            manejaExcepcion(ex, newSession, newSession.getTransaction());
+        } finally {
+            terminate(newSession);
+        }
+
+        return listaObjectos;
+    }
+
+    public static void executeQuery(String SQL) {
+        Session newSession = null;
+        try {
+            newSession = HibernateUtil.getSessionFactory().openSession();
+            newSession.beginTransaction();
+
+            newSession.createQuery(SQL);
+            newSession.getTransaction().commit();
+        } catch (HibernateException ex) {
+            manejaExcepcion(ex, newSession, newSession.getTransaction());
+        } finally {
+            terminate(newSession);
         }
     }
 
-    private static void manejaExcepcion(HibernateException he) throws HibernateException {
-        if (tx.isParticipating()) {
-            tx.rollback();
-            JOptionPane.showMessageDialog(null, "rollback");
+//    private static boolean needToCreate() {
+//        return sesion == null || !sesion.isOpen();
+//    }
+//    private static void iniciaOperacion() {
+//        try {
+//            //System.out.println("\t\t\t\t save5 " + sesion);
+//            // JOptionPane.showMessageDialog(null, HibernateUtil.getSessionFactory().getCurrentSession());
+//            //if (HibernateUtil.getSessionFactory().getCurrentSession() == null || !HibernateUtil.getSessionFactory().getCurrentSession().isOpen()) {
+//
+//            if (needToCreate()) {
+//                sesion = HibernateUtil.getSessionFactory().openSession();
+//                tx = sesion.beginTransaction();
+//            }
+////            sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+//            // }
+//            //System.out.println("\t\t\t\t save6 " + sesion);
+//            //sesion = HibernateUtil.getSessionFactory().getCurrentSession();
+//            //System.out.println("\t\t\t\t save7 " + sesion);
+//
+//            //System.out.println("\t\t\t\t save8 " + sesion);
+//        } catch (HibernateException ex) {
+//            manejaExcepcion(ex);
+//        }
+//    }
+    public static DaoQuery createQueryDAO(String hql) {
+        Session newSession = null;
+        DaoQuery daoQ = null;
+        try {
+            newSession = HibernateUtil.getSessionFactory().openSession();
+            newSession.beginTransaction();
+//            if (!sesiones.add(newSession)) {
+//                JOptionPane.showMessageDialog(null, "no se pudo agregar la session");
+//            }
+
+            daoQ = new DaoQuery(newSession, newSession.createQuery(hql));
+        } catch (HibernateException ex) {
+            manejaExcepcion(ex, newSession, newSession.getTransaction());
+        }
+        return daoQ;
+    }
+
+    public static DaoCriteria createCriteriaDAO(Class type) {
+        Session newSession = null;
+        DaoCriteria daoC = null;
+        try {
+            newSession = HibernateUtil.getSessionFactory().openSession();
+            newSession.beginTransaction();
+
+            daoC = new DaoCriteria(newSession, newSession.createCriteria(type));
+        } catch (HibernateException ex) {
+            manejaExcepcion(ex, newSession, newSession.getTransaction());
+        }
+        return daoC;
+    }
+
+    private static void manejaExcepcion(Exception he, Session sess, Transaction trans) throws HibernateException {
+
+//        JOptionPane.showMessageDialog(null, "Estado: " + estado());
+        if (trans != null && trans.isParticipating()) {
+            trans.rollback();
+            JOptionPane.showMessageDialog(null, "rollback " + he);
         }
 
-        JOptionPane.showMessageDialog(null,he , "Error", JOptionPane.ERROR_MESSAGE);
+        if (sess != null) {
+            sess.close();
+        }
+
+        JOptionPane.showMessageDialog(null, he);
         throw new HibernateException("Ocurrió un error en la capa de acceso a datos \n\t", he);
     }
 
-    private static void terminaOperacion() {
+    private static void terminate(Session session) {
         try {
-            tx.commit();
-            sesion.close();
-        } catch (HibernateException ex) {
-            manejaExcepcion(ex);
+            if (session != null || session.isOpen()) {
+                session.close();
+//                if (!sesiones.remove(session)) {
+//                    JOptionPane.showMessageDialog(null, "no se pudo remover la session");
+//                }
+            }
+        } catch (Exception e) {
+            manejaExcepcion(e, session, session.getTransaction());
         }
     }
 
-    /*
-     public static void almacenaEntidad(Object entidad) throws HibernateException
-     {
-       
-
-     try
-     {
-     dummy.iniciaOperacion();
-     dummy.getSession().saveOrUpdate(entidad);
-     dummy.getSession().flush();
-     }
-     catch (HibernateException he)
-     {
-     dummy.manejaExcepcion(he);
-     }
-     finally
-     {
-     dummy.terminaOperacion();
-     }
-     }
-
-     public static <T> T getEntidad(Serializable id, Class<T> claseEntidad) throws HibernateException
-     {
-     AbstractDAO dummy = new AbstractDAO(){};
-
-     T objetoRecuperado = null;
-
-     try
-     {
-     dummy.iniciaOperacion();
-     objetoRecuperado = (T) dummy.getSession().get(claseEntidad, id);
-     }
-     catch (HibernateException he)
-     {
-     dummy.manejaExcepcion(he);
-     }
-     finally
-     {
-     dummy.terminaOperacion();
-     }
-
-     return objetoRecuperado;
-     }
-
-     public static <T> List<T> getListaEntidades(Class<T> claseEntidad) throws HibernateException
-     {
-     AbstractDAO dummy = new AbstractDAO(){};
-
-     List<T> listaResultado = null;
-
-     try
-     {
-     dummy.iniciaOperacion();
-     listaResultado = dummy.getSession().createQuery("FROM " + claseEntidad.getSimpleName()).list();
-     }
-     catch (HibernateException he)
-     {
-     dummy.manejaExcepcion(he);
-     }
-     finally
-     {
-     dummy.terminaOperacion();
-     }
-
-     return listaResultado;
-     }
-     */
+    public static Object getSesiones() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

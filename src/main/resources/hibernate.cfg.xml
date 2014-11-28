@@ -5,20 +5,42 @@
     <!-- org.hibernate.dialect.PostgreSQLDialect -->
     <!-- <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>-->
     <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/pruebahibernate</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://192.2.1.70:5432/miyake_pasantia</property>
     <property name="hibernate.connection.username">postgres</property>
     <property name="hibernate.connection.password">admin</property>
     <property name="hibernate.default_schema">public</property>
     <property name="hibernate.show_sql">true</property>
-    <property name="connection_pool_size">1</property>
     <property name="hibernate.use_sql_comments">true</property>
     <!-- Disable the second-level cache -->
     <!-- <property name="hibernate.cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property> -->
     <!--<property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property> -->
     <!--<property name="hibernate.query.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory</property>-->
     <!-- <property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>-->
-    <mapping class="hibernate.anotaciones.modelo.Contacto"/>
-    <mapping class="hibernate.anotaciones.modelo.Directorio"/>
-    <mapping class="hibernate.anotaciones.modelo.Seguro"/>
+    <property name="hibernate.transaction.auto_close_session">false</property>
+    <mapping class="modelos.Almacen"/>
+    <mapping class="modelos.Clasificacion"/>
+    <mapping class="modelos.Contacto"/>
+    <mapping class="modelos.ConteoMercanciaEntrada"/>
+    <mapping class="modelos.ConteoMercanciaEntradaDetalles"/>
+    <mapping class="modelos.ConteoMercanciaEntradaDetallesPK"/>
+    <mapping class="modelos.Departamento"/>
+    <mapping class="modelos.Division"/>
+    <mapping class="modelos.EntradaProveedor"/>
+    <mapping class="modelos.Factura"/>
+    <mapping class="modelos.InventarioDiario"/>
+    <mapping class="modelos.InventarioDiarioDetalle"/>
+    <mapping class="modelos.InventarioTienda"/>
+    <mapping class="modelos.InventarioTiendaPK"/>
+    <mapping class="modelos.Marca"/>
+    <mapping class="modelos.NotaCreditoDebito"/>
+    <mapping class="modelos.NotaCreditoDebitoDetalle"/>
+    <mapping class="modelos.Producto"/>
+    <mapping class="modelos.Proveedor"/>
+    <mapping class="modelos.SalidaParaTienda"/>
+    <mapping class="modelos.SalidaParaTiendaDetalle"/>
+    <mapping class="modelos.SalidaParaTiendaDetallePK"/>
+    <mapping class="modelos.Ubicacion"/>
+    <mapping class="modelos.Usuario"/>
+    <!--<mapping class="clases.SalidaPrecioProducto"/>-->
   </session-factory>
 </hibernate-configuration>
