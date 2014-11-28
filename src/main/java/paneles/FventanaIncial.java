@@ -1,6 +1,6 @@
 package paneles;
 
-import de.javasoft.plaf.synthetica.SyntheticaBlueSteelLookAndFeel;
+
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;

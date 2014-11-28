@@ -177,11 +177,6 @@
             <version>6.0</version>
         </dependency>
         <dependency>
-            <groupId>Synthetica</groupId>
-            <artifactId>Synthetica</artifactId>
-            <version>2.9.8</version>
-        </dependency>
-        <dependency>
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-openide-awt</artifactId>
             <version>RELEASE80</version>
@@ -211,11 +206,6 @@
             <groupId>unknown.binary</groupId>
             <artifactId>AbsoluteLayout</artifactId>
             <version>SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>syntheticaBlueSteel</groupId>
-            <artifactId>syntheticaBlueSteel</artifactId>
-            <version>2</version>
         </dependency>
         <dependency>
             <groupId>apache-avalon</groupId>
