@@ -5,7 +5,7 @@
  */
 package clases;
 
-import modelos.InventarioDiarioDetalle;
+import modelos.mapeos.InventarioDiarioDetalle;
 import java.util.Comparator;
 
 /**
