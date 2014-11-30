@@ -176,7 +176,7 @@
             <artifactId>substance</artifactId>
             <version>6.0</version>
         </dependency>
-        <dependency>
+<!--        <dependency>
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-openide-awt</artifactId>
             <version>RELEASE80</version>
@@ -185,7 +185,7 @@
             <groupId>com.googlecode.sarasvati.thirdparty.netbeans</groupId>
             <artifactId>org-openide-util-lookup</artifactId>
             <version>7.3</version>
-        </dependency>
+        </dependency>-->
         
         <dependency>
             <groupId>MiyakePasantia</groupId>
