@@ -7,13 +7,6 @@ package gui.paneles;
 
 import clases.csv.CSVreader;
 import hibernate.DAO.ObjectModelDAO;
-
-////import com.uneg.clases.excel.EXCELreader;
-//import modelos.Almacen;
-//
-//import hibernate.anotaciones.util.EXCELreader;
-//import hibernate.anotaciones.util.JavaUtil;
-
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -30,7 +23,7 @@ import static util.JavaUtil.cons_seleccionar;
 
 /**
  *
- * @author Usuario
+ * @author Pablo
  */
 public class VisorExportSQL extends javax.swing.JFrame {
 
@@ -46,25 +39,6 @@ public class VisorExportSQL extends javax.swing.JFrame {
         busy.setEnabled(false);
         busy.setVisible(false);
         busy.setBusy(false);
-//SELECT sum(numbackends) FROM pg_stat_database;
-//        for (int i = 0; i < 1000; i++) {
-//            String hql = "FROM Producto p WHERE p.referenciaProducto= :ref ORDER BY p.idProducto ASC";
-//            Query q = ObjectModelDAO.createQueryDAO(hql);
-//            String valor = "33-88005";
-//            q.setParameter("ref", valor);
-//            for (Object col : q.getNamedParameters()) {
-//                System.out.println("\t\t\t\t** " + col);
-//            }
-//
-//            List resultList = ObjectModelDAO.getResultQuery(q);
-//            System.out.println(resultList.size());
-//            for (Object resultList1 : resultList) {
-//                System.out.println(resultList1);
-//            }
-//
-//        }
-//
-//        JOptionPane.showMessageDialog(null, ObjectModelDAO.estado());
     }
 
     /**
@@ -457,9 +431,6 @@ public class VisorExportSQL extends javax.swing.JFrame {
                 filesc.setFileFilter(new FileNameExtensionFilter("Archivos txt ", "txt"));
 
                 break;
-//            case 1:
-//                filesc.setFileFilter(new FileNameExtensionFilter("Archivoss xlsx ", "xlsx"));
-//                break;
         }
         int returnVal = filesc.showOpenDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
@@ -473,21 +444,7 @@ public class VisorExportSQL extends javax.swing.JFrame {
                         lt1.setModel(csvReader.getListModel());
                         ta1.read(new FileReader(file.getAbsolutePath()), null);
                         break;
-//                    case 1:
-//                        excelReader = new EXCELreader(file.getAbsolutePath());
-////                        excelReader.procesarEXCEL();
-//                        tabla.setModel(excelReader.toTable());
-//                        lb_np.setText(excelReader.getNp() + "");
-//                        lb_pd.setText(excelReader.getPd() + "");
-//                        if ((excelReader.getNp() + excelReader.getPd()) == 0) {
-//                            procesarEP.setEnabled(true);
-//                            procesarEP.setToolTipText("Click para procesar todo el listado de productos");
-//                        } else {
-//                            procesarEP.setEnabled(false);
-//                            procesarEP.setToolTipText("Debe Registrar todos los productos nuevos,"
-//                                    + " ademas ajustar los precios diferentes");
-//                        }
-//                        break;
+
                 }
             } catch (IOException ex) {
                 Logger.getLogger(VisorExportSQL.class.getName()).log(Level.SEVERE, null, ex);
