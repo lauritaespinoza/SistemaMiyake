@@ -80,6 +80,8 @@ public class FventanaIncial extends javax.swing.JFrame {
     private static final String tabPrecio = "Actualización de Precios";
     private static final String tabInventarioDiario = "Inventario Diario en Tienda";
     private static final String tabAlmacen = "Almacen";
+    private static final String tabNotaCredito = "Notas de Crédito en Tienda";
+    private static final String tabNotaDebito = "Notas de Débito en Tienda";
 
     private BufferedImage bg;
 
@@ -95,12 +97,17 @@ public class FventanaIncial extends javax.swing.JFrame {
         initComponents();
     }
 
-    private void addPaneles(String titulo, Class panelNuevo) {
+    //el tipo se usa en nota de credito debito
+    private void addPaneles(String titulo, Class panelNuevo, Boolean tipo) {
         try {
 
             int pos = isContained(titulo);
             if (pos == -1) {
-                panel.addTab(titulo, (JPanel) panelNuevo.newInstance());
+                if (panelNuevo.equals(JPnotaCreditoDebito.class)) {//si es una nota de credito/debito
+                    panel.addTab(titulo, (JPanel) panelNuevo.getConstructor(Boolean.class).newInstance(tipo));
+                } else {
+                    panel.addTab(titulo, (JPanel) panelNuevo.newInstance());
+                }
                 panel.setSelectedIndex(panel.getTabCount() - 1);
             } else {
                 panel.setSelectedIndex(pos);
@@ -156,6 +163,8 @@ public class FventanaIncial extends javax.swing.JFrame {
         taskPaneModuloTienda = new org.jdesktop.swingx.JXTaskPane();
         jButton6 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        btNC = new javax.swing.JButton();
+        btND = new javax.swing.JButton();
         taskPaneModuloDeposito = new org.jdesktop.swingx.JXTaskPane();
         ExportData_boton_ = new javax.swing.JButton();
         TomaFisicaDistribuidora_boton_ = new javax.swing.JButton();
@@ -347,7 +356,6 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jXCollapsiblePane1.getContentPane().add(taskPaneModuloFacturacion);
 
-        taskPaneModuloTienda.setCollapsed(true);
         taskPaneModuloTienda.setTitle("Tienda");
 
         jButton6.setText("Almacen");
@@ -365,6 +373,22 @@ public class FventanaIncial extends javax.swing.JFrame {
             }
         });
         taskPaneModuloTienda.getContentPane().add(jButton5);
+
+        btNC.setText("Notas de Crédito");
+        btNC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btNCActionPerformed(evt);
+            }
+        });
+        taskPaneModuloTienda.getContentPane().add(btNC);
+
+        btND.setText("Notas de Débito");
+        btND.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btNDActionPerformed(evt);
+            }
+        });
+        taskPaneModuloTienda.getContentPane().add(btND);
 
         jXCollapsiblePane1.getContentPane().add(taskPaneModuloTienda);
 
@@ -463,43 +487,43 @@ public class FventanaIncial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrudClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrudClasificacionActionPerformed
-        addPaneles(tabClasificacion, JPclasificacion.class);
+        addPaneles(tabClasificacion, JPclasificacion.class, null);
     }//GEN-LAST:event_btnCrudClasificacionActionPerformed
 
     private void btnCrudMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrudMarcaActionPerformed
-        addPaneles(tabMarca, JPmarca.class);
+        addPaneles(tabMarca, JPmarca.class, null);
     }//GEN-LAST:event_btnCrudMarcaActionPerformed
 
     private void btnCrudDeptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrudDeptoActionPerformed
-        addPaneles(tabDepartamento, JPdepartamento.class);
+        addPaneles(tabDepartamento, JPdepartamento.class, null);
     }//GEN-LAST:event_btnCrudDeptoActionPerformed
 
     private void btnCrudContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrudContactActionPerformed
-        addPaneles(tabContacto, JPcontacto.class);
+        addPaneles(tabContacto, JPcontacto.class, null);
     }//GEN-LAST:event_btnCrudContactActionPerformed
 
     private void btnCrudDivisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrudDivisionActionPerformed
-        addPaneles(tabDivision, JPdivision.class);
+        addPaneles(tabDivision, JPdivision.class, null);
     }//GEN-LAST:event_btnCrudDivisionActionPerformed
 
     private void btnCrudProveedrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrudProveedrActionPerformed
-        addPaneles(tabProveedor, JPproveedor.class);
+        addPaneles(tabProveedor, JPproveedor.class, null);
     }//GEN-LAST:event_btnCrudProveedrActionPerformed
 
     private void btnCrudProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrudProductoActionPerformed
-        addPaneles(tabProducto, JPproducto.class);
+        addPaneles(tabProducto, JPproducto.class, null);
     }//GEN-LAST:event_btnCrudProductoActionPerformed
 
     private void btnCrudUbicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrudUbicacionActionPerformed
-        addPaneles(tabUbicacion, JPubicacion.class);
+        addPaneles(tabUbicacion, JPubicacion.class, null);
     }//GEN-LAST:event_btnCrudUbicacionActionPerformed
 
     private void btnContainerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContainerActionPerformed
-        addPaneles(tabFactura, JPentradaproveedor.class);
+        addPaneles(tabFactura, JPentradaproveedor.class, null);
     }//GEN-LAST:event_btnContainerActionPerformed
 
     private void btnSalidaTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalidaTiendaActionPerformed
-        addPaneles(tabSalida, JPsalida_p_tienda.class);
+        addPaneles(tabSalida, JPsalida_p_tienda.class, null);
     }//GEN-LAST:event_btnSalidaTiendaActionPerformed
 
 
@@ -562,19 +586,19 @@ public class FventanaIncial extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        addPaneles(tabPrecio, JPprecio_productos.class);
+        addPaneles(tabPrecio, JPprecio_productos.class, null);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        addPaneles(tabInventarioDiario, JPinventarioDiario.class);
+        addPaneles(tabInventarioDiario, JPinventarioDiario.class, null);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        addPaneles(tabAlmacen, JPalmacen.class);
+        addPaneles(tabAlmacen, JPalmacen.class, null);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-        addPaneles(tabAlmacen, JPNewJPanel.class);// TODO add your handling code here:
+        addPaneles(tabAlmacen, JPNewJPanel.class, null);// TODO add your handling code here:
     }//GEN-LAST:event_button1ActionPerformed
 
     private void ExportData_boton_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExportData_boton_ActionPerformed
@@ -585,7 +609,7 @@ public class FventanaIncial extends javax.swing.JFrame {
 
     private void TomaFisicaDistribuidora_boton_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TomaFisicaDistribuidora_boton_ActionPerformed
 
-        addPaneles(tabTomaFisica, Distribuidora1.class);
+        addPaneles(tabTomaFisica, Distribuidora1.class, null);
 
     }//GEN-LAST:event_TomaFisicaDistribuidora_boton_ActionPerformed
 
@@ -603,7 +627,7 @@ public class FventanaIncial extends javax.swing.JFrame {
 
     private void ConsultaExistencia_boton_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaExistencia_boton_ActionPerformed
 
-        addPaneles(tabAsignarMercancia, JPConsultaInventario.class);
+        addPaneles(tabAsignarMercancia, JPConsultaInventario.class, null);
 
         // TODO add your handling code here:
     }//GEN-LAST:event_ConsultaExistencia_boton_ActionPerformed

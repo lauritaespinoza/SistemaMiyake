@@ -7,6 +7,22 @@
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["C:\\Users\\Usuario\\Documents\\NetBeansProjects\\SistemaMiyake\\src\\main\\resources\\reportes\\"]]></defaultValueExpression>
 	</parameter>
+	<queryString>
+		<![CDATA[select * from salida_para_tienda
+where salida_para_tienda.revisado = false]]>
+	</queryString>
+	<field name="id_salida" class="java.lang.Integer"/>
+	<field name="id_almacen_desde" class="java.lang.Integer"/>
+	<field name="id_usuario_1" class="java.lang.Integer">
+		<fieldDescription><![CDATA[facturadora]]></fieldDescription>
+	</field>
+	<field name="id_usuario_2" class="java.lang.Integer">
+		<fieldDescription><![CDATA[ayudante de facturadora]]></fieldDescription>
+	</field>
+	<field name="fecha_asignacion" class="java.sql.Timestamp"/>
+	<field name="total" class="java.lang.Float"/>
+	<field name="revisado" class="java.lang.Boolean"/>
+	<field name="id_almacen_hasta" class="java.lang.Integer"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -22,9 +38,9 @@
 	<detail>
 		<band height="125" splitType="Stretch">
 			<subreport>
-				<reportElement x="401" y="25" width="200" height="100" uuid="2767b242-8576-48fe-b3c5-c663b6589c87"/>
+				<reportElement x="0" y="0" width="200" height="100" uuid="bf0a0e07-a2e0-48f2-92d5-e29853d5dd66"/>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ReporteMercanciaAsignadaPendiente_subreport1.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ReporteMercanciaAsignadaPendiente_subreport2.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
 	</detail>
