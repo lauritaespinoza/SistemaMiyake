@@ -1,6 +1,5 @@
 package gui.ventanas;
 
-import gui.paneles.Asignar1;
 import gui.paneles.Distribuidora1;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -54,19 +53,14 @@ import gui.paneles.JPsalida_p_tienda;
 import gui.paneles.JPubicacion;
 import gui.paneles.JPTomaFisicaInventarioDistribuidora;
 import gui.paneles.JPTomaFisicaInventarioTiendas;
-import gui.paneles.JPexportData;
-import gui.paneles.JPusuario;
-import gui.paneles.Tiendas1;
-import gui.paneles.VisorExportSQL;
-import net.sf.jasperreports.engine.JRException;
+import gui.paneles.JPnotaCreditoDebito;
+import java.lang.reflect.InvocationTargetException;
 
 public class FventanaIncial extends javax.swing.JFrame {
 
     private static final String tabTomaFisicaTiendas = "Inventario Tiendas. ";
-    private static final String tabUsuarios = "Gestion de Usuarios. ";
     private static final String tabAsignarMercancia = "Asignar Mercancia. ";
     private static final String tabTomaFisica = "Inventario Distribuidora. ";
-    private static final String tabExportData = "Exportacion de Datos. ";
     private static final String tabProducto = "Producto";
     private static final String tabSalida = "Mercancía Asignada a Tienda";
     private static final String tabFactura = "Registrar Container";
@@ -114,8 +108,13 @@ public class FventanaIncial extends javax.swing.JFrame {
             }
 
         } catch (InstantiationException | IllegalAccessException ex) {
-
-            JOptionPane.showMessageDialog(this, "error" + ex);
+            Logger.getLogger(FventanaIncial.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException | SecurityException ex) {
+            Logger.getLogger(FventanaIncial.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(FventanaIncial.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(FventanaIncial.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -166,13 +165,11 @@ public class FventanaIncial extends javax.swing.JFrame {
         btNC = new javax.swing.JButton();
         btND = new javax.swing.JButton();
         taskPaneModuloDeposito = new org.jdesktop.swingx.JXTaskPane();
-        ExportData_boton_ = new javax.swing.JButton();
-        TomaFisicaDistribuidora_boton_ = new javax.swing.JButton();
-        AsignarMercancia_boton_ = new org.jdesktop.swingx.JXButton();
-        TomaFisicaTiendas_boton_ = new org.jdesktop.swingx.JXButton();
-        ConsultaExistencia_boton_ = new org.jdesktop.swingx.JXButton();
-        UbicacionProducto_boton_ = new org.jdesktop.swingx.JXButton();
+        jButton3 = new javax.swing.JButton();
+        jButtonTomaFisica = new javax.swing.JButton();
+        jXButton2 = new org.jdesktop.swingx.JXButton();
         jXButton1 = new org.jdesktop.swingx.JXButton();
+        jXButton3 = new org.jdesktop.swingx.JXButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         button1 = new java.awt.Button();
@@ -394,57 +391,46 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         taskPaneModuloDeposito.setTitle("Depósito");
 
-        ExportData_boton_.setText("Export Datos");
-        ExportData_boton_.addActionListener(new java.awt.event.ActionListener() {
+        jButton3.setText("jButton3");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ExportData_boton_ActionPerformed(evt);
+                jButton3ActionPerformed(evt);
             }
         });
-        taskPaneModuloDeposito.getContentPane().add(ExportData_boton_);
+        taskPaneModuloDeposito.getContentPane().add(jButton3);
 
-        TomaFisicaDistribuidora_boton_.setText("Toma Fisica Distribuidora");
-        TomaFisicaDistribuidora_boton_.addActionListener(new java.awt.event.ActionListener() {
+        jButtonTomaFisica.setText("Toma Fisica Distribuidora");
+        jButtonTomaFisica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TomaFisicaDistribuidora_boton_ActionPerformed(evt);
+                jButtonTomaFisicaActionPerformed(evt);
             }
         });
-        taskPaneModuloDeposito.getContentPane().add(TomaFisicaDistribuidora_boton_);
+        taskPaneModuloDeposito.getContentPane().add(jButtonTomaFisica);
 
-        AsignarMercancia_boton_.setText("Gestion Mercancia ");
-        AsignarMercancia_boton_.addActionListener(new java.awt.event.ActionListener() {
+        jXButton2.setText("Gestion Mercancia ");
+        jXButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AsignarMercancia_boton_ActionPerformed(evt);
+                jXButton2ActionPerformed(evt);
             }
         });
-        taskPaneModuloDeposito.getContentPane().add(AsignarMercancia_boton_);
+        taskPaneModuloDeposito.getContentPane().add(jXButton2);
 
-        TomaFisicaTiendas_boton_.setText("Toma Fisica Tiendas");
-        TomaFisicaTiendas_boton_.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TomaFisicaTiendas_boton_ActionPerformed(evt);
-            }
-        });
-        taskPaneModuloDeposito.getContentPane().add(TomaFisicaTiendas_boton_);
-
-        ConsultaExistencia_boton_.setText("Consultar Existencia");
-        ConsultaExistencia_boton_.setActionCommand("Consultar Inventario ");
-        ConsultaExistencia_boton_.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ConsultaExistencia_boton_ActionPerformed(evt);
-            }
-        });
-        taskPaneModuloDeposito.getContentPane().add(ConsultaExistencia_boton_);
-
-        UbicacionProducto_boton_.setText("Ubicacion Producto");
-        taskPaneModuloDeposito.getContentPane().add(UbicacionProducto_boton_);
-
-        jXButton1.setText("Usuarios");
+        jXButton1.setText("Toma Fisica Tiendas");
         jXButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jXButton1ActionPerformed(evt);
             }
         });
         taskPaneModuloDeposito.getContentPane().add(jXButton1);
+
+        jXButton3.setText("Consultar Inventario");
+        jXButton3.setActionCommand("Consultar Inventario ");
+        jXButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jXButton3ActionPerformed(evt);
+            }
+        });
+        taskPaneModuloDeposito.getContentPane().add(jXButton3);
 
         jXCollapsiblePane1.getContentPane().add(taskPaneModuloDeposito);
 
@@ -545,7 +531,7 @@ public class FventanaIncial extends javax.swing.JFrame {
             JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
             jasperViewer.setTitle("Imagen");
             jasperViewer.setVisible(true);
-        } catch (IOException | JRException e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "error" + e);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -601,41 +587,42 @@ public class FventanaIncial extends javax.swing.JFrame {
         addPaneles(tabAlmacen, JPNewJPanel.class, null);// TODO add your handling code here:
     }//GEN-LAST:event_button1ActionPerformed
 
-    private void ExportData_boton_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExportData_boton_ActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
-        addPaneles(tabExportData, JPexportData.class);
-
-    }//GEN-LAST:event_ExportData_boton_ActionPerformed
-
-    private void TomaFisicaDistribuidora_boton_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TomaFisicaDistribuidora_boton_ActionPerformed
+    private void jButtonTomaFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTomaFisicaActionPerformed
 
         addPaneles(tabTomaFisica, Distribuidora1.class, null);
 
-    }//GEN-LAST:event_TomaFisicaDistribuidora_boton_ActionPerformed
+    }//GEN-LAST:event_jButtonTomaFisicaActionPerformed
 
-    private void AsignarMercancia_boton_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsignarMercancia_boton_ActionPerformed
+    private void jXButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXButton2ActionPerformed
 
-        addPaneles(tabAsignarMercancia, Asignar1.class);
+        addPaneles(tabAsignarMercancia, JPAsignarMercancia.class, null);
 
-    }//GEN-LAST:event_AsignarMercancia_boton_ActionPerformed
+    }//GEN-LAST:event_jXButton2ActionPerformed
 
-    private void TomaFisicaTiendas_boton_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TomaFisicaTiendas_boton_ActionPerformed
+    private void jXButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXButton1ActionPerformed
 
-        addPaneles(tabTomaFisicaTiendas, Tiendas1.class);
+        addPaneles(tabTomaFisicaTiendas, JPTomaFisicaInventarioTiendas.class, null);
 
-    }//GEN-LAST:event_TomaFisicaTiendas_boton_ActionPerformed
+    }//GEN-LAST:event_jXButton1ActionPerformed
 
-    private void ConsultaExistencia_boton_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaExistencia_boton_ActionPerformed
+    private void jXButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXButton3ActionPerformed
 
         addPaneles(tabAsignarMercancia, JPConsultaInventario.class, null);
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_ConsultaExistencia_boton_ActionPerformed
+    }//GEN-LAST:event_jXButton3ActionPerformed
 
-    private void jXButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXButton1ActionPerformed
+    private void btNDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNDActionPerformed
+        addPaneles(tabNotaDebito, JPnotaCreditoDebito.class, false);
+    }//GEN-LAST:event_btNDActionPerformed
 
-        addPaneles(tabUsuarios, JPusuario.class);
-    }//GEN-LAST:event_jXButton1ActionPerformed
+    private void btNCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNCActionPerformed
+        addPaneles(tabNotaCredito, JPnotaCreditoDebito.class, true);
+    }//GEN-LAST:event_btNCActionPerformed
 
     public static void main(String args[]) {
 
@@ -658,12 +645,8 @@ public class FventanaIncial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private org.jdesktop.swingx.JXButton AsignarMercancia_boton_;
-    private org.jdesktop.swingx.JXButton ConsultaExistencia_boton_;
-    private javax.swing.JButton ExportData_boton_;
-    private javax.swing.JButton TomaFisicaDistribuidora_boton_;
-    private org.jdesktop.swingx.JXButton TomaFisicaTiendas_boton_;
-    private org.jdesktop.swingx.JXButton UbicacionProducto_boton_;
+    private javax.swing.JButton btNC;
+    private javax.swing.JButton btND;
     private javax.swing.JButton btnContainer;
     private javax.swing.JButton btnCrudClasificacion;
     private javax.swing.JButton btnCrudContact;
@@ -677,9 +660,11 @@ public class FventanaIncial extends javax.swing.JFrame {
     private java.awt.Button button1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButtonTomaFisica;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -689,6 +674,8 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private org.jdesktop.swingx.JXButton jXButton1;
+    private org.jdesktop.swingx.JXButton jXButton2;
+    private org.jdesktop.swingx.JXButton jXButton3;
     private org.jdesktop.swingx.JXCollapsiblePane jXCollapsiblePane1;
     private org.jdesktop.swingx.JXTaskPaneContainer jXTaskPaneContainer1;
     private com.ClosableTabbedPane panel;
