@@ -13,6 +13,7 @@ import modelos.mapeos.EntradaProveedor;
 import modelos.mapeos.ConteoMercanciaEntradaDetalles;
 import modelos.mapeos.Clasificacion;
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -70,7 +71,7 @@ public class Producto implements Serializable {
     private Integer idProducto;
     @Column(name = "primera_actividad")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date primeraActividad;
+    private Date primeraActividad = Calendar.getInstance().getTime();
     @Column(name = "ultima_actividad")
     @Temporal(TemporalType.TIMESTAMP)
     private Date ultimaActividad;

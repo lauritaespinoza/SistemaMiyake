@@ -9,6 +9,7 @@ import modelos.mapeos.NotaCreditoDebito;
 import modelos.mapeos.SalidaParaTienda;
 import modelos.mapeos.ConteoMercanciaEntrada;
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -58,7 +59,7 @@ public class Usuario implements Serializable {
     private String descripcion;
     @Column(name = "fecha_creacion")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaCreacion;
+    private Date fechaCreacion = Calendar.getInstance().getTime();
     @Basic(optional = false)
     @NotNull
     @Column(nullable = false)
