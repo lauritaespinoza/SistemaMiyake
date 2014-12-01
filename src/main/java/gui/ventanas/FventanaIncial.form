@@ -862,6 +862,7 @@
                 </Container>
                 <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneModuloTienda">
                   <Properties>
+                    <Property name="collapsed" type="boolean" value="true"/>
                     <Property name="title" type="java.lang.String" value="Tienda"/>
                   </Properties>
                   <SubComponents>
@@ -879,22 +880,6 @@
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
-                      </Events>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="btNC">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Notas de Cr&#xe9;dito"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btNCActionPerformed"/>
-                      </Events>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="btND">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Notas de D&#xe9;bito"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btNDActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -980,38 +965,6 @@
                         </CodeExpression>
                       </Parameters>
                     </CodeStatement>
-                    <CodeStatement>
-                      <CodeExpression id="44"/>
-                      <StatementProvider type="CodeMethod">
-                        <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
-                      </StatementProvider>
-                      <Parameters>
-                        <CodeExpression id="48_btNC">
-                          <CodeVariable name="btNC" type="8194" declaredType="javax.swing.JButton"/>
-                          <ExpressionOrigin>
-                            <ExpressionProvider type="ComponentRef">
-                              <ComponentRef name="btNC"/>
-                            </ExpressionProvider>
-                          </ExpressionOrigin>
-                        </CodeExpression>
-                      </Parameters>
-                    </CodeStatement>
-                    <CodeStatement>
-                      <CodeExpression id="44"/>
-                      <StatementProvider type="CodeMethod">
-                        <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
-                      </StatementProvider>
-                      <Parameters>
-                        <CodeExpression id="49_btND">
-                          <CodeVariable name="btND" type="8194" declaredType="javax.swing.JButton"/>
-                          <ExpressionOrigin>
-                            <ExpressionProvider type="ComponentRef">
-                              <ComponentRef name="btND"/>
-                            </ExpressionProvider>
-                          </ExpressionOrigin>
-                        </CodeExpression>
-                      </Parameters>
-                    </CodeStatement>
                   </LayoutCode>
                 </Container>
                 <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneModuloDeposito">
@@ -1076,7 +1029,7 @@
                   </SubComponents>
                   <LayoutCode>
                     <CodeStatement>
-                      <CodeExpression id="50_verticalLayout8">
+                      <CodeExpression id="48_verticalLayout8">
                         <CodeVariable name="verticalLayout8" type="4096" declaredType="org.jdesktop.swingx.VerticalLayout"/>
                         <ExpressionOrigin>
                           <ExpressionProvider type="CodeConstructor">
@@ -1085,16 +1038,16 @@
                         </ExpressionOrigin>
                       </CodeExpression>
                       <StatementProvider type="CodeExpression">
-                        <CodeExpression id="50_verticalLayout8"/>
+                        <CodeExpression id="48_verticalLayout8"/>
                       </StatementProvider>
                     </CodeStatement>
                     <CodeStatement>
-                      <CodeExpression id="50_verticalLayout8"/>
+                      <CodeExpression id="48_verticalLayout8"/>
                       <StatementProvider type="CodeMethod">
                         <CodeMethod name="setGap" class="org.jdesktop.swingx.VerticalLayout" parameterTypes="int"/>
                       </StatementProvider>
                       <Parameters>
-                        <CodeExpression id="51">
+                        <CodeExpression id="49">
                           <ExpressionOrigin>
                             <Value type="int" value="2"/>
                           </ExpressionOrigin>
@@ -1102,9 +1055,9 @@
                       </Parameters>
                     </CodeStatement>
                     <CodeStatement>
-                      <CodeExpression id="52">
+                      <CodeExpression id="50">
                         <ExpressionOrigin>
-                          <CodeExpression id="53_taskPaneModuloDeposito">
+                          <CodeExpression id="51_taskPaneModuloDeposito">
                             <CodeVariable name="taskPaneModuloDeposito" type="8194" declaredType="org.jdesktop.swingx.JXTaskPane"/>
                             <ExpressionOrigin>
                               <ExpressionProvider type="ComponentRef">
@@ -1121,11 +1074,11 @@
                         <CodeMethod name="setLayout" class="java.awt.Container" parameterTypes="java.awt.LayoutManager"/>
                       </StatementProvider>
                       <Parameters>
-                        <CodeExpression id="50_verticalLayout8"/>
+                        <CodeExpression id="48_verticalLayout8"/>
                       </Parameters>
                     </CodeStatement>
                     <CodeStatement>
-                      <CodeExpression id="52"/>
+                      <CodeExpression id="50"/>
                       <StatementProvider type="CodeMethod">
                         <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                       </StatementProvider>
@@ -1141,7 +1094,7 @@
                       </Parameters>
                     </CodeStatement>
                     <CodeStatement>
-                      <CodeExpression id="52"/>
+                      <CodeExpression id="50"/>
                       <StatementProvider type="CodeMethod">
                         <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                       </StatementProvider>
@@ -1157,11 +1110,13 @@
                       </Parameters>
                     </CodeStatement>
                     <CodeStatement>
-                      <CodeExpression id="52"/>
+                      <CodeExpression id="50"/>
                       <StatementProvider type="CodeMethod">
                         <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                       </StatementProvider>
                       <Parameters>
+                        <CodeExpression id="54_AsignarMercancia_boton_">
+                          <CodeVariable name="AsignarMercancia_boton_" type="8194" declaredType="org.jdesktop.swingx.JXButton"/>
                           <ExpressionOrigin>
                             <ExpressionProvider type="ComponentRef">
                               <ComponentRef name="AsignarMercancia_boton_"/>
@@ -1171,17 +1126,11 @@
                       </Parameters>
                     </CodeStatement>
                     <CodeStatement>
-                      <CodeExpression id="52"/>
+                      <CodeExpression id="50"/>
                       <StatementProvider type="CodeMethod">
                         <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                       </StatementProvider>
                       <Parameters>
-                        <CodeExpression id="54_AsignarMercancia_boton_">
-                          <CodeVariable name="AsignarMercancia_boton_" type="8194" declaredType="org.jdesktop.swingx.JXButton"/>
-                          <CodeVariable name="jXButton1" type="8194" declaredType="org.jdesktop.swingx.JXButton"/>
-                          <ExpressionOrigin>
-                            <ExpressionProvider type="ComponentRef">
-                              <ComponentRef name="jXButton1"/>
                         <CodeExpression id="55_TomaFisicaTiendas_boton_">
                           <CodeVariable name="TomaFisicaTiendas_boton_" type="8194" declaredType="org.jdesktop.swingx.JXButton"/>
                           <ExpressionOrigin>
@@ -1231,6 +1180,10 @@
                       </StatementProvider>
                       <Parameters>
                         <CodeExpression id="58_jXButton1">
+                          <CodeVariable name="jXButton1" type="8194" declaredType="org.jdesktop.swingx.JXButton"/>
+                          <ExpressionOrigin>
+                            <ExpressionProvider type="ComponentRef">
+                              <ComponentRef name="jXButton1"/>
                             </ExpressionProvider>
                           </ExpressionOrigin>
                         </CodeExpression>
@@ -1337,7 +1290,7 @@
                     <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                   </StatementProvider>
                   <Parameters>
-                    <CodeExpression id="53_taskPaneModuloDeposito"/>
+                    <CodeExpression id="51_taskPaneModuloDeposito"/>
                   </Parameters>
                 </CodeStatement>
                 <CodeStatement>
@@ -1416,4 +1369,3 @@
     </Container>
   </SubComponents>
 </Form>
-
