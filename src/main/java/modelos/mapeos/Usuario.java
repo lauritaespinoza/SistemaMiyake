@@ -79,11 +79,9 @@ public class Usuario implements Serializable {
     private String contrasena;
     @OneToMany(mappedBy = "idUsuario")
     private Collection<ConteoMercanciaEntrada> conteoMercanciaEntradaCollection;
-    @OneToMany(mappedBy = "idUsuario2")
+    @OneToMany(mappedBy = "idUsuario")
     private Collection<NotaCreditoDebito> notaCreditoDebitoCollection;
-    @OneToMany(mappedBy = "idUsuario1")
-    private Collection<NotaCreditoDebito> notaCreditoDebitoCollection1;
-    @OneToMany(mappedBy = "idUsuario2")
+    @OneToMany(mappedBy = "idUsuario2") 
     private Collection<SalidaParaTienda> salidaParaTiendaCollection;
     @OneToMany(mappedBy = "idUsuario1")
     private Collection<SalidaParaTienda> salidaParaTiendaCollection1;
