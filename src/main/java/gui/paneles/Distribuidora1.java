@@ -359,7 +359,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPaneDatosProductosLayout.createSequentialGroup()
                         .addComponent(labelReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtReferencia, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                        .addComponent(txtReferencia, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jXLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -468,12 +468,12 @@ public class Distribuidora1 extends javax.swing.JPanel {
         jLayeredPaneProductosLayout.setHorizontalGroup(
             jLayeredPaneProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPaneProductosLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jLayeredPaneProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane5)
                     .addComponent(jLayeredPaneBuscarProducto, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLayeredPaneDatosProductos, javax.swing.GroupLayout.Alignment.LEADING))
-                .addGap(27, 27, 27))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jLayeredPaneProductosLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonGuardarConteo, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -489,7 +489,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonGuardarConteo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jLayeredPaneProductos.setLayer(jLayeredPaneBuscarProducto, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPaneProductos.setLayer(jLayeredPaneDatosProductos, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -512,7 +512,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
             .addGroup(jLayeredPanePrincipalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 563, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jLayeredPanePrincipal.setLayer(jScrollPane4, javax.swing.JLayeredPane.DEFAULT_LAYER);
 

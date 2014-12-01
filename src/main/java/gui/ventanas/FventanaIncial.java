@@ -1,6 +1,7 @@
 package gui.ventanas;
 
 
+import gui.paneles.Asignar1;
 import gui.paneles.Distribuidora1;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -156,6 +157,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         jXButton2 = new org.jdesktop.swingx.JXButton();
         jXButton1 = new org.jdesktop.swingx.JXButton();
         jXButton3 = new org.jdesktop.swingx.JXButton();
+        jXButton4 = new org.jdesktop.swingx.JXButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         button1 = new java.awt.Button();
@@ -362,7 +364,7 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         taskPaneModuloDeposito.setTitle("Depósito");
 
-        jButton3.setText("jButton3");
+        jButton3.setText("Export Datos");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -394,7 +396,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
         taskPaneModuloDeposito.getContentPane().add(jXButton1);
 
-        jXButton3.setText("Consultar Inventario");
+        jXButton3.setText("Consultar Existencia");
         jXButton3.setActionCommand("Consultar Inventario ");
         jXButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -402,6 +404,9 @@ public class FventanaIncial extends javax.swing.JFrame {
             }
         });
         taskPaneModuloDeposito.getContentPane().add(jXButton3);
+
+        jXButton4.setText("Ubicacion Producto");
+        taskPaneModuloDeposito.getContentPane().add(jXButton4);
 
         jXCollapsiblePane1.getContentPane().add(taskPaneModuloDeposito);
 
@@ -570,7 +575,7 @@ public class FventanaIncial extends javax.swing.JFrame {
 
     private void jXButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXButton2ActionPerformed
 
-        addPaneles(tabAsignarMercancia, JPAsignarMercancia.class);
+        addPaneles(tabAsignarMercancia, Asignar1.class);
 
     }//GEN-LAST:event_jXButton2ActionPerformed
 
@@ -637,6 +642,7 @@ public class FventanaIncial extends javax.swing.JFrame {
     private org.jdesktop.swingx.JXButton jXButton1;
     private org.jdesktop.swingx.JXButton jXButton2;
     private org.jdesktop.swingx.JXButton jXButton3;
+    private org.jdesktop.swingx.JXButton jXButton4;
     private org.jdesktop.swingx.JXCollapsiblePane jXCollapsiblePane1;
     private org.jdesktop.swingx.JXTaskPaneContainer jXTaskPaneContainer1;
     private com.ClosableTabbedPane panel;
