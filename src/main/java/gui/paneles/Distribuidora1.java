@@ -1005,6 +1005,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
                                     dr.getBulto(),
                                     dr.getCantidad(),
                                     cab,
+                                    
                                     dr.getEp().getIdProducto()
                             );
 
