@@ -100,7 +100,6 @@ public class JPinventarioDiario extends javax.swing.JPanel {
         rifAlmacen = new javax.swing.JLabel();
         cb_tiendas = new javax.swing.JComboBox();
         jLabel7 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
         seleccionar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         total_facturas = new javax.swing.JLabel();
@@ -207,9 +206,9 @@ public class JPinventarioDiario extends javax.swing.JPanel {
             }
         });
 
-        nombreAlmacen.setText("Nombre:");
+        nombreAlmacen.setText(" ");
 
-        rifAlmacen.setText("RIF:");
+        rifAlmacen.setText(" ");
 
         cb_tiendas.setMaximumSize(new java.awt.Dimension(300, 300));
         cb_tiendas.addActionListener(new java.awt.event.ActionListener() {
@@ -219,14 +218,6 @@ public class JPinventarioDiario extends javax.swing.JPanel {
         });
 
         jLabel7.setText("Tienda");
-
-        jCheckBox1.setSelected(true);
-        jCheckBox1.setText("1");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
-            }
-        });
 
         seleccionar.setText("Cargar Archivo de Factura");
         seleccionar.setToolTipText("Para cálculo de factura");
@@ -241,7 +232,7 @@ public class JPinventarioDiario extends javax.swing.JPanel {
         total_facturas.setText(" ");
         total_facturas.setToolTipText("Doble click para agregar a la salida seleccionada");
         total_facturas.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        total_facturas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        total_facturas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         total_facturas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 total_facturasMouseClicked(evt);
@@ -270,10 +261,7 @@ public class JPinventarioDiario extends javax.swing.JPanel {
                         .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rifAlmacen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jCheckBox1)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(rifAlmacen, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
                             .addComponent(nombreAlmacen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(10, 10, 10))
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -299,8 +287,7 @@ public class JPinventarioDiario extends javax.swing.JPanel {
                 .addGap(11, 11, 11)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jCheckBox1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(25, 25, 25)
                         .addComponent(nombreAlmacen)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(rifAlmacen))
@@ -400,7 +387,7 @@ public class JPinventarioDiario extends javax.swing.JPanel {
         busy.setVisible(false);
 
         direccionAlmacen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        direccionAlmacen.setText("direccion");
+        direccionAlmacen.setText(" ");
 
         javax.swing.GroupLayout paneltablaLayout = new javax.swing.GroupLayout(paneltabla);
         paneltabla.setLayout(paneltablaLayout);
@@ -471,7 +458,7 @@ public class JPinventarioDiario extends javax.swing.JPanel {
 
                 //el mes seleccionado es mayor al actual
                 if (primero.get(Calendar.MONTH) < mess) {//na
-                    tabla.setEnabled(false);
+                    tabla.setEditable(false);
                     recalcular.setEnabled(false);
                     guardar.setEnabled(false);
                     opc = 3;
@@ -479,13 +466,13 @@ public class JPinventarioDiario extends javax.swing.JPanel {
                 } else {
                     //el mes seleccionado es igual al actual
                     if (primero.get(Calendar.MONTH) == mess) {//cr
-                        tabla.setEnabled(true);
+                        tabla.setEditable(true);
                         recalcular.setEnabled(true);
                         guardar.setEnabled(true);
                         opc = 2;
                         //el mes seleccionado es menor al actual
                     } else {//mm
-                        tabla.setEnabled(false);
+                        tabla.setEditable(false);
                         recalcular.setEnabled(false);
                         guardar.setEnabled(false);
                         opc = 1;
@@ -585,6 +572,9 @@ public class JPinventarioDiario extends javax.swing.JPanel {
                         }
                     }
                 }
+                if (tabla.getRowCount() > 0 && tabla.isEditable()) {
+                    tabla.getColumnExt(0).setEditable(false);
+                }
                 imprimir.setEnabled(tabla.getRowCount() > 0 || crear);
                 busy.setVisible(false);
                 busy.setBusy(false);
@@ -634,7 +624,7 @@ public class JPinventarioDiario extends javax.swing.JPanel {
 
     private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
 
-        if (evt.getClickCount() == 2) {
+        if (evt.getClickCount() == 2 && tabla.isEditable()) {
             if (tabla.getSelectedColumn() == 0) {
                 jdfecha.pack();
                 jdfecha.setVisible(true);
@@ -647,7 +637,7 @@ public class JPinventarioDiario extends javax.swing.JPanel {
     private void tablaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tablaKeyReleased
 
         int keyCode = evt.getKeyCode();
-        if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
+        if (evt.getKeyCode() == KeyEvent.VK_DOWN && tabla.isEditable()) {
             int rowCount = tabla.getRowCount();
             int rowSelected = tabla.getSelectedRow();
             int columnCount = tabla.getColumnCount();
@@ -689,12 +679,9 @@ public class JPinventarioDiario extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_mesActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        //  JOptionPane.showMessageDialog(null, ObjectModelDAO.getSesiones().size());
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
-
     private void total_facturasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_total_facturasMouseClicked
-        if (evt.getClickCount() == 2 && tabla.getSelectedRow() != -1 && !total_facturas.getText().equals("")) {
+        if (evt.getClickCount() == 2 && tabla.getSelectedRow() != -1 && !total_facturas.getText().equals("")
+                && tabla.isEditable()) {
             tabla.getModel().setValueAt(total_facturas.getText(), tabla.getSelectedRow(), 3);
         }
     }//GEN-LAST:event_total_facturasMouseClicked
@@ -779,15 +766,23 @@ public class JPinventarioDiario extends javax.swing.JPanel {
                     //sino crea uno nuevo
                     InventarioDiarioDetalle ivdDetIterador = i < elementosDetalle
                             ? ivdDetalle.get(i) : new InventarioDiarioDetalle();
+
                     ivdDetIterador.setFecha(sdf.parse((String) tabla.getValueAt(i, 0)));
+
                     ivdDetIterador.setConcepto((String) tabla.getValueAt(i, 1));
+
                     data = (String) tabla.getValueAt(i, 2);
+
                     ivdDetIterador.setEntrada(isVacia(data) ? 0f
                             : Float.parseFloat(data.replace(",", ".")));
+
                     data = (String) tabla.getValueAt(i, 3);
+
                     ivdDetIterador.setSalida(isVacia(data) ? 0f
                             : Float.parseFloat(data.replace(",", ".")));
+
                     data = (String) tabla.getValueAt(i, 4);
+
                     ivdDetIterador.setSaldo(isVacia(data) ? 0f
                             : Float.parseFloat(data.replace(",", ".")));
 
@@ -842,7 +837,6 @@ public class JPinventarioDiario extends javax.swing.JPanel {
     private javax.swing.JFileChooser filesc;
     private javax.swing.JButton guardar;
     private javax.swing.JButton imprimir;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

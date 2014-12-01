@@ -5,6 +5,7 @@
  */
 package util;
 
+import hibernate.DAO.ObjectModelDAO;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Image;
@@ -42,7 +43,9 @@ import modelos.mapeos.Departamento;
 import modelos.mapeos.Division;
 import modelos.mapeos.InventarioDiarioDetalle;
 import modelos.mapeos.InventarioTienda;
+import modelos.mapeos.InventarioTiendaPK;
 import modelos.mapeos.Marca;
+import modelos.mapeos.NotaCreditoDebitoDetalle;
 import modelos.mapeos.Producto;
 import modelos.mapeos.Proveedor;
 import modelos.mapeos.SalidaParaTiendaDetalle;
@@ -174,7 +177,7 @@ public abstract class JavaUtil {
             oneRow.add(ivt.getFechaCreacion());
             oneRow.add(ivt.getFechaModificacion());
         }
-        
+
         if (o instanceof Almacen) {
             Almacen a = (Almacen) o;
             oneRow.add(a.getIdAlmacen());
@@ -195,6 +198,16 @@ public abstract class JavaUtil {
             oneRow.add(dosDecimales.format(ivdDetalle.getEntrada() == null ? 0f : ivdDetalle.getEntrada()));
             oneRow.add(dosDecimales.format(ivdDetalle.getSalida() == null ? 0f : ivdDetalle.getSalida()));
             oneRow.add(dosDecimales.format(ivdDetalle.getSaldo() == null ? 0f : ivdDetalle.getSaldo()));
+        }
+
+        if (o instanceof NotaCreditoDebitoDetalle) {
+            NotaCreditoDebitoDetalle ntcd = (NotaCreditoDebitoDetalle) o;
+            oneRow.add(ntcd.getNroRenglon());
+            oneRow.add(ntcd.getIdProducto().getReferenciaProducto());
+            oneRow.add(ntcd.getIdProducto().getDescripcion());
+            oneRow.add(ntcd.getCantidadProducto());
+            InventarioTienda ivt = ObjectModelDAO.getObject(new InventarioTiendaPK(ntcd.getIdProducto().getIdProducto(), ntcd.getIdNotaCreditoDebito().getIdSalida().getIdAlmacenHasta().getIdAlmacen()), InventarioTienda.class);
+            oneRow.add(ivt.getPrecioConDescuento());
         }
 
         return oneRow;
@@ -285,8 +298,8 @@ public abstract class JavaUtil {
             header.add("Fecha de Creación");
             header.add("Fecha de Modificación");
         }
-        
-          if (o instanceof Almacen) {
+
+        if (o instanceof Almacen) {
             header.add("ID");
             header.add("Nombre");
             header.add("Descripción");
@@ -306,6 +319,14 @@ public abstract class JavaUtil {
             header.add("Saldo");
         }
 
+        if (o instanceof NotaCreditoDebitoDetalle) {
+            header.add("Renglón");
+            header.add("Referencia");
+            header.add("Descripcion");
+            header.add("Cantidad");
+            header.add("Precio");
+        }
+
         return header;
     }
 
@@ -322,8 +343,39 @@ public abstract class JavaUtil {
             tableData.add(getGenericRowTable(o));
         }
 
-        tabla.setModel(new DefaultTableModel(tableData, tableHeaders));
+        final boolean[] setCanEdit = getCanEdit(resultList.get(0), tableHeaders.size());
+        tabla.setModel(new DefaultTableModel(tableData, tableHeaders) {
+
+            boolean[] canEdit = setCanEdit;
+
+            @Override
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit[columnIndex];
+            }
+        });
+
         tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    }
+
+    private static boolean[] getCanEdit(Object clase, int indices) {
+        boolean[] canEdit = null;
+        if (clase instanceof InventarioDiarioDetalle) {
+            canEdit = new boolean[]{
+                false, true, true, true, true
+            };
+        }
+        if (clase instanceof NotaCreditoDebitoDetalle) {
+            canEdit = new boolean[]{
+                false, false, false, true, false
+            };
+        }
+        if (canEdit == null) {
+            canEdit = new boolean[indices];
+            for (int i = 0; i < indices; i++) {
+                canEdit[i] = true;
+            }
+        }
+        return canEdit;
     }
 
     public static boolean isNumeric(String str) {
@@ -378,7 +430,7 @@ public abstract class JavaUtil {
             os.close();
         }
     }
-    
+
     public static Integer prepareStrInteger(String aInteger) {
         return !isValidValue(csv_valid_integer, aInteger.trim()) ? null : Integer.parseInt(aInteger.trim());
     }
@@ -409,23 +461,8 @@ public abstract class JavaUtil {
         }
         return d;
     }
-    
-     private static boolean[] getCanEdit(Object clase, int indices) {
-        boolean[] canEdit;
-        if (clase instanceof InventarioDiarioDetalle) {
-            canEdit = new boolean[]{
-                false, true, true, true, true
-            };
-        } else {
-            canEdit = new boolean[indices];
-            for (int i = 0; i < indices; i++) {
-                canEdit[i] = true;
-            }
-        }
-        return canEdit;
-    }
-     
-     public static boolean isValidValue(int tipo, String... values) {
+
+    public static boolean isValidValue(int tipo, String... values) {
         boolean rsl = true;
         switch (tipo) {
             case csv_valid_integer:
