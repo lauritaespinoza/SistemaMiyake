@@ -63,13 +63,13 @@ public class Contacto implements Serializable {
     @Column(length = 2147483647)
     private String email;
     @OneToMany(mappedBy = "idContactoGerente")
+    private Collection<Almacen> almacenCollection;
+    @OneToMany(mappedBy = "idContacto1")
     private Collection<Proveedor> proveedorCollection;
     @OneToMany(mappedBy = "idContacto2")
     private Collection<Proveedor> proveedorCollection1;
-    @OneToMany(mappedBy = "idContacto1")
-    private Collection<Proveedor> proveedorCollection2;
     @OneToMany(mappedBy = "idContactoGerente")
-    private Collection<Almacen> almacenCollection;
+    private Collection<Proveedor> proveedorCollection2;
 
     public Contacto() {
     }
@@ -140,6 +140,15 @@ public class Contacto implements Serializable {
     }
 
     @XmlTransient
+    public Collection<Almacen> getAlmacenCollection() {
+        return almacenCollection;
+    }
+
+    public void setAlmacenCollection(Collection<Almacen> almacenCollection) {
+        this.almacenCollection = almacenCollection;
+    }
+
+    @XmlTransient
     public Collection<Proveedor> getProveedorCollection() {
         return proveedorCollection;
     }
@@ -166,15 +175,6 @@ public class Contacto implements Serializable {
         this.proveedorCollection2 = proveedorCollection2;
     }
 
-    @XmlTransient
-    public Collection<Almacen> getAlmacenCollection() {
-        return almacenCollection;
-    }
-
-    public void setAlmacenCollection(Collection<Almacen> almacenCollection) {
-        this.almacenCollection = almacenCollection;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -197,7 +197,7 @@ public class Contacto implements Serializable {
 
     @Override
     public String toString() {
-        return "modelos.Contacto[ idContacto=" + idContacto + " ]";
+        return "modelos.mapeos.nev.Contacto[ idContacto=" + idContacto + " ]";
     }
     
 }

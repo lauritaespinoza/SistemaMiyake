@@ -5,6 +5,7 @@
  */
 package modelos.mapeos;
 
+import modelos.mapeos.Almacen;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -68,8 +69,7 @@ public class Ubicacion implements Serializable {
         this.idUbicacion = idUbicacion;
         this.pais = pais;
     }
-    
-    
+
     public Ubicacion(String pais, String ciudad, String direccion) {
         this.pais = pais;
         this.ciudad = ciudad;

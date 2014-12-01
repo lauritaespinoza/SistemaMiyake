@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Marca.findByIdMarca", query = "SELECT m FROM Marca m WHERE m.idMarca = :idMarca"),
     @NamedQuery(name = "Marca.findByNombre", query = "SELECT m FROM Marca m WHERE m.nombre = :nombre")})
 public class Marca implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -56,7 +57,6 @@ public class Marca implements Serializable {
         this.nombre = nombre;
     }
 
-    
     public Integer getIdMarca() {
         return idMarca;
     }
@@ -104,7 +104,7 @@ public class Marca implements Serializable {
 
     @Override
     public String toString() {
-        return "modelos.Marca[ idMarca=" + idMarca + " ]";
+        return "modelos.mapeos.nev.Marca[ idMarca=" + idMarca + " ]";
     }
-    
+
 }

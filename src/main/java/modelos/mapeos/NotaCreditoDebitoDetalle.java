@@ -29,8 +29,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "NotaCreditoDebitoDetalle.findAll", query = "SELECT n FROM NotaCreditoDebitoDetalle n"),
     @NamedQuery(name = "NotaCreditoDebitoDetalle.findByCantidadProducto", query = "SELECT n FROM NotaCreditoDebitoDetalle n WHERE n.cantidadProducto = :cantidadProducto"),
-    @NamedQuery(name = "NotaCreditoDebitoDetalle.findByIdNotaCreditoDebitoDetalle", query = "SELECT n FROM NotaCreditoDebitoDetalle n WHERE n.idNotaCreditoDebitoDetalle = :idNotaCreditoDebitoDetalle")})
+    @NamedQuery(name = "NotaCreditoDebitoDetalle.findByIdNotaCreditoDebitoDetalle", query = "SELECT n FROM NotaCreditoDebitoDetalle n WHERE n.idNotaCreditoDebitoDetalle = :idNotaCreditoDebitoDetalle"),
+    @NamedQuery(name = "NotaCreditoDebitoDetalle.findByNroRenglon", query = "SELECT n FROM NotaCreditoDebitoDetalle n WHERE n.nroRenglon = :nroRenglon")})
 public class NotaCreditoDebitoDetalle implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Column(name = "cantidad_producto")
     private Integer cantidadProducto;
@@ -39,18 +41,26 @@ public class NotaCreditoDebitoDetalle implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_nota_credito_debito_detalle", nullable = false)
     private Integer idNotaCreditoDebitoDetalle;
-    @JoinColumn(name = "id_producto", referencedColumnName = "id_producto")
-    @ManyToOne
-    private Producto idProducto;
+    @Column(name = "nro_renglon")
+    private Integer nroRenglon;
     @JoinColumn(name = "id_nota_credito_debito", referencedColumnName = "id_nota_credito_debito")
     @ManyToOne
     private NotaCreditoDebito idNotaCreditoDebito;
+    @JoinColumn(name = "id_producto", referencedColumnName = "id_producto")
+    @ManyToOne
+    private Producto idProducto;
 
     public NotaCreditoDebitoDetalle() {
     }
 
     public NotaCreditoDebitoDetalle(Integer idNotaCreditoDebitoDetalle) {
         this.idNotaCreditoDebitoDetalle = idNotaCreditoDebitoDetalle;
+    }
+
+    public NotaCreditoDebitoDetalle(Integer nroRenglon, NotaCreditoDebito idNotaCreditoDebito, Producto idProducto) {
+        this.nroRenglon = nroRenglon;
+        this.idNotaCreditoDebito = idNotaCreditoDebito;
+        this.idProducto = idProducto;
     }
 
     public Integer getCantidadProducto() {
@@ -69,12 +79,12 @@ public class NotaCreditoDebitoDetalle implements Serializable {
         this.idNotaCreditoDebitoDetalle = idNotaCreditoDebitoDetalle;
     }
 
-    public Producto getIdProducto() {
-        return idProducto;
+    public Integer getNroRenglon() {
+        return nroRenglon;
     }
 
-    public void setIdProducto(Producto idProducto) {
-        this.idProducto = idProducto;
+    public void setNroRenglon(Integer nroRenglon) {
+        this.nroRenglon = nroRenglon;
     }
 
     public NotaCreditoDebito getIdNotaCreditoDebito() {
@@ -83,6 +93,14 @@ public class NotaCreditoDebitoDetalle implements Serializable {
 
     public void setIdNotaCreditoDebito(NotaCreditoDebito idNotaCreditoDebito) {
         this.idNotaCreditoDebito = idNotaCreditoDebito;
+    }
+
+    public Producto getIdProducto() {
+        return idProducto;
+    }
+
+    public void setIdProducto(Producto idProducto) {
+        this.idProducto = idProducto;
     }
 
     @Override
@@ -107,7 +125,7 @@ public class NotaCreditoDebitoDetalle implements Serializable {
 
     @Override
     public String toString() {
-        return "modelos.NotaCreditoDebitoDetalle[ idNotaCreditoDebitoDetalle=" + idNotaCreditoDebitoDetalle + " ]";
+        return "modelos.mapeos.nev.NotaCreditoDebitoDetalle[ idNotaCreditoDebitoDetalle=" + idNotaCreditoDebitoDetalle + " ]";
     }
-    
+
 }

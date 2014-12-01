@@ -5,6 +5,7 @@
  */
 package modelos.mapeos;
 
+import modelos.mapeos.Clasificacion;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -48,11 +49,11 @@ public class Departamento implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_departamento", nullable = false)
     private Integer idDepartamento;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idDepartamento")
-    private Collection<Clasificacion> clasificacionCollection;
     @JoinColumn(name = "id_division", referencedColumnName = "id_division")
     @ManyToOne
     private Division idDivision;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idDepartamento")
+    private Collection<Clasificacion> clasificacionCollection;
 
     public Departamento() {
     }
@@ -71,6 +72,7 @@ public class Departamento implements Serializable {
         this.idDivision = idDivision;
     }
 
+    
     public String getNombre() {
         return nombre;
     }
@@ -87,6 +89,14 @@ public class Departamento implements Serializable {
         this.idDepartamento = idDepartamento;
     }
 
+    public Division getIdDivision() {
+        return idDivision;
+    }
+
+    public void setIdDivision(Division idDivision) {
+        this.idDivision = idDivision;
+    }
+
     @XmlTransient
     public Collection<Clasificacion> getClasificacionCollection() {
         return clasificacionCollection;
@@ -94,14 +104,6 @@ public class Departamento implements Serializable {
 
     public void setClasificacionCollection(Collection<Clasificacion> clasificacionCollection) {
         this.clasificacionCollection = clasificacionCollection;
-    }
-
-    public Division getIdDivision() {
-        return idDivision;
-    }
-
-    public void setIdDivision(Division idDivision) {
-        this.idDivision = idDivision;
     }
 
     @Override
@@ -126,7 +128,7 @@ public class Departamento implements Serializable {
 
     @Override
     public String toString() {
-        return "modelos.Departamento[ idDepartamento=" + idDepartamento + " ]";
+        return "modelos.mapeos.nev.Departamento[ idDepartamento=" + idDepartamento + " ]";
     }
     
 }

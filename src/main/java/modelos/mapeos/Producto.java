@@ -5,6 +5,13 @@
  */
 package modelos.mapeos;
 
+import modelos.mapeos.NotaCreditoDebitoDetalle;
+import modelos.mapeos.Marca;
+import modelos.mapeos.SalidaParaTiendaDetalle;
+import modelos.mapeos.InventarioTienda;
+import modelos.mapeos.EntradaProveedor;
+import modelos.mapeos.ConteoMercanciaEntradaDetalles;
+import modelos.mapeos.Clasificacion;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -23,6 +30,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -32,7 +40,8 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Usuario
  */
 @Entity
-@Table(catalog = "miyake_pasantia", schema = "public")
+@Table(catalog = "miyake_pasantia", schema = "public", uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"referencia_producto"})})
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Producto.findAll", query = "SELECT p FROM Producto p"),
@@ -43,6 +52,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Producto.findByPrimeraActividad", query = "SELECT p FROM Producto p WHERE p.primeraActividad = :primeraActividad"),
     @NamedQuery(name = "Producto.findByUltimaActividad", query = "SELECT p FROM Producto p WHERE p.ultimaActividad = :ultimaActividad")})
 public class Producto implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Size(max = 2147483647)
     @Column(length = 2147483647)
@@ -86,8 +96,8 @@ public class Producto implements Serializable {
 
     public Producto() {
     }
-    
-    public Producto(String descripcion, String referenciaProducto,  Float precioOriginal, Clasificacion idClasificacion, Marca idMarca, Proveedor idProveedor) {
+
+    public Producto(String descripcion, String referenciaProducto, Float precioOriginal, Clasificacion idClasificacion, Marca idMarca, Proveedor idProveedor) {
         this.descripcion = descripcion;
         this.referenciaProducto = referenciaProducto;
         this.precioOriginal = precioOriginal;
@@ -103,7 +113,7 @@ public class Producto implements Serializable {
         this.precioOriginal = precioOriginal;
         this.idProveedor = idProveedor;
     }
-    
+
     public Producto(Integer idProducto) {
         this.idProducto = idProducto;
     }
@@ -156,22 +166,28 @@ public class Producto implements Serializable {
         this.ultimaActividad = ultimaActividad;
     }
 
-    @XmlTransient
-    public Collection<InventarioTienda> getInventarioTiendaCollection() {
-        return inventarioTiendaCollection;
+    public Clasificacion getIdClasificacion() {
+        return idClasificacion;
     }
 
-    public void setInventarioTiendaCollection(Collection<InventarioTienda> inventarioTiendaCollection) {
-        this.inventarioTiendaCollection = inventarioTiendaCollection;
+    public void setIdClasificacion(Clasificacion idClasificacion) {
+        this.idClasificacion = idClasificacion;
     }
 
-    @XmlTransient
-    public Collection<SalidaParaTiendaDetalle> getSalidaParaTiendaDetalleCollection() {
-        return salidaParaTiendaDetalleCollection;
+    public Marca getIdMarca() {
+        return idMarca;
     }
 
-    public void setSalidaParaTiendaDetalleCollection(Collection<SalidaParaTiendaDetalle> salidaParaTiendaDetalleCollection) {
-        this.salidaParaTiendaDetalleCollection = salidaParaTiendaDetalleCollection;
+    public void setIdMarca(Marca idMarca) {
+        this.idMarca = idMarca;
+    }
+
+    public Proveedor getIdProveedor() {
+        return idProveedor;
+    }
+
+    public void setIdProveedor(Proveedor idProveedor) {
+        this.idProveedor = idProveedor;
     }
 
     @XmlTransient
@@ -192,28 +208,13 @@ public class Producto implements Serializable {
         this.entradaProveedorCollection = entradaProveedorCollection;
     }
 
-    public Proveedor getIdProveedor() {
-        return idProveedor;
+    @XmlTransient
+    public Collection<SalidaParaTiendaDetalle> getSalidaParaTiendaDetalleCollection() {
+        return salidaParaTiendaDetalleCollection;
     }
 
-    public void setIdProveedor(Proveedor idProveedor) {
-        this.idProveedor = idProveedor;
-    }
-
-    public Marca getIdMarca() {
-        return idMarca;
-    }
-
-    public void setIdMarca(Marca idMarca) {
-        this.idMarca = idMarca;
-    }
-
-    public Clasificacion getIdClasificacion() {
-        return idClasificacion;
-    }
-
-    public void setIdClasificacion(Clasificacion idClasificacion) {
-        this.idClasificacion = idClasificacion;
+    public void setSalidaParaTiendaDetalleCollection(Collection<SalidaParaTiendaDetalle> salidaParaTiendaDetalleCollection) {
+        this.salidaParaTiendaDetalleCollection = salidaParaTiendaDetalleCollection;
     }
 
     @XmlTransient
@@ -223,6 +224,15 @@ public class Producto implements Serializable {
 
     public void setNotaCreditoDebitoDetalleCollection(Collection<NotaCreditoDebitoDetalle> notaCreditoDebitoDetalleCollection) {
         this.notaCreditoDebitoDetalleCollection = notaCreditoDebitoDetalleCollection;
+    }
+
+    @XmlTransient
+    public Collection<InventarioTienda> getInventarioTiendaCollection() {
+        return inventarioTiendaCollection;
+    }
+
+    public void setInventarioTiendaCollection(Collection<InventarioTienda> inventarioTiendaCollection) {
+        this.inventarioTiendaCollection = inventarioTiendaCollection;
     }
 
     @Override
@@ -247,7 +257,7 @@ public class Producto implements Serializable {
 
     @Override
     public String toString() {
-        return "modelos.Producto[ idProducto=" + idProducto + " ]";
+        return "modelos.mapeos.nev.Producto[ idProducto=" + idProducto + " ]";
     }
-    
+
 }

@@ -5,6 +5,7 @@
  */
 package modelos.mapeos;
 
+import modelos.mapeos.Almacen;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
@@ -34,7 +35,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "InventarioTienda.findByPrecioConDescuento", query = "SELECT i FROM InventarioTienda i WHERE i.precioConDescuento = :precioConDescuento"),
     @NamedQuery(name = "InventarioTienda.findByDescuento", query = "SELECT i FROM InventarioTienda i WHERE i.descuento = :descuento"),
     @NamedQuery(name = "InventarioTienda.findByFechaCreacion", query = "SELECT i FROM InventarioTienda i WHERE i.fechaCreacion = :fechaCreacion"),
-    @NamedQuery(name = "InventarioTienda.findByFechaModificacion", query = "SELECT i FROM InventarioTienda i WHERE i.fechaModificacion = :fechaModificacion")})
+    @NamedQuery(name = "InventarioTienda.findByFechaModificacion", query = "SELECT i FROM InventarioTienda i WHERE i.fechaModificacion = :fechaModificacion"),
+    @NamedQuery(name = "InventarioTienda.findByPrecioSinDescuento", query = "SELECT i FROM InventarioTienda i WHERE i.precioSinDescuento = :precioSinDescuento")})
 public class InventarioTienda implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,8 +46,6 @@ public class InventarioTienda implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "precio_con_descuento", precision = 8, scale = 8)
     private Float precioConDescuento;
-    @Column(name = "precio_sin_descuento", precision = 8, scale = 8)
-    private Float precioSinDescuento;
     private Integer descuento;
     @Column(name = "fecha_creacion")
     @Temporal(TemporalType.TIMESTAMP)
@@ -53,31 +53,16 @@ public class InventarioTienda implements Serializable {
     @Column(name = "fecha_modificacion")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaModificacion;
-    @JoinColumn(name = "id_producto", referencedColumnName = "id_producto", nullable = false, insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Producto producto;
+    @Column(name = "precio_sin_descuento", precision = 8, scale = 8)
+    private Float precioSinDescuento;
     @JoinColumn(name = "id_almacen", referencedColumnName = "id_almacen", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Almacen almacen;
+    @JoinColumn(name = "id_producto", referencedColumnName = "id_producto", nullable = false, insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private Producto producto;
 
     public InventarioTienda() {
-    }
-
-    public InventarioTienda(Integer cantidadProducto,
-            Almacen almacen, Producto producto) {
-
-        inventarioTiendaPK = new InventarioTiendaPK(
-                almacen.getIdAlmacen(), producto.getIdProducto());
-        this.cantidad = cantidadProducto;
-        this.almacen = almacen;
-        this.producto = producto;
-    }
-
-    public InventarioTienda(InventarioTiendaPK inventarioTiendaPK, Integer cantidadProducto, Almacen almacen, Producto producto) {
-        this.inventarioTiendaPK = inventarioTiendaPK;
-        this.cantidad = cantidadProducto;
-        this.almacen = almacen;
-        this.producto = producto;
     }
 
     public InventarioTienda(InventarioTiendaPK inventarioTiendaPK) {
@@ -86,6 +71,13 @@ public class InventarioTienda implements Serializable {
 
     public InventarioTienda(int idProducto, int idAlmacen) {
         this.inventarioTiendaPK = new InventarioTiendaPK(idProducto, idAlmacen);
+    }
+
+    public InventarioTienda(InventarioTiendaPK inventarioTiendaPK, Integer cantidad, Almacen almacen, Producto producto) {
+        this.inventarioTiendaPK = inventarioTiendaPK;
+        this.cantidad = cantidad;
+        this.almacen = almacen;
+        this.producto = producto;
     }
 
     public InventarioTiendaPK getInventarioTiendaPK() {
@@ -112,14 +104,6 @@ public class InventarioTienda implements Serializable {
         this.precioConDescuento = precioConDescuento;
     }
 
-    public Float getPrecioSinDescuento() {
-        return precioSinDescuento;
-    }
-
-    public void setPrecioSinDescuento(Float precioSinDescuento) {
-        this.precioSinDescuento = precioSinDescuento;
-    }
-
     public Integer getDescuento() {
         return descuento;
     }
@@ -144,12 +128,12 @@ public class InventarioTienda implements Serializable {
         this.fechaModificacion = fechaModificacion;
     }
 
-    public Producto getProducto() {
-        return producto;
+    public Float getPrecioSinDescuento() {
+        return precioSinDescuento;
     }
 
-    public void setProducto(Producto producto) {
-        this.producto = producto;
+    public void setPrecioSinDescuento(Float precioSinDescuento) {
+        this.precioSinDescuento = precioSinDescuento;
     }
 
     public Almacen getAlmacen() {
@@ -158,6 +142,14 @@ public class InventarioTienda implements Serializable {
 
     public void setAlmacen(Almacen almacen) {
         this.almacen = almacen;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 
     @Override
@@ -182,7 +174,7 @@ public class InventarioTienda implements Serializable {
 
     @Override
     public String toString() {
-        return "modelos.InventarioTienda[ inventarioTiendaPK=" + inventarioTiendaPK + " ]";
+        return "modelos.mapeos.nev.InventarioTienda[ inventarioTiendaPK=" + inventarioTiendaPK + " ]";
     }
 
 }

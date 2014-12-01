@@ -5,6 +5,7 @@
  */
 package modelos.mapeos;
 
+import modelos.mapeos.Departamento;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -48,7 +49,7 @@ public class Division implements Serializable {
     @OneToMany(mappedBy = "idDivision")
     private Collection<Departamento> departamentoCollection;
 
-    public Division() {
+   public Division() {
     }
 
     public Division(Integer idDivision) {
@@ -112,7 +113,7 @@ public class Division implements Serializable {
 
     @Override
     public String toString() {
-        return "modelos.Division[ idDivision=" + idDivision + " ]";
+        return "modelos.mapeos.nev.Division[ idDivision=" + idDivision + " ]";
     }
     
 }

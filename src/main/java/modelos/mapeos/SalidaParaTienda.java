@@ -5,6 +5,8 @@
  */
 package modelos.mapeos;
 
+import modelos.mapeos.ConteoMercanciaEntrada;
+import modelos.mapeos.Almacen;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -54,22 +56,30 @@ public class SalidaParaTienda implements Serializable {
     @Column(precision = 8, scale = 8)
     private Float total;
     private Boolean revisado;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "salidaParaTienda")
-    private Collection<SalidaParaTiendaDetalle> salidaParaTiendaDetalleCollection;
-    @JoinColumn(name = "id_usuario_2", referencedColumnName = "id_usuario")
-    @ManyToOne
-    private Usuario idUsuario2;
-    @JoinColumn(name = "id_usuario_1", referencedColumnName = "id_usuario")
-    @ManyToOne
-    private Usuario idUsuario1;
-    @JoinColumn(name = "id_almacen_hasta", referencedColumnName = "id_almacen")
-    @ManyToOne
-    private Almacen idAlmacenHasta;
     @JoinColumn(name = "id_almacen_desde", referencedColumnName = "id_almacen")
     @ManyToOne
     private Almacen idAlmacenDesde;
+    @JoinColumn(name = "id_almacen_hasta", referencedColumnName = "id_almacen")
+    @ManyToOne
+    private Almacen idAlmacenHasta;
+    @JoinColumn(name = "id_usuario_1", referencedColumnName = "id_usuario")
+    @ManyToOne
+    private Usuario idUsuario1;
+    @JoinColumn(name = "id_usuario_2", referencedColumnName = "id_usuario")
+    @ManyToOne
+    private Usuario idUsuario2;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "salidaParaTienda")
+    private Collection<SalidaParaTiendaDetalle> salidaParaTiendaDetalleCollection;
+    @OneToMany(mappedBy = "idSalida")
+    private Collection<ConteoMercanciaEntrada> conteoMercanciaEntradaCollection;
+    @OneToMany(mappedBy = "idSalida")
+    private Collection<NotaCreditoDebito> notaCreditoDebitoCollection;
 
     public SalidaParaTienda() {
+    }
+
+    public SalidaParaTienda(Integer idSalida) {
+        this.idSalida = idSalida;
     }
 
     public SalidaParaTienda(Almacen idAlmacenDesde, Almacen idAlmacenHasta, Usuario idUsuario1, Usuario idUsuario2) {
@@ -77,10 +87,6 @@ public class SalidaParaTienda implements Serializable {
         this.idAlmacenHasta = idAlmacenHasta;
         this.idUsuario1 = idUsuario1;
         this.idUsuario2 = idUsuario2;
-    }
-
-    public SalidaParaTienda(Integer idSalida) {
-        this.idSalida = idSalida;
     }
 
     public Integer getIdSalida() {
@@ -115,29 +121,12 @@ public class SalidaParaTienda implements Serializable {
         this.revisado = revisado;
     }
 
-    @XmlTransient
-    public Collection<SalidaParaTiendaDetalle> getSalidaParaTiendaDetalleCollection() {
-        return salidaParaTiendaDetalleCollection;
+    public Almacen getIdAlmacenDesde() {
+        return idAlmacenDesde;
     }
 
-    public void setSalidaParaTiendaDetalleCollection(Collection<SalidaParaTiendaDetalle> salidaParaTiendaDetalleCollection) {
-        this.salidaParaTiendaDetalleCollection = salidaParaTiendaDetalleCollection;
-    }
-
-    public Usuario getIdUsuario2() {
-        return idUsuario2;
-    }
-
-    public void setIdUsuario2(Usuario idUsuario2) {
-        this.idUsuario2 = idUsuario2;
-    }
-
-    public Usuario getIdUsuario1() {
-        return idUsuario1;
-    }
-
-    public void setIdUsuario1(Usuario idUsuario1) {
-        this.idUsuario1 = idUsuario1;
+    public void setIdAlmacenDesde(Almacen idAlmacenDesde) {
+        this.idAlmacenDesde = idAlmacenDesde;
     }
 
     public Almacen getIdAlmacenHasta() {
@@ -148,12 +137,47 @@ public class SalidaParaTienda implements Serializable {
         this.idAlmacenHasta = idAlmacenHasta;
     }
 
-    public Almacen getIdAlmacenDesde() {
-        return idAlmacenDesde;
+    public Usuario getIdUsuario1() {
+        return idUsuario1;
     }
 
-    public void setIdAlmacenDesde(Almacen idAlmacenDesde) {
-        this.idAlmacenDesde = idAlmacenDesde;
+    public void setIdUsuario1(Usuario idUsuario1) {
+        this.idUsuario1 = idUsuario1;
+    }
+
+    public Usuario getIdUsuario2() {
+        return idUsuario2;
+    }
+
+    public void setIdUsuario2(Usuario idUsuario2) {
+        this.idUsuario2 = idUsuario2;
+    }
+
+    @XmlTransient
+    public Collection<SalidaParaTiendaDetalle> getSalidaParaTiendaDetalleCollection() {
+        return salidaParaTiendaDetalleCollection;
+    }
+
+    public void setSalidaParaTiendaDetalleCollection(Collection<SalidaParaTiendaDetalle> salidaParaTiendaDetalleCollection) {
+        this.salidaParaTiendaDetalleCollection = salidaParaTiendaDetalleCollection;
+    }
+
+    @XmlTransient
+    public Collection<ConteoMercanciaEntrada> getConteoMercanciaEntradaCollection() {
+        return conteoMercanciaEntradaCollection;
+    }
+
+    public void setConteoMercanciaEntradaCollection(Collection<ConteoMercanciaEntrada> conteoMercanciaEntradaCollection) {
+        this.conteoMercanciaEntradaCollection = conteoMercanciaEntradaCollection;
+    }
+
+    @XmlTransient
+    public Collection<NotaCreditoDebito> getNotaCreditoDebitoCollection() {
+        return notaCreditoDebitoCollection;
+    }
+
+    public void setNotaCreditoDebitoCollection(Collection<NotaCreditoDebito> notaCreditoDebitoCollection) {
+        this.notaCreditoDebitoCollection = notaCreditoDebitoCollection;
     }
 
     @Override
@@ -178,7 +202,7 @@ public class SalidaParaTienda implements Serializable {
 
     @Override
     public String toString() {
-        return "modelos.SalidaParaTienda[ idSalida=" + idSalida + " ]";
+        return "modelos.mapeos.nev.SalidaParaTienda[ idSalida=" + idSalida + " ]";
     }
 
 }

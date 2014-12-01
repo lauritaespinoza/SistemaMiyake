@@ -5,6 +5,9 @@
  */
 package modelos.mapeos;
 
+import modelos.mapeos.NotaCreditoDebito;
+import modelos.mapeos.SalidaParaTienda;
+import modelos.mapeos.ConteoMercanciaEntrada;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -43,6 +46,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Usuario.findByIdUsuario", query = "SELECT u FROM Usuario u WHERE u.idUsuario = :idUsuario"),
     @NamedQuery(name = "Usuario.findByContrasena", query = "SELECT u FROM Usuario u WHERE u.contrasena = :contrasena")})
 public class Usuario implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Basic(optional = false)
     @NotNull
@@ -162,33 +166,6 @@ public class Usuario implements Serializable {
     }
 
     @XmlTransient
-    public Collection<ConteoMercanciaEntrada> getConteoMercanciaEntradaCollection() {
-        return conteoMercanciaEntradaCollection;
-    }
-
-    public void setConteoMercanciaEntradaCollection(Collection<ConteoMercanciaEntrada> conteoMercanciaEntradaCollection) {
-        this.conteoMercanciaEntradaCollection = conteoMercanciaEntradaCollection;
-    }
-
-    @XmlTransient
-    public Collection<NotaCreditoDebito> getNotaCreditoDebitoCollection() {
-        return notaCreditoDebitoCollection;
-    }
-
-    public void setNotaCreditoDebitoCollection(Collection<NotaCreditoDebito> notaCreditoDebitoCollection) {
-        this.notaCreditoDebitoCollection = notaCreditoDebitoCollection;
-    }
-
-    @XmlTransient
-    public Collection<NotaCreditoDebito> getNotaCreditoDebitoCollection1() {
-        return notaCreditoDebitoCollection1;
-    }
-
-    public void setNotaCreditoDebitoCollection1(Collection<NotaCreditoDebito> notaCreditoDebitoCollection1) {
-        this.notaCreditoDebitoCollection1 = notaCreditoDebitoCollection1;
-    }
-
-    @XmlTransient
     public Collection<SalidaParaTienda> getSalidaParaTiendaCollection() {
         return salidaParaTiendaCollection;
     }
@@ -204,6 +181,24 @@ public class Usuario implements Serializable {
 
     public void setSalidaParaTiendaCollection1(Collection<SalidaParaTienda> salidaParaTiendaCollection1) {
         this.salidaParaTiendaCollection1 = salidaParaTiendaCollection1;
+    }
+
+    @XmlTransient
+    public Collection<ConteoMercanciaEntrada> getConteoMercanciaEntradaCollection() {
+        return conteoMercanciaEntradaCollection;
+    }
+
+    public void setConteoMercanciaEntradaCollection(Collection<ConteoMercanciaEntrada> conteoMercanciaEntradaCollection) {
+        this.conteoMercanciaEntradaCollection = conteoMercanciaEntradaCollection;
+    }
+
+    @XmlTransient
+    public Collection<NotaCreditoDebito> getNotaCreditoDebitoCollection() {
+        return notaCreditoDebitoCollection;
+    }
+
+    public void setNotaCreditoDebitoCollection(Collection<NotaCreditoDebito> notaCreditoDebitoCollection) {
+        this.notaCreditoDebitoCollection = notaCreditoDebitoCollection;
     }
 
     @Override
@@ -228,7 +223,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "modelos.Usuario[ idUsuario=" + idUsuario + " ]";
+        return "modelos.mapeos.nev.Usuario[ idUsuario=" + idUsuario + " ]";
     }
-    
+
 }

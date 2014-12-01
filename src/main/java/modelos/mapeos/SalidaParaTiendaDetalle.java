@@ -41,14 +41,18 @@ public class SalidaParaTiendaDetalle implements Serializable {
     private Integer nroBulto;
     @Column(name = "nro_renglon")
     private Integer nroRenglon;
-    @JoinColumn(name = "id_salida", referencedColumnName = "id_salida", nullable = false, insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private SalidaParaTienda salidaParaTienda;
     @JoinColumn(name = "id_producto", referencedColumnName = "id_producto", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Producto producto;
+    @JoinColumn(name = "id_salida", referencedColumnName = "id_salida", nullable = false, insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private SalidaParaTienda salidaParaTienda;
 
     public SalidaParaTiendaDetalle() {
+    }
+
+    public SalidaParaTiendaDetalle(SalidaParaTiendaDetallePK salidaParaTiendaDetallePK) {
+        this.salidaParaTiendaDetallePK = salidaParaTiendaDetallePK;
     }
 
     public SalidaParaTiendaDetalle(SalidaParaTiendaDetallePK salidaParaTiendaDetallePK, Integer cantidadProducto, Integer nroBulto, Integer nroRenglon, Producto producto, SalidaParaTienda salidaParaTienda) {
@@ -58,10 +62,6 @@ public class SalidaParaTiendaDetalle implements Serializable {
         this.nroRenglon = nroRenglon;
         this.producto = producto;
         this.salidaParaTienda = salidaParaTienda;
-    }
-
-    public SalidaParaTiendaDetalle(SalidaParaTiendaDetallePK salidaParaTiendaDetallePK) {
-        this.salidaParaTiendaDetallePK = salidaParaTiendaDetallePK;
     }
 
     public SalidaParaTiendaDetalle(int idProducto, int idSalida) {
@@ -100,20 +100,20 @@ public class SalidaParaTiendaDetalle implements Serializable {
         this.nroRenglon = nroRenglon;
     }
 
-    public SalidaParaTienda getSalidaParaTienda() {
-        return salidaParaTienda;
-    }
-
-    public void setSalidaParaTienda(SalidaParaTienda salidaParaTienda) {
-        this.salidaParaTienda = salidaParaTienda;
-    }
-
     public Producto getProducto() {
         return producto;
     }
 
     public void setProducto(Producto producto) {
         this.producto = producto;
+    }
+
+    public SalidaParaTienda getSalidaParaTienda() {
+        return salidaParaTienda;
+    }
+
+    public void setSalidaParaTienda(SalidaParaTienda salidaParaTienda) {
+        this.salidaParaTienda = salidaParaTienda;
     }
 
     @Override
@@ -138,7 +138,7 @@ public class SalidaParaTiendaDetalle implements Serializable {
 
     @Override
     public String toString() {
-        return "modelos.SalidaParaTiendaDetalle[ salidaParaTiendaDetallePK=" + salidaParaTiendaDetallePK + " ]";
+        return "modelos.mapeos.nev.SalidaParaTiendaDetalle[ salidaParaTiendaDetallePK=" + salidaParaTiendaDetallePK + " ]";
     }
 
 }

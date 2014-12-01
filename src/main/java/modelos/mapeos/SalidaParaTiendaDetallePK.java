@@ -76,7 +76,7 @@ public class SalidaParaTiendaDetallePK implements Serializable {
 
     @Override
     public String toString() {
-        return "modelos.SalidaParaTiendaDetallePK[ idProducto=" + idProducto + ", idSalida=" + idSalida + " ]";
+        return "modelos.mapeos.nev.SalidaParaTiendaDetallePK[ idProducto=" + idProducto + ", idSalida=" + idSalida + " ]";
     }
     
 }

@@ -44,25 +44,17 @@ public class ConteoMercanciaEntradaDetalles implements Serializable {
     @Column(name = "nro_bulto")
     private Integer nroBulto;
     private Integer cantidad;
-    @JoinColumn(name = "id_producto", referencedColumnName = "id_producto", nullable = false, insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Producto producto;
     @JoinColumn(name = "id_conteo_mercancia_entrada", referencedColumnName = "id_conteo_mercancia_entrada", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private ConteoMercanciaEntrada conteoMercanciaEntrada;
+    @JoinColumn(name = "id_producto", referencedColumnName = "id_producto", nullable = false, insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private Producto producto;
 
     public ConteoMercanciaEntradaDetalles() {
     }
 
-    public ConteoMercanciaEntradaDetalles(ConteoMercanciaEntradaDetallesPK conteoMercanciaEntradaDetallesPK, Integer nroBulto, Integer cantidad, ConteoMercanciaEntrada conteoMercanciaEntrada, Producto producto) {
-        this.conteoMercanciaEntradaDetallesPK = conteoMercanciaEntradaDetallesPK;
-        this.nroBulto = nroBulto;
-        this.cantidad = cantidad;
-        this.conteoMercanciaEntrada = conteoMercanciaEntrada;
-        this.producto = producto;
-    }
-
-    public ConteoMercanciaEntradaDetalles(ConteoMercanciaEntradaDetallesPK conteoMercanciaEntradaDetallesPK, int conteoFaltante, Float totalFaltante, Integer nroBulto, Integer cantidad, ConteoMercanciaEntrada conteoMercanciaEntrada, Producto producto) {
+    public ConteoMercanciaEntradaDetalles(ConteoMercanciaEntradaDetallesPK conteoMercanciaEntradaDetallesPK, Integer conteoFaltante, Float totalFaltante, Integer nroBulto, Integer cantidad, ConteoMercanciaEntrada conteoMercanciaEntrada, Producto producto) {
         this.conteoMercanciaEntradaDetallesPK = conteoMercanciaEntradaDetallesPK;
         this.conteoFaltante = conteoFaltante;
         this.totalFaltante = totalFaltante;
@@ -120,20 +112,20 @@ public class ConteoMercanciaEntradaDetalles implements Serializable {
         this.cantidad = cantidad;
     }
 
-    public Producto getProducto() {
-        return producto;
-    }
-
-    public void setProducto(Producto producto) {
-        this.producto = producto;
-    }
-
     public ConteoMercanciaEntrada getConteoMercanciaEntrada() {
         return conteoMercanciaEntrada;
     }
 
     public void setConteoMercanciaEntrada(ConteoMercanciaEntrada conteoMercanciaEntrada) {
         this.conteoMercanciaEntrada = conteoMercanciaEntrada;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 
     @Override
@@ -158,7 +150,7 @@ public class ConteoMercanciaEntradaDetalles implements Serializable {
 
     @Override
     public String toString() {
-        return "modelos.ConteoMercanciaEntradaDetalles[ conteoMercanciaEntradaDetallesPK=" + conteoMercanciaEntradaDetallesPK + " ]";
+        return "modelos.mapeos.nev.ConteoMercanciaEntradaDetalles[ conteoMercanciaEntradaDetallesPK=" + conteoMercanciaEntradaDetallesPK + " ]";
     }
 
 }

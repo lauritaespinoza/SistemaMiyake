@@ -76,7 +76,7 @@ public class ConteoMercanciaEntradaDetallesPK implements Serializable {
 
     @Override
     public String toString() {
-        return "modelos.ConteoMercanciaEntradaDetallesPK[ idProducto=" + idProducto + ", idConteoMercanciaEntrada=" + idConteoMercanciaEntrada + " ]";
+        return "modelos.mapeos.nev.ConteoMercanciaEntradaDetallesPK[ idProducto=" + idProducto + ", idConteoMercanciaEntrada=" + idConteoMercanciaEntrada + " ]";
     }
     
 }

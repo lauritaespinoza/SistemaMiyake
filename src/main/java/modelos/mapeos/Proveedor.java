@@ -5,6 +5,9 @@
  */
 package modelos.mapeos;
 
+import modelos.mapeos.Producto;
+import modelos.mapeos.Factura;
+import modelos.mapeos.Contacto;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -198,15 +201,6 @@ public class Proveedor implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Factura> getFacturaCollection() {
-        return facturaCollection;
-    }
-
-    public void setFacturaCollection(Collection<Factura> facturaCollection) {
-        this.facturaCollection = facturaCollection;
-    }
-
-    @XmlTransient
     public Collection<Producto> getProductoCollection() {
         return productoCollection;
     }
@@ -215,12 +209,21 @@ public class Proveedor implements Serializable {
         this.productoCollection = productoCollection;
     }
 
-    public Contacto getIdContactoGerente() {
-        return idContactoGerente;
+    @XmlTransient
+    public Collection<Factura> getFacturaCollection() {
+        return facturaCollection;
     }
 
-    public void setIdContactoGerente(Contacto idContactoGerente) {
-        this.idContactoGerente = idContactoGerente;
+    public void setFacturaCollection(Collection<Factura> facturaCollection) {
+        this.facturaCollection = facturaCollection;
+    }
+
+    public Contacto getIdContacto1() {
+        return idContacto1;
+    }
+
+    public void setIdContacto1(Contacto idContacto1) {
+        this.idContacto1 = idContacto1;
     }
 
     public Contacto getIdContacto2() {
@@ -231,12 +234,12 @@ public class Proveedor implements Serializable {
         this.idContacto2 = idContacto2;
     }
 
-    public Contacto getIdContacto1() {
-        return idContacto1;
+    public Contacto getIdContactoGerente() {
+        return idContactoGerente;
     }
 
-    public void setIdContacto1(Contacto idContacto1) {
-        this.idContacto1 = idContacto1;
+    public void setIdContactoGerente(Contacto idContactoGerente) {
+        this.idContactoGerente = idContactoGerente;
     }
 
     @Override
@@ -261,7 +264,7 @@ public class Proveedor implements Serializable {
 
     @Override
     public String toString() {
-        return "modelos.Proveedor[ idProveedor=" + idProveedor + " ]";
+        return "modelos.mapeos.nev.Proveedor[ idProveedor=" + idProveedor + " ]";
     }
     
 }

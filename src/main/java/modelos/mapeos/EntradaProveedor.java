@@ -6,6 +6,7 @@
 package modelos.mapeos;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -43,6 +44,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "EntradaProveedor.findByFechaRecepcion", query = "SELECT e FROM EntradaProveedor e WHERE e.fechaRecepcion = :fechaRecepcion"),
     @NamedQuery(name = "EntradaProveedor.findByNroBulto", query = "SELECT e FROM EntradaProveedor e WHERE e.nroBulto = :nroBulto")})
 public class EntradaProveedor implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -69,20 +71,20 @@ public class EntradaProveedor implements Serializable {
     private String codBarras;
     @Size(max = 2147483647)
     @Column(length = 2147483647)
-    private String estatus;
+    private String estatus = "Pendiente";
     @Basic(optional = false)
     @NotNull
     @Column(name = "fecha_recepcion", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaRecepcion;
+    private Date fechaRecepcion = Calendar.getInstance().getTime();
     @Column(name = "nro_bulto")
     private Integer nroBulto;
-    @JoinColumn(name = "id_producto", referencedColumnName = "id_producto")
-    @ManyToOne
-    private Producto idProducto;
     @JoinColumn(name = "id_factura", referencedColumnName = "id_factura", nullable = false)
     @ManyToOne(optional = false)
     private Factura idFactura;
+    @JoinColumn(name = "id_producto", referencedColumnName = "id_producto")
+    @ManyToOne
+    private Producto idProducto;
 
     public EntradaProveedor() {
     }
@@ -99,7 +101,7 @@ public class EntradaProveedor implements Serializable {
         this.fechaRecepcion = fechaRecepcion;
     }
 
-      public EntradaProveedor(Float pesoTotalBulto, int cantidadSet, int cantidadProducto, float precioTotal, String codBarras, Integer nroBulto, Factura idFactura, Producto idProducto) {
+    public EntradaProveedor(Float pesoTotalBulto, int cantidadSet, int cantidadProducto, float precioTotal, String codBarras, Integer nroBulto, Factura idFactura, Producto idProducto) {
         this.pesoTotalBulto = pesoTotalBulto;
         this.cantidadSet = cantidadSet;
         this.cantidadProducto = cantidadProducto;
@@ -109,7 +111,7 @@ public class EntradaProveedor implements Serializable {
         this.idFactura = idFactura;
         this.idProducto = idProducto;
     }
-    
+
     public Integer getIdEntradaProveedor() {
         return idEntradaProveedor;
     }
@@ -182,20 +184,20 @@ public class EntradaProveedor implements Serializable {
         this.nroBulto = nroBulto;
     }
 
-    public Producto getIdProducto() {
-        return idProducto;
-    }
-
-    public void setIdProducto(Producto idProducto) {
-        this.idProducto = idProducto;
-    }
-
     public Factura getIdFactura() {
         return idFactura;
     }
 
     public void setIdFactura(Factura idFactura) {
         this.idFactura = idFactura;
+    }
+
+    public Producto getIdProducto() {
+        return idProducto;
+    }
+
+    public void setIdProducto(Producto idProducto) {
+        this.idProducto = idProducto;
     }
 
     @Override
@@ -220,7 +222,7 @@ public class EntradaProveedor implements Serializable {
 
     @Override
     public String toString() {
-        return "modelos.EntradaProveedor[ idEntradaProveedor=" + idEntradaProveedor + " ]";
+        return "modelos.mapeos.nev.EntradaProveedor[ idEntradaProveedor=" + idEntradaProveedor + " ]";
     }
-    
+
 }

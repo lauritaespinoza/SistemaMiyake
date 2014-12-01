@@ -1,47 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-  <persistence-unit name="com.mycompany_modulofacturacion2_jar_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
+  <persistence-unit name="com.mycompany_SistemaMiyake_jar_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>modelos.Importador</class>
-    <class>modelos.SalidaEntreTiendasDetalle</class>
-    <class>modelos.SalidaEntreTiendas</class>
-    <class>modelos.PedidoProveedor</class>
-    <class>modelos.PedidoTienda</class>
-    <class>modelos.Bultos</class>
-    <class>modelos.ModificacionPrecioDetalle</class>
-    <class>modelos.ModificacionPrecio</class>
-    <class>modelos.Clasificacion_1</class>
-    <class>modelos.Departamento_1</class>
-    <class>modelos.Division_1</class>
-    <class>modelos.Contacto_1</class>
-    <class>modelos.Ubicacion_1</class>
-    <class>modelos.mapeos.Marca</class>
-    <class>modelos.mapeos.Producto</class>
     <class>modelos.mapeos.Clasificacion</class>
-    <class>modelos.mapeos.Division</class>
-    <class>modelos.mapeos.NotaCreditoDebitoDetalle</class>
-    <class>modelos.mapeos.Factura</class>
-    <class>modelos.mapeos.InventarioDiarioDetalle</class>
-    <class>modelos.mapeos.Usuario</class>
-    <class>modelos.mapeos.InventarioDiario</class>
-    <class>modelos.mapeos.ConteoMercanciaEntradaDetalles</class>
-    <class>modelos.mapeos.ConteoMercanciaEntrada</class>
-    <class>modelos.mapeos.Almacen</class>
-    <class>modelos.mapeos.Departamento</class>
-    <class>modelos.mapeos.InventarioTienda</class>
-    <class>modelos.mapeos.SalidaParaTienda</class>
-    <class>modelos.mapeos.EntradaProveedor</class>
-    <class>modelos.mapeos.Proveedor</class>
-    <class>modelos.mapeos.NotaCreditoDebito</class>
-    <class>modelos.mapeos.Ubicacion</class>
     <class>modelos.mapeos.Contacto</class>
+    <class>modelos.mapeos.Almacen</class>
+    <class>modelos.mapeos.ConteoMercanciaEntrada</class>
+    <class>modelos.mapeos.ConteoMercanciaEntradaDetalles</class>
+    <class>modelos.mapeos.Departamento</class>
+    <class>modelos.mapeos.Division</class>
+    <class>modelos.mapeos.EntradaProveedor</class>
+    <class>modelos.mapeos.InventarioDiarioDetalle</class>
+    <class>modelos.mapeos.InventarioTienda</class>
+    <class>modelos.mapeos.InventarioDiario</class>
+    <class>modelos.mapeos.Factura</class>
+    <class>modelos.mapeos.SalidaParaTienda</class>
     <class>modelos.mapeos.SalidaParaTiendaDetalle</class>
-    <class>modelos.mapeos.PrecioProductoTienda</class>
+    <class>modelos.mapeos.Marca</class>
+    <class>modelos.mapeos.NotaCreditoDebito</class>
+    <class>modelos.mapeos.NotaCreditoDebitoDetalle</class>
+    <class>modelos.mapeos.Producto</class>
+    <class>modelos.mapeos.Proveedor</class>
+    <class>modelos.mapeos.Ubicacion</class>
+    <class>modelos.mapeos.Usuario</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://192.2.1.70:5432/miyake_pasantia"/>
-      <property name="javax.persistence.jdbc.password" value="admin"/>
-      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="admin"/>
     </properties>
   </persistence-unit>
 </persistence>

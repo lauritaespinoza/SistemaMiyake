@@ -5,6 +5,7 @@
  */
 package modelos.mapeos;
 
+import modelos.mapeos.SalidaParaTienda;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -36,10 +37,10 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "NotaCreditoDebito.findAll", query = "SELECT n FROM NotaCreditoDebito n"),
     @NamedQuery(name = "NotaCreditoDebito.findByIdNotaCreditoDebito", query = "SELECT n FROM NotaCreditoDebito n WHERE n.idNotaCreditoDebito = :idNotaCreditoDebito"),
     @NamedQuery(name = "NotaCreditoDebito.findByFecha", query = "SELECT n FROM NotaCreditoDebito n WHERE n.fecha = :fecha"),
-    @NamedQuery(name = "NotaCreditoDebito.findByNroFactura", query = "SELECT n FROM NotaCreditoDebito n WHERE n.nroFactura = :nroFactura"),
     @NamedQuery(name = "NotaCreditoDebito.findByTotal", query = "SELECT n FROM NotaCreditoDebito n WHERE n.total = :total"),
     @NamedQuery(name = "NotaCreditoDebito.findByTipo", query = "SELECT n FROM NotaCreditoDebito n WHERE n.tipo = :tipo")})
 public class NotaCreditoDebito implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,29 +49,30 @@ public class NotaCreditoDebito implements Serializable {
     private Integer idNotaCreditoDebito;
     @Temporal(TemporalType.DATE)
     private Date fecha;
-    @Column(name = "nro_factura")
-    private Integer nroFactura;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(precision = 8, scale = 8)
     private Float total;
     private Boolean tipo;
     @OneToMany(mappedBy = "idNotaCreditoDebito")
     private Collection<NotaCreditoDebitoDetalle> notaCreditoDebitoDetalleCollection;
-    @JoinColumn(name = "id_usuario2", referencedColumnName = "id_usuario")
+    @JoinColumn(name = "id_salida", referencedColumnName = "id_salida")
     @ManyToOne
-    private Usuario idUsuario2;
-    @JoinColumn(name = "id_usuario1", referencedColumnName = "id_usuario")
+    private SalidaParaTienda idSalida;
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne
-    private Usuario idUsuario1;
-    @JoinColumn(name = "id_almacen", referencedColumnName = "id_almacen")
-    @ManyToOne
-    private Almacen idAlmacen;
+    private Usuario idUsuario;
 
     public NotaCreditoDebito() {
     }
 
     public NotaCreditoDebito(Integer idNotaCreditoDebito) {
         this.idNotaCreditoDebito = idNotaCreditoDebito;
+    }
+
+    public NotaCreditoDebito(Boolean tipo, SalidaParaTienda idSalida, Usuario idUsuario) {
+        this.tipo = tipo;
+        this.idSalida = idSalida;
+        this.idUsuario = idUsuario;
     }
 
     public Integer getIdNotaCreditoDebito() {
@@ -87,14 +89,6 @@ public class NotaCreditoDebito implements Serializable {
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
-    }
-
-    public Integer getNroFactura() {
-        return nroFactura;
-    }
-
-    public void setNroFactura(Integer nroFactura) {
-        this.nroFactura = nroFactura;
     }
 
     public Float getTotal() {
@@ -122,28 +116,20 @@ public class NotaCreditoDebito implements Serializable {
         this.notaCreditoDebitoDetalleCollection = notaCreditoDebitoDetalleCollection;
     }
 
-    public Usuario getIdUsuario2() {
-        return idUsuario2;
+    public SalidaParaTienda getIdSalida() {
+        return idSalida;
     }
 
-    public void setIdUsuario2(Usuario idUsuario2) {
-        this.idUsuario2 = idUsuario2;
+    public void setIdSalida(SalidaParaTienda idSalida) {
+        this.idSalida = idSalida;
     }
 
-    public Usuario getIdUsuario1() {
-        return idUsuario1;
+    public Usuario getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setIdUsuario1(Usuario idUsuario1) {
-        this.idUsuario1 = idUsuario1;
-    }
-
-    public Almacen getIdAlmacen() {
-        return idAlmacen;
-    }
-
-    public void setIdAlmacen(Almacen idAlmacen) {
-        this.idAlmacen = idAlmacen;
+    public void setIdUsuario(Usuario idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     @Override
@@ -168,7 +154,7 @@ public class NotaCreditoDebito implements Serializable {
 
     @Override
     public String toString() {
-        return "modelos.NotaCreditoDebito[ idNotaCreditoDebito=" + idNotaCreditoDebito + " ]";
+        return "modelos.mapeos.nev.NotaCreditoDebito[ idNotaCreditoDebito=" + idNotaCreditoDebito + " ]";
     }
-    
+
 }

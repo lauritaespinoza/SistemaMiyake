@@ -5,6 +5,9 @@
  */
 package modelos.mapeos;
 
+import modelos.mapeos.EntradaProveedor;
+import modelos.mapeos.ConteoMercanciaEntrada;
+import modelos.mapeos.Almacen;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -71,18 +74,18 @@ public class Factura implements Serializable {
     @Size(max = 2147483647)
     @Column(name = "embarcado_via", length = 2147483647)
     private String embarcadoVia;
-    @JoinColumn(name = "id_proveedor", referencedColumnName = "id_proveedor")
-    @ManyToOne
-    private Proveedor idProveedor;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idFactura")
+    private Collection<EntradaProveedor> entradaProveedorCollection;
     @JoinColumn(name = "id_almacen", referencedColumnName = "id_almacen")
     @ManyToOne
     private Almacen idAlmacen;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idFactura")
-    private Collection<EntradaProveedor> entradaProveedorCollection;
+    @JoinColumn(name = "id_proveedor", referencedColumnName = "id_proveedor")
+    @ManyToOne
+    private Proveedor idProveedor;
     @OneToMany(mappedBy = "idFactura")
     private Collection<ConteoMercanciaEntrada> conteoMercanciaEntradaCollection;
 
-    public Factura() {
+   public Factura() {
     }
 
     public Factura(Integer idFactura) {
@@ -105,7 +108,7 @@ public class Factura implements Serializable {
         this.idAlmacen = idAlmacen;
         this.idProveedor = idProveedor;
     }
-     
+
     public Integer getIdFactura() {
         return idFactura;
     }
@@ -162,12 +165,13 @@ public class Factura implements Serializable {
         this.embarcadoVia = embarcadoVia;
     }
 
-    public Proveedor getIdProveedor() {
-        return idProveedor;
+    @XmlTransient
+    public Collection<EntradaProveedor> getEntradaProveedorCollection() {
+        return entradaProveedorCollection;
     }
 
-    public void setIdProveedor(Proveedor idProveedor) {
-        this.idProveedor = idProveedor;
+    public void setEntradaProveedorCollection(Collection<EntradaProveedor> entradaProveedorCollection) {
+        this.entradaProveedorCollection = entradaProveedorCollection;
     }
 
     public Almacen getIdAlmacen() {
@@ -178,13 +182,12 @@ public class Factura implements Serializable {
         this.idAlmacen = idAlmacen;
     }
 
-    @XmlTransient
-    public Collection<EntradaProveedor> getEntradaProveedorCollection() {
-        return entradaProveedorCollection;
+    public Proveedor getIdProveedor() {
+        return idProveedor;
     }
 
-    public void setEntradaProveedorCollection(Collection<EntradaProveedor> entradaProveedorCollection) {
-        this.entradaProveedorCollection = entradaProveedorCollection;
+    public void setIdProveedor(Proveedor idProveedor) {
+        this.idProveedor = idProveedor;
     }
 
     @XmlTransient
@@ -218,7 +221,7 @@ public class Factura implements Serializable {
 
     @Override
     public String toString() {
-        return "modelos.Factura[ idFactura=" + idFactura + " ]";
+        return "modelos.mapeos.nev.Factura[ idFactura=" + idFactura + " ]";
     }
     
 }

@@ -146,7 +146,7 @@ public class InventarioDiarioDetalle implements Serializable {
 
     @Override
     public String toString() {
-        return "com.uneg.clases.mapeos.InventarioDiarioDetalle[ idInventarioDiarioDetalle=" + idInventarioDiarioDetalle + " ]";
+        return "modelos.mapeos.nev.InventarioDiarioDetalle[ idInventarioDiarioDetalle=" + idInventarioDiarioDetalle + " ]";
     }
     
 }

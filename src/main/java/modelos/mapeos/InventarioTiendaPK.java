@@ -76,7 +76,7 @@ public class InventarioTiendaPK implements Serializable {
 
     @Override
     public String toString() {
-        return "modelos.InventarioTiendaPK[ idProducto=" + idProducto + ", idAlmacen=" + idAlmacen + " ]";
+        return "modelos.mapeos.nev.InventarioTiendaPK[ idProducto=" + idProducto + ", idAlmacen=" + idAlmacen + " ]";
     }
     
 }

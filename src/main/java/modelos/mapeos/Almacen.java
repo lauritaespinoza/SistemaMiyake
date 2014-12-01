@@ -5,6 +5,7 @@
  */
 package modelos.mapeos;
 
+import modelos.mapeos.Contacto;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -95,25 +96,23 @@ public class Almacen implements Serializable {
     @Column(length = 2147483647)
     private String logo;
     @OneToMany(mappedBy = "idAlmacen")
-    private Collection<Factura> facturaCollection;
-    @OneToMany(mappedBy = "idAlmacen")
     private Collection<InventarioDiario> inventarioDiarioCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "almacen")
-    private Collection<InventarioTienda> inventarioTiendaCollection;
+    @OneToMany(mappedBy = "idAlmacenDesde")
+    private Collection<SalidaParaTienda> salidaParaTiendaCollection;
+    @OneToMany(mappedBy = "idAlmacenHasta")
+    private Collection<SalidaParaTienda> salidaParaTiendaCollection1;
     @OneToMany(mappedBy = "idAlmacen")
-    private Collection<ConteoMercanciaEntrada> conteoMercanciaEntradaCollection;
-    @OneToMany(mappedBy = "idAlmacen")
-    private Collection<NotaCreditoDebito> notaCreditoDebitoCollection;
-    @JoinColumn(name = "id_ubicacion", referencedColumnName = "id_ubicacion")
-    @ManyToOne
-    private Ubicacion idUbicacion;
+    private Collection<Factura> facturaCollection;
     @JoinColumn(name = "id_contacto_gerente", referencedColumnName = "id_contacto")
     @ManyToOne
     private Contacto idContactoGerente;
-    @OneToMany(mappedBy = "idAlmacenHasta")
-    private Collection<SalidaParaTienda> salidaParaTiendaCollection;
-    @OneToMany(mappedBy = "idAlmacenDesde")
-    private Collection<SalidaParaTienda> salidaParaTiendaCollection1;
+    @JoinColumn(name = "id_ubicacion", referencedColumnName = "id_ubicacion")
+    @ManyToOne
+    private Ubicacion idUbicacion;
+    @OneToMany(mappedBy = "idAlmacen")
+    private Collection<ConteoMercanciaEntrada> conteoMercanciaEntradaCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "almacen")
+    private Collection<InventarioTienda> inventarioTiendaCollection;
 
     public Almacen() {
     }
@@ -228,64 +227,12 @@ public class Almacen implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Factura> getFacturaCollection() {
-        return facturaCollection;
-    }
-
-    public void setFacturaCollection(Collection<Factura> facturaCollection) {
-        this.facturaCollection = facturaCollection;
-    }
-
-    @XmlTransient
     public Collection<InventarioDiario> getInventarioDiarioCollection() {
         return inventarioDiarioCollection;
     }
 
     public void setInventarioDiarioCollection(Collection<InventarioDiario> inventarioDiarioCollection) {
         this.inventarioDiarioCollection = inventarioDiarioCollection;
-    }
-
-    @XmlTransient
-    public Collection<InventarioTienda> getInventarioTiendaCollection() {
-        return inventarioTiendaCollection;
-    }
-
-    public void setInventarioTiendaCollection(Collection<InventarioTienda> inventarioTiendaCollection) {
-        this.inventarioTiendaCollection = inventarioTiendaCollection;
-    }
-
-    @XmlTransient
-    public Collection<ConteoMercanciaEntrada> getConteoMercanciaEntradaCollection() {
-        return conteoMercanciaEntradaCollection;
-    }
-
-    public void setConteoMercanciaEntradaCollection(Collection<ConteoMercanciaEntrada> conteoMercanciaEntradaCollection) {
-        this.conteoMercanciaEntradaCollection = conteoMercanciaEntradaCollection;
-    }
-
-    @XmlTransient
-    public Collection<NotaCreditoDebito> getNotaCreditoDebitoCollection() {
-        return notaCreditoDebitoCollection;
-    }
-
-    public void setNotaCreditoDebitoCollection(Collection<NotaCreditoDebito> notaCreditoDebitoCollection) {
-        this.notaCreditoDebitoCollection = notaCreditoDebitoCollection;
-    }
-
-    public Ubicacion getIdUbicacion() {
-        return idUbicacion;
-    }
-
-    public void setIdUbicacion(Ubicacion idUbicacion) {
-        this.idUbicacion = idUbicacion;
-    }
-
-    public Contacto getIdContactoGerente() {
-        return idContactoGerente;
-    }
-
-    public void setIdContactoGerente(Contacto idContactoGerente) {
-        this.idContactoGerente = idContactoGerente;
     }
 
     @XmlTransient
@@ -304,6 +251,49 @@ public class Almacen implements Serializable {
 
     public void setSalidaParaTiendaCollection1(Collection<SalidaParaTienda> salidaParaTiendaCollection1) {
         this.salidaParaTiendaCollection1 = salidaParaTiendaCollection1;
+    }
+
+    @XmlTransient
+    public Collection<Factura> getFacturaCollection() {
+        return facturaCollection;
+    }
+
+    public void setFacturaCollection(Collection<Factura> facturaCollection) {
+        this.facturaCollection = facturaCollection;
+    }
+
+    public Contacto getIdContactoGerente() {
+        return idContactoGerente;
+    }
+
+    public void setIdContactoGerente(Contacto idContactoGerente) {
+        this.idContactoGerente = idContactoGerente;
+    }
+
+    public Ubicacion getIdUbicacion() {
+        return idUbicacion;
+    }
+
+    public void setIdUbicacion(Ubicacion idUbicacion) {
+        this.idUbicacion = idUbicacion;
+    }
+
+    @XmlTransient
+    public Collection<ConteoMercanciaEntrada> getConteoMercanciaEntradaCollection() {
+        return conteoMercanciaEntradaCollection;
+    }
+
+    public void setConteoMercanciaEntradaCollection(Collection<ConteoMercanciaEntrada> conteoMercanciaEntradaCollection) {
+        this.conteoMercanciaEntradaCollection = conteoMercanciaEntradaCollection;
+    }
+
+    @XmlTransient
+    public Collection<InventarioTienda> getInventarioTiendaCollection() {
+        return inventarioTiendaCollection;
+    }
+
+    public void setInventarioTiendaCollection(Collection<InventarioTienda> inventarioTiendaCollection) {
+        this.inventarioTiendaCollection = inventarioTiendaCollection;
     }
 
     @Override
@@ -328,7 +318,7 @@ public class Almacen implements Serializable {
 
     @Override
     public String toString() {
-        return "modelos.Almacen[ idAlmacen=" + idAlmacen + " ]";
+        return "modelos.mapeos.nev.Almacen[ idAlmacen=" + idAlmacen + " ]";
     }
     
 }

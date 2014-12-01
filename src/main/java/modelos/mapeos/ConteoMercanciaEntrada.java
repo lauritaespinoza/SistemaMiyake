@@ -5,6 +5,7 @@
  */
 package modelos.mapeos;
 
+import modelos.mapeos.Almacen;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -53,36 +54,36 @@ public class ConteoMercanciaEntrada implements Serializable {
     private Integer idConteoMercanciaEntrada;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "conteoMercanciaEntrada")
     private Collection<ConteoMercanciaEntradaDetalles> conteoMercanciaEntradaDetallesCollection;
-    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
-    @ManyToOne
-    private Usuario idUsuario;
-    @JoinColumn(name = "id_factura", referencedColumnName = "id_factura")
-    @ManyToOne
-    private Factura idFactura;
     @JoinColumn(name = "id_almacen", referencedColumnName = "id_almacen")
     @ManyToOne
     private Almacen idAlmacen;
+    @JoinColumn(name = "id_factura", referencedColumnName = "id_factura")
+    @ManyToOne
+    private Factura idFactura;
     @JoinColumn(name = "id_salida", referencedColumnName = "id_salida")
     @ManyToOne
     private SalidaParaTienda idSalida;
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
+    @ManyToOne
+    private Usuario idUsuario;
 
     public ConteoMercanciaEntrada() {
+    }
+
+    public ConteoMercanciaEntrada(Almacen idAlmacen, Usuario idUsuario, SalidaParaTienda idSalida) {
+        this.idAlmacen = idAlmacen;
+        this.idSalida = idSalida;
+        this.idUsuario = idUsuario;
+    }
+
+    public ConteoMercanciaEntrada(Integer idConteoMercanciaEntrada) {
+        this.idConteoMercanciaEntrada = idConteoMercanciaEntrada;
     }
 
     public ConteoMercanciaEntrada(Almacen idAlmacen, Factura idFactura, Usuario idUsuario) {
         this.idAlmacen = idAlmacen;
         this.idFactura = idFactura;
         this.idUsuario = idUsuario;
-    }
-
-    public ConteoMercanciaEntrada(Almacen idAlmacen, Usuario idUsuario, SalidaParaTienda idSalida) {
-        this.idAlmacen = idAlmacen;
-        this.idUsuario = idUsuario;
-        this.idSalida = idSalida;
-    }
-
-    public ConteoMercanciaEntrada(Integer idConteoMercanciaEntrada) {
-        this.idConteoMercanciaEntrada = idConteoMercanciaEntrada;
     }
 
     public Date getFecharegistro() {
@@ -118,6 +119,22 @@ public class ConteoMercanciaEntrada implements Serializable {
         this.conteoMercanciaEntradaDetallesCollection = conteoMercanciaEntradaDetallesCollection;
     }
 
+    public Almacen getIdAlmacen() {
+        return idAlmacen;
+    }
+
+    public void setIdAlmacen(Almacen idAlmacen) {
+        this.idAlmacen = idAlmacen;
+    }
+
+    public Factura getIdFactura() {
+        return idFactura;
+    }
+
+    public void setIdFactura(Factura idFactura) {
+        this.idFactura = idFactura;
+    }
+
     public SalidaParaTienda getIdSalida() {
         return idSalida;
     }
@@ -132,22 +149,6 @@ public class ConteoMercanciaEntrada implements Serializable {
 
     public void setIdUsuario(Usuario idUsuario) {
         this.idUsuario = idUsuario;
-    }
-
-    public Factura getIdFactura() {
-        return idFactura;
-    }
-
-    public void setIdFactura(Factura idFactura) {
-        this.idFactura = idFactura;
-    }
-
-    public Almacen getIdAlmacen() {
-        return idAlmacen;
-    }
-
-    public void setIdAlmacen(Almacen idAlmacen) {
-        this.idAlmacen = idAlmacen;
     }
 
     @Override
@@ -172,7 +173,7 @@ public class ConteoMercanciaEntrada implements Serializable {
 
     @Override
     public String toString() {
-        return "modelos.ConteoMercanciaEntrada[ idConteoMercanciaEntrada=" + idConteoMercanciaEntrada + " ]";
+        return "modelos.mapeos.nev.ConteoMercanciaEntrada[ idConteoMercanciaEntrada=" + idConteoMercanciaEntrada + " ]";
     }
 
 }

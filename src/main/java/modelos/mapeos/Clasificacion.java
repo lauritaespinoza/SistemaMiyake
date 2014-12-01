@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Clasificacion.findByNombre", query = "SELECT c FROM Clasificacion c WHERE c.nombre = :nombre"),
     @NamedQuery(name = "Clasificacion.findByIdClasificacion", query = "SELECT c FROM Clasificacion c WHERE c.idClasificacion = :idClasificacion")})
 public class Clasificacion implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Basic(optional = false)
     @NotNull
@@ -47,13 +48,18 @@ public class Clasificacion implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_clasificacion", nullable = false)
     private Integer idClasificacion;
+    @OneToMany(mappedBy = "idClasificacion")
+    private Collection<Producto> productoCollection;
     @JoinColumn(name = "id_departamento", referencedColumnName = "id_departamento", nullable = false)
     @ManyToOne(optional = false)
     private Departamento idDepartamento;
-    @OneToMany(mappedBy = "idClasificacion")
-    private Collection<Producto> productoCollection;
 
     public Clasificacion() {
+    }
+
+    public Clasificacion(String nombre, Departamento idDepartamento) {
+        this.nombre = nombre;
+        this.idDepartamento = idDepartamento;
     }
 
     public Clasificacion(Integer idClasificacion) {
@@ -65,12 +71,6 @@ public class Clasificacion implements Serializable {
         this.nombre = nombre;
     }
 
-    public Clasificacion(String nombre, Departamento idDepartamento) {
-        this.nombre = nombre;
-        this.idDepartamento = idDepartamento;
-    }
-
-    
     public String getNombre() {
         return nombre;
     }
@@ -87,14 +87,6 @@ public class Clasificacion implements Serializable {
         this.idClasificacion = idClasificacion;
     }
 
-    public Departamento getIdDepartamento() {
-        return idDepartamento;
-    }
-
-    public void setIdDepartamento(Departamento idDepartamento) {
-        this.idDepartamento = idDepartamento;
-    }
-
     @XmlTransient
     public Collection<Producto> getProductoCollection() {
         return productoCollection;
@@ -102,6 +94,14 @@ public class Clasificacion implements Serializable {
 
     public void setProductoCollection(Collection<Producto> productoCollection) {
         this.productoCollection = productoCollection;
+    }
+
+    public Departamento getIdDepartamento() {
+        return idDepartamento;
+    }
+
+    public void setIdDepartamento(Departamento idDepartamento) {
+        this.idDepartamento = idDepartamento;
     }
 
     @Override
@@ -126,7 +126,7 @@ public class Clasificacion implements Serializable {
 
     @Override
     public String toString() {
-        return "modelos.Clasificacion[ idClasificacion=" + idClasificacion + " ]";
+        return "modelos.mapeos.nev.Clasificacion[ idClasificacion=" + idClasificacion + " ]";
     }
-    
+
 }
