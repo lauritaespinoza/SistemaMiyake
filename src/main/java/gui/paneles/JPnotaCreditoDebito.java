@@ -19,6 +19,7 @@ import modelos.mapeos.SalidaParaTiendaDetalle;
 import modelos.mapeos.Usuario;
 import gui.dialogos.JDasignadaTienda;
 import gui.dialogos.JDfaturasCSV;
+import gui.ventanas.JFInicioSecionMiyake;
 import hibernate.DAO.DaoQuery;
 import util.JavaUtil;
 import hibernate.DAO.ObjectModelDAO;
@@ -54,7 +55,6 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
     private List resultListNcdDetalle;
     private List resultLisNcd;
     private NotaCreditoDebito ncd;
-    private static final IVDDComparator comparator_ivdd = new IVDDComparator();
     private final List resultListAlmacen;
     public static final String encaso_sobrante = "EN CASO DE MERCANCIA SOBRANTE";
     public static final String encaso_faltante = "EN CASO DE MERCANCIA FALTANTE";
@@ -64,8 +64,9 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
     private SalidaParaTienda spt;
     private boolean crear;
     private List<List> resultListSptDetalle;
+    private Usuario user = JFInicioSecionMiyake.us1;
 
-    public JPnotaCreditoDebito(boolean tipo) {
+    public JPnotaCreditoDebito(Boolean tipo) {
         initComponents();
         this.titulo.setText(tipo ? nota_credito : nota_debito);
         this.enCaso.setText(tipo ? encaso_sobrante : encaso_faltante);
@@ -196,9 +197,9 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
         titulo.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         titulo.setText("NOTA DE DEBITO");
 
-        nombreAlmacen.setText("nombre");
+        nombreAlmacen.setText(" ");
 
-        rifAlmacen.setText("rif");
+        rifAlmacen.setText(" ");
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -236,7 +237,7 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
         }
 
         direccionAlmacen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        direccionAlmacen.setText("direccion");
+        direccionAlmacen.setText(" ");
 
         guardar.setText("Guardar");
         guardar.addActionListener(new java.awt.event.ActionListener() {
@@ -272,8 +273,17 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
 
         jLabel5.setText("Total:");
 
+        total.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         total.setText(" ");
+        total.setToolTipText("Doble click para Recalcular");
         total.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        total.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        total.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        total.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                totalMouseClicked(evt);
+            }
+        });
 
         facturado.setText(" ");
         facturado.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -515,7 +525,7 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
                     }
                 } else {
                     tabla.setRowSelectionInterval(pos, pos);
-                    JOptionPane.showMessageDialog(null, "EL renglón seleccionado ya está en la nota");                    
+                    JOptionPane.showMessageDialog(null, "El renglón seleccionado ya está en la nota");
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "No seleccionó ningun renglón de la Factura");
@@ -544,15 +554,44 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_imprimirActionPerformed
 
-    private void calcularTotal(){
+    private boolean calcularTotal() {
+
+        String filas_incorrectas = "";
+        int errores = 0;
+        float total = 0f;
         for (int i = 0; i < tabla.getRowCount(); i++) {
-            
+            Object o = tabla.getModel().getValueAt(i, 3);
+            int cantidad = 0;
+            String str;
+
+            if (o instanceof String) {
+                str = (String) o;
+            }
+            if (o instanceof Integer) {
+                cantidad = (Integer) o;
+            }
+
+            if (cantidad > 0) {
+                if (errores == 0) {
+                    int precio = Integer.parseInt((String) tabla.getModel().getValueAt(i, 3));
+                    total += precio * cantidad;
+                }
+            } else {
+                filas_incorrectas += (i + 1) + "\n";
+                errores++;
+            }
         }
+        if (errores > 0) {
+            JOptionPane.showMessageDialog(null, "Existen " + errores
+                    + " errore(s) en los siguientes renglones, porfavor revisar:\n" + filas_incorrectas);
+            return false;
+        } else {
+            this.total.setText(JavaUtil.dosDecimales.format(total));
+            return true;
+        }
+
     }
-    
-    private boolean isVacia(String str) {
-        return str == null || str.equals("");
-    }
+
 //
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
 
@@ -560,6 +599,8 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
                 == JOptionPane.NO_OPTION) {
             return;//sino quiere
         }
+
+        calcularTotal();
 
 //        int rows = tabla.getRowCount();
 //        int elementosDetalle = resultListNcdDetalle.size();
@@ -642,7 +683,8 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
                 JavaUtil.displayResult(resultListNcdDetalle, tabla);
                 fecha.setDate(ncd.getFecha());
                 total.setText(JavaUtil.dosDecimales.format(ncd.getTotal()));
-                facturado.setText(ncd.getIdUsuario().getNombre());
+                facturado.setText(ncd.getIdUsuario().getNombre() + " : " + ncd.getIdUsuario().getDescripcion());
+                realizado.setText(user.getNombre() + " : " + user.getDescripcion());
                 fecha.setEnabled(false);
                 cb_salida.setEnabled(false);
                 tabla.setEditable(false);
@@ -690,9 +732,11 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
             DaoQuery q = ObjectModelDAO.createQueryDAO(HQL);
             q.getQuery().setParameter("spt", spt);
             resultListSptDetalle = ObjectModelDAO.getResultQuery(q);
+
             if (ncd == null) {
                 ncd = new NotaCreditoDebito(getTipo(), spt,
-                        ObjectModelDAO.getObject(2, Usuario.class));//aca es el usuario logeado
+                        ObjectModelDAO.getObject(2, Usuario.class
+                        ));//aca es el usuario logeado
             }
 
             JOptionPane.showMessageDialog(null, "Haga doble click en la tabla"
@@ -778,6 +822,12 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_tablaKeyReleased
 
+    private void totalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_totalMouseClicked
+        if (evt.getClickCount() == 2 && !crear) {
+            calcularTotal();
+        }
+    }//GEN-LAST:event_totalMouseClicked
+
     private boolean getTipo() {
         switch (titulo.getText()) {
             case nota_credito:
@@ -830,4 +880,5 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
     private javax.swing.JLabel titulo;
     private javax.swing.JLabel total;
     // End of variables declaration//GEN-END:variables
+
 }

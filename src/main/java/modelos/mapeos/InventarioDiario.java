@@ -7,11 +7,14 @@ package modelos.mapeos;
 
 import modelos.mapeos.Almacen;
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -40,6 +43,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "InventarioDiario.findByFecha", query = "SELECT i FROM InventarioDiario i WHERE i.fecha = :fecha"),
     @NamedQuery(name = "InventarioDiario.findBySaldoInicial", query = "SELECT i FROM InventarioDiario i WHERE i.saldoInicial = :saldoInicial")})
 public class InventarioDiario implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,10 +54,10 @@ public class InventarioDiario implements Serializable {
     @Column(name = "saldo_final", precision = 8, scale = 8)
     private Float saldoFinal;
     @Temporal(TemporalType.DATE)
-    private Date fecha;
+    private Date fecha = Calendar.getInstance().getTime();
     @Column(name = "saldo_inicial", precision = 8, scale = 8)
     private Float saldoInicial;
-    @OneToMany(mappedBy = "idInventarioDiario")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "idInventarioDiario")
     private Collection<InventarioDiarioDetalle> inventarioDiarioDetalleCollection;
     @JoinColumn(name = "id_almacen", referencedColumnName = "id_almacen")
     @ManyToOne
@@ -139,5 +143,5 @@ public class InventarioDiario implements Serializable {
     public String toString() {
         return "modelos.mapeos.nev.InventarioDiario[ idInventarioDiario=" + idInventarioDiario + " ]";
     }
-    
+
 }
