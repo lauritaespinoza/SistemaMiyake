@@ -573,8 +573,9 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
 
             if (cantidad > 0) {
                 if (errores == 0) {
-                    int precio = Integer.parseInt((String) tabla.getModel().getValueAt(i, 3));
+                    int precio = Integer.parseInt((String) tabla.getModel().getValueAt(i, 4));
                     total += precio * cantidad;
+                    ((NotaCreditoDebitoDetalle) resultListNcdDetalle.get(i)).setCantidadProducto(cantidad);
                 }
             } else {
                 filas_incorrectas += (i + 1) + "\n";
@@ -587,6 +588,7 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
             return false;
         } else {
             this.total.setText(JavaUtil.dosDecimales.format(total));
+            ncd.setTotal(total);
             return true;
         }
 
@@ -595,54 +597,36 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
 //
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
 
+        if (fecha.getDate() == null) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar una fecha");
+            return;
+        }
+        if (cb_salida.getSelectedIndex() == -1
+                || cb_salida.getSelectedItem().equals(JavaUtil.cons_seleccionar)) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar una factura");
+            return;
+        }
+        if (tabla.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un reglón de la factura");
+            return;
+        }
+
         if (JOptionPane.showConfirmDialog(null, "¿Desea Guardar?, no habrá posibilidad de cambio.", "Sugerencia", JOptionPane.YES_NO_OPTION)
                 == JOptionPane.NO_OPTION) {
             return;//sino quiere
         }
 
-        calcularTotal();
+        if (!calcularTotal()) {
+            return;
+        }
 
-//        int rows = tabla.getRowCount();
-//        int elementosDetalle = resultListNcdDetalle.size();
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//        String filas_incorrectas = "";
-//        String data;
-//        for (int i = 0; i < rows; i++) {
-//            if (filaCorrecta(i)) {
-//                try {
-//                    //si aun sigue bajo la cantidad de la lista, copia la referencia actual
-//                    //sino crea uno nuevo
-//                    InventarioDiarioDetalle ivdDetIterador = i < elementosDetalle
-//                            ? resultListNcdDetalle.get(i) : new InventarioDiarioDetalle();
-//                    ivdDetIterador.setFecha(sdf.parse((String) tabla.getValueAt(i, 0)));
-//                    ivdDetIterador.setConcepto((String) tabla.getValueAt(i, 1));
-//                    data = (String) tabla.getValueAt(i, 2);
-//                    ivdDetIterador.setEntrada(isVacia(data) ? 0f
-//                            : Float.parseFloat(data.replace(",", ".")));
-//                    data = (String) tabla.getValueAt(i, 3);
-//                    ivdDetIterador.setSalida(isVacia(data) ? 0f
-//                            : Float.parseFloat(data.replace(",", ".")));
-//                    data = (String) tabla.getValueAt(i, 4);
-//                    ivdDetIterador.setSaldo(isVacia(data) ? 0f
-//                            : Float.parseFloat(data.replace(",", ".")));
-//                    //si aun esta bajo la cantidad de la lista, solo modifica
-//                    if (i < elementosDetalle) {
-//                        resultListNcdDetalle.set(i, ivdDetIterador);
-//                    } else {//si ya paso la cantidad de la lista inicial, ahora guarda lo sobrante de la tabla
-//                        ivdDetIterador.setIdInventarioDiario(ncd);
-//                        resultListNcdDetalle.add(ivdDetIterador);
-//                    }
-//                } catch (Exception ex) {
-//                    Logger.getLogger(JPnotaCreditoDebito.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//            } else {
-//                filas_incorrectas += i + "\n";
-//            }
-//        }
-//
-//        ObjectModelDAO.updateObject(ncd);
-//
-//        JOptionPane.showMessageDialog(null, filas_incorrectas);
+        ncd.setFecha(fecha.getDate());
+        ObjectModelDAO.saveObject(ncd);
+
+        for (Object o : resultListNcdDetalle) {
+            ObjectModelDAO.saveObject((NotaCreditoDebitoDetalle) o);
+        }
+
     }//GEN-LAST:event_guardarActionPerformed
 
     private void cb_ncdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_ncdActionPerformed
@@ -734,9 +718,7 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
             resultListSptDetalle = ObjectModelDAO.getResultQuery(q);
 
             if (ncd == null) {
-                ncd = new NotaCreditoDebito(getTipo(), spt,
-                        ObjectModelDAO.getObject(2, Usuario.class
-                        ));//aca es el usuario logeado
+                ncd = new NotaCreditoDebito(getTipo(), spt, user);
             }
 
             JOptionPane.showMessageDialog(null, "Haga doble click en la tabla"
