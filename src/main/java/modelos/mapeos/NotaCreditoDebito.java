@@ -60,7 +60,7 @@ public class NotaCreditoDebito implements Serializable {
     private SalidaParaTienda idSalida;
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
     @ManyToOne
-    private Usuario idUsuario;
+    private Usuario idUsuario ;
 
     public NotaCreditoDebito() {
     }

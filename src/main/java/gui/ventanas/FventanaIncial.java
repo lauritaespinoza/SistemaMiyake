@@ -1,6 +1,7 @@
 package gui.ventanas;
 
 
+import gui.paneles.Distribuidora1;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -359,7 +360,6 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jXCollapsiblePane1.getContentPane().add(taskPaneModuloTienda);
 
-        taskPaneModuloDeposito.setCollapsed(true);
         taskPaneModuloDeposito.setTitle("Depósito");
 
         jButton3.setText("jButton3");
@@ -564,7 +564,7 @@ public class FventanaIncial extends javax.swing.JFrame {
 
     private void jButtonTomaFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTomaFisicaActionPerformed
 
-        addPaneles(tabTomaFisica, JPTomaFisicaInventarioDistribuidora.class);
+        addPaneles(tabTomaFisica, Distribuidora1.class);
 
     }//GEN-LAST:event_jButtonTomaFisicaActionPerformed
 
