@@ -7,6 +7,7 @@ package modelos.mapeos;
 
 import modelos.mapeos.Almacen;
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
@@ -49,7 +50,7 @@ public class InventarioTienda implements Serializable {
     private Integer descuento;
     @Column(name = "fecha_creacion")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaCreacion;
+    private Date fechaCreacion = Calendar.getInstance().getTime();
     @Column(name = "fecha_modificacion")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaModificacion;

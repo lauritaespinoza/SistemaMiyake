@@ -9,6 +9,7 @@ import modelos.mapeos.Producto;
 import modelos.mapeos.Factura;
 import modelos.mapeos.Contacto;
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -48,6 +49,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Proveedor.findByFechaModificacion", query = "SELECT p FROM Proveedor p WHERE p.fechaModificacion = :fechaModificacion"),
     @NamedQuery(name = "Proveedor.findByFechaCreacion", query = "SELECT p FROM Proveedor p WHERE p.fechaCreacion = :fechaCreacion")})
 public class Proveedor implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Size(max = 2147483647)
     @Column(length = 2147483647)
@@ -79,7 +81,7 @@ public class Proveedor implements Serializable {
     private Date fechaModificacion;
     @Column(name = "fecha_creacion")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaCreacion;
+    private Date fechaCreacion = Calendar.getInstance().getTime();
     @OneToMany(mappedBy = "idProveedor")
     private Collection<Factura> facturaCollection;
     @OneToMany(mappedBy = "idProveedor")
@@ -100,8 +102,8 @@ public class Proveedor implements Serializable {
     public Proveedor(Integer idProveedor) {
         this.idProveedor = idProveedor;
     }
-    
-    public Proveedor(String nombre, String telefono1, String telefono2, String fax, String codPostal, String email, Contacto idContactoGerente,Contacto idContacto1, Contacto idContacto2) {
+
+    public Proveedor(String nombre, String telefono1, String telefono2, String fax, String codPostal, String email, Contacto idContactoGerente, Contacto idContacto1, Contacto idContacto2) {
         this.nombre = nombre;
         this.telefono1 = telefono1;
         this.telefono2 = telefono2;
@@ -111,7 +113,7 @@ public class Proveedor implements Serializable {
         this.idContactoGerente = idContactoGerente;
         this.idContacto1 = idContacto1;
         this.idContacto2 = idContacto2;
-        this.fechaCreacion= new Date();
+        this.fechaCreacion = new Date();
     }
 
     public Proveedor(String nombre, String telefono1, String telefono2, String fax, String codPostal, String email, Integer idProveedor, Date fechaModificacion, Contacto idContacto1, Contacto idContactoGerente, Contacto idContacto2) {
@@ -266,5 +268,5 @@ public class Proveedor implements Serializable {
     public String toString() {
         return "modelos.mapeos.nev.Proveedor[ idProveedor=" + idProveedor + " ]";
     }
-    
+
 }

@@ -37,7 +37,7 @@ import org.pushingpixels.substance.api.skin.SubstanceCremeCoffeeLookAndFeel;
 import org.pushingpixels.substance.internal.ui.SubstancePanelUI;
 import org.pushingpixels.substance.internal.utils.SubstanceTextUtilities;
 import gui.paneles.JPAsignarMercancia;
-import gui.paneles.JPConcultaInventario;
+import gui.paneles.JPConsultaInventario;
 import gui.paneles.JPNewJPanel;
 import gui.paneles.JPalmacen;
 import gui.paneles.JPclasificacion;
@@ -582,7 +582,7 @@ public class FventanaIncial extends javax.swing.JFrame {
 
     private void jXButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXButton3ActionPerformed
 
-        addPaneles(tabAsignarMercancia, JPConcultaInventario.class);
+        addPaneles(tabAsignarMercancia, JPConsultaInventario.class);
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jXButton3ActionPerformed

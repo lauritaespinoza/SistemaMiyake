@@ -33,7 +33,7 @@ import static gui.ventanas.JFInicioSecionMiyake.resultListUsuarios;
  *
  * @author Pablo
  */
-public class JPConcultaInventario extends javax.swing.JPanel {
+public class JPConsultaInventario extends javax.swing.JPanel {
 
     Usuario ususrioActual = null;
     Usuario user = JFInicioSecionMiyake.us1;
@@ -56,7 +56,7 @@ public class JPConcultaInventario extends javax.swing.JPanel {
     /**
      * Creates new form NewJPanel
      */
-    public JPConcultaInventario() {
+    public JPConsultaInventario() {
         initComponents();
         //ComboBoxAlmacenes
 
@@ -98,9 +98,9 @@ public class JPConcultaInventario extends javax.swing.JPanel {
             @Override
             public void run() {
                 try {
-                    new JPConcultaInventario().setVisible(true);
+                    new JPConsultaInventario().setVisible(true);
                 } catch (Exception ex) {
-                    Logger.getLogger(JPConcultaInventario.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(JPConsultaInventario.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
@@ -384,7 +384,7 @@ public class JPConcultaInventario extends javax.swing.JPanel {
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "Excepcion AL Confirmar Factura : " + e);
                     System.err.println("ERROR en EVENTO BOTON CONFIRMAR FACTURA : " + e);
-                    Logger.getLogger(JPConcultaInventario.class.getName()).log(Level.SEVERE, null, e);
+                    Logger.getLogger(JPConsultaInventario.class.getName()).log(Level.SEVERE, null, e);
                 }
             }
         };
@@ -520,7 +520,7 @@ public class JPConcultaInventario extends javax.swing.JPanel {
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "ERROR Asignando Mercancia :" + e);
                     System.err.println("ERROR Asignando Mercancia :" + e);
-                    Logger.getLogger(JPConcultaInventario.class.getName()).log(Level.SEVERE, null, e);
+                    Logger.getLogger(JPConsultaInventario.class.getName()).log(Level.SEVERE, null, e);
                 }
 
             }
@@ -554,7 +554,7 @@ public class JPConcultaInventario extends javax.swing.JPanel {
 
             }
         } catch (Exception e) {
-            Logger.getLogger(JPConcultaInventario.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(JPConsultaInventario.class.getName()).log(Level.SEVERE, null, e);
             JOptionPane.showMessageDialog(null, "Por Favor, Seleccione Un Pedido Valido Para Continuar.!!!");
             System.err.println("ERROR ó Excepcion Boton Reiniciar Todo Desde Pedido : " + e);
         }
