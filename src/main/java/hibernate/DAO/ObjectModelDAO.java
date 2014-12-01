@@ -16,17 +16,15 @@ import org.jboss.logging.annotations.Param;
 public abstract class ObjectModelDAO {
 
 //    private static Session sesion;//es posible hacer una lista?
-   // private static List<Session> sesiones = new ArrayList<>();
+    // private static List<Session> sesiones = new ArrayList<>();
 //    private static Transaction tx;
 //    private static Thread hilo;
 //    public static String estado() {
 //        return "tx: " + tx + "\nsesion: " + sesion;
 //    }
-
 //    public static List<Session> getSesiones() {
 //       // return sesiones;
 //    }
-
     //normalmente regresa un Integer, si es compuesta regresa el embedded
     public static Object saveObject(Object objModel) {
 
@@ -231,6 +229,24 @@ public abstract class ObjectModelDAO {
             manejaExcepcion(ex, newSession, newSession.getTransaction());
         }
         return daoQ;
+    }
+
+    public static void executeQueryString(String SQL) {
+
+        Session newSession = null;
+        try {
+            newSession = HibernateUtil.getSessionFactory().openSession();
+            newSession.beginTransaction();
+
+            newSession.createSQLQuery(SQL).executeUpdate();
+
+            newSession.getTransaction().commit();
+        } catch (HibernateException ex) {
+            manejaExcepcion(ex, newSession, newSession.getTransaction());
+        } finally {
+            terminate(newSession);
+        }
+
     }
 
     public static DaoCriteria createCriteriaDAO(Class type) {

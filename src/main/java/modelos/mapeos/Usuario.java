@@ -29,6 +29,7 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+
 /**
  *
  * @author Usuario
@@ -63,7 +64,7 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(nullable = false)
-    private boolean activo;
+    private boolean activo = true;
     @Basic(optional = false)
     @NotNull
     @Column(name = "tipo_usuario", nullable = false)
@@ -98,6 +99,14 @@ public class Usuario implements Serializable {
         this.nombre = nombre;
         this.activo = activo;
         this.tipoUsuario = tipoUsuario;
+    }
+
+    public Usuario(String nombre, String descripcion, short tipoUsuario, Integer tienda, String contrasena) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.tipoUsuario = tipoUsuario;
+        this.tienda = tienda;
+        this.contrasena = contrasena;
     }
 
     public String getNombre() {

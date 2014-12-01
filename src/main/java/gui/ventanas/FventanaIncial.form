@@ -1019,45 +1019,58 @@
                     <Property name="title" type="java.lang.String" value="Dep&#xf3;sito"/>
                   </Properties>
                   <SubComponents>
-                    <Component class="javax.swing.JButton" name="jButton3">
+                    <Component class="javax.swing.JButton" name="ExportData_boton_">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="jButton3"/>
+                        <Property name="text" type="java.lang.String" value="Export Datos"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExportData_boton_ActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButtonTomaFisica">
+                    <Component class="javax.swing.JButton" name="TomaFisicaDistribuidora_boton_">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Toma Fisica Distribuidora"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonTomaFisicaActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TomaFisicaDistribuidora_boton_ActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="org.jdesktop.swingx.JXButton" name="jXButton2">
+                    <Component class="org.jdesktop.swingx.JXButton" name="AsignarMercancia_boton_">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Gestion Mercancia "/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXButton2ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AsignarMercancia_boton_ActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="org.jdesktop.swingx.JXButton" name="jXButton1">
+                    <Component class="org.jdesktop.swingx.JXButton" name="TomaFisicaTiendas_boton_">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Toma Fisica Tiendas"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXButton1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TomaFisicaTiendas_boton_ActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="org.jdesktop.swingx.JXButton" name="jXButton3">
+                    <Component class="org.jdesktop.swingx.JXButton" name="ConsultaExistencia_boton_">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Consultar Inventario"/>
+                        <Property name="text" type="java.lang.String" value="Consultar Existencia"/>
                         <Property name="actionCommand" type="java.lang.String" value="Consultar Inventario "/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXButton3ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ConsultaExistencia_boton_ActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="org.jdesktop.swingx.JXButton" name="UbicacionProducto_boton_">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Ubicacion Producto"/>
+                      </Properties>
+                    </Component>
+                    <Component class="org.jdesktop.swingx.JXButton" name="jXButton1">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Usuarios"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXButton1ActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -1117,11 +1130,11 @@
                         <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                       </StatementProvider>
                       <Parameters>
-                        <CodeExpression id="54_jButton3">
-                          <CodeVariable name="jButton3" type="8194" declaredType="javax.swing.JButton"/>
+                        <CodeExpression id="52_ExportData_boton_">
+                          <CodeVariable name="ExportData_boton_" type="8194" declaredType="javax.swing.JButton"/>
                           <ExpressionOrigin>
                             <ExpressionProvider type="ComponentRef">
-                              <ComponentRef name="jButton3"/>
+                              <ComponentRef name="ExportData_boton_"/>
                             </ExpressionProvider>
                           </ExpressionOrigin>
                         </CodeExpression>
@@ -1133,11 +1146,11 @@
                         <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                       </StatementProvider>
                       <Parameters>
-                        <CodeExpression id="55_jButtonTomaFisica">
-                          <CodeVariable name="jButtonTomaFisica" type="8194" declaredType="javax.swing.JButton"/>
+                        <CodeExpression id="53_TomaFisicaDistribuidora_boton_">
+                          <CodeVariable name="TomaFisicaDistribuidora_boton_" type="8194" declaredType="javax.swing.JButton"/>
                           <ExpressionOrigin>
                             <ExpressionProvider type="ComponentRef">
-                              <ComponentRef name="jButtonTomaFisica"/>
+                              <ComponentRef name="TomaFisicaDistribuidora_boton_"/>
                             </ExpressionProvider>
                           </ExpressionOrigin>
                         </CodeExpression>
@@ -1149,11 +1162,9 @@
                         <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                       </StatementProvider>
                       <Parameters>
-                        <CodeExpression id="56_jXButton2">
-                          <CodeVariable name="jXButton2" type="8194" declaredType="org.jdesktop.swingx.JXButton"/>
                           <ExpressionOrigin>
                             <ExpressionProvider type="ComponentRef">
-                              <ComponentRef name="jXButton2"/>
+                              <ComponentRef name="AsignarMercancia_boton_"/>
                             </ExpressionProvider>
                           </ExpressionOrigin>
                         </CodeExpression>
@@ -1165,27 +1176,61 @@
                         <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                       </StatementProvider>
                       <Parameters>
-                        <CodeExpression id="57_jXButton1">
+                        <CodeExpression id="54_AsignarMercancia_boton_">
+                          <CodeVariable name="AsignarMercancia_boton_" type="8194" declaredType="org.jdesktop.swingx.JXButton"/>
                           <CodeVariable name="jXButton1" type="8194" declaredType="org.jdesktop.swingx.JXButton"/>
                           <ExpressionOrigin>
                             <ExpressionProvider type="ComponentRef">
                               <ComponentRef name="jXButton1"/>
+                        <CodeExpression id="55_TomaFisicaTiendas_boton_">
+                          <CodeVariable name="TomaFisicaTiendas_boton_" type="8194" declaredType="org.jdesktop.swingx.JXButton"/>
+                          <ExpressionOrigin>
+                            <ExpressionProvider type="ComponentRef">
+                              <ComponentRef name="TomaFisicaTiendas_boton_"/>
                             </ExpressionProvider>
                           </ExpressionOrigin>
                         </CodeExpression>
                       </Parameters>
                     </CodeStatement>
                     <CodeStatement>
-                      <CodeExpression id="52"/>
+                      <CodeExpression id="50"/>
                       <StatementProvider type="CodeMethod">
                         <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                       </StatementProvider>
                       <Parameters>
-                        <CodeExpression id="58_jXButton3">
-                          <CodeVariable name="jXButton3" type="8194" declaredType="org.jdesktop.swingx.JXButton"/>
+                        <CodeExpression id="56_ConsultaExistencia_boton_">
+                          <CodeVariable name="ConsultaExistencia_boton_" type="8194" declaredType="org.jdesktop.swingx.JXButton"/>
                           <ExpressionOrigin>
                             <ExpressionProvider type="ComponentRef">
-                              <ComponentRef name="jXButton3"/>
+                              <ComponentRef name="ConsultaExistencia_boton_"/>
+                            </ExpressionProvider>
+                          </ExpressionOrigin>
+                        </CodeExpression>
+                      </Parameters>
+                    </CodeStatement>
+                    <CodeStatement>
+                      <CodeExpression id="50"/>
+                      <StatementProvider type="CodeMethod">
+                        <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
+                      </StatementProvider>
+                      <Parameters>
+                        <CodeExpression id="57_UbicacionProducto_boton_">
+                          <CodeVariable name="UbicacionProducto_boton_" type="8194" declaredType="org.jdesktop.swingx.JXButton"/>
+                          <ExpressionOrigin>
+                            <ExpressionProvider type="ComponentRef">
+                              <ComponentRef name="UbicacionProducto_boton_"/>
+                            </ExpressionProvider>
+                          </ExpressionOrigin>
+                        </CodeExpression>
+                      </Parameters>
+                    </CodeStatement>
+                    <CodeStatement>
+                      <CodeExpression id="50"/>
+                      <StatementProvider type="CodeMethod">
+                        <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
+                      </StatementProvider>
+                      <Parameters>
+                        <CodeExpression id="58_jXButton1">
                             </ExpressionProvider>
                           </ExpressionOrigin>
                         </CodeExpression>
@@ -1371,3 +1416,4 @@
     </Container>
   </SubComponents>
 </Form>
+
