@@ -622,12 +622,13 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
 
         //si es debito suma IVT en desde: suma porque falta en hasta
         //si es credito resta en IVT en desde: resta porque sobra en hasta
-//        InventarioTienda
-        if (getTipo()) {
-            
-        } else {
-
-        }
+//        String hql="FROM";
+//        List resultListIVT=
+//        if (getTipo()) {
+//            
+//        } else {
+//
+//        }
 
         cb_tiendaActionPerformed(null);
     }//GEN-LAST:event_guardarActionPerformed
