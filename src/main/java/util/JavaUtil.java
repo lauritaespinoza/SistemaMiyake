@@ -147,7 +147,7 @@ public abstract class JavaUtil {
             oneRow.add(p.getIdClasificacion().getNombre());
             oneRow.add(p.getIdMarca().getNombre());
             oneRow.add(p.getIdProveedor().getNombre());
-            oneRow.add(p.getPrecioOriginal());
+            oneRow.add(dosDecimales.format(p.getPrecioOriginal()).replace(",", "."));
         }
 
         //si es un vector, y si el la primera es Salida para tienda detalle entonces es
@@ -161,7 +161,7 @@ public abstract class JavaUtil {
             oneRow.add(s.getProducto().getReferenciaProducto());
             oneRow.add(s.getProducto().getDescripcion());
             oneRow.add(s.getCantidadProducto());
-            oneRow.add(vec[1]);//precio
+            oneRow.add(dosDecimales.format(vec[1]).replace(",", "."));//precio
             oneRow.add(vec[2]);//descuento
             oneRow.add(s.getNroBulto());
         }
@@ -171,9 +171,9 @@ public abstract class JavaUtil {
             oneRow.add(ivt.getAlmacen().getNombre());
             oneRow.add(ivt.getProducto().getIdProducto());
             oneRow.add(ivt.getProducto().getDescripcion());
-            oneRow.add(dosDecimales.format(ivt.getPrecioSinDescuento() == null ? 0f : ivt.getPrecioSinDescuento()));
+            oneRow.add(dosDecimales.format(ivt.getPrecioSinDescuento() == null ? 0f : ivt.getPrecioSinDescuento()).replace(",", "."));
             oneRow.add(ivt.getDescuento().toString() + "%");
-            oneRow.add(dosDecimales.format(ivt.getPrecioConDescuento() == null ? 0f : ivt.getPrecioConDescuento()));
+            oneRow.add(dosDecimales.format(ivt.getPrecioConDescuento() == null ? 0f : ivt.getPrecioConDescuento()).replace(",", "."));
             oneRow.add(ivt.getFechaCreacion());
             oneRow.add(ivt.getFechaModificacion());
         }
@@ -195,9 +195,9 @@ public abstract class JavaUtil {
             InventarioDiarioDetalle ivdDetalle = (InventarioDiarioDetalle) o;
             oneRow.add(ivdDetalle.getFecha() == null ? "" : new SimpleDateFormat("yyyy-MM-dd").format(ivdDetalle.getFecha()));
             oneRow.add(ivdDetalle.getConcepto());
-            oneRow.add(dosDecimales.format(ivdDetalle.getEntrada() == null ? 0f : ivdDetalle.getEntrada()));
-            oneRow.add(dosDecimales.format(ivdDetalle.getSalida() == null ? 0f : ivdDetalle.getSalida()));
-            oneRow.add(dosDecimales.format(ivdDetalle.getSaldo() == null ? 0f : ivdDetalle.getSaldo()));
+            oneRow.add(dosDecimales.format(ivdDetalle.getEntrada() == null ? 0f : ivdDetalle.getEntrada()).replace(",", "."));
+            oneRow.add(dosDecimales.format(ivdDetalle.getSalida() == null ? 0f : ivdDetalle.getSalida()).replace(",", "."));
+            oneRow.add(dosDecimales.format(ivdDetalle.getSaldo() == null ? 0f : ivdDetalle.getSaldo()).replace(",", "."));
         }
 
         if (o instanceof NotaCreditoDebitoDetalle) {
@@ -207,7 +207,7 @@ public abstract class JavaUtil {
             oneRow.add(ntcd.getIdProducto().getDescripcion());
             oneRow.add(ntcd.getCantidadProducto());
             InventarioTienda ivt = ObjectModelDAO.getObject(new InventarioTiendaPK(ntcd.getIdProducto().getIdProducto(), ntcd.getIdNotaCreditoDebito().getIdSalida().getIdAlmacenHasta().getIdAlmacen()), InventarioTienda.class);
-            oneRow.add(ivt.getPrecioConDescuento());
+            oneRow.add(dosDecimales.format(ivt.getPrecioConDescuento()).replace(",", "."));
         }
 
         return oneRow;

@@ -5,8 +5,6 @@
  */
 package gui.paneles;
 
-import clases.IVDDComparator;
-import clases.csv.CSVreader;
 import modelos.mapeos.Almacen;
 import modelos.mapeos.InventarioDiario;
 import modelos.mapeos.InventarioDiarioDetalle;
@@ -63,7 +61,7 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
     private List resultLisSalidas;
     private SalidaParaTienda spt;
     private boolean crear;
-    private List<List> resultListSptDetalle;
+    private List resultListSptDetalle;//lista de vector de index 3. vease el hql
     private Usuario user = JFInicioSecionMiyake.us1;
 
     public JPnotaCreditoDebito(Boolean tipo) {
@@ -81,17 +79,6 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
 
     }
 
-    private void cargarFacturas() {
-//        resultListContacto = ObjectModelDAO.getResultQuery("FROM Contacto c order by c.idContacto asc");
-//            cb_ubicacion.removeAllItems();
-//            cb_contacto.removeAllItems();
-//
-//            for (Object object : resultListUbicacion) {
-//                Ubicacion u = (Ubicacion) object;
-//                cb_ubicacion.addItem(u.toString());
-//            }
-    }
-
     private void setNulls() {
         nombreAlmacen.setText("");
         rifAlmacen.setText("");
@@ -100,60 +87,6 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
         ncd = null;
         resultListNcdDetalle = null;
         tabla.setModel(new DefaultTableModel());
-    }
-
-    private void cargarHistorial() {
-        setNulls();
-
-        Thread hilo = new Thread() {
-            @Override
-            public void run() {
-
-                int opc;
-                busy.setVisible(true);
-                busy.setBusy(true);
-
-                Almacen alc = (Almacen) resultListAlmacen.get(cb_tienda.getSelectedIndex() - 1);
-
-                nombreAlmacen.setText(alc.getNombre());
-                rifAlmacen.setText("RIF: " + alc.getRif());
-                direccionAlmacen.setText(alc.getIdUbicacion() == null
-                        ? null : alc.getIdUbicacion().toString());
-
-                JavaUtil.preCambio(alc.getLogo(), logo);
-
-                String hql = "FROM  InventarioDiario ivd WHERE ivd.fecha > :primerof "
-                        + "AND ivd.fecha<:ultimof "
-                        + "AND ivd.idAlmacen=:alcm";
-
-                DaoQuery q = ObjectModelDAO.createQueryDAO(hql);
-
-                List rsl = ObjectModelDAO.getResultQuery(q);
-
-//                if (rsl.size() == 1) {//hay un inventario diario
-//                    ncd = (InventarioDiario) rsl.get(0);
-//
-//                    resultListNcdDetalle = (List) ncd.getInventarioDiarioDetalleCollection();
-//                    Collections.sort(resultListNcdDetalle, comparator_ivdd);
-//                    JavaUtil.displayResult(resultListNcdDetalle, tabla);
-//                    tabla.packAll();
-//
-//                } else {
-//                    if (rsl.isEmpty()) {//no hay inventario diario, se crea
-//                        ncd = new InventarioDiario();
-//                    } else {//hay muchos y es un error
-//                        JOptionPane.showConfirmDialog(null, "Hay un error, existe mas de "
-//                                + "1 inventario diario para este mes");
-//                    }
-//                }
-                imprimir.setEnabled(tabla.getRowCount() > 0);
-
-                busy.setVisible(false);
-                busy.setBusy(false);
-            }
-
-        };
-        hilo.start();
     }
 
     @SuppressWarnings("unchecked")
@@ -509,6 +442,7 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
                 if (pos == -1) {//si es igual a -1 no lo encontro, por ende puede agregarlo
                     NotaCreditoDebitoDetalle ncdd = new NotaCreditoDebitoDetalle(jdAT.sptd.getNroRenglon(), ncd, jdAT.sptd.getProducto());
                     resultListNcdDetalle.add(ncdd);
+
                     if (tabla.getRowCount() == 0) {//esta vacia, se crea
                         JavaUtil.displayResult(resultListNcdDetalle, tabla);
                     } else { //agrega
@@ -517,10 +451,12 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
                             ncdd.getIdProducto().getReferenciaProducto(),
                             ncdd.getIdProducto().getDescripcion(),
                             0,
-                            ObjectModelDAO.getObject(new InventarioTiendaPK(
+                            JavaUtil.dosDecimales.format(ObjectModelDAO.getObject(new InventarioTiendaPK(
                             ncdd.getIdProducto().getIdProducto(),
                             ncdd.getIdNotaCreditoDebito().getIdSalida().getIdAlmacenHasta().getIdAlmacen()
-                            ), InventarioTienda.class).getPrecioConDescuento()
+                            ), InventarioTienda.class
+                            ).getPrecioConDescuento()
+                            ).replace(",", ".")
                         });
                     }
                 } else {
@@ -554,41 +490,98 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_imprimirActionPerformed
 
+    private boolean isCorrectCantidad(int cantidad, int renglonSPTD) {
+        boolean sw = false;
+        for (Object resultListNcdDetalle1 : resultListSptDetalle) {
+            SalidaParaTiendaDetalle sptd
+                    = (SalidaParaTiendaDetalle) ((Object[]) resultListNcdDetalle1)[0];
+
+            //si es el renglon y la cantidad es menor o igual a la de la factura
+            if (sptd.getNroRenglon() == renglonSPTD && cantidad <= sptd.getCantidadProducto()) {
+                sw = true;
+                break;
+            }
+
+            //si es el renglon y la cantidad es mayor a la de la factura
+            if (sptd.getNroRenglon() == renglonSPTD && cantidad > sptd.getCantidadProducto()) {
+                sw = false;
+                break;
+            }
+        }
+
+        return sw;
+    }
+
     private boolean calcularTotal() {
 
         String filas_incorrectas = "";
         int errores = 0;
-        float total = 0f;
+        float totalCalculo = 0f;
         for (int i = 0; i < tabla.getRowCount(); i++) {
-            Object o = tabla.getModel().getValueAt(i, 3);
+            Object oCantidad = tabla.getModel().getValueAt(i, 3);//cantidad
             int cantidad = 0;
             String str;
-
-            if (o instanceof String) {
-                str = (String) o;
-            }
-            if (o instanceof Integer) {
-                cantidad = (Integer) o;
-            }
-
-            if (cantidad > 0) {
-                if (errores == 0) {
-                    int precio = Integer.parseInt((String) tabla.getModel().getValueAt(i, 4));
-                    total += precio * cantidad;
-                    ((NotaCreditoDebitoDetalle) resultListNcdDetalle.get(i)).setCantidadProducto(cantidad);
+            Object oRenglon = tabla.getModel().getValueAt(i, 0);//renglon
+            int renglon = 0;
+            try {
+                //cantidad
+                if (oCantidad instanceof String) {
+                    str = (String) oCantidad;
+                    cantidad = Integer.parseInt(str);
                 }
-            } else {
-                filas_incorrectas += (i + 1) + "\n";
+                if (oCantidad instanceof Integer) {
+                    cantidad = (Integer) oCantidad;
+                }
+                //renglon
+                if (oRenglon instanceof String) {
+                    str = (String) oRenglon;
+                    renglon = Integer.parseInt(str);
+                }
+                if (oRenglon instanceof Integer) {
+                    renglon = (Integer) oRenglon;
+                }
+
+                if (cantidad > 0) {
+                    //si es debito y la cantidad no es correcta
+                    if (!getTipo() && !isCorrectCantidad(cantidad, renglon)) {
+                        filas_incorrectas += renglon + "\n";
+                        errores++;
+                    }
+
+                    if (errores == 0) {//evita calcular cuando ya hay error en otro renglon
+                        Object oPrecio = tabla.getModel().getValueAt(i, 4);//precio
+                        float precio = 0;
+                        //precio
+                        if (oPrecio instanceof String) {
+                            str = (String) oPrecio;
+                            precio = Float.parseFloat(str);
+                        }
+                        if (oPrecio instanceof Float) {
+                            precio = (Float) oPrecio;
+                        }
+                        totalCalculo += precio * cantidad;
+                        ((NotaCreditoDebitoDetalle) resultListNcdDetalle.get(i)).setCantidadProducto(cantidad);
+                    }
+                } else {
+                    filas_incorrectas += renglon + "\n";
+                    errores++;
+                }
+
+            } catch (Exception e) {
+                Logger.getLogger(JPnotaCreditoDebito.class.getName()).log(Level.SEVERE, null, e);
+                filas_incorrectas += renglon + "\n";
                 errores++;
             }
         }
         if (errores > 0) {
             JOptionPane.showMessageDialog(null, "Existen " + errores
-                    + " errore(s) en los siguientes renglones, porfavor revisar:\n" + filas_incorrectas);
+                    + " errore(s) en los siguientes renglones, porfavor revisar:\n" + filas_incorrectas
+                    + "\nLa cantidad debe ser positiva y menor o igual a la cantidad en el renglón de "
+                    + "la factura.");
             return false;
         } else {
-            this.total.setText(JavaUtil.dosDecimales.format(total));
-            ncd.setTotal(total);
+            this.total.setText(JavaUtil.dosDecimales.format(totalCalculo).replace(",", "."));
+            ncd.setTotal(totalCalculo);
             return true;
         }
 
@@ -627,6 +620,16 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
             ObjectModelDAO.saveObject((NotaCreditoDebitoDetalle) o);
         }
 
+        //si es debito suma IVT en desde: suma porque falta en hasta
+        //si es credito resta en IVT en desde: resta porque sobra en hasta
+//        InventarioTienda
+        if (getTipo()) {
+            
+        } else {
+
+        }
+
+        cb_tiendaActionPerformed(null);
     }//GEN-LAST:event_guardarActionPerformed
 
     private void cb_ncdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_ncdActionPerformed
@@ -658,7 +661,8 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
             crear = false;
             resultListSptDetalle = null;
             ncd = (NotaCreditoDebito) resultLisNcd.get(cb_ncd.getSelectedIndex() - 1);
-            String hql = "FROM NotaCreditoDebitoDetalle ncdd WHERE ncdd.idNotaCreditoDebito=:idNcd";
+            String hql = "FROM NotaCreditoDebitoDetalle ncdd WHERE ncdd.idNotaCreditoDebito=:idNcd "
+                    + "ORDER BY ncdd.nroRenglon";
             DaoQuery q = ObjectModelDAO.createQueryDAO(hql);
             q.getQuery().setParameter("idNcd", ncd);
             resultListNcdDetalle = ObjectModelDAO.getResultQuery(q);
@@ -666,7 +670,7 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
                 cb_salida.setSelectedItem(ncd.getIdSalida().getIdSalida());
                 JavaUtil.displayResult(resultListNcdDetalle, tabla);
                 fecha.setDate(ncd.getFecha());
-                total.setText(JavaUtil.dosDecimales.format(ncd.getTotal()));
+                total.setText(JavaUtil.dosDecimales.format(ncd.getTotal()).replace(",", "."));
                 facturado.setText(ncd.getIdUsuario().getNombre() + " : " + ncd.getIdUsuario().getDescripcion());
                 realizado.setText(user.getNombre() + " : " + user.getDescripcion());
                 fecha.setEnabled(false);
@@ -693,6 +697,7 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
         cb_salida.requestFocus();
         total.setText(" ");
         facturado.setText(" ");
+        realizado.setText(user.getNombre() + " : " + user.getDescripcion());
         tabla.setEditable(true);
         ncd = null;
     }//GEN-LAST:event_nuevoActionPerformed
@@ -712,11 +717,12 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
             String HQL = "SELECT s,ppt.precioConDescuento,ppt.descuento "
                     + "FROM SalidaParaTiendaDetalle s,InventarioTienda ppt INNER JOIN  s.salidaParaTienda spt"
                     + " WHERE spt =:spt"
-                    + " AND ppt.producto=s.producto AND ppt.almacen=spt.idAlmacenHasta";
+                    + " AND ppt.producto=s.producto AND ppt.almacen=spt.idAlmacenHasta "
+                    + "ORDER BY s.nroRenglon";
             DaoQuery q = ObjectModelDAO.createQueryDAO(HQL);
             q.getQuery().setParameter("spt", spt);
             resultListSptDetalle = ObjectModelDAO.getResultQuery(q);
-
+            facturado.setText(spt.getIdUsuario1().getNombre() + " : " + spt.getIdUsuario1().getDescripcion());
             if (ncd == null) {
                 ncd = new NotaCreditoDebito(getTipo(), spt, user);
             }
@@ -805,7 +811,7 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
     }//GEN-LAST:event_tablaKeyReleased
 
     private void totalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_totalMouseClicked
-        if (evt.getClickCount() == 2 && !crear) {
+        if (evt.getClickCount() == 2 && crear) {
             calcularTotal();
         }
     }//GEN-LAST:event_totalMouseClicked
