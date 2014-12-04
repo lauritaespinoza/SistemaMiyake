@@ -174,7 +174,7 @@ public class JPinventarioDiario extends javax.swing.JPanel {
         panelfinalLayout.setHorizontalGroup(
             panelfinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelfinalLayout.createSequentialGroup()
-                .addContainerGap(551, Short.MAX_VALUE)
+                .addContainerGap(513, Short.MAX_VALUE)
                 .addGroup(panelfinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelfinalLayout.createSequentialGroup()
                         .addComponent(imprimir)
@@ -250,9 +250,6 @@ public class JPinventarioDiario extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel4.setText("Hacer Doble Click para Sustituir");
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
-        jLabel1.setText("INVENTARIO DIARIO");
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -262,17 +259,11 @@ public class JPinventarioDiario extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(rifAlmacen, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
-                                    .addComponent(nombreAlmacen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(10, 10, 10))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel1)
-                                .addContainerGap())))
+                            .addComponent(rifAlmacen, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+                            .addComponent(nombreAlmacen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(10, 10, 10))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -296,16 +287,13 @@ public class JPinventarioDiario extends javax.swing.JPanel {
                 .addGap(11, 11, 11)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)
-                        .addComponent(seleccionar))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(nombreAlmacen)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(rifAlmacen)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1)))
+                        .addComponent(rifAlmacen))
+                    .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addComponent(seleccionar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -317,6 +305,10 @@ public class JPinventarioDiario extends javax.swing.JPanel {
         );
 
         panelcabezera.add(jPanel3);
+
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 22)); // NOI18N
+        jLabel1.setText("INVENTARIO DIARIO");
+        panelcabezera.add(jLabel1);
 
         jLabel2.setText("MES:");
 
@@ -335,7 +327,7 @@ public class JPinventarioDiario extends javax.swing.JPanel {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(59, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -401,13 +393,13 @@ public class JPinventarioDiario extends javax.swing.JPanel {
         paneltabla.setLayout(paneltablaLayout);
         paneltablaLayout.setHorizontalGroup(
             paneltablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 722, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
             .addComponent(direccionAlmacen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(paneltablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneltablaLayout.createSequentialGroup()
-                    .addContainerGap(348, Short.MAX_VALUE)
+                    .addContainerGap(329, Short.MAX_VALUE)
                     .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(348, Short.MAX_VALUE)))
+                    .addContainerGap(329, Short.MAX_VALUE)))
         );
         paneltablaLayout.setVerticalGroup(
             paneltablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -670,7 +662,7 @@ public class JPinventarioDiario extends javax.swing.JPanel {
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             File file = filesc.getSelectedFile();
             csvReader = new CSVreader(file.getAbsolutePath());
-            total_facturas.setText(JavaUtil.dosDecimales.format(csvReader.procesCSV().getTotalConIva()).replace(",", "."));
+            total_facturas.setText(JavaUtil.dosDecimales.format(csvReader.procesCSV().getTotalConIva()));
             detalles.setEnabled(true);
         }
     }//GEN-LAST:event_seleccionarActionPerformed
@@ -730,7 +722,7 @@ public class JPinventarioDiario extends javax.swing.JPanel {
                         + (isVacia(data1)
                                 ? 0f : Float.parseFloat(data1.replace(",", ".")))
                         - (isVacia(data2)
-                                ? 0f : Float.parseFloat(data2.replace(",", ".")))).replace(",", "."), 0, 4);
+                                ? 0f : Float.parseFloat(data2.replace(",", ".")))), 0, 4);
         for (int i = 1; i < rows; i++) {//el primero ya lo guardo
             data1 = (String) tabla.getModel().getValueAt(i, 2);
             data2 = (String) tabla.getModel().getValueAt(i, 3);
@@ -740,7 +732,7 @@ public class JPinventarioDiario extends javax.swing.JPanel {
                             + (isVacia(data1)
                                     ? 0f : Float.parseFloat(data1.replace(",", ".")))
                             - (isVacia(data2)
-                                    ? 0f : Float.parseFloat(data2.replace(",", ".")))).replace(",", "."), i, 4);
+                                    ? 0f : Float.parseFloat(data2.replace(",", ".")))), i, 4);
         }
     }//GEN-LAST:event_recalcularActionPerformed
 

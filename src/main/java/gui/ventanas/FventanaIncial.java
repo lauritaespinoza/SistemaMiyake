@@ -38,6 +38,7 @@ import org.pushingpixels.substance.internal.ui.SubstancePanelUI;
 import org.pushingpixels.substance.internal.utils.SubstanceTextUtilities;
 import gui.paneles.JPAsignarMercancia;
 import gui.paneles.JPConsultaInventario;
+import gui.paneles.JPMecanciaEnProceso;
 import gui.paneles.JPNewJPanel;
 import gui.paneles.JPalmacen;
 import gui.paneles.JPclasificacion;
@@ -55,17 +56,17 @@ import gui.paneles.JPubicacion;
 import gui.paneles.JPTomaFisicaInventarioDistribuidora;
 import gui.paneles.JPTomaFisicaInventarioTiendas;
 import gui.paneles.JPexportData;
-import gui.paneles.JPnotaCreditoDebito;
 import gui.paneles.JPusuario;
 import gui.paneles.Tiendas1;
 import gui.paneles.VisorExportSQL;
-import java.lang.reflect.InvocationTargetException;
 import net.sf.jasperreports.engine.JRException;
 
 public class FventanaIncial extends javax.swing.JFrame {
 
-    private static final String tabTomaFisicaTiendas = "Inventario Tiendas. ";
-    private static final String tabUsuarios = "Gestion de Usuarios. ";
+         private static final String tabConsultarMerca = "Consultar Mecancia. ";
+    private static final String tabMecanciaEnProceso = "Mecancia En Proceso. ";
+    private static final String tabTomaFisicaTiendas = "Toma Fisica Tiendas. ";
+    private static final String tabUsuarios = "Gestion De Usuarios. ";
     private static final String tabAsignarMercancia = "Asignar Mercancia. ";
     private static final String tabTomaFisica = "Inventario Distribuidora. ";
     private static final String tabExportData = "Exportacion de Datos. ";
@@ -82,8 +83,6 @@ public class FventanaIncial extends javax.swing.JFrame {
     private static final String tabPrecio = "Actualización de Precios";
     private static final String tabInventarioDiario = "Inventario Diario en Tienda";
     private static final String tabAlmacen = "Almacen";
-    private static final String tabNotaCredito = "Notas de Crédito en Tienda";
-    private static final String tabNotaDebito = "Notas de Débito en Tienda";
 
     private BufferedImage bg;
 
@@ -99,30 +98,20 @@ public class FventanaIncial extends javax.swing.JFrame {
         initComponents();
     }
 
-    //el tipo se usa en nota de credito debito
-    private void addPaneles(String titulo, Class panelNuevo, Boolean tipo) {
+    private void addPaneles(String titulo, Class panelNuevo) {
         try {
 
             int pos = isContained(titulo);
             if (pos == -1) {
-                if (panelNuevo.equals(JPnotaCreditoDebito.class)) {//si es una nota de credito/debito
-                    panel.addTab(titulo, (JPanel) panelNuevo.getConstructor(Boolean.class).newInstance(tipo));
-                } else {
-                    panel.addTab(titulo, (JPanel) panelNuevo.newInstance());
-                }
+                panel.addTab(titulo, (JPanel) panelNuevo.newInstance());
                 panel.setSelectedIndex(panel.getTabCount() - 1);
             } else {
                 panel.setSelectedIndex(pos);
             }
 
         } catch (InstantiationException | IllegalAccessException ex) {
-            Logger.getLogger(FventanaIncial.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NoSuchMethodException | SecurityException ex) {
-            Logger.getLogger(FventanaIncial.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalArgumentException ex) {
-            Logger.getLogger(FventanaIncial.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InvocationTargetException ex) {
-            Logger.getLogger(FventanaIncial.class.getName()).log(Level.SEVERE, null, ex);
+
+            JOptionPane.showMessageDialog(this, "error" + ex);
         }
     }
 
@@ -143,6 +132,8 @@ public class FventanaIncial extends javax.swing.JFrame {
     private void initComponents() {
 
         jXTaskPaneContainer1 = new org.jdesktop.swingx.JXTaskPaneContainer();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -170,8 +161,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         taskPaneModuloTienda = new org.jdesktop.swingx.JXTaskPane();
         jButton6 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        btNC = new javax.swing.JButton();
-        btND = new javax.swing.JButton();
         taskPaneModuloDeposito = new org.jdesktop.swingx.JXTaskPane();
         ExportData_boton_ = new javax.swing.JButton();
         TomaFisicaDistribuidora_boton_ = new javax.swing.JButton();
@@ -180,9 +169,11 @@ public class FventanaIncial extends javax.swing.JFrame {
         ConsultaExistencia_boton_ = new org.jdesktop.swingx.JXButton();
         UbicacionProducto_boton_ = new org.jdesktop.swingx.JXButton();
         jXButton1 = new org.jdesktop.swingx.JXButton();
+        jXButton2 = new org.jdesktop.swingx.JXButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         button1 = new java.awt.Button();
+        jScrollPane1 = new javax.swing.JScrollPane();
         try {
             bg = ImageIO.read(getClass().getResource("/iconos/logomiyake.png"));
 
@@ -202,17 +193,14 @@ public class FventanaIncial extends javax.swing.JFrame {
         };
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema Administrativo Miyake.");
         setBackground(new java.awt.Color(9, 182, 201));
-        setMinimumSize(new java.awt.Dimension(412, 641));
 
         jPanel1.setBackground(new java.awt.Color(107, 181, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 153), 2));
         jPanel1.setForeground(new java.awt.Color(0, 73, 146));
         jPanel1.setAlignmentX(0.0F);
         jPanel1.setAlignmentY(0.0F);
-        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 80, 5);
-        flowLayout1.setAlignOnBaseline(true);
-        jPanel1.setLayout(flowLayout1);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415656208_Home.png"))); // NOI18N
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -220,17 +208,13 @@ public class FventanaIncial extends javax.swing.JFrame {
                 jLabel1MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel1);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/guardar.png"))); // NOI18N
-        jPanel1.add(jLabel6);
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415663705_reload_all_tabs.png"))); // NOI18N
-        jPanel1.add(jLabel7);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415663403_010.png"))); // NOI18N
         jLabel4.setToolTipText("");
-        jPanel1.add(jLabel4);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415656313_Exit.png"))); // NOI18N
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -238,16 +222,47 @@ public class FventanaIncial extends javax.swing.JFrame {
                 jLabel5MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel5);
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.NORTH);
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(80, 80, 80)
+                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(80, 80, 80)
+                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(80, 80, 80)
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(80, 80, 80)
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(9, 9, 9)
+                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         jPanel3.setAlignmentX(0.0F);
         jPanel3.setAlignmentY(0.0F);
-        jPanel3.setLayout(new java.awt.BorderLayout());
 
         jPanel2.setAlignmentX(0.0F);
-        jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.Y_AXIS));
 
         jXCollapsiblePane1.setOpaque(false);
         jXCollapsiblePane1.setAlignmentX(0.0F);
@@ -361,8 +376,6 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         taskPaneModuloFacturacion.getContentPane().add(taskPaneEtiquetas);
 
-        jXCollapsiblePane1.getContentPane().add(taskPaneModuloFacturacion);
-
         taskPaneModuloTienda.setTitle("Tienda");
 
         jButton6.setText("Almacen");
@@ -371,7 +384,6 @@ public class FventanaIncial extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        taskPaneModuloTienda.getContentPane().add(jButton6);
 
         jButton5.setText("Inventario Diario");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -379,25 +391,21 @@ public class FventanaIncial extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        taskPaneModuloTienda.getContentPane().add(jButton5);
 
-        btNC.setText("Notas de Crédito");
-        btNC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btNCActionPerformed(evt);
-            }
-        });
-        taskPaneModuloTienda.getContentPane().add(btNC);
-
-        btND.setText("Notas de Débito");
-        btND.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btNDActionPerformed(evt);
-            }
-        });
-        taskPaneModuloTienda.getContentPane().add(btND);
-
-        jXCollapsiblePane1.getContentPane().add(taskPaneModuloTienda);
+        javax.swing.GroupLayout taskPaneModuloTiendaLayout = new javax.swing.GroupLayout(taskPaneModuloTienda.getContentPane());
+        taskPaneModuloTienda.getContentPane().setLayout(taskPaneModuloTiendaLayout);
+        taskPaneModuloTiendaLayout.setHorizontalGroup(
+            taskPaneModuloTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+        );
+        taskPaneModuloTiendaLayout.setVerticalGroup(
+            taskPaneModuloTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(taskPaneModuloTiendaLayout.createSequentialGroup()
+                .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(2, 2, 2)
+                .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         taskPaneModuloDeposito.setTitle("Depósito");
 
@@ -453,7 +461,13 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
         taskPaneModuloDeposito.getContentPane().add(jXButton1);
 
-        jXCollapsiblePane1.getContentPane().add(taskPaneModuloDeposito);
+        jXButton2.setText("Mercancia en Proceso");
+        jXButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jXButton2ActionPerformed(evt);
+            }
+        });
+        taskPaneModuloDeposito.getContentPane().add(jXButton2);
 
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -461,7 +475,6 @@ public class FventanaIncial extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jXCollapsiblePane1.getContentPane().add(jButton1);
 
         jButton2.setText("jButton2");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -469,7 +482,6 @@ public class FventanaIncial extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jXCollapsiblePane1.getContentPane().add(jButton2);
 
         button1.setLabel("button1");
         button1.addActionListener(new java.awt.event.ActionListener() {
@@ -477,60 +489,148 @@ public class FventanaIncial extends javax.swing.JFrame {
                 button1ActionPerformed(evt);
             }
         });
-        jXCollapsiblePane1.getContentPane().add(button1);
 
-        jPanel2.add(jXCollapsiblePane1);
+        javax.swing.GroupLayout jXCollapsiblePane1Layout = new javax.swing.GroupLayout(jXCollapsiblePane1.getContentPane());
+        jXCollapsiblePane1.getContentPane().setLayout(jXCollapsiblePane1Layout);
+        jXCollapsiblePane1Layout.setHorizontalGroup(
+            jXCollapsiblePane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(taskPaneModuloFacturacion, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(taskPaneModuloTienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(taskPaneModuloDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(button1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jXCollapsiblePane1Layout.setVerticalGroup(
+            jXCollapsiblePane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jXCollapsiblePane1Layout.createSequentialGroup()
+                .addComponent(taskPaneModuloFacturacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addComponent(taskPaneModuloTienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addComponent(taskPaneModuloDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(button1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
-        jPanel3.add(jPanel2, java.awt.BorderLayout.LINE_START);
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jXCollapsiblePane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jXCollapsiblePane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         panel.setAlignmentX(0.0F);
         panel.setAutoscrolls(true);
         panel.setMinimumSize(new java.awt.Dimension(100, 100));
-        jPanel3.add(panel, java.awt.BorderLayout.CENTER);
+        jScrollPane1.setViewportView(panel);
 
-        getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 798, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 12, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
+        jLayeredPane1.setLayout(jLayeredPane1Layout);
+        jLayeredPane1Layout.setHorizontalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jLayeredPane1Layout.setVerticalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jLayeredPane1.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jPanel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jScrollPane2.setViewportView(jLayeredPane1);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrudClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrudClasificacionActionPerformed
-        addPaneles(tabClasificacion, JPclasificacion.class, null);
+        addPaneles(tabClasificacion, JPclasificacion.class);
     }//GEN-LAST:event_btnCrudClasificacionActionPerformed
 
     private void btnCrudMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrudMarcaActionPerformed
-        addPaneles(tabMarca, JPmarca.class, null);
+        addPaneles(tabMarca, JPmarca.class);
     }//GEN-LAST:event_btnCrudMarcaActionPerformed
 
     private void btnCrudDeptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrudDeptoActionPerformed
-        addPaneles(tabDepartamento, JPdepartamento.class, null);
+        addPaneles(tabDepartamento, JPdepartamento.class);
     }//GEN-LAST:event_btnCrudDeptoActionPerformed
 
     private void btnCrudContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrudContactActionPerformed
-        addPaneles(tabContacto, JPcontacto.class, null);
+        addPaneles(tabContacto, JPcontacto.class);
     }//GEN-LAST:event_btnCrudContactActionPerformed
 
     private void btnCrudDivisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrudDivisionActionPerformed
-        addPaneles(tabDivision, JPdivision.class, null);
+        addPaneles(tabDivision, JPdivision.class);
     }//GEN-LAST:event_btnCrudDivisionActionPerformed
 
     private void btnCrudProveedrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrudProveedrActionPerformed
-        addPaneles(tabProveedor, JPproveedor.class, null);
+        addPaneles(tabProveedor, JPproveedor.class);
     }//GEN-LAST:event_btnCrudProveedrActionPerformed
 
     private void btnCrudProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrudProductoActionPerformed
-        addPaneles(tabProducto, JPproducto.class, null);
+        addPaneles(tabProducto, JPproducto.class);
     }//GEN-LAST:event_btnCrudProductoActionPerformed
 
     private void btnCrudUbicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrudUbicacionActionPerformed
-        addPaneles(tabUbicacion, JPubicacion.class, null);
+        addPaneles(tabUbicacion, JPubicacion.class);
     }//GEN-LAST:event_btnCrudUbicacionActionPerformed
 
     private void btnContainerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContainerActionPerformed
-        addPaneles(tabFactura, JPentradaproveedor.class, null);
+        addPaneles(tabFactura, JPentradaproveedor.class);
     }//GEN-LAST:event_btnContainerActionPerformed
 
     private void btnSalidaTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalidaTiendaActionPerformed
-        addPaneles(tabSalida, JPsalida_p_tienda.class, null);
+        addPaneles(tabSalida, JPsalida_p_tienda.class);
     }//GEN-LAST:event_btnSalidaTiendaActionPerformed
 
 
@@ -593,64 +693,62 @@ public class FventanaIncial extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        addPaneles(tabPrecio, JPprecio_productos.class, null);
+        addPaneles(tabPrecio, JPprecio_productos.class);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        addPaneles(tabInventarioDiario, JPinventarioDiario.class, null);
+        addPaneles(tabInventarioDiario, JPinventarioDiario.class);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        addPaneles(tabAlmacen, JPalmacen.class, null);
+        addPaneles(tabAlmacen, JPalmacen.class);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-        addPaneles(tabAlmacen, JPNewJPanel.class, null);// TODO add your handling code here:
+        addPaneles(tabAlmacen, JPNewJPanel.class);// TODO add your handling code here:
     }//GEN-LAST:event_button1ActionPerformed
 
     private void ExportData_boton_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExportData_boton_ActionPerformed
 
-        addPaneles(tabExportData, JPexportData.class, null);
+        addPaneles(tabExportData, JPexportData.class);
 
     }//GEN-LAST:event_ExportData_boton_ActionPerformed
 
     private void TomaFisicaDistribuidora_boton_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TomaFisicaDistribuidora_boton_ActionPerformed
 
-        addPaneles(tabTomaFisica, Distribuidora1.class, null);
+        addPaneles(tabTomaFisica, Distribuidora1.class);
 
     }//GEN-LAST:event_TomaFisicaDistribuidora_boton_ActionPerformed
 
     private void AsignarMercancia_boton_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsignarMercancia_boton_ActionPerformed
 
-        addPaneles(tabAsignarMercancia, Asignar1.class, null);
+        addPaneles(tabAsignarMercancia, Asignar1.class);
 
     }//GEN-LAST:event_AsignarMercancia_boton_ActionPerformed
 
     private void TomaFisicaTiendas_boton_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TomaFisicaTiendas_boton_ActionPerformed
 
-        addPaneles(tabTomaFisicaTiendas, Tiendas1.class, null);
+        addPaneles(tabTomaFisicaTiendas, Tiendas1.class);
 
     }//GEN-LAST:event_TomaFisicaTiendas_boton_ActionPerformed
 
     private void ConsultaExistencia_boton_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaExistencia_boton_ActionPerformed
 
-        addPaneles(tabAsignarMercancia, JPConsultaInventario.class, null);
+        addPaneles(tabConsultarMerca, JPConsultaInventario.class);
 
         // TODO add your handling code here:
     }//GEN-LAST:event_ConsultaExistencia_boton_ActionPerformed
 
     private void jXButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXButton1ActionPerformed
 
-        addPaneles(tabUsuarios, JPusuario.class, null);
+        addPaneles(tabUsuarios, JPusuario.class);
     }//GEN-LAST:event_jXButton1ActionPerformed
 
-    private void btNCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNCActionPerformed
-        addPaneles(tabNotaCredito, JPnotaCreditoDebito.class, true);
-    }//GEN-LAST:event_btNCActionPerformed
-
-    private void btNDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNDActionPerformed
-        addPaneles(tabNotaDebito, JPnotaCreditoDebito.class, false);
-    }//GEN-LAST:event_btNDActionPerformed
+    private void jXButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXButton2ActionPerformed
+       
+        addPaneles(tabMecanciaEnProceso, JPMecanciaEnProceso.class);
+        
+    }//GEN-LAST:event_jXButton2ActionPerformed
 
     public static void main(String args[]) {
 
@@ -666,7 +764,7 @@ public class FventanaIncial extends javax.swing.JFrame {
                 } catch (UnsupportedLookAndFeelException ex) {
                     Logger.getLogger(FventanaIncial.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
+ 
             }
         });
 
@@ -679,8 +777,6 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JButton TomaFisicaDistribuidora_boton_;
     private org.jdesktop.swingx.JXButton TomaFisicaTiendas_boton_;
     private org.jdesktop.swingx.JXButton UbicacionProducto_boton_;
-    private javax.swing.JButton btNC;
-    private javax.swing.JButton btND;
     private javax.swing.JButton btnContainer;
     private javax.swing.JButton btnCrudClasificacion;
     private javax.swing.JButton btnCrudContact;
@@ -702,10 +798,14 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private org.jdesktop.swingx.JXButton jXButton1;
+    private org.jdesktop.swingx.JXButton jXButton2;
     private org.jdesktop.swingx.JXCollapsiblePane jXCollapsiblePane1;
     private org.jdesktop.swingx.JXTaskPaneContainer jXTaskPaneContainer1;
     private com.ClosableTabbedPane panel;
