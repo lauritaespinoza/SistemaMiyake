@@ -178,6 +178,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         btNC = new javax.swing.JButton();
         btND = new javax.swing.JButton();
         jXButton3 = new org.jdesktop.swingx.JXButton();
+        jXButton4 = new org.jdesktop.swingx.JXButton();
         taskPaneModuloDeposito = new org.jdesktop.swingx.JXTaskPane();
         ExportData_boton_ = new javax.swing.JButton();
         TomaFisicaDistribuidora_boton_ = new javax.swing.JButton();
@@ -430,6 +431,13 @@ public class FventanaIncial extends javax.swing.JFrame {
             }
         });
 
+        jXButton4.setText("modificado joseasdasdd jose");
+        jXButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jXButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout taskPaneModuloTiendaLayout = new javax.swing.GroupLayout(taskPaneModuloTienda.getContentPane());
         taskPaneModuloTienda.getContentPane().setLayout(taskPaneModuloTiendaLayout);
         taskPaneModuloTiendaLayout.setHorizontalGroup(
@@ -439,6 +447,7 @@ public class FventanaIncial extends javax.swing.JFrame {
             .addComponent(btNC, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
             .addComponent(btND, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
             .addComponent(jXButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jXButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         taskPaneModuloTiendaLayout.setVerticalGroup(
             taskPaneModuloTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -451,7 +460,9 @@ public class FventanaIncial extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(btND)
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jXButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jXButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jXButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         taskPaneModuloDeposito.setTitle("Depósito");
@@ -809,6 +820,10 @@ public class FventanaIncial extends javax.swing.JFrame {
         // accion1
     }//GEN-LAST:event_jXButton3ActionPerformed
 
+    private void jXButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXButton4ActionPerformed
+        // accion 3 jose
+    }//GEN-LAST:event_jXButton4ActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -868,6 +883,7 @@ public class FventanaIncial extends javax.swing.JFrame {
     private org.jdesktop.swingx.JXButton jXButton1;
     private org.jdesktop.swingx.JXButton jXButton2;
     private org.jdesktop.swingx.JXButton jXButton3;
+    private org.jdesktop.swingx.JXButton jXButton4;
     private org.jdesktop.swingx.JXCollapsiblePane jXCollapsiblePane1;
     private org.jdesktop.swingx.JXTaskPaneContainer jXTaskPaneContainer1;
     private com.ClosableTabbedPane panel;
