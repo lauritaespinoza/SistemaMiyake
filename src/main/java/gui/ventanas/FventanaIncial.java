@@ -178,6 +178,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         btNC = new javax.swing.JButton();
         btND = new javax.swing.JButton();
         jXButton3 = new org.jdesktop.swingx.JXButton();
+        botonjose = new org.jdesktop.swingx.JXButton();
         taskPaneModuloDeposito = new org.jdesktop.swingx.JXTaskPane();
         ExportData_boton_ = new javax.swing.JButton();
         TomaFisicaDistribuidora_boton_ = new javax.swing.JButton();
@@ -423,7 +424,19 @@ public class FventanaIncial extends javax.swing.JFrame {
             }
         });
 
-        jXButton3.setText("jXButton3");
+        jXButton3.setText("modificado jose");
+        jXButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jXButton3ActionPerformed(evt);
+            }
+        });
+
+        botonjose.setText("modificado jose2");
+        botonjose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonjoseActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout taskPaneModuloTiendaLayout = new javax.swing.GroupLayout(taskPaneModuloTienda.getContentPane());
         taskPaneModuloTienda.getContentPane().setLayout(taskPaneModuloTiendaLayout);
@@ -434,6 +447,7 @@ public class FventanaIncial extends javax.swing.JFrame {
             .addComponent(btNC, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
             .addComponent(btND, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
             .addComponent(jXButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(botonjose, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         taskPaneModuloTiendaLayout.setVerticalGroup(
             taskPaneModuloTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -446,7 +460,9 @@ public class FventanaIncial extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(btND)
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jXButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jXButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(botonjose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         taskPaneModuloDeposito.setTitle("Depósito");
@@ -800,6 +816,14 @@ public class FventanaIncial extends javax.swing.JFrame {
        addPaneles(tabNotaDebito, JPnotaCreditoDebito.class, false);
     }//GEN-LAST:event_btNDActionPerformed
 
+    private void botonjoseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonjoseActionPerformed
+        // accion 2
+    }//GEN-LAST:event_botonjoseActionPerformed
+
+    private void jXButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXButton3ActionPerformed
+        // accion1
+    }//GEN-LAST:event_jXButton3ActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -827,6 +851,7 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JButton TomaFisicaDistribuidora_boton_;
     private org.jdesktop.swingx.JXButton TomaFisicaTiendas_boton_;
     private org.jdesktop.swingx.JXButton UbicacionProducto_boton_;
+    private org.jdesktop.swingx.JXButton botonjose;
     private javax.swing.JButton btNC;
     private javax.swing.JButton btND;
     private javax.swing.JButton btnContainer;
