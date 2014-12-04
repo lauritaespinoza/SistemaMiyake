@@ -657,6 +657,8 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jButton6" max="32767" attributes="0"/>
                                   <Component id="jButton5" pref="222" max="32767" attributes="0"/>
+                                  <Component id="btNC" pref="222" max="32767" attributes="0"/>
+                                  <Component id="btND" pref="222" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
@@ -665,6 +667,10 @@
                                       <Component id="jButton6" max="32767" attributes="0"/>
                                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                                       <Component id="jButton5" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                      <Component id="btNC" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                      <Component id="btND" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -684,6 +690,22 @@
                               </Properties>
                               <Events>
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JButton" name="btNC">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Notas de Cr&#xe9;dito"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btNCActionPerformed"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JButton" name="btND">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Notas de D&#xe9;bito"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btNDActionPerformed"/>
                               </Events>
                             </Component>
                           </SubComponents>
