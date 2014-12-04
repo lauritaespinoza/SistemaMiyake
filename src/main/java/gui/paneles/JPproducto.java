@@ -801,7 +801,6 @@ public class JPproducto extends javax.swing.JPanel {
             p.setIdProveedor((Proveedor) resultListProveedor.get(cb_proveedor1.getSelectedIndex()));
             p.setIdClasificacion((Clasificacion) resultListClasificacion.get(cb_clasifProduct1.getSelectedIndex()));
             p.setIdProducto(Integer.parseInt(field_codproducto.getText()));
-            p.setUltimaActividad(new Date());
             ObjectModelDAO.updateObject(p);
 
             resultListClasificacion = ObjectModelDAO.getResultQuery("FROM Clasificacion c order by c.idClasificacion asc");

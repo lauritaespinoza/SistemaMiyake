@@ -5,7 +5,7 @@
     <!-- org.hibernate.dialect.PostgreSQLDialect -->
     <!-- <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>-->
     <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-    <property name="hibernate.connection.url">jdbc:postgresql://127.0.0.1:5432/miyake_pasantia</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://tecnosys.dyndns.tv:5432/miyake_pasantia</property>
     <property name="hibernate.connection.username">postgres</property>
     <property name="hibernate.connection.password">admin</property>
     <property name="hibernate.default_schema">public</property>
