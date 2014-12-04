@@ -211,13 +211,13 @@ public class Factura {
         for (Map.Entry<Producto, Integer> entry : productos.entrySet()) {
             Producto p = entry.getKey();
             rsl += "\t" + p.getCodigo() + "\t" + p.getTipo() + "\t"
-                    + JavaUtil.dosDecimales.format(p.getPrecio()).replace(",", ".") + "\t" + entry.getValue() + "\n";
+                    + JavaUtil.dosDecimales.format(p.getPrecio()) + "\t" + entry.getValue() + "\n";
         }
         String tsi, tci, trsi, trci;
-        tsi = JavaUtil.dosDecimales.format(totalSinIva).replace(",", ".");
-        tci = JavaUtil.dosDecimales.format(totalConIva).replace(",", ".");
-        trsi = JavaUtil.dosDecimales.format(totalSinIvaLEIDO).replace(",", ".");
-        trci = JavaUtil.dosDecimales.format(totalConIvaLEIDO).replace(",", ".");
+        tsi = JavaUtil.dosDecimales.format(totalSinIva);
+        tci = JavaUtil.dosDecimales.format(totalConIva);
+        trsi = JavaUtil.dosDecimales.format(totalSinIvaLEIDO);
+        trci = JavaUtil.dosDecimales.format(totalConIvaLEIDO);
         rsl += "\n\t" + "Total sin IVA : " + tsi
                 + "\tTotal con IVA : " + tci
                 + "\n\tTotalReal sin IVA : " + trsi

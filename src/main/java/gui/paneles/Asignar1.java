@@ -35,7 +35,7 @@ import static gui.ventanas.JFInicioSecionMiyake.resultListUsuarios;
  * @author Pablo
  */
 public class Asignar1 extends javax.swing.JPanel {
-    
+
     Usuario ususrioActual = null;
     Usuario user = JFInicioSecionMiyake.us1;
     Almacen almacenHasta = null;
@@ -44,7 +44,7 @@ public class Asignar1 extends javax.swing.JPanel {
     List resultListInventarioTienda = null;
     //List inventarioTiendaHasta = null;
     private int renglon = 1;
-    
+
     InventarioTienda inv = null;
     InventarioTienda invAux = null;
     int posUs = -1;
@@ -64,13 +64,13 @@ public class Asignar1 extends javax.swing.JPanel {
         String sql = "FROM Almacen a order by a.idAlmacen asc";
         resultListAlmacen = ObjectModelDAO.getResultQuery(sql);
         comboBoxAlmacenHasta.removeAllItems();
-        
+
         comboBoxAlmacenDesde.removeAllItems();
 
         // this.comboBoxAlmacenDesde.addItem("Selecionar");
         for (Object object : resultListAlmacen) {
             Almacen a = (Almacen) object;
-            
+
             comboBoxAlmacenHasta.addItem(a.getNombre() + " TLF:" + a.getTelefono1());
             comboBoxAlmacenDesde.addItem(a.getNombre() + " TLF:" + a.getTelefono1());
         }
@@ -86,19 +86,19 @@ public class Asignar1 extends javax.swing.JPanel {
         for (Object object : resultListUsuarios) {
             Usuario u = (Usuario) object;
             comboBoxUsuarios.addItem(u.getNombre() + " :" + u.getDescripcion());
-            
+
         }
-        
+
         this.comboBoxAlmacenDesde.setSelectedIndex(-1);
         this.comboBoxAlmacenHasta.setSelectedIndex(-1);
         this.comboBoxUsuarios.setSelectedIndex(-1);
         this.busy.setVisible(false);
         this.busy1.setVisible(false);
-        
+
     }
-    
+
     public static void main(String args[]) {
-        
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -107,10 +107,10 @@ public class Asignar1 extends javax.swing.JPanel {
                 } catch (Exception ex) {
                     Logger.getLogger(Asignar1.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
+
             }
         });
-        
+
     }
 
     /**
@@ -304,7 +304,7 @@ public class Asignar1 extends javax.swing.JPanel {
         );
         jXTaskPane1Layout.setVerticalGroup(
             jXTaskPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 173, Short.MAX_VALUE)
+            .addGap(0, 179, Short.MAX_VALUE)
             .addGroup(jXTaskPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jXTaskPane1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -620,10 +620,11 @@ public class Asignar1 extends javax.swing.JPanel {
                         .addComponent(jXButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(busy1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(124, 124, 124)
-                        .addComponent(jXButtonAsignarMercancia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(106, 106, 106)
+                        .addComponent(jXButtonAsignarMercancia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
                     .addComponent(jLayeredPaneBuscarProducto, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLayeredPaneDatosProductos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 653, Short.MAX_VALUE)
+                    .addComponent(jLayeredPaneDatosProductos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 653, Short.MAX_VALUE)
                     .addComponent(jScrollPane5))
                 .addContainerGap())
         );
@@ -634,7 +635,7 @@ public class Asignar1 extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLayeredPaneDatosProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 147, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jLayeredPaneProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(busy1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -668,18 +669,15 @@ public class Asignar1 extends javax.swing.JPanel {
         jLayeredPanePrincipal.setLayout(jLayeredPanePrincipalLayout);
         jLayeredPanePrincipalLayout.setHorizontalGroup(
             jLayeredPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPanePrincipalLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPanePrincipalLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jLayeredPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jLayeredPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jXTaskPane2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jLayeredPanePrincipalLayout.createSequentialGroup()
-                        .addGroup(jLayeredPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jXTaskPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jLayeredPanePrincipalLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                    .addComponent(jXTaskPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jLayeredPanePrincipalLayout.createSequentialGroup()
+                        .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 533, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jLayeredPanePrincipalLayout.setVerticalGroup(
             jLayeredPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -717,9 +715,9 @@ public class Asignar1 extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jXButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXButtonConfirmarActionPerformed
-        
+
         Thread hilo = new Thread() {
-            
+
             @Override
             public void run() {
                 busy.setEnabled(true);
@@ -729,15 +727,15 @@ public class Asignar1 extends javax.swing.JPanel {
                     posUs = comboBoxUsuarios.getSelectedIndex();
                     posTi2 = comboBoxAlmacenDesde.getSelectedIndex();
                     posTi = comboBoxAlmacenHasta.getSelectedIndex();
-                    
+
                     if (posUs != -1 && posTi2 != -1 && posTi != -1) {
                         ususrioActual = (Usuario) resultListUsuarios.get(posUs);
                         almacenDesde = (Almacen) resultListAlmacen.get(posTi2);
                         almacenHasta = (Almacen) resultListAlmacen.get(posTi);
                         //COnstruir Consulta
-                        String sql = "SELECT i FROM InventarioTienda i WHERE i.cantidad > 0 and i.inventarioTiendaPK.idAlmacen =" + almacenDesde.getIdAlmacen();
+                        String sql = "SELECT i FROM InventarioTienda i WHERE i.cantidad > 0 and i.inventarioTiendaPK.idAlmacen =" + almacenDesde.getIdAlmacen() + "and i.asignado is true";
                         resultListInventarioTienda = ObjectModelDAO.getResultQuery(sql);
-                        
+
                         for (Object listaInventarioTienda : resultListInventarioTienda) {
                             System.err.println("Los datos son : " + ((InventarioTienda) listaInventarioTienda).getProducto());
                         }
@@ -768,12 +766,12 @@ public class Asignar1 extends javax.swing.JPanel {
             }
         };
         hilo.start();
-        
+
 
     }//GEN-LAST:event_jXButtonConfirmarActionPerformed
 
     private void botonListarProductosInventariTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonListarProductosInventariTiendaActionPerformed
-        
+
         try {
             JDInventarioTienda jdInventarioTienda
                     = new JDInventarioTienda(null, true,
@@ -800,7 +798,7 @@ public class Asignar1 extends javax.swing.JPanel {
 
                 //Botones
                 this.botonValidar.setEnabled(true);
-                
+
                 this.botonLimpiarAgregar.setEnabled(true);
                 this.txtNroBulto.setEnabled(false);
                 this.txtCantidad.requestFocus();
@@ -809,20 +807,20 @@ public class Asignar1 extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Error al cargar Lista de Facturas" + ex);
             Logger.getLogger(Asignar1.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
 
     }//GEN-LAST:event_botonListarProductosInventariTiendaActionPerformed
 
     private void comboBoxAlmacenHastaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comboBoxAlmacenHastaMouseClicked
-        
+
         this.jXButtonConfirmar.setEnabled(true);
 
     }//GEN-LAST:event_comboBoxAlmacenHastaMouseClicked
-    
+
 
     private void jXButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXButtonBuscarActionPerformed
         boolean encontrado = true;
-        
+
         try {
             if ("".equals(this.txtBusqueda.getText())) {
                 JOptionPane.showMessageDialog(null, "¡¡¡Intriduzca Atributo de Busqueda Por Favor!!!");
@@ -831,11 +829,11 @@ public class Asignar1 extends javax.swing.JPanel {
                 List<InventarioTienda> listaProductos = this.resultListInventarioTienda;
                 switch (pos) {
                     case 0:
-                        
+
                         int codigoSKU = Integer.parseInt(this.txtBusqueda.getText());
-                        
+
                         for (InventarioTienda lista : listaProductos) {
-                            
+
                             if (lista.getProducto().getIdProducto().equals(codigoSKU)) {
                                 //JOptionPane.showConfirmDialog(this, " EL CODIGO SKU ES CORRECTO");
                                 inv = lista;
@@ -854,17 +852,17 @@ public class Asignar1 extends javax.swing.JPanel {
                                 //this.botonAgregar.setEnabled(true);
                                 this.botonLimpiarAgregar.setEnabled(true);
                                 this.botonValidar.setEnabled(true);
-                                
+
                             } else {
                                 encontrado = false;
                             }
                         }
-                        
+
                         break;
                     case 1:
                         String referencia = this.txtBusqueda.getText();
                         for (InventarioTienda lista : listaProductos) {
-                            
+
                             if (lista.getProducto().getReferenciaProducto().equalsIgnoreCase(referencia)) {
                                 //JOptionPane.showConfirmDialog(this, " LA REFERENCIA ES CORRECTA");
                                 inv = lista;
@@ -883,11 +881,11 @@ public class Asignar1 extends javax.swing.JPanel {
                             }
                         }
                         break;
-                    
+
                     case 2:
                         String descripcion = this.txtBusqueda.getText();
                         for (InventarioTienda lista : listaProductos) {
-                            
+
                             if (lista.getProducto().getDescripcion().equalsIgnoreCase(descripcion)) {
                                 // JOptionPane.showConfirmDialog(this, " LA DESCRIPCION ES CORRECTA");
                                 inv = lista;
@@ -910,7 +908,7 @@ public class Asignar1 extends javax.swing.JPanel {
 //                throw new AssertionError();
 
                 }
-                
+
                 if (encontrado == false) {
                     JOptionPane.showMessageDialog(null, "¡¡¡La Busqueda No Arrojo Ningun Resultado!!!\n"
                             + "Verifique los Datos de Buqueda y Vuelva a Intentarlo.");
@@ -923,7 +921,7 @@ public class Asignar1 extends javax.swing.JPanel {
     }//GEN-LAST:event_jXButtonBuscarActionPerformed
 
     private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
-        
+
         try {
             if ("".equals(this.txtCantidad.getText())
                     || "".equals(this.txtNroBulto.getText())
@@ -932,13 +930,13 @@ public class Asignar1 extends javax.swing.JPanel {
             } else {
                 deReg = new DetalleRegistro();
                 deReg.setInv(inv);
-                
+
                 deReg.setCantidad(Integer.parseInt(this.txtCantidad.getText()));
                 deReg.setBulto(Integer.parseInt(this.txtNroBulto.getText()));
                 deReg.setRenglon(renglon++);
-                
+
                 listaDetalle.add(deReg);
-                
+
                 modeloTablaAsignacion.setListaDetalleResgistro(listaDetalle);
                 modeloTablaAsignacion.fireTableDataChanged();
                 // mta.setBandera(true);
@@ -963,29 +961,29 @@ public class Asignar1 extends javax.swing.JPanel {
                 this.txtCantidad.setEnabled(false);
                 this.botonValidar.setEnabled(false);
                 this.jXButtonAsignarMercancia.setEnabled(true);
-                
+
             }
         } catch (HeadlessException | NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "ERROR Agregando Producto a la Tabla y Lista : " + ex);
             Logger.getLogger(Asignar1.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
 
     }//GEN-LAST:event_botonAgregarActionPerformed
 
     private void jXButtonAsignarMercanciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXButtonAsignarMercanciaActionPerformed
-        
+
         Thread hilo = new Thread() {
-            
+
             @Override
             public void run() {
                 jXButtonAsignarMercancia.setEnabled(false);
                 busy1.setVisible(true);
                 busy1.setBusy(true);
-                
+
                 try {
-                    
-                    Float total = 0f;
+
+                    Float totalCosto = 0f;
 
                     //SalidaParaTienda cab = new SalidaParaTienda(ObjectModelDAO.getObject(al.getIdAlmacen(), Almacen.class), user, ayudante);
                     SalidaParaTienda cab = new SalidaParaTienda(almacenDesde, almacenHasta, user, ususrioActual);
@@ -998,11 +996,11 @@ public class Asignar1 extends javax.swing.JPanel {
                             //List resultListInventarioHasta = ObjectModelDAO.getResultQuery(sql);
                             //InventarioTienda ivtHasta = resultListInventarioHasta.get(0)
                             System.out.println("Datos Lista : " + dr.toString());
-                            
+
                             SalidaParaTiendaDetallePK detallePK = new SalidaParaTiendaDetallePK(
                                     dr.inv.getProducto().getIdProducto(),
                                     id_creado_cabecera);
-                            
+
                             SalidaParaTiendaDetalle detalle = new SalidaParaTiendaDetalle(
                                     detallePK,
                                     dr.getCantidad(),
@@ -1010,7 +1008,7 @@ public class Asignar1 extends javax.swing.JPanel {
                                     dr.getRenglon(),
                                     dr.inv.getProducto(),
                                     cab);
-                            
+
                             Object id_creado_detalle = ObjectModelDAO.saveObject(detalle);
                             if (id_creado_detalle instanceof SalidaParaTiendaDetallePK
                                     && ((SalidaParaTiendaDetallePK) id_creado_detalle) == null) {
@@ -1023,7 +1021,7 @@ public class Asignar1 extends javax.swing.JPanel {
                                         dr.inv.getProducto().getIdProducto(),
                                         almacenDesde.getIdAlmacen()
                                 );
-                                //Guaradar Inventario
+                                //Guaradar Inventario del Almacen DESDE
                                 InventarioTienda id_in = ObjectModelDAO.getObject(inventarioPK, InventarioTienda.class);
                                 System.err.println("ObjectModelDAO.getObject(inventarioPK, InventarioTienda.class) es: " + id_in);
                                 if (id_in == null) {
@@ -1032,46 +1030,86 @@ public class Asignar1 extends javax.swing.JPanel {
                                 } else {
                                     // id_in.setPrecio(dr.ep.getIdProducto().getPrecioOriginal());
                                     //id_in.setDescuento(0f);
+                                    //**************************Descuenta de Mercancia en el Alamacen DESDE donde se Envia
                                     id_in.setCantidad(id_in.getCantidad() - dr.getCantidad());
+                                    //id_in.setAsignado(Boolean.FALSE);
+//                                    if (id_in.getCantidad() == 0) {
+//                                        //Si DESDE el Almacen donde se Envia la Mercancia 
+//                                        //No queda Ninguna Existencia de Producto ó Es Igual a cero la Cantidad
+//                                        //Entonces Vacio es verdadero 
+//                                        //y el valor asignado es falso porque cuando lo reciban sera verdadero
+//                                        id_in.setAsignado(Boolean.FALSE);
+//                                        id_in.setVacio(Boolean.TRUE);
+//                                    } else {
+//                                         //en caso contrario asignado sigue siendo falso
+//                                        //pero vacio es tambien falso porque si existe mercancia en el almacen
+//                                        id_in.setAsignado(Boolean.FALSE);
+//                                        id_in.setVacio(Boolean.FALSE);
+//
+//                                    }
                                     ObjectModelDAO.updateObject(id_in);
                                     System.err.println("Actualizando Inventario de Producto Existente");
 
-                                    //Actualizar Obtener Precio                            
+                                   
+                                    //**************************************************************************
+                                    //Actualizar Obtener Precio en Los Productos del almacen Hasta donde se envia                            
                                     System.err.println("Creando PK inventario");
                                     InventarioTiendaPK inventarioPK2 = new InventarioTiendaPK(//Guaradar InventarioPK
                                             dr.inv.getProducto().getIdProducto(),
                                             almacenHasta.getIdAlmacen()
                                     );
-                                    //Guaradar Inventario
+                                    //Guaradar Inventario del almacen HASTA donde se envia
                                     InventarioTienda id_in2 = ObjectModelDAO.getObject(inventarioPK2, InventarioTienda.class);
                                     System.err.println("ObjectModelDAO.getObject(inventarioPK, InventarioTienda.class) es: " + id_in);
                                     if (id_in2 == null) {
                                         JOptionPane.showMessageDialog(null, "El Producto no Existe en La Tienda Hacia se Envia,se creara");
-                                        
+
                                         id_in2 = new InventarioTienda(
                                                 inventarioPK2,
-                                                dr.getCantidad(),
+                                                //dr.getCantidad(),
+                                                0,
                                                 almacenHasta,
                                                 dr.inv.getProducto()
                                         );
-                                        
+
                                         id_in2.setPrecioConDescuento(id_in.getPrecioConDescuento());
                                         id_in2.setPrecioSinDescuento(id_in.getPrecioSinDescuento());
                                         id_in2.setDescuento(0);
+                                        id_in2.setProcesado(dr.getCantidad());
+                                        
+                                        //*************AUMENTO de Mercancia en el Alamacen HASTA donde se Envia
+                                        //id_in2.setCantidad(id_in.getCantidad() + dr.getCantidad());
+                                        //Existencia del Inventario del Almacen HASTA donde se envia
+                                        // if (id_in2.getCantidad() == 0) {
+                                        //Si del Almacen HASTA donde se Envia la Mercancia 
+                                        //Es Igual a cero la Cantidad
+                                        //Entonces Vacio es verdadero 
+                                        //y el valor asignado es falso porque cuando lo reciban sera verdadero
+                                        id_in2.setAsignado(Boolean.FALSE);
+                                        //id_in2.setVacio(Boolean.TRUE);
+                                    //} else {
+                                         //en caso contrario asignado sigue siendo falso
+                                        //pero vacio es tambien falso porque si existe mercancia en el almacen
+                                      //  id_in2.setAsignado(Boolean.TRUE);
+                                       // id_in2.setVacio(Boolean.FALSE);
+
+                                    //}
+                                        
+                                        
                                         ObjectModelDAO.saveObject(id_in2);
-//crear if varificando si el inventario2 se creo                                        
-//Object id_creado_inventario = ObjectModelDAO.saveObject(id_in);
+                                        //crear if varificando si el inventario2 se creo                                        
+                                        //Object id_creado_inventario = ObjectModelDAO.saveObject(id_in);
                                     }
 
-                                    //total += id_in2.getPrecioConDescuento();
+                                    totalCosto += id_in2.getPrecioConDescuento();
                                     System.err.println("EXITO CREANDO REGISTRO LISTA DETALLES:");
                                     JOptionPane.showMessageDialog(null, "¡¡¡REGISTRO GUARDADO CON EXITO!!!");
                                 }
                             }
                         }
                     }
-                    
-                    cab.setTotal(total);
+
+                    cab.setTotal(totalCosto);
                     //cab.setRevisado(false);
                     ObjectModelDAO.updateObject(cab);
                     //  jXTable1.clearSelection();
@@ -1102,11 +1140,11 @@ public class Asignar1 extends javax.swing.JPanel {
                     botonLimpiarAgregar.setEnabled(false);
                     botonAgregar.setEnabled(false);
                     jXButtonAsignarMercancia.setEnabled(false);
-                    
+
                     busy1.setEnabled(false);
                     busy1.setVisible(false);
                     busy1.setBusy(false);
-                    
+
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "ERROR Asignando Mercancia :" + e);
                     System.err.println("ERROR Asignando Mercancia :" + e);
@@ -1125,7 +1163,6 @@ public class Asignar1 extends javax.swing.JPanel {
                 // al = null;
                 // txtAlmcen.setText("");
                 // pro = null;
-
                 // busy.setVisible(false);
                 // busy.setBusy(false);
                 //  
@@ -1138,7 +1175,6 @@ public class Asignar1 extends javax.swing.JPanel {
                 // al = null;
                 // txtAlmcen.setText("");
                 // pro = null;
-
                 // busy.setVisible(false);
                 // busy.setBusy(false);
                 //  
@@ -1151,7 +1187,6 @@ public class Asignar1 extends javax.swing.JPanel {
                 // al = null;
                 // txtAlmcen.setText("");
                 // pro = null;
-
                 // busy.setVisible(false);
                 // busy.setBusy(false);
                 //  
@@ -1164,7 +1199,6 @@ public class Asignar1 extends javax.swing.JPanel {
                 // al = null;
                 // txtAlmcen.setText("");
                 // pro = null;
-
                 // busy.setVisible(false);
                 // busy.setBusy(false);
                 //  
@@ -1177,7 +1211,6 @@ public class Asignar1 extends javax.swing.JPanel {
                 // al = null;
                 // txtAlmcen.setText("");
                 // pro = null;
-
                 // busy.setVisible(false);
                 // busy.setBusy(false);
                 //  
@@ -1190,7 +1223,6 @@ public class Asignar1 extends javax.swing.JPanel {
                 // al = null;
                 // txtAlmcen.setText("");
                 // pro = null;
-
                 // busy.setVisible(false);
                 // busy.setBusy(false);
                 //  
@@ -1203,7 +1235,6 @@ public class Asignar1 extends javax.swing.JPanel {
                 // al = null;
                 // txtAlmcen.setText("");
                 // pro = null;
-
                 // busy.setVisible(false);
                 // busy.setBusy(false);
                 //  
@@ -1219,7 +1250,7 @@ public class Asignar1 extends javax.swing.JPanel {
             }
         };
         hilo.start();
-        
+
 
     }//GEN-LAST:event_jXButtonAsignarMercanciaActionPerformed
 
@@ -1245,10 +1276,10 @@ public class Asignar1 extends javax.swing.JPanel {
     }//GEN-LAST:event_txtCantidadActionPerformed
 
     private void jXButtonReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXButtonReiniciarActionPerformed
-        
+
         try {
             int respuesta = JOptionPane.showConfirmDialog(null, "¿Seguro Desea Cancelar?", "Confirmacion", JOptionPane.YES_NO_OPTION);
-            
+
             if (respuesta == JOptionPane.YES_OPTION) {
                 // this.jXButtonConfirmar.setEnabled(true);
                 //Limpiar Lista y Tabla
@@ -1298,25 +1329,25 @@ public class Asignar1 extends javax.swing.JPanel {
                 this.botonValidar.setEnabled(false);
                 this.botonAgregar.setEnabled(false);
                 this.botonLimpiarAgregar.setEnabled(false);
-                
+
             }
         } catch (Exception e) {
             Logger.getLogger(Asignar1.class.getName()).log(Level.SEVERE, null, e);
             JOptionPane.showMessageDialog(null, "Por Favor, Seleccione Un Pedido Valido Para Continuar.!!!");
             System.err.println("ERROR ó Excepcion Boton Reiniciar Todo Desde Pedido : " + e);
         }
-        
+
 
     }//GEN-LAST:event_jXButtonReiniciarActionPerformed
 
     private void comboBoxAlmacenDesdeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comboBoxAlmacenDesdeMouseClicked
-        
+
         this.jXButtonConfirmar.setEnabled(true);
 
     }//GEN-LAST:event_comboBoxAlmacenDesdeMouseClicked
 
     private void comboBoxUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comboBoxUsuariosMouseClicked
-        
+
         this.jXButtonConfirmar.setEnabled(true);
 
     }//GEN-LAST:event_comboBoxUsuariosMouseClicked
@@ -1339,7 +1370,7 @@ public class Asignar1 extends javax.swing.JPanel {
     }//GEN-LAST:event_botonLimpiarAgregarActionPerformed
 
     private void txtCantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantidadKeyTyped
-        
+
         char car = evt.getKeyChar();
         String cadena = ",-_{}[¨*+´!°#$%&/()=?¡.;;><qwertyuiopñlkjhgfdsazxcvbnm,.-ç´+`¡'<º"
                 + "¨_:´:_.-*^+`QWERTYUIOPÑLKJHGFDSAZXCVBNM,.-´ç+`¡'º<>ª!^·$%&/()=?¿*"; // Caracterens no validos
@@ -1353,9 +1384,9 @@ public class Asignar1 extends javax.swing.JPanel {
     }//GEN-LAST:event_txtCantidadKeyTyped
 
     private void botonValidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonValidarActionPerformed
-        
+
         try {
-            
+
             if ("".equals(this.txtCantidad.getText())) {
                 JOptionPane.showMessageDialog(null, "¡¡¡Intriduzca Cantidad Por Favor!!!");
             }
@@ -1365,7 +1396,7 @@ public class Asignar1 extends javax.swing.JPanel {
             if (inv.getCantidad() < (Math.abs(Integer.parseInt(this.txtCantidad.getText())))) {
                 JOptionPane.showMessageDialog(null, "¡¡¡La Cantida Supera la Existencia en Inventario!!!");
             }
-            
+
             if (inv.getCantidad() >= (Math.abs(Integer.parseInt(this.txtCantidad.getText())))) {
                 this.txtNroBulto.setEnabled(true);
                 this.txtNroBulto.requestFocus();
@@ -1380,12 +1411,12 @@ public class Asignar1 extends javax.swing.JPanel {
         } catch (NumberFormatException | HeadlessException e) {
             JOptionPane.showMessageDialog(null, "ERROR Evento Boton Validar : " + e);
             Logger.getLogger(JPTomaFisicaInventarioDistribuidora.class.getName()).log(Level.SEVERE, null, e);
-            
+
         }
     }//GEN-LAST:event_botonValidarActionPerformed
 
     private void txtBusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyTyped
-        
+
         int pos = this.comboBoxTipoBusqueda.getSelectedIndex();
         switch (pos) {
             case 0:
@@ -1407,17 +1438,13 @@ public class Asignar1 extends javax.swing.JPanel {
     }//GEN-LAST:event_txtBusquedaKeyTyped
 
     private void comboBoxTipoBusquedaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboBoxTipoBusquedaItemStateChanged
-        
+
         this.txtBusqueda.setText("");
         this.txtBusqueda.requestFocus();
 
     }//GEN-LAST:event_comboBoxTipoBusquedaItemStateChanged
 
     private void jXButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXButton1ActionPerformed
-
-
-
-
 
 //        String SQL = "COPY (select 0 as a,1 as b,replicate(' ', 7) || id_producto As id_producto, \n"
 //                + "		LTRIM(replace((RTRIM(descripcion)),',',' ')) as descripcion, \n"
@@ -1430,16 +1457,12 @@ public class Asignar1 extends javax.swing.JPanel {
 //                + "From producto  \n"
 //                + "where precio_original>0.05 and descripcion not like ' '  and id_producto>=100000\n"
 //                + "Order By id_producto) TO 'C:/Users/Pablo/export/prueba.txt' WITH DELIMITER AS ',' ";
-   //     String SQL="select now() as laHora";
-        
+        //     String SQL="select now() as laHora";
 //        String SQL="COPY (select * from usuario) TO "
 //                + "'C:/Users/Pablo/export/prueba.txt' WITH DELIMITER AS ','";
 //        ObjectModelDAO.getResultQueryString(SQL); 
 //        
-        
-        
-        
-        
+
     }//GEN-LAST:event_jXButton1ActionPerformed
 
 

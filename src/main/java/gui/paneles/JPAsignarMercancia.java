@@ -692,7 +692,7 @@ public class JPAsignarMercancia extends javax.swing.JPanel {
                         almacenDesde = (Almacen) resultListAlmacen.get(posTi2);
                         almacenHasta = (Almacen) resultListAlmacen.get(posTi);
                         //COnstruir Consulta
-                        String sql = "SELECT i FROM InventarioTienda i WHERE i.cantidad > 0 and i.inventarioTiendaPK.idAlmacen =" + almacenDesde.getIdAlmacen();
+                        String sql = "SELECT i FROM InventarioTienda i WHERE i.cantidad > 0 and i.inventarioTiendaPK.idAlmacen =" + almacenDesde.getIdAlmacen() + "and i.asignado is true";
                         resultListInventarioTienda = ObjectModelDAO.getResultQuery(sql);
                         
                         for (Object listaInventarioTienda : resultListInventarioTienda) {
