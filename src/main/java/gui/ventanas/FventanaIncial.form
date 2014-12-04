@@ -660,7 +660,6 @@
                                   <Component id="btNC" pref="222" max="32767" attributes="0"/>
                                   <Component id="btND" pref="222" max="32767" attributes="0"/>
                                   <Component id="jXButton3" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="botonjose" alignment="0" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
@@ -675,8 +674,6 @@
                                       <Component id="btND" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       <Component id="jXButton3" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      <Component id="botonjose" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -720,14 +717,6 @@
                               </Properties>
                               <Events>
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXButton3ActionPerformed"/>
-                              </Events>
-                            </Component>
-                            <Component class="org.jdesktop.swingx.JXButton" name="botonjose">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="modificado jose2"/>
-                              </Properties>
-                              <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonjoseActionPerformed"/>
                               </Events>
                             </Component>
                           </SubComponents>
