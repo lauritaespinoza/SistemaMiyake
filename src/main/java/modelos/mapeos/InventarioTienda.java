@@ -43,7 +43,9 @@ public class InventarioTienda implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected InventarioTiendaPK inventarioTiendaPK;
+    private Boolean asignado;
     private Integer cantidad;
+    private Integer procesado;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "precio_con_descuento", precision = 8, scale = 8)
     private Float precioConDescuento;
@@ -151,6 +153,22 @@ public class InventarioTienda implements Serializable {
 
     public void setProducto(Producto producto) {
         this.producto = producto;
+    }
+
+    public Boolean getAsignado() {
+        return asignado;
+    }
+
+    public void setAsignado(Boolean asignado) {
+        this.asignado = asignado;
+    }
+
+    public Integer getProcesado() {
+        return procesado;
+    }
+
+    public void setProcesado(Integer procesado) {
+        this.procesado = procesado;
     }
 
     @Override
