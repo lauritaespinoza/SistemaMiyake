@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <!-- org.hibernate.dialect.PostgreSQLDialect -->
+    <!-- <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>-->
+    <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://tecnosys.dyndns.tv:5432/miyake_pasantia</property>
+    <property name="hibernate.connection.username">postgres</property>
+    <property name="hibernate.connection.password">admin</property>
+    <property name="hibernate.default_schema">public</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.use_sql_comments">true</property>
+    <property name="hibernate.transaction.auto_close_session">false</property>
+    <mapping class="modelos.mapeos.Almacen"/>
+    <mapping class="modelos.mapeos.Clasificacion"/>
+    <mapping class="modelos.mapeos.Contacto"/>
+    <mapping class="modelos.mapeos.ConteoMercanciaEntrada"/>
+    <mapping class="modelos.mapeos.ConteoMercanciaEntradaDetalles"/>
+    <mapping class="modelos.mapeos.ConteoMercanciaEntradaDetallesPK"/>
+    <mapping class="modelos.mapeos.Departamento"/>
+    <mapping class="modelos.mapeos.Division"/>
+    <mapping class="modelos.mapeos.EntradaProveedor"/>
+    <mapping class="modelos.mapeos.Factura"/>
+    <mapping class="modelos.mapeos.InventarioDiario"/>
+    <mapping class="modelos.mapeos.InventarioDiarioDetalle"/>
+    <mapping class="modelos.mapeos.InventarioTienda"/>
+    <mapping class="modelos.mapeos.InventarioTiendaPK"/>
+    <mapping class="modelos.mapeos.Marca"/>
+    <mapping class="modelos.mapeos.NotaCreditoDebito"/>
+    <mapping class="modelos.mapeos.NotaCreditoDebitoDetalle"/>
+    <mapping class="modelos.mapeos.Producto"/>
+    <mapping class="modelos.mapeos.Proveedor"/>
+    <mapping class="modelos.mapeos.SalidaParaTienda"/>
+    <mapping class="modelos.mapeos.SalidaParaTiendaDetalle"/>
+    <mapping class="modelos.mapeos.SalidaParaTiendaDetallePK"/>
+    <mapping class="modelos.mapeos.Ubicacion"/>
+    <mapping class="modelos.mapeos.Usuario"/>
+  </session-factory>
+</hibernate-configuration>
