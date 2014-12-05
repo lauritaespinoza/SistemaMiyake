@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e1b47aaf-929c-4b30-8b21-ce4618bf1181">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="69"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -62,7 +62,7 @@
 	<parameter name="Facturado" class="java.lang.String"/>
 	<parameter name="Realizado" class="java.lang.String"/>
 	<parameter name="Rif" class="java.lang.String"/>
-	<parameter name="Fecha" class="java.util.Date"/>
+	<parameter name="Fecha" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -110,7 +110,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{NumFactura}]]></textFieldExpression>
 			</textField>
-			<textField pattern="" isBlankWhenNull="false">
+			<textField pattern="" isBlankWhenNull="true">
 				<reportElement mode="Transparent" x="1" y="118" width="179" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="766b8d0d-d170-4b7f-97e3-70ca7bc8b778"/>
 				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
 					<font fontName="Calibri" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
@@ -118,17 +118,17 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{Rif}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="461" y="115" width="77" height="1" uuid="25d7a1c6-2758-4eed-92ad-98898b85f896"/>
+			</line>
 			<textField pattern="" isBlankWhenNull="false">
-				<reportElement mode="Transparent" x="461" y="70" width="77" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="2a53f2fa-c298-4fad-9896-a08f0e3d812c"/>
+				<reportElement stretchType="RelativeToTallestObject" mode="Transparent" x="461" y="69" width="77" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="d0e010a1-51c5-4474-9fe7-fd23fda7ebf2"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
 					<font fontName="Times New Roman" size="12" isBold="false" isItalic="false" isUnderline="true" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{Fecha}]]></textFieldExpression>
 			</textField>
-			<line>
-				<reportElement x="461" y="115" width="77" height="1" uuid="25d7a1c6-2758-4eed-92ad-98898b85f896"/>
-			</line>
 		</band>
 	</pageHeader>
 	<columnHeader>

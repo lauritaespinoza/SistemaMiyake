@@ -109,7 +109,7 @@ public class panelReportePreciosActualizados extends javax.swing.JPanel {
             parametro.put("FechaDesde",new SimpleDateFormat("yyyy-MM-dd").format(fechaDesde.getDate()));
             parametro.put("FechaHasta",new SimpleDateFormat("yyyy-MM-dd").format(fechaHasta.getDate()));
             
-
+            System.out.println("desde:"+new SimpleDateFormat("yyyy-MM-dd").format(fechaDesde.getDate()) );
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection("jdbc:postgresql://tecnosys.dyndns.tv:5432/miyake_pasantia", "postgres", "admin");
             //+ "jdbc:postgresql://192.2.1.70:5432/miyake_pasantia", "postgres", "admin");

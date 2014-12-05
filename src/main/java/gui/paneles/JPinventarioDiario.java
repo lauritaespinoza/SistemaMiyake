@@ -468,9 +468,9 @@ public class JPinventarioDiario extends javax.swing.JPanel {
                 Almacen alc = (Almacen) resultListAlmacen.get(cb_tiendas.getSelectedIndex() - 1);
 
                 nombreAlmacen.setText(alc.getNombre());
-                rifAlmacen.setText("RIF: " + alc.getRif());
+                rifAlmacen.setText("RIF: " + alc.getRif()== null? "" :alc.getRif());
                 direccionAlmacen.setText(alc.getIdUbicacion() == null
-                        ? null : alc.getIdUbicacion().toString());
+                        ?"" : alc.getIdUbicacion().toString());
 
                 JavaUtil.preCambio(alc.getLogo(), logo);
 
@@ -790,6 +790,7 @@ public class JPinventarioDiario extends javax.swing.JPanel {
         } catch (IOException | JRException e) {
             JOptionPane.showMessageDialog(this, "error" + e);
         }
+        
     }//GEN-LAST:event_imprimirActionPerformed
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed

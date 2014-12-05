@@ -364,7 +364,7 @@ public abstract class JavaUtil {
         }
 
         if (o instanceof NotaCreditoDebitoDetalle) {
-            header.add("Renglón");
+            header.add("Renglon");
             header.add("Referencia");
             header.add("Descripcion");
             header.add("Cantidad");

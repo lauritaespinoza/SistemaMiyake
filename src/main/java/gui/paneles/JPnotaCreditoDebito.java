@@ -578,7 +578,7 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
             parametro.put("NumFactura", cb_salida.getSelectedItem());
             parametro.put("Facturado", facturado.getText());
             parametro.put("Realizado", realizado.getText());
-            parametro.put("Fecha",fecha.getDate());
+            parametro.put("Fecha",new SimpleDateFormat("dd-MM-yyyy").format(fecha.getDate()));
             parametro.put("Direccion", direccionAlmacen.getText());
             parametro.put("Tienda", nombreAlmacen.getText());
             parametro.put("Rif", rifAlmacen.getText());
@@ -815,9 +815,9 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
         Almacen alc = (Almacen) resultListAlmacen.get(cb_tienda.getSelectedIndex() - 1);
         JavaUtil.preCambio(alc.getLogo(), logo);
         nombreAlmacen.setText(alc.getNombre());
-        rifAlmacen.setText("RIF: " + alc.getRif());
+        rifAlmacen.setText("RIF: " + alc.getRif()== null? "" :alc.getRif());
         direccionAlmacen.setText(alc.getIdUbicacion() == null
-                ? null : alc.getIdUbicacion().toString());
+                ? "" : alc.getIdUbicacion().toString());
         String hql = "FROM NotaCreditoDebito ncd WHERE ncd.tipo=:tipo AND ncd.idSalida.revisado=:revisado "
                 + "AND ncd.idSalida.idAlmacenHasta=:almacen ORDER BY ncd.idNotaCreditoDebito asc";
 //        String hql = "FROM NotaCreditoDebito ncd WHERE ncd.tipo=:tipo AND ncd.idSalida.idAlmacenHasta=:almacen order by ncd.idNotaCreditoDebito asc";

@@ -14,11 +14,14 @@ import java.awt.event.KeyEvent;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
@@ -26,9 +29,16 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import modelos.mapeos.Almacen;
 import modelos.mapeos.InventarioTienda;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRExporter;
+import net.sf.jasperreports.engine.JRExporterParameter;
 import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.export.JRPdfExporter;
+import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import org.hibernate.Query;
 
@@ -47,7 +57,6 @@ public class JPprecio_productos extends javax.swing.JPanel {
     public final InputStream rutaJasper = this.getClass().getResourceAsStream("/reportes/ReporteProductosDescuento.jasper");
     public final InputStream rutaJrxml = this.getClass().getResourceAsStream("/reportes/ReporteProductosDescuento.jrxml");
 
-   
     public JPprecio_productos() {
         initComponents();
         setTableCellAlignment(JLabel.CENTER, tablaproductos_con_precios);
@@ -681,27 +690,51 @@ public class JPprecio_productos extends javax.swing.JPanel {
     }//GEN-LAST:event_ru_precios_productosStateChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        Connection conexion = null;
         try {
-            JasperPrint jasperPrint = null;
+            JasperPrint jasperPrint;
             Class.forName("org.postgresql.Driver");
-            Connection conexion = DriverManager.getConnection("jdbc:postgresql://tecnosys.dyndns.tv:5432/miyake_pasantia", "postgres", "admin");
+            conexion = DriverManager.getConnection("jdbc:postgresql://tecnosys.dyndns.tv:5432/miyake_pasantia", "postgres", "admin");
             //+ "jdbc:postgresql://192.2.1.70:5432/miyake_pasantia", "postgres", "admin");
-            JasperCompileManager.compileReport(rutaJrxml);
-            jasperPrint = JasperFillManager.fillReport(rutaJasper, null, conexion);
+            JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ReporteProductosDescuento.jasper"));
+//JasperCompileManager.compileReport(rutaJrxml);
+            jasperPrint = JasperFillManager.fillReport(reporte, null, conexion);
+            // Create a PDF exporter
+//            JRExporter exporter = new JRPdfExporter();
+//            
+//            // Configure the exporter (set output file name and print object)
+//            exporter.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, "C:\\Users\\Usuario\\Desktop\\prueb25.pdf");
+//            exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
             JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
             jasperViewer.setTitle("Reporte de Todos los Productos con Descuento");
             jasperViewer.setVisible(true);
+
+            //--loo           JasperExportManager.exportReportToPdfFile(jasperPrint, "src/test.pdf");
+//            JRExporter exporter = new JRPdfExporter();
+//            exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
+//            exporter.setParameter(JRExporterParameter.OUTPUT_FILE, new java.io.File("reportefact.pdf"));
+//            exporter.exportReport();
 //          
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | SQLException | JRException e) {
             JOptionPane.showMessageDialog(null, "error" + e);
+            Logger.getLogger(JPprecio_productos.class
+                    .getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                if (conexion != null) {
+                    conexion.close();
+                    conexion = null;
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
-        JavaUtil.createJDialogGeneric(new panelReporteProdDescTienda());    
-        
+
+        JavaUtil.createJDialogGeneric(new panelReporteProdDescTienda());
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
