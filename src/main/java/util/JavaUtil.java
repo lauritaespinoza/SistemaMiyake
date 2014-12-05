@@ -41,6 +41,8 @@ import modelos.mapeos.Clasificacion;
 import modelos.mapeos.Contacto;
 import modelos.mapeos.Departamento;
 import modelos.mapeos.Division;
+import modelos.mapeos.EntradaProveedor;
+import modelos.mapeos.Factura;
 import modelos.mapeos.InventarioDiarioDetalle;
 import modelos.mapeos.InventarioTienda;
 import modelos.mapeos.InventarioTiendaPK;
@@ -48,6 +50,7 @@ import modelos.mapeos.Marca;
 import modelos.mapeos.NotaCreditoDebitoDetalle;
 import modelos.mapeos.Producto;
 import modelos.mapeos.Proveedor;
+import modelos.mapeos.SalidaParaTienda;
 import modelos.mapeos.SalidaParaTiendaDetalle;
 import modelos.mapeos.Ubicacion;
 import modelos.mapeos.Usuario;
@@ -147,7 +150,7 @@ public abstract class JavaUtil {
             oneRow.add(p.getIdClasificacion().getNombre());
             oneRow.add(p.getIdMarca().getNombre());
             oneRow.add(p.getIdProveedor().getNombre());
-            oneRow.add(dosDecimales.format(p.getPrecioOriginal()).replace(",", "."));
+            oneRow.add(p.getPrecioOriginal());
         }
 
         //si es un vector, y si el la primera es Salida para tienda detalle entonces es
@@ -161,7 +164,7 @@ public abstract class JavaUtil {
             oneRow.add(s.getProducto().getReferenciaProducto());
             oneRow.add(s.getProducto().getDescripcion());
             oneRow.add(s.getCantidadProducto());
-            oneRow.add(dosDecimales.format(vec[1]).replace(",", "."));//precio
+            oneRow.add(vec[1]);//precio
             oneRow.add(vec[2]);//descuento
             oneRow.add(s.getNroBulto());
         }
@@ -171,11 +174,12 @@ public abstract class JavaUtil {
             oneRow.add(ivt.getAlmacen().getNombre());
             oneRow.add(ivt.getProducto().getIdProducto());
             oneRow.add(ivt.getProducto().getDescripcion());
-            oneRow.add(dosDecimales.format(ivt.getPrecioSinDescuento() == null ? 0f : ivt.getPrecioSinDescuento()).replace(",", "."));
+            oneRow.add(dosDecimales.format(ivt.getPrecioSinDescuento() == null ? 0f : ivt.getPrecioSinDescuento()));
             oneRow.add(ivt.getDescuento().toString() + "%");
-            oneRow.add(dosDecimales.format(ivt.getPrecioConDescuento() == null ? 0f : ivt.getPrecioConDescuento()).replace(",", "."));
+            oneRow.add(dosDecimales.format(ivt.getPrecioConDescuento() == null ? 0f : ivt.getPrecioConDescuento()));
             oneRow.add(ivt.getFechaCreacion());
             oneRow.add(ivt.getFechaModificacion());
+            oneRow.add(ivt.getCantidad());
         }
 
         if (o instanceof Almacen) {
@@ -195,9 +199,9 @@ public abstract class JavaUtil {
             InventarioDiarioDetalle ivdDetalle = (InventarioDiarioDetalle) o;
             oneRow.add(ivdDetalle.getFecha() == null ? "" : new SimpleDateFormat("yyyy-MM-dd").format(ivdDetalle.getFecha()));
             oneRow.add(ivdDetalle.getConcepto());
-            oneRow.add(dosDecimales.format(ivdDetalle.getEntrada() == null ? 0f : ivdDetalle.getEntrada()).replace(",", "."));
-            oneRow.add(dosDecimales.format(ivdDetalle.getSalida() == null ? 0f : ivdDetalle.getSalida()).replace(",", "."));
-            oneRow.add(dosDecimales.format(ivdDetalle.getSaldo() == null ? 0f : ivdDetalle.getSaldo()).replace(",", "."));
+            oneRow.add(dosDecimales.format(ivdDetalle.getEntrada() == null ? 0f : ivdDetalle.getEntrada()));
+            oneRow.add(dosDecimales.format(ivdDetalle.getSalida() == null ? 0f : ivdDetalle.getSalida()));
+            oneRow.add(dosDecimales.format(ivdDetalle.getSaldo() == null ? 0f : ivdDetalle.getSaldo()));
         }
 
         if (o instanceof NotaCreditoDebitoDetalle) {
@@ -207,7 +211,46 @@ public abstract class JavaUtil {
             oneRow.add(ntcd.getIdProducto().getDescripcion());
             oneRow.add(ntcd.getCantidadProducto());
             InventarioTienda ivt = ObjectModelDAO.getObject(new InventarioTiendaPK(ntcd.getIdProducto().getIdProducto(), ntcd.getIdNotaCreditoDebito().getIdSalida().getIdAlmacenHasta().getIdAlmacen()), InventarioTienda.class);
-            oneRow.add(Float.parseFloat(dosDecimales.format(ivt.getPrecioConDescuento()).replace(",", ".")));
+            oneRow.add(ivt.getPrecioConDescuento());
+        }
+        if (o instanceof Factura) {
+            Factura f = (Factura) o;
+            oneRow.add(f.getNroFactura());
+            oneRow.add(f.getTotalFactura());
+            oneRow.add(f.getRecibidoPor());
+            oneRow.add(f.getEmbarcadoVia());
+            oneRow.add(f.getIdAlmacen().getNombre());
+            oneRow.add(f.getIdProveedor().getNombre());
+
+        }
+        if (o instanceof SalidaParaTienda) {
+            SalidaParaTienda sa = (SalidaParaTienda) o;
+            oneRow.add(sa.getIdAlmacenDesde().getNombre());
+            oneRow.add(sa.getIdUsuario2());
+            oneRow.add(sa.getIdAlmacenHasta().getNombre());
+            oneRow.add(sa.getIdAlmacenHasta().getTelefono1());
+            oneRow.add(sa.getRevisado());
+            oneRow.add(sa.getTotal());
+            oneRow.add(sa.getFechaAsignacion());
+        }
+
+        if (o instanceof SalidaParaTiendaDetalle) {
+            SalidaParaTiendaDetalle s = (SalidaParaTiendaDetalle) o;
+            oneRow.add(s.getProducto().getIdProducto());
+            oneRow.add(s.getProducto().getReferenciaProducto());
+            oneRow.add(s.getProducto().getDescripcion());
+            oneRow.add(s.getCantidadProducto());
+            oneRow.add(s.getNroBulto());
+        }
+        if (o instanceof EntradaProveedor) {
+            EntradaProveedor ep = (EntradaProveedor) o;
+            oneRow.add(ep.getIdProducto().getIdProducto());
+            oneRow.add(ep.getIdProducto().getDescripcion());
+            oneRow.add(ep.getCantidadSet());
+            oneRow.add(ep.getCantidadProducto());
+            oneRow.add(ep.getCantidadSet() * ep.getCantidadProducto());
+            oneRow.add(ep.getNroBulto());
+            oneRow.add(ep.getFechaRecepcion());
         }
 
         return oneRow;
@@ -290,13 +333,14 @@ public abstract class JavaUtil {
         }
         if (o instanceof InventarioTienda) {
             header.add("Tienda");
-            header.add("Código Producto");
-            header.add("Nombre Producto");
-            header.add("Precio sin Descuento");
+            header.add("Código");
+            header.add("Descripcion");
+            header.add("SinDesc");
             header.add("Descuento");
-            header.add("Precio con Descuento");
-            header.add("Fecha de Creación");
-            header.add("Fecha de Modificación");
+            header.add("ConDesc");
+            header.add("Creación");
+            header.add("Modificación");
+            header.add("Existencia");
         }
 
         if (o instanceof Almacen) {
@@ -320,13 +364,51 @@ public abstract class JavaUtil {
         }
 
         if (o instanceof NotaCreditoDebitoDetalle) {
-            header.add("Renglon");
+            header.add("Renglón");
             header.add("Referencia");
             header.add("Descripcion");
             header.add("Cantidad");
             header.add("Precio");
         }
+        if (o instanceof Factura) {
 
+            header.add("Nro Factura");
+            header.add("Total Factura");
+            header.add("Recibido Por");
+            header.add("Embarcado Via");
+            header.add("Almacen");
+            header.add("Proveedor");
+        }
+
+        if (o instanceof SalidaParaTienda) {
+
+            header.add("Almacen Distribuidor");
+            header.add("Asignado Por");
+            header.add("Almacen Asignado");
+            header.add("Telefono");
+            header.add("Estatus de Pedido");
+            header.add("Total");
+            header.add("Fecha");
+        }
+        
+        if (o instanceof SalidaParaTiendaDetalle) {
+            header.add("Codigo");
+            header.add("Referencia");
+            header.add("Descripcion");
+            header.add("Cantidad");
+            header.add("Precio");
+            header.add("Bulto");
+        }
+
+        if (o instanceof EntradaProveedor) {
+            header.add("Codigo Producto");
+            header.add("Descripcion");
+            header.add("UM");
+            header.add("Cantidad Producto");
+            header.add("Total Conteo");
+            header.add("Nro bulto");
+            header.add("Fecha recepcion");
+        }
         return header;
     }
 

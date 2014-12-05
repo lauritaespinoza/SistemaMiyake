@@ -35,7 +35,7 @@ public class JPexportData extends javax.swing.JPanel {
     public JPexportData() {
         initComponents();
         cargarCB();
-         busy.setEnabled(false);
+        busy.setEnabled(false);
         busy.setVisible(false);
         busy.setBusy(false);
     }
@@ -45,6 +45,7 @@ public class JPexportData extends javax.swing.JPanel {
             tiendas = ObjectModelDAO.getResultQuery("from Almacen a order by a.idAlmacen asc");
             cb_tienda.removeAllItems();
             cb_tienda.addItem(cons_seleccionar);
+
             for (Object object : tiendas) {
                 Almacen a = (Almacen) object;
                 cb_tienda.addItem(a.getNombre());
@@ -52,6 +53,7 @@ public class JPexportData extends javax.swing.JPanel {
             pos_tienda = -1;
 
         } catch (Exception e) {
+            Logger.getLogger(JPexportData.class.getName()).log(Level.SEVERE, null, e);
             JOptionPane.showMessageDialog(null, "ERROR AL CARGAR ComBox : " + e);
             System.err.println("ERROR AL CARGAR ComBox : " + e);
         }
@@ -69,8 +71,16 @@ public class JPexportData extends javax.swing.JPanel {
 
         filesc = new javax.swing.JFileChooser();
         jPanel3 = new javax.swing.JPanel();
-        archivo = new javax.swing.JLabel();
-        tabpanel = new javax.swing.JTabbedPane();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
+        AbrirArchivoBoton_ = new javax.swing.JButton();
+        jXButton2 = new org.jdesktop.swingx.JXButton();
+        GenerarArchivoBoton = new org.jdesktop.swingx.JXButton();
+        jComboBoxTipoExport = new javax.swing.JComboBox();
+        jXLabel1 = new org.jdesktop.swingx.JXLabel();
+        cb_tienda = new javax.swing.JComboBox();
+        jLabel9 = new javax.swing.JLabel();
+        jXButton1 = new org.jdesktop.swingx.JXButton();
+        busy = new org.jdesktop.swingx.JXBusyLabel();
         panel1 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel12 = new javax.swing.JPanel();
@@ -93,20 +103,111 @@ public class JPexportData extends javax.swing.JPanel {
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         totalCi = new javax.swing.JLabel();
-        busy = new org.jdesktop.swingx.JXBusyLabel();
-        jLayeredPane1 = new javax.swing.JLayeredPane();
-        AbrirArchivoBoton_ = new javax.swing.JButton();
-        jXButton2 = new org.jdesktop.swingx.JXButton();
-        GenerarArchivoBoton = new org.jdesktop.swingx.JXButton();
-        jComboBox1 = new javax.swing.JComboBox();
-        jXLabel1 = new org.jdesktop.swingx.JXLabel();
-        cb_tienda = new javax.swing.JComboBox();
-        jLabel9 = new javax.swing.JLabel();
-        jXButton1 = new org.jdesktop.swingx.JXButton();
+        archivo = new javax.swing.JLabel();
+
+        filesc.setCurrentDirectory(new java.io.File("C:\\Users\\Pablo"));
+
+        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        tabpanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Componente"));
+        jLayeredPane1.setBorder(javax.swing.BorderFactory.createTitledBorder("Exportacion de Datos. "));
+
+        AbrirArchivoBoton_.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/ayuda.png"))); // NOI18N
+        AbrirArchivoBoton_.setText("Abrir Archivo");
+        AbrirArchivoBoton_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AbrirArchivoBoton_ActionPerformed(evt);
+            }
+        });
+
+        jXButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417212535_Forward.png"))); // NOI18N
+        jXButton2.setText("Enviar Por Email");
+        jXButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jXButton2ActionPerformed(evt);
+            }
+        });
+
+        GenerarArchivoBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416789780_database_gear.png"))); // NOI18N
+        GenerarArchivoBoton.setText("Generar Archivo");
+        GenerarArchivoBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GenerarArchivoBotonActionPerformed(evt);
+            }
+        });
+
+        jComboBoxTipoExport.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Generar Por BarCode", "Generar Por Descuento", "Generar Por Producto" }));
+
+        jXLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/tipo.png"))); // NOI18N
+        jXLabel1.setText("Tipo de Exportacion");
+
+        cb_tienda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_tiendaActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/desde.png"))); // NOI18N
+        jLabel9.setText("Seleccione Tienda");
+
+        jXButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/reiniciar.png"))); // NOI18N
+        jXButton1.setText("Reiniciar");
+
+        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
+        jLayeredPane1.setLayout(jLayeredPane1Layout);
+        jLayeredPane1Layout.setHorizontalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                        .addComponent(jXLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBoxTipoExport, 0, 1, Short.MAX_VALUE))
+                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                        .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cb_tienda, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(GenerarArchivoBoton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(AbrirArchivoBoton_, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jXButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                    .addComponent(jXButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jLayeredPane1Layout.setVerticalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AbrirArchivoBoton_)
+                    .addComponent(cb_tienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(jXButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(GenerarArchivoBoton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxTipoExport, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jXLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jXButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jLayeredPane1.setLayer(AbrirArchivoBoton_, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jXButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(GenerarArchivoBoton, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jComboBoxTipoExport, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jXLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(cb_tienda, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jLabel9, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jXButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        busy.setText("CARGANDO...!!!");
+
+        panel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Deatalles de Exportacion"));
 
         jTabbedPane2.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -123,14 +224,14 @@ public class JPexportData extends javax.swing.JPanel {
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 3, Short.MAX_VALUE))
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Vizualizar", jPanel12);
@@ -148,7 +249,7 @@ public class JPexportData extends javax.swing.JPanel {
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel13Layout.setVerticalGroup(
@@ -169,7 +270,7 @@ public class JPexportData extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
+            .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,208 +307,101 @@ public class JPexportData extends javax.swing.JPanel {
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTabbedPane2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel25)
+                            .addGroup(panel1Layout.createSequentialGroup()
+                                .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                                .addGap(14, 14, 14))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                                .addComponent(jLabel26)
+                                .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(4, 4, 4))
-                            .addComponent(jLabel24)
-                            .addComponent(jLabel27)
-                            .addComponent(jLabel28))
+                            .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(panel1Layout.createSequentialGroup()
+                                .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(20, 20, 20))
+                            .addGroup(panel1Layout.createSequentialGroup()
+                                .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(16, 16, 16)))
                         .addGap(11, 11, 11)
                         .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(precioP, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
-                            .addComponent(totalCi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(totalSi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tipoP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(codigoP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())
+                            .addComponent(precioP, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                            .addComponent(totalCi, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                            .addComponent(totalSi, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                            .addComponent(tipoP, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                            .addComponent(codigoP, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)))
                     .addGroup(panel1Layout.createSequentialGroup()
-                        .addGap(167, 167, 167)
-                        .addComponent(jLabel23)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(archivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel23)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel24)
-                    .addComponent(codigoP, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel25)
-                    .addComponent(tipoP, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel26)
-                    .addComponent(precioP, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel27)
-                    .addComponent(totalSi, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(totalCi, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel28))
-                .addGap(73, 73, 73))
             .addGroup(panel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
-        );
-
-        tabpanel.addTab("CSV", panel1);
-
-        busy.setText("CARGANDO...!!!");
-
-        jLayeredPane1.setBorder(javax.swing.BorderFactory.createTitledBorder("Exportacion de Datos. "));
-
-        AbrirArchivoBoton_.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/ayuda.png"))); // NOI18N
-        AbrirArchivoBoton_.setText("Abrir Archivo");
-        AbrirArchivoBoton_.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AbrirArchivoBoton_ActionPerformed(evt);
-            }
-        });
-
-        jXButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417212535_Forward.png"))); // NOI18N
-        jXButton2.setText("Enviar Por Email");
-        jXButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jXButton2ActionPerformed(evt);
-            }
-        });
-
-        GenerarArchivoBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416789780_database_gear.png"))); // NOI18N
-        GenerarArchivoBoton.setText("Generar Archivo");
-        GenerarArchivoBoton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GenerarArchivoBotonActionPerformed(evt);
-            }
-        });
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Generar Por BarCode", "Generar Por Descuento", "Generar Por Producto" }));
-
-        jXLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/tipo.png"))); // NOI18N
-        jXLabel1.setText("Tipo de Exportacion");
-
-        cb_tienda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_tiendaActionPerformed(evt);
-            }
-        });
-
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/desde.png"))); // NOI18N
-        jLabel9.setText("Seleccione Tienda");
-
-        jXButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/reiniciar.png"))); // NOI18N
-        jXButton1.setText("Reiniciar");
-
-        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
-        jLayeredPane1.setLayout(jLayeredPane1Layout);
-        jLayeredPane1Layout.setHorizontalGroup(
-            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addComponent(jXLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cb_tienda, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(GenerarArchivoBoton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(AbrirArchivoBoton_, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jXButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jXButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(archivo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel24)
+                            .addComponent(codigoP, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(32, 32, 32)
+                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel25)
+                            .addComponent(tipoP, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(32, 32, 32)
+                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel26)
+                            .addComponent(precioP, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(32, 32, 32)
+                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel27)
+                            .addComponent(totalSi, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(32, 32, 32)
+                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(totalCi, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel28))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jLayeredPane1Layout.setVerticalGroup(
-            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AbrirArchivoBoton_)
-                    .addComponent(cb_tienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(jXButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(GenerarArchivoBoton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jXLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jXButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jLayeredPane1.setLayer(AbrirArchivoBoton_, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jXButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(GenerarArchivoBoton, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jComboBox1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jXLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(cb_tienda, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jLabel9, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jXButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLayeredPane1))
+                    .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLayeredPane1)
-                    .addComponent(tabpanel)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(archivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(archivo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLayeredPane1))
+                .addContainerGap()
+                .addComponent(jLayeredPane1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(busy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        add(jPanel3);
     }// </editor-fold>//GEN-END:initComponents
 
     private void lt1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lt1MouseClicked
@@ -432,33 +426,35 @@ public class JPexportData extends javax.swing.JPanel {
     }//GEN-LAST:event_jTabbedPane2StateChanged
 
     private void AbrirArchivoBoton_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbrirArchivoBoton_ActionPerformed
-        int index = tabpanel.getSelectedIndex();
+//        int index = tabpanel.getSelectedIndex();
 
         if (filesc.getChoosableFileFilters().length > 1) {
             filesc.removeChoosableFileFilter(filesc.getChoosableFileFilters()[1]);
         }
-        switch (index) {
-            case 0:
+   //     switch (index) {
+     //       case 0:
                 filesc.setFileFilter(new FileNameExtensionFilter("Archivos txt ", "txt"));
 
-                break;
-        }
+       //         break;
+     //   }
         int returnVal = filesc.showOpenDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             try {
                 File file = filesc.getSelectedFile();
                 archivo.setText(file.getAbsolutePath());
 
-                switch (tabpanel.getSelectedIndex()) {
-                    case 0:
+       //         switch (tabpanel.getSelectedIndex()) {
+         //           case 0:
                         csvReader = new CSVreader(file.getAbsolutePath());
                         lt1.setModel(csvReader.getListModel());
                         ta1.read(new FileReader(file.getAbsolutePath()), null);
-                        break;
+           //             break;
 
-                }
+             //   }
             } catch (IOException ex) {
-                Logger.getLogger(VisorExportSQL.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(JPexportData.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "ERROR AL Abrir Archivo : " + ex);
+                System.err.println("ERROR AL Abrir Archivo : " + ex);
             }
 
         } else {
@@ -479,56 +475,83 @@ public class JPexportData extends javax.swing.JPanel {
 
             @Override
             public void run() {
-
                 try {
-                    String nombreFile = JOptionPane.showInputDialog(null, "Introduc Nombre del Archivo");
-
-                    String SQL = "COPY (SELECT  "
-                            + "  0 as a,1 as b, "
-                            + "  REPLICATE(' ', 7)||inventario_tienda.id_producto AS codigo,  "
-                            + "  LTRIM(replace(producto.descripcion,',',' '))  AS descr,  "
-                            + "  REPLICATE(' ', 3)||producto.id_clasificacion  AS depart,   "
-                            + "  round( CAST(producto.precio_original as numeric), 0) As precio, "
-                            + "  1312173000 as Desde,  "
-                            + "  round( CAST(inventario_tienda.precio_con_descuento as numeric), 0) As descuento, "
-                            + "  13200035400 as Hasta, "
-                            + "  8 as d,4 as e,0 as f,0 as g,65 as h,' ' as i, ' ' as j,  "
-                            + "  0 as a1,  0 as a2, 0 as a3, 0 as a4, 0 as a5, 0 as a6, 0 as a7, 0 as a8,  "
-                            + "  ' ' as b1,0 as b2, 3 as b3, 0 as c1, 0 as c2, 0 as c3, 0 as c4, 0 as c5 "
-                            + "FROM  "
-                            + "  public.inventario_tienda,  "
-                            + "  public.producto,  "
-                            + "  public.clasificacion,  "
-                            + "  public.division,  "
-                            + "  public.departamento "
-                            + "WHERE  "
-                            + "  inventario_tienda.id_producto = producto.id_producto AND "
-                            + "  producto.id_clasificacion = clasificacion.id_clasificacion AND "
-                            + "  clasificacion.id_departamento = departamento.id_departamento AND "
-                            + "  departamento.id_division = division.id_division AND "
-                            + "  inventario_tienda.precio_con_descuento>0.05 and public.division.id_division<>9 and producto.descripcion not like ' ' and "
-                            + "  inventario_tienda.id_almacen = 2 "
-                            + "  Order by producto.id_producto ) TO '" + System.getProperty("user.home") + "\\" + nombreFile + "' WITH DELIMITER AS ',' ";
-
-                    //List l=
                     busy.setEnabled(true);
                     busy.setVisible(true);
                     busy.setBusy(true);
 
-                    ObjectModelDAO.executeQueryString(SQL);
-                    //           if(l==null){
-                    //               JOptionPane.showInputDialog("Mensaje");
-                    //           }else{
-                    //               JOptionPane.showInputDialog("Mensaje2");
-                    //           }
+                    int tipo = jComboBoxTipoExport.getSelectedIndex();
+                    System.err.println("tipo valor : " + tipo);
+                    switch (tipo) {
+                        case 1: // Generar archivos por codigo de barras
+                            String nombreFileCodeBar = JOptionPane.showInputDialog(null, "Introduc Nombre del Archivo");
+                            String SQLDB = "COPY (SELECT "
+                                    + " 0 as az, "
+                                    + " 2 as ay,  "
+                                    + " REPLICATE(' ', 7) || inventario_tienda.id_producto  As Sku,  "
+                                    + "REPLICATE(' ', 7) || inventario_tienda.id_producto As Barra, "
+                                    + "0 as ab,0 as ac,0 as ad,0 as ae "
+                                    + "FROM  "
+                                    + "  public.producto,  "
+                                    + "  public.clasificacion,  "
+                                    + "  public.division,  "
+                                    + "  public.inventario_tienda,  "
+                                    + "  public.departamento "
+                                    + "WHERE  "
+                                    + "  producto.id_producto = inventario_tienda.id_producto AND "
+                                    + "  producto.id_clasificacion = clasificacion.id_clasificacion AND "
+                                    + "  clasificacion.id_departamento = departamento.id_departamento AND "
+                                    + "  departamento.id_division = division.id_division AND "
+                                    + "  division.id_division<>9 AND "
+                                    + "  producto.descripcion not like ' ' AND "
+                                    + "  inventario_tienda.precio_con_descuento>=0.05 ) TO '" + System.getProperty("user.home") + "\\" + nombreFileCodeBar + "' WITH DELIMITER AS ',' ";
+
+                            ObjectModelDAO.executeQueryString(SQLDB);
+                            break;
+
+                        case 2:// Generar archivos por Decuento
+                            String nombreFile = JOptionPane.showInputDialog(null, "Introduc Nombre del Archivo");
+                            String SQL = "COPY (SELECT  "
+                                    + "  0 as a,1 as b, "
+                                    + "  REPLICATE(' ', 7)||inventario_tienda.id_producto AS codigo,  "
+                                    + "  LTRIM(replace(producto.descripcion,',',' '))  AS descr,  "
+                                    + "  REPLICATE(' ', 3)||producto.id_clasificacion  AS depart,   "
+                                    + "  round( CAST(producto.precio_original as numeric), 0) As precio, "
+                                    + "  1312173000 as Desde,  "
+                                    + "  round( CAST(inventario_tienda.precio_con_descuento as numeric), 0) As descuento, "
+                                    + "  13200035400 as Hasta, "
+                                    + "  8 as d,4 as e,0 as f,0 as g,65 as h,' ' as i, ' ' as j,  "
+                                    + "  0 as a1,  0 as a2, 0 as a3, 0 as a4, 0 as a5, 0 as a6, 0 as a7, 0 as a8,  "
+                                    + "  ' ' as b1,0 as b2, 3 as b3, 0 as c1, 0 as c2, 0 as c3, 0 as c4, 0 as c5 "
+                                    + "FROM  "
+                                    + "  public.inventario_tienda,  "
+                                    + "  public.producto,  "
+                                    + "  public.clasificacion,  "
+                                    + "  public.division,  "
+                                    + "  public.departamento "
+                                    + "WHERE  "
+                                    + "  inventario_tienda.id_producto = producto.id_producto AND "
+                                    + "  producto.id_clasificacion = clasificacion.id_clasificacion AND "
+                                    + "  clasificacion.id_departamento = departamento.id_departamento AND "
+                                    + "  departamento.id_division = division.id_division AND "
+                                    + "  inventario_tienda.precio_con_descuento>0.05 and public.division.id_division<>9 and producto.descripcion not like ' ' and "
+                                    + "  inventario_tienda.id_almacen = 2 "
+                                    + "  Order by producto.id_producto ) TO '" + System.getProperty("user.home") + "\\" + nombreFile + "' WITH DELIMITER AS ',' ";
+                            ObjectModelDAO.executeQueryString(SQL);
+                            break;
+                        case 3:// Generar archivos por Productos
+
+                            break;
+                    }
+
                     busy.setEnabled(false);
                     busy.setVisible(false);
                     busy.setBusy(false);
 
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "ERROR Asignando Mercancia :" + e);
-                    System.err.println("ERROR Asignando Mercancia :" + e);
-                    Logger.getLogger(VisorExportSQL.class.getName()).log(Level.SEVERE, null, e);
+                    JOptionPane.showMessageDialog(null, "ERROR Generando Archivos :" + e);
+                    System.err.println("ERROR Generando Archivos :" + e);
+                    Logger.getLogger(JPexportData.class.getName()).log(Level.SEVERE, null, e);
                 }
 
             }
@@ -554,7 +577,7 @@ public class JPexportData extends javax.swing.JPanel {
     private javax.swing.JComboBox cb_tienda;
     private javax.swing.JLabel codigoP;
     private javax.swing.JFileChooser filesc;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBoxTipoExport;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
@@ -579,7 +602,6 @@ public class JPexportData extends javax.swing.JPanel {
     private javax.swing.JLabel precioP;
     private javax.swing.JTextArea ta1;
     private javax.swing.JTextArea ta2;
-    private javax.swing.JTabbedPane tabpanel;
     private javax.swing.JLabel tipoP;
     private javax.swing.JLabel totalCi;
     private javax.swing.JLabel totalSi;

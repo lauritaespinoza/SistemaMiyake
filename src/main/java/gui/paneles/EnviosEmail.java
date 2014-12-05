@@ -65,8 +65,8 @@ File file;
         jXBusyLabel1 = new org.jdesktop.swingx.JXBusyLabel();
         jXLabel2 = new org.jdesktop.swingx.JXLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Enviar Mesaje");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Envio de Correos Electronicos");
 
         asunto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,6 +197,8 @@ File file;
                     .addComponent(jXButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
+
+        getAccessibleContext().setAccessibleDescription("Presione F1 para Ayuda");
 
         pack();
         setLocationRelativeTo(null);
