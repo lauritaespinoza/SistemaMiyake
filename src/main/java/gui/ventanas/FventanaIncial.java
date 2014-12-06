@@ -58,10 +58,8 @@ import gui.paneles.JPexportData;
 import gui.paneles.JPnotaCreditoDebito;
 import gui.paneles.JPusuario;
 import gui.paneles.Tiendas1;
-import gui.paneles.VisorExportSQL;
 import java.lang.reflect.InvocationTargetException;
 import net.sf.jasperreports.engine.JRException;
-import 
 
 public class FventanaIncial extends javax.swing.JFrame {
 

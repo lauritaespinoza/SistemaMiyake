@@ -82,6 +82,12 @@
             <artifactId>swingx-all</artifactId>
             <version>1.6.5-1</version>
         </dependency>
+        
+        <dependency>
+            <groupId>MiyakePasantia</groupId>
+            <artifactId>CloseableTabPane</artifactId>
+            <version>1.1</version>
+        </dependency>
 <!--        <dependency>
             <groupId>org.swinglabs.swingx</groupId>
             <artifactId>swingx-core</artifactId>
