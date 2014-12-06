@@ -109,16 +109,6 @@ public class JDfaturasCSV extends javax.swing.JDialog {
         tabla.setToolTipText("Flecha hacia abajo para agregar renglón. Doble click en Fecha para agregar fecha");
         tabla.setSortable(false);
         tabla.getTableHeader().setReorderingAllowed(false);
-        tabla.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaMouseClicked(evt);
-            }
-        });
-        tabla.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                tablaKeyReleased(evt);
-            }
-        });
         jScrollPane4.setViewportView(tabla);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -260,33 +250,6 @@ public class JDfaturasCSV extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
-
-        if (evt.getClickCount() == 2 && tabla.isEditable()) {
-            if (tabla.getSelectedColumn() == 0) {
-                jdfecha.pack();
-                jdfecha.setVisible(true);
-            }
-
-        }
-    }//GEN-LAST:event_tablaMouseClicked
-
-    private void tablaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tablaKeyReleased
-
-        int keyCode = evt.getKeyCode();
-        if (evt.getKeyCode() == KeyEvent.VK_DOWN && tabla.isEditable()) {
-            int rowCount = tabla.getRowCount();
-            int rowSelected = tabla.getSelectedRow();
-            int columnCount = tabla.getColumnCount();
-            if (rowSelected == rowCount - 1) {//0 hasta n-1
-                if (filaCorrecta(rowSelected)) {
-                    ((DefaultTableModel) tabla.getModel()).addRow(new Object[tabla.getColumnCount()]);
-                    tabla.setRowSelectionInterval(rowCount, rowCount);//se agrego una nueva asi que si se toma en cuenta n
-                }
-            }
-        }
-    }//GEN-LAST:event_tablaKeyReleased
 
     /**
      * @param args the command line arguments
