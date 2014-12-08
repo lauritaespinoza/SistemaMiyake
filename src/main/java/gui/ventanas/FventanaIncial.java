@@ -1,5 +1,6 @@
 package gui.ventanas;
 
+import gui.dialogos.ClockTest;
 import gui.paneles.Asignar1;
 import gui.paneles.Distribuidora1;
 import java.awt.Dimension;
@@ -59,8 +60,14 @@ import gui.paneles.JPexportData;
 import gui.paneles.JPnotaCreditoDebito;
 import gui.paneles.JPusuario;
 import gui.paneles.Tiendas1;
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Date;
+import javax.swing.JLabel;
 import net.sf.jasperreports.engine.JRException;
+import javax.swing.Timer;
 
 public class FventanaIncial extends javax.swing.JFrame {
 
@@ -99,6 +106,9 @@ public class FventanaIncial extends javax.swing.JFrame {
         FventanaIncial.listaUsuarioMain = user;
 
         initComponents();
+        
+        ClockLabel clock = new ClockLabel();
+        getContentPane().add(clock, BorderLayout.PAGE_END);
     }
 
     //el tipo se usa en nota de credito debito
@@ -710,3 +720,16 @@ public class FventanaIncial extends javax.swing.JFrame {
     private org.jdesktop.swingx.JXTaskPane taskPaneUtilidades;
     // End of variables declaration//GEN-END:variables
 }
+ class ClockLabel extends JLabel implements ActionListener {
+
+        public ClockLabel() {
+            super("" + new Date());
+            Timer t = new Timer(1000, this);
+            t.start();
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            setText((new Date()).toString());
+        }
+    }
