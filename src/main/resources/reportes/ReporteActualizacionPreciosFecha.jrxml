@@ -24,10 +24,10 @@
 		</box>
 	</style>
 	<subDataset name="New Dataset 1" uuid="ad755437-b284-4a6e-b6f0-8992dadc8f93">
-		<parameter name="Desde" class="java.sql.Time">
+		<parameter name="Desde" class="java.lang.String">
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
-		<parameter name="Hasta" class="java.sql.Time">
+		<parameter name="Hasta" class="java.lang.String">
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
@@ -43,8 +43,8 @@ FROM
     INNER JOIN public.almacen a ON (ivt.id_almacen=a.id_almacen)   
  
 WHERE
-  ivt.fecha_modificacion >= to_date($P{Desde},'yyyy/MM/dd HH:MI:SS')
- AND ivt.fecha_modificacion <= to_date($P{Hasta},'yyyy/MM/dd HH:MI:SS') ;]]>
+  ivt.fecha_modificacion >= '$P{Desde}'
+ AND ivt.fecha_modificacion <= '$P{Hasta}';]]>
 		</queryString>
 		<field name="id_producto" class="java.lang.Integer"/>
 		<field name="precio_con_descuento" class="java.lang.Float"/>
@@ -53,8 +53,8 @@ WHERE
 		<field name="descripcion" class="java.lang.String"/>
 		<field name="nombre" class="java.lang.String"/>
 	</subDataset>
-	<parameter name="FechaDesde" class="java.sql.Timestamp"/>
-	<parameter name="FechaHasta" class="java.sql.Timestamp"/>
+	<parameter name="FechaDesde" class="java.lang.String"/>
+	<parameter name="FechaHasta" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -72,7 +72,7 @@ WHERE
 			<componentElement>
 				<reportElement key="table" style="table" stretchType="RelativeToBandHeight" x="0" y="0" width="555" height="62" uuid="6a6a366f-d6e7-4ff0-855a-d91787e2ab79"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="New Dataset 1" uuid="994b6242-86cc-4f9e-b532-82c93c48c6a7">
+					<datasetRun subDataset="New Dataset 1" uuid="3050c07c-a3d6-45c3-8522-b1844f65731a">
 						<datasetParameter name="Desde">
 							<datasetParameterExpression><![CDATA[$P{FechaDesde}]]></datasetParameterExpression>
 						</datasetParameter>
