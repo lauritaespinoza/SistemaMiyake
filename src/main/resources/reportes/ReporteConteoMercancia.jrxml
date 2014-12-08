@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8bb98a57-749c-445e-80e5-ee37e865dfe8">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#BFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#E6FFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#BFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#E6FFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="New Dataset 1" uuid="41492015-7a19-4415-b40f-0f7dd8dcf928">
+		<queryString>
+			<![CDATA[SELECT 
+  almacen.nombre, 
+  factura.nro_factura, 
+  factura.total_factura, 
+  producto.descripcion, 
+  producto.precio_original, 
+  conteo_mercancia_entrada_detalles.cantidad, 
+  conteo_mercancia_entrada_detalles.nro_bulto, 
+  conteo_mercancia_entrada.total_conteo, 
+  conteo_mercancia_entrada_detalles.conteo_faltante, 
+  conteo_mercancia_entrada_detalles.total_faltante, 
+  conteo_mercancia_entrada.fecharegistro
+FROM 
+  public.conteo_mercancia_entrada_detalles, 
+  public.conteo_mercancia_entrada, 
+  public.factura, 
+  public.almacen, 
+  public.producto
+WHERE 
+  conteo_mercancia_entrada_detalles.id_producto = producto.id_producto AND
+  conteo_mercancia_entrada.id_conteo_mercancia_entrada = conteo_mercancia_entrada_detalles.id_conteo_mercancia_entrada AND
+  conteo_mercancia_entrada.id_factura = factura.id_factura AND
+  conteo_mercancia_entrada.id_almacen = almacen.id_almacen;]]>
+		</queryString>
+		<field name="nombre" class="java.lang.String"/>
+		<field name="nro_factura" class="java.lang.Integer"/>
+		<field name="total_factura" class="java.lang.Float">
+			<fieldDescription><![CDATA[sumaoria de los totales de los precios de los productos del proveedor.]]></fieldDescription>
+		</field>
+		<field name="descripcion" class="java.lang.String"/>
+		<field name="precio_venta" class="java.lang.Float"/>
+		<field name="cantidad" class="java.lang.Integer"/>
+		<field name="nro_bulto" class="java.lang.Integer"/>
+		<field name="total_conteo" class="java.lang.Float"/>
+		<field name="conteo_faltante" class="java.lang.Integer"/>
+		<field name="total_faltante" class="java.lang.Float"/>
+		<field name="fecharegistro" class="java.sql.Timestamp"/>
+	</subDataset>
+	<queryString>
+		<![CDATA[SELECT 
+  almacen.nombre, 
+  factura.nro_factura, 
+  factura.total_factura, 
+  producto.descripcion, 
+  producto.precio_venta, 
+  conteo_mercancia_entrada_detalles.cantidad, 
+  conteo_mercancia_entrada_detalles.nro_bulto, 
+  conteo_mercancia_entrada.total_conteo, 
+  conteo_mercancia_entrada_detalles.conteo_faltante, 
+  conteo_mercancia_entrada_detalles.total_faltante, 
+  conteo_mercancia_entrada.fecharegistro
+FROM 
+  public.conteo_mercancia_entrada_detalles, 
+  public.conteo_mercancia_entrada, 
+  public.factura, 
+  public.almacen, 
+  public.producto
+WHERE 
+  conteo_mercancia_entrada_detalles.id_producto = producto.id_producto AND
+  conteo_mercancia_entrada.id_conteo_mercancia_entrada = conteo_mercancia_entrada_detalles.id_conteo_mercancia_entrada AND
+  conteo_mercancia_entrada.id_factura = factura.id_factura AND
+  conteo_mercancia_entrada.id_almacen = almacen.id_almacen;]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="120" splitType="Stretch">
+			<staticText>
+				<reportElement x="151" y="16" width="213" height="74" uuid="2cd15fe5-0bfe-4c30-97b9-d314221b2224"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Impact" size="24"/>
+				</textElement>
+				<text><![CDATA[Reporte de Conteo de Mercancía]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="455" y="90" width="100" height="20" uuid="988ad753-6ba8-4197-b03d-d96569b6d7d0"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="0" width="555" height="120" uuid="5fc9f124-62bb-4701-b244-c42d02e05be2"/>
+			</rectangle>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="46" splitType="Stretch">
+			<staticText>
+				<reportElement x="225" y="20" width="102" height="21" uuid="35e3ef89-dde9-4e88-a554-30d4767795f9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Detalle]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<printWhenExpression><![CDATA[$V{REPORT_COUNT}== 1]]></printWhenExpression>
+			<componentElement>
+				<reportElement key="table 1" style="table 1" stretchType="RelativeToBandHeight" x="0" y="0" width="555" height="125" uuid="d3c01b86-7e8e-4b38-b122-308ce0863cdc"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="New Dataset 1" uuid="94a6d3d7-a31b-4d8b-87f0-24e1e635e92d">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="64" uuid="a1d5d700-847c-484b-97d7-e8ff61b8de25">
+						<jr:columnHeader style="table 1_CH" height="42" rowSpan="1">
+							<staticText>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="64" height="40" uuid="84d10544-2b68-4054-aef4-0ffb5df3430e"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Century" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Nombre]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="64" height="30" uuid="11fd0d82-cd23-4148-9918-b70d674dd255"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="46" uuid="81184a73-9c0f-42df-9e1b-01762c942e9c">
+						<jr:columnHeader style="table 1_CH" height="42" rowSpan="1">
+							<staticText>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="46" height="40" uuid="4ade9853-ae90-4db7-91eb-ab10347b038c"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Century" isBold="true"/>
+								</textElement>
+								<text><![CDATA[N° Factura]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="46" height="30" uuid="9f7c1377-73fe-4879-89df-d23d515b44dd"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{nro_factura}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="50" uuid="42a0a146-8274-420d-9e44-d391ece5a130">
+						<jr:columnHeader style="table 1_CH" height="42" rowSpan="1">
+							<staticText>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="50" height="40" uuid="498dc807-a254-403e-b3ad-326cb21fa82a"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Century" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Total Factura]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="50" height="30" uuid="5474cfe1-4e83-4e09-9dde-21f26cf80fa4"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{total_factura}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="83" uuid="a13ec020-c736-40b7-9b5a-7f2a374ff442">
+						<jr:columnHeader style="table 1_CH" height="42" rowSpan="1">
+							<staticText>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="83" height="40" uuid="0d1b24ed-a6f2-4b5a-9815-2a2fe1dda55e"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Century" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Descripción]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="83" height="30" uuid="047699f9-45ab-4d54-a20f-c0787f2786e2"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="57" uuid="98f5b6ea-6de1-425e-a4df-94ec520ef60a">
+						<jr:columnHeader style="table 1_CH" height="42" rowSpan="1">
+							<staticText>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="57" height="40" uuid="5339af0f-0efe-4271-aa9a-323b79832521"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Century" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Precio Venta]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="57" height="30" uuid="4f197074-da8b-44b1-aeaf-20bf40103d70"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{precio_venta}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="34" uuid="1109df6d-c138-42f1-a719-edbae6e775b1">
+						<jr:columnHeader style="table 1_CH" height="42" rowSpan="1">
+							<staticText>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="34" height="40" uuid="fbee171a-8417-4527-b496-3b729bd82ddd"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Century" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Cant.]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="34" height="30" uuid="36ddb92e-cdc0-4c89-8c10-c35d33c6c892"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="31" uuid="75914d49-3694-47a5-b54d-b57884f58308">
+						<jr:columnHeader style="table 1_CH" height="42" rowSpan="1">
+							<staticText>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="31" height="40" uuid="a251df2d-a916-47d7-b16c-77f24821cf2b"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Century" size="10" isBold="true"/>
+								</textElement>
+								<text><![CDATA[N° Bulto]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="31" height="30" uuid="631c74dc-46ae-4877-904c-cea4b80ede1d"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{nro_bulto}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="41" uuid="4b4aaf5b-998d-4f3e-9e06-8d0da3205c06">
+						<jr:columnHeader style="table 1_CH" height="42" rowSpan="1">
+							<staticText>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="40" height="40" uuid="639af57a-122e-41ac-a57d-b939ab5958bd"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Century" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Total Conteo]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="40" height="30" uuid="344e6e5f-9ce6-4fb6-ab33-c0c8e5c9762b"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{total_conteo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="50" uuid="0eeb40bd-79aa-41c4-ace7-052fb3a64559">
+						<jr:columnHeader style="table 1_CH" height="42" rowSpan="1">
+							<staticText>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="50" height="40" uuid="34bc64e3-8196-46f0-a5c1-7f6c456cdc5d"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Century" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Conteo Faltante]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="50" height="30" uuid="b7ed23a4-18ed-45db-aafa-3f45d30fd1f4"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{conteo_faltante}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="53" uuid="3bf0c37b-0c60-4699-a0e8-a8afcd3fad3d">
+						<jr:columnHeader style="table 1_CH" height="42" rowSpan="1">
+							<staticText>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="53" height="40" uuid="ba9a5151-c215-4969-9fee-7da9fea539e6"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Century" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Total Faltante]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="53" height="30" uuid="b8095375-4f9c-4347-9912-fe006d3cd7ac"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{total_faltante}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="53" uuid="ac46db47-1c04-4473-a838-5c1bee3c297e">
+						<jr:columnHeader style="table 1_CH" height="42" rowSpan="1">
+							<staticText>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="53" height="40" uuid="dda02f68-b3e9-401d-9bf7-80018d1aa3ae"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Century" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Fecha Registro]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="53" height="30" uuid="40619ae9-53f6-47a6-b3f5-26b6222df312"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{fecharegistro}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="455" y="15" width="100" height="20" uuid="39fe54a0-5ab4-4d2d-9152-8a332f74bba4"/>
+				<textFieldExpression><![CDATA["Pág. "+$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
