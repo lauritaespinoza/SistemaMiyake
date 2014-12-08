@@ -67,6 +67,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
         setCB_Tienda();
 
         listadoMercancia.getTableHeader().setReorderingAllowed(false);
+
     }
 
     /**
@@ -141,6 +142,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
         jLabel3.setPreferredSize(new java.awt.Dimension(10, 14));
 
         fieldTienda.setEditable(false);
+        fieldTienda.setText("ya no tiene sentido si se eligen las tiendas");
 
         jLabel4.setText("Facturadora:");
 
@@ -519,8 +521,10 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
     private void setCB_Tienda() {
         resultListAlmacen = ObjectModelDAO.getResultQuery("FROM Almacen a order by a.idAlmacen asc");
         cb_tienda1.removeAllItems();
+        cb_tienda1.addItem(JavaUtil.cons_seleccionar);
         cb_tienda1.addItem("Todas las Tiendas");
         cb_tienda2.removeAllItems();
+        cb_tienda2.addItem(JavaUtil.cons_seleccionar);
         cb_tienda2.addItem("Todas las Tiendas");
         for (Object object : resultListAlmacen) {
             Almacen a = (Almacen) object;
@@ -529,7 +533,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
         }
     }
 
-    private void setCB_Salidas(boolean tipo) {
+    private void setCB_Salidas() {
 
         String HQL;
         DaoQuery q = null;
@@ -544,39 +548,39 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
 
         //T1 --- 2      TODAS CON ALGUNA EN ESPECIFICA
         if (cb_tienda1.getSelectedItem().equals("Todas las Tiendas")
-                && cb_tienda2.getSelectedIndex() > 0) {//0 ES TODAS LAS TIENDAS
+                && cb_tienda2.getSelectedIndex() > 1) {//1 ES TODAS LAS TIENDAS
 
             HQL = "FROM SalidaParaTienda s WHERE s.idAlmacenHasta =:almchasta "
                     + " AND s.revisado = :revisado order by s.idSalida asc";
 
             q = ObjectModelDAO.createQueryDAO(HQL);
-            q.getQuery().setParameter("almchasta", (Almacen) resultListAlmacen.get(cb_tienda2.getSelectedIndex() - 1));
+            q.getQuery().setParameter("almchasta", (Almacen) resultListAlmacen.get(cb_tienda2.getSelectedIndex() - 2));
         }
 
         //2 --- T2      ALGUNA EN ESPECIFICA PARA TODAS
-        if (cb_tienda1.getSelectedIndex() > 0//0 ES TODAS LAS TIENDAS
+        if (cb_tienda1.getSelectedIndex() > 1//1 ES TODAS LAS TIENDAS
                 && cb_tienda2.getSelectedItem().equals("Todas las Tiendas")) {
 
             HQL = "FROM SalidaParaTienda s WHERE s.idAlmacenDesde =:almcdesde "
                     + " AND s.revisado = :revisado order by s.idSalida asc";
 
             q = ObjectModelDAO.createQueryDAO(HQL);
-            q.getQuery().setParameter("almcdesde", (Almacen) resultListAlmacen.get(cb_tienda1.getSelectedIndex() - 1));
+            q.getQuery().setParameter("almcdesde", (Almacen) resultListAlmacen.get(cb_tienda1.getSelectedIndex() - 2));
         }
 
         //2 --- 3       ALGUNA EN ESPECIFICA PARA OTRA EN ESPECIFICA
-        if (cb_tienda1.getSelectedIndex() > 0//0 ES TODAS LAS TIENDAS
-                && cb_tienda2.getSelectedIndex() > 0) {//0 ES TODAS LAS TIENDAS
+        if (cb_tienda1.getSelectedIndex() > 1//1 ES TODAS LAS TIENDAS
+                && cb_tienda2.getSelectedIndex() > 1) {//1 ES TODAS LAS TIENDAS
 
             HQL = "FROM SalidaParaTienda s WHERE s.idAlmacenHasta =:almchasta "
                     + "AND s.idAlmacenDesde =:almcdesde AND s.revisado = :revisado order by s.idSalida asc";
 
             q = ObjectModelDAO.createQueryDAO(HQL);
-            q.getQuery().setParameter("almcdesde", (Almacen) resultListAlmacen.get(cb_tienda1.getSelectedIndex() - 1));
-            q.getQuery().setParameter("almchasta", (Almacen) resultListAlmacen.get(cb_tienda2.getSelectedIndex() - 1));
+            q.getQuery().setParameter("almcdesde", (Almacen) resultListAlmacen.get(cb_tienda1.getSelectedIndex() - 2));
+            q.getQuery().setParameter("almchasta", (Almacen) resultListAlmacen.get(cb_tienda2.getSelectedIndex() - 2));
         }
 
-        q.getQuery().setParameter("revisado", tipo);
+        q.getQuery().setParameter("revisado", jRadioButtonRevisado.isSelected());
         List resultList_sw = ObjectModelDAO.getResultQuery(q);
 
         cb_salidasregistradas.removeAllItems();
@@ -697,15 +701,25 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
 
     private void cb_tienda1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_tienda1ActionPerformed
 
-        if (cb_tienda1.getSelectedIndex() == -1) {
+        if (cb_tienda1.getSelectedIndex() == -1 || cb_tienda2.getSelectedIndex() == -1) {
             return;
         }
 
-        if (buttonGrouptipo.getSelection().equals("Revisado")) {
-            setCB_Salidas(true);
-        } else {
-            setCB_Salidas(false);
+        if (cb_tienda1.getSelectedItem().equals(JavaUtil.cons_seleccionar)
+                || cb_tienda2.getSelectedItem().equals(JavaUtil.cons_seleccionar)) {
+            cb_salidasregistradas.removeAllItems();
+            resultListProductoSalida = null;
+            cabecera = null;
+            fieldfecha.setText("");
+            fieldTienda.setText("");
+            fieldPersonalDep.setText("");
+            fieldAyudante.setText("");
+            fieldTotal.setText("");
+            pos = -1;
+            listadoMercancia.setModel(new DefaultTableModel());
+            return;
         }
+        setCB_Salidas();
     }//GEN-LAST:event_cb_tienda1ActionPerformed
 
     private void bGenerarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGenerarReporteActionPerformed
@@ -767,48 +781,41 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
 
     private void jRadioButtonPendienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonPendienteActionPerformed
 
-        //setCB_Salidas(false);
-        checkboxRevisado.setSelected(false);
-        checkboxRevisado.setEnabled(true);
-        //clearTable(listadoMercancia);
-        listadoMercancia.setModel(new DefaultTableModel());
-        fieldAyudante.setText("");
-        fieldPersonalDep.setText("");
-        fieldTienda.setText("");
-        fieldTotal.setText("");
-        fieldfecha.setText("");
+        setCB_Salidas();
     }//GEN-LAST:event_jRadioButtonPendienteActionPerformed
 
     private void jRadioButtonRevisadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonRevisadoActionPerformed
 
-        //setCB_Salidas(true);
-        checkboxRevisado.setSelected(true);
-        checkboxRevisado.setEnabled(false);
-        //clearTable(listadoMercancia);
-        listadoMercancia.setModel(new DefaultTableModel());
-        fieldAyudante.setText("");
-        fieldPersonalDep.setText("");
-        fieldTienda.setText("");
-        fieldTotal.setText("");
-        fieldfecha.setText("");
+        setCB_Salidas();
     }//GEN-LAST:event_jRadioButtonRevisadoActionPerformed
 
     private void cb_tienda2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_tienda2ActionPerformed
 
-        if (cb_tienda2.getSelectedIndex() == -1) {
+        if (cb_tienda1.getSelectedIndex() == -1 || cb_tienda2.getSelectedIndex() == -1) {
             return;
         }
 
-        if (buttonGrouptipo.getSelection().equals("Revisado")) {
-            setCB_Salidas(true);
-        } else {
-            setCB_Salidas(false);
+        if (cb_tienda1.getSelectedItem().equals(JavaUtil.cons_seleccionar)
+                || cb_tienda2.getSelectedItem().equals(JavaUtil.cons_seleccionar)) {
+            cb_salidasregistradas.removeAllItems();
+            resultListProductoSalida = null;
+            cabecera = null;
+            fieldfecha.setText("");
+            fieldTienda.setText("");
+            fieldPersonalDep.setText("");
+            fieldAyudante.setText("");
+            fieldTotal.setText("");
+            pos = -1;
+            listadoMercancia.setModel(new DefaultTableModel());
+            return;
         }
+
+        setCB_Salidas();
     }//GEN-LAST:event_cb_tienda2ActionPerformed
 
 
     private void cb_salidasregistradasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_salidasregistradasActionPerformed
-        if (cb_salidasregistradas.getSelectedIndex() != -1) {
+        if (cb_salidasregistradas.getSelectedIndex() == -1) {
             //listadoMercancia.setModel(new DefaultTableModel());
             return;
         }
