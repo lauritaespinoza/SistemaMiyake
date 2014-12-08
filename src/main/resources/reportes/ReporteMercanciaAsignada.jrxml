@@ -45,11 +45,12 @@
 	<parameter name="Ayudante" class="java.lang.String"/>
 	<parameter name="Salida" class="java.lang.String"/>
 	<parameter name="TableDataS" class="java.lang.String"/>
+	<parameter name="Tienda2" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<pageHeader>
-		<band height="242" splitType="Stretch">
+		<band height="264" splitType="Stretch">
 			<staticText>
 				<reportElement x="128" y="4" width="311" height="22" uuid="2389ffe6-0b7a-4b51-bdf7-0cc3aef6ae29"/>
 				<textElement textAlignment="Center">
@@ -65,49 +66,42 @@
 				<text><![CDATA[Fecha:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="16" y="95" width="55" height="20" uuid="79607fde-cb40-4667-9911-79ae1c2fec02"/>
+				<reportElement x="16" y="95" width="85" height="20" uuid="79607fde-cb40-4667-9911-79ae1c2fec02"/>
 				<textElement>
 					<font fontName="Arial Narrow" size="14"/>
 				</textElement>
-				<text><![CDATA[Tienda:]]></text>
+				<text><![CDATA[DesdeTienda:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="16" y="129" width="68" height="20" uuid="33bf2247-9744-4977-952c-56a29ef92d4a"/>
+				<reportElement x="16" y="160" width="85" height="20" uuid="33bf2247-9744-4977-952c-56a29ef92d4a"/>
 				<textElement>
 					<font fontName="Arial Narrow" size="14"/>
 				</textElement>
 				<text><![CDATA[Facturadora:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="16" y="162" width="148" height="20" uuid="ad2a8b72-d7c9-4bb1-b491-dc7f88bb5793"/>
+				<reportElement x="16" y="193" width="148" height="20" uuid="ad2a8b72-d7c9-4bb1-b491-dc7f88bb5793"/>
 				<textElement>
 					<font fontName="Arial Narrow" size="14"/>
 				</textElement>
 				<text><![CDATA[Ayudante de Facturadora:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="101" y="61" width="210" height="20" uuid="44239089-3387-414c-afb0-10b6cd0fc08f"/>
+				<reportElement x="164" y="61" width="210" height="20" uuid="44239089-3387-414c-afb0-10b6cd0fc08f"/>
 				<textElement>
 					<font fontName="Arial Narrow" size="14" isUnderline="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{Fecha}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="101" y="95" width="210" height="20" uuid="d34a12bf-ec8a-4fa9-8cd7-2e2f18fc38f0"/>
-				<textElement>
-					<font fontName="Arial Narrow" size="14" isUnderline="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{Tienda}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="101" y="129" width="210" height="20" uuid="31e8d69c-e220-4468-bd68-f899eda6182b"/>
+				<reportElement x="164" y="160" width="210" height="20" uuid="31e8d69c-e220-4468-bd68-f899eda6182b"/>
 				<textElement>
 					<font fontName="Arial Narrow" size="14" isUnderline="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{Facturadora}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="164" y="162" width="210" height="20" uuid="cb7d1eaf-cfcb-464f-8068-0b03a57a77fb"/>
+			<textField isBlankWhenNull="true">
+				<reportElement x="164" y="193" width="210" height="20" uuid="cb7d1eaf-cfcb-464f-8068-0b03a57a77fb"/>
 				<textElement>
 					<font fontName="Arial Narrow" size="14" isUnderline="true"/>
 				</textElement>
@@ -120,16 +114,40 @@
 				</textElement>
 				<textFieldExpression><![CDATA["N°:" + $P{Salida}]]></textFieldExpression>
 			</textField>
-			<rectangle>
-				<reportElement mode="Transparent" x="0" y="4" width="555" height="192" uuid="4ae05319-5403-420a-ae70-06424391c740"/>
-			</rectangle>
 			<staticText>
-				<reportElement x="244" y="209" width="67" height="22" uuid="c806b5d5-54cb-4f24-ae82-1488a1ce3655"/>
+				<reportElement x="244" y="242" width="67" height="22" uuid="c806b5d5-54cb-4f24-ae82-1488a1ce3655"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Cooper Black" size="14"/>
 				</textElement>
 				<text><![CDATA[Detalle]]></text>
 			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="16" y="130" width="112" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="eda5a511-2b5c-45de-a374-3eefe8387e6d"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial Narrow" size="14" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Asignada a Tienda:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="4" y="4" width="555" height="227" uuid="4ae05319-5403-420a-ae70-06424391c740"/>
+			</rectangle>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="164" y="95" width="210" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="34ae9c29-8c59-4bae-a310-1829a606ad3d"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial Narrow" size="14" isBold="false" isItalic="false" isUnderline="true" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Tienda}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement mode="Transparent" x="164" y="130" width="210" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="e759481e-dd3e-486b-bd50-b62a08126b64"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial Narrow" size="14" isBold="false" isItalic="false" isUnderline="true" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Tienda2}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<detail>

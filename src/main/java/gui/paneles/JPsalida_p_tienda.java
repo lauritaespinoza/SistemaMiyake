@@ -20,6 +20,8 @@ import modelos.mapeos.SalidaParaTienda;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.text.SimpleDateFormat;
@@ -39,7 +41,9 @@ import modelos.mapeos.SalidaParaTiendaDetalle;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import org.hibernate.Query;
@@ -53,9 +57,9 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
     private SalidaParaTienda cabecera = null;
     DefaultTableModel tableModel;
     private List resultListAlmacen;
+    private List resultList_salidas;
 
-    public final InputStream rutaJasper = this.getClass().getResourceAsStream("/reportes/ReporteMercanciaAsignada.jasper");
-    public final InputStream rutaJrxml = this.getClass().getResourceAsStream("/reportes/ReporteMercanciaAsignada.jrxml");
+    public final String rutaJasper = "/reportes/ReporteMercanciaAsignada.jasper";
 
     public JPsalida_p_tienda() {
         initComponents();
@@ -67,7 +71,6 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
         setCB_Tienda();
 
         listadoMercancia.getTableHeader().setReorderingAllowed(false);
-
     }
 
     /**
@@ -88,8 +91,6 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
         cb_tienda1 = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
         fieldfecha = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        fieldTienda = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         fieldPersonalDep = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -102,6 +103,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
         checkboxRevisado = new javax.swing.JCheckBox();
         jRadioButtonPendiente = new javax.swing.JRadioButton();
         jRadioButtonRevisado = new javax.swing.JRadioButton();
+        jButton1 = new javax.swing.JButton();
         panelFinal = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         fieldTotal = new javax.swing.JTextField();
@@ -136,13 +138,6 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
         jLabel2.setText("Fecha:");
 
         fieldfecha.setEditable(false);
-
-        jLabel3.setText("Tienda:");
-        jLabel3.setMinimumSize(new java.awt.Dimension(10, 14));
-        jLabel3.setPreferredSize(new java.awt.Dimension(10, 14));
-
-        fieldTienda.setEditable(false);
-        fieldTienda.setText("ya no tiene sentido si se eligen las tiendas");
 
         jLabel4.setText("Facturadora:");
 
@@ -183,25 +178,19 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(7, 7, 7)))
+                        .addGap(10, 10, 10)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(fieldAyudante))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                                .addComponent(fieldPersonalDep, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(fieldAyudante)
+                            .addComponent(fieldPersonalDep)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
-                        .addGap(17, 17, 17)
+                        .addGap(23, 23, 23)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(fieldfecha)
-                            .addComponent(fieldTienda)
-                            .addComponent(cb_tienda2, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cb_tienda2, javax.swing.GroupLayout.Alignment.TRAILING, 0, 583, Short.MAX_VALUE)
                             .addComponent(cb_tienda1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel7)
@@ -219,7 +208,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cb_tienda2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addGap(14, 14, 14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(cb_salidasregistradas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -229,17 +218,13 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
                     .addComponent(fieldfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fieldTienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldPersonalDep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldAyudante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(8, 8, 8))
         );
 
         panelCabezera.add(jPanel2);
@@ -268,28 +253,41 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
             }
         });
 
+        jButton1.setText("Generar Reporte Total");
+        jButton1.setToolTipText("Genera el Reporte de Toda la Mercancía Asignada Pendiente o Procesada");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(checkboxRevisado)
                     .addComponent(jRadioButtonRevisado)
-                    .addComponent(jRadioButtonPendiente))
-                .addContainerGap(195, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jRadioButtonPendiente)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                        .addComponent(jButton1)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jRadioButtonPendiente)
-                .addGap(18, 18, 18)
+                .addGap(13, 13, 13)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButtonPendiente)
+                    .addComponent(jButton1))
+                .addGap(29, 29, 29)
                 .addComponent(jRadioButtonRevisado)
-                .addGap(35, 35, 35)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(checkboxRevisado)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addGap(44, 44, 44))
         );
 
         panelCabezera.add(jPanel1);
@@ -321,18 +319,16 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
         panelFinalLayout.setHorizontalGroup(
             panelFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFinalLayout.createSequentialGroup()
-                .addContainerGap(446, Short.MAX_VALUE)
+                .addContainerGap(605, Short.MAX_VALUE)
+                .addComponent(bImprimirEtiquetas)
+                .addGap(40, 40, 40)
                 .addGroup(panelFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFinalLayout.createSequentialGroup()
-                        .addComponent(bImprimirEtiquetas)
-                        .addGap(18, 18, 18)
-                        .addComponent(bGenerarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFinalLayout.createSequentialGroup()
+                    .addComponent(bGenerarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelFinalLayout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(fieldTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33))))
+                        .addComponent(fieldTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         panelFinalLayout.setVerticalGroup(
             panelFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -342,10 +338,10 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
                     .addComponent(fieldTotal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
-                .addGroup(panelFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bGenerarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bImprimirEtiquetas, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGap(11, 11, 11))
         );
 
         jPanel3.add(panelFinal, java.awt.BorderLayout.SOUTH);
@@ -403,13 +399,11 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
         panelTabla.setLayout(panelTablaLayout);
         panelTablaLayout.setHorizontalGroup(
             panelTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 782, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE)
         );
         panelTablaLayout.setVerticalGroup(
             panelTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelTablaLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         jPanel3.add(panelTabla, java.awt.BorderLayout.CENTER);
@@ -528,13 +522,13 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
         cb_tienda2.addItem("Todas las Tiendas");
         for (Object object : resultListAlmacen) {
             Almacen a = (Almacen) object;
-            cb_tienda1.addItem(a.getIdAlmacen());
-            cb_tienda2.addItem(a.getIdAlmacen());
+            cb_tienda1.addItem(a.getNombre());
+            cb_tienda2.addItem(a.getNombre());
         }
     }
 
     private void setCB_Salidas() {
-
+        String tienda_pertenece_salida = "";
         String HQL;
         DaoQuery q = null;
         //T1 --- T2     TODAS CON TODAS, ES DECIR TODAS LAS SALIDAS
@@ -555,6 +549,8 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
 
             q = ObjectModelDAO.createQueryDAO(HQL);
             q.getQuery().setParameter("almchasta", (Almacen) resultListAlmacen.get(cb_tienda2.getSelectedIndex() - 2));
+
+            tienda_pertenece_salida = "Desde";
         }
 
         //2 --- T2      ALGUNA EN ESPECIFICA PARA TODAS
@@ -566,6 +562,8 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
 
             q = ObjectModelDAO.createQueryDAO(HQL);
             q.getQuery().setParameter("almcdesde", (Almacen) resultListAlmacen.get(cb_tienda1.getSelectedIndex() - 2));
+
+            tienda_pertenece_salida = "Hasta";
         }
 
         //2 --- 3       ALGUNA EN ESPECIFICA PARA OTRA EN ESPECIFICA
@@ -581,13 +579,22 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
         }
 
         q.getQuery().setParameter("revisado", jRadioButtonRevisado.isSelected());
-        List resultList_sw = ObjectModelDAO.getResultQuery(q);
+        resultList_salidas = ObjectModelDAO.getResultQuery(q);
 
         cb_salidasregistradas.removeAllItems();
         // cb_salidasregistradas.addItem("Todas");
-        for (Object object : resultList_sw) {
+        if (resultList_salidas.isEmpty()) {
+            cb_salidasregistradas.addItem("No tiene");
+        }
+
+        for (Object object : resultList_salidas) {
             SalidaParaTienda c = (SalidaParaTienda) object;
-            cb_salidasregistradas.addItem(c.getIdSalida());
+            if (tienda_pertenece_salida.equals("")) {
+                cb_salidasregistradas.addItem(c.getIdSalida());
+            } else {
+                cb_salidasregistradas.addItem(c.getIdSalida() + (tienda_pertenece_salida.equals("Desde") ? " " + tienda_pertenece_salida + ": " + c.getIdAlmacenDesde().getNombre()
+                        : " " + tienda_pertenece_salida + ": " + c.getIdAlmacenHasta().getNombre()));
+            }
         }
     }
 
@@ -673,24 +680,24 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
     private void generarReporte() {
         try {
             JasperPrint jasperPrint = null;
-            JasperPrint jasperPrint2 = null;
             TableModelData();
             Map<String, Object> parametro = new HashMap<>();
-            String s = "";
-
-            for (int i = 0; i < tableModel.getColumnCount(); i++) {
-                s += tableModel.getColumnName(i) + "\t" + Integer.valueOf(i) + "\n";
-            }
+//            String s = "";
+//
+//            for (int i = 0; i < tableModel.getColumnCount(); i++) {
+//                s += tableModel.getColumnName(i) + "\t" + Integer.valueOf(i) + "\n";
+//            }
             TableModelReport dataSourse = new TableModelReport(listadoMercancia.getModel());
 
             parametro.put("Fecha", fieldfecha.getText());
-            parametro.put("Tienda", fieldTienda.getText());
+            parametro.put("Tienda", cb_tienda1.getSelectedItem().equals("Todas las Tiendas") ? "" : cb_tienda1.getSelectedItem().toString());
+            parametro.put("Tienda2", cb_tienda2.getSelectedItem().toString());
             parametro.put("Facturadora", fieldPersonalDep.getText());
             parametro.put("Ayudante", fieldAyudante.getText());
-            parametro.put("Salida", cb_tienda1.getSelectedItem().toString());
+            parametro.put("Salida", cb_salidasregistradas.getSelectedItem().toString());
             parametro.put("REPORT_DATA_SOURSE", dataSourse);
-            JasperCompileManager.compileReport(rutaJrxml);
-            jasperPrint = JasperFillManager.fillReport(rutaJasper, parametro, dataSourse);
+            JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream(rutaJasper));
+            jasperPrint = JasperFillManager.fillReport(reporte, parametro, dataSourse);
             JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
             jasperViewer.setTitle("Reporte de Salida de Mercancía");
             jasperViewer.setVisible(true);
@@ -711,7 +718,6 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
             resultListProductoSalida = null;
             cabecera = null;
             fieldfecha.setText("");
-            fieldTienda.setText("");
             fieldPersonalDep.setText("");
             fieldAyudante.setText("");
             fieldTotal.setText("");
@@ -728,7 +734,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
 //            if (JOptionPane.showConfirmDialog(this, "¿Esta Seguro que desea marcar como revisado este Formulario de Mercancía Asignada a Tienda?", "Información", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 //                cabecera.setRevisado(true);
             if (jRadioButtonPendiente.isSelected()) {
-                ObjectModelDAO.updateObject(cabecera);
+                // ObjectModelDAO.updateObject(cabecera);
             }
             // cb_Salidas.removeItemAt (cb_Salidas.getSelectedIndex());
             // sw = true;
@@ -801,7 +807,6 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
             resultListProductoSalida = null;
             cabecera = null;
             fieldfecha.setText("");
-            fieldTienda.setText("");
             fieldPersonalDep.setText("");
             fieldAyudante.setText("");
             fieldTotal.setText("");
@@ -815,14 +820,17 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
 
 
     private void cb_salidasregistradasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_salidasregistradasActionPerformed
-        if (cb_salidasregistradas.getSelectedIndex() == -1) {
-            //listadoMercancia.setModel(new DefaultTableModel());
+        if (cb_salidasregistradas.getSelectedIndex() == -1 || cb_salidasregistradas.getSelectedItem().equals("No tiene")) {
+            listadoMercancia.setModel(new DefaultTableModel());
+            fieldfecha.setText("");
+            fieldPersonalDep.setText("");
+            fieldAyudante.setText("");
             return;
         }
-
+        SalidaParaTienda salida = (SalidaParaTienda) resultList_salidas.get(cb_salidasregistradas.getSelectedIndex());
         String HQL = "SELECT s,ivt.precioConDescuento,ivt.descuento"
                 + " FROM SalidaParaTiendaDetalle s,InventarioTienda ivt "
-                + " INNER JOIN s.salidaParaTienda spt WHERE spt.idSalida= " + cb_salidasregistradas.getSelectedItem()
+                + " INNER JOIN s.salidaParaTienda spt WHERE spt.idSalida= " + salida.getIdSalida()
                 + " AND ivt.producto=s.producto"
                 // + " AND spt.revisado = " + tipo
                 + " ORDER BY s.nroRenglon ASC";
@@ -851,11 +859,6 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
         } else {
             fieldfecha.setText("");
         }
-        if (cabecera.getIdAlmacenHasta() != null) {
-            fieldTienda.setText(cabecera.getIdAlmacenHasta().getNombre());
-        } else {
-            fieldTienda.setText("");
-        }
         if (cabecera.getIdUsuario1() != null) {
             fieldPersonalDep.setText(cabecera.getIdUsuario1().getNombre());
         } else {
@@ -877,6 +880,10 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
         pos = cb_salidasregistradas.getSelectedIndex();
     }//GEN-LAST:event_cb_salidasregistradasActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+     
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bGenerarReporte;
@@ -888,13 +895,12 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
     private javax.swing.JCheckBox checkboxRevisado;
     private javax.swing.JTextField fieldAyudante;
     private javax.swing.JTextField fieldPersonalDep;
-    private javax.swing.JTextField fieldTienda;
     private javax.swing.JTextField fieldTotal;
     private javax.swing.JTextField fieldfecha;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

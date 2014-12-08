@@ -44,10 +44,10 @@
 		</box>
 	</style>
 	<subDataset name="New Dataset 1" uuid="5f02f02a-a739-4c4d-addc-fb15448630dd">
-		<parameter name="Desde" class="java.lang.String">
+		<parameter name="Desde" class="net.sf.jasperreports.types.date.DateRange">
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
-		<parameter name="Hasta" class="java.lang.String">
+		<parameter name="Hasta" class="net.sf.jasperreports.types.date.DateRange">
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
@@ -62,8 +62,8 @@ FROM
   public.inventario_tienda ivt INNER JOIN  public.producto p ON (ivt.id_producto=p.id_producto)
     INNER JOIN public.almacen a ON (ivt.id_almacen=a.id_almacen)
 WHERE
-  ivt.fecha_modificacion >= '$P{Desde}'
- AND ivt.fecha_modificacion <= '$P{Hasta}';]]>
+ivt.fecha_modificacion >= $P!{Desde}
+AND ivt.fecha_modificacion <= $P!{Hasta};]]>
 		</queryString>
 		<field name="id_producto" class="java.lang.Integer"/>
 		<field name="precio_con_descuento" class="java.lang.Float"/>
@@ -72,8 +72,8 @@ WHERE
 		<field name="descripcion" class="java.lang.String"/>
 		<field name="nombre" class="java.lang.String"/>
 	</subDataset>
-	<parameter name="FechaDesde" class="java.lang.String"/>
-	<parameter name="FechaHasta" class="java.lang.String"/>
+	<parameter name="FechaDesde" class="net.sf.jasperreports.types.date.DateRange"/>
+	<parameter name="FechaHasta" class="net.sf.jasperreports.types.date.DateRange"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -91,62 +91,43 @@ WHERE
 			<componentElement>
 				<reportElement key="table 1" style="table 1" x="37" y="16" width="360" height="50" uuid="dbadbf76-c66f-414a-85ec-e148c77274ec"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="New Dataset 1" uuid="22b7112e-9296-425c-ba6c-e68822d2d031">
-						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(1)]]></dataSourceExpression>
+					<datasetRun subDataset="New Dataset 1" uuid="bdc5e234-bd61-4f1c-80a5-65e51a606347">
+						<datasetParameter name="Desde">
+							<datasetParameterExpression><![CDATA[$P{FechaDesde}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="Hasta">
+							<datasetParameterExpression><![CDATA[$P{FechaHasta}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
 					<jr:column width="90" uuid="96462738-1166-4592-81ef-4c1faa9da838">
 						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
 						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="30" uuid="c28342fd-5d44-4fec-aaed-45bcd7dbabb9"/>
+								<reportElement x="0" y="0" width="90" height="30" uuid="b068c972-8432-4da8-825d-2fed64e8f0e6"/>
 								<textFieldExpression><![CDATA[$F{id_producto}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="90" uuid="949a2dd5-3734-4d40-88f5-918da8a8fd67">
 						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
-						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="30" uuid="1ff7273a-64c7-4f1f-abec-5b6debda8d24"/>
-								<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
+						<jr:detailCell style="table 1_TD" height="30" rowSpan="1"/>
 					</jr:column>
 					<jr:column width="90" uuid="2174463d-25af-452c-bb88-5260e3e9f2d5">
 						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
-						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="30" uuid="abf64432-b4d0-4099-8def-8553b9afcbf2"/>
-								<textFieldExpression><![CDATA[$F{precio_con_descuento}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
+						<jr:detailCell style="table 1_TD" height="30" rowSpan="1"/>
 					</jr:column>
 					<jr:column width="90" uuid="35e4de81-691d-4bfe-b8bc-e6b8fdef0855">
 						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
-						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="30" uuid="8fd92206-5381-48c8-9975-c70e0050cfd5"/>
-								<textFieldExpression><![CDATA[$F{fecha_creacion}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
+						<jr:detailCell style="table 1_TD" height="30" rowSpan="1"/>
 					</jr:column>
 					<jr:column width="90" uuid="80a1c6f6-beae-40cc-81b0-c570056a191c">
 						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
-						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="30" uuid="b3836931-2cf7-426b-8d6e-34a7df4fe3f9"/>
-								<textFieldExpression><![CDATA[$F{fecha_modificacion}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
+						<jr:detailCell style="table 1_TD" height="30" rowSpan="1"/>
 					</jr:column>
 					<jr:column width="90" uuid="f114e19e-4027-4ad5-bf47-57d1ed33cad3">
 						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
-						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="30" uuid="116fb82d-c2ec-4705-8cb8-46764211e60e"/>
-								<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
+						<jr:detailCell style="table 1_TD" height="30" rowSpan="1"/>
 					</jr:column>
 				</jr:table>
 			</componentElement>
