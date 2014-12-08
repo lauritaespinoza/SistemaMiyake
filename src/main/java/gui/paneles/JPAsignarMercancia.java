@@ -94,7 +94,7 @@ public class JPAsignarMercancia extends javax.swing.JPanel {
         this.comboBoxUsuarios.setSelectedIndex(-1);
         this.busy.setVisible(false);
         this.busy1.setVisible(false);
-        
+           
     }
     
     public static void main(String args[]) {

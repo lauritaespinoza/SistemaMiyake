@@ -1,33 +1,46 @@
 package gui.dialogos;
-
-//import almacen.DAO.DAOFactura;
-//import almacen.Modelos.ModeloTablaFacturaPendientes;
+ 
+import gui.paneles.Distribuidora1;
 import util.JavaUtil;
 import hibernate.DAO.ObjectModelDAO;
+import java.io.File;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.help.HelpBroker;
+import javax.help.HelpSet;
+import javax.help.HelpSetException;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.plaf.OptionPaneUI;
-import modelos.mapeos.EntradaProveedor;
 import modelos.mapeos.Factura;
+import modelos.tablas.TableModelReport;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class JDFacturasPendientes extends javax.swing.JDialog {
-
-    // ModeloTablaFacturaPendientes mtf = new ModeloTablaFacturaPendientes();
-    // DAOFactura daoFactura = new DAOFactura();
+ 
     public Factura factura = null;
     private List resultList = null;
     private int pos = -1;
+    //Reportes
+    public final InputStream rutaJasper = this.getClass().getResourceAsStream("/reportes/ListadoFacturas.jasper");
+    public final InputStream rutaJrxml = this.getClass().getResourceAsStream("/reportes/ListadoFacturas.jrxml");
 
     public JDFacturasPendientes(java.awt.Frame parent, boolean modal) throws Exception {
         super(parent, modal);
         initComponents();
         //jtListaEntradaProveedor.setModel(resulList);
-        this.setLocationRelativeTo(null);
+        //this.setLocationRelativeTo(null);
         
         this.jtListaFactura.setAutoCreateRowSorter(true);
         this.jtListaFactura.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
@@ -58,11 +71,12 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
 
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtListaFactura = new org.jdesktop.swingx.JXTable();
         jXFindBar1 = new org.jdesktop.swingx.JXFindBar(jtListaFactura.getSearchable());
-        jXLabel1 = new org.jdesktop.swingx.JXLabel();
+        ayuda = new javax.swing.JButton();
+        txtTitulo = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -81,9 +95,6 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
                 jButton2ActionPerformed(evt);
             }
         });
-
-        jLabel7.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jLabel7.setText("Factura:");
 
         jtListaFactura.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -104,11 +115,32 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(jtListaFactura);
 
-        jXLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/ayuda.png"))); // NOI18N
-        jXLabel1.setText("Ayuda");
-        jXLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jXLabel1MouseClicked(evt);
+        ayuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416510931_Help.png"))); // NOI18N
+        ayuda.setText("ayuda");
+        ayuda.setBorder(null);
+        ayuda.setBorderPainted(false);
+        ayuda.setContentAreaFilled(false);
+        ayuda.setDefaultCapable(false);
+        ayuda.setFocusPainted(false);
+        ayuda.setFocusable(false);
+        ayuda.setRequestFocusEnabled(false);
+        ayuda.setVerifyInputWhenFocusTarget(false);
+        ayuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ayudaActionPerformed(evt);
+            }
+        });
+
+        txtTitulo.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
+        txtTitulo.setForeground(new java.awt.Color(102, 102, 102));
+        txtTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415416322_list-accept.png"))); // NOI18N
+        txtTitulo.setText("LISTADO DE FACTURAS PENDIENTES");
+
+        jButton3.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jButton3.setText("Imprimir");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
             }
         });
 
@@ -118,41 +150,43 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jXFindBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jXLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(254, 254, 254))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(319, 319, 319)
+                                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(8, 8, 8)
+                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(95, 95, 95)
+                                .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(99, 99, 99)
+                                .addComponent(ayuda, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jXFindBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(25, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jXLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(ayuda)
+                    .addComponent(txtTitulo))
+                .addGap(18, 18, 18)
+                .addComponent(jXFindBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1)
+                    .addComponent(jButton3))
+                .addContainerGap())
         );
 
         pack();
@@ -175,23 +209,72 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
         
     }//GEN-LAST:event_jtListaFacturaMouseClicked
 
-    private void jXLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jXLabel1MouseClicked
-        if(evt.getClickCount()==1){
-            JOptionPane.showMessageDialog(null, "Mensaje");
-            System.err.println("Mesaje_Ayuda");
-          //  JOptionPane.showInternalMessageDialog(this, evt, null, WIDTH);
+    private void ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ayudaActionPerformed
+
+        try {
+          //  File archivo;
+
+       // archivo = new File(this.getClass().getResource("/JavaHelp/ejemplo.hs").getFile());
+            //C:\Users\Pablo\Documents\NetBeansProjects\SistemaMiyake\SistemaMiyake\src\main\resources\JavaHelp
+            File archivo = new File("C:\\Users\\Pablo\\Documents\\NetBeansProjects\\SistemaMiyake\\SistemaMiyake\\src\\main\\java\\JavaHelp\\JavaHelp\\ejemplo.hs");
+
+            URL hsURL = archivo.toURI().toURL(); // = this.getClass().getResource("ejemplo.hs");
+
+            HelpSet helpset = null;
+            helpset = new HelpSet(null, hsURL);
+
+            HelpSet.Presentation hsp;
+            hsp = helpset.getPresentation("MainWin");
+
+            HelpBroker help_browser = helpset.createHelpBroker();
+            help_browser.setHelpSetPresentation(hsp);
+
+            // Cuando pulsemos F1 se mostrará la ayuda de la página de introducion
+            help_browser.enableHelpOnButton(this.ayuda, "introduction", helpset);
+            help_browser.enableHelpKey(getContentPane(), "introduction", helpset);
+
+        } catch (HelpSetException | MalformedURLException ex) {
+            Logger.getLogger(JDFacturasPendientes.class.getName()).log(Level.SEVERE, null, ex);
+             JOptionPane.showMessageDialog(this, "Excepcion Ayuda Factura " + ex);
+        }
+
+    }//GEN-LAST:event_ayudaActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:    resultList
+         try {
+            JasperPrint jasperPrint = null;
+           
+            Map<String, Object> parametro = new HashMap<>();
+            String s = "";
+           TableModelReport dataSourse = new TableModelReport(jtListaFactura.getModel());
+        parametro.put("REPORT_DATA_SOURSE", dataSourse);
+            //JasperCompileManager.compileReport(rutaJrxml);
+            JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ListadoFacturas.jasper"));
+            
+            jasperPrint = JasperFillManager.fillReport(reporte, null, dataSourse);
+            JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
+            jasperViewer.setTitle("Reporte de Toma Fisica Distribuidoras.");
+            jasperViewer.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "error" + e);    
+            Logger.getLogger(Distribuidora1.class.getName()).log(Level.SEVERE, null, e);
+
             
         }
-    }//GEN-LAST:event_jXLabel1MouseClicked
+        
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ayuda;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private org.jdesktop.swingx.JXFindBar jXFindBar1;
-    private org.jdesktop.swingx.JXLabel jXLabel1;
     private org.jdesktop.swingx.JXTable jtListaFactura;
+    private javax.swing.JLabel txtTitulo;
     // End of variables declaration//GEN-END:variables
 
     private void SeleccionarFactura() {

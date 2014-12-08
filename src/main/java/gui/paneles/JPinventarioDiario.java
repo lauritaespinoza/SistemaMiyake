@@ -235,6 +235,7 @@ public class JPinventarioDiario extends javax.swing.JPanel {
 
         jLabel7.setText("Tienda");
 
+        seleccionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417901536_internt_web_technology-02-16.png"))); // NOI18N
         seleccionar.setText("Cargar Archivo de Factura");
         seleccionar.setToolTipText("Para cálculo de factura");
         seleccionar.addActionListener(new java.awt.event.ActionListener() {
@@ -243,6 +244,7 @@ public class JPinventarioDiario extends javax.swing.JPanel {
             }
         });
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416856376_tags-label.png"))); // NOI18N
         jLabel3.setText("Total:");
 
         total_facturas.setText(" ");
@@ -363,7 +365,7 @@ public class JPinventarioDiario extends javax.swing.JPanel {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(178, Short.MAX_VALUE)
+                .addContainerGap(208, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))

@@ -88,7 +88,7 @@ public class JPTomaFisicaInventarioTiendas extends javax.swing.JPanel {
         this.comboBoxAlmacen.setSelectedIndex(-1);
         this.comboBoxUsuarios.setSelectedIndex(-1);
         this.busy.setVisible(false);
-    }
+    } 
 
     public static void main(String args[]) {
 

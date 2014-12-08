@@ -44,7 +44,7 @@ public class InventarioTienda implements Serializable {
     @EmbeddedId
     protected InventarioTiendaPK inventarioTiendaPK;
     private Boolean asignado;
-    private Integer cantidad;
+    private Integer cantidad;    
     private Integer procesado;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "precio_con_descuento", precision = 8, scale = 8)
@@ -55,7 +55,7 @@ public class InventarioTienda implements Serializable {
     private Date fechaCreacion = Calendar.getInstance().getTime();
     @Column(name = "fecha_modificacion")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaModificacion;
+    private Date fechaModificacion = Calendar.getInstance().getTime();
     @Column(name = "precio_sin_descuento", precision = 8, scale = 8)
     private Float precioSinDescuento;
     @JoinColumn(name = "id_almacen", referencedColumnName = "id_almacen", nullable = false, insertable = false, updatable = false)
@@ -64,6 +64,7 @@ public class InventarioTienda implements Serializable {
     @JoinColumn(name = "id_producto", referencedColumnName = "id_producto", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Producto producto;
+    
 
     public InventarioTienda() {
     }
@@ -79,6 +80,12 @@ public class InventarioTienda implements Serializable {
     public InventarioTienda(InventarioTiendaPK inventarioTiendaPK, Integer cantidad, Almacen almacen, Producto producto) {
         this.inventarioTiendaPK = inventarioTiendaPK;
         this.cantidad = cantidad;
+        this.almacen = almacen;
+        this.producto = producto;
+    }
+
+    public InventarioTienda(InventarioTiendaPK inventarioTiendaPK, Almacen almacen, Producto producto) {
+        this.inventarioTiendaPK = inventarioTiendaPK;
         this.almacen = almacen;
         this.producto = producto;
     }
@@ -170,6 +177,8 @@ public class InventarioTienda implements Serializable {
     public void setProcesado(Integer procesado) {
         this.procesado = procesado;
     }
+
+    
 
     @Override
     public int hashCode() {

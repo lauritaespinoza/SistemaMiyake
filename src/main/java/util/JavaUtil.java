@@ -180,6 +180,7 @@ public abstract class JavaUtil {
             oneRow.add(ivt.getFechaCreacion());
             oneRow.add(ivt.getFechaModificacion());
             oneRow.add(ivt.getCantidad());
+            oneRow.add(ivt.getProcesado());
         }
 
         if (o instanceof Almacen) {
@@ -341,6 +342,7 @@ public abstract class JavaUtil {
             header.add("Creación");
             header.add("Modificación");
             header.add("Existencia");
+            header.add("Procesado");
         }
 
         if (o instanceof Almacen) {
@@ -364,7 +366,7 @@ public abstract class JavaUtil {
         }
 
         if (o instanceof NotaCreditoDebitoDetalle) {
-            header.add("Renglon");
+            header.add("Renglón");
             header.add("Referencia");
             header.add("Descripcion");
             header.add("Cantidad");

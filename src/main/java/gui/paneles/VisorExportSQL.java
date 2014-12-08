@@ -466,7 +466,7 @@ public class VisorExportSQL extends javax.swing.JFrame {
                 try {
                     String nombreFile = JOptionPane.showInputDialog(null, "Introduc Nombre del Archivo");
                     
-                    String SQL = "COPY (SELECT  "
+                    String SQL = "COPY (  SELECT E'\\r' as zx, "
                             + "  0 as a,1 as b, "
                             + "  REPLICATE(' ', 7)||inventario_tienda.id_producto AS codigo,  "
                             + "  LTRIM(replace(producto.descripcion,',',' '))  AS descr,  "
@@ -491,7 +491,8 @@ public class VisorExportSQL extends javax.swing.JFrame {
                             + "  departamento.id_division = division.id_division AND "
                             + "  inventario_tienda.precio_con_descuento>0.05 and public.division.id_division<>9 and producto.descripcion not like ' ' and "
                             + "  inventario_tienda.id_almacen = 2 "
-                            + "  Order by producto.id_producto ) TO '"+System.getProperty("user.home")+"\\"+nombreFile+"' WITH DELIMITER AS ',' ";
+                            //+ "  Order by producto.id_producto ) TO '"+System.getProperty("user.home", "C:\\")+"\\"+nombreFile+"' WITH DELIMITER AS ',' ";
+                            + "  Order by producto.id_producto ) TO '"+ System.getProperty("user.home")+"\\Documents\\"+nombreFile+"' WITH DELIMITER AS ',' ";
 
                     //List l= 
                      busy.setEnabled(true);

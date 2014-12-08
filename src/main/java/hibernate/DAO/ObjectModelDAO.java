@@ -243,6 +243,7 @@ public abstract class ObjectModelDAO {
             newSession.getTransaction().commit();
         } catch (HibernateException ex) {
             manejaExcepcion(ex, newSession, newSession.getTransaction());
+            
         } finally {
             terminate(newSession);
         }
