@@ -216,11 +216,16 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         };
         jMenuBarSistemaMiyake = new javax.swing.JMenuBar();
-        Archivos = new javax.swing.JMenu();
-        editar = new javax.swing.JMenu();
+        menuArchivo = new javax.swing.JMenu();
         menuFacturacion = new javax.swing.JMenu();
-        menuTienda = new javax.swing.JMenu();
-        menuAlmacen = new javax.swing.JMenu();
+        menuProveedor = new javax.swing.JMenu();
+        menuUsuario = new javax.swing.JMenu();
+        menuTiendas = new javax.swing.JMenu();
+        menuInventario = new javax.swing.JMenu();
+        menuMercancia = new javax.swing.JMenu();
+        menuNotas = new javax.swing.JMenu();
+        menuUtilidades = new javax.swing.JMenu();
+        menuAyuda = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(9, 182, 201));
@@ -273,7 +278,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         jXCollapsiblePane1.setOpaque(false);
         jXCollapsiblePane1.setAlignmentX(0.0F);
 
-        taskPaneModuloFacturacion.setCollapsed(true);
         taskPaneModuloFacturacion.setTitle("Facturación");
 
         taskPaneProducto.setCollapsed(true);
@@ -370,6 +374,7 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         taskPaneModuloFacturacion.getContentPane().add(taskPaneProveedores);
 
+        taskPaneEtiquetas.setCollapsed(true);
         taskPaneEtiquetas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Barcode.png"))); // NOI18N
         taskPaneEtiquetas.setSpecial(true);
         taskPaneEtiquetas.setTitle("Etiquetas");
@@ -386,6 +391,7 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jXCollapsiblePane1.getContentPane().add(taskPaneModuloFacturacion);
 
+        taskPaneModuloTienda.setCollapsed(true);
         taskPaneModuloTienda.setTitle("Tienda");
 
         jButton6.setText("Almacen");
@@ -522,20 +528,35 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
 
-        Archivos.setText("File");
-        jMenuBarSistemaMiyake.add(Archivos);
+        menuArchivo.setText("Archivos");
+        jMenuBarSistemaMiyake.add(menuArchivo);
 
-        editar.setText("Edit");
-        jMenuBarSistemaMiyake.add(editar);
-
-        menuFacturacion.setText("jMenu3");
+        menuFacturacion.setText("Productos");
         jMenuBarSistemaMiyake.add(menuFacturacion);
 
-        menuTienda.setText("jMenu4");
-        jMenuBarSistemaMiyake.add(menuTienda);
+        menuProveedor.setText("Proveedor");
+        jMenuBarSistemaMiyake.add(menuProveedor);
 
-        menuAlmacen.setText("jMenu5");
-        jMenuBarSistemaMiyake.add(menuAlmacen);
+        menuUsuario.setText("Usuarios");
+        jMenuBarSistemaMiyake.add(menuUsuario);
+
+        menuTiendas.setText("Tiendas");
+        jMenuBarSistemaMiyake.add(menuTiendas);
+
+        menuInventario.setText("Inventario");
+        jMenuBarSistemaMiyake.add(menuInventario);
+
+        menuMercancia.setText("Gestion Mercancia");
+        jMenuBarSistemaMiyake.add(menuMercancia);
+
+        menuNotas.setText("Notas");
+        jMenuBarSistemaMiyake.add(menuNotas);
+
+        menuUtilidades.setText("Utilidades");
+        jMenuBarSistemaMiyake.add(menuUtilidades);
+
+        menuAyuda.setText("Ayuda");
+        jMenuBarSistemaMiyake.add(menuAyuda);
 
         setJMenuBar(jMenuBarSistemaMiyake);
 
@@ -695,7 +716,6 @@ public class FventanaIncial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu Archivos;
     private org.jdesktop.swingx.JXButton AsignarMercancia_boton_;
     private javax.swing.JButton Boton_Inprimir_Reporte_conteo_Distribuidora;
     private org.jdesktop.swingx.JXButton ConsultaExistencia_boton_;
@@ -715,7 +735,6 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JButton btnCrudProveedr;
     private javax.swing.JButton btnCrudUbicacion;
     private javax.swing.JButton btnSalidaTienda;
-    private javax.swing.JMenu editar;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -732,9 +751,16 @@ public class FventanaIncial extends javax.swing.JFrame {
     private org.jdesktop.swingx.JXButton jXButton2;
     private org.jdesktop.swingx.JXCollapsiblePane jXCollapsiblePane1;
     private org.jdesktop.swingx.JXTaskPaneContainer jXTaskPaneContainer1;
-    private javax.swing.JMenu menuAlmacen;
+    private javax.swing.JMenu menuArchivo;
+    private javax.swing.JMenu menuAyuda;
     private javax.swing.JMenu menuFacturacion;
-    private javax.swing.JMenu menuTienda;
+    private javax.swing.JMenu menuInventario;
+    private javax.swing.JMenu menuMercancia;
+    private javax.swing.JMenu menuNotas;
+    private javax.swing.JMenu menuProveedor;
+    private javax.swing.JMenu menuTiendas;
+    private javax.swing.JMenu menuUsuario;
+    private javax.swing.JMenu menuUtilidades;
     private com.ClosableTabbedPane panelClosableCentral;
     private org.jdesktop.swingx.JXTaskPane taskPaneConsultas;
     private org.jdesktop.swingx.JXTaskPane taskPaneEtiquetas;

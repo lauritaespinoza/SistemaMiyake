@@ -50,29 +50,54 @@
     </Container>
     <Menu class="javax.swing.JMenuBar" name="jMenuBarSistemaMiyake">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="Archivos">
+        <Menu class="javax.swing.JMenu" name="menuArchivo">
           <Properties>
-            <Property name="text" type="java.lang.String" value="File"/>
-          </Properties>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="editar">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Edit"/>
+            <Property name="text" type="java.lang.String" value="Archivos"/>
           </Properties>
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuFacturacion">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jMenu3"/>
+            <Property name="text" type="java.lang.String" value="Productos"/>
           </Properties>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="menuTienda">
+        <Menu class="javax.swing.JMenu" name="menuProveedor">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jMenu4"/>
+            <Property name="text" type="java.lang.String" value="Proveedor"/>
           </Properties>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="menuAlmacen">
+        <Menu class="javax.swing.JMenu" name="menuUsuario">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jMenu5"/>
+            <Property name="text" type="java.lang.String" value="Usuarios"/>
+          </Properties>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="menuTiendas">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Tiendas"/>
+          </Properties>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="menuInventario">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Inventario"/>
+          </Properties>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="menuMercancia">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Gestion Mercancia"/>
+          </Properties>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="menuNotas">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Notas"/>
+          </Properties>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="menuUtilidades">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Utilidades"/>
+          </Properties>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="menuAyuda">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ayuda"/>
           </Properties>
         </Menu>
       </SubComponents>
@@ -356,7 +381,6 @@
               <SubComponents>
                 <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneModuloFacturacion">
                   <Properties>
-                    <Property name="collapsed" type="boolean" value="true"/>
                     <Property name="title" type="java.lang.String" value="Facturaci&#xf3;n"/>
                   </Properties>
                   <SubComponents>
@@ -728,6 +752,7 @@
                     </Container>
                     <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneEtiquetas">
                       <Properties>
+                        <Property name="collapsed" type="boolean" value="true"/>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/iconos/Barcode.png"/>
                         </Property>
@@ -894,6 +919,7 @@
                 </Container>
                 <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneModuloTienda">
                   <Properties>
+                    <Property name="collapsed" type="boolean" value="true"/>
                     <Property name="title" type="java.lang.String" value="Tienda"/>
                   </Properties>
                   <SubComponents>
