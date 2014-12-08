@@ -228,6 +228,7 @@ public class JPalmacen extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        listadoAlmacenes.setToolTipText("Presione Ctrl+f  para buscar");
         listadoAlmacenes.setHorizontalScrollEnabled(true);
         jScrollPane2.setViewportView(listadoAlmacenes);
 
@@ -290,7 +291,7 @@ public class JPalmacen extends javax.swing.JPanel {
 
         fieldLogo.setToolTipText("Doble Click");
         fieldLogo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        fieldLogo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        fieldLogo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         fieldLogo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 fieldLogoMouseClicked(evt);
@@ -457,6 +458,7 @@ public class JPalmacen extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tablaModfAlmacen.setToolTipText("Presione Ctrl+f  para buscar");
         tablaModfAlmacen.setHorizontalScrollEnabled(true);
         jScrollPane5.setViewportView(tablaModfAlmacen);
 
@@ -488,7 +490,7 @@ public class JPalmacen extends javax.swing.JPanel {
 
         fieldLogo1.setToolTipText("Doble Click");
         fieldLogo1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        fieldLogo1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        fieldLogo1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         fieldLogo1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 fieldLogo1MouseClicked(evt);
@@ -664,6 +666,7 @@ public class JPalmacen extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tablaDeletAlmacen.setToolTipText("Presione Ctrl+f  para buscar");
         tablaDeletAlmacen.setHorizontalScrollEnabled(true);
         jScrollPane6.setViewportView(tablaDeletAlmacen);
 

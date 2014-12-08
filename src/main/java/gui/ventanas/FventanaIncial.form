@@ -326,12 +326,12 @@
               <SubComponents>
                 <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneModuloFacturacion">
                   <Properties>
-                    <Property name="collapsed" type="boolean" value="true"/>
                     <Property name="title" type="java.lang.String" value="Facturaci&#xf3;n"/>
                   </Properties>
                   <SubComponents>
                     <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneProducto">
                       <Properties>
+                        <Property name="collapsed" type="boolean" value="true"/>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/iconos/1415658077_database.png"/>
                         </Property>
@@ -538,6 +538,7 @@
                     </Container>
                     <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneProveedores">
                       <Properties>
+                        <Property name="collapsed" type="boolean" value="true"/>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/iconos/1415665365_fork1.png"/>
                         </Property>
@@ -862,6 +863,7 @@
                 </Container>
                 <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneModuloTienda">
                   <Properties>
+                    <Property name="collapsed" type="boolean" value="true"/>
                     <Property name="title" type="java.lang.String" value="Tienda"/>
                   </Properties>
                   <SubComponents>
@@ -1016,6 +1018,7 @@
                 </Container>
                 <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneModuloDeposito">
                   <Properties>
+                    <Property name="collapsed" type="boolean" value="true"/>
                     <Property name="title" type="java.lang.String" value="Dep&#xf3;sito"/>
                   </Properties>
                   <SubComponents>
