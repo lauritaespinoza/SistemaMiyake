@@ -118,13 +118,13 @@ public class FventanaIncial extends javax.swing.JFrame {
             int pos = isContained(titulo);
             if (pos == -1) {
                 if (panelNuevo.equals(JPnotaCreditoDebito.class)) {//si es una nota de credito/debito
-                    panel.addTab(titulo, (JPanel) panelNuevo.getConstructor(Boolean.class).newInstance(tipo));
+                    panelClosableCentral.addTab(titulo, (JPanel) panelNuevo.getConstructor(Boolean.class).newInstance(tipo));
                 } else {
-                    panel.addTab(titulo, (JPanel) panelNuevo.newInstance());
+                    panelClosableCentral.addTab(titulo, (JPanel) panelNuevo.newInstance());
                 }
-                panel.setSelectedIndex(panel.getTabCount() - 1);
+                panelClosableCentral.setSelectedIndex(panelClosableCentral.getTabCount() - 1);
             } else {
-                panel.setSelectedIndex(pos);
+                panelClosableCentral.setSelectedIndex(pos);
             }
 
         } catch (InstantiationException | IllegalAccessException ex) {
@@ -139,9 +139,9 @@ public class FventanaIncial extends javax.swing.JFrame {
     }
 
     private int isContained(String titulo) {
-        for (int i = 0; i < panel.getTabCount(); i++) {
+        for (int i = 0; i < panelClosableCentral.getTabCount(); i++) {
 
-            if (panel.getTabTitleAt(i).equals(titulo)) {
+            if (panelClosableCentral.getTabTitleAt(i).equals(titulo)) {
                 return i;//si encontro, retorna la posicion
 
             }
@@ -162,7 +162,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        jPanelControlesPrincipales = new javax.swing.JPanel();
         jXCollapsiblePane1 = new org.jdesktop.swingx.JXCollapsiblePane();
         taskPaneModuloFacturacion = new org.jdesktop.swingx.JXTaskPane();
         taskPaneProducto = new org.jdesktop.swingx.JXTaskPane();
@@ -207,7 +207,7 @@ public class FventanaIncial extends javax.swing.JFrame {
                 .getName()).log(Level.SEVERE, null, ex);
 
         }
-        panel = new com.ClosableTabbedPane(){
+        panelClosableCentral = new com.ClosableTabbedPane(){
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -215,6 +215,12 @@ public class FventanaIncial extends javax.swing.JFrame {
             }
 
         };
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(9, 182, 201));
@@ -261,8 +267,8 @@ public class FventanaIncial extends javax.swing.JFrame {
         jPanel3.setAlignmentY(0.0F);
         jPanel3.setLayout(new java.awt.BorderLayout());
 
-        jPanel2.setAlignmentX(0.0F);
-        jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.Y_AXIS));
+        jPanelControlesPrincipales.setAlignmentX(0.0F);
+        jPanelControlesPrincipales.setLayout(new javax.swing.BoxLayout(jPanelControlesPrincipales, javax.swing.BoxLayout.Y_AXIS));
 
         jXCollapsiblePane1.setOpaque(false);
         jXCollapsiblePane1.setAlignmentX(0.0F);
@@ -380,7 +386,6 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jXCollapsiblePane1.getContentPane().add(taskPaneModuloFacturacion);
 
-        taskPaneModuloTienda.setCollapsed(true);
         taskPaneModuloTienda.setTitle("Tienda");
 
         jButton6.setText("Almacen");
@@ -506,16 +511,33 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jXCollapsiblePane1.getContentPane().add(taskPaneModuloDeposito);
 
-        jPanel2.add(jXCollapsiblePane1);
+        jPanelControlesPrincipales.add(jXCollapsiblePane1);
 
-        jPanel3.add(jPanel2, java.awt.BorderLayout.LINE_START);
+        jPanel3.add(jPanelControlesPrincipales, java.awt.BorderLayout.LINE_START);
 
-        panel.setAlignmentX(0.0F);
-        panel.setAutoscrolls(true);
-        panel.setMinimumSize(new java.awt.Dimension(100, 100));
-        jPanel3.add(panel, java.awt.BorderLayout.CENTER);
+        panelClosableCentral.setAlignmentX(0.0F);
+        panelClosableCentral.setAutoscrolls(true);
+        panelClosableCentral.setMinimumSize(new java.awt.Dimension(100, 100));
+        jPanel3.add(panelClosableCentral, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("jMenu3");
+        jMenuBar1.add(jMenu3);
+
+        jMenu4.setText("jMenu4");
+        jMenuBar1.add(jMenu4);
+
+        jMenu5.setText("jMenu5");
+        jMenuBar1.add(jMenu5);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -562,7 +584,7 @@ public class FventanaIncial extends javax.swing.JFrame {
 
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        panel.removeAll();
+        panelClosableCentral.removeAll();
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
@@ -700,14 +722,20 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanelControlesPrincipales;
     private org.jdesktop.swingx.JXButton jXButton1;
     private org.jdesktop.swingx.JXButton jXButton2;
     private org.jdesktop.swingx.JXCollapsiblePane jXCollapsiblePane1;
     private org.jdesktop.swingx.JXTaskPaneContainer jXTaskPaneContainer1;
-    private com.ClosableTabbedPane panel;
+    private com.ClosableTabbedPane panelClosableCentral;
     private org.jdesktop.swingx.JXTaskPane taskPaneConsultas;
     private org.jdesktop.swingx.JXTaskPane taskPaneEtiquetas;
     private org.jdesktop.swingx.JXTaskPane taskPaneGestionMercancia;
