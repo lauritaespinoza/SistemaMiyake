@@ -24,7 +24,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import modelos.mapeos.Clasificacion;
 import modelos.mapeos.Departamento;
-import gui.ventanas.FventanaIncial_AUx;
+import gui.ventanas.FventanaIncial;
 
 public class JPclasificacion extends javax.swing.JPanel {
     

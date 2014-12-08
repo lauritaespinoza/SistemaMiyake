@@ -98,6 +98,7 @@ public class JDasignadaTienda extends javax.swing.JDialog {
     private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
         if (evt.getClickCount() == 2 && tabla.getSelectedRow() != -1) {
             sptd = (SalidaParaTiendaDetalle) ((Object[]) resultListSptDetalle.get(tabla.getSelectedRow()))[0];
+
             dispose();
         }
     }//GEN-LAST:event_tablaMouseClicked

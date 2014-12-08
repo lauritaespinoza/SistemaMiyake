@@ -164,8 +164,8 @@ public class InventarioDiario {
             rsl += "Factura : " + (i + 1) + "\n";
             rsl += factura.toString() + "\n\n";
         }
-        rsl += "Total sin IVA : " + JavaUtil.dosDecimales.format(totalSinIva) + "\tTotal con IVA : "
-                + JavaUtil.dosDecimales.format(totalConIva);
+        rsl += "Total sin IVA : " + JavaUtil.dosDecimales.format(totalSinIva).replace(",", ".") + "\tTotal con IVA : "
+                + JavaUtil.dosDecimales.format(totalConIva).replace(",", ".");
 
         rsl += "\n\n\n";
         for (Map.Entry<Integer, Integer> entry : relacion.entrySet()) {

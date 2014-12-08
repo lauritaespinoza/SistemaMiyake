@@ -27,13 +27,16 @@ import java.awt.Image;
 import java.awt.MouseInfo;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -45,6 +48,11 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import modelos.tablas.TableModelReport;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
 import org.hibernate.Query;
@@ -65,6 +73,9 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
     private boolean crear;
     private List<List> resultListSptDetalle;
     private Usuario user = JFInicioSecionMiyake.us1;
+    public final InputStream rutaJasper = this.getClass().getResourceAsStream("/reportes/ReporteNotasDebCred.jasper");
+    public final InputStream rutaJrxml = this.getClass().getResourceAsStream("/reportes/ReporteNotasDebCred.jrxml");
+
 
     public JPnotaCreditoDebito(Boolean tipo) {
         initComponents();
@@ -551,7 +562,41 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
     }
 
     private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
-        // TODO add your handling code here:
+         try {
+            JasperPrint jasperPrint = null;
+
+            Map<String, Object> parametro = new HashMap<>();
+            String s = "";
+
+            if (getTipo()) {
+                parametro.put("Titulo", nota_credito);
+                parametro.put("Caso", encaso_sobrante);
+            } else {
+                parametro.put("Titulo", nota_debito);
+                parametro.put("Caso", encaso_faltante);
+            }
+            parametro.put("NumFactura", cb_salida.getSelectedItem());
+            parametro.put("Facturado", facturado.getText());
+            parametro.put("Realizado", realizado.getText());
+            parametro.put("Fecha",new SimpleDateFormat("dd-MM-yyyy").format(fecha.getDate()));
+            parametro.put("Direccion", direccionAlmacen.getText());
+            parametro.put("Tienda", nombreAlmacen.getText());
+            parametro.put("Rif", rifAlmacen.getText());
+
+            TableModelReport dataSourse = new TableModelReport(tabla.getModel());
+
+            parametro.put("REPORT_DATA_SOURCE", dataSourse);
+            //parametro.put("Total", total.getText());
+            JasperCompileManager.compileReport(rutaJrxml);
+            jasperPrint = JasperFillManager.fillReport(rutaJasper, parametro, dataSourse);
+            JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
+            jasperViewer.setTitle("Reporte de Nota");
+            jasperViewer.setVisible(true);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "error" + e);
+        }
+
     }//GEN-LAST:event_imprimirActionPerformed
 
     private boolean calcularTotal() {
@@ -627,6 +672,17 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
             ObjectModelDAO.saveObject((NotaCreditoDebitoDetalle) o);
         }
 
+        //si es debito suma IVT en desde: suma porque falta en hasta
+        //si es credito resta en IVT en desde: resta porque sobra en hasta
+//        String hql="FROM";
+//        List resultListIVT=
+//        if (getTipo()) {
+//            
+//        } else {
+//
+//        }
+
+        cb_tiendaActionPerformed(null);
     }//GEN-LAST:event_guardarActionPerformed
 
     private void cb_ncdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_ncdActionPerformed
@@ -759,9 +815,9 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
         Almacen alc = (Almacen) resultListAlmacen.get(cb_tienda.getSelectedIndex() - 1);
         JavaUtil.preCambio(alc.getLogo(), logo);
         nombreAlmacen.setText(alc.getNombre());
-        rifAlmacen.setText("RIF: " + alc.getRif());
+        rifAlmacen.setText("RIF: " + alc.getRif()== null? "" :alc.getRif());
         direccionAlmacen.setText(alc.getIdUbicacion() == null
-                ? null : alc.getIdUbicacion().toString());
+                ? "" : alc.getIdUbicacion().toString());
         String hql = "FROM NotaCreditoDebito ncd WHERE ncd.tipo=:tipo AND ncd.idSalida.revisado=:revisado "
                 + "AND ncd.idSalida.idAlmacenHasta=:almacen ORDER BY ncd.idNotaCreditoDebito asc";
 //        String hql = "FROM NotaCreditoDebito ncd WHERE ncd.tipo=:tipo AND ncd.idSalida.idAlmacenHasta=:almacen order by ncd.idNotaCreditoDebito asc";

@@ -28,10 +28,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
-import javafx.scene.control.TitledPane;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import modelos.mapeos.Almacen;
 import modelos.mapeos.InventarioTienda;
 import modelos.mapeos.InventarioTiendaPK;
 import modelos.mapeos.Producto;
@@ -52,6 +52,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
     private int pos;
     private SalidaParaTienda cabecera = null;
     DefaultTableModel tableModel;
+    private List resultListAlmacen;
 
     public final InputStream rutaJasper = this.getClass().getResourceAsStream("/reportes/ReporteMercanciaAsignada.jasper");
     public final InputStream rutaJrxml = this.getClass().getResourceAsStream("/reportes/ReporteMercanciaAsignada.jrxml");
@@ -62,9 +63,11 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
         setTableCellAlignment(JLabel.CENTER, listadoMercancia);
 
         //checkboxRevisado.setSelected(false);
-        setCB(buttonGrouptipo.isSelected(null));
+        // setCB(buttonGrouptipo.isSelected(null));
+        setCB_Tienda();
 
         listadoMercancia.getTableHeader().setReorderingAllowed(false);
+
     }
 
     /**
@@ -82,7 +85,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
         panelCabezera = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        cb_Salidas = new javax.swing.JComboBox();
+        cb_tienda1 = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
         fieldfecha = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -91,8 +94,10 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
         fieldPersonalDep = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         fieldAyudante = new javax.swing.JTextField();
-        cb_llegada = new javax.swing.JComboBox();
+        cb_tienda2 = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        cb_salidasregistradas = new javax.swing.JComboBox();
         jPanel1 = new javax.swing.JPanel();
         checkboxRevisado = new javax.swing.JCheckBox();
         jRadioButtonPendiente = new javax.swing.JRadioButton();
@@ -115,16 +120,16 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
 
         panelCabezera.setLayout(new javax.swing.BoxLayout(panelCabezera, javax.swing.BoxLayout.LINE_AXIS));
 
-        jLabel1.setText("Salida:");
+        jLabel1.setText("Tienda desde:");
 
-        cb_Salidas.addItemListener(new java.awt.event.ItemListener() {
+        cb_tienda1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cb_SalidasItemStateChanged(evt);
+                cb_tienda1ItemStateChanged(evt);
             }
         });
-        cb_Salidas.addActionListener(new java.awt.event.ActionListener() {
+        cb_tienda1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_SalidasActionPerformed(evt);
+                cb_tienda1ActionPerformed(evt);
             }
         });
 
@@ -137,6 +142,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
         jLabel3.setPreferredSize(new java.awt.Dimension(10, 14));
 
         fieldTienda.setEditable(false);
+        fieldTienda.setText("ya no tiene sentido si se eligen las tiendas");
 
         jLabel4.setText("Facturadora:");
 
@@ -146,7 +152,21 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
 
         fieldAyudante.setEditable(false);
 
-        jLabel5.setText("Llegada:");
+        cb_tienda2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_tienda2ActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Tienda hasta:");
+
+        jLabel7.setText("Salidas Registradas:");
+
+        cb_salidasregistradas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_salidasregistradasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -164,33 +184,45 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
                                 .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(7, 7, 7)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fieldPersonalDep)
-                            .addComponent(fieldAyudante)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(fieldAyudante))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                                .addComponent(fieldPersonalDep, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(17, 17, 17)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fieldTienda)
                             .addComponent(fieldfecha)
-                            .addComponent(cb_Salidas, 0, 421, Short.MAX_VALUE)
-                            .addComponent(cb_llegada, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(0, 0, 0))
+                            .addComponent(fieldTienda)
+                            .addComponent(cb_tienda2, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cb_tienda1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cb_salidasregistradas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cb_Salidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_tienda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cb_llegada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_tienda2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
+                .addGap(14, 14, 14)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(cb_salidasregistradas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -246,7 +278,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
                     .addComponent(checkboxRevisado)
                     .addComponent(jRadioButtonRevisado)
                     .addComponent(jRadioButtonPendiente))
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,7 +289,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
                 .addComponent(jRadioButtonRevisado)
                 .addGap(35, 35, 35)
                 .addComponent(checkboxRevisado)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
 
         panelCabezera.add(jPanel1);
@@ -289,7 +321,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
         panelFinalLayout.setHorizontalGroup(
             panelFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFinalLayout.createSequentialGroup()
-                .addContainerGap(381, Short.MAX_VALUE)
+                .addContainerGap(446, Short.MAX_VALUE)
                 .addGroup(panelFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFinalLayout.createSequentialGroup()
                         .addComponent(bImprimirEtiquetas)
@@ -371,7 +403,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
         panelTabla.setLayout(panelTablaLayout);
         panelTablaLayout.setHorizontalGroup(
             panelTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 717, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 782, Short.MAX_VALUE)
         );
         panelTablaLayout.setVerticalGroup(
             panelTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -478,23 +510,88 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
         q.getQuery().setParameter("revisado", tipo);
         List resultList_sw = ObjectModelDAO.getResultQuery(q);
 
-        cb_Salidas.removeAllItems();
-        cb_Salidas.addItem(JavaUtil.cons_seleccionar);
-        cb_Salidas.addItem("Todas");
+        cb_tienda1.removeAllItems();
+        cb_tienda1.addItem("Todas");
         for (Object object : resultList_sw) {
             SalidaParaTienda c = (SalidaParaTienda) object;
-            cb_Salidas.addItem(c.getIdSalida());
-        }
-        cb_llegada.removeAllItems();
-        cb_llegada.addItem(JavaUtil.cons_seleccionar);
-        cb_llegada.addItem("Todas");
-        for (Object object : resultList_sw) {
-            SalidaParaTienda c = (SalidaParaTienda) object;
-            cb_llegada.addItem(c.getIdSalida());
+            cb_tienda1.addItem(c.getIdSalida());
         }
     }
 
-    private void cb_SalidasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_SalidasItemStateChanged
+    private void setCB_Tienda() {
+        resultListAlmacen = ObjectModelDAO.getResultQuery("FROM Almacen a order by a.idAlmacen asc");
+        cb_tienda1.removeAllItems();
+        cb_tienda1.addItem(JavaUtil.cons_seleccionar);
+        cb_tienda1.addItem("Todas las Tiendas");
+        cb_tienda2.removeAllItems();
+        cb_tienda2.addItem(JavaUtil.cons_seleccionar);
+        cb_tienda2.addItem("Todas las Tiendas");
+        for (Object object : resultListAlmacen) {
+            Almacen a = (Almacen) object;
+            cb_tienda1.addItem(a.getIdAlmacen());
+            cb_tienda2.addItem(a.getIdAlmacen());
+        }
+    }
+
+    private void setCB_Salidas() {
+
+        String HQL;
+        DaoQuery q = null;
+        //T1 --- T2     TODAS CON TODAS, ES DECIR TODAS LAS SALIDAS
+        if (cb_tienda1.getSelectedItem().equals("Todas las Tiendas")
+                && cb_tienda2.getSelectedItem().equals("Todas las Tiendas")) {
+
+            HQL = "FROM SalidaParaTienda s WHERE s.revisado = :revisado order by s.idSalida asc";
+
+            q = ObjectModelDAO.createQueryDAO(HQL);
+        }
+
+        //T1 --- 2      TODAS CON ALGUNA EN ESPECIFICA
+        if (cb_tienda1.getSelectedItem().equals("Todas las Tiendas")
+                && cb_tienda2.getSelectedIndex() > 1) {//1 ES TODAS LAS TIENDAS
+
+            HQL = "FROM SalidaParaTienda s WHERE s.idAlmacenHasta =:almchasta "
+                    + " AND s.revisado = :revisado order by s.idSalida asc";
+
+            q = ObjectModelDAO.createQueryDAO(HQL);
+            q.getQuery().setParameter("almchasta", (Almacen) resultListAlmacen.get(cb_tienda2.getSelectedIndex() - 2));
+        }
+
+        //2 --- T2      ALGUNA EN ESPECIFICA PARA TODAS
+        if (cb_tienda1.getSelectedIndex() > 1//1 ES TODAS LAS TIENDAS
+                && cb_tienda2.getSelectedItem().equals("Todas las Tiendas")) {
+
+            HQL = "FROM SalidaParaTienda s WHERE s.idAlmacenDesde =:almcdesde "
+                    + " AND s.revisado = :revisado order by s.idSalida asc";
+
+            q = ObjectModelDAO.createQueryDAO(HQL);
+            q.getQuery().setParameter("almcdesde", (Almacen) resultListAlmacen.get(cb_tienda1.getSelectedIndex() - 2));
+        }
+
+        //2 --- 3       ALGUNA EN ESPECIFICA PARA OTRA EN ESPECIFICA
+        if (cb_tienda1.getSelectedIndex() > 1//1 ES TODAS LAS TIENDAS
+                && cb_tienda2.getSelectedIndex() > 1) {//1 ES TODAS LAS TIENDAS
+
+            HQL = "FROM SalidaParaTienda s WHERE s.idAlmacenHasta =:almchasta "
+                    + "AND s.idAlmacenDesde =:almcdesde AND s.revisado = :revisado order by s.idSalida asc";
+
+            q = ObjectModelDAO.createQueryDAO(HQL);
+            q.getQuery().setParameter("almcdesde", (Almacen) resultListAlmacen.get(cb_tienda1.getSelectedIndex() - 2));
+            q.getQuery().setParameter("almchasta", (Almacen) resultListAlmacen.get(cb_tienda2.getSelectedIndex() - 2));
+        }
+
+        q.getQuery().setParameter("revisado", jRadioButtonRevisado.isSelected());
+        List resultList_sw = ObjectModelDAO.getResultQuery(q);
+
+        cb_salidasregistradas.removeAllItems();
+        // cb_salidasregistradas.addItem("Todas");
+        for (Object object : resultList_sw) {
+            SalidaParaTienda c = (SalidaParaTienda) object;
+            cb_salidasregistradas.addItem(c.getIdSalida());
+        }
+    }
+
+    private void cb_tienda1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_tienda1ItemStateChanged
 
 //        if (evt.getStateChange() == ItemEvent.SELECTED) {
 //
@@ -540,7 +637,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
 //            checkboxRevisado.setSelected(false);
 //            pos = cb_Salidas.getSelectedIndex();
 //        }
-    }//GEN-LAST:event_cb_SalidasItemStateChanged
+    }//GEN-LAST:event_cb_tienda1ItemStateChanged
 
     //Para probar el reporte con multiples datos y de bastante longitud
     private void TableModelData() {
@@ -590,7 +687,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
             parametro.put("Tienda", fieldTienda.getText());
             parametro.put("Facturadora", fieldPersonalDep.getText());
             parametro.put("Ayudante", fieldAyudante.getText());
-            parametro.put("Salida", cb_Salidas.getSelectedItem().toString());
+            parametro.put("Salida", cb_tienda1.getSelectedItem().toString());
             parametro.put("REPORT_DATA_SOURSE", dataSourse);
             JasperCompileManager.compileReport(rutaJrxml);
             jasperPrint = JasperFillManager.fillReport(rutaJasper, parametro, dataSourse);
@@ -602,73 +699,28 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
         }
     }
 
-    private void cb_SalidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_SalidasActionPerformed
+    private void cb_tienda1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_tienda1ActionPerformed
 
-        if (cb_Salidas.getSelectedIndex() != -1 && cb_Salidas.getSelectedItem().equals(JavaUtil.cons_seleccionar)) {
+        if (cb_tienda1.getSelectedIndex() == -1 || cb_tienda2.getSelectedIndex() == -1) {
+            return;
+        }
+
+        if (cb_tienda1.getSelectedItem().equals(JavaUtil.cons_seleccionar)
+                || cb_tienda2.getSelectedItem().equals(JavaUtil.cons_seleccionar)) {
+            cb_salidasregistradas.removeAllItems();
+            resultListProductoSalida = null;
+            cabecera = null;
+            fieldfecha.setText("");
+            fieldTienda.setText("");
+            fieldPersonalDep.setText("");
+            fieldAyudante.setText("");
+            fieldTotal.setText("");
+            pos = -1;
             listadoMercancia.setModel(new DefaultTableModel());
             return;
         }
-        if(cb_Salidas.getSelectedItem().equals("Todas") && !cb_Salidas.getSelectedItem().equals("Todas")){
-           
-        String sql = "";
-
-        String HQL = "SELECT s,ivt.precioConDescuento,ivt.descuento"
-                + " FROM SalidaParaTiendaDetalle s,InventarioTienda ivt "
-                + " INNER JOIN s.salidaParaTienda spt WHERE spt.idSalida= " + cb_Salidas.getSelectedItem()
-                + " AND ivt.producto=s.producto AND ivt.almacen=spt.idAlmacenHasta"
-                // + " AND spt.revisado = " + tipo
-                + " ORDER BY s.nroRenglon ASC";
-//                "SELECT s,ppt.precio,ppt.descuento"
-//                + " FROM SalidaParaTiendaDetalle s,PrecioProductoTienda ppt INNER JOIN  s.salidaParaTienda spt"
-//                + " WHERE spt.idSalida =" + cb_Salidas.getSelectedItem()
-//                + " AND ppt.idProducto=s.producto AND ppt.idAlmacen=spt.idAlmacenHasta";
-
-//        cabecera = ObjectModelDAO.getObject((Integer) cb_Salidas.getSelectedItem(), SalidaParaTienda.class);
-//        sql = "FROM SalidaParaTiendaDetalle s WHERE s.salidaParaTiendaDetallePK.idSalida ="
-//                + cb_Salidas.getSelectedItem();
-//        System.out.println(sql);
-        resultListProductoSalida = ObjectModelDAO.getResultQuery(HQL);
-
-        if (resultListProductoSalida.isEmpty()) {
-            return;
-        }
-
-        cabecera = ((SalidaParaTiendaDetalle) ((Object[]) resultListProductoSalida.get(0))[0]).getSalidaParaTienda();
-
-        //SalidaParaTienda cabecera = ((SalidaParaTiendaDetalle) resultListProductoSalida.get(0)).getSalidaParaTienda();
-        if (cabecera.getFechaAsignacion() != null) {
-            SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy");
-            fieldfecha.setText(DATE_FORMAT.format(cabecera.getFechaAsignacion()));
-        } else {
-            fieldfecha.setText("");
-        }
-        if (cabecera.getIdAlmacenHasta() != null) {
-            fieldTienda.setText(cabecera.getIdAlmacenHasta().getNombre());
-        } else {
-            fieldTienda.setText("");
-        }
-        if (cabecera.getIdUsuario1() != null) {
-            fieldPersonalDep.setText(cabecera.getIdUsuario1().getNombre());
-        } else {
-            fieldPersonalDep.setText("");
-        }
-        if (cabecera.getIdUsuario2() != null) {
-            fieldAyudante.setText(cabecera.getIdUsuario2().getNombre());
-        } else {
-            fieldAyudante.setText("");
-        }
-        if (cabecera.getTotal() != null) {
-            fieldTotal.setText(cabecera.getTotal() + "");
-        } else {
-            fieldTotal.setText("");
-        }
-
-        JavaUtil.displayResult(resultListProductoSalida, listadoMercancia);
-        listadoMercancia.setEditable(false);
-        pos = cb_Salidas.getSelectedIndex();
-        }
-
-    }//GEN-LAST:event_cb_SalidasActionPerformed
+        setCB_Salidas();
+    }//GEN-LAST:event_cb_tienda1ActionPerformed
 
     private void bGenerarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGenerarReporteActionPerformed
         if (checkboxRevisado.isSelected()) {
@@ -705,7 +757,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
     }//GEN-LAST:event_bImprimirEtiquetasActionPerformed
 
     private void checkboxRevisadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkboxRevisadoActionPerformed
-        if (cb_Salidas.getSelectedIndex() == -1 || cb_Salidas.getSelectedItem().equals("Seleccionar")) {
+        if (cb_tienda1.getSelectedIndex() == -1 || cb_tienda1.getSelectedItem().equals("Seleccionar")) {
             JOptionPane.showMessageDialog(this, "Seleccione un Formulario de Mercancía Asignada");
             checkboxRevisado.setSelected(false);
             return;
@@ -728,38 +780,111 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
     }
 
     private void jRadioButtonPendienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonPendienteActionPerformed
-        setCB(false);
-        checkboxRevisado.setSelected(false);
-        checkboxRevisado.setEnabled(true);
-        //clearTable(listadoMercancia);
-        listadoMercancia.setModel(new DefaultTableModel());
-        fieldAyudante.setText("");
-        fieldPersonalDep.setText("");
-        fieldTienda.setText("");
-        fieldTotal.setText("");
-        fieldfecha.setText("");
+
+        setCB_Salidas();
     }//GEN-LAST:event_jRadioButtonPendienteActionPerformed
 
     private void jRadioButtonRevisadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonRevisadoActionPerformed
-        setCB(true);
-        checkboxRevisado.setSelected(true);
-        checkboxRevisado.setEnabled(false);
-        //clearTable(listadoMercancia);
-        listadoMercancia.setModel(new DefaultTableModel());
-        fieldAyudante.setText("");
-        fieldPersonalDep.setText("");
-        fieldTienda.setText("");
-        fieldTotal.setText("");
-        fieldfecha.setText("");
+
+        setCB_Salidas();
     }//GEN-LAST:event_jRadioButtonRevisadoActionPerformed
+
+    private void cb_tienda2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_tienda2ActionPerformed
+
+        if (cb_tienda1.getSelectedIndex() == -1 || cb_tienda2.getSelectedIndex() == -1) {
+            return;
+        }
+
+        if (cb_tienda1.getSelectedItem().equals(JavaUtil.cons_seleccionar)
+                || cb_tienda2.getSelectedItem().equals(JavaUtil.cons_seleccionar)) {
+            cb_salidasregistradas.removeAllItems();
+            resultListProductoSalida = null;
+            cabecera = null;
+            fieldfecha.setText("");
+            fieldTienda.setText("");
+            fieldPersonalDep.setText("");
+            fieldAyudante.setText("");
+            fieldTotal.setText("");
+            pos = -1;
+            listadoMercancia.setModel(new DefaultTableModel());
+            return;
+        }
+
+        setCB_Salidas();
+    }//GEN-LAST:event_cb_tienda2ActionPerformed
+
+
+    private void cb_salidasregistradasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_salidasregistradasActionPerformed
+        if (cb_salidasregistradas.getSelectedIndex() == -1) {
+            //listadoMercancia.setModel(new DefaultTableModel());
+            return;
+        }
+
+        String HQL = "SELECT s,ivt.precioConDescuento,ivt.descuento"
+                + " FROM SalidaParaTiendaDetalle s,InventarioTienda ivt "
+                + " INNER JOIN s.salidaParaTienda spt WHERE spt.idSalida= " + cb_salidasregistradas.getSelectedItem()
+                + " AND ivt.producto=s.producto"
+                // + " AND spt.revisado = " + tipo
+                + " ORDER BY s.nroRenglon ASC";
+//                "SELECT s,ppt.precio,ppt.descuento"
+//                + " FROM SalidaParaTiendaDetalle s,PrecioProductoTienda ppt INNER JOIN  s.salidaParaTienda spt"
+//                + " WHERE spt.idSalida =" + cb_Salidas.getSelectedItem()
+//                + " AND ppt.idProducto=s.producto AND ppt.idAlmacen=spt.idAlmacenHasta";
+
+//        cabecera = ObjectModelDAO.getObject((Integer) cb_Salidas.getSelectedItem(), SalidaParaTienda.class);
+//        sql = "FROM SalidaParaTiendaDetalle s WHERE s.salidaParaTiendaDetallePK.idSalida ="
+//                + cb_Salidas.getSelectedItem();
+//        System.out.println(sql);
+        resultListProductoSalida = ObjectModelDAO.getResultQuery(HQL);
+
+        if (resultListProductoSalida.isEmpty()) {
+            listadoMercancia.setModel(new DefaultTableModel());
+            return;
+        }
+
+        cabecera = ((SalidaParaTiendaDetalle) ((Object[]) resultListProductoSalida.get(0))[0]).getSalidaParaTienda();
+
+        //SalidaParaTienda cabecera = ((SalidaParaTiendaDetalle) resultListProductoSalida.get(0)).getSalidaParaTienda();
+        if (cabecera.getFechaAsignacion() != null) {
+            SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy");
+            fieldfecha.setText(DATE_FORMAT.format(cabecera.getFechaAsignacion()));
+        } else {
+            fieldfecha.setText("");
+        }
+        if (cabecera.getIdAlmacenHasta() != null) {
+            fieldTienda.setText(cabecera.getIdAlmacenHasta().getNombre());
+        } else {
+            fieldTienda.setText("");
+        }
+        if (cabecera.getIdUsuario1() != null) {
+            fieldPersonalDep.setText(cabecera.getIdUsuario1().getNombre());
+        } else {
+            fieldPersonalDep.setText("");
+        }
+        if (cabecera.getIdUsuario2() != null) {
+            fieldAyudante.setText(cabecera.getIdUsuario2().getNombre());
+        } else {
+            fieldAyudante.setText("");
+        }
+        if (cabecera.getTotal() != null) {
+            fieldTotal.setText(cabecera.getTotal() + "");
+        } else {
+            fieldTotal.setText("");
+        }
+
+        JavaUtil.displayResult(resultListProductoSalida, listadoMercancia);
+        listadoMercancia.setEditable(false);
+        pos = cb_salidasregistradas.getSelectedIndex();
+    }//GEN-LAST:event_cb_salidasregistradasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bGenerarReporte;
     private javax.swing.JButton bImprimirEtiquetas;
     private javax.swing.ButtonGroup buttonGrouptipo;
-    private javax.swing.JComboBox cb_Salidas;
-    private javax.swing.JComboBox cb_llegada;
+    private javax.swing.JComboBox cb_salidasregistradas;
+    private javax.swing.JComboBox cb_tienda1;
+    private javax.swing.JComboBox cb_tienda2;
     private javax.swing.JCheckBox checkboxRevisado;
     private javax.swing.JTextField fieldAyudante;
     private javax.swing.JTextField fieldPersonalDep;
@@ -773,6 +898,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

@@ -1,6 +1,6 @@
 package gui.ventanas;
 
-import gui.ventanas.FventanaIncial_AUx;
+import gui.ventanas.FventanaIncial;
 import hibernate.DAO.DaoQuery;
 import hibernate.DAO.ObjectModelDAO;
 import java.util.List;
@@ -302,7 +302,7 @@ public class JFInicioSecionMiyake extends javax.swing.JFrame {
 
                     JOptionPane.showMessageDialog(this, "Bienvenido al Sistema");
 
-                    FventanaIncial_AUx principal = new FventanaIncial_AUx(resultListUsuarios);
+                    FventanaIncial principal = new FventanaIncial(resultListUsuarios);
                     principal.setVisible(true);
                     salir();
                 } else {

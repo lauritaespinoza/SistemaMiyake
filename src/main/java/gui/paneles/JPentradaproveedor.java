@@ -575,7 +575,7 @@ public class JPentradaproveedor extends javax.swing.JPanel {
                             return;
                         }
                         InventarioTienda ppt = (InventarioTienda) resultList.get(0);
-                        precioactual.setText(JavaUtil.dosDecimales.format(ppt.getPrecioSinDescuento()));
+                        precioactual.setText(JavaUtil.dosDecimales.format(ppt.getPrecioSinDescuento()).replace(",", "."));
                         boolean sw;
                         do {//repite mientras coloque algo que no es numero
                             sw = false;

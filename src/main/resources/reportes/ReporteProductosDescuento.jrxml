@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1f4ddabb-952d-4342-a9b5-e5a6dfa4b4fe">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#BFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#E6FFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#BFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#E6FFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="New Dataset 1" uuid="2920e85d-1083-4537-92e6-f698cd4514fa">
+		<queryString language="SQL">
+			<![CDATA[SELECT 
+  inventario_tienda.id_producto, 
+  inventario_tienda.id_almacen, 
+  inventario_tienda.precio_con_descuento, 
+  inventario_tienda.descuento, 
+  almacen.id_almacen, 
+  almacen.nombre, 
+  producto.id_producto, 
+  producto.descripcion, 
+  producto.referencia_producto
+FROM 
+  public.inventario_tienda, 
+  public.almacen, 
+  public.producto
+WHERE 
+  inventario_tienda.id_almacen = almacen.id_almacen AND
+  producto.id_producto = inventario_tienda.id_producto AND
+  inventario_tienda.descuento <> 0;]]>
+		</queryString>
+		<field name="id_producto" class="java.lang.Integer"/>
+		<field name="id_almacen" class="java.lang.Integer"/>
+		<field name="precio_con_descuento" class="java.lang.Float"/>
+		<field name="descuento" class="java.lang.Integer">
+			<fieldDescription><![CDATA[% descuento]]></fieldDescription>
+		</field>
+		<field name="nombre" class="java.lang.String"/>
+		<field name="descripcion" class="java.lang.String"/>
+		<field name="referencia_producto" class="java.lang.String"/>
+	</subDataset>
+	<queryString>
+		<![CDATA[SELECT 
+  inventario_tienda.id_producto, 
+  inventario_tienda.id_almacen, 
+  inventario_tienda.precio_con_descuento, 
+  inventario_tienda.descuento, 
+  almacen.id_almacen, 
+  almacen.nombre, 
+  producto.id_producto, 
+  producto.descripcion, 
+  producto.referencia_producto
+FROM 
+  public.inventario_tienda, 
+  public.almacen, 
+  public.producto
+WHERE 
+  inventario_tienda.id_almacen = almacen.id_almacen AND
+  producto.id_producto = inventario_tienda.id_producto AND
+  inventario_tienda.descuento <> 0;]]>
+	</queryString>
+	<field name="id_producto" class="java.lang.Integer"/>
+	<field name="id_almacen" class="java.lang.Integer"/>
+	<field name="precio_con_descuento" class="java.lang.Float"/>
+	<field name="descuento" class="java.lang.Integer">
+		<fieldDescription><![CDATA[% descuento]]></fieldDescription>
+	</field>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<field name="referencia_producto" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="96" splitType="Stretch">
+			<staticText>
+				<reportElement x="128" y="0" width="309" height="53" uuid="86699f7f-aeeb-4dba-8258-612a78ff53f3"/>
+				<textElement textAlignment="Center">
+					<font fontName="Impact" size="20"/>
+				</textElement>
+				<text><![CDATA[Reporte de Productos con Descuento en todas las Tiendas]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="455" y="76" width="100" height="20" uuid="567d968a-6601-479a-8046-ee3f38eb301b"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement x="255" y="0" width="53" height="21" uuid="7b835f80-b95b-446c-8e62-bc570489085f"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Detalle]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="55" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table 3" style="table 3" x="0" y="0" width="555" height="55" uuid="5255d1e3-9584-4d1c-8d88-babf03a55ed2"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="New Dataset 1" uuid="806431a2-7ca3-444d-b83e-c33cdaea53ca">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="65" uuid="faba9fa3-3b05-4ef0-959c-3ae85b2fb4b8">
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="65" height="30" uuid="8da334f0-b614-4b2b-b0dd-84752d0a1300"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Verdana" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Id Producto]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 3_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="65" height="30" uuid="ac74987d-6905-431e-8d01-b5441f7d4821"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{id_producto}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="66" uuid="ec12e18b-ffc4-413b-a208-52878de5d8ef">
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="0" y="0" width="65" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="776cfaa9-f334-4950-bc5f-9fcb4f8a4879"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Verdana" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[Referencia Producto]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 3_TD" height="30" rowSpan="1">
+							<textField pattern="" isBlankWhenNull="false">
+								<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="0" y="0" width="65" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="62158100-bb9b-4f6b-ab09-0bae5a124bf3"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{referencia_producto}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="158" uuid="62e8893c-f850-4ef7-85af-6d718208093f">
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="0" y="0" width="158" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="d49b4672-5512-4f71-8bf3-738dd554b837"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Verdana" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[Nombre Producto]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 3_TD" height="30" rowSpan="1">
+							<textField pattern="" isBlankWhenNull="false">
+								<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="0" y="0" width="158" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="03238d56-2320-41e3-8bc2-7ad2a4b61e69"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="63" uuid="757dea6f-c4a6-48ff-a6a9-6514223016bd">
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="0" y="0" width="63" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="34961b67-88c2-4901-a840-693847239b15"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Verdana" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[Descuento Asociado]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 3_TD" height="30" rowSpan="1">
+							<textField pattern="" isBlankWhenNull="false">
+								<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="0" y="0" width="63" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="b73fd2a7-92e3-4a1b-b6f3-b15b9120951e"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{descuento}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="66" uuid="0f1377f4-6380-4d1b-b001-12e1a7ded1e1">
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="0" y="0" width="65" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="0eb644d5-7a49-4def-a248-015b68dbdcac"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Verdana" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[Precio con Descuento]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 3_TD" height="30" rowSpan="1">
+							<textField pattern="" isBlankWhenNull="false">
+								<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="0" y="0" width="65" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="3bed74de-a734-4132-a60e-c9ebf82dc8e3"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{precio_con_descuento}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="65" uuid="633b8dd1-7b9d-4fb4-be65-ed445a4bd97c">
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="0" y="0" width="65" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="5f5567be-494d-44cb-9bcc-a9b132a1daee"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Verdana" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[Id Tienda]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 3_TD" height="30" rowSpan="1">
+							<textField pattern="" isBlankWhenNull="false">
+								<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="0" y="0" width="65" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="d04e3ef8-c79c-4471-ad25-5ba3e3b1d93a"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{id_almacen}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="79" uuid="06b86222-3c77-4f84-8df3-9a6e9167dbaf">
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="0" y="0" width="79" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="612e89cc-7b70-4bcb-97ab-4ecb93af1321"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Verdana" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<text><![CDATA[Nombre Tienda]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 3_TD" height="30" rowSpan="1">
+							<textField pattern="" isBlankWhenNull="false">
+								<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="0" y="0" width="79" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="316b821c-9918-4639-ad1c-011ce107fcca"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+									<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+									<paragraph lineSpacing="Single"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="455" y="34" width="100" height="20" uuid="0724dec2-d6bc-4577-80a9-560ec569ec57"/>
+				<textFieldExpression><![CDATA["Pág. "+$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

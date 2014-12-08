@@ -11,9 +11,17 @@ import hibernate.DAO.ObjectModelDAO;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
@@ -21,6 +29,17 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import modelos.mapeos.Almacen;
 import modelos.mapeos.InventarioTienda;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRExporter;
+import net.sf.jasperreports.engine.JRExporterParameter;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.export.JRPdfExporter;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import org.hibernate.Query;
 
 /**
@@ -34,6 +53,9 @@ public class JPprecio_productos extends javax.swing.JPanel {
     private List resultListAlmacen = null;
     private int pos;
     private int posi;
+
+    public final InputStream rutaJasper = this.getClass().getResourceAsStream("/reportes/ReporteProductosDescuento.jasper");
+    public final InputStream rutaJrxml = this.getClass().getResourceAsStream("/reportes/ReporteProductosDescuento.jrxml");
 
     public JPprecio_productos() {
         initComponents();
@@ -81,6 +103,9 @@ public class JPprecio_productos extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         cb_almacen = new javax.swing.JComboBox();
         jLabel11 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -164,6 +189,27 @@ public class JPprecio_productos extends javax.swing.JPanel {
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1416622346_xmag.png"))); // NOI18N
         jLabel11.setText("Para realizar Busqueda: Haga Click en la tabla + CTRL F");
 
+        jButton1.setText("Productos con Descuento");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Descuento en Tienda");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Ultimos Productos Actualizados");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -176,7 +222,12 @@ public class JPprecio_productos extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cb_almacen, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel11))
-                .addContainerGap(280, Short.MAX_VALUE))
+                .addGap(92, 92, 92)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,9 +235,17 @@ public class JPprecio_productos extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(cb_almacen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel11)
+                    .addComponent(cb_almacen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel11))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton3)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -405,7 +464,7 @@ public class JPprecio_productos extends javax.swing.JPanel {
             HQL = "FROM InventarioTienda ivt WHERE ivt.almacen.idAlmacen= "
                     + ((Almacen) resultListAlmacen.get(cb_almacen.getSelectedIndex() - 2)).getIdAlmacen()
                     + " ORDER BY ivt.producto.idProducto";
-        }        
+        }
         resultListProducto = ObjectModelDAO.getResultQuery(HQL);
 
         if (resultListProducto.isEmpty()) {
@@ -482,8 +541,8 @@ public class JPprecio_productos extends javax.swing.JPanel {
             } else {//si elige una tienda
 
                 if (JOptionPane.showConfirmDialog(null, "¿Está seguro de modificar el precio de todos "
-                        + "los Productos en la tienda: " + cb_almacen_modf.getSelectedItem() + "?", 
-                        "Información",JOptionPane.YES_NO_OPTION) != JOptionPane.YES_OPTION) {
+                        + "los Productos en la tienda: " + cb_almacen_modf.getSelectedItem() + "?",
+                        "Información", JOptionPane.YES_NO_OPTION) != JOptionPane.YES_OPTION) {
                     return;
                 }
             }
@@ -604,7 +663,7 @@ public class JPprecio_productos extends javax.swing.JPanel {
 
     private void ru_precios_productosStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ru_precios_productosStateChanged
         if (ru_precios_productos.getSelectedIndex() == 0) {
-            
+
             resultListAlmacen = ObjectModelDAO.getResultQuery("FROM Almacen a order by a.idAlmacen asc");
             cb_almacen.removeAllItems();
             cb_almacen.addItem(JavaUtil.cons_seleccionar);
@@ -616,7 +675,7 @@ public class JPprecio_productos extends javax.swing.JPanel {
         }
         if (ru_precios_productos.getSelectedIndex() == 1) {
 
-           // fieldBusquedaModif.setText("");
+            // fieldBusquedaModif.setText("");
             field_precio.setText("");
             resultListAlmacen = ObjectModelDAO.getResultQuery("FROM Almacen a order by a.idAlmacen asc");
             cb_almacen_modf.removeAllItems();
@@ -630,6 +689,58 @@ public class JPprecio_productos extends javax.swing.JPanel {
 
     }//GEN-LAST:event_ru_precios_productosStateChanged
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Connection conexion = null;
+        try {
+            JasperPrint jasperPrint;
+            Class.forName("org.postgresql.Driver");
+            conexion = DriverManager.getConnection("jdbc:postgresql://tecnosys.dyndns.tv:5432/miyake_pasantia", "postgres", "admin");
+            //+ "jdbc:postgresql://192.2.1.70:5432/miyake_pasantia", "postgres", "admin");
+            JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ReporteProductosDescuento.jasper"));
+//JasperCompileManager.compileReport(rutaJrxml);
+            jasperPrint = JasperFillManager.fillReport(reporte, null, conexion);
+            // Create a PDF exporter
+//            JRExporter exporter = new JRPdfExporter();
+//            
+//            // Configure the exporter (set output file name and print object)
+//            exporter.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, "C:\\Users\\Usuario\\Desktop\\prueb25.pdf");
+//            exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
+            JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
+            jasperViewer.setTitle("Reporte de Todos los Productos con Descuento");
+            jasperViewer.setVisible(true);
+
+            //--loo           JasperExportManager.exportReportToPdfFile(jasperPrint, "src/test.pdf");
+//            JRExporter exporter = new JRPdfExporter();
+//            exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
+//            exporter.setParameter(JRExporterParameter.OUTPUT_FILE, new java.io.File("reportefact.pdf"));
+//            exporter.exportReport();
+//          
+        } catch (ClassNotFoundException | SQLException | JRException e) {
+            JOptionPane.showMessageDialog(null, "error" + e);
+            Logger.getLogger(JPprecio_productos.class
+                    .getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                if (conexion != null) {
+                    conexion.close();
+                    conexion = null;
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+        JavaUtil.createJDialogGeneric(new panelReporteProdDescTienda());
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        JavaUtil.createJDialogGeneric(new panelReportePreciosActualizados());
+    }//GEN-LAST:event_jButton3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_actualizarprecio;
@@ -637,6 +748,9 @@ public class JPprecio_productos extends javax.swing.JPanel {
     private javax.swing.JComboBox cb_almacen_modf;
     private javax.swing.JComboBox cb_descuento;
     private javax.swing.JTextField field_precio;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

@@ -50,7 +50,7 @@
   factura.nro_factura, 
   factura.total_factura, 
   producto.descripcion, 
-  producto.precio_original, 
+  producto.precio_venta, 
   conteo_mercancia_entrada_detalles.cantidad, 
   conteo_mercancia_entrada_detalles.nro_bulto, 
   conteo_mercancia_entrada.total_conteo, 
