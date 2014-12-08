@@ -215,12 +215,12 @@ public class FventanaIncial extends javax.swing.JFrame {
             }
 
         };
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
+        jMenuBarSistemaMiyake = new javax.swing.JMenuBar();
+        Archivos = new javax.swing.JMenu();
+        editar = new javax.swing.JMenu();
+        menuFacturacion = new javax.swing.JMenu();
+        menuTienda = new javax.swing.JMenu();
+        menuAlmacen = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(9, 182, 201));
@@ -522,22 +522,22 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
+        Archivos.setText("File");
+        jMenuBarSistemaMiyake.add(Archivos);
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        editar.setText("Edit");
+        jMenuBarSistemaMiyake.add(editar);
 
-        jMenu3.setText("jMenu3");
-        jMenuBar1.add(jMenu3);
+        menuFacturacion.setText("jMenu3");
+        jMenuBarSistemaMiyake.add(menuFacturacion);
 
-        jMenu4.setText("jMenu4");
-        jMenuBar1.add(jMenu4);
+        menuTienda.setText("jMenu4");
+        jMenuBarSistemaMiyake.add(menuTienda);
 
-        jMenu5.setText("jMenu5");
-        jMenuBar1.add(jMenu5);
+        menuAlmacen.setText("jMenu5");
+        jMenuBarSistemaMiyake.add(menuAlmacen);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(jMenuBarSistemaMiyake);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -695,6 +695,7 @@ public class FventanaIncial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu Archivos;
     private org.jdesktop.swingx.JXButton AsignarMercancia_boton_;
     private javax.swing.JButton Boton_Inprimir_Reporte_conteo_Distribuidora;
     private org.jdesktop.swingx.JXButton ConsultaExistencia_boton_;
@@ -714,6 +715,7 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JButton btnCrudProveedr;
     private javax.swing.JButton btnCrudUbicacion;
     private javax.swing.JButton btnSalidaTienda;
+    private javax.swing.JMenu editar;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -722,12 +724,7 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBarSistemaMiyake;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanelControlesPrincipales;
@@ -735,6 +732,9 @@ public class FventanaIncial extends javax.swing.JFrame {
     private org.jdesktop.swingx.JXButton jXButton2;
     private org.jdesktop.swingx.JXCollapsiblePane jXCollapsiblePane1;
     private org.jdesktop.swingx.JXTaskPaneContainer jXTaskPaneContainer1;
+    private javax.swing.JMenu menuAlmacen;
+    private javax.swing.JMenu menuFacturacion;
+    private javax.swing.JMenu menuTienda;
     private com.ClosableTabbedPane panelClosableCentral;
     private org.jdesktop.swingx.JXTaskPane taskPaneConsultas;
     private org.jdesktop.swingx.JXTaskPane taskPaneEtiquetas;
