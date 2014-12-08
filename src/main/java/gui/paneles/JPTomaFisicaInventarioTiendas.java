@@ -8,7 +8,7 @@ package gui.paneles;
 import gui.dialogos.JDsalidaParaTiendaPendientes;
 import gui.dialogos.JDSalidadParaTiendasProductos;
 import gui.ventanas.JFInicioSecionMiyake;
-import gui.ventanas.FventanaIncial_AUx;
+import gui.ventanas.FventanaIncial;
 import util.almacen.DetalleRegistro;
 import modelos.tablas.ModeloTablaDetalleRegistro;
 import modelos.tablas.ModeloTablaDetalleRegistroTomaFisicaTiendas;
@@ -78,7 +78,7 @@ public class JPTomaFisicaInventarioTiendas extends javax.swing.JPanel {
         }
 
         //Usuarios
-        List<List> resultListUsuarios = FventanaIncial_AUx.listaUsuarioMain;
+        List<List> resultListUsuarios = FventanaIncial.listaUsuarioMain;
         comboBoxUsuarios.removeAllItems();
         for (Object object : resultListUsuarios) {
             Usuario u = (Usuario) object;
@@ -88,7 +88,7 @@ public class JPTomaFisicaInventarioTiendas extends javax.swing.JPanel {
         this.comboBoxAlmacen.setSelectedIndex(-1);
         this.comboBoxUsuarios.setSelectedIndex(-1);
         this.busy.setVisible(false);
-    }
+    } 
 
     public static void main(String args[]) {
 

@@ -7,7 +7,7 @@ package gui.paneles;
 
 import gui.dialogos.JDInventarioTienda;
 import gui.ventanas.JFInicioSecionMiyake;
-import gui.ventanas.FventanaIncial_AUx;
+import gui.ventanas.FventanaIncial;
 import util.almacen.DetalleRegistro;
 import modelos.tablas.ModeloTablaDetalleRegistroAsignacion;
 import hibernate.DAO.ObjectModelDAO;
@@ -81,7 +81,7 @@ public class JPAsignarMercancia extends javax.swing.JPanel {
 //        System.err.println("Almacen Seleccionado Objeto : " + al.getNombre()+al.getIdAlmacen() );
 //        
         //Usuarios
-        List<List> resultListUsuarios = FventanaIncial_AUx.listaUsuarioMain;
+        List<List> resultListUsuarios = FventanaIncial.listaUsuarioMain;
         comboBoxUsuarios.removeAllItems();
         for (Object object : resultListUsuarios) {
             Usuario u = (Usuario) object;
@@ -94,7 +94,7 @@ public class JPAsignarMercancia extends javax.swing.JPanel {
         this.comboBoxUsuarios.setSelectedIndex(-1);
         this.busy.setVisible(false);
         this.busy1.setVisible(false);
-        
+           
     }
     
     public static void main(String args[]) {

@@ -8,7 +8,7 @@ package gui.paneles;
 import gui.dialogos.JDsalidaParaTiendaPendientes;
 import gui.dialogos.JDSalidadParaTiendasProductos;
 import gui.ventanas.JFInicioSecionMiyake;
-import gui.ventanas.FventanaIncial_AUx;
+import gui.ventanas.FventanaIncial;
 import util.almacen.DetalleRegistro;
 import modelos.tablas.ModeloTablaDetalleRegistroTomaFisicaTiendas;
 import hibernate.DAO.ObjectModelDAO;
@@ -75,7 +75,7 @@ public class Tiendas1 extends javax.swing.JPanel {
         }
 
         //Usuarios
-        List<List> resultListUsuarios = FventanaIncial_AUx.listaUsuarioMain;
+        List<List> resultListUsuarios = FventanaIncial.listaUsuarioMain;
         comboBoxUsuarios.removeAllItems();
         for (Object object : resultListUsuarios) {
             Usuario u = (Usuario) object;
