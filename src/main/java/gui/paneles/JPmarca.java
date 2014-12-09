@@ -8,7 +8,9 @@ package gui.paneles;
 import util.JavaUtil;
 import static util.JavaUtil.setTableCellAlignment;
 import hibernate.DAO.ObjectModelDAO;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
@@ -17,12 +19,19 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import modelos.mapeos.Division;
 import modelos.mapeos.Marca;
+import modelos.tablas.TableModelReport;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 
 public class JPmarca extends javax.swing.JPanel {
 
     private List resultList;
     private int pos;
+    public final String rutaJasper = "/reportes/ReporteMarca.jasper";
     
     
     public JPmarca() {
@@ -85,6 +94,7 @@ public class JPmarca extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaConsultaMarca = new org.jdesktop.swingx.JXTable();
         jLabel15 = new javax.swing.JLabel();
+        bt_GenerarReporte = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         nuevMark = new javax.swing.JTextField();
@@ -153,6 +163,13 @@ public class JPmarca extends javax.swing.JPanel {
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1416622346_xmag.png"))); // NOI18N
         jLabel15.setText("Para realizar Busqueda: Haga Click en la tabla + CTRL F");
 
+        bt_GenerarReporte.setText("Generar Reporte");
+        bt_GenerarReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_GenerarReporteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -161,13 +178,17 @@ public class JPmarca extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61)
+                .addComponent(bt_GenerarReporte)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel15)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(bt_GenerarReporte))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -517,11 +538,33 @@ public class JPmarca extends javax.swing.JPanel {
             tablaDeletMarca.setEditable(false);
         }
     }//GEN-LAST:event_panelScrudMarcaStateChanged
+private void generarReporte() {
+        try {
+            JasperPrint jasperPrint = null;
+            Map<String, Object> parametro = new HashMap<>();
+
+            TableModelReport dataSourse = new TableModelReport(tablaConsultaMarca.getModel());
+          
+            parametro.put("REPORT_DATA_SOURSE", dataSourse);
+            JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream(rutaJasper));
+            jasperPrint = JasperFillManager.fillReport(reporte, parametro, dataSourse);
+            JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
+            jasperViewer.setTitle("Reporte de Clasificación de Producto");
+            jasperViewer.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "error" + e);
+        }
+    }
+
+    private void bt_GenerarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_GenerarReporteActionPerformed
+      generarReporte();
+    }//GEN-LAST:event_bt_GenerarReporteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCrear;
     private javax.swing.JButton bModfmark;
+    private javax.swing.JButton bt_GenerarReporte;
     private javax.swing.JButton deletMark;
     private javax.swing.JLabel idMarca;
     private javax.swing.JLabel jLabel1;

@@ -18,7 +18,7 @@
         <Property name="modal" type="boolean" value="true"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="dialogoMostrarNotas.pack();&#xa;Dimension d = Toolkit.getDefaultToolkit().getScreenSize();&#xa;Point p= new Point(&#xa;         (int) ((d.getWidth() - dialogoMostrarNotas.getWidth()) / 2),&#xa;         (int) ((d.getHeight() - dialogoMostrarNotas.getHeight()) / 2));&#xa;dialogoMostrarNotas.setLocation(p);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Dimension d = Toolkit.getDefaultToolkit().getScreenSize();&#xa;Point p= new Point(&#xa;         (int) ((d.getWidth() - dialogoMostrarNotas.getWidth()) / 2),&#xa;         (int) ((d.getHeight() - dialogoMostrarNotas.getHeight()) / 2));&#xa;dialogoMostrarNotas.setLocation(p);"/>
       </AuxValues>
 
       <Layout>
@@ -26,20 +26,20 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btNC" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="btND" max="32767" attributes="0"/>
+                      <Component id="btNC" pref="162" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btNC" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="btND" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -86,10 +86,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="jScrollPane2" min="-2" pref="730" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
-          </Group>
+          <Component id="jScrollPane2" alignment="0" pref="707" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -117,7 +114,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
                       <Component id="botonGenerarNotas" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="229" max="32767" attributes="0"/>
+                      <EmptySpace pref="244" max="32767" attributes="0"/>
                       <Component id="botonImprimir" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="136" max="-2" attributes="0"/>
                       <Component id="jButtonGuardarConteo" min="-2" max="-2" attributes="0"/>
@@ -987,7 +984,7 @@
             </Container>
             <Component class="org.jdesktop.swingx.JXButton" name="botonGenerarNotas">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Generear Notas"/>
+                <Property name="text" type="java.lang.String" value="Mostrar Notas"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonGenerarNotasActionPerformed"/>
@@ -996,6 +993,7 @@
             <Component class="org.jdesktop.swingx.JXButton" name="jButtonGuardarConteo">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Guardar"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonGuardarConteoActionPerformed"/>
@@ -1004,6 +1002,7 @@
             <Component class="org.jdesktop.swingx.JXButton" name="botonImprimir">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Imprimir"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonImprimirActionPerformed"/>

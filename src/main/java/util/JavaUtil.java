@@ -35,6 +35,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -176,9 +177,11 @@ public abstract class JavaUtil {
             oneRow.add(ivt.getAlmacen().getNombre());
             oneRow.add(ivt.getProducto().getIdProducto());
             oneRow.add(ivt.getProducto().getDescripcion());
-            oneRow.add( dosDecimales.format(ivt.getPrecioSinDescuento() == null ? 0f : ivt.getPrecioSinDescuento()).trim());
+            //oneRow.add( dosDecimales.format(ivt.getPrecioSinDescuento() == null ? 0f : ivt.getPrecioSinDescuento()).trim());
+            oneRow.add(ivt.getPrecioSinDescuento());
             oneRow.add(ivt.getDescuento().toString() + "%");
-            oneRow.add( dosDecimales.format(ivt.getPrecioConDescuento() == null ? 0f : ivt.getPrecioConDescuento()).trim());
+            //oneRow.add( dosDecimales.format(ivt.getPrecioConDescuento() == null ? 0f : ivt.getPrecioConDescuento()).trim());
+           oneRow.add(ivt.getPrecioConDescuento());
             oneRow.add(ivt.getFechaCreacion());
             oneRow.add(ivt.getFechaModificacion());
             oneRow.add(ivt.getCantidad());
@@ -229,7 +232,7 @@ public abstract class JavaUtil {
         if (o instanceof SalidaParaTienda) {
             SalidaParaTienda sa = (SalidaParaTienda) o;
             oneRow.add(sa.getIdAlmacenDesde().getNombre());
-            oneRow.add(sa.getIdUsuario2());
+            oneRow.add(sa.getIdUsuario2().getNombre()+" : "+sa.getIdUsuario2().getDescripcion());
             oneRow.add(sa.getIdAlmacenHasta().getNombre());
             oneRow.add(sa.getIdAlmacenHasta().getTelefono1());
             oneRow.add(sa.getRevisado());
@@ -263,155 +266,155 @@ public abstract class JavaUtil {
         Vector<String> header = new Vector<>();
 
         if (o instanceof Division) {
-            header.add("ID Division");
-            header.add("Nombre");
+            header.add("ID DIVISION");
+            header.add("NOMBRE");
         }
         if (o instanceof Departamento) {
-            header.add("ID Departamento");
-            header.add("Nombre");
-            header.add("Division");
+            header.add("ID DEPARTAMENTO");
+            header.add("NOMBRE DEPARTAMENTO");
+            header.add("DIVISION");
         }
         if (o instanceof Clasificacion) {
-            header.add("ID Clasificación");
-            header.add("Nombre Clasificación");
-            header.add("Departamento");
+            header.add("ID CLASIFICACION");
+            header.add("NOMBRE CLASIFICACION");
+            header.add("DEPARTAMENTO");
         }
         if (o instanceof Marca) {
-            header.add("ID Marca");
-            header.add("Nombre Marca");
+            header.add("ID MARCA");
+            header.add("NOMBRE MARCA");
         }
         if (o instanceof Ubicacion) {
-            header.add("ID Ubicación");
-            header.add("Pais");
-            header.add("Ciudad");
-            header.add("Dirección");
+            header.add("ID UBICACION");
+            header.add("PAIS");
+            header.add("CIUDAD");
+            header.add("DIRECCION");
         }
         if (o instanceof Contacto) {
-            header.add("Id Contacto");
-            header.add("Nombre");
-            header.add("Puesto");
-            header.add("Telefono 1");
-            header.add("Telefono 2");
-            header.add("Correo");
+            header.add("ID CONTACTO");
+            header.add("NOMBRE");
+            header.add("PUESTO");
+            header.add("TELEFONO 1");
+            header.add("TELEFONO 2");
+            header.add("CORREO");
         }
         if (o instanceof Usuario) {
-            header.add("Nombre");
-            header.add("Descripción");
-            header.add("Tipo de Usuario");
-            header.add("Tienda");
+            header.add("NOMBRE");
+            header.add("DESCRIPCION");
+            header.add("TIPO DE USUARIO");
+            header.add("TIENDA");
         }
         if (o instanceof Proveedor) {
-            header.add("Nombre");
-            header.add("Telefono 1");
-            header.add("Telefono 2");
-            header.add("Fax");
-            header.add("Código Postal");
-            header.add("Correo");
-            header.add("Gerente");
-            header.add("Contacto");
-            header.add("Otro Contacto");
-            header.add("Fecha de Creación");
-            header.add("Fecha de Modificación");
+            header.add("NOMBRE");
+            header.add("TELEFONO 1");
+            header.add("TELEFONO 2");
+            header.add("FAX");
+            header.add("CODIGO POSTAL");
+            header.add("CORREO");
+            header.add("GERENTE");
+            header.add("CONTACTO");
+            header.add("OTRO CONTACTO");
+            header.add("FECHA DE CREACION");
+            header.add("FECHA DE MODIFICACION");
         }
         if (o instanceof Producto) {
-            header.add("Código Producto");
-            header.add("Referencia");
-            header.add("Descripción");
-            header.add("Clasificación");
-            header.add("Marca");
-            header.add("Proveedor");
-            header.add("Precio Original");
+            header.add("CODIGO PRODUCTO");
+            header.add("REFERENCIA");
+            header.add("DESCRIPCION");
+            header.add("CLASIFICACION");
+            header.add("MARCA");
+            header.add("PROVEEDOR");
+            header.add("PRECIO ORIGINAL");
         }
         //si es un vector, y si el la primera es Salida para tienda detalle entonces es
         //salida para tienda detalle con precios y descuentos
         if (o instanceof Object[] && (((Object[]) o)[0]) instanceof SalidaParaTiendaDetalle) {
             header.add("N°");
-            header.add("Codigo");
-            header.add("Referencia");
-            header.add("Descripcion");
-            header.add("Cantidad");
-            header.add("Precio");
-            header.add("Descuento");
-            header.add("Bulto");
+            header.add("CODIGO");
+            header.add("REFERENCIA");
+            header.add("DESCRIPCION");
+            header.add("CANTIDAD");
+            header.add("PRECIO");
+            header.add("DESCUENTO");
+            header.add("BULTO");
         }
         if (o instanceof InventarioTienda) {
-            header.add("Tienda");
-            header.add("Código");
-            header.add("Descripcion");
-            header.add("SinDesc");
-            header.add("Descuento");
-            header.add("ConDesc");
-            header.add("Creación");
-            header.add("Modificación");
-            header.add("Existencia");
-            header.add("Procesado");
+            header.add("TIENDA");
+            header.add("CODIGO");
+            header.add("DESCRIPCION");
+            header.add("SINDESC");
+            header.add("DESCUENTO");
+            header.add("CONDESC");
+            header.add("CREACION");
+            header.add("MODIFICACION");
+            header.add("EXISTENCIA");
+            header.add("PROCESADO");
         }
 
         if (o instanceof Almacen) {
             header.add("ID");
-            header.add("Nombre");
-            header.add("Descripción");
-            header.add("Tlf 1");
-            header.add("Tlf 2");
-            header.add("Fax");
-            header.add("Cod. Postal");
-            header.add("Email");
-            header.add("Ubicación");
-            header.add("Contacto");
+            header.add("NOMBRE");
+            header.add("DESCRIPCION");
+            header.add("TLF 1");
+            header.add("TLF 2");
+            header.add("FAX");
+            header.add("COD. POSTAL");
+            header.add("EMAIL");
+            header.add("UBICACION");
+            header.add("CONTACTO");
         }
         if (o instanceof InventarioDiarioDetalle) {
-            header.add("Fecha");
-            header.add("Concepto");
-            header.add("Entrada");
-            header.add("Salida");
-            header.add("Saldo");
+            header.add("FECHA");
+            header.add("CONCEPTO");
+            header.add("ENTRADA");
+            header.add("SALIDA");
+            header.add("SALDO");
         }
 
         if (o instanceof NotaCreditoDebitoDetalle) {
-            header.add("Renglón");
-            header.add("Referencia");
-            header.add("Descripcion");
-            header.add("Cantidad");
-            header.add("Precio");
+            header.add("RENGLON");
+            header.add("REFERENCIA");
+            header.add("DESCRIPCION");
+            header.add("CANTIDAD");
+            header.add("PRECIO");
         }
         if (o instanceof Factura) {
 
-            header.add("Nro Factura");
-            header.add("Total Factura");
-            header.add("Recibido Por");
-            header.add("Embarcado Via");
-            header.add("Almacen");
-            header.add("Proveedor");
+            header.add("NRO FACTURA");
+            header.add("TOTAL FACTURA");
+            header.add("RECIBIDO POR");
+            header.add("EMBARCADO VIA");
+            header.add("ALMACEN");
+            header.add("PROVEEDOR");
         }
 
         if (o instanceof SalidaParaTienda) {
 
-            header.add("Almacen Distribuidor");
-            header.add("Asignado Por");
-            header.add("Almacen Asignado");
-            header.add("Telefono");
-            header.add("Estatus de Pedido");
-            header.add("Total");
-            header.add("Fecha");
+            header.add("ALMACEN DISTRIBUIDOR");
+            header.add("ASIGNADO POR");
+            header.add("ALMACEN ASIGNADO");
+            header.add("TELEFONO");
+            header.add("ESTATUS DE PEDIDO");
+            header.add("TOTAL");
+            header.add("FECHA");
         }
 
         if (o instanceof SalidaParaTiendaDetalle) {
-            header.add("Codigo");
-            header.add("Referencia");
-            header.add("Descripcion");
-            header.add("Cantidad");
-            header.add("Precio");
-            header.add("Bulto");
+            header.add("CODIGO");
+            header.add("REFERENCIA");
+            header.add("DESCRIPCION");
+            header.add("CANTIDAD");
+            header.add("PRECIO");
+            header.add("BULTO");
         }
 
         if (o instanceof EntradaProveedor) {
-            header.add("Codigo Producto");
-            header.add("Descripcion");
+            header.add("CODIGO PRODUCTO");
+            header.add("DESCRIPCION");
             header.add("UM");
-            header.add("Cantidad Producto");
-            header.add("Total Conteo");
-            header.add("Nro bulto");
-            header.add("Fecha recepcion");
+            header.add("CANTIDAD PRODUCTO");
+            header.add("TOTAL CONTEO");
+            header.add("NRO BULTO");
+            header.add("FECHA RECEPCION");
         }
         return header;
     }
@@ -609,20 +612,21 @@ public abstract class JavaUtil {
         logoview.setIcon(new ImageIcon(img.getScaledInstance(logoview.getWidth(), logoview.getHeight(), Image.SCALE_SMOOTH)));
     }
 
-    public static void backupPGSQL() {
+    public static void backupPGSQL(JTextArea texto) {
+        
         try {
-            String rutaCT = "C:\\Users\\Pablo\\Desktop\\BackUpDB";
+            String rutaCT = "C:\\Users\\Usuario\\Desktop";
+                    //"C:\\Users\\Pablo\\Desktop\\BackUpDB";
             String IP = "tecnosys.dyndns.tv";
-            String pgdump=//"C:\\Users\\Pablo\\Desktop\\pg_dump.exe";
-                    "C:\\Program Files\\PostgreSQL\\9.3\\bin\\pg_dump.exe";
+            String pgdump="C:\\Program Files\\PostgreSQL\\9.3\\bin\\pg_dump.exe";
+                    //"C:\\Program Files\\PostgreSQL\\9.3\\bin\\pg_dump.exe";
             Process p;
             ProcessBuilder pb;
             java.io.File file = new java.io.File(rutaCT);
             file.createNewFile();
-            
+
             //C:/Program Files/PostgreSQL/9.3/bin\pg_restore.exe --host
             //localhost --port 5432 --username "postgres" --dbname "pruebabackup" --no-password  --verbose "C:\Users\Pablo\Desktop\p1.backup"
-            
             StringBuffer fechafile = new StringBuffer();
             fechafile.append(rutaCT);
             fechafile.append("DBbackup");
@@ -642,7 +646,7 @@ public abstract class JavaUtil {
                      "--blobs",
                      "--verbose",
                      "--file",
-                      "C:\\Users\\Pablo\\Desktop\\p1.backup",
+                      "C:\\Users\\Usuario\\Desktop\\p1.backup",
                      "miyake_pasantia"
              );
             pb.environment().put("PGPASSWORD", "admin");
@@ -654,12 +658,12 @@ public abstract class JavaUtil {
             String ll;
             while ((ll = br.readLine()) != null) {
               
-                System.out.println(ll);
+                texto.append(ll+"\n");
             }
             
-            System.out.println("\n\nBACKUP READY\n\n");
+            texto.append("\n\nBACKUP READY\n\n");
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            texto.append(e.getMessage());
         }
     }
 

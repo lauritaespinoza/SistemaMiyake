@@ -279,7 +279,7 @@ public abstract class ObjectModelDAO {
             sess.close();
         }
 
-        JOptionPane.showMessageDialog(null, he.getMessage() + "\n\n" + he.getCause());
+        JOptionPane.showMessageDialog(null, he.getMessage() + "\n\n" + he.getCause().getMessage());
         Logger.getLogger(ObjectModelDAO.class.getName()).log(Level.SEVERE, null,
                 "Ocurrió un error en la capa de acceso a datos \n\t" + he);
     }

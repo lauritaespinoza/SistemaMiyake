@@ -7,7 +7,7 @@ package gui.paneles;
 
 import gui.ventanas.JFInicioSecionMiyake;
 import util.almacen.DetalleRegistro;
-import modelos.tablas.ModeloTablaDetalleRegistroAsignacion; 
+import modelos.tablas.ModeloTablaDetalleRegistroAsignacion;
 import util.JavaUtil;
 import hibernate.DAO.ObjectModelDAO;
 import java.util.ArrayList;
@@ -31,13 +31,13 @@ public class JPConsultaInventario extends javax.swing.JPanel {
     Almacen almacenHasta = null;
     Almacen almacenDesde = null;
     List resultListAlmacen = null;
-    List resultListInventarioTienda = null; 
+    List resultListInventarioTienda = null;
 
     InventarioTienda inv = null;
     InventarioTienda invAux = null;
     int posUs = -1;
     int posTi = -1;
-    int posTi2 = -1; 
+    int posTi2 = -1;
     List<DetalleRegistro> listaDetalle = new ArrayList<>();
     ModeloTablaDetalleRegistroAsignacion modeloTablaAsignacion = new ModeloTablaDetalleRegistroAsignacion();
 
@@ -52,7 +52,7 @@ public class JPConsultaInventario extends javax.swing.JPanel {
         resultListAlmacen = ObjectModelDAO.getResultQuery(sql);
 
         comboBoxAlmacenDesde.removeAllItems();
- 
+
         for (Object object : resultListAlmacen) {
             Almacen a = (Almacen) object;
 
@@ -66,11 +66,11 @@ public class JPConsultaInventario extends javax.swing.JPanel {
 //        
         //Usuarios
         //  List<List> resultListUsuarios = FventanaIncial.listaUsuarioMain;
-  this.comboBoxAlmacenDesde.setSelectedIndex(-1);
-   this.busy.setVisible(false);
-        this.jXTablaConsultarMercanciaInventarios.setAutoCreateRowSorter(true);
-        this.jXTablaConsultarMercanciaInventarios.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        this.jXTablaConsultarMercanciaInventarios.setColumnControlVisible(true);
+        this.comboBoxAlmacenDesde.setSelectedIndex(-1);
+        this.busy.setVisible(false);
+//        this.jXTablaConsultarMercanciaInventarios.setAutoCreateRowSorter(true);
+//        this.jXTablaConsultarMercanciaInventarios.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+//        this.jXTablaConsultarMercanciaInventarios.setColumnControlVisible(true);
         //  TableRowFilterSupport.forTable(jXTable1).searchable(true).apply();
 
     }
@@ -210,6 +210,7 @@ public class JPConsultaInventario extends javax.swing.JPanel {
             }
         ));
         jXTablaConsultarMercanciaInventarios.setToolTipText("Presione (Ctrl + F) Para Buscar.");
+        jXTablaConsultarMercanciaInventarios.setSortable(false);
         jScrollPane1.setViewportView(jXTablaConsultarMercanciaInventarios);
 
         javax.swing.GroupLayout jLayeredPaneProductosLayout = new javax.swing.GroupLayout(jLayeredPaneProductos);
@@ -218,11 +219,9 @@ public class JPConsultaInventario extends javax.swing.JPanel {
             jLayeredPaneProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPaneProductosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jXFindBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPaneProductosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE)
+                .addGroup(jLayeredPaneProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jXFindBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jLayeredPaneProductosLayout.setVerticalGroup(
@@ -374,7 +373,7 @@ public class JPConsultaInventario extends javax.swing.JPanel {
 
                 this.resultListInventarioTienda.clear();
                 this.jXTablaConsultarMercanciaInventarios.removeAll();
-                 
+
                 //OBjetos
                 this.ususrioActual = null;
                 this.almacenDesde = null;
