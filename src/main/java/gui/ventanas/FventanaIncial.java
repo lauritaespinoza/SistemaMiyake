@@ -270,6 +270,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         jXCollapsiblePane1.setOpaque(false);
         jXCollapsiblePane1.setAlignmentX(0.0F);
 
+        taskPaneModuloFacturacion.setCollapsed(true);
         taskPaneModuloFacturacion.setTitle("Facturación");
 
         taskPaneProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415658077_database.png"))); // NOI18N
