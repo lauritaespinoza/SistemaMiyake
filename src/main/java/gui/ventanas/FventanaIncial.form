@@ -82,6 +82,23 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Archivos"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Opciones"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cerrar Seccion"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Salir"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuFacturacion">
           <Properties>
@@ -414,6 +431,7 @@
                   <SubComponents>
                     <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneProducto">
                       <Properties>
+                        <Property name="collapsed" type="boolean" value="true"/>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/iconos/1415658077_database.png"/>
                         </Property>
@@ -621,6 +639,7 @@
                     </Container>
                     <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneProveedores">
                       <Properties>
+                        <Property name="collapsed" type="boolean" value="true"/>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/iconos/1415665365_fork1.png"/>
                         </Property>
@@ -1747,6 +1766,18 @@
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
         </Container>
       </SubComponents>
+    </Container>
+    <Container class="javax.swing.JToolBar" name="jToolBarStatusInf">
+      <Properties>
+        <Property name="rollover" type="boolean" value="true"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+          <BorderConstraints direction="Last"/>
+        </Constraint>
+      </Constraints>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
     </Container>
   </SubComponents>
 </Form>

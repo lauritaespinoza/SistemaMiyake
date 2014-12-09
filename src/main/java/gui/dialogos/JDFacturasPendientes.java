@@ -34,10 +34,8 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
     public Factura factura = null;
     private List resultList = null;
     private int pos = -1;
-    //Reportes
-    public final InputStream rutaJasper = this.getClass().getResourceAsStream("/reportes/ListadoFacturas.jasper");
-    public final InputStream rutaJrxml = this.getClass().getResourceAsStream("/reportes/ListadoFacturas.jrxml");
-    public final File  archivo = new File(this.getClass().getResource("/JavaHelp/JavaHelp/ejemplo.hs").getFile());
+        public final File  archivo = new File(this.getClass().getResource("/JavaHelp/JavaHelp/ejemplo.hs").getFile());
+
 
     public JDFacturasPendientes(java.awt.Frame parent, boolean modal) throws Exception {
         super(parent, modal);
@@ -232,7 +230,7 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
     private void ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ayudaActionPerformed
 
         try {
-            URL hsURL = archivo.toURI().toURL();  
+            URL hsURL = archivo.toURI().toURL();
 
             HelpSet helpset = null;
             helpset = new HelpSet(null, hsURL);
@@ -258,7 +256,7 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
     private void botonImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonImprimirActionPerformed
         // TODO add your handling code here:    resultList
         Thread hilo = new Thread() {
-
+           
             @Override
             public void run() {
 
@@ -296,7 +294,7 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
 //                        
 //                    }
                     dispose();
-                        setVisible(false);
+                    setVisible(false);
 
                 } catch (JRException | HeadlessException e) {
                     JOptionPane.showMessageDialog(null, "Se a Dectectado Un Proble Con Proceso de Seleccion de Facturas,"
