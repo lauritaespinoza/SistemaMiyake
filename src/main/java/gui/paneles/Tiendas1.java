@@ -196,7 +196,6 @@ public class Tiendas1 extends javax.swing.JPanel {
 
         dialogoMostrarNotas.setLocationByPlatform(true);
         dialogoMostrarNotas.setModal(true);
-        dialogoMostrarNotas.pack();
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         Point p= new Point(
             (int) ((d.getWidth() - dialogoMostrarNotas.getWidth()) / 2),
@@ -223,17 +222,17 @@ public class Tiendas1 extends javax.swing.JPanel {
             dialogoMostrarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dialogoMostrarNotasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(dialogoMostrarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btNC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btND, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(dialogoMostrarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btND, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btNC, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         dialogoMostrarNotasLayout.setVerticalGroup(
             dialogoMostrarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dialogoMostrarNotasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btNC)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btND)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -824,7 +823,7 @@ public class Tiendas1 extends javax.swing.JPanel {
 
         jScrollPane4.setViewportView(jLayeredPaneProductos);
 
-        botonGenerarNotas.setText("Generear Notas");
+        botonGenerarNotas.setText("Mostrar Notas");
         botonGenerarNotas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonGenerarNotasActionPerformed(evt);
@@ -832,6 +831,7 @@ public class Tiendas1 extends javax.swing.JPanel {
         });
 
         jButtonGuardarConteo.setText("Guardar");
+        jButtonGuardarConteo.setEnabled(false);
         jButtonGuardarConteo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonGuardarConteoActionPerformed(evt);
@@ -839,6 +839,7 @@ public class Tiendas1 extends javax.swing.JPanel {
         });
 
         botonImprimir.setText("Imprimir");
+        botonImprimir.setEnabled(false);
         botonImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonImprimirActionPerformed(evt);
@@ -852,7 +853,7 @@ public class Tiendas1 extends javax.swing.JPanel {
             .addGroup(jLayeredPanePrincipalLayout.createSequentialGroup()
                 .addGap(95, 95, 95)
                 .addComponent(botonGenerarNotas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 229, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 244, Short.MAX_VALUE)
                 .addComponent(botonImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(136, 136, 136)
                 .addComponent(jButtonGuardarConteo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -897,9 +898,7 @@ public class Tiendas1 extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 11, Short.MAX_VALUE))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 707, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1234,8 +1233,8 @@ public class Tiendas1 extends javax.swing.JPanel {
                                     id_in.setDescuento(0);
                                     id_in.setProcesado(id_in.getProcesado() - dr.getCantidad());
                                     //Alualiza Cantidad Inexistente
-                                    // id_in.setCantidad(id_in.getCantidad() + dr.getCantidad());
-                                    //id_in.setAsignado(Boolean.TRUE);
+                                    id_in.setCantidad(id_in.getCantidad() + dr.getCantidad());
+                                    id_in.setAsignado(Boolean.TRUE);
 
                                     detalle.setTotalFaltante(dr.getCantidad() * dr.getSd().getProducto().getPrecioOriginal());
                                     totalCosto += detalle.getTotalFaltante();
@@ -1334,7 +1333,8 @@ public class Tiendas1 extends javax.swing.JPanel {
 
                     cab.setTotalConteo(totalCosto);
                     ObjectModelDAO.updateObject(cab);
-
+                    sa.setRevisado(Boolean.TRUE);
+                    ObjectModelDAO.updateObject(sa);
                     //busys
                     busy.setEnabled(false);
                     busy.setVisible(false);
@@ -1628,9 +1628,9 @@ public class Tiendas1 extends javax.swing.JPanel {
 
         try {
             if ("".equals(this.txtCantidad.getText())
-                    || Integer.parseInt(this.txtCantidad.getText()) == 0 //|| (this.sd.getCantidadProducto() * this.sd.getCantidadSet()) <= (Math.abs(Integer.parseInt(this.txtCantidad.getText())))
+                   // || Integer.parseInt(this.txtCantidad.getText()) == 0 //|| (this.sd.getCantidadProducto() * this.sd.getCantidadSet()) <= (Math.abs(Integer.parseInt(this.txtCantidad.getText())))
                     ) {
-                JOptionPane.showMessageDialog(null, "¡¡¡Intriduzca Cantidad Por Favor!!!");
+                JOptionPane.showMessageDialog(null, "¡¡¡Introduzca Cantidad Por Favor!!!");
             } else {
                 int totalCantidadInventario = sd.getCantidadProducto();
 
@@ -1730,12 +1730,23 @@ public class Tiendas1 extends javax.swing.JPanel {
     private void botonGenerarNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGenerarNotasActionPerformed
         btNC.setEnabled(sobrante != null);
         btND.setEnabled(faltante != null);
+        dialogoMostrarNotas.pack();
         dialogoMostrarNotas.setVisible(true);
     }//GEN-LAST:event_botonGenerarNotasActionPerformed
 
     private void botonTotalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTotalizarActionPerformed
 
-
+        try {
+            if (jTDetalleRegistroTiendas.getRowCount() != 0 && 
+                    listaprodSA.isEmpty()) {
+                jButtonGuardarConteo.setEnabled(true);
+                botonImprimir.setEnabled(true);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Excepcion al Totalizar Pedido" + e);
+            Logger.getLogger(Tiendas1.class.getName()).log(Level.SEVERE, null, e);
+            
+        }
     }//GEN-LAST:event_botonTotalizarActionPerformed
 
     private void btNCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNCActionPerformed

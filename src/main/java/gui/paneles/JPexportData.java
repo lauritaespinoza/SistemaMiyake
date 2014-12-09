@@ -6,6 +6,7 @@
 package gui.paneles;
 
 import clases.csv.CSVreader;
+import gui.dialogos.JDbackupDB;
 import hibernate.DAO.ObjectModelDAO;
 import java.io.BufferedReader;
 import java.io.File;
@@ -448,9 +449,8 @@ public class JPexportData extends javax.swing.JPanel {
     }//GEN-LAST:event_cb_tiendaActionPerformed
 
     private void exportarBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportarBDActionPerformed
-       
-            JavaUtil.backupPGSQL();
-        
+       JDbackupDB jdbackUP=new JDbackupDB(null,true);
+       jdbackUP.setVisible(true);
     }//GEN-LAST:event_exportarBDActionPerformed
 
 

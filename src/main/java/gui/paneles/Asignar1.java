@@ -1066,7 +1066,7 @@ public class Asignar1 extends javax.swing.JPanel {
                                                 0,
                                                 almacenHasta,
                                                 dr.inv.getProducto()
-                                        );
+                                        ); 
 
                                         id_in2.setPrecioConDescuento(id_in.getPrecioConDescuento());
                                         id_in2.setPrecioSinDescuento(id_in.getPrecioSinDescuento());

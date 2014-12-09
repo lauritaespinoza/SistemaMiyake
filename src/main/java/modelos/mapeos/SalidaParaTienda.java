@@ -56,7 +56,7 @@ public class SalidaParaTienda implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(precision = 8, scale = 8)
     private Float total;
-    private Boolean revisado;
+    private Boolean revisado=false;
     @JoinColumn(name = "id_almacen_desde", referencedColumnName = "id_almacen")
     @ManyToOne
     private Almacen idAlmacenDesde;
