@@ -233,6 +233,7 @@ public class JPinventarioDiario extends javax.swing.JPanel {
             }
         });
 
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/desde.png"))); // NOI18N
         jLabel7.setText("Tienda");
 
         seleccionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417901536_internt_web_technology-02-16.png"))); // NOI18N
@@ -257,6 +258,7 @@ public class JPinventarioDiario extends javax.swing.JPanel {
             }
         });
 
+        detalles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416792810_033.png"))); // NOI18N
         detalles.setText("Ver Detalles");
         detalles.setEnabled(false);
         detalles.addActionListener(new java.awt.event.ActionListener() {
@@ -328,7 +330,7 @@ public class JPinventarioDiario extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(total_facturas)
-                    .addComponent(detalles, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(detalles, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addGap(8, 8, 8))

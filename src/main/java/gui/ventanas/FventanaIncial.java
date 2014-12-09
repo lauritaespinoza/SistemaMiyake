@@ -385,7 +385,6 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jXCollapsiblePane1.getContentPane().add(taskPaneModuloFacturacion);
 
-        taskPaneModuloTienda.setCollapsed(true);
         taskPaneModuloTienda.setTitle("Tienda");
 
         jButton6.setText("Almacen");
@@ -686,6 +685,7 @@ public class FventanaIncial extends javax.swing.JFrame {
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
 
                 new FventanaIncial().setVisible(true);

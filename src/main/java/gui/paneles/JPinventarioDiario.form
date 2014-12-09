@@ -213,7 +213,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="total_facturas" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="detalles" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
+                          <Component id="detalles" alignment="1" min="-2" pref="18" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
@@ -260,6 +260,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon_almacen/desde.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Tienda"/>
               </Properties>
             </Component>
@@ -302,6 +305,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="detalles">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon_almacen/1416792810_033.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Ver Detalles"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
