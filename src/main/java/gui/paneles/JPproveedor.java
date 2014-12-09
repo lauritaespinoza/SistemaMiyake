@@ -13,10 +13,12 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
 import modelos.mapeos.Contacto;
 import modelos.mapeos.Proveedor;
 import modelos.tablas.TableModelReport;
@@ -32,6 +34,7 @@ public class JPproveedor extends javax.swing.JPanel {
     private List resultListProveedores;
     private int pos;
     public final String rutaJasper = "/reportes/ReporteProveedores.jasper";
+    DefaultTableModel tableModel;
 
     public JPproveedor() {
         this(0);
@@ -40,6 +43,8 @@ public class JPproveedor extends javax.swing.JPanel {
     public JPproveedor(int tabCrud) {
         initComponents();
 
+         TableModelData();
+         
         setTableCellAlignment(JLabel.CENTER, listadoProveedores);
         setTableCellAlignment(JLabel.CENTER, tablaModfProveedor);
         setTableCellAlignment(JLabel.CENTER, tablaDeletProveedor);
@@ -830,12 +835,36 @@ public class JPproveedor extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_panelScrudProveedorStateChanged
 
+    private void TableModelData() {
+        Vector<String> columnNames = new Vector<>();
+        columnNames.add("NOMBRE");
+        columnNames.add("TELEFONO 1");
+        columnNames.add("FAX");
+        columnNames.add("CORREO");
+        columnNames.add("GERENTE");
+        columnNames.add("CONTACTO");
+        columnNames.add("FECHA DE CREACION");
+
+        Vector<Object> data = new Vector<>();
+        for (int i = 0; i < listadoProveedores.getRowCount(); i++) {
+            Vector<Object> subdata = new Vector<>();
+            if (listadoProveedores.getColumnName(i).equals(columnNames.get(i))) {                
+                for (int j = 0; j < listadoProveedores.getColumnCount(); j++) {
+                    subdata.add(listadoProveedores.getValueAt(i, j));
+                }
+            }
+            data.add(subdata);
+        }
+        tableModel = new DefaultTableModel(data, columnNames);
+        listadoProveedores.setModel(tableModel);
+    }
+
     private void generarReporte() {
         try {
             JasperPrint jasperPrint = null;
             Map<String, Object> parametro = new HashMap<>();
 
-            TableModelReport dataSourse = new TableModelReport(listadoProveedores.getModel());
+            TableModelReport dataSourse = new TableModelReport(tableModel);
 
             parametro.put("REPORT_DATA_SOURSE", dataSourse);
             JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream(rutaJasper));
@@ -849,7 +878,9 @@ public class JPproveedor extends javax.swing.JPanel {
     }
 
     private void bt_GenerarReporteProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_GenerarReporteProveedoresActionPerformed
-        generarReporte();
+       // generarReporte();
+        TableModelData();               
+                
     }//GEN-LAST:event_bt_GenerarReporteProveedoresActionPerformed
 
 

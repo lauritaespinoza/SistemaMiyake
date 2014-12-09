@@ -24,17 +24,17 @@
 		</box>
 	</style>
 	<subDataset name="Table Dataset 1" uuid="0816b666-f79c-4dc4-bf5b-26deb562c56c">
-		<field name="field1" class="java.lang.String"/>
-		<field name="field2" class="java.lang.String"/>
-		<field name="field3" class="java.lang.String"/>
-		<field name="field4" class="java.lang.String"/>
-		<field name="field5" class="java.lang.String"/>
-		<field name="field6" class="java.lang.String"/>
-		<field name="field7" class="java.lang.String"/>
-		<field name="field8" class="java.lang.String"/>
-		<field name="field9" class="java.lang.String"/>
-		<field name="field10" class="java.lang.String"/>
-		<field name="field11" class="java.lang.String"/>
+		<field name="NOMBRE" class="java.lang.String"/>
+		<field name="TELEFONO 1" class="java.lang.String"/>
+		<field name="TELEFONO 2" class="java.lang.String"/>
+		<field name="FAX" class="java.lang.String"/>
+		<field name="CODIGO POSTAL" class="java.lang.String"/>
+		<field name="CORREO" class="java.lang.String"/>
+		<field name="GERENTE" class="java.lang.String"/>
+		<field name="CONTACTO" class="java.lang.String"/>
+		<field name="OTRO CONTACTO" class="java.lang.String"/>
+		<field name="FECHA DE CREACION" class="java.lang.String"/>
+		<field name="FECHA DE MODIFICACION" class="java.lang.String"/>
 	</subDataset>
 	<background>
 		<band splitType="Stretch"/>
@@ -53,52 +53,87 @@
 			<componentElement>
 				<reportElement key="table" style="table" x="0" y="0" width="555" height="50" uuid="687d6ab2-19cb-4fe6-83f0-5a16761a20db"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="Table Dataset 1" uuid="2a567b1f-f5b0-4659-aa08-6fbf3cec2e53">
-						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(1)]]></dataSourceExpression>
+					<datasetRun subDataset="Table Dataset 1" uuid="fa42d6cb-7097-4920-9aac-4d09942c7d15">
+						<dataSourceExpression><![CDATA[$P{REPORT_DATA_SOURCE}]]></dataSourceExpression>
 					</datasetRun>
 					<jr:column width="90" uuid="d455974e-74ab-4992-9f04-634baa980f89">
-						<jr:columnHeader style="table_CH" height="30"/>
-						<jr:detailCell style="table_TD" height="20"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="0ebd169d-7225-4502-bf86-55663aac6d20"/>
+								<textFieldExpression><![CDATA[$F{NOMBRE}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
 					</jr:column>
 					<jr:column width="90" uuid="68f74d9d-382a-400e-b240-a69759a531bd">
-						<jr:columnHeader style="table_CH" height="30"/>
-						<jr:detailCell style="table_TD" height="20"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="fa0f27ad-477c-40cb-b41c-00a5af4029c6"/>
+								<textFieldExpression><![CDATA[$F{TELEFONO 1}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
 					</jr:column>
 					<jr:column width="90" uuid="f064b845-5e7f-4ccf-858d-8fc71e47e372">
-						<jr:columnHeader style="table_CH" height="30"/>
-						<jr:detailCell style="table_TD" height="20"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="f4111438-c647-4f9f-8087-37bc1b7ec139"/>
+								<textFieldExpression><![CDATA[$F{TELEFONO 2}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="2d8d8f6f-77a7-4c4f-a803-45f7caf83de3">
-						<jr:columnHeader style="table_CH" height="30"/>
-						<jr:detailCell style="table_TD" height="20"/>
+					<jr:column width="66" uuid="2d8d8f6f-77a7-4c4f-a803-45f7caf83de3">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="65" height="20" uuid="abb91e6a-3df9-4c94-80d7-2ca9291cdbc1"/>
+								<textFieldExpression><![CDATA[$F{FAX}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="6e5ce429-562c-4beb-bb08-ca06cacc6d71">
-						<jr:columnHeader style="table_CH" height="30"/>
-						<jr:detailCell style="table_TD" height="20"/>
+					<jr:column width="45" uuid="6e5ce429-562c-4beb-bb08-ca06cacc6d71">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="45" height="20" uuid="15c44143-fd79-4cc1-8e96-9b2541bd37ca"/>
+								<textFieldExpression><![CDATA[$F{CODIGO POSTAL}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="495e9466-771a-4cdd-9aa7-983f24fd9a00">
-						<jr:columnHeader style="table_CH" height="30"/>
-						<jr:detailCell style="table_TD" height="20"/>
+					<jr:column width="130" uuid="495e9466-771a-4cdd-9aa7-983f24fd9a00">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="93" height="20" uuid="1959cd4d-d059-4cd2-a727-f3079ee65f67"/>
+								<textFieldExpression><![CDATA[$F{CORREO}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
 					</jr:column>
 					<jr:column width="90" uuid="40bafb09-2b91-423f-9965-9ffbabe58034">
-						<jr:columnHeader style="table_CH" height="30"/>
-						<jr:detailCell style="table_TD" height="20"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="1c542868-e356-416e-aae0-de31c3a61d2d"/>
+								<textFieldExpression><![CDATA[$F{GERENTE}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
 					</jr:column>
 					<jr:column width="90" uuid="af18821f-834a-411a-866b-69c602f60451">
-						<jr:columnHeader style="table_CH" height="30"/>
-						<jr:detailCell style="table_TD" height="20"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1"/>
 					</jr:column>
 					<jr:column width="90" uuid="a15227df-8ad4-4c7d-ba27-81823fe497ba">
-						<jr:columnHeader style="table_CH" height="30"/>
-						<jr:detailCell style="table_TD" height="20"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1"/>
 					</jr:column>
 					<jr:column width="90" uuid="d6ec1fcc-572d-457a-ae68-8e0d88ac8dd1">
-						<jr:columnHeader style="table_CH" height="30"/>
-						<jr:detailCell style="table_TD" height="20"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1"/>
 					</jr:column>
 					<jr:column width="90" uuid="8adfa1da-3aba-4b16-9b7c-8ef17d40e4fe">
-						<jr:columnHeader style="table_CH" height="30"/>
-						<jr:detailCell style="table_TD" height="20"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1"/>
 					</jr:column>
 				</jr:table>
 			</componentElement>

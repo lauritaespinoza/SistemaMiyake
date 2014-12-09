@@ -153,6 +153,8 @@ public abstract class JavaUtil {
             oneRow.add(p.getIdMarca().getNombre());
             oneRow.add(p.getIdProveedor().getNombre());
             oneRow.add(p.getPrecioOriginal());
+            oneRow.add(p.getPrimeraActividad() == null ? "" : new SimpleDateFormat("yyyy-MM-dd").format(p.getPrimeraActividad()));
+            oneRow.add(p.getUltimaActividad() == null ? "" : new SimpleDateFormat("yyyy-MM-dd").format(p.getUltimaActividad()));
         }
 
         //si es un vector, y si el la primera es Salida para tienda detalle entonces es
@@ -176,9 +178,9 @@ public abstract class JavaUtil {
             oneRow.add(ivt.getAlmacen().getNombre());
             oneRow.add(ivt.getProducto().getIdProducto());
             oneRow.add(ivt.getProducto().getDescripcion());
-            oneRow.add( dosDecimales.format(ivt.getPrecioSinDescuento() == null ? 0f : ivt.getPrecioSinDescuento()).trim());
+            oneRow.add(dosDecimales.format(ivt.getPrecioSinDescuento() == null ? 0f : ivt.getPrecioSinDescuento()).trim());
             oneRow.add(ivt.getDescuento().toString() + "%");
-            oneRow.add( dosDecimales.format(ivt.getPrecioConDescuento() == null ? 0f : ivt.getPrecioConDescuento()).trim());
+            oneRow.add(dosDecimales.format(ivt.getPrecioConDescuento() == null ? 0f : ivt.getPrecioConDescuento()).trim());
             oneRow.add(ivt.getFechaCreacion());
             oneRow.add(ivt.getFechaModificacion());
             oneRow.add(ivt.getCantidad());
@@ -321,6 +323,8 @@ public abstract class JavaUtil {
             header.add("MARCA");
             header.add("PROVEEDOR");
             header.add("PRECIO ORIGINAL");
+            header.add("FECHA DE CREACION");
+            header.add("FECHA DE MODIFICACION");
         }
         //si es un vector, y si el la primera es Salida para tienda detalle entonces es
         //salida para tienda detalle con precios y descuentos
