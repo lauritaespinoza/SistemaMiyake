@@ -61,6 +61,7 @@ import gui.paneles.JPnotaCreditoDebito;
 import gui.paneles.JPusuario;
 import gui.paneles.Tiendas1;
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.reflect.InvocationTargetException;
@@ -155,6 +156,11 @@ public class FventanaIncial extends javax.swing.JFrame {
     private void initComponents() {
 
         jXTaskPaneContainer1 = new org.jdesktop.swingx.JXTaskPaneContainer();
+        jpMenu = new javax.swing.JPopupMenu();
+        jmConsultar = new javax.swing.JMenuItem();
+        jmCrear = new javax.swing.JMenuItem();
+        jmModificar = new javax.swing.JMenuItem();
+        jmEliminar = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -227,6 +233,18 @@ public class FventanaIncial extends javax.swing.JFrame {
         menuUtilidades = new javax.swing.JMenu();
         menuAyuda = new javax.swing.JMenu();
 
+        jmConsultar.setText("Consultar");
+        jpMenu.add(jmConsultar);
+
+        jmCrear.setText("Crear");
+        jpMenu.add(jmCrear);
+
+        jmModificar.setText("Modificar");
+        jpMenu.add(jmModificar);
+
+        jmEliminar.setText("Eliminar");
+        jpMenu.add(jmEliminar);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(9, 182, 201));
         setMinimumSize(new java.awt.Dimension(412, 641));
@@ -278,15 +296,18 @@ public class FventanaIncial extends javax.swing.JFrame {
         jXCollapsiblePane1.setOpaque(false);
         jXCollapsiblePane1.setAlignmentX(0.0F);
 
-        taskPaneModuloFacturacion.setCollapsed(true);
         taskPaneModuloFacturacion.setTitle("Facturación");
 
-        taskPaneProducto.setCollapsed(true);
         taskPaneProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415658077_database.png"))); // NOI18N
         taskPaneProducto.setSpecial(true);
         taskPaneProducto.setTitle("Productos");
 
         btnCrudProducto.setText("Producto");
+        btnCrudProducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCrudProductoMouseEntered(evt);
+            }
+        });
         btnCrudProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCrudProductoActionPerformed(evt);
@@ -697,6 +718,13 @@ public class FventanaIncial extends javax.swing.JFrame {
         //        }
     }//GEN-LAST:event_Boton_Inprimir_Reporte_conteo_DistribuidoraActionPerformed
 
+    private void btnCrudProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrudProductoMouseEntered
+        Component cpm = (Component) evt.getSource();
+        jpMenu.show(cpm,
+                cpm.getWidth(),
+                0);
+    }//GEN-LAST:event_btnCrudProductoMouseEntered
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -754,6 +782,11 @@ public class FventanaIncial extends javax.swing.JFrame {
     private org.jdesktop.swingx.JXButton jXButton2;
     private org.jdesktop.swingx.JXCollapsiblePane jXCollapsiblePane1;
     private org.jdesktop.swingx.JXTaskPaneContainer jXTaskPaneContainer1;
+    private javax.swing.JMenuItem jmConsultar;
+    private javax.swing.JMenuItem jmCrear;
+    private javax.swing.JMenuItem jmEliminar;
+    private javax.swing.JMenuItem jmModificar;
+    private javax.swing.JPopupMenu jpMenu;
     private javax.swing.JMenu menuArchivo;
     private javax.swing.JMenu menuAyuda;
     private javax.swing.JMenu menuFacturacion;
