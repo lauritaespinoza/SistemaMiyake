@@ -1063,7 +1063,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
                                     id_in.setPrecioSinDescuento(dr.getEp().getIdProducto().getPrecioOriginal());
                                     id_in.setPrecioConDescuento(dr.getEp().getIdProducto().getPrecioOriginal());
                                     id_in.setDescuento(0);
-
+                                    id_in.setAsignado(Boolean.TRUE);
                                     total += dr.getCantidad() * dr.getEp().getIdProducto().getPrecioOriginal();
                                     Object id_creado_inventario = ObjectModelDAO.saveObject(id_in);
                                     if (id_creado_inventario instanceof InventarioTiendaPK
@@ -1076,6 +1076,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
                                     // id_in.setPrecio(dr.ep.getIdProducto().getPrecioOriginal());
                                     //id_in.setDescuento(0f);
                                     id_in.setCantidad(id_in.getCantidad() + dr.getCantidad());
+                                    id_in.setAsignado(Boolean.TRUE);
                                     ObjectModelDAO.updateObject(id_in);
                                     total += dr.getCantidad() * id_in.getPrecioSinDescuento();
                                     System.err.println("Actualizando Inventario de Producto Existente");

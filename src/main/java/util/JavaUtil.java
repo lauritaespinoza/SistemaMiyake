@@ -230,7 +230,7 @@ public abstract class JavaUtil {
         if (o instanceof SalidaParaTienda) {
             SalidaParaTienda sa = (SalidaParaTienda) o;
             oneRow.add(sa.getIdAlmacenDesde().getNombre());
-            oneRow.add(sa.getIdUsuario2());
+            oneRow.add(sa.getIdUsuario2().getNombre()+" : "+sa.getIdUsuario2().getDescripcion());
             oneRow.add(sa.getIdAlmacenHasta().getNombre());
             oneRow.add(sa.getIdAlmacenHasta().getTelefono1());
             oneRow.add(sa.getRevisado());
