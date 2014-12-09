@@ -67,8 +67,8 @@ public class Distribuidora1 extends javax.swing.JPanel {
     //Tabla
     ModeloTablaDetalleRegistro modeloTablaTomaFisicaInventarioDistribuidora = new ModeloTablaDetalleRegistro();
     //Reportes
-    public final InputStream rutaJasper = this.getClass().getResourceAsStream("/reportes/ReportInventarioTienda.jasper");
-    public final InputStream rutaJrxml = this.getClass().getResourceAsStream("/reportes/ReportInventarioTienda.jrxml");
+    public final InputStream rutaJasper = this.getClass().getResourceAsStream("/reportes/ReporteTomaFisicaDistribuidora.jasper");
+    public final InputStream rutaJrxml = this.getClass().getResourceAsStream("/reportes/ReporteTomaFisicaDistribuidora.jrxml");
 
     /**
      * Creates new form NewJPanel
@@ -87,7 +87,6 @@ public class Distribuidora1 extends javax.swing.JPanel {
         comboBoxUsuarios.addItem(user.getNombre() + " :" + user.getDescripcion());
         //  this.comboBoxUsuarios.setEnabled(false);
         this.busy.setVisible(false);
-        this.fecha_actual.setText(Calendar.getInstance().getTime().toLocaleString());
 
     }
 
@@ -136,9 +135,6 @@ public class Distribuidora1 extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jXLabel10 = new org.jdesktop.swingx.JXLabel();
         txtFechaFactura = new org.jdesktop.swingx.JXTextField();
-        fecha = new org.jdesktop.swingx.JXLabel();
-        fecha_actual = new org.jdesktop.swingx.JXLabel();
-        jXTaskPane2 = new org.jdesktop.swingx.JXTaskPane();
         jScrollPane4 = new javax.swing.JScrollPane();
         jLayeredPaneProductos = new javax.swing.JLayeredPane();
         jXButton3 = new org.jdesktop.swingx.JXButton();
@@ -169,19 +165,24 @@ public class Distribuidora1 extends javax.swing.JPanel {
         botonValidar = new org.jdesktop.swingx.JXButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTDetalleRegistroDistribuidora = new javax.swing.JTable();
-        jXButton1 = new org.jdesktop.swingx.JXButton();
-        jXButton2 = new org.jdesktop.swingx.JXButton();
+        botonImprimir = new org.jdesktop.swingx.JXButton();
+        botonGeneralNotas = new org.jdesktop.swingx.JXButton();
         jButtonGuardarConteo = new org.jdesktop.swingx.JXButton();
 
         setAutoscrolls(true);
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder("Toma Fisica Distribuidora. "));
+        jScrollPane1.setToolTipText("");
+        jScrollPane1.setAutoscrolls(true);
 
         jLayeredPane1.setAutoscrolls(true);
 
         busy.setText("GUARDANDO!!!");
         busy.setEnabled(false);
         busy.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        jXTaskPane1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416789183_data-16.png"))); // NOI18N
+        jXTaskPane1.setTitle("Datos Cabecera Factura");
 
         jLayeredPaneTienda.setBorder(javax.swing.BorderFactory.createTitledBorder("Seleccionar Factura"));
         jLayeredPaneTienda.setPreferredSize(new java.awt.Dimension(610, 110));
@@ -341,9 +342,9 @@ public class Distribuidora1 extends javax.swing.JPanel {
         jXTaskPane1.getContentPane().setLayout(jXTaskPane1Layout);
         jXTaskPane1Layout.setHorizontalGroup(
             jXTaskPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 654, Short.MAX_VALUE)
             .addGroup(jXTaskPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE))
         );
         jXTaskPane1Layout.setVerticalGroup(
             jXTaskPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -351,10 +352,6 @@ public class Distribuidora1 extends javax.swing.JPanel {
             .addGroup(jXTaskPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))
         );
-
-        fecha.setText("Fecha:");
-
-        fecha_actual.setText("actual");
 
         jScrollPane4.setAutoscrolls(true);
 
@@ -464,13 +461,13 @@ public class Distribuidora1 extends javax.swing.JPanel {
         txtCodigo.setEditable(false);
         txtCodigo.setEnabled(false);
 
-        jXLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/etiquetas.png"))); // NOI18N
+        jXLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/codigo1.png"))); // NOI18N
         jXLabel3.setText("CodigoSKU");
 
         jXLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/descripcion.png"))); // NOI18N
         jXLabel5.setText("Descripcion");
 
-        labelReferencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/codigo1.png"))); // NOI18N
+        labelReferencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/etiquetas.png"))); // NOI18N
         labelReferencia.setText("Referencia");
 
         botonAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/agregar1.png"))); // NOI18N
@@ -505,6 +502,11 @@ public class Distribuidora1 extends javax.swing.JPanel {
         jXLabel9.setText("Bulto");
 
         txtNroBulto.setEnabled(false);
+        txtNroBulto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNroBultoKeyTyped(evt);
+            }
+        });
 
         botonLimpiarAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/limpiar.png"))); // NOI18N
         botonLimpiarAgregar.setText("Limpiar");
@@ -599,7 +601,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
                     .addComponent(botonAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonLimpiarAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonValidar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGap(0, 0, 0))
         );
         jLayeredPaneDatosProductos.setLayer(txtDescripcion, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPaneDatosProductos.setLayer(txtCantidadSugeridad, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -673,10 +675,10 @@ public class Distribuidora1 extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLayeredPaneDatosProductos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jXButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 0, 0))
         );
         jLayeredPaneProductos.setLayer(jXButton3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPaneProductos.setLayer(jLayeredPaneBuscarProducto, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -685,25 +687,14 @@ public class Distribuidora1 extends javax.swing.JPanel {
 
         jScrollPane4.setViewportView(jLayeredPaneProductos);
 
-        javax.swing.GroupLayout jXTaskPane2Layout = new javax.swing.GroupLayout(jXTaskPane2.getContentPane());
-        jXTaskPane2.getContentPane().setLayout(jXTaskPane2Layout);
-        jXTaskPane2Layout.setHorizontalGroup(
-            jXTaskPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
-        );
-        jXTaskPane2Layout.setVerticalGroup(
-            jXTaskPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4)
-        );
-
-        jXButton1.setText("Imprimir");
-        jXButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonImprimir.setText("Imprimir");
+        botonImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jXButton1ActionPerformed(evt);
+                botonImprimirActionPerformed(evt);
             }
         });
 
-        jXButton2.setText("Generear Notas");
+        botonGeneralNotas.setText("Generear Notas");
 
         jButtonGuardarConteo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/database_save.png"))); // NOI18N
         jButtonGuardarConteo.setText("Guardar");
@@ -720,58 +711,43 @@ public class Distribuidora1 extends javax.swing.JPanel {
         jLayeredPane1Layout.setHorizontalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 0, 0)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jXTaskPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jXTaskPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jXTaskPane2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())
-                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jXButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jXButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botonGeneralNotas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
                         .addComponent(jButtonGuardarConteo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 676, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
-                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
-                                .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fecha_actual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
-                                .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fecha_actual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(jXTaskPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jXTaskPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jXButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jXButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonGeneralNotas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonGuardarConteo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jLayeredPane1.setLayer(busy, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jXTaskPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(fecha, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(fecha_actual, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jXTaskPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jXButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jXButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jScrollPane4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(botonImprimir, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(botonGeneralNotas, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jButtonGuardarConteo, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jScrollPane1.setViewportView(jLayeredPane1);
@@ -781,16 +757,16 @@ public class Distribuidora1 extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 0, 0)
                 .addComponent(jScrollPane1)
-                .addContainerGap())
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(jScrollPane1)
+                .addGap(0, 0, 0))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1219,7 +1195,6 @@ public class Distribuidora1 extends javax.swing.JPanel {
                         txtFechaFactura.setEnabled(true);
                         txtFechaFactura.setText(fa.getFechaEmision().toString());
                         botonConfirmarFactura.setEnabled(true);
-                        
 
                     }
                     //busy
@@ -1401,7 +1376,9 @@ public class Distribuidora1 extends javax.swing.JPanel {
     private void botonLimpiarAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLimpiarAgregarActionPerformed
 
         try {
-            int respuesta = JOptionPane.showConfirmDialog(null, "¿Seguro Desea Cancelar?", "Confirmacion", JOptionPane.YES_NO_OPTION);
+            int respuesta = JOptionPane.showConfirmDialog(null, "¿Seguro Desea Cancelar?"
+                    + "La SIguiente Operacion Borrar Todos Los Datos Temporales"
+                    + "Esta Seguro que Desea Continuar?", "Confirmacion Para Eliminar Datos Temporales", JOptionPane.YES_NO_OPTION);
 
             if (respuesta == JOptionPane.YES_OPTION) {
                 //Limpiar Campos de Texto
@@ -1412,6 +1389,28 @@ public class Distribuidora1 extends javax.swing.JPanel {
                 this.txtCantidadSugeridad.setText("");
                 this.txtCantidad.setText("");
                 this.txtNroBulto.setText("");
+
+                //Limpiar Tablas y Lista Detalles
+                listaDetalle.clear();
+                jTDetalleRegistroDistribuidora.removeAll();
+                // jTDetalleRegistroDistribuidora..fireTableDataChanged();
+                //Panel y Controles de Factura 
+//                this.jButtonListarFacturas.setEnabled(true);
+//                this.txtFactura.setText("");
+//                this.txtEmitidoPor.setText("");
+//                this.txtFechaFactura.setText("");
+//                //COntroles Panel desabilitar 
+//                this.comboBoxTipoBusqueda.setEnabled(false);
+//                this.txtBusqueda.setEnabled(false);
+//                this.jXButtonBuscar.setEnabled(false);
+//                this.botonListarProductosInventariTienda.setEnabled(false);
+//                
+//
+//                //Destruir Objetos
+//                
+//                Conteofaltante = 0;
+//                posUs = -1; 
+//                deReg = null; 
             }
         } catch (Exception e) {
             Logger.getLogger(Distribuidora1.class.getName()).log(Level.SEVERE, null, e);
@@ -1424,7 +1423,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
     private void txtCantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantidadKeyTyped
 
         char car = evt.getKeyChar();
-        String cadena = ",-_{}[¨*+´!°#$%&/()=?¡.;;><qwertyuiopñlkjhgfdsazxcvbnm,.-ç´+`¡'<º"
+        String cadena = " ,-_{}[¨*+´!°#$%&/()=?¡.;;><qwertyuiopñlkjhgfdsazxcvbnm,.-ç´+`¡'<º"
                 + "¨_:´:_.-*^+`QWERTYUIOPÑLKJHGFDSAZXCVBNM,.-´ç+`¡'º<>ª!^·$%&/()=?¿*"; // Caracterens no validos
         char s = '"';
         for (int i = 0; i < cadena.length(); i++) {
@@ -1535,51 +1534,71 @@ public class Distribuidora1 extends javax.swing.JPanel {
     }//GEN-LAST:event_botonAgregarActionPerformed
 
     private void jXButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXButton3ActionPerformed
-        try {
-            this.jButtonGuardarConteo.setEnabled(true);
-        } catch (Exception e) {
+
+        if (jTDetalleRegistroDistribuidora.getRowCount() != 0) {
+            try {
+                this.jButtonGuardarConteo.setEnabled(true);
+                botonGeneralNotas.setEnabled(true);
+                botonImprimir.setEnabled(true);
+
+            } catch (Exception e) {
+            }
         }
     }//GEN-LAST:event_jXButton3ActionPerformed
-    private void generarReporte() {
+
+    private void botonImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonImprimirActionPerformed
+
+       // generarReporte();
         try {
             JasperPrint jasperPrint = null;
-           
+
             Map<String, Object> parametro = new HashMap<>();
             String s = "";
 
-
             TableModelReport dataSourse = new TableModelReport(jTDetalleRegistroDistribuidora.getModel());
-                parametro.put("facturas", fa.getNroFactura());
-                parametro.put("fecha", fa.getFechaEmision());
-                parametro.put("usuario", fa.getRecibidoPor());
-                parametro.put("almacen", fa.getIdAlmacen().getNombre());
+            parametro.put("facturas", fa.getNroFactura());
+            parametro.put("fecha", fa.getFechaEmision());
+            parametro.put("usuario", fa.getRecibidoPor());
+            parametro.put("almacen", fa.getIdAlmacen().getNombre());
 
             parametro.put("REPORT_DATA_SOURSE", dataSourse);
             //JasperCompileManager.compileReport(rutaJrxml);
-            JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ReportInventarioTienda.jasper"));
-            
+            JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ReporteTomaFisicaDistribuidora.jasper"));
+
             jasperPrint = JasperFillManager.fillReport(reporte, parametro, dataSourse);
             JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
             jasperViewer.setTitle("Reporte de Toma Fisica Distribuidoras.");
             jasperViewer.setVisible(true);
+            jasperViewer.setAutoRequestFocus(true);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "error" + e);    
+            JOptionPane.showMessageDialog(this, "error" + e);
             Logger.getLogger(Distribuidora1.class.getName()).log(Level.SEVERE, null, e);
 
-            
         }
-    }
-    private void jXButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXButton1ActionPerformed
 
-        generarReporte();
+    }//GEN-LAST:event_botonImprimirActionPerformed
 
-    }//GEN-LAST:event_jXButton1ActionPerformed
+    private void txtNroBultoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNroBultoKeyTyped
+        char car = evt.getKeyChar();
+        String cadena = " ,-_{}[¨*+´!°#$%&/()=?¡.;;><qwertyuiopñlkjhgfdsazxcvbnm,.-ç´+`¡'<º"
+                + "¨_:´:_.-*^+`QWERTYUIOPÑLKJHGFDSAZXCVBNM,.-´ç+`¡'º<>ª!^·$%&/()=?¿*"; // Caracterens no validos
+        char s = '"';
+        for (int i = 0; i < cadena.length(); i++) {
+            if (car == cadena.charAt(i) || car == s) {
+                evt.consume();
+            }
+        }
+
+
+    }//GEN-LAST:event_txtNroBultoKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.jdesktop.swingx.JXButton botonAgregar;
     private org.jdesktop.swingx.JXButton botonCancelarTodoDesdeFActura;
     private org.jdesktop.swingx.JXButton botonConfirmarFactura;
+    private org.jdesktop.swingx.JXButton botonGeneralNotas;
+    private org.jdesktop.swingx.JXButton botonImprimir;
     private org.jdesktop.swingx.JXButton botonLimpiarAgregar;
     private org.jdesktop.swingx.JXButton botonListarProductosInventariTienda;
     private org.jdesktop.swingx.JXButton botonValidar;
@@ -1587,8 +1606,6 @@ public class Distribuidora1 extends javax.swing.JPanel {
     private javax.swing.JComboBox comboBoxAlmacen;
     private javax.swing.JComboBox comboBoxTipoBusqueda;
     private javax.swing.JComboBox comboBoxUsuarios;
-    private org.jdesktop.swingx.JXLabel fecha;
-    private org.jdesktop.swingx.JXLabel fecha_actual;
     private org.jdesktop.swingx.JXButton jButtonGuardarConteo;
     private javax.swing.JButton jButtonListarFacturas;
     private javax.swing.JLabel jLabel2;
@@ -1605,8 +1622,6 @@ public class Distribuidora1 extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTDetalleRegistroDistribuidora;
-    private org.jdesktop.swingx.JXButton jXButton1;
-    private org.jdesktop.swingx.JXButton jXButton2;
     private org.jdesktop.swingx.JXButton jXButton3;
     private org.jdesktop.swingx.JXButton jXButtonBuscar;
     private org.jdesktop.swingx.JXLabel jXLabel1;
@@ -1620,7 +1635,6 @@ public class Distribuidora1 extends javax.swing.JPanel {
     private org.jdesktop.swingx.JXLabel jXLabel8;
     private org.jdesktop.swingx.JXLabel jXLabel9;
     private org.jdesktop.swingx.JXTaskPane jXTaskPane1;
-    private org.jdesktop.swingx.JXTaskPane jXTaskPane2;
     private org.jdesktop.swingx.JXLabel labelReferencia;
     private org.jdesktop.swingx.JXTextField txtBusqueda;
     private org.jdesktop.swingx.JXTextField txtCantidad;

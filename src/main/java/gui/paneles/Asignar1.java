@@ -136,7 +136,6 @@ public class Asignar1 extends javax.swing.JPanel {
         jXButtonReiniciar = new org.jdesktop.swingx.JXButton();
         comboBoxAlmacenDesde = new javax.swing.JComboBox();
         jXLabel10 = new org.jdesktop.swingx.JXLabel();
-        jXTaskPane2 = new org.jdesktop.swingx.JXTaskPane();
         jScrollPane4 = new javax.swing.JScrollPane();
         jLayeredPaneProductos = new javax.swing.JLayeredPane();
         jLayeredPaneBuscarProducto = new javax.swing.JLayeredPane();
@@ -164,10 +163,11 @@ public class Asignar1 extends javax.swing.JPanel {
         txtNroBulto = new org.jdesktop.swingx.JXTextField();
         botonLimpiarAgregar = new org.jdesktop.swingx.JXButton();
         botonValidar = new org.jdesktop.swingx.JXButton();
-        jXButtonAsignarMercancia = new org.jdesktop.swingx.JXButton();
-        jXButton1 = new org.jdesktop.swingx.JXButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         TablaDetalleRegistrosAsignacionMercancia1 = new javax.swing.JTable();
+        jXButtonTotalizar = new org.jdesktop.swingx.JXButton();
+        jXButtonAsignarMercancia = new org.jdesktop.swingx.JXButton();
+        jXButton1 = new org.jdesktop.swingx.JXButton();
         busy1 = new org.jdesktop.swingx.JXBusyLabel();
 
         setAutoscrolls(true);
@@ -254,7 +254,7 @@ public class Asignar1 extends javax.swing.JPanel {
                         .addGap(172, 172, 172))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jLayeredPaneTiendaLayout.createSequentialGroup()
                         .addGroup(jLayeredPaneTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(comboBoxAlmacenHasta, javax.swing.GroupLayout.Alignment.LEADING, 0, 499, Short.MAX_VALUE)
+                            .addComponent(comboBoxAlmacenHasta, javax.swing.GroupLayout.Alignment.LEADING, 0, 543, Short.MAX_VALUE)
                             .addComponent(comboBoxAlmacenDesde, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(27, 27, 27))))
         );
@@ -312,15 +312,13 @@ public class Asignar1 extends javax.swing.JPanel {
                     .addContainerGap()))
         );
 
-        jXTaskPane2.setTitle("Detalles Asignacion");
-        jXTaskPane2.setAutoscrolls(true);
-
         jScrollPane4.setAutoscrolls(true);
 
         jLayeredPaneProductos.setBorder(javax.swing.BorderFactory.createTitledBorder("Productos"));
         jLayeredPaneProductos.setAutoscrolls(true);
 
         jLayeredPaneBuscarProducto.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar"));
+        jLayeredPaneBuscarProducto.setPreferredSize(new java.awt.Dimension(691, 62));
 
         jXLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/tipo.png"))); // NOI18N
         jXLabel7.setText("Tipo Busqueda");
@@ -394,6 +392,7 @@ public class Asignar1 extends javax.swing.JPanel {
         jLayeredPaneBuscarProducto.setLayer(botonListarProductosInventariTienda, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jLayeredPaneDatosProductos.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos del Producto"));
+        jLayeredPaneDatosProductos.setMinimumSize(new java.awt.Dimension(691, 135));
 
         txtDescripcion.setEditable(false);
         txtDescripcion.setEnabled(false);
@@ -508,15 +507,15 @@ public class Asignar1 extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonValidar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonValidar, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jXLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtNroBulto, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonLimpiarAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(botonLimpiarAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jLayeredPaneDatosProductosLayout.setVerticalGroup(
@@ -552,7 +551,7 @@ public class Asignar1 extends javax.swing.JPanel {
                     .addGroup(jLayeredPaneDatosProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jXLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         jLayeredPaneDatosProductos.setLayer(txtDescripcion, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPaneDatosProductos.setLayer(txtExistencia, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -573,23 +572,6 @@ public class Asignar1 extends javax.swing.JPanel {
         jLayeredPaneDatosProductos.setLayer(botonLimpiarAgregar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPaneDatosProductos.setLayer(botonValidar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jXButtonAsignarMercancia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/database_save.png"))); // NOI18N
-        jXButtonAsignarMercancia.setText("Asignar");
-        jXButtonAsignarMercancia.setEnabled(false);
-        jXButtonAsignarMercancia.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jXButtonAsignarMercancia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jXButtonAsignarMercanciaActionPerformed(evt);
-            }
-        });
-
-        jXButton1.setText("Imprimir");
-        jXButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jXButton1ActionPerformed(evt);
-            }
-        });
-
         TablaDetalleRegistrosAsignacionMercancia1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -604,65 +586,65 @@ public class Asignar1 extends javax.swing.JPanel {
         TablaDetalleRegistrosAsignacionMercancia1.setToolTipText("Para Eliminar Precione La tecla \"Supr\"");
         jScrollPane5.setViewportView(TablaDetalleRegistrosAsignacionMercancia1);
 
-        busy1.setText("GUARDANDO!!!");
-        busy1.setEnabled(false);
-        busy1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jXButtonTotalizar.setText("Totalizar");
 
         javax.swing.GroupLayout jLayeredPaneProductosLayout = new javax.swing.GroupLayout(jLayeredPaneProductos);
         jLayeredPaneProductos.setLayout(jLayeredPaneProductosLayout);
         jLayeredPaneProductosLayout.setHorizontalGroup(
             jLayeredPaneProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPaneProductosLayout.createSequentialGroup()
+            .addGroup(jLayeredPaneProductosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jLayeredPaneProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jLayeredPaneProductosLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jXButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(busy1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(124, 124, 124)
-                        .addComponent(jXButtonAsignarMercancia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLayeredPaneBuscarProducto, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLayeredPaneDatosProductos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 653, Short.MAX_VALUE)
-                    .addComponent(jScrollPane5))
+                .addGroup(jLayeredPaneProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLayeredPaneDatosProductos, javax.swing.GroupLayout.DEFAULT_SIZE, 691, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPaneProductosLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jXButtonTotalizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLayeredPaneBuscarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jLayeredPaneProductosLayout.setVerticalGroup(
             jLayeredPaneProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPaneProductosLayout.createSequentialGroup()
-                .addComponent(jLayeredPaneBuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 49, Short.MAX_VALUE)
+                .addComponent(jLayeredPaneBuscarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLayeredPaneDatosProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 147, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jLayeredPaneProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(busy1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jXButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jXButtonAsignarMercancia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLayeredPaneDatosProductos, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jXButtonTotalizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jLayeredPaneProductos.setLayer(jLayeredPaneBuscarProducto, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPaneProductos.setLayer(jLayeredPaneDatosProductos, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPaneProductos.setLayer(jXButtonAsignarMercancia, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPaneProductos.setLayer(jXButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPaneProductos.setLayer(jScrollPane5, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPaneProductos.setLayer(busy1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPaneProductos.setLayer(jXButtonTotalizar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jScrollPane4.setViewportView(jLayeredPaneProductos);
 
-        javax.swing.GroupLayout jXTaskPane2Layout = new javax.swing.GroupLayout(jXTaskPane2.getContentPane());
-        jXTaskPane2.getContentPane().setLayout(jXTaskPane2Layout);
-        jXTaskPane2Layout.setHorizontalGroup(
-            jXTaskPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4)
-        );
-        jXTaskPane2Layout.setVerticalGroup(
-            jXTaskPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jXTaskPane2Layout.createSequentialGroup()
-                .addComponent(jScrollPane4)
-                .addContainerGap())
-        );
+        jXButtonAsignarMercancia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/database_save.png"))); // NOI18N
+        jXButtonAsignarMercancia.setText("ASIGNAR");
+        jXButtonAsignarMercancia.setEnabled(false);
+        jXButtonAsignarMercancia.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
+        jXButtonAsignarMercancia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jXButtonAsignarMercanciaActionPerformed(evt);
+            }
+        });
+
+        jXButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417901858_698969-icon-123-printer-16.png"))); // NOI18N
+        jXButton1.setText("IMPRIMIR");
+        jXButton1.setEnabled(false);
+        jXButton1.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
+        jXButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jXButton1ActionPerformed(evt);
+            }
+        });
+
+        busy1.setText("GUARDANDO!!!");
+        busy1.setEnabled(false);
+        busy1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
 
         javax.swing.GroupLayout jLayeredPanePrincipalLayout = new javax.swing.GroupLayout(jLayeredPanePrincipal);
         jLayeredPanePrincipal.setLayout(jLayeredPanePrincipalLayout);
@@ -671,15 +653,19 @@ public class Asignar1 extends javax.swing.JPanel {
             .addGroup(jLayeredPanePrincipalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jLayeredPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jXTaskPane2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jXTaskPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jLayeredPanePrincipalLayout.createSequentialGroup()
-                        .addGroup(jLayeredPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jXTaskPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jLayeredPanePrincipalLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                        .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 563, Short.MAX_VALUE))
+                    .addComponent(jScrollPane4)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPanePrincipalLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(busy1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(62, 62, 62)
+                        .addComponent(jXButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jXButtonAsignarMercancia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jLayeredPanePrincipalLayout.setVerticalGroup(
             jLayeredPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -689,12 +675,20 @@ public class Asignar1 extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jXTaskPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addGroup(jLayeredPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jXButtonAsignarMercancia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jXButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(busy1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
         jLayeredPanePrincipal.setLayer(busy, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPanePrincipal.setLayer(jXTaskPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPanePrincipal.setLayer(jXTaskPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPanePrincipal.setLayer(jScrollPane4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPanePrincipal.setLayer(jXButtonAsignarMercancia, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPanePrincipal.setLayer(jXButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPanePrincipal.setLayer(busy1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jScrollPane2.setViewportView(jLayeredPanePrincipal);
 
@@ -703,15 +697,15 @@ public class Asignar1 extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 731, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(0, 0, 0)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 751, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 753, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -984,8 +978,8 @@ public class Asignar1 extends javax.swing.JPanel {
                 busy1.setBusy(true);
                 
                 try {
-                    
-                    Float total = 0f;
+
+                    Float totalCosto = 0f;
 
                     //SalidaParaTienda cab = new SalidaParaTienda(ObjectModelDAO.getObject(al.getIdAlmacen(), Almacen.class), user, ayudante);
                     SalidaParaTienda cab = new SalidaParaTienda(almacenDesde, almacenHasta, user, ususrioActual);
@@ -998,11 +992,11 @@ public class Asignar1 extends javax.swing.JPanel {
                             //List resultListInventarioHasta = ObjectModelDAO.getResultQuery(sql);
                             //InventarioTienda ivtHasta = resultListInventarioHasta.get(0)
                             System.out.println("Datos Lista : " + dr.toString());
-                            
+
                             SalidaParaTiendaDetallePK detallePK = new SalidaParaTiendaDetallePK(
                                     dr.inv.getProducto().getIdProducto(),
                                     id_creado_cabecera);
-                            
+
                             SalidaParaTiendaDetalle detalle = new SalidaParaTiendaDetalle(
                                     detallePK,
                                     dr.getCantidad(),
@@ -1010,7 +1004,7 @@ public class Asignar1 extends javax.swing.JPanel {
                                     dr.getRenglon(),
                                     dr.inv.getProducto(),
                                     cab);
-                            
+
                             Object id_creado_detalle = ObjectModelDAO.saveObject(detalle);
                             if (id_creado_detalle instanceof SalidaParaTiendaDetallePK
                                     && ((SalidaParaTiendaDetallePK) id_creado_detalle) == null) {
@@ -1023,7 +1017,7 @@ public class Asignar1 extends javax.swing.JPanel {
                                         dr.inv.getProducto().getIdProducto(),
                                         almacenDesde.getIdAlmacen()
                                 );
-                                //Guaradar Inventario
+                                //Guaradar Inventario del Almacen DESDE
                                 InventarioTienda id_in = ObjectModelDAO.getObject(inventarioPK, InventarioTienda.class);
                                 System.err.println("ObjectModelDAO.getObject(inventarioPK, InventarioTienda.class) es: " + id_in);
                                 if (id_in == null) {
@@ -1032,46 +1026,86 @@ public class Asignar1 extends javax.swing.JPanel {
                                 } else {
                                     // id_in.setPrecio(dr.ep.getIdProducto().getPrecioOriginal());
                                     //id_in.setDescuento(0f);
+                                    //**************************Descuenta de Mercancia en el Alamacen DESDE donde se Envia
                                     id_in.setCantidad(id_in.getCantidad() - dr.getCantidad());
+                                    //id_in.setAsignado(Boolean.FALSE);
+//                                    if (id_in.getCantidad() == 0) {
+//                                        //Si DESDE el Almacen donde se Envia la Mercancia 
+//                                        //No queda Ninguna Existencia de Producto ó Es Igual a cero la Cantidad
+//                                        //Entonces Vacio es verdadero 
+//                                        //y el valor asignado es falso porque cuando lo reciban sera verdadero
+//                                        id_in.setAsignado(Boolean.FALSE);
+//                                        id_in.setVacio(Boolean.TRUE);
+//                                    } else {
+//                                         //en caso contrario asignado sigue siendo falso
+//                                        //pero vacio es tambien falso porque si existe mercancia en el almacen
+//                                        id_in.setAsignado(Boolean.FALSE);
+//                                        id_in.setVacio(Boolean.FALSE);
+//
+//                                    }
                                     ObjectModelDAO.updateObject(id_in);
                                     System.err.println("Actualizando Inventario de Producto Existente");
 
-                                    //Actualizar Obtener Precio                            
+                                   
+                                    //**************************************************************************
+                                    //Actualizar Obtener Precio en Los Productos del almacen Hasta donde se envia                            
                                     System.err.println("Creando PK inventario");
                                     InventarioTiendaPK inventarioPK2 = new InventarioTiendaPK(//Guaradar InventarioPK
                                             dr.inv.getProducto().getIdProducto(),
                                             almacenHasta.getIdAlmacen()
                                     );
-                                    //Guaradar Inventario
+                                    //Guaradar Inventario del almacen HASTA donde se envia
                                     InventarioTienda id_in2 = ObjectModelDAO.getObject(inventarioPK2, InventarioTienda.class);
                                     System.err.println("ObjectModelDAO.getObject(inventarioPK, InventarioTienda.class) es: " + id_in);
                                     if (id_in2 == null) {
                                         JOptionPane.showMessageDialog(null, "El Producto no Existe en La Tienda Hacia se Envia,se creara");
-                                        
+
                                         id_in2 = new InventarioTienda(
                                                 inventarioPK2,
-                                                dr.getCantidad(),
+                                                //dr.getCantidad(),
+                                                0,
                                                 almacenHasta,
                                                 dr.inv.getProducto()
                                         );
-                                        
+
                                         id_in2.setPrecioConDescuento(id_in.getPrecioConDescuento());
                                         id_in2.setPrecioSinDescuento(id_in.getPrecioSinDescuento());
                                         id_in2.setDescuento(0);
+                                        id_in2.setProcesado(dr.getCantidad());
+                                        
+                                        //*************AUMENTO de Mercancia en el Alamacen HASTA donde se Envia
+                                        //id_in2.setCantidad(id_in.getCantidad() + dr.getCantidad());
+                                        //Existencia del Inventario del Almacen HASTA donde se envia
+                                        // if (id_in2.getCantidad() == 0) {
+                                        //Si del Almacen HASTA donde se Envia la Mercancia 
+                                        //Es Igual a cero la Cantidad
+                                        //Entonces Vacio es verdadero 
+                                        //y el valor asignado es falso porque cuando lo reciban sera verdadero
+                                        id_in2.setAsignado(Boolean.FALSE);
+                                        //id_in2.setVacio(Boolean.TRUE);
+                                    //} else {
+                                         //en caso contrario asignado sigue siendo falso
+                                        //pero vacio es tambien falso porque si existe mercancia en el almacen
+                                      //  id_in2.setAsignado(Boolean.TRUE);
+                                       // id_in2.setVacio(Boolean.FALSE);
+
+                                    //}
+                                        
+                                        
                                         ObjectModelDAO.saveObject(id_in2);
-//crear if varificando si el inventario2 se creo                                        
-//Object id_creado_inventario = ObjectModelDAO.saveObject(id_in);
+                                        //crear if varificando si el inventario2 se creo                                        
+                                        //Object id_creado_inventario = ObjectModelDAO.saveObject(id_in);
                                     }
 
-                                    //total += id_in2.getPrecioConDescuento();
+                                    totalCosto += id_in2.getPrecioConDescuento();
                                     System.err.println("EXITO CREANDO REGISTRO LISTA DETALLES:");
                                     JOptionPane.showMessageDialog(null, "¡¡¡REGISTRO GUARDADO CON EXITO!!!");
                                 }
                             }
                         }
                     }
-                    
-                    cab.setTotal(total);
+
+                    cab.setTotal(totalCosto);
                     //cab.setRevisado(false);
                     ObjectModelDAO.updateObject(cab);
                     //  jXTable1.clearSelection();
@@ -1102,12 +1136,12 @@ public class Asignar1 extends javax.swing.JPanel {
                     botonLimpiarAgregar.setEnabled(false);
                     botonAgregar.setEnabled(false);
                     jXButtonAsignarMercancia.setEnabled(false);
-                    
+
                     busy1.setEnabled(false);
                     busy1.setVisible(false);
                     busy1.setBusy(false);
-                    
-                } catch (Exception e) {
+
+                }  catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "ERROR Asignando Mercancia :" + e);
                     System.err.println("ERROR Asignando Mercancia :" + e);
                     Logger.getLogger(Asignar1.class.getName()).log(Level.SEVERE, null, e);
@@ -1470,6 +1504,7 @@ public class Asignar1 extends javax.swing.JPanel {
     private org.jdesktop.swingx.JXButton jXButtonBuscar;
     private org.jdesktop.swingx.JXButton jXButtonConfirmar;
     private org.jdesktop.swingx.JXButton jXButtonReiniciar;
+    private org.jdesktop.swingx.JXButton jXButtonTotalizar;
     private org.jdesktop.swingx.JXLabel jXLabel1;
     private org.jdesktop.swingx.JXLabel jXLabel10;
     private org.jdesktop.swingx.JXLabel jXLabel2;
@@ -1481,7 +1516,6 @@ public class Asignar1 extends javax.swing.JPanel {
     private org.jdesktop.swingx.JXLabel jXLabel8;
     private org.jdesktop.swingx.JXLabel jXLabel9;
     private org.jdesktop.swingx.JXTaskPane jXTaskPane1;
-    private org.jdesktop.swingx.JXTaskPane jXTaskPane2;
     private org.jdesktop.swingx.JXLabel labelReferencia;
     private org.jdesktop.swingx.JXTextField txtBusqueda;
     private org.jdesktop.swingx.JXTextField txtCantidad;

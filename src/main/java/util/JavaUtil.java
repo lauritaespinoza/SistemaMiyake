@@ -12,12 +12,14 @@ import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -392,7 +394,7 @@ public abstract class JavaUtil {
             header.add("Total");
             header.add("Fecha");
         }
-        
+
         if (o instanceof SalidaParaTiendaDetalle) {
             header.add("Codigo");
             header.add("Referencia");
@@ -605,6 +607,60 @@ public abstract class JavaUtil {
         BufferedImage img = null;
         img = ImageIO.read(imagen);
         logoview.setIcon(new ImageIcon(img.getScaledInstance(logoview.getWidth(), logoview.getHeight(), Image.SCALE_SMOOTH)));
+    }
+
+    public static void backupPGSQL() {
+        try {
+            String rutaCT = "C:\\Users\\Pablo\\Desktop\\BackUpDB";
+            String IP = "tecnosys.dyndns.tv";
+            String pgdump=//"C:\\Users\\Pablo\\Desktop\\pg_dump.exe";
+                    "C:\\Program Files\\PostgreSQL\\9.3\\bin\\pg_dump.exe";
+            Process p;
+            ProcessBuilder pb;
+            java.io.File file = new java.io.File(rutaCT);
+            file.createNewFile();
+            
+            //C:/Program Files/PostgreSQL/9.3/bin\pg_restore.exe --host
+            //localhost --port 5432 --username "postgres" --dbname "pruebabackup" --no-password  --verbose "C:\Users\Pablo\Desktop\p1.backup"
+            
+            StringBuffer fechafile = new StringBuffer();
+            fechafile.append(rutaCT);
+            fechafile.append("DBbackup");
+            fechafile.append(".backup");
+            
+             pb = new ProcessBuilder(
+                     pgdump,
+                     "--host",
+                     IP,
+                     "--port",
+                     "5432",
+                     "--username",
+                     "postgres",
+                     "--no-password",
+                     "--format",
+                     "tar",
+                     "--blobs",
+                     "--verbose",
+                     "--file",
+                      "C:\\Users\\Pablo\\Desktop\\p1.backup",
+                     "miyake_pasantia"
+             );
+            pb.environment().put("PGPASSWORD", "admin");
+            pb.redirectErrorStream(true);
+            p = pb.start();
+            InputStream is = p.getInputStream();
+            InputStreamReader isr = new InputStreamReader(is);
+            BufferedReader br = new BufferedReader(isr);
+            String ll;
+            while ((ll = br.readLine()) != null) {
+              
+                System.out.println(ll);
+            }
+            
+            System.out.println("\n\nBACKUP READY\n\n");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 }

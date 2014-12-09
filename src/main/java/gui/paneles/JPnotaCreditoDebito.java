@@ -62,7 +62,7 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
 
     private List resultListNcdDetalle;
     private List resultLisNcd;
-    private NotaCreditoDebito ncd;
+    public NotaCreditoDebito ncd;
     private final List resultListAlmacen;
     public static final String encaso_sobrante = "EN CASO DE MERCANCIA SOBRANTE";
     public static final String encaso_faltante = "EN CASO DE MERCANCIA FALTANTE";
@@ -267,7 +267,7 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
         jCheckBox1.setSelected(true);
         jCheckBox1.setText("jCheckBox1");
 
-        jLabel1.setText("Fecha:");
+        jLabel1.setText("debe ser label");
 
         jLabel2.setText("Número de Factura:");
 
