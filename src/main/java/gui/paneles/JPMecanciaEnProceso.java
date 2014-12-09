@@ -83,7 +83,7 @@ public class JPMecanciaEnProceso extends javax.swing.JPanel {
 
         this.comboBoxAlmacenDesde.setSelectedIndex(-1);
 
-        this.jXTableMercanciaEnProceso.setAutoCreateRowSorter(true);
+//        this.jXTableMercanciaEnProceso.setAutoCreateRowSorter(true);
         this.jXTableMercanciaEnProceso.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         this.jXTableMercanciaEnProceso.setColumnControlVisible(true);
         //  TableRowFilterSupport.forTable(jXTable1).searchable(true).apply();
@@ -126,9 +126,9 @@ public class JPMecanciaEnProceso extends javax.swing.JPanel {
         txtAlmacenSelecion = new org.jdesktop.swingx.JXLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jLayeredPaneProductos = new javax.swing.JLayeredPane();
-        jXFindBar1 = new org.jdesktop.swingx.JXFindBar(jXTableMercanciaEnProceso.getSearchable());
         jScrollPane5 = new javax.swing.JScrollPane();
         jXTableMercanciaEnProceso = new org.jdesktop.swingx.JXTable();
+        jXFindBar1 = new org.jdesktop.swingx.JXFindBar(jXTableMercanciaEnProceso.getSearchable());
         busy = new org.jdesktop.swingx.JXBusyLabel();
         jXButtonAsignarMercancia = new org.jdesktop.swingx.JXButton();
         jXButtonImprimir = new org.jdesktop.swingx.JXButton();
@@ -235,22 +235,23 @@ public class JPMecanciaEnProceso extends javax.swing.JPanel {
             .addGroup(jLayeredPaneProductosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jLayeredPaneProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jXFindBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane5)
                     .addGroup(jLayeredPaneProductosLayout.createSequentialGroup()
-                        .addComponent(jScrollPane5)
-                        .addGap(119, 119, 119)))
-                .addGap(205, 205, 205))
+                        .addComponent(jXFindBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 214, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jLayeredPaneProductosLayout.setVerticalGroup(
             jLayeredPaneProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPaneProductosLayout.createSequentialGroup()
-                .addComponent(jXFindBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
+                .addComponent(jXFindBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jLayeredPaneProductos.setLayer(jXFindBar1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPaneProductos.setLayer(jScrollPane5, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPaneProductos.setLayer(jXFindBar1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jScrollPane4.setViewportView(jLayeredPaneProductos);
 

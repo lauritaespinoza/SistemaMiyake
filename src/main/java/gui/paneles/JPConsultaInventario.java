@@ -68,7 +68,7 @@ public class JPConsultaInventario extends javax.swing.JPanel {
         //  List<List> resultListUsuarios = FventanaIncial.listaUsuarioMain;
   this.comboBoxAlmacenDesde.setSelectedIndex(-1);
    this.busy.setVisible(false);
-        this.jXTablaConsultarMercanciaInventarios.setAutoCreateRowSorter(true);
+//        this.jXTablaConsultarMercanciaInventarios.setAutoCreateRowSorter(true);
         this.jXTablaConsultarMercanciaInventarios.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         this.jXTablaConsultarMercanciaInventarios.setColumnControlVisible(true);
         //  TableRowFilterSupport.forTable(jXTable1).searchable(true).apply();
