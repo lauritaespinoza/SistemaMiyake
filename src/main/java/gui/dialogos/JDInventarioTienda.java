@@ -4,20 +4,24 @@ package gui.dialogos;
 //import almacen.Modelos.ModeloTablaFacturaPendientes;
 import gui.paneles.Distribuidora1;
 import util.JavaUtil;
-import hibernate.DAO.ObjectModelDAO;
 import java.awt.HeadlessException;
+import java.io.File;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFrame;
+import javax.help.HelpBroker;
+import javax.help.HelpSet;
+import javax.help.HelpSetException;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import modelos.mapeos.Factura;
 import modelos.mapeos.InventarioTienda;
 import modelos.tablas.TableModelReport;
 import net.sf.jasperreports.engine.JRException;
@@ -29,75 +33,69 @@ import net.sf.jasperreports.view.JasperViewer;
 
 public class JDInventarioTienda extends javax.swing.JDialog {
 
-    // ModeloTablaFacturaPendientes mtf = new ModeloTablaFacturaPendientes();
-    // DAOFactura daoFactura = new DAOFactura();
     public InventarioTienda inv = null;
-    //public List<List> productosInventario =null;       
-   // private List resultList = null;
     private int pos = -1;
-    
+     public final File  archivo = new File(this.getClass().getResource("/JavaHelp/JavaHelp/ejemplo.hs").getFile());
 
-    public JDInventarioTienda(java.awt.Frame parent, boolean modal, 
-            final List<List> inventarioTienda)throws Exception{
-         super(parent, modal);
+
+    public JDInventarioTienda(java.awt.Frame parent, boolean modal,
+            final List<List> inventarioTienda) throws Exception {
+        super(parent, modal);
         initComponents();
-        //jtListaEntradaProveedor.setModel(resulList);
         this.setLocationRelativeTo(null);
-         this.jtableListaProductosInventarioTienda.setAutoCreateRowSorter(true);
+        this.jtableListaProductosInventarioTienda.setAutoCreateRowSorter(true);
         this.jtableListaProductosInventarioTienda.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         this.jtableListaProductosInventarioTienda.setColumnControlVisible(true);
-        
-        // this.resultList = inventarioTienda;
-        //this.productosInventario = inventarioTienda;
+
         jtableListaProductosInventarioTienda.getSelectionModel()
                 .addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent lse) {
-                if (!lse.getValueIsAdjusting()) {
+                    @Override
+                    public void valueChanged(ListSelectionEvent lse) {
+                        if (!lse.getValueIsAdjusting()) {
 
-                    pos = jtableListaProductosInventarioTienda.getSelectedRow();
-                    if (pos == -1) {
-                        inv = null;
-                        return;
+                            pos = jtableListaProductosInventarioTienda.getSelectedRow();
+                            if (pos == -1) {
+                                inv = null;
+                                return;
+                            }
+                            inv = (InventarioTienda) inventarioTienda.get(pos);
+
+                        }
                     }
-                    inv =  (InventarioTienda) inventarioTienda.get(pos);
-
-                }
-            }
-        });
+                });
 
         listarFacturas(inventarioTienda);
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        botonAceptarProductoSeleccionado = new javax.swing.JButton();
-        botonCancelarExit = new javax.swing.JButton();
+        boton_AceptarProductoSeleccionado_ = new javax.swing.JButton();
+        botonCancelarExit_ = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtableListaProductosInventarioTienda = new org.jdesktop.swingx.JXTable();
         txtTitulo = new javax.swing.JLabel();
         jXBarraBusquedaProductosEntrantes = new org.jdesktop.swingx.JXFindBar(jtableListaProductosInventarioTienda.getSearchable());
-        jButton1 = new javax.swing.JButton();
+        imprimir_InventarioTiendas_ = new javax.swing.JButton();
         busy = new org.jdesktop.swingx.JXBusyLabel();
+        ayuda = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        botonAceptarProductoSeleccionado.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        botonAceptarProductoSeleccionado.setText("Aceptar");
-        botonAceptarProductoSeleccionado.addActionListener(new java.awt.event.ActionListener() {
+        boton_AceptarProductoSeleccionado_.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        boton_AceptarProductoSeleccionado_.setText("Aceptar");
+        boton_AceptarProductoSeleccionado_.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonAceptarProductoSeleccionadoActionPerformed(evt);
+                boton_AceptarProductoSeleccionado_ActionPerformed(evt);
             }
         });
 
-        botonCancelarExit.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        botonCancelarExit.setText("Cancelar");
-        botonCancelarExit.addActionListener(new java.awt.event.ActionListener() {
+        botonCancelarExit_.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        botonCancelarExit_.setText("Cancelar");
+        botonCancelarExit_.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonCancelarExitActionPerformed(evt);
+                botonCancelarExit_ActionPerformed(evt);
             }
         });
 
@@ -126,15 +124,30 @@ public class JDInventarioTienda extends javax.swing.JDialog {
         txtTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415416322_list-accept.png"))); // NOI18N
         txtTitulo.setText("PRODUCTOS EXISTENTES EN INVENTARIO");
 
-        jButton1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jButton1.setText("Imprimir");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        imprimir_InventarioTiendas_.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        imprimir_InventarioTiendas_.setText("Imprimir");
+        imprimir_InventarioTiendas_.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                imprimir_InventarioTiendas_ActionPerformed(evt);
             }
         });
 
         busy.setText("Generando Archivo!!!");
+
+        ayuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416510931_Help.png"))); // NOI18N
+        ayuda.setBorder(null);
+        ayuda.setBorderPainted(false);
+        ayuda.setContentAreaFilled(false);
+        ayuda.setDefaultCapable(false);
+        ayuda.setFocusPainted(false);
+        ayuda.setFocusable(false);
+        ayuda.setRequestFocusEnabled(false);
+        ayuda.setVerifyInputWhenFocusTarget(false);
+        ayuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ayudaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -145,50 +158,56 @@ public class JDInventarioTienda extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jXBarraBusquedaProductosEntrantes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(botonCancelarExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonCancelarExit_, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(39, 39, 39)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(imprimir_InventarioTiendas_, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonAceptarProductoSeleccionado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(boton_AceptarProductoSeleccionado_, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jScrollPane2))
                 .addGap(28, 28, 28))
             .addGroup(layout.createSequentialGroup()
                 .addGap(146, 146, 146)
                 .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ayuda, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(txtTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ayuda)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jXBarraBusquedaProductosEntrantes, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonAceptarProductoSeleccionado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                    .addComponent(boton_AceptarProductoSeleccionado_, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(botonCancelarExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonCancelarExit_, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(imprimir_InventarioTiendas_, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonAceptarProductoSeleccionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarProductoSeleccionadoActionPerformed
+    private void boton_AceptarProductoSeleccionado_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_AceptarProductoSeleccionado_ActionPerformed
         SeleccionarFactura();
-    }//GEN-LAST:event_botonAceptarProductoSeleccionadoActionPerformed
+    }//GEN-LAST:event_boton_AceptarProductoSeleccionado_ActionPerformed
 
-    private void botonCancelarExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarExitActionPerformed
+    private void botonCancelarExit_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarExit_ActionPerformed
         this.dispose();
         this.setVisible(false);
-    }//GEN-LAST:event_botonCancelarExitActionPerformed
+    }//GEN-LAST:event_botonCancelarExit_ActionPerformed
 
     private void jtableListaProductosInventarioTiendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtableListaProductosInventarioTiendaMouseClicked
         if (evt.getClickCount() == 2) {
@@ -196,9 +215,9 @@ public class JDInventarioTienda extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jtableListaProductosInventarioTiendaMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void imprimir_InventarioTiendas_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimir_InventarioTiendas_ActionPerformed
 
-         Thread hilo = new Thread() {
+        Thread hilo = new Thread() {
 
             @Override
             public void run() {
@@ -207,14 +226,15 @@ public class JDInventarioTienda extends javax.swing.JDialog {
                 busy.setVisible(true);
                 busy.setBusy(true);
                 try {
+
                     JasperPrint jasperPrint = null;
 
                     Map<String, Object> parametro = new HashMap<>();
-                    String s = "";
+                    String s = "";                                      //jtableListaProductosInventarioTienda
                     TableModelReport dataSourse = new TableModelReport(jtableListaProductosInventarioTienda.getModel());
                     parametro.put("REPORT_DATA_SOURSE", dataSourse);
                     //JasperCompileManager.compileReport(rutaJrxml);
-                    JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ListadoFacturas.jasper"));
+                    JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ListadoInventarioTienda.jasper"));
 
                     jasperPrint = JasperFillManager.fillReport(reporte, null, dataSourse);
                     JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
@@ -227,9 +247,9 @@ public class JDInventarioTienda extends javax.swing.JDialog {
 
                     }
                     if (respuesta == JOptionPane.NO_OPTION) {
-                        dispose();
-                        setVisible(false);
 
+                        setVisible(false);
+                        jasperViewer.requestFocus();
                     }
 
                 } catch (JRException | HeadlessException e) {
@@ -247,9 +267,35 @@ public class JDInventarioTienda extends javax.swing.JDialog {
             }
         };
         hilo.start();
-        
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+
+
+    }//GEN-LAST:event_imprimir_InventarioTiendas_ActionPerformed
+
+    private void ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ayudaActionPerformed
+
+        try {
+               
+            URL hsURL = archivo.toURI().toURL();
+
+            HelpSet helpset = null;
+            helpset = new HelpSet(null, hsURL);
+
+            HelpSet.Presentation hsp;
+            hsp = helpset.getPresentation("MainWin");
+
+            HelpBroker help_browser = helpset.createHelpBroker();
+            help_browser.setHelpSetPresentation(hsp);
+
+            // Cuando pulsemos F1 se mostrará la ayuda de la página de introducion
+            help_browser.enableHelpOnButton(this.ayuda, "introduction", helpset);
+            help_browser.enableHelpKey(getContentPane(), "introduction", helpset);
+
+        } catch (HelpSetException | MalformedURLException ex) {
+            Logger.getLogger(JDFacturasPendientes.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Excepcion Ayuda Factura " + ex);
+            System.err.println("Excepcion Ayuda Factura " + ex);
+        }
+    }//GEN-LAST:event_ayudaActionPerformed
 
 //    /**
 //     * @param args the command line arguments
@@ -306,10 +352,11 @@ public class JDInventarioTienda extends javax.swing.JDialog {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonAceptarProductoSeleccionado;
-    private javax.swing.JButton botonCancelarExit;
+    private javax.swing.JButton ayuda;
+    private javax.swing.JButton botonCancelarExit_;
+    private javax.swing.JButton boton_AceptarProductoSeleccionado_;
     private org.jdesktop.swingx.JXBusyLabel busy;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton imprimir_InventarioTiendas_;
     private javax.swing.JScrollPane jScrollPane2;
     private org.jdesktop.swingx.JXFindBar jXBarraBusquedaProductosEntrantes;
     private org.jdesktop.swingx.JXTable jtableListaProductosInventarioTienda;
