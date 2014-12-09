@@ -658,7 +658,7 @@ public class FventanaIncial extends javax.swing.JFrame {
     private void ConsultaExistencia_boton_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaExistencia_boton_ActionPerformed
 
         addPaneles(tabAsignarMercancia, JPConsultaInventario.class, null);
-
+ 
         // TODO add your handling code here:
     }//GEN-LAST:event_ConsultaExistencia_boton_ActionPerformed
 
