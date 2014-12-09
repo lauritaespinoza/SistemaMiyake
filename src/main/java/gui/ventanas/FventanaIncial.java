@@ -1,5 +1,6 @@
 package gui.ventanas;
 
+import gui.dialogos.ClockTest;
 import gui.paneles.Asignar1;
 import gui.paneles.Distribuidora1;
 import java.awt.Dimension;
@@ -59,8 +60,14 @@ import gui.paneles.JPexportData;
 import gui.paneles.JPnotaCreditoDebito;
 import gui.paneles.JPusuario;
 import gui.paneles.Tiendas1;
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Date;
+import javax.swing.JLabel;
 import net.sf.jasperreports.engine.JRException;
+import javax.swing.Timer;
 
 public class FventanaIncial extends javax.swing.JFrame {
 
@@ -99,6 +106,9 @@ public class FventanaIncial extends javax.swing.JFrame {
         FventanaIncial.listaUsuarioMain = user;
 
         initComponents();
+        
+        ClockLabel clock = new ClockLabel();
+        getContentPane().add(clock, BorderLayout.PAGE_END);
     }
 
     //el tipo se usa en nota de credito debito
@@ -108,13 +118,13 @@ public class FventanaIncial extends javax.swing.JFrame {
             int pos = isContained(titulo);
             if (pos == -1) {
                 if (panelNuevo.equals(JPnotaCreditoDebito.class)) {//si es una nota de credito/debito
-                    panel.addTab(titulo, (JPanel) panelNuevo.getConstructor(Boolean.class).newInstance(tipo));
+                    panelClosableCentral.addTab(titulo, (JPanel) panelNuevo.getConstructor(Boolean.class).newInstance(tipo));
                 } else {
-                    panel.addTab(titulo, (JPanel) panelNuevo.newInstance());
+                    panelClosableCentral.addTab(titulo, (JPanel) panelNuevo.newInstance());
                 }
-                panel.setSelectedIndex(panel.getTabCount() - 1);
+                panelClosableCentral.setSelectedIndex(panelClosableCentral.getTabCount() - 1);
             } else {
-                panel.setSelectedIndex(pos);
+                panelClosableCentral.setSelectedIndex(pos);
             }
 
         } catch (InstantiationException | IllegalAccessException ex) {
@@ -129,9 +139,9 @@ public class FventanaIncial extends javax.swing.JFrame {
     }
 
     private int isContained(String titulo) {
-        for (int i = 0; i < panel.getTabCount(); i++) {
+        for (int i = 0; i < panelClosableCentral.getTabCount(); i++) {
 
-            if (panel.getTabTitleAt(i).equals(titulo)) {
+            if (panelClosableCentral.getTabTitleAt(i).equals(titulo)) {
                 return i;//si encontro, retorna la posicion
 
             }
@@ -152,7 +162,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        jPanelControlesPrincipales = new javax.swing.JPanel();
         jXCollapsiblePane1 = new org.jdesktop.swingx.JXCollapsiblePane();
         taskPaneModuloFacturacion = new org.jdesktop.swingx.JXTaskPane();
         taskPaneProducto = new org.jdesktop.swingx.JXTaskPane();
@@ -197,7 +207,7 @@ public class FventanaIncial extends javax.swing.JFrame {
                 .getName()).log(Level.SEVERE, null, ex);
 
         }
-        panel = new com.ClosableTabbedPane(){
+        panelClosableCentral = new com.ClosableTabbedPane(){
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -205,6 +215,17 @@ public class FventanaIncial extends javax.swing.JFrame {
             }
 
         };
+        jMenuBarSistemaMiyake = new javax.swing.JMenuBar();
+        menuArchivo = new javax.swing.JMenu();
+        menuFacturacion = new javax.swing.JMenu();
+        menuProveedor = new javax.swing.JMenu();
+        menuUsuario = new javax.swing.JMenu();
+        menuTiendas = new javax.swing.JMenu();
+        menuInventario = new javax.swing.JMenu();
+        menuMercancia = new javax.swing.JMenu();
+        menuNotas = new javax.swing.JMenu();
+        menuUtilidades = new javax.swing.JMenu();
+        menuAyuda = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(9, 182, 201));
@@ -251,13 +272,12 @@ public class FventanaIncial extends javax.swing.JFrame {
         jPanel3.setAlignmentY(0.0F);
         jPanel3.setLayout(new java.awt.BorderLayout());
 
-        jPanel2.setAlignmentX(0.0F);
-        jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.Y_AXIS));
+        jPanelControlesPrincipales.setAlignmentX(0.0F);
+        jPanelControlesPrincipales.setLayout(new javax.swing.BoxLayout(jPanelControlesPrincipales, javax.swing.BoxLayout.Y_AXIS));
 
         jXCollapsiblePane1.setOpaque(false);
         jXCollapsiblePane1.setAlignmentX(0.0F);
 
-        taskPaneModuloFacturacion.setCollapsed(true);
         taskPaneModuloFacturacion.setTitle("Facturación");
 
         taskPaneProducto.setCollapsed(true);
@@ -354,6 +374,7 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         taskPaneModuloFacturacion.getContentPane().add(taskPaneProveedores);
 
+        taskPaneEtiquetas.setCollapsed(true);
         taskPaneEtiquetas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Barcode.png"))); // NOI18N
         taskPaneEtiquetas.setSpecial(true);
         taskPaneEtiquetas.setTitle("Etiquetas");
@@ -496,16 +517,48 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jXCollapsiblePane1.getContentPane().add(taskPaneModuloDeposito);
 
-        jPanel2.add(jXCollapsiblePane1);
+        jPanelControlesPrincipales.add(jXCollapsiblePane1);
 
-        jPanel3.add(jPanel2, java.awt.BorderLayout.LINE_START);
+        jPanel3.add(jPanelControlesPrincipales, java.awt.BorderLayout.LINE_START);
 
-        panel.setAlignmentX(0.0F);
-        panel.setAutoscrolls(true);
-        panel.setMinimumSize(new java.awt.Dimension(100, 100));
-        jPanel3.add(panel, java.awt.BorderLayout.CENTER);
+        panelClosableCentral.setAlignmentX(0.0F);
+        panelClosableCentral.setAutoscrolls(true);
+        panelClosableCentral.setMinimumSize(new java.awt.Dimension(100, 100));
+        jPanel3.add(panelClosableCentral, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
+
+        menuArchivo.setText("Archivos");
+        jMenuBarSistemaMiyake.add(menuArchivo);
+
+        menuFacturacion.setText("Productos");
+        jMenuBarSistemaMiyake.add(menuFacturacion);
+
+        menuProveedor.setText("Proveedor");
+        jMenuBarSistemaMiyake.add(menuProveedor);
+
+        menuUsuario.setText("Usuarios");
+        jMenuBarSistemaMiyake.add(menuUsuario);
+
+        menuTiendas.setText("Tiendas");
+        jMenuBarSistemaMiyake.add(menuTiendas);
+
+        menuInventario.setText("Inventario");
+        jMenuBarSistemaMiyake.add(menuInventario);
+
+        menuMercancia.setText("Gestion Mercancia");
+        jMenuBarSistemaMiyake.add(menuMercancia);
+
+        menuNotas.setText("Notas");
+        jMenuBarSistemaMiyake.add(menuNotas);
+
+        menuUtilidades.setText("Utilidades");
+        jMenuBarSistemaMiyake.add(menuUtilidades);
+
+        menuAyuda.setText("Ayuda");
+        jMenuBarSistemaMiyake.add(menuAyuda);
+
+        setJMenuBar(jMenuBarSistemaMiyake);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -552,7 +605,7 @@ public class FventanaIncial extends javax.swing.JFrame {
 
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        panel.removeAll();
+        panelClosableCentral.removeAll();
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
@@ -690,14 +743,25 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JMenuBar jMenuBarSistemaMiyake;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanelControlesPrincipales;
     private org.jdesktop.swingx.JXButton jXButton1;
     private org.jdesktop.swingx.JXButton jXButton2;
     private org.jdesktop.swingx.JXCollapsiblePane jXCollapsiblePane1;
     private org.jdesktop.swingx.JXTaskPaneContainer jXTaskPaneContainer1;
-    private com.ClosableTabbedPane panel;
+    private javax.swing.JMenu menuArchivo;
+    private javax.swing.JMenu menuAyuda;
+    private javax.swing.JMenu menuFacturacion;
+    private javax.swing.JMenu menuInventario;
+    private javax.swing.JMenu menuMercancia;
+    private javax.swing.JMenu menuNotas;
+    private javax.swing.JMenu menuProveedor;
+    private javax.swing.JMenu menuTiendas;
+    private javax.swing.JMenu menuUsuario;
+    private javax.swing.JMenu menuUtilidades;
+    private com.ClosableTabbedPane panelClosableCentral;
     private org.jdesktop.swingx.JXTaskPane taskPaneConsultas;
     private org.jdesktop.swingx.JXTaskPane taskPaneEtiquetas;
     private org.jdesktop.swingx.JXTaskPane taskPaneGestionMercancia;
@@ -710,3 +774,16 @@ public class FventanaIncial extends javax.swing.JFrame {
     private org.jdesktop.swingx.JXTaskPane taskPaneUtilidades;
     // End of variables declaration//GEN-END:variables
 }
+ class ClockLabel extends JLabel implements ActionListener {
+
+        public ClockLabel() {
+            super("" + new Date());
+            Timer t = new Timer(1000, this);
+            t.start();
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            setText((new Date()).toString());
+        }
+    }
