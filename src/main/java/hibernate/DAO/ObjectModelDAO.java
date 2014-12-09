@@ -28,6 +28,8 @@ public abstract class ObjectModelDAO {
     //normalmente regresa un Integer, si es compuesta regresa el embedded
     public static Object saveObject(Object objModel) {
 
+        //verificar si es null
+        
         Object id = -1;
         Session newSession = null;
         try {

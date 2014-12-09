@@ -7,6 +7,7 @@ package modelos.mapeos;
 
 import modelos.mapeos.SalidaParaTienda;
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -48,7 +49,7 @@ public class NotaCreditoDebito implements Serializable {
     @Column(name = "id_nota_credito_debito", nullable = false)
     private Integer idNotaCreditoDebito;
     @Temporal(TemporalType.DATE)
-    private Date fecha;
+    private Date fecha=Calendar.getInstance().getTime();
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(precision = 8, scale = 8)
     private Float total;

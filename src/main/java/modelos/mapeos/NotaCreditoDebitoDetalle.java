@@ -63,6 +63,13 @@ public class NotaCreditoDebitoDetalle implements Serializable {
         this.idProducto = idProducto;
     }
 
+    public NotaCreditoDebitoDetalle(Integer cantidadProducto, Integer nroRenglon, NotaCreditoDebito idNotaCreditoDebito, Producto idProducto) {
+        this.cantidadProducto = cantidadProducto;
+        this.nroRenglon = nroRenglon;
+        this.idNotaCreditoDebito = idNotaCreditoDebito;
+        this.idProducto = idProducto;
+    }
+
     public Integer getCantidadProducto() {
         return cantidadProducto;
     }

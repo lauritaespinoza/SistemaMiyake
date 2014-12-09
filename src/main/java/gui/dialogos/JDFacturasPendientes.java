@@ -1,8 +1,9 @@
 package gui.dialogos;
- 
+
 import gui.paneles.Distribuidora1;
 import util.JavaUtil;
 import hibernate.DAO.ObjectModelDAO;
+import java.awt.HeadlessException;
 import java.io.File;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -21,6 +22,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import modelos.mapeos.Factura;
 import modelos.tablas.TableModelReport;
+import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
@@ -28,7 +30,7 @@ import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
 public class JDFacturasPendientes extends javax.swing.JDialog {
- 
+
     public Factura factura = null;
     private List resultList = null;
     private int pos = -1;
@@ -39,9 +41,10 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
     public JDFacturasPendientes(java.awt.Frame parent, boolean modal) throws Exception {
         super(parent, modal);
         initComponents();
+        this.busy.setVisible(false);
         //jtListaEntradaProveedor.setModel(resulList);
         //this.setLocationRelativeTo(null);
-        
+
         this.jtListaFactura.setAutoCreateRowSorter(true);
         this.jtListaFactura.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         this.jtListaFactura.setColumnControlVisible(true);
@@ -76,7 +79,11 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
         jXFindBar1 = new org.jdesktop.swingx.JXFindBar(jtListaFactura.getSearchable());
         ayuda = new javax.swing.JButton();
         txtTitulo = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        botonImprimir = new javax.swing.JButton();
+        busy = new org.jdesktop.swingx.JXBusyLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -116,7 +123,6 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
         jScrollPane1.setViewportView(jtListaFactura);
 
         ayuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416510931_Help.png"))); // NOI18N
-        ayuda.setText("ayuda");
         ayuda.setBorder(null);
         ayuda.setBorderPainted(false);
         ayuda.setContentAreaFilled(false);
@@ -132,17 +138,27 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
         });
 
         txtTitulo.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
-        txtTitulo.setForeground(new java.awt.Color(102, 102, 102));
         txtTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415416322_list-accept.png"))); // NOI18N
         txtTitulo.setText("LISTADO DE FACTURAS PENDIENTES");
+        txtTitulo.setForeground(new java.awt.Color(102, 102, 102));
 
-        jButton3.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jButton3.setText("Imprimir");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        botonImprimir.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        botonImprimir.setText("Imprimir");
+        botonImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                botonImprimirActionPerformed(evt);
             }
         });
+
+        busy.setText("Procesando...!!!");
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -158,8 +174,10 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(319, 319, 319)
-                                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(121, 121, 121)
+                                .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(105, 105, 105)
+                                .addComponent(botonImprimir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(8, 8, 8)
                                 .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jScrollPane1)
@@ -180,12 +198,13 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addComponent(jXFindBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton1)
-                    .addComponent(jButton3))
+                    .addComponent(botonImprimir)
+                    .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -202,11 +221,11 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jtListaFacturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtListaFacturaMouseClicked
-       
-        if(evt.getClickCount()==2){
+
+        if (evt.getClickCount() == 2) {
             SeleccionarFactura();
         }
-        
+
     }//GEN-LAST:event_jtListaFacturaMouseClicked
 
     private void ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ayudaActionPerformed
@@ -214,7 +233,7 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
         try {
           //  File archivo;
 
-       // archivo = new File(this.getClass().getResource("/JavaHelp/ejemplo.hs").getFile());
+            // archivo = new File(this.getClass().getResource("/JavaHelp/ejemplo.hs").getFile());
             //C:\Users\Pablo\Documents\NetBeansProjects\SistemaMiyake\SistemaMiyake\src\main\resources\JavaHelp
             File archivo = new File("C:\\Users\\Pablo\\Documents\\NetBeansProjects\\SistemaMiyake\\SistemaMiyake\\src\\main\\java\\JavaHelp\\JavaHelp\\ejemplo.hs");
 
@@ -235,42 +254,74 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
 
         } catch (HelpSetException | MalformedURLException ex) {
             Logger.getLogger(JDFacturasPendientes.class.getName()).log(Level.SEVERE, null, ex);
-             JOptionPane.showMessageDialog(this, "Excepcion Ayuda Factura " + ex);
+            JOptionPane.showMessageDialog(this, "Excepcion Ayuda Factura " + ex);
         }
 
     }//GEN-LAST:event_ayudaActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void botonImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonImprimirActionPerformed
         // TODO add your handling code here:    resultList
-         try {
-            JasperPrint jasperPrint = null;
-           
-            Map<String, Object> parametro = new HashMap<>();
-            String s = "";
-           TableModelReport dataSourse = new TableModelReport(jtListaFactura.getModel());
-        parametro.put("REPORT_DATA_SOURSE", dataSourse);
-            //JasperCompileManager.compileReport(rutaJrxml);
-            JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ListadoFacturas.jasper"));
-            
-            jasperPrint = JasperFillManager.fillReport(reporte, null, dataSourse);
-            JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
-            jasperViewer.setTitle("Reporte de Toma Fisica Distribuidoras.");
-            jasperViewer.setVisible(true);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "error" + e);    
-            Logger.getLogger(Distribuidora1.class.getName()).log(Level.SEVERE, null, e);
+        Thread hilo = new Thread() {
 
-            
-        }
-        
-        
-    }//GEN-LAST:event_jButton3ActionPerformed
- 
+            @Override
+            public void run() {
+
+                busy.setEnabled(true);
+                busy.setVisible(true);
+                busy.setBusy(true);
+                try {
+                    JasperPrint jasperPrint = null;
+
+                    Map<String, Object> parametro = new HashMap<>();
+                    String s = "";
+                    TableModelReport dataSourse = new TableModelReport(jtListaFactura.getModel());
+                    parametro.put("REPORT_DATA_SOURSE", dataSourse);
+                    //JasperCompileManager.compileReport(rutaJrxml);
+                    JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ListadoFacturas.jasper"));
+
+                    jasperPrint = JasperFillManager.fillReport(reporte, null, dataSourse);
+                    JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
+                    jasperViewer.setTitle("Reporte de Toma Fisica Distribuidoras.");
+                    jasperViewer.setVisible(true);
+
+                    //busy
+                    busy.setEnabled(false);
+                    busy.setVisible(false);
+                    busy.setBusy(false);
+                    int respuesta = JOptionPane.showConfirmDialog(null, "El Archivo fue Generado con Exito,"
+                            + "¿Desea Continuar Selecionando Una Factura Pendiente?");
+
+                    if (respuesta == JOptionPane.YES_OPTION) {
+
+                    }
+                    if (respuesta == JOptionPane.NO_OPTION) {
+                        dispose();
+                        setVisible(false);
+                        
+                    }
+
+                } catch (JRException | HeadlessException e) {
+                    JOptionPane.showMessageDialog(null, "Se a Dectectado Un Proble Con Proceso de Seleccion de Facturas,"
+                            + "Por Favor Vuelva a Intentarlo.");
+                    Logger.getLogger(Distribuidora1.class.getName()).log(Level.SEVERE, null, e);
+                    System.err.println("Seleccionando Facturas" + e);
+
+                }
+
+            }
+        };
+        hilo.start();
+    }//GEN-LAST:event_botonImprimirActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ayuda;
+    private javax.swing.JButton botonImprimir;
+    private org.jdesktop.swingx.JXBusyLabel busy;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private org.jdesktop.swingx.JXFindBar jXFindBar1;
     private org.jdesktop.swingx.JXTable jtListaFactura;
