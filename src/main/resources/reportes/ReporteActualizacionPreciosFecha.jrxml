@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2d1f7eaa-e77c-4c95-9f50-2ce1dd9fb684">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="45"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -23,11 +23,31 @@
 			<pen lineWidth="0.5" lineColor="#000000"/>
 		</box>
 	</style>
-	<subDataset name="New Dataset 1" uuid="ad755437-b284-4a6e-b6f0-8992dadc8f93">
-		<parameter name="Desde" class="java.sql.Time">
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#BFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#E6FFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="New Dataset 1" uuid="5f02f02a-a739-4c4d-addc-fb15448630dd">
+		<parameter name="Desde" class="net.sf.jasperreports.types.date.DateRange">
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
-		<parameter name="Hasta" class="java.sql.Time">
+		<parameter name="Hasta" class="net.sf.jasperreports.types.date.DateRange">
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
@@ -40,11 +60,10 @@
   a.nombre
 FROM 
   public.inventario_tienda ivt INNER JOIN  public.producto p ON (ivt.id_producto=p.id_producto)
-    INNER JOIN public.almacen a ON (ivt.id_almacen=a.id_almacen)   
- 
+    INNER JOIN public.almacen a ON (ivt.id_almacen=a.id_almacen)
 WHERE
-  ivt.fecha_modificacion >= to_date($P{Desde},'yyyy/MM/dd HH:MI:SS')
- AND ivt.fecha_modificacion <= to_date($P{Hasta},'yyyy/MM/dd HH:MI:SS') ;]]>
+ivt.fecha_modificacion >= $P!{Desde}
+AND ivt.fecha_modificacion <= $P!{Hasta};]]>
 		</queryString>
 		<field name="id_producto" class="java.lang.Integer"/>
 		<field name="precio_con_descuento" class="java.lang.Float"/>
@@ -53,8 +72,8 @@ WHERE
 		<field name="descripcion" class="java.lang.String"/>
 		<field name="nombre" class="java.lang.String"/>
 	</subDataset>
-	<parameter name="FechaDesde" class="java.sql.Timestamp"/>
-	<parameter name="FechaHasta" class="java.sql.Timestamp"/>
+	<parameter name="FechaDesde" class="net.sf.jasperreports.types.date.DateRange"/>
+	<parameter name="FechaHasta" class="net.sf.jasperreports.types.date.DateRange"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -70,9 +89,9 @@ WHERE
 	<detail>
 		<band height="66" splitType="Stretch">
 			<componentElement>
-				<reportElement key="table" style="table" stretchType="RelativeToBandHeight" x="0" y="0" width="555" height="62" uuid="6a6a366f-d6e7-4ff0-855a-d91787e2ab79"/>
+				<reportElement key="table 1" style="table 1" x="37" y="16" width="360" height="50" uuid="dbadbf76-c66f-414a-85ec-e148c77274ec"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="New Dataset 1" uuid="994b6242-86cc-4f9e-b532-82c93c48c6a7">
+					<datasetRun subDataset="New Dataset 1" uuid="bdc5e234-bd61-4f1c-80a5-65e51a606347">
 						<datasetParameter name="Desde">
 							<datasetParameterExpression><![CDATA[$P{FechaDesde}]]></datasetParameterExpression>
 						</datasetParameter>
@@ -81,36 +100,34 @@ WHERE
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
-					<jr:column width="90" uuid="286d9876-2bbc-4b79-a320-13e81d566a12">
-						<jr:columnHeader style="table_CH" height="30" rowSpan="1"/>
-						<jr:detailCell style="table_TD" height="37" rowSpan="1">
+					<jr:column width="90" uuid="96462738-1166-4592-81ef-4c1faa9da838">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="37" uuid="a8c6296d-fd7a-4a5d-858c-4bd838caddfa"/>
+								<reportElement x="0" y="0" width="90" height="30" uuid="b068c972-8432-4da8-825d-2fed64e8f0e6"/>
 								<textFieldExpression><![CDATA[$F{id_producto}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="7898d2a1-6f82-4e69-bd2c-d7ea4afc9c38">
-						<jr:columnHeader style="table_CH" height="30" rowSpan="1"/>
-						<jr:detailCell style="table_TD" height="37" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="37" uuid="69c4cb5b-8111-47ac-9f20-580435a01581"/>
-								<textFieldExpression><![CDATA[$F{fecha_creacion}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
+					<jr:column width="90" uuid="949a2dd5-3734-4d40-88f5-918da8a8fd67">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="30" rowSpan="1"/>
 					</jr:column>
-					<jr:column width="90" uuid="22397782-accc-489d-a7fd-76f28598e121">
-						<jr:columnHeader style="table_CH" height="30" rowSpan="1"/>
-						<jr:detailCell style="table_TD" height="37" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="37" uuid="02e2f6d2-a9f8-4e13-ac7b-191e8ea5643e"/>
-								<textFieldExpression><![CDATA[$F{fecha_modificacion}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
+					<jr:column width="90" uuid="2174463d-25af-452c-bb88-5260e3e9f2d5">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="30" rowSpan="1"/>
 					</jr:column>
-					<jr:column width="90" uuid="5ebe71f2-e9ab-4a89-b868-ff3a91f56963">
-						<jr:columnHeader style="table_CH" height="30" rowSpan="1"/>
-						<jr:detailCell style="table_TD" height="37" rowSpan="1"/>
+					<jr:column width="90" uuid="35e4de81-691d-4bfe-b8bc-e6b8fdef0855">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="30" rowSpan="1"/>
+					</jr:column>
+					<jr:column width="90" uuid="80a1c6f6-beae-40cc-81b0-c570056a191c">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="30" rowSpan="1"/>
+					</jr:column>
+					<jr:column width="90" uuid="f114e19e-4027-4ad5-bf47-57d1ed33cad3">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="30" rowSpan="1"/>
 					</jr:column>
 				</jr:table>
 			</componentElement>
