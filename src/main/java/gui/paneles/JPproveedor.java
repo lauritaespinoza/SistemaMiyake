@@ -10,38 +10,46 @@ import static util.JavaUtil.createJDialogGeneric;
 import static util.JavaUtil.setTableCellAlignment;
 import hibernate.DAO.ObjectModelDAO;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import modelos.mapeos.Contacto;
 import modelos.mapeos.Proveedor;
+import modelos.tablas.TableModelReport;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class JPproveedor extends javax.swing.JPanel {
 
     private List resultListContactos;
     private List resultListProveedores;
     private int pos;
+    public final String rutaJasper = "/reportes/ReporteProveedores.jasper";
 
-    
     public JPproveedor() {
         this(0);
     }
-    
+
     public JPproveedor(int tabCrud) {
         initComponents();
-        
-        setTableCellAlignment(JLabel.CENTER,listadoProveedores);
-        setTableCellAlignment(JLabel.CENTER,tablaModfProveedor);
-        setTableCellAlignment(JLabel.CENTER,tablaDeletProveedor);
+
+        setTableCellAlignment(JLabel.CENTER, listadoProveedores);
+        setTableCellAlignment(JLabel.CENTER, tablaModfProveedor);
+        setTableCellAlignment(JLabel.CENTER, tablaDeletProveedor);
         listadoProveedores.getTableHeader().setReorderingAllowed(false);
         tablaModfProveedor.getTableHeader().setReorderingAllowed(false);
         tablaDeletProveedor.getTableHeader().setReorderingAllowed(false);
-        
+
         panelScrudProveedor.setSelectedIndex(tabCrud);
-        
-         tablaModfProveedor.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+
+        tablaModfProveedor.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent lse) {
                 if (!lse.getValueIsAdjusting()) {
 
@@ -62,21 +70,21 @@ public class JPproveedor extends javax.swing.JPanel {
 //                    fieldContacto2.setText(c.getNombre());
                     cb_gerente1.setSelectedItem(p.getIdContactoGerente() == null ? null : p.getIdContactoGerente().getNombre());
                     cb_contacto1.setSelectedItem(p.getIdContacto1() == null ? null : p.getIdContacto1().getNombre());
-                    cb_contacto2.setSelectedItem(p.getIdContacto2()== null ? null :p.getIdContacto2().getNombre());
+                    cb_contacto2.setSelectedItem(p.getIdContacto2() == null ? null : p.getIdContacto2().getNombre());
 
                 }
             }
         });
-        
-         tablaDeletProveedor.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+
+        tablaDeletProveedor.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent lse) {
                 if (!lse.getValueIsAdjusting()) {
-                    
+
                     if (tablaDeletProveedor.getSelectedRow() == -1) {
                         return;
                     }
                     pos = tablaDeletProveedor.getSelectedRow();
-                    
+
                 }
             }
         });
@@ -97,6 +105,7 @@ public class JPproveedor extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         listadoProveedores = new org.jdesktop.swingx.JXTable();
         jLabel17 = new javax.swing.JLabel();
+        bt_GenerarReporteProveedores = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -213,6 +222,13 @@ public class JPproveedor extends javax.swing.JPanel {
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1416622346_xmag.png"))); // NOI18N
         jLabel17.setText("Para realizar Busqueda: Haga Click en la tabla + CTRL F");
 
+        bt_GenerarReporteProveedores.setText("Generar Reporte");
+        bt_GenerarReporteProveedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_GenerarReporteProveedoresActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -220,6 +236,8 @@ public class JPproveedor extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57)
+                .addComponent(bt_GenerarReporteProveedores)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1102, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -229,7 +247,9 @@ public class JPproveedor extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel17)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(bt_GenerarReporteProveedores))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(45, Short.MAX_VALUE))
@@ -672,7 +692,7 @@ public class JPproveedor extends javax.swing.JPanel {
     }//GEN-LAST:event_bCrearProveedorActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         createJDialogGeneric(new JPcontacto(1)); 
+        createJDialogGeneric(new JPcontacto(1));
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void bModfProveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bModfProveActionPerformed
@@ -719,7 +739,7 @@ public class JPproveedor extends javax.swing.JPanel {
     }//GEN-LAST:event_bModfProveActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      createJDialogGeneric(new JPcontacto(1)); 
+        createJDialogGeneric(new JPcontacto(1));
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void bEliminarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarProveedorActionPerformed
@@ -810,11 +830,34 @@ public class JPproveedor extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_panelScrudProveedorStateChanged
 
+    private void generarReporte() {
+        try {
+            JasperPrint jasperPrint = null;
+            Map<String, Object> parametro = new HashMap<>();
+
+            TableModelReport dataSourse = new TableModelReport(listadoProveedores.getModel());
+
+            parametro.put("REPORT_DATA_SOURSE", dataSourse);
+            JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream(rutaJasper));
+            jasperPrint = JasperFillManager.fillReport(reporte, null, dataSourse);
+            JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
+            jasperViewer.setTitle("Reporte de Clasificación de Producto");
+            jasperViewer.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "error" + e);
+        }
+    }
+
+    private void bt_GenerarReporteProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_GenerarReporteProveedoresActionPerformed
+        generarReporte();
+    }//GEN-LAST:event_bt_GenerarReporteProveedoresActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCrearProveedor;
     private javax.swing.JButton bEliminarProveedor;
     private javax.swing.JButton bModfProve;
+    private javax.swing.JButton bt_GenerarReporteProveedores;
     private javax.swing.JComboBox cb_contacto;
     private javax.swing.JComboBox cb_contacto1;
     private javax.swing.JComboBox cb_contacto2;

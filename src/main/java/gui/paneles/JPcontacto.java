@@ -8,7 +8,9 @@ package gui.paneles;
 import util.JavaUtil;
 import static util.JavaUtil.setTableCellAlignment;
 import hibernate.DAO.ObjectModelDAO;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
@@ -20,33 +22,38 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
 import modelos.mapeos.Contacto;
+import modelos.tablas.TableModelReport;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import static org.jdesktop.swingx.JXLabel.TextAlignment.CENTER;
 import org.jdesktop.swingx.JXTable;
-
 
 public class JPcontacto extends javax.swing.JPanel {
 
     private int pos;
     private List resultListContacto;
 
+    public final String rutaJasper = "/reportes/ReporteContactos.jasper";
+
     public JPcontacto() {
         this(0);
     }
-    
-  
+
     public JPcontacto(int tabCrud) {
         initComponents();
-        
-        setTableCellAlignment(JLabel.CENTER,listadoContactos);
-        setTableCellAlignment(JLabel.CENTER,tablaModfContact);
-        setTableCellAlignment(JLabel.CENTER,tablaDeletContact);
+
+        setTableCellAlignment(JLabel.CENTER, listadoContactos);
+        setTableCellAlignment(JLabel.CENTER, tablaModfContact);
+        setTableCellAlignment(JLabel.CENTER, tablaDeletContact);
         listadoContactos.getTableHeader().setReorderingAllowed(false);
         tablaModfContact.getTableHeader().setReorderingAllowed(false);
         tablaDeletContact.getTableHeader().setReorderingAllowed(false);
-        
-        
+
         panelScrudContact.setSelectedIndex(tabCrud);
-        
+
         tablaModfContact.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent lse) {
                 if (!lse.getValueIsAdjusting()) {
@@ -95,6 +102,7 @@ public class JPcontacto extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         listadoContactos = new org.jdesktop.swingx.JXTable();
         jLabel12 = new javax.swing.JLabel();
+        jb_GenerarReporteContacto = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -183,6 +191,13 @@ public class JPcontacto extends javax.swing.JPanel {
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1416622346_xmag.png"))); // NOI18N
         jLabel12.setText("Para realizar Busqueda: Haga Click en la tabla + CTRL F");
 
+        jb_GenerarReporteContacto.setText("Generar Reporte");
+        jb_GenerarReporteContacto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_GenerarReporteContactoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -190,13 +205,17 @@ public class JPcontacto extends javax.swing.JPanel {
             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel12)
+                .addGap(18, 18, 18)
+                .addComponent(jb_GenerarReporteContacto)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel12)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(jb_GenerarReporteContacto))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -509,15 +528,15 @@ public class JPcontacto extends javax.swing.JPanel {
 
     private void bCrearContacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearContacActionPerformed
         if (!fieldNomb.getText().equals("") && !fieldPuest.getText().equals("")
-            && !fieldTlf1.getText().equals("") && !fieldtlf2.getText().equals("") && !fieldEmail.getText().equals("")) {
+                && !fieldTlf1.getText().equals("") && !fieldtlf2.getText().equals("") && !fieldEmail.getText().equals("")) {
             if (JOptionPane.showConfirmDialog(this, "¿Está seguro de crear el"
-                + " nuevo contacto con nombre : " + fieldNomb.getText() + "?",
-                "Información", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                    + " nuevo contacto con nombre : " + fieldNomb.getText() + "?",
+                    "Información", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 
-            ObjectModelDAO.saveObject(new Contacto(fieldNomb.getText(), fieldPuest.getText(), fieldTlf1.getText(),
-                fieldtlf2.getText(), fieldEmail.getText()));
+                ObjectModelDAO.saveObject(new Contacto(fieldNomb.getText(), fieldPuest.getText(), fieldTlf1.getText(),
+                        fieldtlf2.getText(), fieldEmail.getText()));
 
-        }
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
         }
@@ -525,41 +544,41 @@ public class JPcontacto extends javax.swing.JPanel {
 
     private void bModfContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bModfContactActionPerformed
         if (pos == -1 || fieldNombContact.getText().equals("") || fieldPuestContact.getText().equals("")
-            || fieldTlfContact1.getText().equals("") || fieldTlfContact2.getText().equals("") || fieldEmailContact.getText().equals("")) {
+                || fieldTlfContact1.getText().equals("") || fieldTlfContact2.getText().equals("") || fieldEmailContact.getText().equals("")) {
 
             return;
         }
 
         String valor = tablaModfContact.getValueAt(tablaModfContact.getSelectedRow(), 0).toString();
         if (JOptionPane.showConfirmDialog(this, "¿Está seguro de modificar la"
-            + " el contacto " + valor + "?",
-            "Información", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                + " el contacto " + valor + "?",
+                "Información", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 
-        try {
-            int pos = this.pos;
-            Contacto c = (Contacto) resultListContacto.get(pos);
-            c.setNombre(fieldNombContact.getText());
-            c.setPuesto(fieldPuestContact.getText());
-            c.setTelefono1(fieldTlfContact1.getText());
-            c.setTelefono2(fieldTlfContact2.getText());
-            c.setEmail(fieldEmail.getText());
-            ObjectModelDAO.updateObject(c);
+            try {
+                int pos = this.pos;
+                Contacto c = (Contacto) resultListContacto.get(pos);
+                c.setNombre(fieldNombContact.getText());
+                c.setPuesto(fieldPuestContact.getText());
+                c.setTelefono1(fieldTlfContact1.getText());
+                c.setTelefono2(fieldTlfContact2.getText());
+                c.setEmail(fieldEmail.getText());
+                ObjectModelDAO.updateObject(c);
 
-            String sql = "FROM Contacto c order by c.idContacto asc";
-            resultListContacto = ObjectModelDAO.getResultQuery(sql);
-            JavaUtil.displayResult(resultListContacto, tablaModfContact);
-            tablaModfContact.setEditable(false);
-            tablaModfContact.setRowSelectionInterval(pos, pos);
+                String sql = "FROM Contacto c order by c.idContacto asc";
+                resultListContacto = ObjectModelDAO.getResultQuery(sql);
+                JavaUtil.displayResult(resultListContacto, tablaModfContact);
+                tablaModfContact.setEditable(false);
+                tablaModfContact.setRowSelectionInterval(pos, pos);
 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(
-                null,
-                "Mensaje:\n\t" + e.getMessage(),
-                "Error Update",
-                JOptionPane.ERROR_MESSAGE
-            );
-            Logger.getLogger(JPcontacto.class.getName()).log(Level.SEVERE, null, e);
-        }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Mensaje:\n\t" + e.getMessage(),
+                        "Error Update",
+                        JOptionPane.ERROR_MESSAGE
+                );
+                Logger.getLogger(JPcontacto.class.getName()).log(Level.SEVERE, null, e);
+            }
         }
     }//GEN-LAST:event_bModfContactActionPerformed
 
@@ -569,18 +588,18 @@ public class JPcontacto extends javax.swing.JPanel {
         }
 
         String valor = tablaDeletContact.getValueAt(tablaDeletContact.
-            getSelectedRow(), tablaDeletContact.getSelectedColumn()).toString();
+                getSelectedRow(), tablaDeletContact.getSelectedColumn()).toString();
         if (JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar el "
-            + " Contacto " + tablaDeletContact.getValueAt(tablaDeletContact.getSelectedRow(), 1)
-            + "?", "Información", JOptionPane.YES_NO_OPTION)
-        == JOptionPane.YES_OPTION) {
+                + " Contacto " + tablaDeletContact.getValueAt(tablaDeletContact.getSelectedRow(), 1)
+                + "?", "Información", JOptionPane.YES_NO_OPTION)
+                == JOptionPane.YES_OPTION) {
 
-        ObjectModelDAO.deleteObject(resultListContacto.get(pos));
-        String sql = "FROM Contacto c order by c.idContacto asc";
-        resultListContacto = ObjectModelDAO.getResultQuery(sql);
-        JavaUtil.displayResult(resultListContacto, tablaDeletContact);
-        pos = -1;
-        tablaDeletContact.setEditable(false);
+            ObjectModelDAO.deleteObject(resultListContacto.get(pos));
+            String sql = "FROM Contacto c order by c.idContacto asc";
+            resultListContacto = ObjectModelDAO.getResultQuery(sql);
+            JavaUtil.displayResult(resultListContacto, tablaDeletContact);
+            pos = -1;
+            tablaDeletContact.setEditable(false);
         }
     }//GEN-LAST:event_bDeletContactActionPerformed
 
@@ -625,6 +644,28 @@ public class JPcontacto extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_panelScrudContactStateChanged
 
+    private void generarReporte() {
+        try {
+            JasperPrint jasperPrint = null;
+            Map<String, Object> parametro = new HashMap<>();
+
+            TableModelReport dataSourse = new TableModelReport(listadoContactos.getModel());
+
+            parametro.put("REPORT_DATA_SOURSE", dataSourse);
+            JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream(rutaJasper));
+            jasperPrint = JasperFillManager.fillReport(reporte, null, dataSourse);
+            JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
+            jasperViewer.setTitle("Reporte de Clasificación de Producto");
+            jasperViewer.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "error" + e);
+        }
+    }
+
+    private void jb_GenerarReporteContactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_GenerarReporteContactoActionPerformed
+        generarReporte();
+    }//GEN-LAST:event_jb_GenerarReporteContactoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCrearContac;
@@ -666,6 +707,7 @@ public class JPcontacto extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JButton jb_GenerarReporteContacto;
     private javax.swing.JLabel lb_id;
     private org.jdesktop.swingx.JXTable listadoContactos;
     private javax.swing.JTabbedPane panelScrudContact;

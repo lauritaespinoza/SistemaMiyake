@@ -8,7 +8,9 @@ package gui.paneles;
 import util.JavaUtil;
 import static util.JavaUtil.setTableCellAlignment;
 import hibernate.DAO.ObjectModelDAO;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
@@ -16,31 +18,36 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import modelos.mapeos.Division;
-
+import modelos.tablas.TableModelReport;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class JPdivision extends javax.swing.JPanel {
- private List resultList;
+
+    private List resultList;
     private int pos;
+    public final String rutaJasper = "/reportes/ReporteDivision.jasper";
 
     public JPdivision() {
         this(0);
     }
-    
-    
+
     public JPdivision(int tabCrud) {
         initComponents();
-        
-        setTableCellAlignment(JLabel.CENTER,tablaConsultaDivision);
-        setTableCellAlignment(JLabel.CENTER,tablaModificarDivision);
-        setTableCellAlignment(JLabel.CENTER,tablaEliminarDivision);
+
+        setTableCellAlignment(JLabel.CENTER, tablaConsultaDivision);
+        setTableCellAlignment(JLabel.CENTER, tablaModificarDivision);
+        setTableCellAlignment(JLabel.CENTER, tablaEliminarDivision);
         tablaConsultaDivision.getTableHeader().setReorderingAllowed(false);
         tablaModificarDivision.getTableHeader().setReorderingAllowed(false);
         tablaEliminarDivision.getTableHeader().setReorderingAllowed(false);
-        
-        
+
         panelScrudDiv.setSelectedIndex(tabCrud);
-        
-         tablaModificarDivision.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+
+        tablaModificarDivision.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent lse) {
                 if (!lse.getValueIsAdjusting()) {
 
@@ -85,6 +92,7 @@ public class JPdivision extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaConsultaDivision = new org.jdesktop.swingx.JXTable();
         jLabel15 = new javax.swing.JLabel();
+        bt_GenerarReporte = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -140,6 +148,13 @@ public class JPdivision extends javax.swing.JPanel {
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1416622346_xmag.png"))); // NOI18N
         jLabel15.setText("Para realizar Busqueda: Haga Click en la tabla + CTRL F");
 
+        bt_GenerarReporte.setText("Generar Reporte");
+        bt_GenerarReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_GenerarReporteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -147,14 +162,18 @@ public class JPdivision extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel15)
-                .addContainerGap(261, Short.MAX_VALUE))
+                .addGap(42, 42, 42)
+                .addComponent(bt_GenerarReporte)
+                .addContainerGap(146, Short.MAX_VALUE))
             .addComponent(jScrollPane1)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel15)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(bt_GenerarReporte))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
                 .addGap(7, 7, 7))
@@ -376,12 +395,12 @@ public class JPdivision extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (!tf_nombre.getText().equals("")) {
             if (JOptionPane.showConfirmDialog(this, "¿Está seguro de crear la"
-                + " nueva división con nombre : " + tf_nombre.getText() + "?",
-                "Información", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                    + " nueva división con nombre : " + tf_nombre.getText() + "?",
+                    "Información", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 
-            ObjectModelDAO.saveObject(new Division(tf_nombre.getText()));
+                ObjectModelDAO.saveObject(new Division(tf_nombre.getText()));
 
-        }
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -392,30 +411,30 @@ public class JPdivision extends javax.swing.JPanel {
 
         String valor = tablaModificarDivision.getValueAt(tablaModificarDivision.getSelectedRow(), 1).toString();//1 por el nombre
         if (JOptionPane.showConfirmDialog(this, "¿Está seguro de modificar la"
-            + " división " + valor + "?",
-            "Información", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                + " división " + valor + "?",
+                "Información", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 
-        try {
-            int pos = this.pos;
-            Division d = (Division) resultList.get(pos);
-            d.setNombre(tf_nombre1.getText());
-            ObjectModelDAO.updateObject(d);
+            try {
+                int pos = this.pos;
+                Division d = (Division) resultList.get(pos);
+                d.setNombre(tf_nombre1.getText());
+                ObjectModelDAO.updateObject(d);
 
-            String sql = "FROM Division d order by d.idDivision asc";
-            resultList = ObjectModelDAO.getResultQuery(sql);
-            JavaUtil.displayResult(resultList, tablaModificarDivision);
-            tablaModificarDivision.setEditable(false);
-            tablaModificarDivision.setRowSelectionInterval(pos, pos);
+                String sql = "FROM Division d order by d.idDivision asc";
+                resultList = ObjectModelDAO.getResultQuery(sql);
+                JavaUtil.displayResult(resultList, tablaModificarDivision);
+                tablaModificarDivision.setEditable(false);
+                tablaModificarDivision.setRowSelectionInterval(pos, pos);
 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(
-                null,
-                "Mensaje:\n\t" + e.getMessage(),
-                "Error Update",
-                JOptionPane.ERROR_MESSAGE
-            );
-            Logger.getLogger(JPdivision.class.getName()).log(Level.SEVERE, null, e);
-        }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Mensaje:\n\t" + e.getMessage(),
+                        "Error Update",
+                        JOptionPane.ERROR_MESSAGE
+                );
+                Logger.getLogger(JPdivision.class.getName()).log(Level.SEVERE, null, e);
+            }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -425,17 +444,17 @@ public class JPdivision extends javax.swing.JPanel {
         }
 
         String valor = tablaEliminarDivision.getValueAt(tablaEliminarDivision.
-            getSelectedRow(),1).toString();//1 por el nombre
+                getSelectedRow(), 1).toString();//1 por el nombre
         if (JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar la"
-            + " Division " + valor + "?", "Información", JOptionPane.YES_NO_OPTION)
-        == JOptionPane.YES_OPTION) {
+                + " Division " + valor + "?", "Información", JOptionPane.YES_NO_OPTION)
+                == JOptionPane.YES_OPTION) {
 
-        ObjectModelDAO.deleteObject(resultList.get(pos));
-        String sql = "FROM Division d order by d.idDivision asc";
-        resultList = ObjectModelDAO.getResultQuery(sql);
-        JavaUtil.displayResult(resultList, tablaEliminarDivision);
-        pos = -1;
-        tablaEliminarDivision.setEditable(false);
+            ObjectModelDAO.deleteObject(resultList.get(pos));
+            String sql = "FROM Division d order by d.idDivision asc";
+            resultList = ObjectModelDAO.getResultQuery(sql);
+            JavaUtil.displayResult(resultList, tablaEliminarDivision);
+            pos = -1;
+            tablaEliminarDivision.setEditable(false);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -474,8 +493,31 @@ public class JPdivision extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_panelScrudDivStateChanged
 
+    private void generarReporte() {
+        try {
+            JasperPrint jasperPrint = null;
+            Map<String, Object> parametro = new HashMap<>();
+
+            TableModelReport dataSourse = new TableModelReport(tablaConsultaDivision.getModel());
+
+            parametro.put("REPORT_DATA_SOURSE", dataSourse);
+            JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream(rutaJasper));
+            jasperPrint = JasperFillManager.fillReport(reporte, parametro, dataSourse);
+            JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
+            jasperViewer.setTitle("Reporte de Clasificación de Producto");
+            jasperViewer.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "error" + e);
+        }
+    }
+
+    private void bt_GenerarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_GenerarReporteActionPerformed
+        generarReporte();
+    }//GEN-LAST:event_bt_GenerarReporteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_GenerarReporte;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
