@@ -205,6 +205,7 @@ public class FventanaIncial extends javax.swing.JFrame {
             }
 
         };
+        jodrr = new javax.swing.JButton();
 
         jmConsultar.setText("Consultar");
         jpMenu.add(jmConsultar);
@@ -511,6 +512,10 @@ public class FventanaIncial extends javax.swing.JFrame {
         panel.setAlignmentX(0.0F);
         panel.setAutoscrolls(true);
         panel.setMinimumSize(new java.awt.Dimension(100, 100));
+
+        jodrr.setText("jButton3");
+        panel.addTab("tab1", jodrr);
+
         jPanel3.add(panel, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
@@ -745,6 +750,7 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmCrear;
     private javax.swing.JMenuItem jmEliminar;
     private javax.swing.JMenuItem jmModificar;
+    private javax.swing.JButton jodrr;
     private javax.swing.JPopupMenu jpMenu;
     private com.ClosableTabbedPane panel;
     private org.jdesktop.swingx.JXTaskPane taskPaneEtiquetas;
