@@ -222,7 +222,6 @@ public class FventanaIncial extends javax.swing.JFrame {
             }
 
         };
-        jToolBarStatusInf = new javax.swing.JToolBar();
         jMenuBarSistemaMiyake = new javax.swing.JMenuBar();
         menuArchivo = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -304,7 +303,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         taskPaneModuloFacturacion.setCollapsed(true);
         taskPaneModuloFacturacion.setTitle("Facturación");
 
-        taskPaneProducto.setCollapsed(true);
         taskPaneProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415658077_database.png"))); // NOI18N
         taskPaneProducto.setSpecial(true);
         taskPaneProducto.setTitle("Productos");
@@ -558,9 +556,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         jPanel3.add(panelClosableCentral, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
-
-        jToolBarStatusInf.setRollover(true);
-        getContentPane().add(jToolBarStatusInf, java.awt.BorderLayout.PAGE_END);
 
         menuArchivo.setText("Archivos");
 
