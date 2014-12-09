@@ -177,9 +177,11 @@ public abstract class JavaUtil {
             oneRow.add(ivt.getAlmacen().getNombre());
             oneRow.add(ivt.getProducto().getIdProducto());
             oneRow.add(ivt.getProducto().getDescripcion());
-            oneRow.add( dosDecimales.format(ivt.getPrecioSinDescuento() == null ? 0f : ivt.getPrecioSinDescuento()).trim());
+            //oneRow.add( dosDecimales.format(ivt.getPrecioSinDescuento() == null ? 0f : ivt.getPrecioSinDescuento()).trim());
+            oneRow.add(ivt.getPrecioSinDescuento());
             oneRow.add(ivt.getDescuento().toString() + "%");
-            oneRow.add( dosDecimales.format(ivt.getPrecioConDescuento() == null ? 0f : ivt.getPrecioConDescuento()).trim());
+            //oneRow.add( dosDecimales.format(ivt.getPrecioConDescuento() == null ? 0f : ivt.getPrecioConDescuento()).trim());
+           oneRow.add(ivt.getPrecioConDescuento());
             oneRow.add(ivt.getFechaCreacion());
             oneRow.add(ivt.getFechaModificacion());
             oneRow.add(ivt.getCantidad());
@@ -345,6 +347,7 @@ public abstract class JavaUtil {
             header.add("CREACION");
             header.add("MODIFICACION");
             header.add("EXISTENCIA");
+            header.add("PROCESADO");
         }
 
         if (o instanceof Almacen) {

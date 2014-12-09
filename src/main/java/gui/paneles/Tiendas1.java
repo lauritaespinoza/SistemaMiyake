@@ -831,6 +831,7 @@ public class Tiendas1 extends javax.swing.JPanel {
         });
 
         jButtonGuardarConteo.setText("Guardar");
+        jButtonGuardarConteo.setEnabled(false);
         jButtonGuardarConteo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonGuardarConteoActionPerformed(evt);
@@ -838,6 +839,7 @@ public class Tiendas1 extends javax.swing.JPanel {
         });
 
         botonImprimir.setText("Imprimir");
+        botonImprimir.setEnabled(false);
         botonImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonImprimirActionPerformed(evt);
@@ -896,9 +898,7 @@ public class Tiendas1 extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 11, Short.MAX_VALUE))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 707, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1736,7 +1736,17 @@ public class Tiendas1 extends javax.swing.JPanel {
 
     private void botonTotalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTotalizarActionPerformed
 
-
+        try {
+            if (jTDetalleRegistroTiendas.getRowCount() != 0 && 
+                    listaprodSA.isEmpty()) {
+                jButtonGuardarConteo.setEnabled(true);
+                botonImprimir.setEnabled(true);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Excepcion al Totalizar Pedido" + e);
+            Logger.getLogger(Tiendas1.class.getName()).log(Level.SEVERE, null, e);
+            
+        }
     }//GEN-LAST:event_botonTotalizarActionPerformed
 
     private void btNCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNCActionPerformed
