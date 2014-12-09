@@ -227,11 +227,11 @@ public class FventanaIncial extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
-        menuFacturacion = new javax.swing.JMenu();
         menuProveedor = new javax.swing.JMenu();
-        menuUsuario = new javax.swing.JMenu();
+        menuDistribuidor = new javax.swing.JMenu();
         menuTiendas = new javax.swing.JMenu();
-        menuInventario = new javax.swing.JMenu();
+        menuProducto = new javax.swing.JMenu();
+        menuUsuario = new javax.swing.JMenu();
         menuMercancia = new javax.swing.JMenu();
         menuNotas = new javax.swing.JMenu();
         menuUtilidades = new javax.swing.JMenu();
@@ -570,20 +570,20 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jMenuBarSistemaMiyake.add(menuArchivo);
 
-        menuFacturacion.setText("Productos");
-        jMenuBarSistemaMiyake.add(menuFacturacion);
-
         menuProveedor.setText("Proveedor");
         jMenuBarSistemaMiyake.add(menuProveedor);
 
-        menuUsuario.setText("Usuarios");
-        jMenuBarSistemaMiyake.add(menuUsuario);
+        menuDistribuidor.setText("Distribuidor");
+        jMenuBarSistemaMiyake.add(menuDistribuidor);
 
         menuTiendas.setText("Tiendas");
         jMenuBarSistemaMiyake.add(menuTiendas);
 
-        menuInventario.setText("Inventario");
-        jMenuBarSistemaMiyake.add(menuInventario);
+        menuProducto.setText("Producto");
+        jMenuBarSistemaMiyake.add(menuProducto);
+
+        menuUsuario.setText("Usuarios");
+        jMenuBarSistemaMiyake.add(menuUsuario);
 
         menuMercancia.setText("Gestion Mercancia");
         jMenuBarSistemaMiyake.add(menuMercancia);
@@ -809,10 +809,10 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JPopupMenu jpMenu;
     private javax.swing.JMenu menuArchivo;
     private javax.swing.JMenu menuAyuda;
-    private javax.swing.JMenu menuFacturacion;
-    private javax.swing.JMenu menuInventario;
+    private javax.swing.JMenu menuDistribuidor;
     private javax.swing.JMenu menuMercancia;
     private javax.swing.JMenu menuNotas;
+    private javax.swing.JMenu menuProducto;
     private javax.swing.JMenu menuProveedor;
     private javax.swing.JMenu menuTiendas;
     private javax.swing.JMenu menuUsuario;

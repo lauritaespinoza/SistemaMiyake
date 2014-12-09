@@ -100,19 +100,14 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="menuFacturacion">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Productos"/>
-          </Properties>
-        </Menu>
         <Menu class="javax.swing.JMenu" name="menuProveedor">
           <Properties>
             <Property name="text" type="java.lang.String" value="Proveedor"/>
           </Properties>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="menuUsuario">
+        <Menu class="javax.swing.JMenu" name="menuDistribuidor">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Usuarios"/>
+            <Property name="text" type="java.lang.String" value="Distribuidor"/>
           </Properties>
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuTiendas">
@@ -120,9 +115,14 @@
             <Property name="text" type="java.lang.String" value="Tiendas"/>
           </Properties>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="menuInventario">
+        <Menu class="javax.swing.JMenu" name="menuProducto">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Inventario"/>
+            <Property name="text" type="java.lang.String" value="Producto"/>
+          </Properties>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="menuUsuario">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Usuarios"/>
           </Properties>
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuMercancia">
