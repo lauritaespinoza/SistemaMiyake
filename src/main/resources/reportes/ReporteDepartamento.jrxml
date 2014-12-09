@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="55e261e3-9ac9-4696-86a3-fee7c1fe4583">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#BFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#E6FFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="62e19cbd-1577-41db-bca1-752031344b23">
+		<field name="ID DEPARTAMENTO" class="java.lang.Integer"/>
+		<field name="NOMBRE DEPARTAMENTO" class="java.lang.String"/>
+		<field name="DIVISION" class="java.lang.String"/>
+	</subDataset>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="125" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="387" y="100" width="168" height="20" uuid="3ff17df6-c33e-4b63-8ad8-589b2c84027c"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="167" y="0" width="199" height="84" uuid="e128e396-7ecf-4d53-8898-524bd4d52139"/>
+				<textElement textAlignment="Center">
+					<font fontName="Impact" size="22"/>
+				</textElement>
+				<text><![CDATA[Reporte de Departamentos de Mercancía]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="63" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table" style="table" x="71" y="0" width="418" height="52" uuid="3f100814-510e-487c-adfe-53e34c7858f4"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Table Dataset 1" uuid="719f31d9-09a8-4868-8581-837909a8fe36">
+						<dataSourceExpression><![CDATA[$P{REPORT_DATA_SOURCE}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="109" uuid="bfdf8a5e-5e23-422d-8550-635ac3278d16">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="109" height="30" uuid="f2efa0fa-4559-4a8b-a8ca-b919b30592a5"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Century" size="11" isBold="true"/>
+								</textElement>
+								<text><![CDATA[ID Departamento]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="109" height="20" uuid="13383f48-1cf4-4d3f-af75-5e830f8dc2d5"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{ID DEPARTAMENTO}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="169" uuid="eec0083d-e999-4981-aaa9-22898caf3017">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="169" height="30" uuid="d4381cf4-488a-49d7-81a0-332cf4d7c0fc"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Century" size="11" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Nombre Departamento]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="169" height="20" uuid="af7d0983-b918-4f34-ae52-225b26a39c36"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{NOMBRE DEPARTAMENTO}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="139" uuid="c4375e87-a9fd-4227-90e2-928140e364df">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="139" height="30" uuid="ecc7cc66-e97c-4fe1-adb1-f721ee14bde3"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Century" size="11" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Nombre División]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="139" height="20" uuid="de10f492-9558-4574-a50e-a8d5bf5563fd"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{DIVISION}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="43" splitType="Stretch">
+			<textField>
+				<reportElement x="429" y="23" width="126" height="20" uuid="924776d0-c0ff-4464-8a07-39bba8d95a8c"/>
+				<textFieldExpression><![CDATA["Pág.: "+$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
