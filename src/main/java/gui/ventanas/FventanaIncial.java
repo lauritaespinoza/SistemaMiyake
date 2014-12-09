@@ -278,7 +278,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         jXCollapsiblePane1.setOpaque(false);
         jXCollapsiblePane1.setAlignmentX(0.0F);
 
-        taskPaneModuloFacturacion.setCollapsed(true);
         taskPaneModuloFacturacion.setTitle("Facturación");
 
         taskPaneProducto.setCollapsed(true);
@@ -336,7 +335,6 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         taskPaneModuloFacturacion.getContentPane().add(taskPaneProducto);
 
-        taskPaneProveedores.setCollapsed(true);
         taskPaneProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415665365_fork1.png"))); // NOI18N
         taskPaneProveedores.setSpecial(true);
         taskPaneProveedores.setTitle("Proveedores");
