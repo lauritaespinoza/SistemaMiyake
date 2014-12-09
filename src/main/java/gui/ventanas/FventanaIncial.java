@@ -161,6 +161,8 @@ public class FventanaIncial extends javax.swing.JFrame {
         jmCrear = new javax.swing.JMenuItem();
         jmModificar = new javax.swing.JMenuItem();
         jmEliminar = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -225,15 +227,36 @@ public class FventanaIncial extends javax.swing.JFrame {
         jMenuBarSistemaMiyake = new javax.swing.JMenuBar();
         menuArchivo = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
-        menuProveedor = new javax.swing.JMenu();
         menuDistribuidor = new javax.swing.JMenu();
+        jMenuProveedor_ = new javax.swing.JMenu();
+        jMenuProveedor_Consultar_ = new javax.swing.JMenuItem();
+        jMenuProveedor_Crear_ = new javax.swing.JMenuItem();
+        jMenuProveedor__Modificar_ = new javax.swing.JMenuItem();
+        jMenuProveedor_Eliminar_ = new javax.swing.JMenuItem();
+        jMenuRegistroContainer_ = new javax.swing.JMenuItem();
+        jMenuTomaFisicaDistribuidora = new javax.swing.JMenuItem();
+        jMenuAsignarMercanciaTiendas_ = new javax.swing.JMenuItem();
+        jMenuEstadoEnvios_ = new javax.swing.JMenu();
+        jMenuMercanciaProceso_ = new javax.swing.JMenuItem();
+        jMenuMercanciaFinalizada_ = new javax.swing.JMenuItem();
         menuTiendas = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuGestionAlmacenes_ = new javax.swing.JMenu();
+        jMenuControlInventario_ = new javax.swing.JMenu();
+        jMenuGestionPrecios_ = new javax.swing.JMenu();
+        jMenuNotasDebitoCredito_ = new javax.swing.JMenu();
+        jMenuItemControlExistencia_ = new javax.swing.JMenuItem();
+        jMenuItemUbicacbionAlmacen_ = new javax.swing.JMenuItem();
         menuProducto = new javax.swing.JMenu();
+        jMenuProductos = new javax.swing.JMenu();
+        jMenuMarcas_ = new javax.swing.JMenu();
+        jMenuClasificacion_ = new javax.swing.JMenu();
+        jMenuDepartamento = new javax.swing.JMenu();
+        jMenuDivision = new javax.swing.JMenu();
         menuUsuario = new javax.swing.JMenu();
-        menuMercancia = new javax.swing.JMenu();
-        menuNotas = new javax.swing.JMenu();
+        menuDetalles = new javax.swing.JMenu();
+        menuReportes = new javax.swing.JMenu();
         menuUtilidades = new javax.swing.JMenu();
         menuAyuda = new javax.swing.JMenu();
 
@@ -248,6 +271,10 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jmEliminar.setText("Eliminar");
         jpMenu.add(jmEliminar);
+
+        jMenu1.setText("jMenu1");
+
+        jMenu2.setText("jMenu2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(9, 182, 201));
@@ -300,7 +327,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         jXCollapsiblePane1.setOpaque(false);
         jXCollapsiblePane1.setAlignmentX(0.0F);
 
-        taskPaneModuloFacturacion.setCollapsed(true);
         taskPaneModuloFacturacion.setTitle("Facturación");
 
         taskPaneProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415658077_database.png"))); // NOI18N
@@ -362,7 +388,6 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         taskPaneModuloFacturacion.getContentPane().add(taskPaneProducto);
 
-        taskPaneProveedores.setCollapsed(true);
         taskPaneProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415665365_fork1.png"))); // NOI18N
         taskPaneProveedores.setSpecial(true);
         taskPaneProveedores.setTitle("Proveedores");
@@ -562,34 +587,122 @@ public class FventanaIncial extends javax.swing.JFrame {
         jMenuItem1.setText("Opciones");
         menuArchivo.add(jMenuItem1);
 
-        jMenuItem2.setText("Cerrar Seccion");
-        menuArchivo.add(jMenuItem2);
-
         jMenuItem3.setText("Salir");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         menuArchivo.add(jMenuItem3);
 
         jMenuBarSistemaMiyake.add(menuArchivo);
 
-        menuProveedor.setText("Proveedor");
-        jMenuBarSistemaMiyake.add(menuProveedor);
+        menuDistribuidor.setText("Distribuidora");
 
-        menuDistribuidor.setText("Distribuidor");
+        jMenuProveedor_.setText("Gestion de Proveedores");
+
+        jMenuProveedor_Consultar_.setText("Consultar");
+        jMenuProveedor_Consultar_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuProveedor_Consultar_ActionPerformed(evt);
+            }
+        });
+        jMenuProveedor_.add(jMenuProveedor_Consultar_);
+
+        jMenuProveedor_Crear_.setText("Crear");
+        jMenuProveedor_Crear_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuProveedor_Crear_ActionPerformed(evt);
+            }
+        });
+        jMenuProveedor_.add(jMenuProveedor_Crear_);
+
+        jMenuProveedor__Modificar_.setText("Modificar");
+        jMenuProveedor_.add(jMenuProveedor__Modificar_);
+
+        jMenuProveedor_Eliminar_.setText("Eliminar");
+        jMenuProveedor_.add(jMenuProveedor_Eliminar_);
+
+        menuDistribuidor.add(jMenuProveedor_);
+
+        jMenuRegistroContainer_.setText("Registro de Container");
+        menuDistribuidor.add(jMenuRegistroContainer_);
+
+        jMenuTomaFisicaDistribuidora.setText("Toma Fisica Distribuidora");
+        jMenuTomaFisicaDistribuidora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuTomaFisicaDistribuidoraActionPerformed(evt);
+            }
+        });
+        menuDistribuidor.add(jMenuTomaFisicaDistribuidora);
+
+        jMenuAsignarMercanciaTiendas_.setText("Asignar Mercancia Tiendas");
+        menuDistribuidor.add(jMenuAsignarMercanciaTiendas_);
+
+        jMenuEstadoEnvios_.setText("Estado de Envios Mercancia");
+
+        jMenuMercanciaProceso_.setText("Mercancia en Proceso");
+        jMenuEstadoEnvios_.add(jMenuMercanciaProceso_);
+
+        jMenuMercanciaFinalizada_.setText("Mercancia Finalizada");
+        jMenuEstadoEnvios_.add(jMenuMercanciaFinalizada_);
+
+        menuDistribuidor.add(jMenuEstadoEnvios_);
+
         jMenuBarSistemaMiyake.add(menuDistribuidor);
 
         menuTiendas.setText("Tiendas");
+
+        jMenuItem2.setText("Toma Fisica Tiendas");
+        menuTiendas.add(jMenuItem2);
+
+        jMenuGestionAlmacenes_.setText("Gestion Almacenes");
+        menuTiendas.add(jMenuGestionAlmacenes_);
+
+        jMenuControlInventario_.setText("Gestion Inventario");
+        menuTiendas.add(jMenuControlInventario_);
+
+        jMenuGestionPrecios_.setText("Control De Precios");
+        menuTiendas.add(jMenuGestionPrecios_);
+
+        jMenuNotasDebitoCredito_.setText("Notas Credito/Debito");
+        menuTiendas.add(jMenuNotasDebitoCredito_);
+
+        jMenuItemControlExistencia_.setText("Control Existencia");
+        menuTiendas.add(jMenuItemControlExistencia_);
+
+        jMenuItemUbicacbionAlmacen_.setText("Ubicacion Almacenes");
+        menuTiendas.add(jMenuItemUbicacbionAlmacen_);
+
         jMenuBarSistemaMiyake.add(menuTiendas);
 
-        menuProducto.setText("Producto");
+        menuProducto.setText("Gestion De Productos");
+
+        jMenuProductos.setText("Productos");
+        menuProducto.add(jMenuProductos);
+
+        jMenuMarcas_.setText("Marcas");
+        menuProducto.add(jMenuMarcas_);
+
+        jMenuClasificacion_.setText("Clasificacion");
+        menuProducto.add(jMenuClasificacion_);
+
+        jMenuDepartamento.setText("Departamento");
+        menuProducto.add(jMenuDepartamento);
+
+        jMenuDivision.setText("Division");
+        menuProducto.add(jMenuDivision);
+
         jMenuBarSistemaMiyake.add(menuProducto);
 
         menuUsuario.setText("Usuarios");
         jMenuBarSistemaMiyake.add(menuUsuario);
 
-        menuMercancia.setText("Gestion Mercancia");
-        jMenuBarSistemaMiyake.add(menuMercancia);
+        menuDetalles.setText("Detalles");
+        jMenuBarSistemaMiyake.add(menuDetalles);
 
-        menuNotas.setText("Notas");
-        jMenuBarSistemaMiyake.add(menuNotas);
+        menuReportes.setText("Reportes");
+        jMenuBarSistemaMiyake.add(menuReportes);
 
         menuUtilidades.setText("Utilidades");
         jMenuBarSistemaMiyake.add(menuUtilidades);
@@ -741,6 +854,26 @@ public class FventanaIncial extends javax.swing.JFrame {
                 0);
     }//GEN-LAST:event_btnCrudProductoMouseEntered
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+
+        dispose();
+        this.setVisible(false);
+        
+
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuTomaFisicaDistribuidoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuTomaFisicaDistribuidoraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuTomaFisicaDistribuidoraActionPerformed
+
+    private void jMenuProveedor_Consultar_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuProveedor_Consultar_ActionPerformed
+       addPaneles(tabMecanciaEnProceso, JPproveedor.class, null);
+    }//GEN-LAST:event_jMenuProveedor_Consultar_ActionPerformed
+
+    private void jMenuProveedor_Crear_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuProveedor_Crear_ActionPerformed
+       
+    }//GEN-LAST:event_jMenuProveedor_Crear_ActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -790,10 +923,34 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuItem jMenuAsignarMercanciaTiendas_;
     private javax.swing.JMenuBar jMenuBarSistemaMiyake;
+    private javax.swing.JMenu jMenuClasificacion_;
+    private javax.swing.JMenu jMenuControlInventario_;
+    private javax.swing.JMenu jMenuDepartamento;
+    private javax.swing.JMenu jMenuDivision;
+    private javax.swing.JMenu jMenuEstadoEnvios_;
+    private javax.swing.JMenu jMenuGestionAlmacenes_;
+    private javax.swing.JMenu jMenuGestionPrecios_;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItemControlExistencia_;
+    private javax.swing.JMenuItem jMenuItemUbicacbionAlmacen_;
+    private javax.swing.JMenu jMenuMarcas_;
+    private javax.swing.JMenuItem jMenuMercanciaFinalizada_;
+    private javax.swing.JMenuItem jMenuMercanciaProceso_;
+    private javax.swing.JMenu jMenuNotasDebitoCredito_;
+    private javax.swing.JMenu jMenuProductos;
+    private javax.swing.JMenu jMenuProveedor_;
+    private javax.swing.JMenuItem jMenuProveedor_Consultar_;
+    private javax.swing.JMenuItem jMenuProveedor_Crear_;
+    private javax.swing.JMenuItem jMenuProveedor_Eliminar_;
+    private javax.swing.JMenuItem jMenuProveedor__Modificar_;
+    private javax.swing.JMenuItem jMenuRegistroContainer_;
+    private javax.swing.JMenuItem jMenuTomaFisicaDistribuidora;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanelControlesPrincipales;
@@ -809,11 +966,10 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JPopupMenu jpMenu;
     private javax.swing.JMenu menuArchivo;
     private javax.swing.JMenu menuAyuda;
+    private javax.swing.JMenu menuDetalles;
     private javax.swing.JMenu menuDistribuidor;
-    private javax.swing.JMenu menuMercancia;
-    private javax.swing.JMenu menuNotas;
     private javax.swing.JMenu menuProducto;
-    private javax.swing.JMenu menuProveedor;
+    private javax.swing.JMenu menuReportes;
     private javax.swing.JMenu menuTiendas;
     private javax.swing.JMenu menuUsuario;
     private javax.swing.JMenu menuUtilidades;
