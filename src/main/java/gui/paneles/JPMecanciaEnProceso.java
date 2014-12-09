@@ -84,8 +84,8 @@ public class JPMecanciaEnProceso extends javax.swing.JPanel {
         this.comboBoxAlmacenDesde.setSelectedIndex(-1);
 
 //        this.jXTableMercanciaEnProceso.setAutoCreateRowSorter(true);
-        this.jXTableMercanciaEnProceso.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        this.jXTableMercanciaEnProceso.setColumnControlVisible(true);
+//        this.jXTableMercanciaEnProceso.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+//        this.jXTableMercanciaEnProceso.setColumnControlVisible(true);
         //  TableRowFilterSupport.forTable(jXTable1).searchable(true).apply();
         this.busy.setVisible(false);
 
@@ -128,7 +128,6 @@ public class JPMecanciaEnProceso extends javax.swing.JPanel {
         jLayeredPaneProductos = new javax.swing.JLayeredPane();
         jScrollPane5 = new javax.swing.JScrollPane();
         jXTableMercanciaEnProceso = new org.jdesktop.swingx.JXTable();
-        jXFindBar1 = new org.jdesktop.swingx.JXFindBar(jXTableMercanciaEnProceso.getSearchable());
         busy = new org.jdesktop.swingx.JXBusyLabel();
         jXButtonAsignarMercancia = new org.jdesktop.swingx.JXButton();
         jXButtonImprimir = new org.jdesktop.swingx.JXButton();
@@ -226,6 +225,7 @@ public class JPMecanciaEnProceso extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jXTableMercanciaEnProceso.setSortable(false);
         jScrollPane5.setViewportView(jXTableMercanciaEnProceso);
 
         javax.swing.GroupLayout jLayeredPaneProductosLayout = new javax.swing.GroupLayout(jLayeredPaneProductos);
@@ -234,24 +234,17 @@ public class JPMecanciaEnProceso extends javax.swing.JPanel {
             jLayeredPaneProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPaneProductosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jLayeredPaneProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5)
-                    .addGroup(jLayeredPaneProductosLayout.createSequentialGroup()
-                        .addComponent(jXFindBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 214, Short.MAX_VALUE)))
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jLayeredPaneProductosLayout.setVerticalGroup(
             jLayeredPaneProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPaneProductosLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jXFindBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(50, 50, 50)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jLayeredPaneProductos.setLayer(jScrollPane5, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPaneProductos.setLayer(jXFindBar1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jScrollPane4.setViewportView(jLayeredPaneProductos);
 
@@ -597,7 +590,6 @@ public class JPMecanciaEnProceso extends javax.swing.JPanel {
     private org.jdesktop.swingx.JXButton jXButtonConfirmar;
     private org.jdesktop.swingx.JXButton jXButtonImprimir;
     private org.jdesktop.swingx.JXButton jXButtonReiniciar;
-    private org.jdesktop.swingx.JXFindBar jXFindBar1;
     private org.jdesktop.swingx.JXTable jXTableMercanciaEnProceso;
     private org.jdesktop.swingx.JXLabel txtAlmacenSelecion;
     // End of variables declaration//GEN-END:variables

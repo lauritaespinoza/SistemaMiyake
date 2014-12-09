@@ -1628,9 +1628,9 @@ public class Tiendas1 extends javax.swing.JPanel {
 
         try {
             if ("".equals(this.txtCantidad.getText())
-                    || Integer.parseInt(this.txtCantidad.getText()) == 0 //|| (this.sd.getCantidadProducto() * this.sd.getCantidadSet()) <= (Math.abs(Integer.parseInt(this.txtCantidad.getText())))
+                   // || Integer.parseInt(this.txtCantidad.getText()) == 0 //|| (this.sd.getCantidadProducto() * this.sd.getCantidadSet()) <= (Math.abs(Integer.parseInt(this.txtCantidad.getText())))
                     ) {
-                JOptionPane.showMessageDialog(null, "¡¡¡Intriduzca Cantidad Por Favor!!!");
+                JOptionPane.showMessageDialog(null, "¡¡¡Introduzca Cantidad Por Favor!!!");
             } else {
                 int totalCantidadInventario = sd.getCantidadProducto();
 
