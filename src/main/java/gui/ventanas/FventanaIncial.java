@@ -168,6 +168,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
         jPanelControlesPrincipales = new javax.swing.JPanel();
         jXCollapsiblePane1 = new org.jdesktop.swingx.JXCollapsiblePane();
         taskPaneModuloFacturacion = new org.jdesktop.swingx.JXTaskPane();
@@ -300,6 +301,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         jXCollapsiblePane1.setOpaque(false);
         jXCollapsiblePane1.setAlignmentX(0.0F);
 
+        taskPaneModuloFacturacion.setCollapsed(true);
         taskPaneModuloFacturacion.setTitle("Facturación");
 
         taskPaneProducto.setCollapsed(true);
@@ -455,7 +457,6 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jXCollapsiblePane1.getContentPane().add(taskPaneModuloTienda);
 
-        taskPaneModuloDeposito.setCollapsed(true);
         taskPaneModuloDeposito.setTitle("Depósito");
 
         taskPaneGestionMercancia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415667180_application-vnd.ms-excel.png"))); // NOI18N
@@ -547,7 +548,9 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jPanelControlesPrincipales.add(jXCollapsiblePane1);
 
-        jPanel3.add(jPanelControlesPrincipales, java.awt.BorderLayout.LINE_START);
+        jScrollPane1.setViewportView(jPanelControlesPrincipales);
+
+        jPanel3.add(jScrollPane1, java.awt.BorderLayout.WEST);
 
         panelClosableCentral.setAlignmentX(0.0F);
         panelClosableCentral.setAutoscrolls(true);
@@ -799,7 +802,7 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanelControlesPrincipales;
-    private javax.swing.JToolBar jToolBarStatusInf;
+    private javax.swing.JScrollPane jScrollPane1;
     private org.jdesktop.swingx.JXButton jXButton1;
     private org.jdesktop.swingx.JXButton jXButton2;
     private org.jdesktop.swingx.JXCollapsiblePane jXCollapsiblePane1;
