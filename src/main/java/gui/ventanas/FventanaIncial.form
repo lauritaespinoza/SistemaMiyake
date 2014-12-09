@@ -1348,9 +1348,6 @@
                           </LayoutCode>
                         </Container>
                         <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneUtilidades">
-                          <Properties>
-                            <Property name="collapsed" type="boolean" value="true"/>
-                          </Properties>
                           <SubComponents>
                             <Component class="org.jdesktop.swingx.JXButton" name="UbicacionProducto_boton_">
                               <Properties>

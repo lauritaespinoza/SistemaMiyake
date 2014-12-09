@@ -502,8 +502,6 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         taskPaneModuloDeposito.getContentPane().add(taskPaneConsultas);
 
-        taskPaneUtilidades.setCollapsed(true);
-
         UbicacionProducto_boton_.setText("Ubicacion Producto");
         taskPaneUtilidades.getContentPane().add(UbicacionProducto_boton_);
 

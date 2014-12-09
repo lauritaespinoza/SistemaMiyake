@@ -196,7 +196,6 @@ public class Tiendas1 extends javax.swing.JPanel {
 
         dialogoMostrarNotas.setLocationByPlatform(true);
         dialogoMostrarNotas.setModal(true);
-        dialogoMostrarNotas.pack();
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         Point p= new Point(
             (int) ((d.getWidth() - dialogoMostrarNotas.getWidth()) / 2),
@@ -223,17 +222,17 @@ public class Tiendas1 extends javax.swing.JPanel {
             dialogoMostrarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dialogoMostrarNotasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(dialogoMostrarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btNC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btND, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(dialogoMostrarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btND, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btNC, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         dialogoMostrarNotasLayout.setVerticalGroup(
             dialogoMostrarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dialogoMostrarNotasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btNC)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btND)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -824,7 +823,7 @@ public class Tiendas1 extends javax.swing.JPanel {
 
         jScrollPane4.setViewportView(jLayeredPaneProductos);
 
-        botonGenerarNotas.setText("Generear Notas");
+        botonGenerarNotas.setText("Mostrar Notas");
         botonGenerarNotas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonGenerarNotasActionPerformed(evt);
@@ -852,7 +851,7 @@ public class Tiendas1 extends javax.swing.JPanel {
             .addGroup(jLayeredPanePrincipalLayout.createSequentialGroup()
                 .addGap(95, 95, 95)
                 .addComponent(botonGenerarNotas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 229, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 244, Short.MAX_VALUE)
                 .addComponent(botonImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(136, 136, 136)
                 .addComponent(jButtonGuardarConteo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1234,8 +1233,8 @@ public class Tiendas1 extends javax.swing.JPanel {
                                     id_in.setDescuento(0);
                                     id_in.setProcesado(id_in.getProcesado() - dr.getCantidad());
                                     //Alualiza Cantidad Inexistente
-                                    // id_in.setCantidad(id_in.getCantidad() + dr.getCantidad());
-                                    //id_in.setAsignado(Boolean.TRUE);
+                                    id_in.setCantidad(id_in.getCantidad() + dr.getCantidad());
+                                    id_in.setAsignado(Boolean.TRUE);
 
                                     detalle.setTotalFaltante(dr.getCantidad() * dr.getSd().getProducto().getPrecioOriginal());
                                     totalCosto += detalle.getTotalFaltante();
@@ -1334,7 +1333,8 @@ public class Tiendas1 extends javax.swing.JPanel {
 
                     cab.setTotalConteo(totalCosto);
                     ObjectModelDAO.updateObject(cab);
-
+                    sa.setRevisado(Boolean.TRUE);
+                    ObjectModelDAO.updateObject(sa);
                     //busys
                     busy.setEnabled(false);
                     busy.setVisible(false);
@@ -1730,6 +1730,7 @@ public class Tiendas1 extends javax.swing.JPanel {
     private void botonGenerarNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGenerarNotasActionPerformed
         btNC.setEnabled(sobrante != null);
         btND.setEnabled(faltante != null);
+        dialogoMostrarNotas.pack();
         dialogoMostrarNotas.setVisible(true);
     }//GEN-LAST:event_botonGenerarNotasActionPerformed
 
