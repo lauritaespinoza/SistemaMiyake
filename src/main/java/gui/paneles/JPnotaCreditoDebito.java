@@ -59,10 +59,10 @@ import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 
 public class JPnotaCreditoDebito extends javax.swing.JPanel {
-
+    
     private List resultListNcdDetalle;
     private List resultLisNcd;
-    public NotaCreditoDebito ncd;
+    private NotaCreditoDebito ncd;
     private final List resultListAlmacen;
     public static final String encaso_sobrante = "EN CASO DE MERCANCIA SOBRANTE";
     public static final String encaso_faltante = "EN CASO DE MERCANCIA FALTANTE";
@@ -75,8 +75,7 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
     private Usuario user = JFInicioSecionMiyake.us1;
     public final InputStream rutaJasper = this.getClass().getResourceAsStream("/reportes/ReporteNotasDebCred.jasper");
     public final InputStream rutaJrxml = this.getClass().getResourceAsStream("/reportes/ReporteNotasDebCred.jrxml");
-
-
+    
     public JPnotaCreditoDebito(Boolean tipo) {
         initComponents();
         this.titulo.setText(tipo ? nota_credito : nota_debito);
@@ -89,20 +88,20 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
             Almacen a = (Almacen) object;
             cb_tienda.addItem(a.getNombre());
         }
-
+        
+    }
+    
+    public NotaCreditoDebito getNcd() {
+        return ncd;
+    }
+    
+    public void setNcd(NotaCreditoDebito ncd) {        
+        cb_tienda.setSelectedItem(ncd.getIdSalida().getIdAlmacenHasta().getNombre());
+        cb_ncd.setSelectedItem(ncd.getIdNotaCreditoDebito());
+        //la asignacion a ncd esta en cb_ncd action performence
     }
 
-    private void cargarFacturas() {
-//        resultListContacto = ObjectModelDAO.getResultQuery("FROM Contacto c order by c.idContacto asc");
-//            cb_ubicacion.removeAllItems();
-//            cb_contacto.removeAllItems();
-//
-//            for (Object object : resultListUbicacion) {
-//                Ubicacion u = (Ubicacion) object;
-//                cb_ubicacion.addItem(u.toString());
-//            }
-    }
-
+    
     private void setNulls() {
         nombreAlmacen.setText("");
         rifAlmacen.setText("");
@@ -112,33 +111,33 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
         resultListNcdDetalle = null;
         tabla.setModel(new DefaultTableModel());
     }
-
+    
     private void cargarHistorial() {
         setNulls();
-
+        
         Thread hilo = new Thread() {
             @Override
             public void run() {
-
+                
                 int opc;
                 busy.setVisible(true);
                 busy.setBusy(true);
-
+                
                 Almacen alc = (Almacen) resultListAlmacen.get(cb_tienda.getSelectedIndex() - 1);
-
+                
                 nombreAlmacen.setText(alc.getNombre());
                 rifAlmacen.setText("RIF: " + alc.getRif());
                 direccionAlmacen.setText(alc.getIdUbicacion() == null
                         ? null : alc.getIdUbicacion().toString());
-
+                
                 JavaUtil.preCambio(alc.getLogo(), logo);
-
+                
                 String hql = "FROM  InventarioDiario ivd WHERE ivd.fecha > :primerof "
                         + "AND ivd.fecha<:ultimof "
                         + "AND ivd.idAlmacen=:alcm";
-
+                
                 DaoQuery q = ObjectModelDAO.createQueryDAO(hql);
-
+                
                 List rsl = ObjectModelDAO.getResultQuery(q);
 
 //                if (rsl.size() == 1) {//hay un inventario diario
@@ -158,15 +157,15 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
 //                    }
 //                }
                 imprimir.setEnabled(tabla.getRowCount() > 0);
-
+                
                 busy.setVisible(false);
                 busy.setBusy(false);
             }
-
+            
         };
         hilo.start();
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -181,7 +180,6 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
         direccionAlmacen = new javax.swing.JLabel();
         guardar = new javax.swing.JButton();
         imprimir = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
         fecha = new org.jdesktop.swingx.JXDatePicker();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -263,9 +261,6 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
                 imprimirActionPerformed(evt);
             }
         });
-
-        jCheckBox1.setSelected(true);
-        jCheckBox1.setText("jCheckBox1");
 
         jLabel1.setText("debe ser label");
 
@@ -349,16 +344,12 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
                                 .addGap(136, 136, 136)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(43, 43, 43)
-                                        .addComponent(jCheckBox1)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(144, 144, 144)
-                                                .addComponent(cb_tienda, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jLabel7)
-                                                .addGap(87, 87, 87))))
+                                        .addGap(268, 268, 268)
+                                        .addComponent(cb_tienda, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 368, Short.MAX_VALUE)
+                                        .addComponent(jLabel7)
+                                        .addGap(87, 87, 87))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
@@ -427,9 +418,7 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
                     .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jCheckBox1)
-                                .addComponent(jLabel7))
+                            .addComponent(jLabel7)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(20, 20, 20)
                                 .addComponent(cb_tienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -445,6 +434,7 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
                                     .addComponent(cb_ncd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(nuevo))
                                 .addGap(16, 16, 16)))))
+                .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(11, 11, 11)
@@ -512,7 +502,7 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
                 && !cb_salida.getSelectedItem().equals(JavaUtil.cons_seleccionar)
                 && cb_ncd.getSelectedIndex() != -1
                 && cb_ncd.getSelectedItem().equals(JavaUtil.cons_seleccionar)) {
-
+            
             JDasignadaTienda jdAT = new JDasignadaTienda(null, true, resultListSptDetalle);
             jdAT.setVisible(true);
             if (jdAT.sptd != null) {
@@ -543,7 +533,7 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_tablaMouseClicked
-
+    
     private boolean filaCorrecta(int i) {//hacer con for
         Object o0 = tabla.getModel().getValueAt(i, 0);
         Object o1 = tabla.getModel().getValueAt(i, 1);
@@ -562,12 +552,12 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
     }
 
     private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
-         try {
+        try {
             JasperPrint jasperPrint = null;
-
+            
             Map<String, Object> parametro = new HashMap<>();
             String s = "";
-
+            
             if (getTipo()) {
                 parametro.put("Titulo", nota_credito);
                 parametro.put("Caso", encaso_sobrante);
@@ -578,13 +568,13 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
             parametro.put("NumFactura", cb_salida.getSelectedItem());
             parametro.put("Facturado", facturado.getText());
             parametro.put("Realizado", realizado.getText());
-            parametro.put("Fecha",new SimpleDateFormat("dd-MM-yyyy").format(fecha.getDate()));
+            parametro.put("Fecha", new SimpleDateFormat("dd-MM-yyyy").format(fecha.getDate()));
             parametro.put("Direccion", direccionAlmacen.getText());
             parametro.put("Tienda", nombreAlmacen.getText());
             parametro.put("Rif", rifAlmacen.getText());
-
+            
             TableModelReport dataSourse = new TableModelReport(tabla.getModel());
-
+            
             parametro.put("REPORT_DATA_SOURCE", dataSourse);
             //parametro.put("Total", total.getText());
             JasperCompileManager.compileReport(rutaJrxml);
@@ -592,15 +582,15 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
             JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
             jasperViewer.setTitle("Reporte de Nota");
             jasperViewer.setVisible(true);
-
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "error" + e);
         }
 
     }//GEN-LAST:event_imprimirActionPerformed
-
+    
     private boolean calcularTotal() {
-
+        
         String filas_incorrectas = "";
         int errores = 0;
         float total = 0f;
@@ -608,14 +598,14 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
             Object o = tabla.getModel().getValueAt(i, 3);
             int cantidad = 0;
             String str;
-
+            
             if (o instanceof String) {
                 str = (String) o;
             }
             if (o instanceof Integer) {
                 cantidad = (Integer) o;
             }
-
+            
             if (cantidad > 0) {
                 if (errores == 0) {
                     int precio = Integer.parseInt((String) tabla.getModel().getValueAt(i, 4));
@@ -636,12 +626,12 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
             ncd.setTotal(total);
             return true;
         }
-
+        
     }
 
 //
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-
+        
         if (fecha.getDate() == null) {
             JOptionPane.showMessageDialog(null, "Debe seleccionar una fecha");
             return;
@@ -655,19 +645,19 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un reglón de la factura");
             return;
         }
-
+        
         if (JOptionPane.showConfirmDialog(null, "¿Desea Guardar?, no habrá posibilidad de cambio.", "Sugerencia", JOptionPane.YES_NO_OPTION)
                 == JOptionPane.NO_OPTION) {
             return;//sino quiere
         }
-
+        
         if (!calcularTotal()) {
             return;
         }
-
+        
         ncd.setFecha(fecha.getDate());
         ObjectModelDAO.saveObject(ncd);
-
+        
         for (Object o : resultListNcdDetalle) {
             ObjectModelDAO.saveObject((NotaCreditoDebitoDetalle) o);
         }
@@ -681,16 +671,15 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
 //        } else {
 //
 //        }
-
         cb_tiendaActionPerformed(null);
     }//GEN-LAST:event_guardarActionPerformed
 
     private void cb_ncdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_ncdActionPerformed
-
+        
         if (cb_ncd.getSelectedIndex() != -1
                 && cb_ncd.getSelectedItem().equals(JavaUtil.cons_seleccionar)
                 && !crear) {
-
+            
             cb_salida.setSelectedItem(JavaUtil.cons_seleccionar);
             spt = null;
             facturado.setText(" ");
@@ -705,7 +694,7 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
             cb_salida.setEnabled(false);
             return;
         }
-
+        
         if (cb_ncd.getSelectedIndex() != -1 && cb_tienda.getSelectedIndex() != -1
                 && !cb_tienda.getSelectedItem().equals(JavaUtil.cons_seleccionar)
                 && !cb_ncd.getSelectedItem().equals(JavaUtil.cons_seleccionar)) {
@@ -732,7 +721,7 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
             } else {
                 JOptionPane.showMessageDialog(null, "La nota no tiene detalle");
             }
-
+            
         }
     }//GEN-LAST:event_cb_ncdActionPerformed
 
@@ -772,24 +761,24 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
             DaoQuery q = ObjectModelDAO.createQueryDAO(HQL);
             q.getQuery().setParameter("spt", spt);
             resultListSptDetalle = ObjectModelDAO.getResultQuery(q);
-
+            
             if (ncd == null) {
                 ncd = new NotaCreditoDebito(getTipo(), spt, user);
             }
-
+            
             JOptionPane.showMessageDialog(null, "Haga doble click en la tabla"
                     + " para seleccionar algún renglón de la factura");
         }
     }//GEN-LAST:event_cb_salidaActionPerformed
 
     private void cb_tiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_tiendaActionPerformed
-
+        
         imprimir.setEnabled(false);
         guardar.setEnabled(false);
         fecha.setEnabled(false);
         fecha.setDate(null);
         tabla.setModel(new DefaultTableModel());
-
+        
         cb_ncd.removeAllItems();
         cb_salida.removeAllItems();
         cb_salida.setEnabled(false);
@@ -811,11 +800,11 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
                 || cb_tienda.getSelectedIndex() == -1) {
             return;
         }
-
+        
         Almacen alc = (Almacen) resultListAlmacen.get(cb_tienda.getSelectedIndex() - 1);
         JavaUtil.preCambio(alc.getLogo(), logo);
         nombreAlmacen.setText(alc.getNombre());
-        rifAlmacen.setText("RIF: " + alc.getRif()== null? "" :alc.getRif());
+        rifAlmacen.setText("RIF: " + alc.getRif() == null ? "" : alc.getRif());
         direccionAlmacen.setText(alc.getIdUbicacion() == null
                 ? "" : alc.getIdUbicacion().toString());
         String hql = "FROM NotaCreditoDebito ncd WHERE ncd.tipo=:tipo AND ncd.idSalida.revisado=:revisado "
@@ -825,14 +814,14 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
         q.getQuery().setParameter("tipo", getTipo());
         q.getQuery().setParameter("revisado", true);
         q.getQuery().setParameter("almacen", alc);
-
+        
         resultLisNcd = ObjectModelDAO.getResultQuery(q);
         cb_ncd.addItem(JavaUtil.cons_seleccionar);
         for (Object object : resultLisNcd) {
             NotaCreditoDebito ncd = (NotaCreditoDebito) object;
             cb_ncd.addItem(ncd.getIdNotaCreditoDebito());
         }
-
+        
         cb_ncd.requestFocus();
         hql = "FROM SalidaParaTienda spt WHERE spt.idAlmacenHasta=:almacen AND spt.revisado=:revisado ORDER BY spt.idSalida asc";
         q = ObjectModelDAO.createQueryDAO(hql);
@@ -854,7 +843,7 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
                 && evt.getKeyCode() == KeyEvent.VK_DELETE
                 && JOptionPane.showConfirmDialog(null, "Desea eliminar el renglón del detalle?",
                         "Advertencia", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-
+            
             resultListNcdDetalle.remove(tabla.getSelectedRow());
             ((DefaultTableModel) tabla.getModel()).removeRow(tabla.getSelectedRow());
         }
@@ -865,7 +854,7 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
             calcularTotal();
         }
     }//GEN-LAST:event_totalMouseClicked
-
+    
     private boolean getTipo() {
         switch (titulo.getText()) {
             case nota_credito:
@@ -874,9 +863,9 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
                 return false;
         }
     }
-
+    
     public static void main(String args[]) {
-
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 JFrame f = new JFrame();
@@ -899,7 +888,6 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
     private org.jdesktop.swingx.JXDatePicker fecha;
     private javax.swing.JButton guardar;
     private javax.swing.JButton imprimir;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
