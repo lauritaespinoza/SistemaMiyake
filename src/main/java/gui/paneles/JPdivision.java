@@ -34,6 +34,10 @@ public class JPdivision extends javax.swing.JPanel {
     public JPdivision() {
         this(0);
     }
+    
+    public void posicionar(int tabCrud){
+        panelScrudDiv.setSelectedIndex(tabCrud);
+    }
 
     public JPdivision(int tabCrud) {
         initComponents();

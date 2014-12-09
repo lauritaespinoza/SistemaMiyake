@@ -42,9 +42,7 @@ public class JPproveedor extends javax.swing.JPanel {
 
     public JPproveedor(int tabCrud) {
         initComponents();
-
-         TableModelData();
-         
+                 
         setTableCellAlignment(JLabel.CENTER, listadoProveedores);
         setTableCellAlignment(JLabel.CENTER, tablaModfProveedor);
         setTableCellAlignment(JLabel.CENTER, tablaDeletProveedor);
@@ -855,15 +853,15 @@ public class JPproveedor extends javax.swing.JPanel {
             }
             data.add(subdata);
         }
-        tableModel = new DefaultTableModel(data, columnNames);
-        listadoProveedores.setModel(tableModel);
+        tableModel = new DefaultTableModel(data, columnNames);//        listadoProveedores.setModel(tableModel);
     }
 
     private void generarReporte() {
         try {
             JasperPrint jasperPrint = null;
             Map<String, Object> parametro = new HashMap<>();
-
+            TableModelData();
+          
             TableModelReport dataSourse = new TableModelReport(tableModel);
 
             parametro.put("REPORT_DATA_SOURSE", dataSourse);
@@ -878,8 +876,8 @@ public class JPproveedor extends javax.swing.JPanel {
     }
 
     private void bt_GenerarReporteProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_GenerarReporteProveedoresActionPerformed
-       // generarReporte();
-        TableModelData();               
+        generarReporte();
+       // TableModelData();               
                 
     }//GEN-LAST:event_bt_GenerarReporteProveedoresActionPerformed
 

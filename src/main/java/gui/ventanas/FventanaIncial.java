@@ -1,5 +1,6 @@
 package gui.ventanas;
 
+import com.l2fprod.util.ImageUtils;
 import gui.dialogos.ClockTest;
 import gui.paneles.Asignar1;
 import gui.paneles.Distribuidora1;
@@ -238,9 +239,19 @@ public class FventanaIncial extends javax.swing.JFrame {
         menuAyuda = new javax.swing.JMenu();
 
         jmConsultar.setText("Consultar");
+        jmConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmConsultarActionPerformed(evt);
+            }
+        });
         jpMenu.add(jmConsultar);
 
         jmCrear.setText("Crear");
+        jmCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmCrearActionPerformed(evt);
+            }
+        });
         jpMenu.add(jmCrear);
 
         jmModificar.setText("Modificar");
@@ -300,7 +311,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         jXCollapsiblePane1.setOpaque(false);
         jXCollapsiblePane1.setAlignmentX(0.0F);
 
-        taskPaneModuloFacturacion.setCollapsed(true);
         taskPaneModuloFacturacion.setTitle("Facturación");
 
         taskPaneProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415658077_database.png"))); // NOI18N
@@ -740,6 +750,14 @@ public class FventanaIncial extends javax.swing.JFrame {
                 cpm.getWidth(),
                 0);
     }//GEN-LAST:event_btnCrudProductoMouseEntered
+
+    private void jmConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmConsultarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmConsultarActionPerformed
+
+    private void jmCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCrearActionPerformed
+        
+    }//GEN-LAST:event_jmCrearActionPerformed
 
     public static void main(String args[]) {
 
