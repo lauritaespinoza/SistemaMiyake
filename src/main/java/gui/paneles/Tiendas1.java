@@ -1234,8 +1234,8 @@ public class Tiendas1 extends javax.swing.JPanel {
                                     id_in.setDescuento(0);
                                     id_in.setProcesado(id_in.getProcesado() - dr.getCantidad());
                                     //Alualiza Cantidad Inexistente
-                                    // id_in.setCantidad(id_in.getCantidad() + dr.getCantidad());
-                                    //id_in.setAsignado(Boolean.TRUE);
+                                    id_in.setCantidad(id_in.getCantidad() + dr.getCantidad());
+                                    id_in.setAsignado(Boolean.TRUE);
 
                                     detalle.setTotalFaltante(dr.getCantidad() * dr.getSd().getProducto().getPrecioOriginal());
                                     totalCosto += detalle.getTotalFaltante();
