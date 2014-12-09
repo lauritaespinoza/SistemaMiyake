@@ -12,7 +12,10 @@ import gui.ventanas.FventanaIncial;
 import util.almacen.DetalleRegistro;
 import modelos.tablas.ModeloTablaDetalleRegistroTomaFisicaTiendas;
 import hibernate.DAO.ObjectModelDAO;
+import java.awt.Dimension;
 import java.awt.HeadlessException;
+import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +33,7 @@ import modelos.mapeos.NotaCreditoDebitoDetalle;
 import modelos.mapeos.SalidaParaTienda;
 import modelos.mapeos.SalidaParaTiendaDetalle;
 import modelos.mapeos.Usuario;
+import util.JavaUtil;
 
 /**
  *
@@ -119,9 +123,9 @@ public class Tiendas1 extends javax.swing.JPanel {
 
         jXTextField2 = new org.jdesktop.swingx.JXTextField();
         jXTextField4 = new org.jdesktop.swingx.JXTextField();
-        jDialog1 = new javax.swing.JDialog();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        dialogoMostrarNotas = new javax.swing.JDialog();
+        btNC = new javax.swing.JButton();
+        btND = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jLayeredPanePrincipal = new javax.swing.JLayeredPane();
         busy = new org.jdesktop.swingx.JXBusyLabel();
@@ -190,29 +194,48 @@ public class Tiendas1 extends javax.swing.JPanel {
 
         jXTextField4.setText("jXTextField4");
 
-        jButton1.setText("jButton1");
+        dialogoMostrarNotas.setLocationByPlatform(true);
+        dialogoMostrarNotas.setModal(true);
+        dialogoMostrarNotas.pack();
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        Point p= new Point(
+            (int) ((d.getWidth() - dialogoMostrarNotas.getWidth()) / 2),
+            (int) ((d.getHeight() - dialogoMostrarNotas.getHeight()) / 2));
+        dialogoMostrarNotas.setLocation(p);
 
-        jButton2.setText("jButton2");
+        btNC.setText("Mostrar Nota de Crédito");
+        btNC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btNCActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog1Layout.createSequentialGroup()
+        btND.setText("Mostrar Nota de Débito");
+        btND.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btNDActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dialogoMostrarNotasLayout = new javax.swing.GroupLayout(dialogoMostrarNotas.getContentPane());
+        dialogoMostrarNotas.getContentPane().setLayout(dialogoMostrarNotasLayout);
+        dialogoMostrarNotasLayout.setHorizontalGroup(
+            dialogoMostrarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogoMostrarNotasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(dialogoMostrarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btNC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btND, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog1Layout.createSequentialGroup()
+        dialogoMostrarNotasLayout.setVerticalGroup(
+            dialogoMostrarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogoMostrarNotasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addComponent(btNC)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btND)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jScrollPane2.setAutoscrolls(true);
@@ -1254,7 +1277,7 @@ public class Tiendas1 extends javax.swing.JPanel {
 
                             ObjectModelDAO.updateObject(dr.getSd());
 
-                            //***NOTAS CD
+                            // <editor-fold defaultstate="collapsed" desc="***NOTAS CD">
                             if (dr.getConteoFaltante() != 0) {
                                 NotaCreditoDebitoDetalle ncdd = null;
                                 //Es menor el Salida Para Tienda Detalle a lo que introduce el user
@@ -1293,20 +1316,25 @@ public class Tiendas1 extends javax.swing.JPanel {
 
                                 ObjectModelDAO.saveObject(ncdd);
                             }
-                            //***NOTAS CD
+                            // </editor-fold> 
                         }
 
                     }
+
+                    // <editor-fold defaultstate="collapsed" desc="***NOTAS CD">
+                    if (sobrante != null) {
+                        sobrante.setTotal(totalNotaC);
+                        ObjectModelDAO.updateObject(sobrante);
+                    }
+                    if (faltante != null) {
+                        faltante.setTotal(totalNotaD);
+                        ObjectModelDAO.updateObject(faltante);
+                    }
+                    // </editor-fold> 
+
                     cab.setTotalConteo(totalCosto);
                     ObjectModelDAO.updateObject(cab);
-                    
-                    //NCD
-                    faltante.setTotal(totalNotaD);
-                    sobrante.setTotal(totalNotaC);
-                    ObjectModelDAO.updateObject(faltante);
-                    ObjectModelDAO.updateObject(sobrante);
-                    //NCD
-                    
+
                     //busys
                     busy.setEnabled(false);
                     busy.setVisible(false);
@@ -1559,9 +1587,8 @@ public class Tiendas1 extends javax.swing.JPanel {
                 this.txtCantidad.setText("");
                 this.txtNroBulto.setText("");
                 this.txtRenglon.setText("");
-                 
-                //Limpiar Tablas y Lista Detalles
 
+                //Limpiar Tablas y Lista Detalles
                 listaDetalle.clear();
                 jTDetalleRegistroTiendas.removeAll();
                 modeloTablaTomaFisicaInventarioTiendas.fireTableDataChanged();
@@ -1701,13 +1728,27 @@ public class Tiendas1 extends javax.swing.JPanel {
     }//GEN-LAST:event_botonImprimirActionPerformed
 
     private void botonGenerarNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGenerarNotasActionPerformed
-        
+        btNC.setEnabled(sobrante != null);
+        btND.setEnabled(faltante != null);
+        dialogoMostrarNotas.setVisible(true);
     }//GEN-LAST:event_botonGenerarNotasActionPerformed
 
     private void botonTotalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTotalizarActionPerformed
 
 
     }//GEN-LAST:event_botonTotalizarActionPerformed
+
+    private void btNCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNCActionPerformed
+        JPnotaCreditoDebito jpNcd = new JPnotaCreditoDebito(true);
+        jpNcd.setNcd(sobrante);
+        JavaUtil.createJDialogGeneric(jpNcd);
+    }//GEN-LAST:event_btNCActionPerformed
+
+    private void btNDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNDActionPerformed
+        JPnotaCreditoDebito jpNcd = new JPnotaCreditoDebito(false);
+        jpNcd.setNcd(faltante);
+        JavaUtil.createJDialogGeneric(jpNcd);
+    }//GEN-LAST:event_btNDActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1720,15 +1761,15 @@ public class Tiendas1 extends javax.swing.JPanel {
     private org.jdesktop.swingx.JXButton botonReiniciarTodoDesdeFActura;
     private org.jdesktop.swingx.JXButton botonTotalizar;
     private org.jdesktop.swingx.JXButton botonValidar;
+    private javax.swing.JButton btNC;
+    private javax.swing.JButton btND;
     private org.jdesktop.swingx.JXBusyLabel busy;
     private javax.swing.JComboBox comboBoxAlmacen;
     private javax.swing.JComboBox comboBoxTipoBusqueda;
     private javax.swing.JComboBox comboBoxUsuarios;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JDialog dialogoMostrarNotas;
     private org.jdesktop.swingx.JXButton jButtonGuardarConteo;
     private javax.swing.JButton jButtonListarPedidos;
-    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;

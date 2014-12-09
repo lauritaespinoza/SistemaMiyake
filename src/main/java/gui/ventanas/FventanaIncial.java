@@ -224,6 +224,9 @@ public class FventanaIncial extends javax.swing.JFrame {
         };
         jMenuBarSistemaMiyake = new javax.swing.JMenuBar();
         menuArchivo = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         menuFacturacion = new javax.swing.JMenu();
         menuProveedor = new javax.swing.JMenu();
         menuUsuario = new javax.swing.JMenu();
@@ -297,6 +300,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         jXCollapsiblePane1.setOpaque(false);
         jXCollapsiblePane1.setAlignmentX(0.0F);
 
+        taskPaneModuloFacturacion.setCollapsed(true);
         taskPaneModuloFacturacion.setTitle("Facturación");
 
         taskPaneProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415658077_database.png"))); // NOI18N
@@ -451,7 +455,6 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jXCollapsiblePane1.getContentPane().add(taskPaneModuloTienda);
 
-        taskPaneModuloDeposito.setCollapsed(true);
         taskPaneModuloDeposito.setTitle("Depósito");
 
         taskPaneGestionMercancia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415667180_application-vnd.ms-excel.png"))); // NOI18N
@@ -555,6 +558,16 @@ public class FventanaIncial extends javax.swing.JFrame {
         getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
 
         menuArchivo.setText("Archivos");
+
+        jMenuItem1.setText("Opciones");
+        menuArchivo.add(jMenuItem1);
+
+        jMenuItem2.setText("Cerrar Seccion");
+        menuArchivo.add(jMenuItem2);
+
+        jMenuItem3.setText("Salir");
+        menuArchivo.add(jMenuItem3);
+
         jMenuBarSistemaMiyake.add(menuArchivo);
 
         menuFacturacion.setText("Productos");
@@ -778,6 +791,9 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenuBar jMenuBarSistemaMiyake;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanelControlesPrincipales;

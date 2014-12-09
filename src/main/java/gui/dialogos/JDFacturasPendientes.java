@@ -34,9 +34,8 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
     public Factura factura = null;
     private List resultList = null;
     private int pos = -1;
-    //Reportes
-    public final InputStream rutaJasper = this.getClass().getResourceAsStream("/reportes/ListadoFacturas.jasper");
-    public final InputStream rutaJrxml = this.getClass().getResourceAsStream("/reportes/ListadoFacturas.jrxml");
+        public final File  archivo = new File(this.getClass().getResource("/JavaHelp/JavaHelp/ejemplo.hs").getFile());
+
 
     public JDFacturasPendientes(java.awt.Frame parent, boolean modal) throws Exception {
         super(parent, modal);
@@ -231,13 +230,7 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
     private void ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ayudaActionPerformed
 
         try {
-          //  File archivo;
-
-            // archivo = new File(this.getClass().getResource("/JavaHelp/ejemplo.hs").getFile());
-            //C:\Users\Pablo\Documents\NetBeansProjects\SistemaMiyake\SistemaMiyake\src\main\resources\JavaHelp
-            File archivo = new File("C:\\Users\\Pablo\\Documents\\NetBeansProjects\\SistemaMiyake\\SistemaMiyake\\src\\main\\java\\JavaHelp\\JavaHelp\\ejemplo.hs");
-
-            URL hsURL = archivo.toURI().toURL(); // = this.getClass().getResource("ejemplo.hs");
+            URL hsURL = archivo.toURI().toURL();
 
             HelpSet helpset = null;
             helpset = new HelpSet(null, hsURL);
@@ -255,6 +248,7 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
         } catch (HelpSetException | MalformedURLException ex) {
             Logger.getLogger(JDFacturasPendientes.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, "Excepcion Ayuda Factura " + ex);
+            System.err.println("Excepcion Ayuda Factura " + ex);
         }
 
     }//GEN-LAST:event_ayudaActionPerformed
@@ -262,7 +256,7 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
     private void botonImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonImprimirActionPerformed
         // TODO add your handling code here:    resultList
         Thread hilo = new Thread() {
-
+           
             @Override
             public void run() {
 
@@ -288,17 +282,19 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
                     busy.setEnabled(false);
                     busy.setVisible(false);
                     busy.setBusy(false);
-                    int respuesta = JOptionPane.showConfirmDialog(null, "El Archivo fue Generado con Exito,"
-                            + "¿Desea Continuar Selecionando Una Factura Pendiente?");
-
-                    if (respuesta == JOptionPane.YES_OPTION) {
-
-                    }
-                    if (respuesta == JOptionPane.NO_OPTION) {
-                        dispose();
-                        setVisible(false);
-                        
-                    }
+//                    int respuesta = JOptionPane.showConfirmDialog(null, "El Archivo fue Generado con Exito,"
+//                            + "¿Desea Continuar Selecionando Una Factura Pendiente?");
+//
+//                    if (respuesta == JOptionPane.YES_OPTION) {
+//
+//                    }
+//                    if (respuesta == JOptionPane.NO_OPTION) {
+//                        dispose();
+//                        setVisible(false);
+//                        
+//                    }
+                    dispose();
+                    setVisible(false);
 
                 } catch (JRException | HeadlessException e) {
                     JOptionPane.showMessageDialog(null, "Se a Dectectado Un Proble Con Proceso de Seleccion de Facturas,"

@@ -4,6 +4,8 @@ import hibernate.HibernateUtil;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.transaction.Transactional;
 import org.hibernate.Criteria;
@@ -29,7 +31,6 @@ public abstract class ObjectModelDAO {
     public static Object saveObject(Object objModel) {
 
         //verificar si es null
-        
         Object id = -1;
         Session newSession = null;
         try {
@@ -245,7 +246,7 @@ public abstract class ObjectModelDAO {
             newSession.getTransaction().commit();
         } catch (HibernateException ex) {
             manejaExcepcion(ex, newSession, newSession.getTransaction());
-            
+
         } finally {
             terminate(newSession);
         }
@@ -266,7 +267,7 @@ public abstract class ObjectModelDAO {
         return daoC;
     }
 
-    private static void manejaExcepcion(Exception he, Session sess, Transaction trans) throws HibernateException {
+    private static void manejaExcepcion(Exception he, Session sess, Transaction trans) {
 
 //        JOptionPane.showMessageDialog(null, "Estado: " + estado());
         if (trans != null && trans.isParticipating()) {
@@ -278,8 +279,9 @@ public abstract class ObjectModelDAO {
             sess.close();
         }
 
-        JOptionPane.showMessageDialog(null, he);
-        throw new HibernateException("Ocurrió un error en la capa de acceso a datos \n\t", he);
+        JOptionPane.showMessageDialog(null, he.getMessage() + "\n\n" + he.getCause());
+        Logger.getLogger(ObjectModelDAO.class.getName()).log(Level.SEVERE, null,
+                "Ocurrió un error en la capa de acceso a datos \n\t" + he);
     }
 
     private static void terminate(Session session) {

@@ -82,6 +82,23 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Archivos"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Opciones"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cerrar Seccion"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Salir"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuFacturacion">
           <Properties>
@@ -413,6 +430,7 @@
                   <SubComponents>
                     <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneModuloFacturacion">
                       <Properties>
+                        <Property name="collapsed" type="boolean" value="true"/>
                         <Property name="title" type="java.lang.String" value="Facturaci&#xf3;n"/>
                       </Properties>
                       <SubComponents>
@@ -1106,7 +1124,6 @@
                     </Container>
                     <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneModuloDeposito">
                       <Properties>
-                        <Property name="collapsed" type="boolean" value="true"/>
                         <Property name="title" type="java.lang.String" value="Dep&#xf3;sito"/>
                       </Properties>
                       <SubComponents>
