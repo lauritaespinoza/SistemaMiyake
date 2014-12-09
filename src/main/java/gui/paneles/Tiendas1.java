@@ -1268,7 +1268,9 @@ public class Tiendas1 extends javax.swing.JPanel {
                                     detalle.setTotalFaltante(dr.getCantidad() * id_in.getPrecioSinDescuento());
                                     totalCosto += detalle.getTotalFaltante();
                                     ObjectModelDAO.updateObject(id_in);
-
+                                    //Cambiar Estado Salida Para Tienda
+                                    sa.setRevisado(Boolean.TRUE);
+                                    ObjectModelDAO.updateObject(sa);
                                     System.err.println("Actualizando Inventario de Producto Existente");
                                 }
                             } catch (Exception e) {
@@ -1493,7 +1495,8 @@ public class Tiendas1 extends javax.swing.JPanel {
             int respuesta = JOptionPane.showConfirmDialog(null, "¿Seguro Desea Cancelar?", "Confirmacion", JOptionPane.YES_NO_OPTION);
 
             if (respuesta == JOptionPane.YES_OPTION) {
-                //Panel y Controles de Factura
+                //Panel y Controles de Salidas Pendientes
+                this.comboBoxAlmacen.setSelectedIndex(-1);
                 this.jButtonListarPedidos.setEnabled(true);
                 this.txtSalidaID.setText("");
                 this.txtEmitidoPor.setText("");
