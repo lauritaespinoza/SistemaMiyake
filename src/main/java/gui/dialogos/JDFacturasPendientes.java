@@ -82,8 +82,8 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
         botonImprimir = new javax.swing.JButton();
         busy = new org.jdesktop.swingx.JXBusyLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        jMenuOpciones = new javax.swing.JMenu();
+        jMenu_Ayuda_ = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -152,11 +152,11 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
 
         busy.setText("Procesando...!!!");
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
+        jMenuOpciones.setText("Opciones");
+        jMenuBar1.add(jMenuOpciones);
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        jMenu_Ayuda_.setText("Ayuda");
+        jMenuBar1.add(jMenu_Ayuda_);
 
         setJMenuBar(jMenuBar1);
 
@@ -319,9 +319,9 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
     private org.jdesktop.swingx.JXBusyLabel busy;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuOpciones;
+    private javax.swing.JMenu jMenu_Ayuda_;
     private javax.swing.JScrollPane jScrollPane1;
     private org.jdesktop.swingx.JXFindBar jXFindBar1;
     private org.jdesktop.swingx.JXTable jtListaFactura;
