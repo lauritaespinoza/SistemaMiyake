@@ -369,6 +369,7 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         taskPaneModuloFacturacion.getContentPane().add(taskPaneProveedores);
 
+        taskPaneEtiquetas.setCollapsed(true);
         taskPaneEtiquetas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Barcode.png"))); // NOI18N
         taskPaneEtiquetas.setSpecial(true);
         taskPaneEtiquetas.setTitle("Etiquetas");
