@@ -53,7 +53,7 @@
 		<field name="CORREO" class="java.lang.String"/>
 		<field name="GERENTE" class="java.lang.String"/>
 		<field name="CONTACTO" class="java.lang.String"/>
-		<field name="FECHA DE CREACION" class="java.lang.String"/>
+		<field name="FECHA DE CREACION" class="java.util.Date"/>
 	</subDataset>
 	<background>
 		<band splitType="Stretch"/>
@@ -139,8 +139,7 @@
 						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
 						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="76" height="20" uuid="f9bef35e-27c4-447c-bf20-e00be91de871"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<reportElement x="0" y="0" width="76" height="20" uuid="add3f096-6c98-4e40-b406-071e9623aed3"/>
 								<textFieldExpression><![CDATA[$F{FECHA DE CREACION}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
