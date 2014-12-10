@@ -251,7 +251,7 @@ public class JPinventarioDiario extends javax.swing.JPanel {
         total_facturas.setText(" ");
         total_facturas.setToolTipText("Doble click para agregar a la salida seleccionada");
         total_facturas.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        total_facturas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        total_facturas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         total_facturas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 total_facturasMouseClicked(evt);
@@ -327,10 +327,11 @@ public class JPinventarioDiario extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(total_facturas)
-                    .addComponent(detalles, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(detalles, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(total_facturas)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addGap(8, 8, 8))
@@ -716,7 +717,7 @@ public class JPinventarioDiario extends javax.swing.JPanel {
 
     private void detallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detallesActionPerformed
         if (csvReader != null) {
-            new JDfaturasCSV(null, true, csvReader.procesCSV().toString()).setVisible(true);
+            new JDfaturasCSV(null, true, csvReader.procesCSV()).setVisible(true);
         }
     }//GEN-LAST:event_detallesActionPerformed
 

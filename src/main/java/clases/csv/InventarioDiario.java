@@ -25,9 +25,17 @@ public class InventarioDiario {
 
     public InventarioDiario() {
         this.facturas = new ArrayList<>();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date date = new Date();
         this.fecha = dateFormat.format(date);
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 
     //revisa las facturas que tengan Total 0 y las elimina

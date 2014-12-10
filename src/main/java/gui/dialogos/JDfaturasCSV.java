@@ -5,19 +5,81 @@
  */
 package gui.dialogos;
 
+import clases.csv.Factura;
+import clases.csv.InventarioDiario;
+import clases.csv.Producto;
+import java.util.Map;
+import java.util.Vector;
+import javax.swing.DefaultListModel;
+import javax.swing.ListModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+import util.JavaUtil;
+
 /**
  *
  * @author Usuario
  */
 public class JDfaturasCSV extends javax.swing.JDialog {
 
-    /**
-     * Creates new form JDfaturasCSV
-     */
-    public JDfaturasCSV(java.awt.Frame parent, boolean modal, String texto) {
+    InventarioDiario ivtDiario;
+
+    public JDfaturasCSV(java.awt.Frame parent, boolean modal, InventarioDiario ivtDiariop) {
         super(parent, modal);
         initComponents();
-        this.texto.setText(texto);
+        this.ivtDiario = ivtDiariop;
+
+        listaFacturas.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent lse) {
+                if (!lse.getValueIsAdjusting()) {
+                    int i = listaFacturas.getSelectedIndex();
+                    Vector<String> header=new Vector<>();
+                    header.add("Código");
+                    header.add("Tipo");
+                    header.add("Precio");
+                    header.add("Cantidad");
+                    Vector<Object> data=new Vector<>();
+                    if (i != -1) {
+                        transaccion.setText(String.valueOf(ivtDiario.getFacturas().get(i).getTransaccion()));
+                        usuario.setText(ivtDiario.getFacturas().get(i).getUsuario());
+                        estado.setText(String.valueOf(ivtDiario.getFacturas().get(i).getEstado()));
+                        numero.setText(String.valueOf(ivtDiario.getFacturas().get(i).getNumero()));
+                        impresora.setText(String.valueOf(ivtDiario.getFacturas().get(i).getImpresora()));
+                        for (Map.Entry<Producto, Integer> entry : ivtDiario.getFacturas().get(i).getProductos().entrySet()) {
+                            Producto p = entry.getKey();
+                            Vector<Object> subdata=new Vector<>();                            
+                            subdata.add(p.getCodigo());
+                            subdata.add(p.getTipo());
+                            subdata.add(JavaUtil.dosDecimales.format(p.getPrecio()).replace(",", "."));
+                            subdata.add(entry.getValue());
+                            data.add(subdata);
+                        }
+                    } else {
+                        transaccion.setText("");
+                        usuario.setText("");
+                        estado.setText("");
+                        numero.setText("");
+                        impresora.setText("");
+                    }
+                    tabla.setModel(new DefaultTableModel(data,header ));
+                }
+            }
+        });
+
+        cargarInformacion();
+    }
+
+    private void cargarInformacion() {
+        this.texto.setText(ivtDiario.toString());
+        fecha.setText(ivtDiario.getFecha());
+        totalConIva.setText(JavaUtil.dosDecimales.format(ivtDiario.getTotalConIva()));
+        totalSinIva.setText(JavaUtil.dosDecimales.format(ivtDiario.getTotalSinIva()));
+        DefaultListModel dlm = new DefaultListModel();
+        for (Factura fa : ivtDiario.getFacturas()) {
+            dlm.addElement(fa.getNumero());
+        }
+        listaFacturas.setModel(dlm);
     }
 
     /**
@@ -39,7 +101,7 @@ public class JDfaturasCSV extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
         transaccion = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        transaccion1 = new javax.swing.JLabel();
+        numero = new javax.swing.JLabel();
         lbusuario = new javax.swing.JLabel();
         usuario = new javax.swing.JLabel();
         impresoralb = new javax.swing.JLabel();
@@ -48,6 +110,10 @@ public class JDfaturasCSV extends javax.swing.JDialog {
         estado = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tabla = new org.jdesktop.swingx.JXTable();
+        lbusuariomodif = new javax.swing.JLabel();
+        usuario1 = new javax.swing.JLabel();
+        lbusuariomodif1 = new javax.swing.JLabel();
+        usuario2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         fecha = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -63,7 +129,7 @@ public class JDfaturasCSV extends javax.swing.JDialog {
         texto.setRows(5);
         jScrollPane1.setViewportView(texto);
 
-        tabpanel.addTab("Texto", jScrollPane1);
+        tabpanel.addTab("Texto", null, jScrollPane1, "");
 
         listaFacturas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane2.setViewportView(listaFacturas);
@@ -73,33 +139,38 @@ public class JDfaturasCSV extends javax.swing.JDialog {
         jLabel5.setText("Transacción");
 
         transaccion.setText(" ");
+        transaccion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel6.setText("Número");
 
-        transaccion1.setText(" ");
+        numero.setText(" ");
+        numero.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lbusuario.setText("Usuario");
 
         usuario.setText(" ");
+        usuario.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         impresoralb.setText("Impresora");
 
         impresora.setText(" ");
+        impresora.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lbestado.setText("Estado");
 
         estado.setText(" ");
+        estado.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Fecha", "Concepto", "Entrada", "Salida", "Saldo"
+                "Código", "Tipo", "Precio", "Cantidad"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, true, true
+                false, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -111,6 +182,16 @@ public class JDfaturasCSV extends javax.swing.JDialog {
         tabla.getTableHeader().setReorderingAllowed(false);
         jScrollPane4.setViewportView(tabla);
 
+        lbusuariomodif.setText("Modificación por");
+
+        usuario1.setText(" ");
+        usuario1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        lbusuariomodif1.setText("Cédula");
+
+        usuario2.setText(" ");
+        usuario2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -120,50 +201,64 @@ public class JDfaturasCSV extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(transaccion, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                                    .addComponent(usuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(estado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(impresoralb)
+                                        .addGap(10, 10, 10)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel5)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(transaccion, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(lbusuario)
+                                                .addGap(47, 47, 47)
+                                                .addComponent(usuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGap(2, 2, 2))))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lbestado)
+                                            .addComponent(lbusuariomodif))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(impresora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(transaccion1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(82, 82, 82)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(estado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(usuario1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbusuario)
-                                    .addComponent(lbestado))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(8, 8, 8)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(impresoralb)
+                                            .addComponent(jLabel6)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(lbusuariomodif1)))
+                                .addGap(10, 10, 10)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(numero, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                                    .addComponent(impresora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(usuario2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(2, 2, 2))))
+                    .addComponent(jLabel4))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(jLabel6)
-                            .addComponent(transaccion1)
+                            .addComponent(numero)
                             .addComponent(transaccion))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -173,10 +268,16 @@ public class JDfaturasCSV extends javax.swing.JDialog {
                             .addComponent(impresora))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbusuariomodif)
+                            .addComponent(usuario1)
+                            .addComponent(lbusuariomodif1)
+                            .addComponent(usuario2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbestado)
                             .addComponent(estado))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -185,17 +286,25 @@ public class JDfaturasCSV extends javax.swing.JDialog {
         jLabel1.setText("Fecha");
 
         fecha.setText(" ");
+        fecha.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel2.setText("Total sin IVA");
 
         totalSinIva.setText(" ");
+        totalSinIva.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         totalConIva.setText(" ");
+        totalConIva.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel3.setText("Total con IVA");
 
         actualizar.setText("Actualizar Inventario");
         actualizar.setToolTipText("Actualiza el Inventario de la Tienda");
+        actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -204,29 +313,30 @@ public class JDfaturasCSV extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tabpanel)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(tabpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(actualizar))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(totalConIva, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addGap(26, 26, 26)
-                            .addComponent(totalSinIva, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(totalConIva, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(26, 26, 26)
+                                .addComponent(totalSinIva, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(actualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                .addGap(6, 6, 6))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(87, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(fecha))
@@ -238,18 +348,23 @@ public class JDfaturasCSV extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(totalConIva))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(tabpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(tabpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(actualizar)
-                        .addGap(91, 91, 91))))
+                        .addGap(138, 138, 138))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
+        actualizar.setEnabled(false);
+    }//GEN-LAST:event_actualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -284,7 +399,7 @@ public class JDfaturasCSV extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JDfaturasCSV dialog = new JDfaturasCSV(new javax.swing.JFrame(), true, "");
+                JDfaturasCSV dialog = new JDfaturasCSV(new javax.swing.JFrame(), true, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -314,14 +429,19 @@ public class JDfaturasCSV extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lbestado;
     private javax.swing.JLabel lbusuario;
+    private javax.swing.JLabel lbusuariomodif;
+    private javax.swing.JLabel lbusuariomodif1;
     private org.jdesktop.swingx.JXList listaFacturas;
+    private javax.swing.JLabel numero;
     private org.jdesktop.swingx.JXTable tabla;
     private javax.swing.JTabbedPane tabpanel;
     private javax.swing.JTextArea texto;
     private javax.swing.JLabel totalConIva;
     private javax.swing.JLabel totalSinIva;
     private javax.swing.JLabel transaccion;
-    private javax.swing.JLabel transaccion1;
     private javax.swing.JLabel usuario;
+    private javax.swing.JLabel usuario1;
+    private javax.swing.JLabel usuario2;
     // End of variables declaration//GEN-END:variables
+
 }
