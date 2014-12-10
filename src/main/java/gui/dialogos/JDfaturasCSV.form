@@ -210,30 +210,34 @@
                                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lbusuario" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                       <Component id="impresoralb" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="impresora" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="usuario" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <Component id="lbusuario" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lbusuariomodif" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="modificado" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                       <Component id="lbusuariomodif1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="cedula" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lbusuariomodif" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="modificado" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lbusuariomodif2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="facToSinIva" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                       <Component id="lbusuariomodif3" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="facToConIva" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lbusuariomodif2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="facToSinIva" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
