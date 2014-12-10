@@ -163,8 +163,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         jmCrear = new javax.swing.JMenuItem();
         jmModificar = new javax.swing.JMenuItem();
         jmEliminar = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanelControlesPrincipales = new javax.swing.JPanel();
@@ -277,10 +275,6 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jmEliminar.setText("Eliminar");
         jpMenu.add(jmEliminar);
-
-        jMenu1.setText("jMenu1");
-
-        jMenu2.setText("jMenu2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(9, 182, 201));
@@ -576,6 +570,8 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
         taskPaneGestionMercancia.getContentPane().add(TomaFisicaTiendas_boton_);
 
+        taskPaneConsultas.setCollapsed(true);
+
         ConsultaExistencia_boton_.setText("Consultar Existencia");
         ConsultaExistencia_boton_.setActionCommand("Consultar Inventario ");
         ConsultaExistencia_boton_.addActionListener(new java.awt.event.ActionListener() {
@@ -699,19 +695,9 @@ public class FventanaIncial extends javax.swing.JFrame {
         jMenuProveedor_.setText("Gestion de Proveedores");
 
         jMenuProveedor_Consultar_.setText("Consultar");
-        jMenuProveedor_Consultar_.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuProveedor_Consultar_ActionPerformed(evt);
-            }
-        });
         jMenuProveedor_.add(jMenuProveedor_Consultar_);
 
         jMenuProveedor_Crear_.setText("Crear");
-        jMenuProveedor_Crear_.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuProveedor_Crear_ActionPerformed(evt);
-            }
-        });
         jMenuProveedor_.add(jMenuProveedor_Crear_);
 
         jMenuProveedor__Modificar_.setText("Modificar");
@@ -956,25 +942,17 @@ public class FventanaIncial extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuTomaFisicaDistribuidoraActionPerformed
 
-    private void jMenuProveedor_Consultar_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuProveedor_Consultar_ActionPerformed
-       addPaneles(tabMecanciaEnProceso, JPproveedor.class, null);
-    }//GEN-LAST:event_jMenuProveedor_Consultar_ActionPerformed
-
-    private void jMenuProveedor_Crear_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuProveedor_Crear_ActionPerformed
-       
-    }//GEN-LAST:event_jMenuProveedor_Crear_ActionPerformed
-
     private void btnCrudProductoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrudProductoMouseExited
         btnCrudProducto.setBorderPainted(false);
     }//GEN-LAST:event_btnCrudProductoMouseExited
 
+    private void jmCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCrearActionPerformed
+        addPaneles(tabProducto, JPproducto.class, null);
+    }//GEN-LAST:event_jmCrearActionPerformed
+
     private void jmConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmConsultarActionPerformed
         addPaneles(tabProducto, JPproducto.class, null);
     }//GEN-LAST:event_jmConsultarActionPerformed
-
-    private void jmCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCrearActionPerformed
-         addPaneles(tabProducto, JPproducto.class, null);
-    }//GEN-LAST:event_jmCrearActionPerformed
 
     public static void main(String args[]) {
 
@@ -1020,8 +998,6 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuAsignarMercanciaTiendas_;
     private javax.swing.JMenuBar jMenuBarSistemaMiyake;
     private javax.swing.JMenu jMenuClasificacion_;
