@@ -35,11 +35,7 @@ public class JPdivision extends javax.swing.JPanel {
         this(0);
     }
     
-    public void posicionar(int tabCrud){
-        panelScrudDiv.setSelectedIndex(tabCrud);
-    }
-
-    public JPdivision(int tabCrud) {
+    public JPdivision(Integer tabCrud) {
         initComponents();
 
         setTableCellAlignment(JLabel.CENTER, tablaConsultaDivision);

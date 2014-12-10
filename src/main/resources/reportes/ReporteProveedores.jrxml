@@ -44,6 +44,9 @@
 		</box>
 	</style>
 	<subDataset name="Table Dataset 2" uuid="ef7e1510-dd88-4931-a723-e8b0c88741fb">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
 		<field name="NOMBRE" class="java.lang.String"/>
 		<field name="TELEFONO 1" class="java.lang.String"/>
 		<field name="FAX" class="java.lang.String"/>
@@ -69,7 +72,7 @@
 			<componentElement>
 				<reportElement key="table 1" style="table 1" x="0" y="3" width="555" height="50" uuid="71116909-c513-42bb-b081-b30aa9518d8a"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="Table Dataset 2" uuid="b846ee0d-4708-48f0-b1e0-13ce628b8d71">
+					<datasetRun subDataset="Table Dataset 2" uuid="3c4f9ab3-9661-4367-a6f4-02c10ebea45b">
 						<dataSourceExpression><![CDATA[$P{REPORT_DATA_SOURCE}]]></dataSourceExpression>
 					</datasetRun>
 					<jr:column width="77" uuid="342964fa-4492-429e-9813-34c11eb87f0a">

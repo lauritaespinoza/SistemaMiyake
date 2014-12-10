@@ -41,8 +41,14 @@ public class JPproducto extends javax.swing.JPanel {
     private List resultListProducto;
     private int pos;
     private Thread hilo = null;
+    private final Integer tabCrud;
 
     public JPproducto() {
+        this(0);
+    }
+    
+    public JPproducto(Integer tabCrud) {
+        this.tabCrud=tabCrud;
         initComponents();
 
         setTableCellAlignment(JLabel.CENTER, listadoProductos);
@@ -52,6 +58,8 @@ public class JPproducto extends javax.swing.JPanel {
         tablaModifProducto.getTableHeader().setReorderingAllowed(false);
         tablaEliminarProducto.getTableHeader().setReorderingAllowed(false);
 
+       // panelScrudProducto.setSelectedIndex(tabCrud);
+        
         tablaModifProducto.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent lse) {
                 if (!lse.getValueIsAdjusting()) {
@@ -729,6 +737,8 @@ public class JPproducto extends javax.swing.JPanel {
 
         panelScrudProducto.addTab("Eliminar", jScrollPane7);
 
+        panelScrudProducto.setSelectedIndex(-1);
+
         add(panelScrudProducto);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -932,6 +942,8 @@ public class JPproducto extends javax.swing.JPanel {
                 busy.setVisible(true);
 
                 if (panelScrudProducto.getSelectedIndex() == 0) {
+                    
+                    JOptionPane.showMessageDialog(null, "consulta");
                     setNULLS(0);
                     String sql = " FROM Producto p order by p.idProducto asc";
 
@@ -941,9 +953,10 @@ public class JPproducto extends javax.swing.JPanel {
                     listadoProductos.setEditable(false);
                     resultListClasificacion = ObjectModelDAO.getResultQuery("FROM Clasificacion c order by c.idClasificacion asc");
                     resultListMarca = ObjectModelDAO.getResultQuery("FROM Marca m order by m.idMarca asc");
-
+                    
                 }
                 if (panelScrudProducto.getSelectedIndex() == 1) {
+                    JOptionPane.showMessageDialog(null, "crea");
                     setNULLS(1);
                     //resultListDivision = ObjectModelDAO.getResultQuery("FROM Division d order by d.idDivision asc");
                     //resultListDepartamento = ObjectModelDAO.getResultQuery("FROM Departamento d order by d.idDepartamento asc");
@@ -973,6 +986,7 @@ public class JPproducto extends javax.swing.JPanel {
                 }
 
                 if (panelScrudProducto.getSelectedIndex() == 2) {
+                    JOptionPane.showMessageDialog(null, "modifica");
                     setNULLS(2);
                     //resultListDivision = ObjectModelDAO.getResultQuery("FROM Division d order by d.idDivision asc");
                     //resultListDepartamento = ObjectModelDAO.getResultQuery("FROM Departamento d order by d.idDepartamento asc");

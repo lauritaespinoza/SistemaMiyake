@@ -122,6 +122,7 @@ public class FventanaIncial extends javax.swing.JFrame {
                 if (panelNuevo.equals(JPnotaCreditoDebito.class)) {//si es una nota de credito/debito
                     panelClosableCentral.addTab(titulo, (JPanel) panelNuevo.getConstructor(Boolean.class).newInstance(tipo));
                 } else {
+                    //panelClosableCentral.addTab(titulo, (JPanel) panelNuevo.getConstructor(Integer.class).newInstance(tabPanel));
                     panelClosableCentral.addTab(titulo, (JPanel) panelNuevo.newInstance());
                 }
                 panelClosableCentral.setSelectedIndex(panelClosableCentral.getTabCount() - 1);
@@ -752,11 +753,11 @@ public class FventanaIncial extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCrudProductoMouseEntered
 
     private void jmConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmConsultarActionPerformed
-        // TODO add your handling code here:
+        addPaneles(tabProducto, JPproducto.class, null);
     }//GEN-LAST:event_jmConsultarActionPerformed
 
     private void jmCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCrearActionPerformed
-        
+         addPaneles(tabProducto, JPproducto.class, null);
     }//GEN-LAST:event_jmCrearActionPerformed
 
     public static void main(String args[]) {
