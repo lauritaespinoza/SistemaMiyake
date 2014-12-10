@@ -41,7 +41,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.filechooser.FileNameExtensionFilter;
+
 import javax.swing.table.DefaultTableModel;
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
@@ -64,7 +64,6 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class JPinventarioDiario extends javax.swing.JPanel {
 
-    private CSVreader csvReader = null;
     private List<InventarioDiarioDetalle> ivdDetalle;
     private InventarioDiario ivd;
     private static final IVDDComparator comparator_ivdd = new IVDDComparator();
@@ -73,6 +72,7 @@ public class JPinventarioDiario extends javax.swing.JPanel {
     public final InputStream rutaJasper = this.getClass().getResourceAsStream("/reportes/ReporteInventarioDiario.jasper");
     public final InputStream rutaJrxml = this.getClass().getResourceAsStream("/reportes/ReporteInventarioDiario.jrxml");
     private String rutaImagen = "src/main/resources/imagenes/Salir.png";
+    private JDfaturasCSV jdFacturasCSV = null;
 
     public JPinventarioDiario() {
         initComponents();
@@ -98,10 +98,6 @@ public class JPinventarioDiario extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        filesc = new javax.swing.JFileChooser();
-        filesc.setCurrentDirectory(new java.io.File("C:\\Users\\Usuario\\Documents\\PASANTIA"));
-
-        filesc.setDialogTitle("Seleccione un archivo");
         jdfecha = new javax.swing.JDialog();
         fecha = new org.jdesktop.swingx.JXMonthView();
         cancelar = new javax.swing.JButton();
@@ -131,8 +127,6 @@ public class JPinventarioDiario extends javax.swing.JPanel {
         tabla = new org.jdesktop.swingx.JXTable();
         busy = new org.jdesktop.swingx.JXBusyLabel();
         direccionAlmacen = new javax.swing.JLabel();
-
-        filesc.setCurrentDirectory(new java.io.File("C:\\Users\\Usuario\\Documents\\PASANTIA\\prueba"));
 
         jdfecha.setMinimumSize(new java.awt.Dimension(185, 129));
         jdfecha.setModal(true);
@@ -251,7 +245,7 @@ public class JPinventarioDiario extends javax.swing.JPanel {
         total_facturas.setText(" ");
         total_facturas.setToolTipText("Doble click para agregar a la salida seleccionada");
         total_facturas.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        total_facturas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        total_facturas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         total_facturas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 total_facturasMouseClicked(evt);
@@ -327,10 +321,11 @@ public class JPinventarioDiario extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(total_facturas)
-                    .addComponent(detalles, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(detalles, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(total_facturas)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addGap(8, 8, 8))
@@ -472,9 +467,9 @@ public class JPinventarioDiario extends javax.swing.JPanel {
                 Almacen alc = (Almacen) resultListAlmacen.get(cb_tiendas.getSelectedIndex() - 1);
 
                 nombreAlmacen.setText(alc.getNombre());
-                rifAlmacen.setText("RIF: " + alc.getRif()== null? "" :alc.getRif());
+                rifAlmacen.setText("RIF: " + alc.getRif() == null ? "" : alc.getRif());
                 direccionAlmacen.setText(alc.getIdUbicacion() == null
-                        ?"" : alc.getIdUbicacion().toString());
+                        ? "" : alc.getIdUbicacion().toString());
 
                 JavaUtil.preCambio(alc.getLogo(), logo);
 
@@ -678,23 +673,6 @@ public class JPinventarioDiario extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_tablaKeyReleased
 
-    private void seleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarActionPerformed
-
-        if (filesc.getChoosableFileFilters().length > 1) {
-            filesc.removeChoosableFileFilter(filesc.getChoosableFileFilters()[1]);
-        }
-
-        filesc.setFileFilter(new FileNameExtensionFilter("Archivos csv! ", "csv"));
-
-        int returnVal = filesc.showOpenDialog(this);
-        if (returnVal == JFileChooser.APPROVE_OPTION) {
-            File file = filesc.getSelectedFile();
-            csvReader = new CSVreader(file.getAbsolutePath());
-            total_facturas.setText(JavaUtil.dosDecimales.format(csvReader.procesCSV().getTotalConIva()).replace(",", "."));
-            detalles.setEnabled(true);
-        }
-    }//GEN-LAST:event_seleccionarActionPerformed
-
     private void logoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_logoMouseClicked
@@ -715,8 +693,8 @@ public class JPinventarioDiario extends javax.swing.JPanel {
     }//GEN-LAST:event_total_facturasMouseClicked
 
     private void detallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detallesActionPerformed
-        if (csvReader != null) {
-            new JDfaturasCSV(null, true, csvReader.procesCSV().toString()).setVisible(true);
+        if (jdFacturasCSV != null) {
+            jdFacturasCSV.setVisible(true);
         }
     }//GEN-LAST:event_detallesActionPerformed
 
@@ -777,11 +755,11 @@ public class JPinventarioDiario extends javax.swing.JPanel {
             BufferedImage imagen = ImageIO.read(getClass().getResource("/imagenes/boton-inicio.png"));
 
             parametro.put("ImagenLogo", imagen);
-            parametro.put("Tienda",nombreAlmacen.getText());
-            parametro.put("Direccion",direccionAlmacen.getText());
-            parametro.put("Mes",mes.getSelectedItem());
-            parametro.put("Rif",rifAlmacen.getText());
-            
+            parametro.put("Tienda", nombreAlmacen.getText());
+            parametro.put("Direccion", direccionAlmacen.getText());
+            parametro.put("Mes", mes.getSelectedItem());
+            parametro.put("Rif", rifAlmacen.getText());
+
             TableModelReport dataSourse = new TableModelReport(tabla.getModel());
             parametro.put("REPORT_DATA_SOURSE", dataSourse);
 
@@ -790,11 +768,11 @@ public class JPinventarioDiario extends javax.swing.JPanel {
             JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
             jasperViewer.setTitle("Reporte de Inventario Diario");
             jasperViewer.setVisible(true);
-            
+
         } catch (IOException | JRException e) {
             JOptionPane.showMessageDialog(this, "error" + e);
         }
-        
+
     }//GEN-LAST:event_imprimirActionPerformed
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
@@ -880,6 +858,21 @@ public class JPinventarioDiario extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "Operacion realizada con exito");
     }//GEN-LAST:event_guardarActionPerformed
 
+    private void seleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarActionPerformed
+        if (jdFacturasCSV == null) {
+            jdFacturasCSV = new JDfaturasCSV(null, true);
+        }
+
+        jdFacturasCSV.setVisible(true);
+        if (jdFacturasCSV.getIvtDiario() != null) {
+            total_facturas.setText(JavaUtil.dosDecimales.format(jdFacturasCSV.getIvtDiario().getTotalConIva()).replace(",", "."));
+            detalles.setEnabled(true);
+        } else {
+            total_facturas.setText("");
+            detalles.setEnabled(false);
+        }
+    }//GEN-LAST:event_seleccionarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.jdesktop.swingx.JXBusyLabel busy;
@@ -888,7 +881,6 @@ public class JPinventarioDiario extends javax.swing.JPanel {
     private javax.swing.JButton detalles;
     private javax.swing.JLabel direccionAlmacen;
     private org.jdesktop.swingx.JXMonthView fecha;
-    private javax.swing.JFileChooser filesc;
     private javax.swing.JButton guardar;
     private javax.swing.JButton imprimir;
     private javax.swing.JLabel jLabel1;

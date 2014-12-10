@@ -78,7 +78,7 @@ public class JDbackupDB extends javax.swing.JDialog {
 
             @Override
             public void run() {
-                JavaUtil.backupPGSQL(texto);
+            //    JavaUtil.backupPGSQL(texto);
             }
         };
         hilo.start();

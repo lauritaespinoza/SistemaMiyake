@@ -58,11 +58,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Consultar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmConsultarActionPerformed"/>
+          </Events>
         </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="jmCrear">
           <Properties>
             <Property name="text" type="java.lang.String" value="Crear"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmCrearActionPerformed"/>
+          </Events>
         </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="jmModificar">
           <Properties>
@@ -640,7 +646,6 @@
                     </Container>
                     <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneModuloTienda">
                       <Properties>
-                        <Property name="collapsed" type="boolean" value="true"/>
                         <Property name="title" type="java.lang.String" value="Tienda"/>
                       </Properties>
 
@@ -704,6 +709,7 @@
                     </Container>
                     <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneModuloDeposito">
                       <Properties>
+                        <Property name="collapsed" type="boolean" value="true"/>
                         <Property name="title" type="java.lang.String" value="Dep&#xf3;sito"/>
                       </Properties>
 
@@ -867,6 +873,9 @@
                           </LayoutCode>
                         </Container>
                         <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneConsultas">
+                          <Properties>
+                            <Property name="collapsed" type="boolean" value="true"/>
+                          </Properties>
                           <SubComponents>
                             <Component class="org.jdesktop.swingx.JXButton" name="ConsultaExistencia_boton_">
                               <Properties>

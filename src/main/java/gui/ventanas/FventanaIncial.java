@@ -1,5 +1,6 @@
 package gui.ventanas;
 
+import com.l2fprod.util.ImageUtils;
 import gui.dialogos.ClockTest;
 import gui.paneles.Asignar1;
 import gui.paneles.Distribuidora1;
@@ -121,6 +122,7 @@ public class FventanaIncial extends javax.swing.JFrame {
                 if (panelNuevo.equals(JPnotaCreditoDebito.class)) {//si es una nota de credito/debito
                     panelClosableCentral.addTab(titulo, (JPanel) panelNuevo.getConstructor(Boolean.class).newInstance(tipo));
                 } else {
+                    //panelClosableCentral.addTab(titulo, (JPanel) panelNuevo.getConstructor(Integer.class).newInstance(tabPanel));
                     panelClosableCentral.addTab(titulo, (JPanel) panelNuevo.newInstance());
                 }
                 panelClosableCentral.setSelectedIndex(panelClosableCentral.getTabCount() - 1);
@@ -255,9 +257,19 @@ public class FventanaIncial extends javax.swing.JFrame {
         menuAyuda = new javax.swing.JMenu();
 
         jmConsultar.setText("Consultar");
+        jmConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmConsultarActionPerformed(evt);
+            }
+        });
         jpMenu.add(jmConsultar);
 
         jmCrear.setText("Crear");
+        jmCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmCrearActionPerformed(evt);
+            }
+        });
         jpMenu.add(jmCrear);
 
         jmModificar.setText("Modificar");
@@ -483,7 +495,6 @@ public class FventanaIncial extends javax.swing.JFrame {
                 .addComponent(taskPaneEtiquetas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        taskPaneModuloTienda.setCollapsed(true);
         taskPaneModuloTienda.setTitle("Tienda");
 
         jButton6.setText("Almacen");
@@ -535,6 +546,7 @@ public class FventanaIncial extends javax.swing.JFrame {
                 .addComponent(btND))
         );
 
+        taskPaneModuloDeposito.setCollapsed(true);
         taskPaneModuloDeposito.setTitle("Depósito");
 
         taskPaneGestionMercancia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415667180_application-vnd.ms-excel.png"))); // NOI18N
@@ -955,6 +967,14 @@ public class FventanaIncial extends javax.swing.JFrame {
     private void btnCrudProductoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrudProductoMouseExited
         btnCrudProducto.setBorderPainted(false);
     }//GEN-LAST:event_btnCrudProductoMouseExited
+
+    private void jmConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmConsultarActionPerformed
+        addPaneles(tabProducto, JPproducto.class, null);
+    }//GEN-LAST:event_jmConsultarActionPerformed
+
+    private void jmCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCrearActionPerformed
+         addPaneles(tabProducto, JPproducto.class, null);
+    }//GEN-LAST:event_jmCrearActionPerformed
 
     public static void main(String args[]) {
 
