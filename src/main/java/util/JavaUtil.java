@@ -35,6 +35,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -612,12 +613,14 @@ public abstract class JavaUtil {
         logoview.setIcon(new ImageIcon(img.getScaledInstance(logoview.getWidth(), logoview.getHeight(), Image.SCALE_SMOOTH)));
     }
 
-    public static void backupPGSQL() {
+    public static void backupPGSQL(JTextArea texto) {
+        
         try {
-            String rutaCT = "C:\\Users\\Pablo\\Desktop\\BackUpDB";
+            String rutaCT = "C:\\Users\\Usuario\\Desktop";
+                    //"C:\\Users\\Pablo\\Desktop\\BackUpDB";
             String IP = "tecnosys.dyndns.tv";
-            String pgdump =//"C:\\Users\\Pablo\\Desktop\\pg_dump.exe";
-                    "C:\\Program Files\\PostgreSQL\\9.3\\bin\\pg_dump.exe";
+            String pgdump="C:\\Program Files\\PostgreSQL\\9.3\\bin\\pg_dump.exe";
+                    //"C:\\Program Files\\PostgreSQL\\9.3\\bin\\pg_dump.exe";
             Process p;
             ProcessBuilder pb;
             java.io.File file = new java.io.File(rutaCT);
@@ -644,7 +647,7 @@ public abstract class JavaUtil {
                     "--blobs",
                     "--verbose",
                     "--file",
-                    "C:\\Users\\Pablo\\Desktop\\p1.backup",
+                      "C:\\Users\\Usuario\\Desktop\\p1.backup",
                     "miyake_pasantia"
             );
             pb.environment().put("PGPASSWORD", "admin");
@@ -656,12 +659,12 @@ public abstract class JavaUtil {
             String ll;
             while ((ll = br.readLine()) != null) {
 
-                System.out.println(ll);
+                texto.append(ll+"\n");
             }
 
-            System.out.println("\n\nBACKUP READY\n\n");
+            texto.append("\n\nBACKUP READY\n\n");
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            texto.append(e.getMessage());
         }
     }
 
