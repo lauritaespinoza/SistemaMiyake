@@ -61,12 +61,6 @@
 	<title>
 		<band height="79" splitType="Stretch"/>
 	</title>
-	<pageHeader>
-		<band height="35" splitType="Stretch"/>
-	</pageHeader>
-	<columnHeader>
-		<band height="61" splitType="Stretch"/>
-	</columnHeader>
 	<detail>
 		<band height="53" splitType="Stretch">
 			<componentElement>
@@ -76,9 +70,17 @@
 						<dataSourceExpression><![CDATA[$P{REPORT_DATA_SOURCE}]]></dataSourceExpression>
 					</datasetRun>
 					<jr:column width="77" uuid="342964fa-4492-429e-9813-34c11eb87f0a">
-						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="77" height="30" uuid="74efa068-46c6-4ae2-9a48-0165f0dd187c"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Century" size="11" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Nombre]]></text>
+							</staticText>
+						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="77" height="20" uuid="1955dc1c-7794-4040-b188-972acc7c5f32"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{NOMBRE}]]></textFieldExpression>
@@ -86,9 +88,17 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="71" uuid="6ca5fb8d-90a5-4651-b5f7-778ba35eb3a4">
-						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="71" height="30" uuid="4080b7dc-eee1-4aa4-9386-5aca3325f97c"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Century" size="11" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Teléfono]]></text>
+							</staticText>
+						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="71" height="20" uuid="d73b2ccb-d848-48ba-8153-c032ada074b2"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{TELEFONO 1}]]></textFieldExpression>
@@ -96,9 +106,17 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="59" uuid="7673aaee-2b4c-4588-beb5-226c0a4066a6">
-						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="59" height="30" uuid="955fbb91-34c0-4f1d-9048-16b3d3140447"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Century" size="11" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Fax]]></text>
+							</staticText>
+						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="59" height="20" uuid="1380f270-334c-450d-8f14-48adebb8a450"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{FAX}]]></textFieldExpression>
@@ -106,9 +124,17 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="113" uuid="c99daef1-3bd1-42c5-a700-9a7d0eb42e0e">
-						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="113" height="30" uuid="d96707ed-120b-4e99-aa65-ec5256a985d9"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Century" size="11" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Correo]]></text>
+							</staticText>
+						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="113" height="20" uuid="a4f02d03-f607-4194-9462-3b0970e4a7ab"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{CORREO}]]></textFieldExpression>
@@ -116,9 +142,17 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="81" uuid="2e6c1299-e271-423a-9b23-83b4c5f01dd2">
-						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="81" height="30" uuid="d7166ccd-edbe-43b5-b662-dea19e70f84f"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Century" size="11" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Gerente]]></text>
+							</staticText>
+						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="81" height="20" uuid="1bacf913-4669-4c08-bf8e-13ae4cb9182e"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{GERENTE}]]></textFieldExpression>
@@ -126,9 +160,17 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="77" uuid="9928b816-9a19-40fc-8c95-8d228fe254ac">
-						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="77" height="30" uuid="1003e2bd-2a7d-49b0-9d6f-f52c529a7c4e"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Century" size="11" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Contacto]]></text>
+							</staticText>
+						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="77" height="20" uuid="2dafa6c9-e963-493d-9200-205ffed40f60"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{CONTACTO}]]></textFieldExpression>
@@ -136,10 +178,19 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="76" uuid="2db967d0-2672-4f1f-94f3-df2d35faf174">
-						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="76" height="30" uuid="5d9bea3e-2539-440e-83dc-50f28c370fc6"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Century" size="11" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Fecha de Creación]]></text>
+							</staticText>
+						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="76" height="20" uuid="add3f096-6c98-4e40-b406-071e9623aed3"/>
+								<textElement verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{FECHA DE CREACION}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -148,13 +199,7 @@
 			</componentElement>
 		</band>
 	</detail>
-	<columnFooter>
-		<band height="45" splitType="Stretch"/>
-	</columnFooter>
 	<pageFooter>
 		<band height="54" splitType="Stretch"/>
 	</pageFooter>
-	<summary>
-		<band height="42" splitType="Stretch"/>
-	</summary>
 </jasperReport>
