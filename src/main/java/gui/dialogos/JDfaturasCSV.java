@@ -10,15 +10,23 @@ import clases.csv.Factura;
 import clases.csv.InventarioDiario;
 import clases.csv.Producto;
 import java.io.File;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.ListModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import modelos.tablas.TableModelReport;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import util.JavaUtil;
 
 /**
@@ -472,6 +480,35 @@ public class JDfaturasCSV extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_imprimirFacActionPerformed
 
+     private void generarReporte() {
+//        try {
+//            JasperPrint jasperPrint = null;
+//            Map<String, Object> parametro = new HashMap<>();
+////            String s = "";
+////
+////            for (int i = 0; i < tableModel.getColumnCount(); i++) {
+////                s += tableModel.getColumnName(i) + "\t" + Integer.valueOf(i) + "\n";
+////            }
+//            TableModelReport dataSourse = new TableModelReport(listadoMercancia.getModel());
+//
+//            parametro.put("Fecha", fieldfecha.getText());
+//            parametro.put("Tienda", cb_tienda1.getSelectedItem().equals("Todas las Tiendas") ? "" : cb_tienda1.getSelectedItem().toString());
+//            parametro.put("Tienda2", cb_tienda2.getSelectedItem().toString());
+//            parametro.put("Facturadora", fieldPersonalDep.getText());
+//            parametro.put("Ayudante", fieldAyudante.getText());
+//            parametro.put("Salida", cb_salidasregistradas.getSelectedItem().toString());
+//            parametro.put("REPORT_DATA_SOURSE", dataSourse);
+//            JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream(rutaJasper));
+//            jasperPrint = JasperFillManager.fillReport(reporte, parametro, dataSourse);
+//            JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
+//            jasperViewer.setTitle("Reporte de Salida de Mercancía");
+//            jasperViewer.setVisible(true);
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(this, "error" + e);
+//        }
+    }
+    
+    
     private void seleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarActionPerformed
 
         if (filesc.getChoosableFileFilters().length > 1) {
