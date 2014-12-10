@@ -312,16 +312,18 @@ public class FventanaIncial extends javax.swing.JFrame {
         jScrollPane1.setHorizontalScrollBar(null);
 
         jPanelControlesPrincipales.setAlignmentX(0.0F);
-        jPanelControlesPrincipales.setLayout(new javax.swing.BoxLayout(jPanelControlesPrincipales, javax.swing.BoxLayout.LINE_AXIS));
 
+        jXCollapsiblePane2.setAnimated(false);
         jXCollapsiblePane2.setDirection(org.jdesktop.swingx.JXCollapsiblePane.Direction.LEFT);
+        org.jdesktop.swingx.VerticalLayout verticalLayout1 = new org.jdesktop.swingx.VerticalLayout();
+        verticalLayout1.setGap(2);
+        jXCollapsiblePane2.getContentPane().setLayout(verticalLayout1);
 
         jXCollapsiblePane1.setOpaque(false);
         jXCollapsiblePane1.setAlignmentX(0.0F);
 
         taskPaneModuloFacturacion.setTitle("Facturación");
 
-        taskPaneProducto.setCollapsed(true);
         taskPaneProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415658077_database.png"))); // NOI18N
         taskPaneProducto.setSpecial(true);
         taskPaneProducto.setTitle("Productos");
@@ -427,7 +429,6 @@ public class FventanaIncial extends javax.swing.JFrame {
                 .addComponent(jButtonActualizarPrecio))
         );
 
-        taskPaneProveedores.setCollapsed(true);
         taskPaneProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415665365_fork1.png"))); // NOI18N
         taskPaneProveedores.setSpecial(true);
         taskPaneProveedores.setTitle("Proveedores");
@@ -493,7 +494,6 @@ public class FventanaIncial extends javax.swing.JFrame {
                 .addComponent(btnContainer))
         );
 
-        taskPaneEtiquetas.setCollapsed(true);
         taskPaneEtiquetas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Barcode.png"))); // NOI18N
         taskPaneEtiquetas.setSpecial(true);
         taskPaneEtiquetas.setTitle("Etiquetas");
@@ -540,7 +540,6 @@ public class FventanaIncial extends javax.swing.JFrame {
                 .addComponent(taskPaneEtiquetas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        taskPaneModuloTienda.setCollapsed(true);
         taskPaneModuloTienda.setTitle("Tienda");
 
         jButtonAlmacen.setText("Almacen");
@@ -607,7 +606,6 @@ public class FventanaIncial extends javax.swing.JFrame {
                 .addComponent(btND))
         );
 
-        taskPaneModuloDeposito.setCollapsed(true);
         taskPaneModuloDeposito.setTitle("Depósito");
 
         taskPaneGestionMercancia.setCollapsed(true);
@@ -764,7 +762,16 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jXCollapsiblePane2.getContentPane().add(jXCollapsiblePane1);
 
-        jPanelControlesPrincipales.add(jXCollapsiblePane2);
+        javax.swing.GroupLayout jPanelControlesPrincipalesLayout = new javax.swing.GroupLayout(jPanelControlesPrincipales);
+        jPanelControlesPrincipales.setLayout(jPanelControlesPrincipalesLayout);
+        jPanelControlesPrincipalesLayout.setHorizontalGroup(
+            jPanelControlesPrincipalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jXCollapsiblePane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jPanelControlesPrincipalesLayout.setVerticalGroup(
+            jPanelControlesPrincipalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jXCollapsiblePane2, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         jScrollPane1.setViewportView(jPanelControlesPrincipales);
 
