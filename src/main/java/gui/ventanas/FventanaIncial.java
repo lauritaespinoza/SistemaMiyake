@@ -108,7 +108,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         FventanaIncial.listaUsuarioMain = user;
 
         initComponents();
-        
+
         ClockLabel clock = new ClockLabel();
         getContentPane().add(clock, BorderLayout.PAGE_END);
     }
@@ -166,6 +166,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanelControlesPrincipales = new javax.swing.JPanel();
+        jXCollapsiblePane2 = new org.jdesktop.swingx.JXCollapsiblePane();
         jXCollapsiblePane1 = new org.jdesktop.swingx.JXCollapsiblePane();
         taskPaneModuloFacturacion = new org.jdesktop.swingx.JXTaskPane();
         taskPaneProducto = new org.jdesktop.swingx.JXTaskPane();
@@ -174,7 +175,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         btnCrudDepto = new javax.swing.JButton();
         btnCrudDivision = new javax.swing.JButton();
         btnCrudMarca = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jButtonActualizarPrecio = new javax.swing.JButton();
         taskPaneProveedores = new org.jdesktop.swingx.JXTaskPane();
         btnCrudProveedr = new javax.swing.JButton();
         btnCrudUbicacion = new javax.swing.JButton();
@@ -183,8 +184,8 @@ public class FventanaIncial extends javax.swing.JFrame {
         taskPaneEtiquetas = new org.jdesktop.swingx.JXTaskPane();
         btnSalidaTienda = new javax.swing.JButton();
         taskPaneModuloTienda = new org.jdesktop.swingx.JXTaskPane();
-        jButton6 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        jButtonAlmacen = new javax.swing.JButton();
+        jButtonInventario = new javax.swing.JButton();
         btNC = new javax.swing.JButton();
         btND = new javax.swing.JButton();
         taskPaneModuloDeposito = new org.jdesktop.swingx.JXTaskPane();
@@ -220,8 +221,10 @@ public class FventanaIncial extends javax.swing.JFrame {
         };
         jMenuBarSistemaMiyake = new javax.swing.JMenuBar();
         menuArchivo = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuOpciones = new javax.swing.JMenu();
+        jMenuItemBuscarPanel = new javax.swing.JMenuItem();
+        jMenuItemReiniciarVentana = new javax.swing.JMenuItem();
+        jMenuItemSalir = new javax.swing.JMenuItem();
         menuDistribuidor = new javax.swing.JMenu();
         jMenuProveedor_ = new javax.swing.JMenu();
         jMenuProveedor_Consultar_ = new javax.swing.JMenuItem();
@@ -235,13 +238,14 @@ public class FventanaIncial extends javax.swing.JFrame {
         jMenuMercanciaProceso_ = new javax.swing.JMenuItem();
         jMenuMercanciaFinalizada_ = new javax.swing.JMenuItem();
         menuTiendas = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItemTomaFisicaTiendas = new javax.swing.JMenuItem();
         jMenuGestionAlmacenes_ = new javax.swing.JMenu();
         jMenuControlInventario_ = new javax.swing.JMenu();
         jMenuGestionPrecios_ = new javax.swing.JMenu();
         jMenuNotasDebitoCredito_ = new javax.swing.JMenu();
         jMenuItemControlExistencia_ = new javax.swing.JMenuItem();
         jMenuItemUbicacbionAlmacen_ = new javax.swing.JMenuItem();
+        jMenuItemDetFactura = new javax.swing.JMenuItem();
         menuProducto = new javax.swing.JMenu();
         jMenuProductos = new javax.swing.JMenu();
         jMenuMarcas_ = new javax.swing.JMenu();
@@ -249,10 +253,30 @@ public class FventanaIncial extends javax.swing.JFrame {
         jMenuDepartamento = new javax.swing.JMenu();
         jMenuDivision = new javax.swing.JMenu();
         menuUsuario = new javax.swing.JMenu();
+        jMenuItemUsuarioConsulta = new javax.swing.JMenuItem();
+        jMenuItemUsuarioCrear = new javax.swing.JMenuItem();
+        jMenuItemUsuarioModificar = new javax.swing.JMenuItem();
+        jMenuItemUsuarioEliminar = new javax.swing.JMenuItem();
         menuDetalles = new javax.swing.JMenu();
+        jMenuUbicaciones = new javax.swing.JMenu();
+        jMenuItemUbicacionConsultar = new javax.swing.JMenuItem();
+        jMenuItemUbicacionCrear = new javax.swing.JMenuItem();
+        jMenuItemUbicacionModificar = new javax.swing.JMenuItem();
+        jMenuItemUbicacionEliminar = new javax.swing.JMenuItem();
+        jMenuGestionContactos = new javax.swing.JMenu();
+        jMenuItemContactoConsultar = new javax.swing.JMenuItem();
+        jMenuItemContactoCrear = new javax.swing.JMenuItem();
+        jMenuItemContactoModificar = new javax.swing.JMenuItem();
+        jMenuItemContactoEliminar = new javax.swing.JMenuItem();
         menuReportes = new javax.swing.JMenu();
         menuUtilidades = new javax.swing.JMenu();
+        jMenuItemRestaurarDatos = new javax.swing.JMenuItem();
+        jMenuExportarDatos = new javax.swing.JMenu();
+        jMenuItemExportarDatDesc = new javax.swing.JMenuItem();
+        jMenuItemExportarBD = new javax.swing.JMenuItem();
         menuAyuda = new javax.swing.JMenu();
+        jMenuItemVerAyuda = new javax.swing.JMenuItem();
+        jMenuItemAcercaDe = new javax.swing.JMenuItem();
 
         jmConsultar.setText("Consultar");
         jmConsultar.addActionListener(new java.awt.event.ActionListener() {
@@ -278,7 +302,8 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(9, 182, 201));
-        setMinimumSize(new java.awt.Dimension(412, 641));
+        setMinimumSize(new java.awt.Dimension(8, 641));
+        setPreferredSize(new java.awt.Dimension(800, 600));
 
         jPanel3.setAlignmentX(0.0F);
         jPanel3.setAlignmentY(0.0F);
@@ -288,6 +313,8 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jPanelControlesPrincipales.setAlignmentX(0.0F);
         jPanelControlesPrincipales.setLayout(new javax.swing.BoxLayout(jPanelControlesPrincipales, javax.swing.BoxLayout.LINE_AXIS));
+
+        jXCollapsiblePane2.setDirection(org.jdesktop.swingx.JXCollapsiblePane.Direction.LEFT);
 
         jXCollapsiblePane1.setOpaque(false);
         jXCollapsiblePane1.setAlignmentX(0.0F);
@@ -304,9 +331,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         btnCrudProducto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCrudProducto.setBorderPainted(false);
         btnCrudProducto.setContentAreaFilled(false);
-        btnCrudProducto.setRequestFocusEnabled(false);
-        btnCrudProducto.setRolloverEnabled(true);
-        btnCrudProducto.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415416322_list-accept.png"))); // NOI18N
+        btnCrudProducto.setRolloverEnabled(false);
         btnCrudProducto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnCrudProductoMouseEntered(evt);
@@ -323,10 +348,10 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         btnCrudClasificacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416862043_inventory-maintenance.png"))); // NOI18N
         btnCrudClasificacion.setText("Clasificación    ");
+        btnCrudClasificacion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCrudClasificacion.setBorderPainted(false);
         btnCrudClasificacion.setContentAreaFilled(false);
-        btnCrudClasificacion.setRolloverEnabled(true);
-        btnCrudClasificacion.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417901851_700015-icon-27-one-finger-click-32.png"))); // NOI18N
+        btnCrudClasificacion.setRolloverEnabled(false);
         btnCrudClasificacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCrudClasificacionActionPerformed(evt);
@@ -335,11 +360,10 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         btnCrudDepto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415667180_application-vnd.ms-excel.png"))); // NOI18N
         btnCrudDepto.setText("Departamento");
+        btnCrudDepto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCrudDepto.setBorderPainted(false);
         btnCrudDepto.setContentAreaFilled(false);
-        btnCrudDepto.setRequestFocusEnabled(false);
-        btnCrudDepto.setRolloverEnabled(true);
-        btnCrudDepto.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417901853_700015-icon-27-one-finger-click-16.png"))); // NOI18N
+        btnCrudDepto.setRolloverEnabled(false);
         btnCrudDepto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCrudDeptoActionPerformed(evt);
@@ -347,6 +371,9 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
 
         btnCrudDivision.setText("División");
+        btnCrudDivision.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnCrudDivision.setBorderPainted(false);
+        btnCrudDivision.setContentAreaFilled(false);
         btnCrudDivision.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCrudDivisionActionPerformed(evt);
@@ -354,16 +381,22 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
 
         btnCrudMarca.setText("Marca");
+        btnCrudMarca.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnCrudMarca.setBorderPainted(false);
+        btnCrudMarca.setContentAreaFilled(false);
         btnCrudMarca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCrudMarcaActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Actualizar Precio");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButtonActualizarPrecio.setText("Actualizar Precio");
+        jButtonActualizarPrecio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonActualizarPrecio.setBorderPainted(false);
+        jButtonActualizarPrecio.setContentAreaFilled(false);
+        jButtonActualizarPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButtonActualizarPrecioActionPerformed(evt);
             }
         });
 
@@ -376,7 +409,7 @@ public class FventanaIncial extends javax.swing.JFrame {
             .addComponent(btnCrudDepto, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(btnCrudDivision, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(btnCrudMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jButtonActualizarPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         taskPaneProductoLayout.setVerticalGroup(
             taskPaneProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -391,7 +424,7 @@ public class FventanaIncial extends javax.swing.JFrame {
                 .addGap(2, 2, 2)
                 .addComponent(btnCrudMarca)
                 .addGap(2, 2, 2)
-                .addComponent(jButton4))
+                .addComponent(jButtonActualizarPrecio))
         );
 
         taskPaneProveedores.setCollapsed(true);
@@ -400,6 +433,9 @@ public class FventanaIncial extends javax.swing.JFrame {
         taskPaneProveedores.setTitle("Proveedores");
 
         btnCrudProveedr.setText("Proveedor");
+        btnCrudProveedr.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnCrudProveedr.setBorderPainted(false);
+        btnCrudProveedr.setContentAreaFilled(false);
         btnCrudProveedr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCrudProveedrActionPerformed(evt);
@@ -407,6 +443,9 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
 
         btnCrudUbicacion.setText("Ubicación");
+        btnCrudUbicacion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnCrudUbicacion.setBorderPainted(false);
+        btnCrudUbicacion.setContentAreaFilled(false);
         btnCrudUbicacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCrudUbicacionActionPerformed(evt);
@@ -414,6 +453,9 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
 
         btnCrudContact.setText("Contacto");
+        btnCrudContact.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnCrudContact.setBorderPainted(false);
+        btnCrudContact.setContentAreaFilled(false);
         btnCrudContact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCrudContactActionPerformed(evt);
@@ -421,6 +463,9 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
 
         btnContainer.setText("Registrar Container");
+        btnContainer.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnContainer.setBorderPainted(false);
+        btnContainer.setContentAreaFilled(false);
         btnContainer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnContainerActionPerformed(evt);
@@ -454,6 +499,9 @@ public class FventanaIncial extends javax.swing.JFrame {
         taskPaneEtiquetas.setTitle("Etiquetas");
 
         btnSalidaTienda.setText("Mercancía Asignada");
+        btnSalidaTienda.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSalidaTienda.setBorderPainted(false);
+        btnSalidaTienda.setContentAreaFilled(false);
         btnSalidaTienda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalidaTiendaActionPerformed(evt);
@@ -475,9 +523,12 @@ public class FventanaIncial extends javax.swing.JFrame {
         taskPaneModuloFacturacion.getContentPane().setLayout(taskPaneModuloFacturacionLayout);
         taskPaneModuloFacturacionLayout.setHorizontalGroup(
             taskPaneModuloFacturacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(taskPaneProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(taskPaneProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(taskPaneEtiquetas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(taskPaneModuloFacturacionLayout.createSequentialGroup()
+                .addGroup(taskPaneModuloFacturacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(taskPaneEtiquetas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(taskPaneProveedores, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(taskPaneProducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
         taskPaneModuloFacturacionLayout.setVerticalGroup(
             taskPaneModuloFacturacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -489,23 +540,33 @@ public class FventanaIncial extends javax.swing.JFrame {
                 .addComponent(taskPaneEtiquetas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        taskPaneModuloTienda.setCollapsed(true);
         taskPaneModuloTienda.setTitle("Tienda");
 
-        jButton6.setText("Almacen");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAlmacen.setText("Almacen");
+        jButtonAlmacen.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonAlmacen.setBorderPainted(false);
+        jButtonAlmacen.setContentAreaFilled(false);
+        jButtonAlmacen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jButtonAlmacenActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Inventario Diario");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jButtonInventario.setText("Inventario Diario");
+        jButtonInventario.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonInventario.setBorderPainted(false);
+        jButtonInventario.setContentAreaFilled(false);
+        jButtonInventario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jButtonInventarioActionPerformed(evt);
             }
         });
 
         btNC.setText("Notas de Crédito");
+        btNC.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btNC.setBorderPainted(false);
+        btNC.setContentAreaFilled(false);
         btNC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btNCActionPerformed(evt);
@@ -513,6 +574,9 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
 
         btND.setText("Notas de Débito");
+        btND.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btND.setBorderPainted(false);
+        btND.setContentAreaFilled(false);
         btND.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btNDActionPerformed(evt);
@@ -523,17 +587,20 @@ public class FventanaIncial extends javax.swing.JFrame {
         taskPaneModuloTienda.getContentPane().setLayout(taskPaneModuloTiendaLayout);
         taskPaneModuloTiendaLayout.setHorizontalGroup(
             taskPaneModuloTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(btNC, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(btND, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(taskPaneModuloTiendaLayout.createSequentialGroup()
+                .addGroup(taskPaneModuloTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btNC, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btND, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         taskPaneModuloTiendaLayout.setVerticalGroup(
             taskPaneModuloTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(taskPaneModuloTiendaLayout.createSequentialGroup()
-                .addComponent(jButton6)
+                .addComponent(jButtonAlmacen)
                 .addGap(2, 2, 2)
-                .addComponent(jButton5)
+                .addComponent(jButtonInventario)
                 .addGap(2, 2, 2)
                 .addComponent(btNC)
                 .addGap(2, 2, 2)
@@ -543,10 +610,14 @@ public class FventanaIncial extends javax.swing.JFrame {
         taskPaneModuloDeposito.setCollapsed(true);
         taskPaneModuloDeposito.setTitle("Depósito");
 
+        taskPaneGestionMercancia.setCollapsed(true);
         taskPaneGestionMercancia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415667180_application-vnd.ms-excel.png"))); // NOI18N
         taskPaneGestionMercancia.setSpecial(true);
 
         TomaFisicaDistribuidora_boton_.setText("Toma Fisica Distribuidora");
+        TomaFisicaDistribuidora_boton_.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        TomaFisicaDistribuidora_boton_.setBorderPainted(false);
+        TomaFisicaDistribuidora_boton_.setContentAreaFilled(false);
         TomaFisicaDistribuidora_boton_.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TomaFisicaDistribuidora_boton_ActionPerformed(evt);
@@ -554,7 +625,10 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
         taskPaneGestionMercancia.getContentPane().add(TomaFisicaDistribuidora_boton_);
 
+        AsignarMercancia_boton_.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         AsignarMercancia_boton_.setText("Gestion Mercancia ");
+        AsignarMercancia_boton_.setBorderPainted(false);
+        AsignarMercancia_boton_.setContentAreaFilled(false);
         AsignarMercancia_boton_.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AsignarMercancia_boton_ActionPerformed(evt);
@@ -562,7 +636,10 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
         taskPaneGestionMercancia.getContentPane().add(AsignarMercancia_boton_);
 
+        TomaFisicaTiendas_boton_.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         TomaFisicaTiendas_boton_.setText("Toma Fisica Tiendas");
+        TomaFisicaTiendas_boton_.setBorderPainted(false);
+        TomaFisicaTiendas_boton_.setContentAreaFilled(false);
         TomaFisicaTiendas_boton_.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TomaFisicaTiendas_boton_ActionPerformed(evt);
@@ -572,8 +649,11 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         taskPaneConsultas.setCollapsed(true);
 
+        ConsultaExistencia_boton_.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ConsultaExistencia_boton_.setText("Consultar Existencia");
         ConsultaExistencia_boton_.setActionCommand("Consultar Inventario ");
+        ConsultaExistencia_boton_.setBorderPainted(false);
+        ConsultaExistencia_boton_.setContentAreaFilled(false);
         ConsultaExistencia_boton_.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ConsultaExistencia_boton_ActionPerformed(evt);
@@ -581,7 +661,10 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
         taskPaneConsultas.getContentPane().add(ConsultaExistencia_boton_);
 
+        jXButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jXButton2.setText("Mercancia en Proceso");
+        jXButton2.setBorderPainted(false);
+        jXButton2.setContentAreaFilled(false);
         jXButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jXButton2ActionPerformed(evt);
@@ -591,10 +674,16 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         taskPaneUtilidades.setCollapsed(true);
 
+        UbicacionProducto_boton_.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         UbicacionProducto_boton_.setText("Ubicacion Producto");
+        UbicacionProducto_boton_.setBorderPainted(false);
+        UbicacionProducto_boton_.setContentAreaFilled(false);
         taskPaneUtilidades.getContentPane().add(UbicacionProducto_boton_);
 
         ExportData_boton_.setText("Export Datos");
+        ExportData_boton_.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ExportData_boton_.setBorderPainted(false);
+        ExportData_boton_.setContentAreaFilled(false);
         ExportData_boton_.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExportData_boton_ActionPerformed(evt);
@@ -602,7 +691,10 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
         taskPaneUtilidades.getContentPane().add(ExportData_boton_);
 
+        jXButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jXButton1.setText("Usuarios");
+        jXButton1.setBorderPainted(false);
+        jXButton1.setContentAreaFilled(false);
         jXButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jXButton1ActionPerformed(evt);
@@ -615,6 +707,9 @@ public class FventanaIncial extends javax.swing.JFrame {
         taskPaneReportes.setTitle("Reportes Almacen");
 
         Boton_Inprimir_Reporte_conteo_Distribuidora.setText("Reporte Conteo Mercancia");
+        Boton_Inprimir_Reporte_conteo_Distribuidora.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Boton_Inprimir_Reporte_conteo_Distribuidora.setBorderPainted(false);
+        Boton_Inprimir_Reporte_conteo_Distribuidora.setContentAreaFilled(false);
         Boton_Inprimir_Reporte_conteo_Distribuidora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Boton_Inprimir_Reporte_conteo_DistribuidoraActionPerformed(evt);
@@ -626,11 +721,13 @@ public class FventanaIncial extends javax.swing.JFrame {
         taskPaneModuloDeposito.getContentPane().setLayout(taskPaneModuloDepositoLayout);
         taskPaneModuloDepositoLayout.setHorizontalGroup(
             taskPaneModuloDepositoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(taskPaneReportes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(taskPaneModuloDepositoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                .addComponent(taskPaneConsultas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(taskPaneUtilidades, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(taskPaneGestionMercancia, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(taskPaneModuloDepositoLayout.createSequentialGroup()
+                .addGroup(taskPaneModuloDepositoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(taskPaneConsultas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(taskPaneUtilidades, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(taskPaneReportes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(taskPaneGestionMercancia, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
         taskPaneModuloDepositoLayout.setVerticalGroup(
             taskPaneModuloDepositoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -648,9 +745,12 @@ public class FventanaIncial extends javax.swing.JFrame {
         jXCollapsiblePane1.getContentPane().setLayout(jXCollapsiblePane1Layout);
         jXCollapsiblePane1Layout.setHorizontalGroup(
             jXCollapsiblePane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(taskPaneModuloTienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(taskPaneModuloDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(taskPaneModuloFacturacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jXCollapsiblePane1Layout.createSequentialGroup()
+                .addGroup(jXCollapsiblePane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(taskPaneModuloFacturacion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(taskPaneModuloTienda, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(taskPaneModuloDeposito, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jXCollapsiblePane1Layout.setVerticalGroup(
             jXCollapsiblePane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -662,7 +762,9 @@ public class FventanaIncial extends javax.swing.JFrame {
                 .addComponent(taskPaneModuloDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanelControlesPrincipales.add(jXCollapsiblePane1);
+        jXCollapsiblePane2.getContentPane().add(jXCollapsiblePane1);
+
+        jPanelControlesPrincipales.add(jXCollapsiblePane2);
 
         jScrollPane1.setViewportView(jPanelControlesPrincipales);
 
@@ -677,16 +779,23 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         menuArchivo.setText("Archivos");
 
-        jMenuItem1.setText("Opciones");
-        menuArchivo.add(jMenuItem1);
+        jMenuOpciones.setText("Opciones");
 
-        jMenuItem3.setText("Salir");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemBuscarPanel.setText("Buscar Panel");
+        jMenuOpciones.add(jMenuItemBuscarPanel);
+
+        jMenuItemReiniciarVentana.setText("Reiniciar Ventana");
+        jMenuOpciones.add(jMenuItemReiniciarVentana);
+
+        menuArchivo.add(jMenuOpciones);
+
+        jMenuItemSalir.setText("Salir");
+        jMenuItemSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                jMenuItemSalirActionPerformed(evt);
             }
         });
-        menuArchivo.add(jMenuItem3);
+        menuArchivo.add(jMenuItemSalir);
 
         jMenuBarSistemaMiyake.add(menuArchivo);
 
@@ -736,8 +845,8 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         menuTiendas.setText("Tiendas");
 
-        jMenuItem2.setText("Toma Fisica Tiendas");
-        menuTiendas.add(jMenuItem2);
+        jMenuItemTomaFisicaTiendas.setText("Toma Fisica Tiendas");
+        menuTiendas.add(jMenuItemTomaFisicaTiendas);
 
         jMenuGestionAlmacenes_.setText("Gestion Almacenes");
         menuTiendas.add(jMenuGestionAlmacenes_);
@@ -756,6 +865,9 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jMenuItemUbicacbionAlmacen_.setText("Ubicacion Almacenes");
         menuTiendas.add(jMenuItemUbicacbionAlmacen_);
+
+        jMenuItemDetFactura.setText("Detalles de Factura de Ventas");
+        menuTiendas.add(jMenuItemDetFactura);
 
         jMenuBarSistemaMiyake.add(menuTiendas);
 
@@ -779,18 +891,85 @@ public class FventanaIncial extends javax.swing.JFrame {
         jMenuBarSistemaMiyake.add(menuProducto);
 
         menuUsuario.setText("Usuarios");
+
+        jMenuItemUsuarioConsulta.setText("Consultar");
+        menuUsuario.add(jMenuItemUsuarioConsulta);
+
+        jMenuItemUsuarioCrear.setText("Crear");
+        menuUsuario.add(jMenuItemUsuarioCrear);
+
+        jMenuItemUsuarioModificar.setText("Modificar");
+        menuUsuario.add(jMenuItemUsuarioModificar);
+
+        jMenuItemUsuarioEliminar.setText("Eliminar");
+        menuUsuario.add(jMenuItemUsuarioEliminar);
+
         jMenuBarSistemaMiyake.add(menuUsuario);
 
         menuDetalles.setText("Detalles");
+
+        jMenuUbicaciones.setText("Ubicaciones Geográficas");
+
+        jMenuItemUbicacionConsultar.setText("Consultar");
+        jMenuUbicaciones.add(jMenuItemUbicacionConsultar);
+
+        jMenuItemUbicacionCrear.setText("Crear");
+        jMenuUbicaciones.add(jMenuItemUbicacionCrear);
+
+        jMenuItemUbicacionModificar.setText("Modificar");
+        jMenuUbicaciones.add(jMenuItemUbicacionModificar);
+
+        jMenuItemUbicacionEliminar.setText("Eliminar");
+        jMenuUbicaciones.add(jMenuItemUbicacionEliminar);
+
+        menuDetalles.add(jMenuUbicaciones);
+
+        jMenuGestionContactos.setText("Gestión de Contactos");
+
+        jMenuItemContactoConsultar.setText("Consultar");
+        jMenuGestionContactos.add(jMenuItemContactoConsultar);
+
+        jMenuItemContactoCrear.setText("Crear");
+        jMenuGestionContactos.add(jMenuItemContactoCrear);
+
+        jMenuItemContactoModificar.setText("Modificar");
+        jMenuGestionContactos.add(jMenuItemContactoModificar);
+
+        jMenuItemContactoEliminar.setText("Eliminar");
+        jMenuGestionContactos.add(jMenuItemContactoEliminar);
+
+        menuDetalles.add(jMenuGestionContactos);
+
         jMenuBarSistemaMiyake.add(menuDetalles);
 
         menuReportes.setText("Reportes");
         jMenuBarSistemaMiyake.add(menuReportes);
 
         menuUtilidades.setText("Utilidades");
+
+        jMenuItemRestaurarDatos.setText("Restaurar Bases de Datos");
+        menuUtilidades.add(jMenuItemRestaurarDatos);
+
+        jMenuExportarDatos.setText("Exportar Datos");
+
+        jMenuItemExportarDatDesc.setText("Exportar Datos de Descuento");
+        jMenuExportarDatos.add(jMenuItemExportarDatDesc);
+
+        jMenuItemExportarBD.setText("Exportar Base de Datos");
+        jMenuExportarDatos.add(jMenuItemExportarBD);
+
+        menuUtilidades.add(jMenuExportarDatos);
+
         jMenuBarSistemaMiyake.add(menuUtilidades);
 
         menuAyuda.setText("Ayuda");
+
+        jMenuItemVerAyuda.setText("Ver Ayuda");
+        menuAyuda.add(jMenuItemVerAyuda);
+
+        jMenuItemAcercaDe.setText("Acerca de");
+        menuAyuda.add(jMenuItemAcercaDe);
+
         jMenuBarSistemaMiyake.add(menuAyuda);
 
         setJMenuBar(jMenuBarSistemaMiyake);
@@ -839,17 +1018,17 @@ public class FventanaIncial extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalidaTiendaActionPerformed
 
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jButtonActualizarPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizarPrecioActionPerformed
         addPaneles(tabPrecio, JPprecio_productos.class, null);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jButtonActualizarPrecioActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jButtonInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInventarioActionPerformed
         addPaneles(tabInventarioDiario, JPinventarioDiario.class, null);
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_jButtonInventarioActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void jButtonAlmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlmacenActionPerformed
         addPaneles(tabAlmacen, JPalmacen.class, null);
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_jButtonAlmacenActionPerformed
 
     private void btNCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNCActionPerformed
         addPaneles(tabNotaCredito, JPnotaCreditoDebito.class, true);
@@ -930,13 +1109,13 @@ public class FventanaIncial extends javax.swing.JFrame {
                 0);
     }//GEN-LAST:event_btnCrudProductoMouseEntered
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void jMenuItemSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSalirActionPerformed
+        jXCollapsiblePane2.setCollapsed(!jXCollapsiblePane2.isCollapsed());
+//        dispose();
+//        this.setVisible(false);
 
-        dispose();
-        this.setVisible(false);
-        
 
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_jMenuItemSalirActionPerformed
 
     private void jMenuTomaFisicaDistribuidoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuTomaFisicaDistribuidoraActionPerformed
         // TODO add your handling code here:
@@ -995,9 +1174,9 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JButton btnCrudProveedr;
     private javax.swing.JButton btnCrudUbicacion;
     private javax.swing.JButton btnSalidaTienda;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButtonActualizarPrecio;
+    private javax.swing.JButton jButtonAlmacen;
+    private javax.swing.JButton jButtonInventario;
     private javax.swing.JMenuItem jMenuAsignarMercanciaTiendas_;
     private javax.swing.JMenuBar jMenuBarSistemaMiyake;
     private javax.swing.JMenu jMenuClasificacion_;
@@ -1005,17 +1184,39 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuDepartamento;
     private javax.swing.JMenu jMenuDivision;
     private javax.swing.JMenu jMenuEstadoEnvios_;
+    private javax.swing.JMenu jMenuExportarDatos;
     private javax.swing.JMenu jMenuGestionAlmacenes_;
+    private javax.swing.JMenu jMenuGestionContactos;
     private javax.swing.JMenu jMenuGestionPrecios_;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItemAcercaDe;
+    private javax.swing.JMenuItem jMenuItemBuscarPanel;
+    private javax.swing.JMenuItem jMenuItemContactoConsultar;
+    private javax.swing.JMenuItem jMenuItemContactoCrear;
+    private javax.swing.JMenuItem jMenuItemContactoEliminar;
+    private javax.swing.JMenuItem jMenuItemContactoModificar;
     private javax.swing.JMenuItem jMenuItemControlExistencia_;
+    private javax.swing.JMenuItem jMenuItemDetFactura;
+    private javax.swing.JMenuItem jMenuItemExportarBD;
+    private javax.swing.JMenuItem jMenuItemExportarDatDesc;
+    private javax.swing.JMenuItem jMenuItemReiniciarVentana;
+    private javax.swing.JMenuItem jMenuItemRestaurarDatos;
+    private javax.swing.JMenuItem jMenuItemSalir;
+    private javax.swing.JMenuItem jMenuItemTomaFisicaTiendas;
     private javax.swing.JMenuItem jMenuItemUbicacbionAlmacen_;
+    private javax.swing.JMenuItem jMenuItemUbicacionConsultar;
+    private javax.swing.JMenuItem jMenuItemUbicacionCrear;
+    private javax.swing.JMenuItem jMenuItemUbicacionEliminar;
+    private javax.swing.JMenuItem jMenuItemUbicacionModificar;
+    private javax.swing.JMenuItem jMenuItemUsuarioConsulta;
+    private javax.swing.JMenuItem jMenuItemUsuarioCrear;
+    private javax.swing.JMenuItem jMenuItemUsuarioEliminar;
+    private javax.swing.JMenuItem jMenuItemUsuarioModificar;
+    private javax.swing.JMenuItem jMenuItemVerAyuda;
     private javax.swing.JMenu jMenuMarcas_;
     private javax.swing.JMenuItem jMenuMercanciaFinalizada_;
     private javax.swing.JMenuItem jMenuMercanciaProceso_;
     private javax.swing.JMenu jMenuNotasDebitoCredito_;
+    private javax.swing.JMenu jMenuOpciones;
     private javax.swing.JMenu jMenuProductos;
     private javax.swing.JMenu jMenuProveedor_;
     private javax.swing.JMenuItem jMenuProveedor_Consultar_;
@@ -1024,12 +1225,14 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuProveedor__Modificar_;
     private javax.swing.JMenuItem jMenuRegistroContainer_;
     private javax.swing.JMenuItem jMenuTomaFisicaDistribuidora;
+    private javax.swing.JMenu jMenuUbicaciones;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanelControlesPrincipales;
     private javax.swing.JScrollPane jScrollPane1;
     private org.jdesktop.swingx.JXButton jXButton1;
     private org.jdesktop.swingx.JXButton jXButton2;
     private org.jdesktop.swingx.JXCollapsiblePane jXCollapsiblePane1;
+    private org.jdesktop.swingx.JXCollapsiblePane jXCollapsiblePane2;
     private org.jdesktop.swingx.JXTaskPaneContainer jXTaskPaneContainer1;
     private javax.swing.JMenuItem jmConsultar;
     private javax.swing.JMenuItem jmCrear;
@@ -1058,16 +1261,17 @@ public class FventanaIncial extends javax.swing.JFrame {
     private org.jdesktop.swingx.JXTaskPane taskPaneUtilidades;
     // End of variables declaration//GEN-END:variables
 }
- class ClockLabel extends JLabel implements ActionListener {
 
-        public ClockLabel() {
-            super("" + new Date());
-            Timer t = new Timer(1000, this);
-            t.start();
-        }
+class ClockLabel extends JLabel implements ActionListener {
 
-        @Override
-        public void actionPerformed(ActionEvent ae) {
-            setText((new Date()).toString());
-        }
+    public ClockLabel() {
+        super("" + new Date());
+        Timer t = new Timer(1000, this);
+        t.start();
     }
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        setText((new Date()).toString());
+    }
+}
