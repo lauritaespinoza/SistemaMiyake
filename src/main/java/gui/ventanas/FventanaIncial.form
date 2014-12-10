@@ -436,12 +436,12 @@
                   <SubComponents>
                     <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneModuloFacturacion">
                       <Properties>
-                        <Property name="collapsed" type="boolean" value="true"/>
                         <Property name="title" type="java.lang.String" value="Facturaci&#xf3;n"/>
                       </Properties>
                       <SubComponents>
                         <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneProducto">
                           <Properties>
+                            <Property name="collapsed" type="boolean" value="true"/>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                               <Image iconType="3" name="/iconos/1415658077_database.png"/>
                             </Property>
