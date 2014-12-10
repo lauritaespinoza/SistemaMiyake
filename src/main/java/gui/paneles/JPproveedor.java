@@ -848,13 +848,14 @@ public class JPproveedor extends javax.swing.JPanel {
             Vector<Object> subdata = new Vector<>();
 
             for (int j = 0; j < listadoProveedores.getColumnCount(); j++) {
-                if (listadoProveedores.getColumnName(i).equals(columnNames.get(i))) {
+                if(columnNames.contains(listadoProveedores.getColumnName(j))){
                     subdata.add(listadoProveedores.getValueAt(i, j));
                 }
             }
             data.add(subdata);
         }
-        tableModel = new DefaultTableModel(data, columnNames);//        listadoProveedores.setModel(tableModel);
+        tableModel = new DefaultTableModel(data, columnNames);
+//        listadoProveedores.setModel(tableModel);
     }
 
     private void generarReporte() {
@@ -878,7 +879,7 @@ public class JPproveedor extends javax.swing.JPanel {
 
     private void bt_GenerarReporteProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_GenerarReporteProveedoresActionPerformed
         generarReporte();
-       // TableModelData();               
+//        TableModelData();               
 
     }//GEN-LAST:event_bt_GenerarReporteProveedoresActionPerformed
 
