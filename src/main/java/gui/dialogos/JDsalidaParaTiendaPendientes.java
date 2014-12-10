@@ -44,7 +44,11 @@ public class JDsalidaParaTiendaPendientes extends javax.swing.JDialog {
     public JDsalidaParaTiendaPendientes(java.awt.Frame parent, boolean modal, Almacen idAlmacen) throws Exception {
         super(parent, modal);
         initComponents();
-        //jtListaEntradaProveedor.setModel(resulList);
+        //Inicializa ayuda
+        this.ayudaActionPerformed(null);
+        //busy
+        busy.setVisible(false);
+        //Centro Pantalla
         this.setLocationRelativeTo(null);
         
          this.jtListaSalidaPendientes_.setAutoCreateRowSorter(true);
@@ -318,28 +322,6 @@ public class JDsalidaParaTiendaPendientes extends javax.swing.JDialog {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(JDsalidaParaTiendaPendientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override

@@ -403,7 +403,6 @@ public abstract class JavaUtil {
             header.add("REFERENCIA");
             header.add("DESCRIPCION");
             header.add("CANTIDAD");
-            header.add("PRECIO");
             header.add("BULTO");
         }
 

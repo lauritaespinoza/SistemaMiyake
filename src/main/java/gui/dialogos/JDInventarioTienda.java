@@ -43,6 +43,10 @@ public class JDInventarioTienda extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
+        //activar JavaHelp
+        ayudaActionPerformed(null);
+        //busy
+        busy.setVisible(false);
         this.jtableListaProductosInventarioTienda.setAutoCreateRowSorter(true);
         this.jtableListaProductosInventarioTienda.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         this.jtableListaProductosInventarioTienda.setColumnControlVisible(true);
@@ -80,6 +84,9 @@ public class JDInventarioTienda extends javax.swing.JDialog {
         imprimir_InventarioTiendas_ = new javax.swing.JButton();
         busy = new org.jdesktop.swingx.JXBusyLabel();
         ayuda = new javax.swing.JButton();
+        jMenuBarDialogoInV = new javax.swing.JMenuBar();
+        jMenuOpciones = new javax.swing.JMenu();
+        jMenu_Ayuda_ = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -149,6 +156,14 @@ public class JDInventarioTienda extends javax.swing.JDialog {
             }
         });
 
+        jMenuOpciones.setText("Opciones");
+        jMenuBarDialogoInV.add(jMenuOpciones);
+
+        jMenu_Ayuda_.setText("Ayuda");
+        jMenuBarDialogoInV.add(jMenu_Ayuda_);
+
+        setJMenuBar(jMenuBarDialogoInV);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -158,19 +173,19 @@ public class JDInventarioTienda extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jXBarraBusquedaProductosEntrantes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(botonCancelarExit_, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonCancelarExit_, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(39, 39, 39)
-                        .addComponent(imprimir_InventarioTiendas_, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(imprimir_InventarioTiendas_, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(boton_AceptarProductoSeleccionado_, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(boton_AceptarProductoSeleccionado_, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
                     .addComponent(jScrollPane2))
                 .addGap(28, 28, 28))
             .addGroup(layout.createSequentialGroup()
-                .addGap(146, 146, 146)
-                .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(107, 107, 107)
+                .addComponent(txtTitulo)
+                .addGap(34, 34, 34)
                 .addComponent(ayuda, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -186,7 +201,7 @@ public class JDInventarioTienda extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jXBarraBusquedaProductosEntrantes, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(boton_AceptarProductoSeleccionado_, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
@@ -274,7 +289,6 @@ public class JDInventarioTienda extends javax.swing.JDialog {
     private void ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ayudaActionPerformed
 
         try {
-               
             URL hsURL = archivo.toURI().toURL();
 
             HelpSet helpset = null;
@@ -357,6 +371,9 @@ public class JDInventarioTienda extends javax.swing.JDialog {
     private javax.swing.JButton boton_AceptarProductoSeleccionado_;
     private org.jdesktop.swingx.JXBusyLabel busy;
     private javax.swing.JButton imprimir_InventarioTiendas_;
+    private javax.swing.JMenuBar jMenuBarDialogoInV;
+    private javax.swing.JMenu jMenuOpciones;
+    private javax.swing.JMenu jMenu_Ayuda_;
     private javax.swing.JScrollPane jScrollPane2;
     private org.jdesktop.swingx.JXFindBar jXBarraBusquedaProductosEntrantes;
     private org.jdesktop.swingx.JXTable jtableListaProductosInventarioTienda;
