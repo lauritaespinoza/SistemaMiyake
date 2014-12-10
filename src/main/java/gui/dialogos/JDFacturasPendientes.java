@@ -34,20 +34,25 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
     public Factura factura = null;
     private List resultList = null;
     private int pos = -1;
-        public final File  archivo = new File(this.getClass().getResource("/JavaHelp/JavaHelp/ejemplo.hs").getFile());
+   
 
 
     public JDFacturasPendientes(java.awt.Frame parent, boolean modal) throws Exception {
         super(parent, modal);
         initComponents();
-        this.busy.setVisible(false);
+         
         //jtListaEntradaProveedor.setModel(resulList);
         //this.setLocationRelativeTo(null);
 
         this.jtListaFactura.setAutoCreateRowSorter(true);
         this.jtListaFactura.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         this.jtListaFactura.setColumnControlVisible(true);
-
+     
+        //activar JavaHelp
+        ayudaActionPerformed(null);
+        //busy
+        busy.setVisible(false);
+    
         jtListaFactura.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent lse) {
@@ -80,14 +85,16 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
         txtTitulo = new javax.swing.JLabel();
         botonImprimir = new javax.swing.JButton();
         busy = new org.jdesktop.swingx.JXBusyLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenuBarDialogoFac = new javax.swing.JMenuBar();
         jMenuOpciones = new javax.swing.JMenu();
         jMenu_Ayuda_ = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setName("Form"); // NOI18N
 
         jButton1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jButton1.setText("Aceptar");
+        jButton1.setName("jButton1"); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -96,11 +103,14 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
 
         jButton2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jButton2.setText("Cancelar");
+        jButton2.setName("jButton2"); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
+
+        jScrollPane1.setName("jScrollPane1"); // NOI18N
 
         jtListaFactura.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -114,12 +124,15 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
             }
         ));
         jtListaFactura.setToolTipText("Presione Doble Click Para Selecionar y Aceptar!");
+        jtListaFactura.setName("jtListaFactura"); // NOI18N
         jtListaFactura.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jtListaFacturaMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jtListaFactura);
+
+        jXFindBar1.setName("jXFindBar1"); // NOI18N
 
         ayuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416510931_Help.png"))); // NOI18N
         ayuda.setBorder(null);
@@ -128,6 +141,7 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
         ayuda.setDefaultCapable(false);
         ayuda.setFocusPainted(false);
         ayuda.setFocusable(false);
+        ayuda.setName("ayuda"); // NOI18N
         ayuda.setRequestFocusEnabled(false);
         ayuda.setVerifyInputWhenFocusTarget(false);
         ayuda.addActionListener(new java.awt.event.ActionListener() {
@@ -140,9 +154,11 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
         txtTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415416322_list-accept.png"))); // NOI18N
         txtTitulo.setText("LISTADO DE FACTURAS PENDIENTES");
         txtTitulo.setForeground(new java.awt.Color(102, 102, 102));
+        txtTitulo.setName("txtTitulo"); // NOI18N
 
         botonImprimir.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         botonImprimir.setText("Imprimir");
+        botonImprimir.setName("botonImprimir"); // NOI18N
         botonImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonImprimirActionPerformed(evt);
@@ -150,14 +166,19 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
         });
 
         busy.setText("Procesando...!!!");
+        busy.setName("busy"); // NOI18N
+
+        jMenuBarDialogoFac.setName("jMenuBarDialogoFac"); // NOI18N
 
         jMenuOpciones.setText("Opciones");
-        jMenuBar1.add(jMenuOpciones);
+        jMenuOpciones.setName("jMenuOpciones"); // NOI18N
+        jMenuBarDialogoFac.add(jMenuOpciones);
 
         jMenu_Ayuda_.setText("Ayuda");
-        jMenuBar1.add(jMenu_Ayuda_);
+        jMenu_Ayuda_.setName("jMenu_Ayuda_"); // NOI18N
+        jMenuBarDialogoFac.add(jMenu_Ayuda_);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(jMenuBarDialogoFac);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -230,6 +251,7 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
     private void ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ayudaActionPerformed
 
         try {
+            File  archivo = new File(this.getClass().getResource("/JavaHelp/JavaHelp/ejemplo.hs").getFile());
             URL hsURL = archivo.toURI().toURL();
 
             HelpSet helpset = null;
@@ -293,8 +315,8 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
 //                        setVisible(false);
 //                        
 //                    }
-                    dispose();
-                    setVisible(false);
+//                    dispose();
+//                    setVisible(false);
 
                 } catch (JRException | HeadlessException e) {
                     JOptionPane.showMessageDialog(null, "Se a Dectectado Un Proble Con Proceso de Seleccion de Facturas,"
@@ -315,7 +337,7 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
     private org.jdesktop.swingx.JXBusyLabel busy;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBarDialogoFac;
     private javax.swing.JMenu jMenuOpciones;
     private javax.swing.JMenu jMenu_Ayuda_;
     private javax.swing.JScrollPane jScrollPane1;

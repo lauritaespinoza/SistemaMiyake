@@ -178,17 +178,17 @@ public class Tiendas1 extends javax.swing.JPanel {
         txtCantidad = new org.jdesktop.swingx.JXTextField();
         jXLabel9 = new org.jdesktop.swingx.JXLabel();
         txtNroBulto = new org.jdesktop.swingx.JXTextField();
-        botonCencelarAgregar = new org.jdesktop.swingx.JXButton();
-        botonValidar = new org.jdesktop.swingx.JXButton();
         jXLabel11 = new org.jdesktop.swingx.JXLabel();
         txtRenglon = new org.jdesktop.swingx.JXTextField();
         jSeparator2 = new javax.swing.JSeparator();
+        botonLimpiarAgregar = new org.jdesktop.swingx.JXButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTDetalleRegistroTiendas = new javax.swing.JTable();
         botonTotalizar = new org.jdesktop.swingx.JXButton();
         botonGenerarNotas = new org.jdesktop.swingx.JXButton();
         jButtonGuardarConteo = new org.jdesktop.swingx.JXButton();
         botonImprimir = new org.jdesktop.swingx.JXButton();
+        botonCencelarAgregar = new org.jdesktop.swingx.JXButton();
 
         jXTextField2.setText("jXTextField2");
 
@@ -607,24 +607,6 @@ public class Tiendas1 extends javax.swing.JPanel {
         txtNroBulto.setEditable(false);
         txtNroBulto.setEnabled(false);
 
-        botonCencelarAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/limpiar.png"))); // NOI18N
-        botonCencelarAgregar.setText("Limpiar");
-        botonCencelarAgregar.setEnabled(false);
-        botonCencelarAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonCencelarAgregarActionPerformed(evt);
-            }
-        });
-
-        botonValidar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/validar.png"))); // NOI18N
-        botonValidar.setText("Validar");
-        botonValidar.setEnabled(false);
-        botonValidar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonValidarActionPerformed(evt);
-            }
-        });
-
         jXLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/renglon.png"))); // NOI18N
         jXLabel11.setText("Renglon");
 
@@ -637,6 +619,15 @@ public class Tiendas1 extends javax.swing.JPanel {
         });
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        botonLimpiarAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/limpiar.png"))); // NOI18N
+        botonLimpiarAgregar.setText("Limpiar");
+        botonLimpiarAgregar.setEnabled(false);
+        botonLimpiarAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonLimpiarAgregarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jLayeredPaneDatosProductosLayout = new javax.swing.GroupLayout(jLayeredPaneDatosProductos);
         jLayeredPaneDatosProductos.setLayout(jLayeredPaneDatosProductosLayout);
@@ -682,14 +673,12 @@ public class Tiendas1 extends javax.swing.JPanel {
                         .addComponent(jXLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtCantidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonValidar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(botonAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonCencelarAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(botonLimpiarAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jLayeredPaneDatosProductosLayout.setVerticalGroup(
@@ -720,13 +709,11 @@ public class Tiendas1 extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jLayeredPaneDatosProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jLayeredPaneDatosProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(botonAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(botonCencelarAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonLimpiarAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jLayeredPaneDatosProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jXLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(botonValidar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(botonAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, 0))
         );
         jLayeredPaneDatosProductos.setLayer(txtDescripcion, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -745,11 +732,10 @@ public class Tiendas1 extends javax.swing.JPanel {
         jLayeredPaneDatosProductos.setLayer(txtCantidad, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPaneDatosProductos.setLayer(jXLabel9, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPaneDatosProductos.setLayer(txtNroBulto, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPaneDatosProductos.setLayer(botonCencelarAgregar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPaneDatosProductos.setLayer(botonValidar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPaneDatosProductos.setLayer(jXLabel11, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPaneDatosProductos.setLayer(txtRenglon, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPaneDatosProductos.setLayer(jSeparator2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPaneDatosProductos.setLayer(botonLimpiarAgregar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jScrollPane5.setAutoscrolls(true);
 
@@ -794,24 +780,20 @@ public class Tiendas1 extends javax.swing.JPanel {
         jLayeredPaneProductos.setLayout(jLayeredPaneProductosLayout);
         jLayeredPaneProductosLayout.setHorizontalGroup(
             jLayeredPaneProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPaneProductosLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(jLayeredPaneProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane5)
-                    .addComponent(jLayeredPaneBuscarProducto, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLayeredPaneDatosProductos, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jLayeredPaneProductosLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(botonTotalizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addComponent(botonTotalizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jLayeredPaneProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(jScrollPane5)
+                .addComponent(jLayeredPaneBuscarProducto, javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLayeredPaneDatosProductos, javax.swing.GroupLayout.Alignment.LEADING))
         );
         jLayeredPaneProductosLayout.setVerticalGroup(
             jLayeredPaneProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPaneProductosLayout.createSequentialGroup()
                 .addComponent(jLayeredPaneBuscarProducto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLayeredPaneDatosProductos)
+                .addComponent(jLayeredPaneDatosProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonTotalizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
@@ -846,22 +828,33 @@ public class Tiendas1 extends javax.swing.JPanel {
             }
         });
 
+        botonCencelarAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/limpiar.png"))); // NOI18N
+        botonCencelarAgregar.setText("Reiniciar");
+        botonCencelarAgregar.setEnabled(false);
+        botonCencelarAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCencelarAgregarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jLayeredPanePrincipalLayout = new javax.swing.GroupLayout(jLayeredPanePrincipal);
         jLayeredPanePrincipal.setLayout(jLayeredPanePrincipalLayout);
         jLayeredPanePrincipalLayout.setHorizontalGroup(
             jLayeredPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPanePrincipalLayout.createSequentialGroup()
-                .addGap(95, 95, 95)
+                .addContainerGap()
+                .addComponent(botonCencelarAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
                 .addComponent(botonGenerarNotas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 244, Short.MAX_VALUE)
+                .addGap(111, 111, 111)
                 .addComponent(botonImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(136, 136, 136)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
                 .addComponent(jButtonGuardarConteo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPanePrincipalLayout.createSequentialGroup()
                 .addGap(291, 326, Short.MAX_VALUE)
                 .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(277, 277, 277))
+                .addContainerGap(277, Short.MAX_VALUE))
             .addComponent(jXTaskPaneLCabeceraTiendas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jScrollPane4)
         );
@@ -878,7 +871,8 @@ public class Tiendas1 extends javax.swing.JPanel {
                 .addGroup(jLayeredPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonGenerarNotas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonGuardarConteo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonCencelarAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29))
         );
         jLayeredPanePrincipal.setLayer(busy, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -887,6 +881,7 @@ public class Tiendas1 extends javax.swing.JPanel {
         jLayeredPanePrincipal.setLayer(botonGenerarNotas, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPanePrincipal.setLayer(jButtonGuardarConteo, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPanePrincipal.setLayer(botonImprimir, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPanePrincipal.setLayer(botonCencelarAgregar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jScrollPane2.setViewportView(jLayeredPanePrincipal);
 
@@ -975,7 +970,9 @@ public class Tiendas1 extends javax.swing.JPanel {
                 this.txtNroBulto.setEnabled(true);
                 this.txtCantidad.setEnabled(true);
                 this.txtCantidad.requestFocus();
-                this.botonValidar.setEnabled(true);
+                botonAgregar.setEnabled(true);
+
+                        botonLimpiarAgregar.setEnabled(true);
             }
 
         } catch (Exception ex) {
@@ -1090,70 +1087,6 @@ public class Tiendas1 extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jXButtonBuscarActionPerformed
 
-    private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
-
-        try {
-            if ("".equals(this.txtCantidad.getText())
-                    || "".equals(this.txtNroBulto.getText())
-                    || "".equals(this.txtReferencia.getText())
-                    || "".equals(this.txtMarca.getText())
-                    || "".equals(this.txtCantidadSugeridad.getText())
-                    || sd == null) {
-                JOptionPane.showMessageDialog(null, "Posibles Excepciones: \n"
-                        + "1: Las Datos Estan Vacio\n "
-                        + "2: No existe el Producto\n");
-            } else {
-                int total = this.sd.getCantidadProducto();
-                //int i = 1;
-                deReg = new DetalleRegistro();
-                deReg.setSd(sd);
-
-                deReg.setCantidad(Integer.parseInt(this.txtCantidad.getText()));
-                // deReg.setBulto(Integer.parseInt(this.txtNroBulto.getText()));
-                // deReg.setRenglon(i++);
-
-                Conteofaltante = Integer.parseInt(this.txtCantidad.getText());
-                //negativo:llego menos de lo que deberia
-                //positivo:llego mas de lo que deberia
-                Conteofaltante -= total;
-                deReg.setConteoFaltante(Conteofaltante);
-                deReg.setTotalFaltante(Math.abs(Conteofaltante) * sd.getProducto().getPrecioOriginal());
-
-                // deReg.getSd().setEstatus("Aprobado");
-                listaDetalle.add(deReg);
-
-                modeloTablaTomaFisicaInventarioTiendas.setListaDetalleResgistro(listaDetalle);
-                modeloTablaTomaFisicaInventarioTiendas.fireTableDataChanged();
-                modeloTablaTomaFisicaInventarioTiendas.setProdSDmt(deReg);
-
-                //Respaldo lista Producto de Entrada Proveedor
-//                this.proEPaux = sd;
-//                this.proEPaux.setEstatus("Pendiente");
-//                listaDetalleAux.add(proEPaux);
-                this.txtReferencia.setText("");
-                this.txtMarca.setText("");
-                this.txtCantidadSugeridad.setText("");
-                this.txtCodigo.setText("");
-                this.txtDescripcion.setText("");
-                this.txtCantidad.setText("");
-                this.txtNroBulto.setText("");
-                //   this.txtNroBulto.setEnabled(false);
-                this.txtCodigo.requestFocus();
-
-                //Remover de Lista Actual Producto Agregago
-                //this.proEPaux = sd;
-                this.listaprodSA.remove(sd);
-            }
-
-        } catch (HeadlessException | NumberFormatException ex) {
-            System.err.println("Excepcion AGREGARNDO PRODUCTO EN LA TABLA Y LISTA : " + ex);
-            Logger.getLogger(Tiendas1.class.getName()).log(Level.SEVERE, null, ex);
-
-        }
-
-
-    }//GEN-LAST:event_botonAgregarActionPerformed
-
     private void jButtonGuardarConteoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarConteoActionPerformed
 
         Thread hilo = new Thread() {
@@ -1267,7 +1200,9 @@ public class Tiendas1 extends javax.swing.JPanel {
                                     detalle.setTotalFaltante(dr.getCantidad() * id_in.getPrecioSinDescuento());
                                     totalCosto += detalle.getTotalFaltante();
                                     ObjectModelDAO.updateObject(id_in);
-
+                                    //Cambiar Estado Salida Para Tienda
+                                    sa.setRevisado(Boolean.TRUE);
+                                    ObjectModelDAO.updateObject(sa);
                                     System.err.println("Actualizando Inventario de Producto Existente");
                                 }
                             } catch (Exception e) {
@@ -1353,7 +1288,7 @@ public class Tiendas1 extends javax.swing.JPanel {
                         modeloTablaTomaFisicaInventarioTiendas.fireTableDataChanged();
                         //Desabilitar Controles
                         txtCantidad.setEnabled(false);
-                        botonValidar.setEnabled(false);
+
                         //jLayeredPaneBuscarProducto.setEnabled(false);
                         comboBoxTipoBusqueda.setEnabled(false);
                         txtBusqueda.setEnabled(false);
@@ -1476,6 +1411,7 @@ public class Tiendas1 extends javax.swing.JPanel {
 //                    EntradaProveedor proEPaux2 = (EntradaProveedor) jTDetalleRegistroTiendas.getValueAt(selection[0], selection[selection.length - 1]);
                     this.listaprodSA.add(modeloTablaTomaFisicaInventarioTiendas.getProdSDmt().getSd());
                     this.listaDetalle.remove(selection[i - 1]);
+                    
                     modeloTablaTomaFisicaInventarioTiendas.fireTableRowsDeleted(selection[0], selection[selection.length - 1]);
 
                 }
@@ -1493,7 +1429,8 @@ public class Tiendas1 extends javax.swing.JPanel {
             int respuesta = JOptionPane.showConfirmDialog(null, "¿Seguro Desea Cancelar?", "Confirmacion", JOptionPane.YES_NO_OPTION);
 
             if (respuesta == JOptionPane.YES_OPTION) {
-                //Panel y Controles de Factura
+                //Panel y Controles de Salidas Pendientes
+                this.comboBoxAlmacen.setSelectedIndex(-1);
                 this.jButtonListarPedidos.setEnabled(true);
                 this.txtSalidaID.setText("");
                 this.txtEmitidoPor.setText("");
@@ -1524,7 +1461,7 @@ public class Tiendas1 extends javax.swing.JPanel {
                 faltante = null;
                 sobrante = null;
                 comboBoxAlmacen.setSelectedIndex(-1);
-
+                comboBoxAlmacen.setEnabled(true);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Excepcion al Cancelar Todo Desde Factura" + e);
@@ -1534,49 +1471,14 @@ public class Tiendas1 extends javax.swing.JPanel {
 
     }//GEN-LAST:event_botonReiniciarTodoDesdeFActuraActionPerformed
 
-    private void txtCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadActionPerformed
-
-        try {
-//           
-            if ("".equals(this.txtCantidad.getText())
-                    || Integer.parseInt(this.txtCantidad.getText()) == 0 //|| (this.sd.getCantidadProducto() * this.sd.getCantidadSet()) <= (Math.abs(Integer.parseInt(this.txtCantidad.getText())))
-                    ) {
-                JOptionPane.showMessageDialog(null, "¡¡¡Intriduzca Cantidad Por Favor!!!");
-
-            }
-            if (sd.getCantidadProducto() == Integer.parseInt(this.txtCantidad.getText())) {
-                // this.txtNroBulto.setEnabled(true);
-                this.botonAgregar.requestFocus();
-                this.botonAgregar.setEnabled(true);
-                this.botonCencelarAgregar.setEnabled(true);
-            } else {
-
-                int respuesta = JOptionPane.showConfirmDialog(null, "LA CANTIDAD DEL PRODUCTO ES IMCOMPLETA...\n La Cantidad Correcta Deberia Ser :" + sd.getCantidadProducto() + "\n ¿Desea Continuar de Igual Manera?",
-                        "COMPROBACION DE CANTIDADES", JOptionPane.YES_NO_OPTION);
-
-                if (respuesta == JOptionPane.YES_OPTION) {
-                    //   this.txtNroBulto.setEnabled(true);
-                    this.botonAgregar.requestFocus();
-                    this.botonAgregar.setEnabled(true);
-                    this.botonCencelarAgregar.setEnabled(true);
-                }
-
-            }
-        } catch (NumberFormatException | HeadlessException e) {
-            JOptionPane.showMessageDialog(null, "Excepcion al Validar Cantidad" + e);
-            Logger.getLogger(Tiendas1.class.getName()).log(Level.SEVERE, null, e);
-
-        }
-
-
-    }//GEN-LAST:event_txtCantidadActionPerformed
-
     private void botonCencelarAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCencelarAgregarActionPerformed
 
         try {
             int respuesta = JOptionPane.showConfirmDialog(null, "¿Seguro Desea Cancelar?", "Confirmacion", JOptionPane.YES_NO_OPTION);
 
             if (respuesta == JOptionPane.YES_OPTION) {
+                //Colapsar Panel
+                this.jXTaskPaneLCabeceraTiendas.setCollapsed(false);
                 listaprodSA.clear();
                 //Limpiar Campos de Texto
                 this.txtCodigo.setText("");
@@ -1624,65 +1526,12 @@ public class Tiendas1 extends javax.swing.JPanel {
 
     }//GEN-LAST:event_botonCencelarAgregarActionPerformed
 
-    private void botonValidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonValidarActionPerformed
-
-        try {
-            if ("".equals(this.txtCantidad.getText())
-                   // || Integer.parseInt(this.txtCantidad.getText()) == 0 //|| (this.sd.getCantidadProducto() * this.sd.getCantidadSet()) <= (Math.abs(Integer.parseInt(this.txtCantidad.getText())))
-                    ) {
-                JOptionPane.showMessageDialog(null, "¡¡¡Introduzca Cantidad Por Favor!!!");
-            } else {
-                int totalCantidadInventario = sd.getCantidadProducto();
-
-                if (totalCantidadInventario == Integer.parseInt(this.txtCantidad.getText())) {
-                    //  this.txtNroBulto.setEnabled(true);
-                    this.botonAgregar.requestFocus();
-                    this.botonAgregar.setEnabled(true);
-                    this.botonCencelarAgregar.setEnabled(true);
-                } else {
-
-                    int respuesta = JOptionPane.showConfirmDialog(null, "LA CANTIDAD DEL PRODUCTO ES IMCOMPLETA...\n La Cantidad Correcta Deberia Ser :" + totalCantidadInventario + "\n ¿Desea Continuar de Igual Manera?",
-                            "COMPROBACION DE CANTIDADES", JOptionPane.YES_NO_OPTION);
-
-                    if (respuesta == JOptionPane.YES_OPTION) {
-                        //   this.txtNroBulto.setEnabled(true);
-                        this.botonAgregar.requestFocus();
-                        this.botonAgregar.setEnabled(true);
-                        this.botonCencelarAgregar.setEnabled(true);
-                    }
-                    if (respuesta == JOptionPane.NO_OPTION) {
-                        this.txtCantidad.setText("");
-                        this.txtCantidad.requestFocus();
-                    }
-                }
-            }
-        } catch (NumberFormatException | HeadlessException e) {
-            JOptionPane.showMessageDialog(null, "Excepcion al Validar Cantidad" + e);
-            Logger.getLogger(Tiendas1.class.getName()).log(Level.SEVERE, null, e);
-        }
-
-    }//GEN-LAST:event_botonValidarActionPerformed
-
     private void comboBoxTipoBusquedaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboBoxTipoBusquedaItemStateChanged
 
         this.txtBusqueda.setText("");
         this.txtBusqueda.requestFocus();
 
     }//GEN-LAST:event_comboBoxTipoBusquedaItemStateChanged
-
-    private void txtCantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantidadKeyTyped
-
-        char car = evt.getKeyChar();
-        String cadena = ",-_{}[¨*+´!°#$%&/()=?¡.;;><qwertyuiopñlkjhgfdsazxcvbnm,.-ç´+`¡'<º"
-                + "¨_:´:_.-*^+`QWERTYUIOPÑLKJHGFDSAZXCVBNM,.-´ç+`¡'º<>ª!^·$%&/()=?¿*"; // Caracterens no validos
-        char s = '"';
-        for (int i = 0; i < cadena.length(); i++) {
-            if (car == cadena.charAt(i) || car == s) {
-                evt.consume();
-            }
-        }
-
-    }//GEN-LAST:event_txtCantidadKeyTyped
 
     private void comboBoxAlmacenItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboBoxAlmacenItemStateChanged
 
@@ -1719,10 +1568,6 @@ public class Tiendas1 extends javax.swing.JPanel {
 
     }//GEN-LAST:event_txtBusquedaKeyTyped
 
-    private void txtRenglonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRenglonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtRenglonActionPerformed
-
     private void botonImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonImprimirActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botonImprimirActionPerformed
@@ -1737,15 +1582,18 @@ public class Tiendas1 extends javax.swing.JPanel {
     private void botonTotalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTotalizarActionPerformed
 
         try {
-            if (jTDetalleRegistroTiendas.getRowCount() != 0 && 
-                    listaprodSA.isEmpty()) {
+            if (jTDetalleRegistroTiendas.getRowCount() != 0
+                    && listaprodSA.isEmpty()) {
                 jButtonGuardarConteo.setEnabled(true);
                 botonImprimir.setEnabled(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "DEBE Finalizar de Contabilizar TODOS Los Productos"
+                        + "De Mercancia Asignada Para la Tienda");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Excepcion al Totalizar Pedido" + e);
             Logger.getLogger(Tiendas1.class.getName()).log(Level.SEVERE, null, e);
-            
+
         }
     }//GEN-LAST:event_botonTotalizarActionPerformed
 
@@ -1761,6 +1609,131 @@ public class Tiendas1 extends javax.swing.JPanel {
         JavaUtil.createJDialogGeneric(jpNcd);
     }//GEN-LAST:event_btNDActionPerformed
 
+    private void txtRenglonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRenglonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRenglonActionPerformed
+
+    private void txtCantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCantidadKeyTyped
+
+        char car = evt.getKeyChar();
+        String cadena = " ,-_{}[¨*+´!°#$%&/()=?¡.;;><qwertyuiopñlkjhgfdsazxcvbnm,.-ç´+`¡'<º"
+                + "¨_:´:_.-*^+`QWERTYUIOPÑLKJHGFDSAZXCVBNM,.-´ç+`¡'º<>ª!^·$%&/()=?¿*"; // Caracterens no validos
+        char s = '"';
+        for (int i = 0; i < cadena.length(); i++) {
+            if (car == cadena.charAt(i) || car == s) {
+                evt.consume();
+            }
+        }
+    }//GEN-LAST:event_txtCantidadKeyTyped
+
+    private void txtCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadActionPerformed
+
+        try {
+            //
+            if ("".equals(this.txtCantidad.getText()) // || Integer.parseInt(this.txtCantidad.getText()) == 0 //|| (this.sd.getCantidadProducto() * this.sd.getCantidadSet()) <= (Math.abs(Integer.parseInt(this.txtCantidad.getText())))
+                    ) {
+                JOptionPane.showMessageDialog(null, "¡¡¡Cantida No Puede Estar Vacio,"
+                        + "Intriduzca Cantidad Por Favor!!!");
+
+            } else {
+                botonAgregarActionPerformed(null);
+
+            }
+        } catch (NumberFormatException | HeadlessException e) {
+            JOptionPane.showMessageDialog(null, "Excepcion al Validar Cantidad" + e);
+            Logger.getLogger(Tiendas1.class.getName()).log(Level.SEVERE, null, e);
+
+        }
+
+    }//GEN-LAST:event_txtCantidadActionPerformed
+
+    private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
+      
+        try {
+            if ("".equals(this.txtCantidad.getText())
+                    || "".equals(this.txtNroBulto.getText())
+                    || "".equals(this.txtReferencia.getText())
+                    || "".equals(this.txtMarca.getText())
+                    || "".equals(this.txtCantidadSugeridad.getText())
+                    || sd == null) {
+                JOptionPane.showMessageDialog(null, "Posibles Excepciones: \n"
+                        + "1: Las Datos Estan Vacio\n "
+                        + "2: No existe el Producto\n");
+            } else {
+                //*******************************************
+                // Validar Toma Fisica
+                //********************************************
+
+                if (sd.getCantidadProducto() == Integer.parseInt(this.txtCantidad.getText())) {
+                    agregar();
+                } else {
+
+                    int respuesta = JOptionPane.showConfirmDialog(null, "LA CANTIDAD DEL PRODUCTO ES IMCOMPLETA...\n La Cantidad Correcta Deberia Ser :" + sd.getCantidadProducto() + "\n ¿Desea Continuar de Igual Manera?",
+                            "COMPROBACION DE CANTIDADES", JOptionPane.YES_NO_OPTION);
+
+                    if (respuesta == JOptionPane.YES_OPTION) {
+                        agregar();
+                    }
+                    if (respuesta == JOptionPane.NO_OPTION) {
+                       agregar();
+                    }
+                }
+                
+            }
+
+        } catch (HeadlessException | NumberFormatException ex) {
+            System.err.println("Excepcion AGREGARNDO PRODUCTO EN LA TABLA Y LISTA : " + ex);
+            Logger.getLogger(Tiendas1.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+
+    }//GEN-LAST:event_botonAgregarActionPerformed
+
+    public void agregar(){
+        //****************************************************
+                //Agreagar a Listato y Tabla
+                //****************************************************
+
+                deReg = new DetalleRegistro();
+                deReg.setSd(sd);
+
+                deReg.setCantidad(Integer.parseInt(this.txtCantidad.getText()));
+                // deReg.setBulto(Integer.parseInt(this.txtNroBulto.getText()));
+                // deReg.setRenglon(i++);
+
+                Conteofaltante = Integer.parseInt(this.txtCantidad.getText());
+                //negativo:llego menos de lo que deberia
+                //positivo:llego mas de lo que deberia
+                Conteofaltante -= sd.getCantidadProducto();
+                deReg.setConteoFaltante(Conteofaltante);
+                deReg.setTotalFaltante(Math.abs(Conteofaltante) * sd.getProducto().getPrecioOriginal());
+
+                // deReg.getSd().setEstatus("Aprobado");
+                listaDetalle.add(deReg);
+
+                modeloTablaTomaFisicaInventarioTiendas.setListaDetalleResgistro(listaDetalle);
+                modeloTablaTomaFisicaInventarioTiendas.fireTableDataChanged();
+                modeloTablaTomaFisicaInventarioTiendas.setProdSDmt(deReg);
+
+                this.txtReferencia.setText("");
+                this.txtMarca.setText("");
+                this.txtCantidadSugeridad.setText("");
+                this.txtCodigo.setText("");
+                this.txtDescripcion.setText("");
+                this.txtCantidad.setText("");
+                this.txtNroBulto.setText("");
+                //   this.txtNroBulto.setEnabled(false);
+                this.txtBusqueda.requestFocus();
+                txtRenglon.setText("");
+
+                //Remover de Lista Actual Producto Agregago
+                //this.proEPaux = sd;
+                this.listaprodSA.remove(sd);
+    }
+    private void botonLimpiarAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLimpiarAgregarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonLimpiarAgregarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.jdesktop.swingx.JXButton botonAgregar;
@@ -1768,10 +1741,10 @@ public class Tiendas1 extends javax.swing.JPanel {
     private org.jdesktop.swingx.JXButton botonConfirmarFactura;
     private org.jdesktop.swingx.JXButton botonGenerarNotas;
     private org.jdesktop.swingx.JXButton botonImprimir;
+    private org.jdesktop.swingx.JXButton botonLimpiarAgregar;
     private org.jdesktop.swingx.JXButton botonListarProductosInventariTienda;
     private org.jdesktop.swingx.JXButton botonReiniciarTodoDesdeFActura;
     private org.jdesktop.swingx.JXButton botonTotalizar;
-    private org.jdesktop.swingx.JXButton botonValidar;
     private javax.swing.JButton btNC;
     private javax.swing.JButton btND;
     private org.jdesktop.swingx.JXBusyLabel busy;

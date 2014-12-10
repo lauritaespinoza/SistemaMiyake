@@ -154,8 +154,6 @@ public abstract class JavaUtil {
             oneRow.add(p.getIdMarca().getNombre());
             oneRow.add(p.getIdProveedor().getNombre());
             oneRow.add(p.getPrecioOriginal());
-            oneRow.add(p.getPrimeraActividad() == null ? "" : new SimpleDateFormat("yyyy-MM-dd").format(p.getPrimeraActividad()));
-            oneRow.add(p.getUltimaActividad() == null ? "" : new SimpleDateFormat("yyyy-MM-dd").format(p.getUltimaActividad()));
         }
 
         //si es un vector, y si el la primera es Salida para tienda detalle entonces es
@@ -179,9 +177,11 @@ public abstract class JavaUtil {
             oneRow.add(ivt.getAlmacen().getNombre());
             oneRow.add(ivt.getProducto().getIdProducto());
             oneRow.add(ivt.getProducto().getDescripcion());
-            oneRow.add(dosDecimales.format(ivt.getPrecioSinDescuento() == null ? 0f : ivt.getPrecioSinDescuento()).trim());
+            //oneRow.add( dosDecimales.format(ivt.getPrecioSinDescuento() == null ? 0f : ivt.getPrecioSinDescuento()).trim());
+            oneRow.add(ivt.getPrecioSinDescuento());
             oneRow.add(ivt.getDescuento().toString() + "%");
-            oneRow.add(dosDecimales.format(ivt.getPrecioConDescuento() == null ? 0f : ivt.getPrecioConDescuento()).trim());
+            //oneRow.add( dosDecimales.format(ivt.getPrecioConDescuento() == null ? 0f : ivt.getPrecioConDescuento()).trim());
+           oneRow.add(ivt.getPrecioConDescuento());
             oneRow.add(ivt.getFechaCreacion());
             oneRow.add(ivt.getFechaModificacion());
             oneRow.add(ivt.getCantidad());
@@ -232,7 +232,7 @@ public abstract class JavaUtil {
         if (o instanceof SalidaParaTienda) {
             SalidaParaTienda sa = (SalidaParaTienda) o;
             oneRow.add(sa.getIdAlmacenDesde().getNombre());
-            oneRow.add(sa.getIdUsuario2());
+            oneRow.add(sa.getIdUsuario2().getNombre()+" : "+sa.getIdUsuario2().getDescripcion());
             oneRow.add(sa.getIdAlmacenHasta().getNombre());
             oneRow.add(sa.getIdAlmacenHasta().getTelefono1());
             oneRow.add(sa.getRevisado());
@@ -324,8 +324,6 @@ public abstract class JavaUtil {
             header.add("MARCA");
             header.add("PROVEEDOR");
             header.add("PRECIO ORIGINAL");
-            header.add("FECHA DE CREACION");
-            header.add("FECHA DE MODIFICACION");
         }
         //si es un vector, y si el la primera es Salida para tienda detalle entonces es
         //salida para tienda detalle con precios y descuentos
@@ -349,6 +347,7 @@ public abstract class JavaUtil {
             header.add("CREACION");
             header.add("MODIFICACION");
             header.add("EXISTENCIA");
+            header.add("PROCESADO");
         }
 
         if (o instanceof Almacen) {
@@ -404,7 +403,6 @@ public abstract class JavaUtil {
             header.add("REFERENCIA");
             header.add("DESCRIPCION");
             header.add("CANTIDAD");
-            header.add("PRECIO");
             header.add("BULTO");
         }
 
@@ -632,24 +630,24 @@ public abstract class JavaUtil {
             fechafile.append(rutaCT);
             fechafile.append("DBbackup");
             fechafile.append(".backup");
-
-            pb = new ProcessBuilder(
-                    pgdump,
-                    "--host",
-                    IP,
-                    "--port",
-                    "5432",
-                    "--username",
-                    "postgres",
-                    "--no-password",
-                    "--format",
-                    "tar",
-                    "--blobs",
-                    "--verbose",
-                    "--file",
+            
+             pb = new ProcessBuilder(
+                     pgdump,
+                     "--host",
+                     IP,
+                     "--port",
+                     "5432",
+                     "--username",
+                     "postgres",
+                     "--no-password",
+                     "--format",
+                     "tar",
+                     "--blobs",
+                     "--verbose",
+                     "--file",
                       "C:\\Users\\Usuario\\Desktop\\p1.backup",
-                    "miyake_pasantia"
-            );
+                     "miyake_pasantia"
+             );
             pb.environment().put("PGPASSWORD", "admin");
             pb.redirectErrorStream(true);
             p = pb.start();
@@ -658,10 +656,10 @@ public abstract class JavaUtil {
             BufferedReader br = new BufferedReader(isr);
             String ll;
             while ((ll = br.readLine()) != null) {
-
+              
                 texto.append(ll+"\n");
             }
-
+            
             texto.append("\n\nBACKUP READY\n\n");
         } catch (Exception e) {
             texto.append(e.getMessage());
