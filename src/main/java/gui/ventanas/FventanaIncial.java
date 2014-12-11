@@ -291,6 +291,7 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jXCollapsiblePaneIzquierdo.setAnimated(false);
         jXCollapsiblePaneIzquierdo.setDirection(org.jdesktop.swingx.JXCollapsiblePane.Direction.LEFT);
+        jXCollapsiblePaneIzquierdo.setToolTipText("Para Abrir/Cerrar (Ctrl+A)");
         org.jdesktop.swingx.VerticalLayout verticalLayout13 = new org.jdesktop.swingx.VerticalLayout();
         verticalLayout13.setGap(2);
         jXCollapsiblePaneIzquierdo.getContentPane().setLayout(verticalLayout13);
@@ -305,7 +306,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         btnContainer.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnContainer.setBorderPainted(false);
         btnContainer.setContentAreaFilled(false);
-        btnContainer.setRolloverEnabled(false);
         btnContainer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnContainerMouseEntered(evt);
@@ -325,7 +325,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         btnCrudProveedr.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCrudProveedr.setBorderPainted(false);
         btnCrudProveedr.setContentAreaFilled(false);
-        btnCrudProveedr.setRolloverEnabled(false);
         btnCrudProveedr.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnCrudProveedrMouseEntered(evt);
@@ -345,7 +344,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         TomaFisicaDistribuidora_boton_.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         TomaFisicaDistribuidora_boton_.setBorderPainted(false);
         TomaFisicaDistribuidora_boton_.setContentAreaFilled(false);
-        TomaFisicaDistribuidora_boton_.setRolloverEnabled(false);
         TomaFisicaDistribuidora_boton_.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 TomaFisicaDistribuidora_boton_MouseEntered(evt);
@@ -384,7 +382,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         jButtonActualizarPrecio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonActualizarPrecio.setBorderPainted(false);
         jButtonActualizarPrecio.setContentAreaFilled(false);
-        jButtonActualizarPrecio.setRolloverEnabled(false);
         jButtonActualizarPrecio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButtonActualizarPrecioMouseEntered(evt);
@@ -404,7 +401,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         botonEnvio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botonEnvio.setBorderPainted(false);
         botonEnvio.setContentAreaFilled(false);
-        botonEnvio.setRolloverEnabled(false);
         botonEnvio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 botonEnvioMouseEntered(evt);
@@ -424,7 +420,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         jButtonAlmacen.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonAlmacen.setBorderPainted(false);
         jButtonAlmacen.setContentAreaFilled(false);
-        jButtonAlmacen.setRolloverEnabled(false);
         jButtonAlmacen.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButtonAlmacenMouseEntered(evt);
@@ -464,7 +459,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         jButtonControldeInvetario.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonControldeInvetario.setBorderPainted(false);
         jButtonControldeInvetario.setContentAreaFilled(false);
-        jButtonControldeInvetario.setRolloverEnabled(false);
         jButtonControldeInvetario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButtonControldeInvetarioMouseEntered(evt);
@@ -479,7 +473,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         jButtonPrecio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonPrecio.setBorderPainted(false);
         jButtonPrecio.setContentAreaFilled(false);
-        jButtonPrecio.setRolloverEnabled(false);
         jButtonPrecio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButtonPrecioMouseEntered(evt);
@@ -494,7 +487,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         jButtonNotas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonNotas.setBorderPainted(false);
         jButtonNotas.setContentAreaFilled(false);
-        jButtonNotas.setRolloverEnabled(false);
         jButtonNotas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButtonNotasMouseEntered(evt);
@@ -509,7 +501,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         jButton5Existencias.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton5Existencias.setBorderPainted(false);
         jButton5Existencias.setContentAreaFilled(false);
-        jButton5Existencias.setRolloverEnabled(false);
         jButton5Existencias.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButton5ExistenciasMouseEntered(evt);
@@ -524,7 +515,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         jButtonFacturas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonFacturas.setBorderPainted(false);
         jButtonFacturas.setContentAreaFilled(false);
-        jButtonFacturas.setRolloverEnabled(false);
         jButtonFacturas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButtonFacturasMouseEntered(evt);
@@ -545,7 +535,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         btnCrudProducto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCrudProducto.setBorderPainted(false);
         btnCrudProducto.setContentAreaFilled(false);
-        btnCrudProducto.setRolloverEnabled(false);
         btnCrudProducto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnCrudProductoMouseEntered(evt);
@@ -565,7 +554,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         btnCrudMarca.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCrudMarca.setBorderPainted(false);
         btnCrudMarca.setContentAreaFilled(false);
-        btnCrudMarca.setRolloverEnabled(false);
         btnCrudMarca.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnCrudMarcaMouseEntered(evt);
@@ -586,7 +574,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         btnCrudClasificacion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCrudClasificacion.setBorderPainted(false);
         btnCrudClasificacion.setContentAreaFilled(false);
-        btnCrudClasificacion.setRolloverEnabled(false);
         btnCrudClasificacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnCrudClasificacionMouseEntered(evt);
@@ -607,7 +594,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         btnCrudDepto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCrudDepto.setBorderPainted(false);
         btnCrudDepto.setContentAreaFilled(false);
-        btnCrudDepto.setRolloverEnabled(false);
         btnCrudDepto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnCrudDeptoMouseEntered(evt);
@@ -627,7 +613,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         btnCrudDivision.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCrudDivision.setBorderPainted(false);
         btnCrudDivision.setContentAreaFilled(false);
-        btnCrudDivision.setRolloverEnabled(false);
         btnCrudDivision.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnCrudDivisionMouseEntered(evt);
@@ -656,7 +641,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         Boton_Inprimir_Reporte_conteo_Distribuidora.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Boton_Inprimir_Reporte_conteo_Distribuidora.setBorderPainted(false);
         Boton_Inprimir_Reporte_conteo_Distribuidora.setContentAreaFilled(false);
-        Boton_Inprimir_Reporte_conteo_Distribuidora.setRolloverEnabled(false);
         Boton_Inprimir_Reporte_conteo_Distribuidora.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 Boton_Inprimir_Reporte_conteo_DistribuidoraMouseEntered(evt);
@@ -684,7 +668,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         jButtonInventario.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonInventario.setBorderPainted(false);
         jButtonInventario.setContentAreaFilled(false);
-        jButtonInventario.setRolloverEnabled(false);
         jButtonInventario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jButtonInventarioMouseEntered(evt);
@@ -704,7 +687,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         btNC.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btNC.setBorderPainted(false);
         btNC.setContentAreaFilled(false);
-        btNC.setRolloverEnabled(false);
         btNC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btNCMouseEntered(evt);
@@ -724,7 +706,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         btND.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btND.setBorderPainted(false);
         btND.setContentAreaFilled(false);
-        btND.setRolloverEnabled(false);
         btND.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btNDMouseEntered(evt);
@@ -744,7 +725,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         btnCrudUbicacion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCrudUbicacion.setBorderPainted(false);
         btnCrudUbicacion.setContentAreaFilled(false);
-        btnCrudUbicacion.setRolloverEnabled(false);
         btnCrudUbicacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnCrudUbicacionMouseEntered(evt);
@@ -783,7 +763,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         ExportData_boton_.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ExportData_boton_.setBorderPainted(false);
         ExportData_boton_.setContentAreaFilled(false);
-        ExportData_boton_.setRolloverEnabled(false);
         ExportData_boton_.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 ExportData_boton_MouseEntered(evt);
@@ -803,7 +782,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         btnCrudContact.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCrudContact.setBorderPainted(false);
         btnCrudContact.setContentAreaFilled(false);
-        btnCrudContact.setRolloverEnabled(false);
         btnCrudContact.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnCrudContactMouseEntered(evt);
@@ -843,7 +821,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         btnSalidaTienda.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSalidaTienda.setBorderPainted(false);
         btnSalidaTienda.setContentAreaFilled(false);
-        btnSalidaTienda.setRolloverEnabled(false);
         btnSalidaTienda.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnSalidaTiendaMouseEntered(evt);
@@ -903,6 +880,7 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jMenuPanelAccesoDirect.setText("Panel de Acceso Directo");
 
+        jMenuItemAbrirCerrar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItemAbrirCerrar.setText("Abrir/Cerrar Panel de Acceso Directo");
         jMenuItemAbrirCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
