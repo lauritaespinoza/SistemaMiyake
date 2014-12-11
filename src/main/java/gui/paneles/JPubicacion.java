@@ -21,18 +21,20 @@ public class JPubicacion extends javax.swing.JPanel {
 
     private List resultList;
     private int pos;
+    private Integer tabCrud;
 
-    public JPubicacion() {
+    public JPubicacion(Integer tabCrud) {
+        this.tabCrud = tabCrud;
         initComponents();
-        
-        setTableCellAlignment(JLabel.CENTER,tablaConsultaUbicacion);
-        setTableCellAlignment(JLabel.CENTER,tablaModificarUbicacion);
-        setTableCellAlignment(JLabel.CENTER,tablaEliminarUbicacion);
+
+        setTableCellAlignment(JLabel.CENTER, tablaConsultaUbicacion);
+        setTableCellAlignment(JLabel.CENTER, tablaModificarUbicacion);
+        setTableCellAlignment(JLabel.CENTER, tablaEliminarUbicacion);
         tablaConsultaUbicacion.getTableHeader().setReorderingAllowed(false);
         tablaConsultaUbicacion.getTableHeader().setReorderingAllowed(false);
         tablaConsultaUbicacion.getTableHeader().setReorderingAllowed(false);
-        
-         tablaModificarUbicacion.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+
+        tablaModificarUbicacion.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent lse) {
                 if (!lse.getValueIsAdjusting()) {
 
@@ -422,6 +424,8 @@ public class JPubicacion extends javax.swing.JPanel {
 
         panelScrudUbic.addTab("Eliminar", jPanel4);
 
+        panelScrudUbic.setSelectedIndex(-1);
+
         add(panelScrudUbic);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -520,6 +524,18 @@ public class JPubicacion extends javax.swing.JPanel {
     }//GEN-LAST:event_eliminarActionPerformed
 
     private void panelScrudUbicStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_panelScrudUbicStateChanged
+
+        if (panelScrudUbic.getTabCount() != 4) {
+            return;
+        }
+
+        //verifica si debe abrir un panel desde la llamada
+        if (this.tabCrud != null) {
+            int tabCrud = this.tabCrud.intValue();
+            this.tabCrud = null;
+            panelScrudUbic.setSelectedIndex(tabCrud);
+            return;
+        }
 
         if (panelScrudUbic.getSelectedIndex() == 0) {
             String sql = "FROM Ubicacion u order by u.idUbicacion asc";

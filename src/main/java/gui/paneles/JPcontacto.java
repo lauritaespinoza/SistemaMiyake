@@ -37,12 +37,14 @@ public class JPcontacto extends javax.swing.JPanel {
     private List resultListContacto;
 
     public final String rutaJasper = "/reportes/ReporteContactos.jasper";
+    private Integer tabCrud;
 
     public JPcontacto() {
         this(0);
     }
 
-    public JPcontacto(int tabCrud) {
+    public JPcontacto(Integer tabCrud) {
+        this.tabCrud = tabCrud;
         initComponents();
 
         setTableCellAlignment(JLabel.CENTER, listadoContactos);
@@ -51,8 +53,6 @@ public class JPcontacto extends javax.swing.JPanel {
         listadoContactos.getTableHeader().setReorderingAllowed(false);
         tablaModfContact.getTableHeader().setReorderingAllowed(false);
         tablaDeletContact.getTableHeader().setReorderingAllowed(false);
-
-        panelScrudContact.setSelectedIndex(tabCrud);
 
         tablaModfContact.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent lse) {
@@ -523,6 +523,8 @@ public class JPcontacto extends javax.swing.JPanel {
 
         panelScrudContact.addTab("Eliminar", jScrollPane17);
 
+        panelScrudContact.setSelectedIndex(-1);
+
         add(panelScrudContact);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -604,6 +606,19 @@ public class JPcontacto extends javax.swing.JPanel {
     }//GEN-LAST:event_bDeletContactActionPerformed
 
     private void panelScrudContactStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_panelScrudContactStateChanged
+
+        if (panelScrudContact.getTabCount() != 4) {
+            return;
+        }
+
+        //verifica si debe abrir un panel desde la llamada
+        if (this.tabCrud != null) {
+            int tabCrud = this.tabCrud.intValue();
+            this.tabCrud = null;
+            panelScrudContact.setSelectedIndex(tabCrud);
+            return;
+        }
+
         if (panelScrudContact.getSelectedIndex() == 0) {
             String sql = "FROM Contacto c order by c.idContacto asc";
             List resultList = ObjectModelDAO.getResultQuery(sql);

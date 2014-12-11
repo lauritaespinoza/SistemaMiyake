@@ -22,6 +22,9 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JTabbedPane" name="ru_precios_productos">
+      <Properties>
+        <Property name="selectedIndex" type="int" value="-1"/>
+      </Properties>
       <Events>
         <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="ru_precios_productosStateChanged"/>
       </Events>

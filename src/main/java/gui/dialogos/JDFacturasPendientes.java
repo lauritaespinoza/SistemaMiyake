@@ -377,7 +377,9 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
 
     private void listarFacturas() {
         try {
-            String hql = "select f  FROM Factura f INNER JOIN f.entradaProveedorCollection ep WHERE ep.estatus='Pendiente' GROUP BY f.idFactura ORDER BY f.idFactura ";
+            String hql = "select f  FROM Factura f INNER JOIN "
+                    + "f.entradaProveedorCollection ep WHERE ep.estatus='Pendiente' "
+                    + "GROUP BY f.idFactura ORDER BY f.idFactura ";
             resultList = ObjectModelDAO.getResultQuery(hql);
             JavaUtil.displayResult(resultList, jtListaFactura);
             jtListaFactura.setEditable(false);

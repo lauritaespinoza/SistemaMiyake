@@ -35,12 +35,14 @@ public class JPproveedor extends javax.swing.JPanel {
     private int pos;
     public final String rutaJasper = "/reportes/ReporteProveedores.jasper";
     DefaultTableModel tableModel;
+    private Integer tabCrud;
 
     public JPproveedor() {
         this(0);
     }
 
-    public JPproveedor(int tabCrud) {
+    public JPproveedor(Integer tabCrud) {
+        this.tabCrud = tabCrud;
         initComponents();
 
         setTableCellAlignment(JLabel.CENTER, listadoProveedores);
@@ -49,8 +51,6 @@ public class JPproveedor extends javax.swing.JPanel {
         listadoProveedores.getTableHeader().setReorderingAllowed(false);
         tablaModfProveedor.getTableHeader().setReorderingAllowed(false);
         tablaDeletProveedor.getTableHeader().setReorderingAllowed(false);
-
-        panelScrudProveedor.setSelectedIndex(tabCrud);
 
         tablaModfProveedor.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent lse) {
@@ -671,6 +671,8 @@ public class JPproveedor extends javax.swing.JPanel {
 
         panelScrudProveedor.addTab("Eliminar", jScrollPane7);
 
+        panelScrudProveedor.setSelectedIndex(-1);
+
         add(panelScrudProveedor);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -765,6 +767,19 @@ public class JPproveedor extends javax.swing.JPanel {
     }//GEN-LAST:event_bEliminarProveedorActionPerformed
 
     private void panelScrudProveedorStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_panelScrudProveedorStateChanged
+
+        if (panelScrudProveedor.getTabCount() != 4) {
+            return;
+        }
+
+        //verifica si debe abrir un panel desde la llamada
+        if (this.tabCrud != null) {
+            int tabCrud = this.tabCrud.intValue();
+            this.tabCrud = null;
+            panelScrudProveedor.setSelectedIndex(tabCrud);
+            return;
+        }
+
         if (panelScrudProveedor.getSelectedIndex() == 0) {
             String sql = "FROM Proveedor p order by p.idProveedor asc";
             List resultList = ObjectModelDAO.getResultQuery(sql);
@@ -848,7 +863,7 @@ public class JPproveedor extends javax.swing.JPanel {
             Vector<Object> subdata = new Vector<>();
 
             for (int j = 0; j < listadoProveedores.getColumnCount(); j++) {
-                if(columnNames.contains(listadoProveedores.getColumnName(j))){
+                if (columnNames.contains(listadoProveedores.getColumnName(j))) {
                     subdata.add(listadoProveedores.getValueAt(i, j));
                 }
             }
