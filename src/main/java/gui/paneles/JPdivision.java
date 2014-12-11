@@ -30,12 +30,13 @@ public class JPdivision extends javax.swing.JPanel {
     private List resultList;
     private int pos;
     public final String rutaJasper = "/reportes/ReporteDivision.jasper";
-
+    private Integer tabCrud;
     public JPdivision() {
         this(0);
     }
     
     public JPdivision(Integer tabCrud) {
+        this.tabCrud = tabCrud;
         initComponents();
 
         setTableCellAlignment(JLabel.CENTER, tablaConsultaDivision);
@@ -45,8 +46,7 @@ public class JPdivision extends javax.swing.JPanel {
         tablaModificarDivision.getTableHeader().setReorderingAllowed(false);
         tablaEliminarDivision.getTableHeader().setReorderingAllowed(false);
 
-        panelScrudDiv.setSelectedIndex(tabCrud);
-
+        
         tablaModificarDivision.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent lse) {
                 if (!lse.getValueIsAdjusting()) {
@@ -385,6 +385,8 @@ public class JPdivision extends javax.swing.JPanel {
 
         panelScrudDiv.addTab("Eliminar", jScrollPane7);
 
+        panelScrudDiv.setSelectedIndex(-1);
+
         add(panelScrudDiv);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -460,6 +462,19 @@ public class JPdivision extends javax.swing.JPanel {
 
     private void panelScrudDivStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_panelScrudDivStateChanged
 
+          if (panelScrudDiv.getTabCount() != 4) {
+            return;
+        }
+
+        //verifica si debe abrir un panel desde la llamada
+        if (this.tabCrud != null) {
+            int tabCrud=this.tabCrud.intValue();
+            this.tabCrud = null;
+            panelScrudDiv.setSelectedIndex(tabCrud);
+            return;
+        }
+        
+        
         if (panelScrudDiv.getSelectedIndex() == 0) {
             String sql = "FROM Division d order by d.idDivision asc";
             List resultList = ObjectModelDAO.getResultQuery(sql);

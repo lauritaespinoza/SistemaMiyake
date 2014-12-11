@@ -56,8 +56,9 @@ public class JPprecio_productos extends javax.swing.JPanel {
 
     public final InputStream rutaJasper = this.getClass().getResourceAsStream("/reportes/ReporteProductosDescuento.jasper");
     public final InputStream rutaJrxml = this.getClass().getResourceAsStream("/reportes/ReporteProductosDescuento.jrxml");
-
-    public JPprecio_productos() {
+    private Integer tabCrud;
+    public JPprecio_productos(Integer tabCrud) {
+        this.tabCrud = tabCrud;
         initComponents();
         setTableCellAlignment(JLabel.CENTER, tablaproductos_con_precios);
         setTableCellAlignment(JLabel.CENTER, tablaproductos_con_precios1);
@@ -446,6 +447,8 @@ public class JPprecio_productos extends javax.swing.JPanel {
 
         ru_precios_productos.addTab("Modificar", jScrollPane4);
 
+        ru_precios_productos.setSelectedIndex(-1);
+
         add(ru_precios_productos);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -662,6 +665,19 @@ public class JPprecio_productos extends javax.swing.JPanel {
     }//GEN-LAST:event_tablaproductos_con_precios1KeyReleased
 
     private void ru_precios_productosStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ru_precios_productosStateChanged
+
+        if (ru_precios_productos.getTabCount() != 2) {
+            return;
+        }
+
+        //verifica si debe abrir un panel desde la llamada
+        if (this.tabCrud != null) {
+            int tabCrud = this.tabCrud.intValue();
+            this.tabCrud = null;
+            ru_precios_productos.setSelectedIndex(tabCrud);
+            return;
+        }
+
         if (ru_precios_productos.getSelectedIndex() == 0) {
 
             resultListAlmacen = ObjectModelDAO.getResultQuery("FROM Almacen a order by a.idAlmacen asc");

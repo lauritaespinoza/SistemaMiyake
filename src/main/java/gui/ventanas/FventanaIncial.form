@@ -28,11 +28,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Modificar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmModificarActionPerformed"/>
+          </Events>
         </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="jmEliminar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmEliminarActionPerformed"/>
+          </Events>
         </MenuItem>
       </SubComponents>
     </Container>
@@ -482,6 +488,7 @@
                       <SubComponents>
                         <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneModuloDistribuidor">
                           <Properties>
+                            <Property name="collapsed" type="boolean" value="true"/>
                             <Property name="title" type="java.lang.String" value="Distribuidora"/>
                           </Properties>
                           <SubComponents>
@@ -1040,7 +1047,6 @@
                         </Container>
                         <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneModuloGestionProductos">
                           <Properties>
-                            <Property name="collapsed" type="boolean" value="true"/>
                             <Property name="title" type="java.lang.String" value="Gesti&#xf3;n de Productos"/>
                           </Properties>
                           <SubComponents>

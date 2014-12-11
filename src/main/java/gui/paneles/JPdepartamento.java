@@ -32,14 +32,16 @@ public class JPdepartamento extends javax.swing.JPanel {
     private List resultList_division;
     private int pos;
     public final String rutaJasper = "/reportes/ReporteDepartamento.jasper";
-
+    private Integer tabCrud;
+    
     public JPdepartamento() {
         this(0);
     }
 
-    public JPdepartamento(int tabCrud) {
+    public JPdepartamento(Integer tabCrud) {
+        this.tabCrud = tabCrud;
         initComponents();
-
+        
         setTableCellAlignment(JLabel.CENTER, listadoDepartamentos);
         setTableCellAlignment(JLabel.CENTER, tablaModfDep);
         setTableCellAlignment(JLabel.CENTER, tablaDeletDep);
@@ -47,7 +49,6 @@ public class JPdepartamento extends javax.swing.JPanel {
         tablaModfDep.getTableHeader().setReorderingAllowed(false);
         tablaDeletDep.getTableHeader().setReorderingAllowed(false);
 
-        panelScrudDep.setSelectedIndex(tabCrud);
 
         tablaDeletDep.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent lse) {
@@ -184,9 +185,7 @@ public class JPdepartamento extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel14)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(bt_GenerarReporte)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                    .addComponent(bt_GenerarReporte))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -439,6 +438,8 @@ public class JPdepartamento extends javax.swing.JPanel {
 
         panelScrudDep.addTab("Eliminar", jScrollPane7);
 
+        panelScrudDep.setSelectedIndex(-1);
+
         add(panelScrudDep);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -516,6 +517,22 @@ public class JPdepartamento extends javax.swing.JPanel {
     }//GEN-LAST:event_bDelet_depActionPerformed
 
     private void panelScrudDepStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_panelScrudDepStateChanged
+
+        
+          if (panelScrudDep.getTabCount() != 4) {
+            return;
+        }
+
+        //verifica si debe abrir un panel desde la llamada
+        if (this.tabCrud != null) {
+            int tabCrud=this.tabCrud.intValue();
+            this.tabCrud = null;
+            panelScrudDep.setSelectedIndex(tabCrud);
+            return;
+        }
+        
+        
+        
         if (panelScrudDep.getSelectedIndex() == 0) {
             String sql = "FROM Departamento d order by d.idDepartamento asc";
             List resultList = ObjectModelDAO.getResultQuery(sql);

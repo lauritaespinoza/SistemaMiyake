@@ -15,9 +15,14 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
@@ -28,6 +33,7 @@ import modelos.mapeos.Marca;
 import modelos.mapeos.Producto;
 import modelos.mapeos.Proveedor;
 import org.hibernate.Query;
+import org.pushingpixels.substance.api.skin.SubstanceBusinessBlueSteelLookAndFeel;
 
 /**
  *
@@ -46,11 +52,11 @@ public class JPproducto extends javax.swing.JPanel {
     public JPproducto() {
         this(null);
     }
-    
-    public JPproducto(Integer tabCrud) {
-        this.tabCrud=tabCrud;
-        initComponents();
 
+    public JPproducto(Integer tabCrud) {
+        this.tabCrud = tabCrud;
+        initComponents();
+        
         setTableCellAlignment(JLabel.CENTER, listadoProductos);
         setTableCellAlignment(JLabel.CENTER, tablaModifProducto);
         setTableCellAlignment(JLabel.CENTER, tablaEliminarProducto);
@@ -58,7 +64,6 @@ public class JPproducto extends javax.swing.JPanel {
         tablaModifProducto.getTableHeader().setReorderingAllowed(false);
         tablaEliminarProducto.getTableHeader().setReorderingAllowed(false);
 
-       // panelScrudProducto.setSelectedIndex(tabCrud);
         
         tablaModifProducto.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent lse) {
@@ -69,7 +74,7 @@ public class JPproducto extends javax.swing.JPanel {
                     }
                     pos = tablaModifProducto.getSelectedRow();
                     Producto p = (Producto) resultListProducto.get(pos);
-                   // Producto p = null;
+                    // Producto p = null;
 //                    boolean sw = false;
 //                    for (int i = 0; i < resultListProducto.size(); i++) {
 //                        p = (Producto) resultListProducto.get(i);
@@ -933,6 +938,18 @@ public class JPproducto extends javax.swing.JPanel {
     }
 
     private void panelScrudProductoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_panelScrudProductoStateChanged
+        if (panelScrudProducto.getTabCount() != 4) {
+            return;
+        }
+
+        //verifica si debe abrir un panel desde la llamada
+        if (this.tabCrud != null) {
+            int tabCrud=this.tabCrud.intValue();
+            this.tabCrud = null;
+            panelScrudProducto.setSelectedIndex(tabCrud);
+            return;
+        }
+
         hilo = new Thread() {
 
             @Override
@@ -942,7 +959,7 @@ public class JPproducto extends javax.swing.JPanel {
                 busy.setVisible(true);
 
                 if (panelScrudProducto.getSelectedIndex() == 0) {
-                    
+
                     JOptionPane.showMessageDialog(null, "consulta");
                     setNULLS(0);
                     String sql = " FROM Producto p order by p.idProducto asc";
@@ -953,7 +970,7 @@ public class JPproducto extends javax.swing.JPanel {
                     listadoProductos.setEditable(false);
                     resultListClasificacion = ObjectModelDAO.getResultQuery("FROM Clasificacion c order by c.idClasificacion asc");
                     resultListMarca = ObjectModelDAO.getResultQuery("FROM Marca m order by m.idMarca asc");
-                    
+
                 }
                 if (panelScrudProducto.getSelectedIndex() == 1) {
                     JOptionPane.showMessageDialog(null, "crea");

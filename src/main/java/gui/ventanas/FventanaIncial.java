@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.ImageIO; 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -36,9 +36,11 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Date;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 public class FventanaIncial extends javax.swing.JFrame {
@@ -84,7 +86,7 @@ public class FventanaIncial extends javax.swing.JFrame {
     }
 
     //el tipo se usa en nota de credito debito
-    private void addPaneles(String titulo, Class panelNuevo, Boolean tipo) {
+    private void addPaneles(String titulo, Class panelNuevo, Boolean tipo, Integer tabCrud) {
         try {
 
             int pos = isContained(titulo);
@@ -92,7 +94,16 @@ public class FventanaIncial extends javax.swing.JFrame {
                 if (panelNuevo.equals(JPnotaCreditoDebito.class)) {//si es una nota de credito/debito
                     panelClosableCentral.addTab(titulo, (JPanel) panelNuevo.getConstructor(Boolean.class).newInstance(tipo));
                 } else {
-                    panelClosableCentral.addTab(titulo, (JPanel) panelNuevo.newInstance());
+                    if (tabCrud != null) {//si es un crud
+                        Constructor[] ctr = panelNuevo.getConstructors();
+                        System.out.println(tabCrud);
+                        panelClosableCentral.addTab(titulo, new JPproducto(tabCrud));
+
+//                        panelClosableCentral.addTab(titulo,
+//                                (JPanel) panelNuevo.getConstructor(Integer.class).newInstance(tabCrud));
+                    } else {
+                        panelClosableCentral.addTab(titulo, (JPanel) panelNuevo.newInstance());
+                    }
                 }
                 panelClosableCentral.setSelectedIndex(panelClosableCentral.getTabCount() - 1);
             } else {
@@ -271,9 +282,19 @@ public class FventanaIncial extends javax.swing.JFrame {
         menuCRUD.add(jmCrear);
 
         jmModificar.setText("Modificar");
+        jmModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmModificarActionPerformed(evt);
+            }
+        });
         menuCRUD.add(jmModificar);
 
         jmEliminar.setText("Eliminar");
+        jmEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmEliminarActionPerformed(evt);
+            }
+        });
         menuCRUD.add(jmEliminar);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -300,6 +321,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         jXCollapsiblePaneAbajo.setAlignmentX(0.0F);
         jXCollapsiblePaneAbajo.getContentPane().setLayout(new org.jdesktop.swingx.VerticalLayout());
 
+        taskPaneModuloDistribuidor.setCollapsed(true);
         taskPaneModuloDistribuidor.setTitle("Distribuidora");
 
         btnContainer.setText("Registrar Container        ");
@@ -527,7 +549,6 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jXCollapsiblePaneAbajo.getContentPane().add(taskPaneModuloTienda);
 
-        taskPaneModuloGestionProductos.setCollapsed(true);
         taskPaneModuloGestionProductos.setTitle("Gestión de Productos");
 
         btnCrudProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415416322_list-accept.png"))); // NOI18N
@@ -1105,11 +1126,11 @@ public class FventanaIncial extends javax.swing.JFrame {
 
 
     private void jmConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmConsultarActionPerformed
-            
+        addPaneles(tabProducto, JPproducto.class, null, 0);
     }//GEN-LAST:event_jmConsultarActionPerformed
 
     private void jmCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCrearActionPerformed
-
+        addPaneles(tabProducto, JPproducto.class, null, 1);
     }//GEN-LAST:event_jmCrearActionPerformed
 
     private void jMenuItemAbrirCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAbrirCerrarActionPerformed
@@ -1130,34 +1151,34 @@ public class FventanaIncial extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemImprimirEtiquetasActionPerformed
 
     private void btnContainerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContainerActionPerformed
-        addPaneles(tabFactura, JPentradaproveedor.class, null);
+        addPaneles(tabFactura, JPentradaproveedor.class, null, null);
     }//GEN-LAST:event_btnContainerActionPerformed
 
     private void btnCrudProveedrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrudProveedrActionPerformed
-        addPaneles(tabProveedor, JPproveedor.class, null);
+        addPaneles(tabProveedor, JPproveedor.class, null, 0);
     }//GEN-LAST:event_btnCrudProveedrActionPerformed
 
     private void TomaFisicaDistribuidora_boton_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TomaFisicaDistribuidora_boton_ActionPerformed
 
-        addPaneles(tabTomaFisica, Distribuidora1.class, null);
+        addPaneles(tabTomaFisica, Distribuidora1.class, null, 0);
     }//GEN-LAST:event_TomaFisicaDistribuidora_boton_ActionPerformed
 
     private void AsignarMercancia_boton_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsignarMercancia_boton_ActionPerformed
 
-        addPaneles(tabAsignarMercancia, Asignar1.class, null);
+        addPaneles(tabAsignarMercancia, Asignar1.class, null, 0);
     }//GEN-LAST:event_AsignarMercancia_boton_ActionPerformed
 
     private void jButtonActualizarPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizarPrecioActionPerformed
-        addPaneles(tabPrecio, JPprecio_productos.class, null);
+        addPaneles(tabPrecio, JPprecio_productos.class, null, 0);
     }//GEN-LAST:event_jButtonActualizarPrecioActionPerformed
 
     private void jButtonAlmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlmacenActionPerformed
-        addPaneles(tabAlmacen, JPalmacen.class, null);
+        addPaneles(tabAlmacen, JPalmacen.class, null, 0);
     }//GEN-LAST:event_jButtonAlmacenActionPerformed
 
     private void TomaFisicaTiendas_boton_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TomaFisicaTiendas_boton_ActionPerformed
 
-        addPaneles(tabTomaFisicaTiendas, Tiendas1.class, null);
+        addPaneles(tabTomaFisicaTiendas, Tiendas1.class, null, 0);
     }//GEN-LAST:event_TomaFisicaTiendas_boton_ActionPerformed
 
     private void btnCrudProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrudProductoMouseEntered
@@ -1173,23 +1194,23 @@ public class FventanaIncial extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCrudProductoMouseExited
 
     private void btnCrudProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrudProductoActionPerformed
-        addPaneles(tabProducto, JPproducto.class, null);
+        addPaneles(tabProducto, JPproducto.class, null, 0);
     }//GEN-LAST:event_btnCrudProductoActionPerformed
 
     private void btnCrudMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrudMarcaActionPerformed
-        addPaneles(tabMarca, JPmarca.class, null);
+        addPaneles(tabMarca, JPmarca.class, null, 0);
     }//GEN-LAST:event_btnCrudMarcaActionPerformed
 
     private void btnCrudClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrudClasificacionActionPerformed
-        addPaneles(tabClasificacion, JPclasificacion.class, null);
+        addPaneles(tabClasificacion, JPclasificacion.class, null, 0);
     }//GEN-LAST:event_btnCrudClasificacionActionPerformed
 
     private void btnCrudDeptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrudDeptoActionPerformed
-        addPaneles(tabDepartamento, JPdepartamento.class, null);
+        addPaneles(tabDepartamento, JPdepartamento.class, null, 0);
     }//GEN-LAST:event_btnCrudDeptoActionPerformed
 
     private void btnCrudDivisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrudDivisionActionPerformed
-        addPaneles(tabDivision, JPdivision.class, null);
+        addPaneles(tabDivision, JPdivision.class, null, 0);
     }//GEN-LAST:event_btnCrudDivisionActionPerformed
 
     private void Boton_Inprimir_Reporte_conteo_DistribuidoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_Inprimir_Reporte_conteo_DistribuidoraActionPerformed
@@ -1219,49 +1240,49 @@ public class FventanaIncial extends javax.swing.JFrame {
     }//GEN-LAST:event_Boton_Inprimir_Reporte_conteo_DistribuidoraActionPerformed
 
     private void jButtonInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInventarioActionPerformed
-        addPaneles(tabInventarioDiario, JPinventarioDiario.class, null);
+        addPaneles(tabInventarioDiario, JPinventarioDiario.class, null, null);
     }//GEN-LAST:event_jButtonInventarioActionPerformed
 
     private void btNCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNCActionPerformed
-        addPaneles(tabNotaCredito, JPnotaCreditoDebito.class, true);
+        addPaneles(tabNotaCredito, JPnotaCreditoDebito.class, true, null);
     }//GEN-LAST:event_btNCActionPerformed
 
     private void btNDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNDActionPerformed
-        addPaneles(tabNotaDebito, JPnotaCreditoDebito.class, false);
+        addPaneles(tabNotaDebito, JPnotaCreditoDebito.class, false, null);
     }//GEN-LAST:event_btNDActionPerformed
 
     private void btnCrudUbicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrudUbicacionActionPerformed
-        addPaneles(tabUbicacion, JPubicacion.class, null);
+        addPaneles(tabUbicacion, JPubicacion.class, null, 0);
     }//GEN-LAST:event_btnCrudUbicacionActionPerformed
 
     private void jXButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXButton1ActionPerformed
 
-        addPaneles(tabUsuarios, JPusuario.class, null);
+        addPaneles(tabUsuarios, JPusuario.class, null, 0);
     }//GEN-LAST:event_jXButton1ActionPerformed
 
     private void ExportData_boton_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExportData_boton_ActionPerformed
 
-        addPaneles(tabExportData, JPexportData.class, null);
+        addPaneles(tabExportData, JPexportData.class, null, null);
     }//GEN-LAST:event_ExportData_boton_ActionPerformed
 
     private void btnCrudContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrudContactActionPerformed
-        addPaneles(tabContacto, JPcontacto.class, null);
+        addPaneles(tabContacto, JPcontacto.class, null, 0);
     }//GEN-LAST:event_btnCrudContactActionPerformed
 
     private void ConsultaExistencia_boton_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaExistencia_boton_ActionPerformed
 
-        addPaneles(tabConsultarMerca, JPConsultaInventario.class, null);
+        addPaneles(tabConsultarMerca, JPConsultaInventario.class, null, null);
 
         // TODO add your handling code here:
     }//GEN-LAST:event_ConsultaExistencia_boton_ActionPerformed
 
     private void btnSalidaTiendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalidaTiendaActionPerformed
-        addPaneles(tabSalida, JPsalida_p_tienda.class, null);
+        addPaneles(tabSalida, JPsalida_p_tienda.class, null, null);
     }//GEN-LAST:event_btnSalidaTiendaActionPerformed
 
     private void jXButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXButton2ActionPerformed
 
-        addPaneles(tabMecanciaEnProceso, JPMecanciaEnProceso.class, null);
+        addPaneles(tabMecanciaEnProceso, JPMecanciaEnProceso.class, null, null);
     }//GEN-LAST:event_jXButton2ActionPerformed
 
     private void btnContainerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContainerMouseEntered
@@ -1385,7 +1406,7 @@ public class FventanaIncial extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCrudProveedrMouseExited
 
     private void TomaFisicaDistribuidora_boton_MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TomaFisicaDistribuidora_boton_MouseExited
-       TomaFisicaDistribuidora_boton_.setBorderPainted(false);
+        TomaFisicaDistribuidora_boton_.setBorderPainted(false);
     }//GEN-LAST:event_TomaFisicaDistribuidora_boton_MouseExited
 
     private void AsignarMercancia_boton_MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AsignarMercancia_boton_MouseExited
@@ -1393,7 +1414,7 @@ public class FventanaIncial extends javax.swing.JFrame {
     }//GEN-LAST:event_AsignarMercancia_boton_MouseExited
 
     private void jButtonActualizarPrecioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonActualizarPrecioMouseExited
-       jButtonActualizarPrecio.setBorderPainted(false);
+        jButtonActualizarPrecio.setBorderPainted(false);
     }//GEN-LAST:event_jButtonActualizarPrecioMouseExited
 
     private void botonEnvioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEnvioMouseExited
@@ -1421,7 +1442,7 @@ public class FventanaIncial extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonNotasMouseExited
 
     private void jButton5ExistenciasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5ExistenciasMouseExited
-       jButton5Existencias.setBorderPainted(false);
+        jButton5Existencias.setBorderPainted(false);
     }//GEN-LAST:event_jButton5ExistenciasMouseExited
 
     private void jButtonFacturasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonFacturasMouseExited
@@ -1461,23 +1482,23 @@ public class FventanaIncial extends javax.swing.JFrame {
     }//GEN-LAST:event_btNDMouseExited
 
     private void btnCrudUbicacionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrudUbicacionMouseExited
-       btnCrudUbicacion.setBorderPainted(false);
+        btnCrudUbicacion.setBorderPainted(false);
     }//GEN-LAST:event_btnCrudUbicacionMouseExited
 
     private void jXButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jXButton1MouseExited
-      jXButton1.setBorderPainted(false);
+        jXButton1.setBorderPainted(false);
     }//GEN-LAST:event_jXButton1MouseExited
 
     private void ExportData_boton_MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExportData_boton_MouseExited
-       ExportData_boton_.setBorderPainted(false);
+        ExportData_boton_.setBorderPainted(false);
     }//GEN-LAST:event_ExportData_boton_MouseExited
 
     private void btnCrudContactMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrudContactMouseExited
-       btnCrudContact.setBorderPainted(false);
+        btnCrudContact.setBorderPainted(false);
     }//GEN-LAST:event_btnCrudContactMouseExited
 
     private void ConsultaExistencia_boton_MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConsultaExistencia_boton_MouseExited
-       ConsultaExistencia_boton_.setBorderPainted(false);
+        ConsultaExistencia_boton_.setBorderPainted(false);
     }//GEN-LAST:event_ConsultaExistencia_boton_MouseExited
 
     private void btnSalidaTiendaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalidaTiendaMouseExited
@@ -1487,6 +1508,14 @@ public class FventanaIncial extends javax.swing.JFrame {
     private void jXButton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jXButton2MouseExited
         jXButton2.setBorderPainted(false);
     }//GEN-LAST:event_jXButton2MouseExited
+
+    private void jmModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmModificarActionPerformed
+        addPaneles(tabProducto, JPproducto.class, null, 2);
+    }//GEN-LAST:event_jmModificarActionPerformed
+
+    private void jmEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEliminarActionPerformed
+        addPaneles(tabProducto, JPproducto.class, null, 3);
+    }//GEN-LAST:event_jmEliminarActionPerformed
 
     public static void main(String args[]) {
 

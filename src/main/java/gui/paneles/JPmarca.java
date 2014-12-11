@@ -32,13 +32,15 @@ public class JPmarca extends javax.swing.JPanel {
     private List resultList;
     private int pos;
     public final String rutaJasper = "/reportes/ReporteMarca.jasper";
+    private Integer tabCrud;
     
     
     public JPmarca() {
         this(0);
     }
     
-    public JPmarca(int tabCrud) {
+    public JPmarca(Integer tabCrud) {
+        this.tabCrud = tabCrud;
         initComponents();
         
         setTableCellAlignment(JLabel.CENTER,tablaConsultaMarca);
@@ -47,8 +49,6 @@ public class JPmarca extends javax.swing.JPanel {
         tablaConsultaMarca.getTableHeader().setReorderingAllowed(false);
         tablaModifMarca.getTableHeader().setReorderingAllowed(false);
         tablaDeletMarca.getTableHeader().setReorderingAllowed(false);
-        
-        panelScrudMarca.setSelectedIndex(tabCrud);
         
         tablaModifMarca.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent lse) {
@@ -449,6 +449,8 @@ public class JPmarca extends javax.swing.JPanel {
 
         panelScrudMarca.addTab("Eliminar", jPanel4);
 
+        panelScrudMarca.setSelectedIndex(-1);
+
         add(panelScrudMarca);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -507,6 +509,20 @@ public class JPmarca extends javax.swing.JPanel {
     }//GEN-LAST:event_deletMarkActionPerformed
 
     private void panelScrudMarcaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_panelScrudMarcaStateChanged
+
+         if (panelScrudMarca.getTabCount() != 4) {
+            return;
+        }
+
+        //verifica si debe abrir un panel desde la llamada
+        if (this.tabCrud != null) {
+            int tabCrud=this.tabCrud.intValue();
+            this.tabCrud = null;
+            panelScrudMarca.setSelectedIndex(tabCrud);
+            return;
+        }
+        
+        
         if (panelScrudMarca.getSelectedIndex() == 0) {
             String sql = "FROM Marca m order by m.idMarca asc";
             List resultList = ObjectModelDAO.getResultQuery(sql);
