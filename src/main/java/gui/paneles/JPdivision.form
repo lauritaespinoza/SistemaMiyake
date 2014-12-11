@@ -19,6 +19,9 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JTabbedPane" name="panelScrudDiv">
+      <Properties>
+        <Property name="selectedIndex" type="int" value="-1"/>
+      </Properties>
       <Events>
         <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="panelScrudDivStateChanged"/>
       </Events>

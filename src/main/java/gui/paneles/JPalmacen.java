@@ -36,11 +36,13 @@ public class JPalmacen extends javax.swing.JPanel {
     private String rutaLogoCrear;
     private final String nomeclatura = "almacen_";
     private final String extencionImg = "jpg";
+    private Integer tabCrud;
 
-    public JPalmacen() {
+    public JPalmacen(Integer tabCrud) {
+        this.tabCrud = tabCrud;
         initComponents();
-        
-         tablaModfAlmacen.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+
+        tablaModfAlmacen.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent lse) {
                 if (!lse.getValueIsAdjusting()) {
 
@@ -116,7 +118,7 @@ public class JPalmacen extends javax.swing.JPanel {
         filesc.setCurrentDirectory(new java.io.File("C:\\Users\\Usuario\\Documents\\PASANTIA"));
 
         filesc.setDialogTitle("Seleccione un archivo");
-        panelScrudContact = new javax.swing.JTabbedPane();
+        panelScrudAlmacen = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         listadoAlmacenes = new org.jdesktop.swingx.JXTable();
@@ -187,9 +189,9 @@ public class JPalmacen extends javax.swing.JPanel {
 
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
 
-        panelScrudContact.addChangeListener(new javax.swing.event.ChangeListener() {
+        panelScrudAlmacen.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                panelScrudContactStateChanged(evt);
+                panelScrudAlmacenStateChanged(evt);
             }
         });
 
@@ -249,7 +251,7 @@ public class JPalmacen extends javax.swing.JPanel {
             .addComponent(logo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        panelScrudContact.addTab("Consultar", jPanel1);
+        panelScrudAlmacen.addTab("Consultar", jPanel1);
 
         jLabel1.setText("Nombre:");
 
@@ -410,7 +412,7 @@ public class JPalmacen extends javax.swing.JPanel {
                                 .addGap(67, 67, 67))))))
         );
 
-        panelScrudContact.addTab("Crear", jPanel2);
+        panelScrudAlmacen.addTab("Crear", jPanel2);
 
         jLabel6.setText("ID:");
 
@@ -622,7 +624,7 @@ public class JPalmacen extends javax.swing.JPanel {
             .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
         );
 
-        panelScrudContact.addTab("Modificar", jPanel3);
+        panelScrudAlmacen.addTab("Modificar", jPanel3);
 
         bDeletAlmacen.setText("Eliminar");
         bDeletAlmacen.addActionListener(new java.awt.event.ActionListener() {
@@ -694,9 +696,11 @@ public class JPalmacen extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        panelScrudContact.addTab("Eliminar", jPanel4);
+        panelScrudAlmacen.addTab("Eliminar", jPanel4);
 
-        add(panelScrudContact);
+        panelScrudAlmacen.setSelectedIndex(-1);
+
+        add(panelScrudAlmacen);
     }// </editor-fold>//GEN-END:initComponents
 
     private void pickImg(JLabel lbl) {
@@ -715,7 +719,7 @@ public class JPalmacen extends javax.swing.JPanel {
         }
 
     }
-    
+
     private void bCrearAlmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearAlmacenActionPerformed
         if (!fieldNomb.getText().equals("") && !fieldDescripcion.getText().equals("")
                 && !fieldTlf1.getText().equals("") && !fieldTlf2.getText().equals("") && !fieldEmail.getText().equals("")) {
@@ -853,8 +857,21 @@ public class JPalmacen extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_bDeletAlmacenActionPerformed
 
-    private void panelScrudContactStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_panelScrudContactStateChanged
-        if (panelScrudContact.getSelectedIndex() == 0) {
+    private void panelScrudAlmacenStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_panelScrudAlmacenStateChanged
+
+        if (panelScrudAlmacen.getTabCount() != 4) {
+            return;
+        }
+
+        //verifica si debe abrir un panel desde la llamada
+        if (this.tabCrud != null) {
+            int tabCrud = this.tabCrud.intValue();
+            this.tabCrud = null;
+            panelScrudAlmacen.setSelectedIndex(tabCrud);
+            return;
+        }
+
+        if (panelScrudAlmacen.getSelectedIndex() == 0) {
             String sql = "FROM Almacen a order by a.idAlmacen asc";
             resultListAlmacen = ObjectModelDAO.getResultQuery(sql);
             JavaUtil.displayResult(resultListAlmacen, listadoAlmacenes);
@@ -862,7 +879,7 @@ public class JPalmacen extends javax.swing.JPanel {
             JavaUtil.preCambio(null, logo);
         }
 
-        if (panelScrudContact.getSelectedIndex() == 1) {
+        if (panelScrudAlmacen.getSelectedIndex() == 1) {
             fieldNomb.setText("");
             fieldDescripcion.setText("");
             fieldTlf1.setText("");
@@ -889,7 +906,7 @@ public class JPalmacen extends javax.swing.JPanel {
             }
         }
 
-        if (panelScrudContact.getSelectedIndex() == 2) {
+        if (panelScrudAlmacen.getSelectedIndex() == 2) {
             lb_id.setText("");
             fieldNomb1.setText("");
             fieldDescripcion1.setText("");
@@ -925,7 +942,7 @@ public class JPalmacen extends javax.swing.JPanel {
 
         }
 
-        if (panelScrudContact.getSelectedIndex() == 3) {
+        if (panelScrudAlmacen.getSelectedIndex() == 3) {
             String sql = "FROM Almacen a order by a.idAlmacen asc";
             resultListAlmacen = ObjectModelDAO.getResultQuery(sql);
 
@@ -934,7 +951,7 @@ public class JPalmacen extends javax.swing.JPanel {
             tablaDeletAlmacen.setEditable(false);
             JavaUtil.preCambio(null, fieldLogo2);
         }
-    }//GEN-LAST:event_panelScrudContactStateChanged
+    }//GEN-LAST:event_panelScrudAlmacenStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1002,7 +1019,7 @@ public class JPalmacen extends javax.swing.JPanel {
     private javax.swing.JLabel lb_id;
     private org.jdesktop.swingx.JXTable listadoAlmacenes;
     private javax.swing.JLabel logo;
-    private javax.swing.JTabbedPane panelScrudContact;
+    private javax.swing.JTabbedPane panelScrudAlmacen;
     private org.jdesktop.swingx.JXTable tablaDeletAlmacen;
     private org.jdesktop.swingx.JXTable tablaModfAlmacen;
     // End of variables declaration//GEN-END:variables

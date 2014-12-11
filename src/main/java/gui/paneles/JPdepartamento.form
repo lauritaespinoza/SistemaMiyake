@@ -19,6 +19,9 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JTabbedPane" name="panelScrudDep">
+      <Properties>
+        <Property name="selectedIndex" type="int" value="-1"/>
+      </Properties>
       <Events>
         <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="panelScrudDepStateChanged"/>
       </Events>
@@ -57,10 +60,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="bt_GenerarReporte" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="bt_GenerarReporte" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane1" min="-2" pref="260" max="-2" attributes="0"/>
                       </Group>
