@@ -219,6 +219,7 @@ public class JPentradaproveedor extends javax.swing.JPanel {
 
         setLayout(new java.awt.BorderLayout());
 
+        factura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416856442_page_white_edit.png"))); // NOI18N
         factura.setScrollOnExpand(true);
         factura.setTitle("Datos de Factura");
 
@@ -230,18 +231,24 @@ public class JPentradaproveedor extends javax.swing.JPanel {
             }
         });
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/facturas.png"))); // NOI18N
         jLabel3.setText("N° Factura");
 
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/responsable2.png"))); // NOI18N
         jLabel4.setText("Recibido por");
 
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416789180_Timetable.png"))); // NOI18N
         jLabel5.setText("Fecha emision");
 
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417576112_Order_tracking.png"))); // NOI18N
         jLabel6.setText("Proveedor");
 
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1418331236_doc_pdf.png"))); // NOI18N
         jLabel7.setText("Archivo digital");
 
         jLabel8.setText("Embarcado via");
 
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636330_store.png"))); // NOI18N
         jLabel9.setText("Tienda");
 
         cb_proveedor.addActionListener(new java.awt.event.ActionListener() {
@@ -338,6 +345,7 @@ public class JPentradaproveedor extends javax.swing.JPanel {
 
         add(factura, java.awt.BorderLayout.NORTH);
 
+        panel_detalle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416789183_data-16.png"))); // NOI18N
         panel_detalle.setTitle("Tabla de productos por archivo");
         panel_detalle.setAutoscrolls(true);
 

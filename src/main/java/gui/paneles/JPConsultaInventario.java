@@ -112,7 +112,7 @@ public class JPConsultaInventario extends javax.swing.JPanel {
         jLayeredPaneProductos = new javax.swing.JLayeredPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         jXTablaConsultarMercanciaInventarios = new org.jdesktop.swingx.JXTable();
-        jXFindBar1 = new org.jdesktop.swingx.JXFindBar(jXTablaConsultarMercanciaInventarios.getSearchable());
+        barraBusquedaExistencia = new org.jdesktop.swingx.JXFindBar(jXTablaConsultarMercanciaInventarios.getSearchable());
         jXButtonAceptar = new org.jdesktop.swingx.JXButton();
         jXButtonImprimir = new org.jdesktop.swingx.JXButton();
         jXButtonCancelar = new org.jdesktop.swingx.JXButton();
@@ -220,20 +220,20 @@ public class JPConsultaInventario extends javax.swing.JPanel {
             .addGroup(jLayeredPaneProductosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jLayeredPaneProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jXFindBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(barraBusquedaExistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jLayeredPaneProductosLayout.setVerticalGroup(
             jLayeredPaneProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPaneProductosLayout.createSequentialGroup()
-                .addComponent(jXFindBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(barraBusquedaExistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(12, Short.MAX_VALUE))
         );
         jLayeredPaneProductos.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPaneProductos.setLayer(jXFindBar1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPaneProductos.setLayer(barraBusquedaExistencia, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jScrollPane4.setViewportView(jLayeredPaneProductos);
 
@@ -399,6 +399,7 @@ public class JPConsultaInventario extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private org.jdesktop.swingx.JXFindBar barraBusquedaExistencia;
     private org.jdesktop.swingx.JXBusyLabel busy;
     private javax.swing.JComboBox comboBoxAlmacenDesde;
     private javax.swing.JLayeredPane jLayeredPanePrincipal;
@@ -413,7 +414,6 @@ public class JPConsultaInventario extends javax.swing.JPanel {
     private org.jdesktop.swingx.JXButton jXButtonConfirmar;
     private org.jdesktop.swingx.JXButton jXButtonImprimir;
     private org.jdesktop.swingx.JXButton jXButtonReiniciar;
-    private org.jdesktop.swingx.JXFindBar jXFindBar1;
     private org.jdesktop.swingx.JXLabel jXLabel10;
     private org.jdesktop.swingx.JXTable jXTablaConsultarMercanciaInventarios;
     // End of variables declaration//GEN-END:variables

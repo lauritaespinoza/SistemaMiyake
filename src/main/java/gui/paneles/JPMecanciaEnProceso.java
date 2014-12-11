@@ -72,20 +72,13 @@ public class JPMecanciaEnProceso extends javax.swing.JPanel {
 
             comboBoxAlmacenDesde.addItem(a.getNombre() + " TLF:" + a.getTelefono1());
         }
-//        posTi = this.comboBoxAlmacen.getSelectedIndex();
-//        almacenHasta = (Almacen) resultListAlmacen.get(posTi);
-//        System.err.println("Index Sleccion podTi, lod  dstpd Son : " + almacenHasta.getNombre() );
-//        Almacen al = (Almacen) this.comboBoxAlmacen.getSelectedItem();
-//        System.err.println("Almacen Seleccionado Objeto : " + al.getNombre()+al.getIdAlmacen() );
-//        
-        //Usuarios
-        //  List<List> resultListUsuarios = FventanaIncial.listaUsuarioMain;
+ 
 
         this.comboBoxAlmacenDesde.setSelectedIndex(-1);
 
-//        this.jXTableMercanciaEnProceso.setAutoCreateRowSorter(true);
-//        this.jXTableMercanciaEnProceso.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-//        this.jXTableMercanciaEnProceso.setColumnControlVisible(true);
+        this.jXTableMercanciaEnProceso.setAutoCreateRowSorter(true);
+        this.jXTableMercanciaEnProceso.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        this.jXTableMercanciaEnProceso.setColumnControlVisible(true);
         //  TableRowFilterSupport.forTable(jXTable1).searchable(true).apply();
         this.busy.setVisible(false);
 
@@ -128,6 +121,7 @@ public class JPMecanciaEnProceso extends javax.swing.JPanel {
         jLayeredPaneProductos = new javax.swing.JLayeredPane();
         jScrollPane5 = new javax.swing.JScrollPane();
         jXTableMercanciaEnProceso = new org.jdesktop.swingx.JXTable();
+        barraBusquedaMercanciaProceso = new org.jdesktop.swingx.JXFindBar();
         busy = new org.jdesktop.swingx.JXBusyLabel();
         jXButtonAsignarMercancia = new org.jdesktop.swingx.JXButton();
         jXButtonImprimir = new org.jdesktop.swingx.JXButton();
@@ -234,17 +228,24 @@ public class JPMecanciaEnProceso extends javax.swing.JPanel {
             jLayeredPaneProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPaneProductosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE)
+                .addGroup(jLayeredPaneProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE)
+                    .addGroup(jLayeredPaneProductosLayout.createSequentialGroup()
+                        .addComponent(barraBusquedaMercanciaProceso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jLayeredPaneProductosLayout.setVerticalGroup(
             jLayeredPaneProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPaneProductosLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addContainerGap()
+                .addComponent(barraBusquedaMercanciaProceso, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jLayeredPaneProductos.setLayer(jScrollPane5, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPaneProductos.setLayer(barraBusquedaMercanciaProceso, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jScrollPane4.setViewportView(jLayeredPaneProductos);
 
@@ -576,6 +577,7 @@ public class JPMecanciaEnProceso extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private org.jdesktop.swingx.JXFindBar barraBusquedaMercanciaProceso;
     private org.jdesktop.swingx.JXBusyLabel busy;
     private javax.swing.JComboBox comboBoxAlmacenDesde;
     private javax.swing.JLayeredPane jLayeredPanePrincipal;
