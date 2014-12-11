@@ -72,6 +72,7 @@ public class FventanaIncial extends javax.swing.JFrame {
     private BufferedImage bg;
 
     public static List<List> listaUsuarioMain;
+    private JDfaturasCSV jdFacturasCSV;
 
     public FventanaIncial() {
         initComponents();
@@ -176,7 +177,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         menuControlEnvio = new javax.swing.JPopupMenu();
         jmMercanciaProceso = new javax.swing.JMenuItem();
         jmConsultarInventario = new javax.swing.JMenuItem();
-        menuGestionPrecio = new javax.swing.JPopupMenu();
+        menuControlPrecio = new javax.swing.JPopupMenu();
         jmImprimirEtiquetas = new javax.swing.JMenuItem();
         jmMenuActualizarPrecio = new javax.swing.JMenu();
         jmConsultarPrecio = new javax.swing.JMenuItem();
@@ -187,6 +188,9 @@ public class FventanaIncial extends javax.swing.JFrame {
         menuControlInventario = new javax.swing.JPopupMenu();
         jmInventarioDiario = new javax.swing.JMenuItem();
         jmExistenciaFisica = new javax.swing.JMenuItem();
+        menuActualizarPrecios = new javax.swing.JPopupMenu();
+        jmConsultarPrecio1 = new javax.swing.JMenuItem();
+        jmModificarPrecio1 = new javax.swing.JMenuItem();
         panelPrincipal = new javax.swing.JPanel();
         jScrollPane = new javax.swing.JScrollPane();
         jPanelControlesPrincipales = new javax.swing.JPanel();
@@ -198,14 +202,15 @@ public class FventanaIncial extends javax.swing.JFrame {
         TomaFisicaDistribuidora_boton_ = new javax.swing.JButton();
         AsignarMercancia_boton_ = new org.jdesktop.swingx.JXButton();
         botonEnvio = new javax.swing.JButton();
+        jButtonPrecio = new javax.swing.JButton();
         taskPaneModuloTienda = new org.jdesktop.swingx.JXTaskPane();
         jButtonAlmacen = new javax.swing.JButton();
         TomaFisicaTiendas_boton_ = new org.jdesktop.swingx.JXButton();
         jSeparator1 = new javax.swing.JSeparator();
         jButtonControldeInvetario = new javax.swing.JButton();
-        jButtonPrecio = new javax.swing.JButton();
         jButtonNotas = new javax.swing.JButton();
         jButtonFacturas = new javax.swing.JButton();
+        jButtonActualizarPrecios = new javax.swing.JButton();
         taskPaneModuloGestionProductos = new org.jdesktop.swingx.JXTaskPane();
         btnCrudProducto = new javax.swing.JButton();
         btnCrudMarca = new javax.swing.JButton();
@@ -254,25 +259,53 @@ public class FventanaIncial extends javax.swing.JFrame {
         jMenuTomaFisicaDistribuidora = new javax.swing.JMenuItem();
         jMenuAsignarMercanciaTiendas_ = new javax.swing.JMenuItem();
         jMenuGestionPrecios_ = new javax.swing.JMenu();
-        jMenuItemActualizarPrecios = new javax.swing.JMenuItem();
+        jMenuActualizarPreciosDistribuidora = new javax.swing.JMenu();
+        jMenuItemAPDConsultar = new javax.swing.JMenuItem();
+        jMenuItemAPDModificar = new javax.swing.JMenuItem();
         jMenuItemImprimirEtiquetas = new javax.swing.JMenuItem();
         jMenuEstadoEnvios_ = new javax.swing.JMenu();
         jMenuMercanciaProceso_ = new javax.swing.JMenuItem();
-        jMenuMercanciaFinalizada_ = new javax.swing.JMenuItem();
+        jMenuExistenciaFisica = new javax.swing.JMenuItem();
         menuTiendas = new javax.swing.JMenu();
         jMenuGestionAlmacenes_ = new javax.swing.JMenu();
+        jMenuItemAlmacenConsultar = new javax.swing.JMenuItem();
+        jMenuItemAlmacenCrear = new javax.swing.JMenuItem();
+        jMenuItemAlmacenModificar = new javax.swing.JMenuItem();
+        jMenuItemAlmacenEliminar = new javax.swing.JMenuItem();
         jMenuItemTomaFisicaTiendas = new javax.swing.JMenuItem();
         jMenuControlInventario_ = new javax.swing.JMenu();
         jMenuItemInvDiario = new javax.swing.JMenuItem();
+        jMenuItemExistenciaFisica = new javax.swing.JMenuItem();
         jMenuNotasDebitoCredito_ = new javax.swing.JMenu();
-        jMenuItemControlExistencia_ = new javax.swing.JMenuItem();
+        jMenuItemNotaCredito = new javax.swing.JMenuItem();
+        jMenuItemNotaDebito = new javax.swing.JMenuItem();
         jMenuItemDetFactura = new javax.swing.JMenuItem();
         menuProducto = new javax.swing.JMenu();
         jMenuProductos = new javax.swing.JMenu();
+        jMenuItemProductoConsultar = new javax.swing.JMenuItem();
+        jMenuItemProductoCrear = new javax.swing.JMenuItem();
+        jMenuItemProductoModificar = new javax.swing.JMenuItem();
+        jMenuItemProductoEliminar = new javax.swing.JMenuItem();
         jMenuMarcas_ = new javax.swing.JMenu();
+        jMenuItemAlmacenConsultar2 = new javax.swing.JMenuItem();
+        jMenuItemAlmacenCrear2 = new javax.swing.JMenuItem();
+        jMenuItemAlmacenModificar2 = new javax.swing.JMenuItem();
+        jMenuItemAlmacenEliminar2 = new javax.swing.JMenuItem();
         jMenuClasificacion_ = new javax.swing.JMenu();
+        jMenuItemAlmacenConsultar3 = new javax.swing.JMenuItem();
+        jMenuItemAlmacenCrear3 = new javax.swing.JMenuItem();
+        jMenuItemAlmacenModificar3 = new javax.swing.JMenuItem();
+        jMenuItemAlmacenEliminar3 = new javax.swing.JMenuItem();
         jMenuDepartamento = new javax.swing.JMenu();
+        jMenuItemAlmacenConsultar4 = new javax.swing.JMenuItem();
+        jMenuItemAlmacenCrear4 = new javax.swing.JMenuItem();
+        jMenuItemAlmacenModificar4 = new javax.swing.JMenuItem();
+        jMenuItemAlmacenEliminar4 = new javax.swing.JMenuItem();
         jMenuDivision = new javax.swing.JMenu();
+        jMenuItemAlmacenConsultar5 = new javax.swing.JMenuItem();
+        jMenuItemAlmacenCrear5 = new javax.swing.JMenuItem();
+        jMenuItemAlmacenModificar5 = new javax.swing.JMenuItem();
+        jMenuItemAlmacenEliminar5 = new javax.swing.JMenuItem();
         menuUsuario = new javax.swing.JMenu();
         jMenuItemUsuarioConsulta = new javax.swing.JMenuItem();
         jMenuItemUsuarioCrear = new javax.swing.JMenuItem();
@@ -545,7 +578,7 @@ public class FventanaIncial extends javax.swing.JFrame {
                 jmImprimirEtiquetasActionPerformed(evt);
             }
         });
-        menuGestionPrecio.add(jmImprimirEtiquetas);
+        menuControlPrecio.add(jmImprimirEtiquetas);
 
         jmMenuActualizarPrecio.setText("Actualizar Precios");
 
@@ -565,7 +598,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
         jmMenuActualizarPrecio.add(jmModificarPrecio);
 
-        menuGestionPrecio.add(jmMenuActualizarPrecio);
+        menuControlPrecio.add(jmMenuActualizarPrecio);
 
         jmNotaCredito.setText("Notas de Crédito");
         jmNotaCredito.addActionListener(new java.awt.event.ActionListener() {
@@ -598,6 +631,22 @@ public class FventanaIncial extends javax.swing.JFrame {
             }
         });
         menuControlInventario.add(jmExistenciaFisica);
+
+        jmConsultarPrecio1.setText("Consultar");
+        jmConsultarPrecio1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmConsultarPrecio1ActionPerformed(evt);
+            }
+        });
+        menuActualizarPrecios.add(jmConsultarPrecio1);
+
+        jmModificarPrecio1.setText("Modificar");
+        jmModificarPrecio1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmModificarPrecio1ActionPerformed(evt);
+            }
+        });
+        menuActualizarPrecios.add(jmModificarPrecio1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(9, 182, 201));
@@ -716,9 +765,22 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
         taskPaneModuloDistribuidor.getContentPane().add(botonEnvio);
 
+        jButtonPrecio.setText("Control de Precios");
+        jButtonPrecio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonPrecio.setBorderPainted(false);
+        jButtonPrecio.setContentAreaFilled(false);
+        jButtonPrecio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonPrecioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonPrecioMouseExited(evt);
+            }
+        });
+        taskPaneModuloDistribuidor.getContentPane().add(jButtonPrecio);
+
         jXCollapsiblePaneAbajo.getContentPane().add(taskPaneModuloDistribuidor);
 
-        taskPaneModuloTienda.setCollapsed(true);
         taskPaneModuloTienda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636353_shop.png"))); // NOI18N
         taskPaneModuloTienda.setTitle("Tiendas");
 
@@ -733,11 +795,6 @@ public class FventanaIncial extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jButtonAlmacenMouseExited(evt);
-            }
-        });
-        jButtonAlmacen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAlmacenActionPerformed(evt);
             }
         });
         taskPaneModuloTienda.getContentPane().add(jButtonAlmacen);
@@ -776,20 +833,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
         taskPaneModuloTienda.getContentPane().add(jButtonControldeInvetario);
 
-        jButtonPrecio.setText("Gestion de Precios");
-        jButtonPrecio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButtonPrecio.setBorderPainted(false);
-        jButtonPrecio.setContentAreaFilled(false);
-        jButtonPrecio.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButtonPrecioMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButtonPrecioMouseExited(evt);
-            }
-        });
-        taskPaneModuloTienda.getContentPane().add(jButtonPrecio);
-
         jButtonNotas.setText("Notas");
         jButtonNotas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonNotas.setBorderPainted(false);
@@ -822,6 +865,20 @@ public class FventanaIncial extends javax.swing.JFrame {
             }
         });
         taskPaneModuloTienda.getContentPane().add(jButtonFacturas);
+
+        jButtonActualizarPrecios.setText("Actualizar Precios");
+        jButtonActualizarPrecios.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonActualizarPrecios.setBorderPainted(false);
+        jButtonActualizarPrecios.setContentAreaFilled(false);
+        jButtonActualizarPrecios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonActualizarPreciosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonActualizarPreciosMouseExited(evt);
+            }
+        });
+        taskPaneModuloTienda.getContentPane().add(jButtonActualizarPrecios);
 
         jXCollapsiblePaneAbajo.getContentPane().add(taskPaneModuloTienda);
 
@@ -999,20 +1056,45 @@ public class FventanaIncial extends javax.swing.JFrame {
         jMenuProveedor_.setText("Gestion de Proveedores");
 
         jMenuProveedor_Consultar_.setText("Consultar");
+        jMenuProveedor_Consultar_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuProveedor_Consultar_ActionPerformed(evt);
+            }
+        });
         jMenuProveedor_.add(jMenuProveedor_Consultar_);
 
         jMenuProveedor_Crear_.setText("Crear");
+        jMenuProveedor_Crear_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuProveedor_Crear_ActionPerformed(evt);
+            }
+        });
         jMenuProveedor_.add(jMenuProveedor_Crear_);
 
         jMenuProveedor__Modificar_.setText("Modificar");
+        jMenuProveedor__Modificar_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuProveedor__Modificar_ActionPerformed(evt);
+            }
+        });
         jMenuProveedor_.add(jMenuProveedor__Modificar_);
 
         jMenuProveedor_Eliminar_.setText("Eliminar");
+        jMenuProveedor_Eliminar_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuProveedor_Eliminar_ActionPerformed(evt);
+            }
+        });
         jMenuProveedor_.add(jMenuProveedor_Eliminar_);
 
         menuDistribuidor.add(jMenuProveedor_);
 
         jMenuRegistroContainer_.setText("Registro de Container");
+        jMenuRegistroContainer_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuRegistroContainer_ActionPerformed(evt);
+            }
+        });
         menuDistribuidor.add(jMenuRegistroContainer_);
 
         jMenuTomaFisicaDistribuidora.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
@@ -1026,12 +1108,34 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jMenuAsignarMercanciaTiendas_.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
         jMenuAsignarMercanciaTiendas_.setText("Asignar Mercancia Tiendas");
+        jMenuAsignarMercanciaTiendas_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuAsignarMercanciaTiendas_ActionPerformed(evt);
+            }
+        });
         menuDistribuidor.add(jMenuAsignarMercanciaTiendas_);
 
-        jMenuGestionPrecios_.setText("Control De Precios");
+        jMenuGestionPrecios_.setText("Control de Precios");
 
-        jMenuItemActualizarPrecios.setText("Actualizar Precios");
-        jMenuGestionPrecios_.add(jMenuItemActualizarPrecios);
+        jMenuActualizarPreciosDistribuidora.setText("Actualizar Precios");
+
+        jMenuItemAPDConsultar.setText("Consultar");
+        jMenuItemAPDConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAPDConsultarActionPerformed(evt);
+            }
+        });
+        jMenuActualizarPreciosDistribuidora.add(jMenuItemAPDConsultar);
+
+        jMenuItemAPDModificar.setText("Modificar");
+        jMenuItemAPDModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAPDModificarActionPerformed(evt);
+            }
+        });
+        jMenuActualizarPreciosDistribuidora.add(jMenuItemAPDModificar);
+
+        jMenuGestionPrecios_.add(jMenuActualizarPreciosDistribuidora);
 
         jMenuItemImprimirEtiquetas.setText("Imprimir Etiquetas");
         jMenuItemImprimirEtiquetas.addActionListener(new java.awt.event.ActionListener() {
@@ -1046,10 +1150,20 @@ public class FventanaIncial extends javax.swing.JFrame {
         jMenuEstadoEnvios_.setText("Estado de Envios Mercancia");
 
         jMenuMercanciaProceso_.setText("Mercancia en Proceso");
+        jMenuMercanciaProceso_.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuMercanciaProceso_ActionPerformed(evt);
+            }
+        });
         jMenuEstadoEnvios_.add(jMenuMercanciaProceso_);
 
-        jMenuMercanciaFinalizada_.setText("Mercancia Finalizada");
-        jMenuEstadoEnvios_.add(jMenuMercanciaFinalizada_);
+        jMenuExistenciaFisica.setText("Existencia Física");
+        jMenuExistenciaFisica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuExistenciaFisicaActionPerformed(evt);
+            }
+        });
+        jMenuEstadoEnvios_.add(jMenuExistenciaFisica);
 
         menuDistribuidor.add(jMenuEstadoEnvios_);
 
@@ -1058,10 +1172,48 @@ public class FventanaIncial extends javax.swing.JFrame {
         menuTiendas.setText("Tiendas");
 
         jMenuGestionAlmacenes_.setText("Gestion Almacenes");
+
+        jMenuItemAlmacenConsultar.setText("Consultar");
+        jMenuItemAlmacenConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAlmacenConsultarActionPerformed(evt);
+            }
+        });
+        jMenuGestionAlmacenes_.add(jMenuItemAlmacenConsultar);
+
+        jMenuItemAlmacenCrear.setText("Crear");
+        jMenuItemAlmacenCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAlmacenCrearActionPerformed(evt);
+            }
+        });
+        jMenuGestionAlmacenes_.add(jMenuItemAlmacenCrear);
+
+        jMenuItemAlmacenModificar.setText("Modificar");
+        jMenuItemAlmacenModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAlmacenModificarActionPerformed(evt);
+            }
+        });
+        jMenuGestionAlmacenes_.add(jMenuItemAlmacenModificar);
+
+        jMenuItemAlmacenEliminar.setText("Eliminar");
+        jMenuItemAlmacenEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAlmacenEliminarActionPerformed(evt);
+            }
+        });
+        jMenuGestionAlmacenes_.add(jMenuItemAlmacenEliminar);
+
         menuTiendas.add(jMenuGestionAlmacenes_);
 
         jMenuItemTomaFisicaTiendas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItemTomaFisicaTiendas.setText("Toma Fisica Tiendas");
+        jMenuItemTomaFisicaTiendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemTomaFisicaTiendasActionPerformed(evt);
+            }
+        });
         menuTiendas.add(jMenuItemTomaFisicaTiendas);
 
         jMenuControlInventario_.setText("Gestion Inventario");
@@ -1075,15 +1227,42 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
         jMenuControlInventario_.add(jMenuItemInvDiario);
 
+        jMenuItemExistenciaFisica.setText("Existencia Física");
+        jMenuItemExistenciaFisica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemExistenciaFisicaActionPerformed(evt);
+            }
+        });
+        jMenuControlInventario_.add(jMenuItemExistenciaFisica);
+
         menuTiendas.add(jMenuControlInventario_);
 
         jMenuNotasDebitoCredito_.setText("Notas Credito/Debito");
+
+        jMenuItemNotaCredito.setText("Notas de Crédito");
+        jMenuItemNotaCredito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemNotaCreditoActionPerformed(evt);
+            }
+        });
+        jMenuNotasDebitoCredito_.add(jMenuItemNotaCredito);
+
+        jMenuItemNotaDebito.setText("Notas de Débito");
+        jMenuItemNotaDebito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemNotaDebitoActionPerformed(evt);
+            }
+        });
+        jMenuNotasDebitoCredito_.add(jMenuItemNotaDebito);
+
         menuTiendas.add(jMenuNotasDebitoCredito_);
 
-        jMenuItemControlExistencia_.setText("Control Existencia");
-        menuTiendas.add(jMenuItemControlExistencia_);
-
         jMenuItemDetFactura.setText("Detalles de Factura de Ventas");
+        jMenuItemDetFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemDetFacturaActionPerformed(evt);
+            }
+        });
         menuTiendas.add(jMenuItemDetFactura);
 
         jMenuBarSistemaMiyake.add(menuTiendas);
@@ -1091,18 +1270,183 @@ public class FventanaIncial extends javax.swing.JFrame {
         menuProducto.setText("Gestion De Productos");
 
         jMenuProductos.setText("Productos");
+
+        jMenuItemProductoConsultar.setText("Consultar");
+        jMenuItemProductoConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemProductoConsultarActionPerformed(evt);
+            }
+        });
+        jMenuProductos.add(jMenuItemProductoConsultar);
+
+        jMenuItemProductoCrear.setText("Crear");
+        jMenuItemProductoCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemProductoCrearActionPerformed(evt);
+            }
+        });
+        jMenuProductos.add(jMenuItemProductoCrear);
+
+        jMenuItemProductoModificar.setText("Modificar");
+        jMenuItemProductoModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemProductoModificarActionPerformed(evt);
+            }
+        });
+        jMenuProductos.add(jMenuItemProductoModificar);
+
+        jMenuItemProductoEliminar.setText("Eliminar");
+        jMenuItemProductoEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemProductoEliminarActionPerformed(evt);
+            }
+        });
+        jMenuProductos.add(jMenuItemProductoEliminar);
+
         menuProducto.add(jMenuProductos);
 
         jMenuMarcas_.setText("Marcas");
+
+        jMenuItemAlmacenConsultar2.setText("Consultar");
+        jMenuItemAlmacenConsultar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAlmacenConsultar2ActionPerformed(evt);
+            }
+        });
+        jMenuMarcas_.add(jMenuItemAlmacenConsultar2);
+
+        jMenuItemAlmacenCrear2.setText("Crear");
+        jMenuItemAlmacenCrear2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAlmacenCrear2ActionPerformed(evt);
+            }
+        });
+        jMenuMarcas_.add(jMenuItemAlmacenCrear2);
+
+        jMenuItemAlmacenModificar2.setText("Modificar");
+        jMenuItemAlmacenModificar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAlmacenModificar2ActionPerformed(evt);
+            }
+        });
+        jMenuMarcas_.add(jMenuItemAlmacenModificar2);
+
+        jMenuItemAlmacenEliminar2.setText("Eliminar");
+        jMenuItemAlmacenEliminar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAlmacenEliminar2ActionPerformed(evt);
+            }
+        });
+        jMenuMarcas_.add(jMenuItemAlmacenEliminar2);
+
         menuProducto.add(jMenuMarcas_);
 
         jMenuClasificacion_.setText("Clasificacion");
+
+        jMenuItemAlmacenConsultar3.setText("Consultar");
+        jMenuItemAlmacenConsultar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAlmacenConsultar3ActionPerformed(evt);
+            }
+        });
+        jMenuClasificacion_.add(jMenuItemAlmacenConsultar3);
+
+        jMenuItemAlmacenCrear3.setText("Crear");
+        jMenuItemAlmacenCrear3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAlmacenCrear3ActionPerformed(evt);
+            }
+        });
+        jMenuClasificacion_.add(jMenuItemAlmacenCrear3);
+
+        jMenuItemAlmacenModificar3.setText("Modificar");
+        jMenuItemAlmacenModificar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAlmacenModificar3ActionPerformed(evt);
+            }
+        });
+        jMenuClasificacion_.add(jMenuItemAlmacenModificar3);
+
+        jMenuItemAlmacenEliminar3.setText("Eliminar");
+        jMenuItemAlmacenEliminar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAlmacenEliminar3ActionPerformed(evt);
+            }
+        });
+        jMenuClasificacion_.add(jMenuItemAlmacenEliminar3);
+
         menuProducto.add(jMenuClasificacion_);
 
         jMenuDepartamento.setText("Departamento");
+
+        jMenuItemAlmacenConsultar4.setText("Consultar");
+        jMenuItemAlmacenConsultar4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAlmacenConsultar4ActionPerformed(evt);
+            }
+        });
+        jMenuDepartamento.add(jMenuItemAlmacenConsultar4);
+
+        jMenuItemAlmacenCrear4.setText("Crear");
+        jMenuItemAlmacenCrear4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAlmacenCrear4ActionPerformed(evt);
+            }
+        });
+        jMenuDepartamento.add(jMenuItemAlmacenCrear4);
+
+        jMenuItemAlmacenModificar4.setText("Modificar");
+        jMenuItemAlmacenModificar4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAlmacenModificar4ActionPerformed(evt);
+            }
+        });
+        jMenuDepartamento.add(jMenuItemAlmacenModificar4);
+
+        jMenuItemAlmacenEliminar4.setText("Eliminar");
+        jMenuItemAlmacenEliminar4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAlmacenEliminar4ActionPerformed(evt);
+            }
+        });
+        jMenuDepartamento.add(jMenuItemAlmacenEliminar4);
+
         menuProducto.add(jMenuDepartamento);
 
         jMenuDivision.setText("Division");
+
+        jMenuItemAlmacenConsultar5.setText("Consultar");
+        jMenuItemAlmacenConsultar5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAlmacenConsultar5ActionPerformed(evt);
+            }
+        });
+        jMenuDivision.add(jMenuItemAlmacenConsultar5);
+
+        jMenuItemAlmacenCrear5.setText("Crear");
+        jMenuItemAlmacenCrear5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAlmacenCrear5ActionPerformed(evt);
+            }
+        });
+        jMenuDivision.add(jMenuItemAlmacenCrear5);
+
+        jMenuItemAlmacenModificar5.setText("Modificar");
+        jMenuItemAlmacenModificar5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAlmacenModificar5ActionPerformed(evt);
+            }
+        });
+        jMenuDivision.add(jMenuItemAlmacenModificar5);
+
+        jMenuItemAlmacenEliminar5.setText("Eliminar");
+        jMenuItemAlmacenEliminar5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAlmacenEliminar5ActionPerformed(evt);
+            }
+        });
+        jMenuDivision.add(jMenuItemAlmacenEliminar5);
+
         menuProducto.add(jMenuDivision);
 
         jMenuBarSistemaMiyake.add(menuProducto);
@@ -1278,11 +1622,11 @@ public class FventanaIncial extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemSalirActionPerformed
 
     private void jMenuTomaFisicaDistribuidoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuTomaFisicaDistribuidoraActionPerformed
-        // TODO add your handling code here:
+        addPaneles(tabTomaFisica, Distribuidora1.class, null, null);
     }//GEN-LAST:event_jMenuTomaFisicaDistribuidoraActionPerformed
 
     private void jMenuItemImprimirEtiquetasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemImprimirEtiquetasActionPerformed
-        // TODO add your handling code here:
+        addPaneles(tabSalida, JPsalida_p_tienda.class, null, null);
     }//GEN-LAST:event_jMenuItemImprimirEtiquetasActionPerformed
 
     private void btnContainerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContainerActionPerformed
@@ -1298,13 +1642,9 @@ public class FventanaIncial extends javax.swing.JFrame {
         addPaneles(tabAsignarMercancia, Asignar1.class, null, null);
     }//GEN-LAST:event_AsignarMercancia_boton_ActionPerformed
 
-    private void jButtonAlmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlmacenActionPerformed
-        addPaneles(tabAlmacen, JPalmacen.class, null, 0);
-    }//GEN-LAST:event_jButtonAlmacenActionPerformed
-
     private void TomaFisicaTiendas_boton_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TomaFisicaTiendas_boton_ActionPerformed
 
-        addPaneles(tabTomaFisicaTiendas, Tiendas1.class, null, 0);
+        addPaneles(tabTomaFisicaTiendas, Tiendas1.class, null, null);
     }//GEN-LAST:event_TomaFisicaTiendas_boton_ActionPerformed
 
     private void btnCrudProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrudProductoMouseEntered
@@ -1388,7 +1728,7 @@ public class FventanaIncial extends javax.swing.JFrame {
     private void jButtonPrecioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPrecioMouseEntered
         jButtonPrecio.setBorderPainted(true);
         Component cpm = (Component) evt.getSource();
-        menuGestionPrecio.show(cpm,
+        menuControlPrecio.show(cpm,
                 cpm.getWidth(),
                 0);
     }//GEN-LAST:event_jButtonPrecioMouseEntered
@@ -1650,15 +1990,19 @@ public class FventanaIncial extends javax.swing.JFrame {
     }//GEN-LAST:event_jmConsultarInventarioActionPerformed
 
     private void jmInventarioDiarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmInventarioDiarioActionPerformed
-        // TODO add your handling code here:
+        addPaneles(tabInventarioDiario, JPinventarioDiario.class, null, null);
     }//GEN-LAST:event_jmInventarioDiarioActionPerformed
 
     private void jmExistenciaFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmExistenciaFisicaActionPerformed
-        // TODO add your handling code here:
+        addPaneles(tabConsultarMerca, JPConsultaInventario.class, null, null);
     }//GEN-LAST:event_jmExistenciaFisicaActionPerformed
 
     private void jButtonFacturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFacturasActionPerformed
-        new JDfaturasCSV(this, true).setVisible(true);
+        if (jdFacturasCSV == null) {
+            jdFacturasCSV = new JDfaturasCSV(this, true);
+        }
+
+        jdFacturasCSV.setVisible(true);
     }//GEN-LAST:event_jButtonFacturasActionPerformed
 
     private void jMenuItemUsuarioConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUsuarioConsultaActionPerformed
@@ -1678,19 +2022,19 @@ public class FventanaIncial extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemUsuarioEliminarActionPerformed
 
     private void jMenuItemUbicacionConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUbicacionConsultarActionPerformed
-                addPaneles(tabUbicacion, JPubicacion.class, null, 0);
+        addPaneles(tabUbicacion, JPubicacion.class, null, 0);
     }//GEN-LAST:event_jMenuItemUbicacionConsultarActionPerformed
 
     private void jMenuItemUbicacionCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUbicacionCrearActionPerformed
-                addPaneles(tabUbicacion, JPubicacion.class, null, 1);
+        addPaneles(tabUbicacion, JPubicacion.class, null, 1);
     }//GEN-LAST:event_jMenuItemUbicacionCrearActionPerformed
 
     private void jMenuItemUbicacionModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUbicacionModificarActionPerformed
-                addPaneles(tabUbicacion, JPubicacion.class, null, 2);
+        addPaneles(tabUbicacion, JPubicacion.class, null, 2);
     }//GEN-LAST:event_jMenuItemUbicacionModificarActionPerformed
 
     private void jMenuItemUbicacionEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUbicacionEliminarActionPerformed
-                addPaneles(tabUbicacion, JPubicacion.class, null, 3);
+        addPaneles(tabUbicacion, JPubicacion.class, null, 3);
     }//GEN-LAST:event_jMenuItemUbicacionEliminarActionPerformed
 
     private void jMenuItemContactoConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemContactoConsultarActionPerformed
@@ -1698,20 +2042,201 @@ public class FventanaIncial extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemContactoConsultarActionPerformed
 
     private void jMenuItemContactoCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemContactoCrearActionPerformed
-                addPaneles(tabContacto, JPcontacto.class, null, 1);
+        addPaneles(tabContacto, JPcontacto.class, null, 1);
     }//GEN-LAST:event_jMenuItemContactoCrearActionPerformed
 
     private void jMenuItemContactoModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemContactoModificarActionPerformed
-                addPaneles(tabContacto, JPcontacto.class, null, 2);
+        addPaneles(tabContacto, JPcontacto.class, null, 2);
     }//GEN-LAST:event_jMenuItemContactoModificarActionPerformed
 
     private void jMenuItemContactoEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemContactoEliminarActionPerformed
-                addPaneles(tabContacto, JPcontacto.class, null, 3);
+        addPaneles(tabContacto, JPcontacto.class, null, 3);
     }//GEN-LAST:event_jMenuItemContactoEliminarActionPerformed
 
     private void jMenuItemExportarDatDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemExportarDatDescActionPerformed
         addPaneles(tabExportData, JPexportData.class, null, null);
     }//GEN-LAST:event_jMenuItemExportarDatDescActionPerformed
+
+    private void jMenuMercanciaProceso_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuMercanciaProceso_ActionPerformed
+        addPaneles(tabMecanciaEnProceso, JPMecanciaEnProceso.class, null, null);
+    }//GEN-LAST:event_jMenuMercanciaProceso_ActionPerformed
+
+    private void jMenuExistenciaFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuExistenciaFisicaActionPerformed
+        addPaneles(tabConsultarMerca, JPConsultaInventario.class, null, null);
+    }//GEN-LAST:event_jMenuExistenciaFisicaActionPerformed
+
+    private void jMenuItemAlmacenConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenConsultarActionPerformed
+        addPaneles(tabAlmacen, JPalmacen.class, null, 0);
+    }//GEN-LAST:event_jMenuItemAlmacenConsultarActionPerformed
+
+    private void jMenuItemAlmacenCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenCrearActionPerformed
+        addPaneles(tabAlmacen, JPalmacen.class, null, 1);
+    }//GEN-LAST:event_jMenuItemAlmacenCrearActionPerformed
+
+    private void jMenuItemAlmacenModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenModificarActionPerformed
+        addPaneles(tabAlmacen, JPalmacen.class, null, 2);
+    }//GEN-LAST:event_jMenuItemAlmacenModificarActionPerformed
+
+    private void jMenuItemAlmacenEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenEliminarActionPerformed
+        addPaneles(tabAlmacen, JPalmacen.class, null, 3);
+    }//GEN-LAST:event_jMenuItemAlmacenEliminarActionPerformed
+
+    private void jButtonActualizarPreciosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonActualizarPreciosMouseEntered
+        jButtonActualizarPrecios.setBorderPainted(true);
+        jButtonActualizarPrecios.setBorderPainted(true);
+        Component cpm = (Component) evt.getSource();
+        menuActualizarPrecios.show(cpm,
+                cpm.getWidth(),
+                0);
+    }//GEN-LAST:event_jButtonActualizarPreciosMouseEntered
+
+    private void jButtonActualizarPreciosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonActualizarPreciosMouseExited
+        jButtonActualizarPrecios.setBorderPainted(false);
+    }//GEN-LAST:event_jButtonActualizarPreciosMouseExited
+
+    private void jmConsultarPrecio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmConsultarPrecio1ActionPerformed
+        addPaneles(tabPrecio, JPprecio_productos.class, null, 0);
+    }//GEN-LAST:event_jmConsultarPrecio1ActionPerformed
+
+    private void jmModificarPrecio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmModificarPrecio1ActionPerformed
+        addPaneles(tabPrecio, JPprecio_productos.class, null, 1);
+    }//GEN-LAST:event_jmModificarPrecio1ActionPerformed
+
+    private void jMenuItemAPDConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAPDConsultarActionPerformed
+        addPaneles(tabPrecio, JPprecio_productos.class, null, 0);
+    }//GEN-LAST:event_jMenuItemAPDConsultarActionPerformed
+
+    private void jMenuItemAPDModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAPDModificarActionPerformed
+        addPaneles(tabPrecio, JPprecio_productos.class, null, 1);
+    }//GEN-LAST:event_jMenuItemAPDModificarActionPerformed
+
+    private void jMenuItemDetFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDetFacturaActionPerformed
+        if (jdFacturasCSV == null) {
+            jdFacturasCSV = new JDfaturasCSV(this, true);
+        }
+
+        jdFacturasCSV.setVisible(true);
+    }//GEN-LAST:event_jMenuItemDetFacturaActionPerformed
+
+    private void jMenuItemExistenciaFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemExistenciaFisicaActionPerformed
+        addPaneles(tabConsultarMerca, JPConsultaInventario.class, null, null);
+    }//GEN-LAST:event_jMenuItemExistenciaFisicaActionPerformed
+
+    private void jMenuProveedor_Consultar_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuProveedor_Consultar_ActionPerformed
+        addPaneles(tabProveedor, JPproveedor.class, null, 0);
+    }//GEN-LAST:event_jMenuProveedor_Consultar_ActionPerformed
+
+    private void jMenuProveedor_Crear_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuProveedor_Crear_ActionPerformed
+        addPaneles(tabProveedor, JPproveedor.class, null, 1);
+    }//GEN-LAST:event_jMenuProveedor_Crear_ActionPerformed
+
+    private void jMenuProveedor__Modificar_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuProveedor__Modificar_ActionPerformed
+        addPaneles(tabProveedor, JPproveedor.class, null, 2);
+    }//GEN-LAST:event_jMenuProveedor__Modificar_ActionPerformed
+
+    private void jMenuProveedor_Eliminar_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuProveedor_Eliminar_ActionPerformed
+        addPaneles(tabProveedor, JPproveedor.class, null, 3);
+    }//GEN-LAST:event_jMenuProveedor_Eliminar_ActionPerformed
+
+    private void jMenuRegistroContainer_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuRegistroContainer_ActionPerformed
+        addPaneles(tabFactura, JPentradaproveedor.class, null, null);
+    }//GEN-LAST:event_jMenuRegistroContainer_ActionPerformed
+
+    private void jMenuAsignarMercanciaTiendas_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAsignarMercanciaTiendas_ActionPerformed
+        addPaneles(tabAsignarMercancia, Asignar1.class, null, null);
+    }//GEN-LAST:event_jMenuAsignarMercanciaTiendas_ActionPerformed
+
+    private void jMenuItemTomaFisicaTiendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTomaFisicaTiendasActionPerformed
+        addPaneles(tabTomaFisicaTiendas, Tiendas1.class, null, null);
+    }//GEN-LAST:event_jMenuItemTomaFisicaTiendasActionPerformed
+
+    private void jMenuItemNotaCreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNotaCreditoActionPerformed
+        addPaneles(tabNotaCredito, JPnotaCreditoDebito.class, true, null);
+    }//GEN-LAST:event_jMenuItemNotaCreditoActionPerformed
+
+    private void jMenuItemNotaDebitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNotaDebitoActionPerformed
+        addPaneles(tabNotaCredito, JPnotaCreditoDebito.class, false, null);
+    }//GEN-LAST:event_jMenuItemNotaDebitoActionPerformed
+
+    private void jMenuItemProductoConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProductoConsultarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemProductoConsultarActionPerformed
+
+    private void jMenuItemProductoCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProductoCrearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemProductoCrearActionPerformed
+
+    private void jMenuItemProductoModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProductoModificarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemProductoModificarActionPerformed
+
+    private void jMenuItemProductoEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProductoEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemProductoEliminarActionPerformed
+
+    private void jMenuItemAlmacenConsultar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenConsultar2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemAlmacenConsultar2ActionPerformed
+
+    private void jMenuItemAlmacenCrear2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenCrear2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemAlmacenCrear2ActionPerformed
+
+    private void jMenuItemAlmacenModificar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenModificar2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemAlmacenModificar2ActionPerformed
+
+    private void jMenuItemAlmacenEliminar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenEliminar2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemAlmacenEliminar2ActionPerformed
+
+    private void jMenuItemAlmacenConsultar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenConsultar3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemAlmacenConsultar3ActionPerformed
+
+    private void jMenuItemAlmacenCrear3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenCrear3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemAlmacenCrear3ActionPerformed
+
+    private void jMenuItemAlmacenModificar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenModificar3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemAlmacenModificar3ActionPerformed
+
+    private void jMenuItemAlmacenEliminar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenEliminar3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemAlmacenEliminar3ActionPerformed
+
+    private void jMenuItemAlmacenConsultar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenConsultar4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemAlmacenConsultar4ActionPerformed
+
+    private void jMenuItemAlmacenCrear4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenCrear4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemAlmacenCrear4ActionPerformed
+
+    private void jMenuItemAlmacenModificar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenModificar4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemAlmacenModificar4ActionPerformed
+
+    private void jMenuItemAlmacenEliminar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenEliminar4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemAlmacenEliminar4ActionPerformed
+
+    private void jMenuItemAlmacenConsultar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenConsultar5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemAlmacenConsultar5ActionPerformed
+
+    private void jMenuItemAlmacenCrear5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenCrear5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemAlmacenCrear5ActionPerformed
+
+    private void jMenuItemAlmacenModificar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenModificar5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemAlmacenModificar5ActionPerformed
+
+    private void jMenuItemAlmacenEliminar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenEliminar5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemAlmacenEliminar5ActionPerformed
 
     public static void main(String args[]) {
 
@@ -1747,11 +2272,13 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JButton btnCrudMarca;
     private javax.swing.JButton btnCrudProducto;
     private javax.swing.JButton btnCrudProveedr;
+    private javax.swing.JButton jButtonActualizarPrecios;
     private javax.swing.JButton jButtonAlmacen;
     private javax.swing.JButton jButtonControldeInvetario;
     private javax.swing.JButton jButtonFacturas;
     private javax.swing.JButton jButtonNotas;
     private javax.swing.JButton jButtonPrecio;
+    private javax.swing.JMenu jMenuActualizarPreciosDistribuidora;
     private javax.swing.JMenuItem jMenuAsignarMercanciaTiendas_;
     private javax.swing.JMenuBar jMenuBarSistemaMiyake;
     private javax.swing.JMenu jMenuClasificacion_;
@@ -1759,25 +2286,53 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuDepartamento;
     private javax.swing.JMenu jMenuDivision;
     private javax.swing.JMenu jMenuEstadoEnvios_;
+    private javax.swing.JMenuItem jMenuExistenciaFisica;
     private javax.swing.JMenu jMenuExportarDatos;
     private javax.swing.JMenu jMenuGestionAlmacenes_;
     private javax.swing.JMenu jMenuGestionContactos;
     private javax.swing.JMenu jMenuGestionPrecios_;
+    private javax.swing.JMenuItem jMenuItemAPDConsultar;
+    private javax.swing.JMenuItem jMenuItemAPDModificar;
     private javax.swing.JMenuItem jMenuItemAbrirCerrar;
     private javax.swing.JMenuItem jMenuItemAbrirCerrarInternos;
     private javax.swing.JMenuItem jMenuItemAcercaDe;
-    private javax.swing.JMenuItem jMenuItemActualizarPrecios;
+    private javax.swing.JMenuItem jMenuItemAlmacenConsultar;
+    private javax.swing.JMenuItem jMenuItemAlmacenConsultar2;
+    private javax.swing.JMenuItem jMenuItemAlmacenConsultar3;
+    private javax.swing.JMenuItem jMenuItemAlmacenConsultar4;
+    private javax.swing.JMenuItem jMenuItemAlmacenConsultar5;
+    private javax.swing.JMenuItem jMenuItemAlmacenCrear;
+    private javax.swing.JMenuItem jMenuItemAlmacenCrear2;
+    private javax.swing.JMenuItem jMenuItemAlmacenCrear3;
+    private javax.swing.JMenuItem jMenuItemAlmacenCrear4;
+    private javax.swing.JMenuItem jMenuItemAlmacenCrear5;
+    private javax.swing.JMenuItem jMenuItemAlmacenEliminar;
+    private javax.swing.JMenuItem jMenuItemAlmacenEliminar2;
+    private javax.swing.JMenuItem jMenuItemAlmacenEliminar3;
+    private javax.swing.JMenuItem jMenuItemAlmacenEliminar4;
+    private javax.swing.JMenuItem jMenuItemAlmacenEliminar5;
+    private javax.swing.JMenuItem jMenuItemAlmacenModificar;
+    private javax.swing.JMenuItem jMenuItemAlmacenModificar2;
+    private javax.swing.JMenuItem jMenuItemAlmacenModificar3;
+    private javax.swing.JMenuItem jMenuItemAlmacenModificar4;
+    private javax.swing.JMenuItem jMenuItemAlmacenModificar5;
     private javax.swing.JMenuItem jMenuItemBuscarPanel;
     private javax.swing.JMenuItem jMenuItemContactoConsultar;
     private javax.swing.JMenuItem jMenuItemContactoCrear;
     private javax.swing.JMenuItem jMenuItemContactoEliminar;
     private javax.swing.JMenuItem jMenuItemContactoModificar;
-    private javax.swing.JMenuItem jMenuItemControlExistencia_;
     private javax.swing.JMenuItem jMenuItemDetFactura;
+    private javax.swing.JMenuItem jMenuItemExistenciaFisica;
     private javax.swing.JMenuItem jMenuItemExportarBD;
     private javax.swing.JMenuItem jMenuItemExportarDatDesc;
     private javax.swing.JMenuItem jMenuItemImprimirEtiquetas;
     private javax.swing.JMenuItem jMenuItemInvDiario;
+    private javax.swing.JMenuItem jMenuItemNotaCredito;
+    private javax.swing.JMenuItem jMenuItemNotaDebito;
+    private javax.swing.JMenuItem jMenuItemProductoConsultar;
+    private javax.swing.JMenuItem jMenuItemProductoCrear;
+    private javax.swing.JMenuItem jMenuItemProductoEliminar;
+    private javax.swing.JMenuItem jMenuItemProductoModificar;
     private javax.swing.JMenuItem jMenuItemReiniciarPanel;
     private javax.swing.JMenuItem jMenuItemRestaurarDatos;
     private javax.swing.JMenuItem jMenuItemSalir;
@@ -1792,7 +2347,6 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemUsuarioModificar;
     private javax.swing.JMenuItem jMenuItemVerAyuda;
     private javax.swing.JMenu jMenuMarcas_;
-    private javax.swing.JMenuItem jMenuMercanciaFinalizada_;
     private javax.swing.JMenuItem jMenuMercanciaProceso_;
     private javax.swing.JMenu jMenuNotasDebitoCredito_;
     private javax.swing.JMenu jMenuOpciones;
@@ -1823,6 +2377,7 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmConsultarInventario;
     private javax.swing.JMenuItem jmConsultarMarca;
     private javax.swing.JMenuItem jmConsultarPrecio;
+    private javax.swing.JMenuItem jmConsultarPrecio1;
     private javax.swing.JMenuItem jmConsultarProducto;
     private javax.swing.JMenuItem jmConsultarProveedor;
     private javax.swing.JMenuItem jmCrearAlmacen;
@@ -1850,10 +2405,12 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmModificarDivision;
     private javax.swing.JMenuItem jmModificarMarca;
     private javax.swing.JMenuItem jmModificarPrecio;
+    private javax.swing.JMenuItem jmModificarPrecio1;
     private javax.swing.JMenuItem jmModificarProducto;
     private javax.swing.JMenuItem jmModificarProveedor;
     private javax.swing.JMenuItem jmNotaCredito;
     private javax.swing.JMenuItem jmNotaDebito;
+    private javax.swing.JPopupMenu menuActualizarPrecios;
     private javax.swing.JMenu menuArchivo;
     private javax.swing.JMenu menuAyuda;
     private javax.swing.JPopupMenu menuCRUDAlmacen;
@@ -1865,9 +2422,9 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JPopupMenu menuCRUDProveedor;
     private javax.swing.JPopupMenu menuControlEnvio;
     private javax.swing.JPopupMenu menuControlInventario;
+    private javax.swing.JPopupMenu menuControlPrecio;
     private javax.swing.JMenu menuDetalles;
     private javax.swing.JMenu menuDistribuidor;
-    private javax.swing.JPopupMenu menuGestionPrecio;
     private javax.swing.JPopupMenu menuNotas;
     private javax.swing.JMenu menuProducto;
     private javax.swing.JMenu menuReportes;
