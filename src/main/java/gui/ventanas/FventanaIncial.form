@@ -1093,7 +1093,6 @@
                         </Container>
                         <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneModuloGestionProductos">
                           <Properties>
-                            <Property name="collapsed" type="boolean" value="true"/>
                             <Property name="title" type="java.lang.String" value="Gesti&#xf3;n de Productos"/>
                           </Properties>
                           <SubComponents>

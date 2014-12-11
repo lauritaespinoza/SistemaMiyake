@@ -539,7 +539,6 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jXCollapsiblePaneAbajo.getContentPane().add(taskPaneModuloTienda);
 
-        taskPaneModuloGestionProductos.setCollapsed(true);
         taskPaneModuloGestionProductos.setTitle("Gestión de Productos");
 
         btnCrudProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415416322_list-accept.png"))); // NOI18N
