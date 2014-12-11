@@ -103,7 +103,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
         checkboxRevisado = new javax.swing.JCheckBox();
         jRadioButtonPendiente = new javax.swing.JRadioButton();
         jRadioButtonRevisado = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
+        bt_ReportePendientsProcesadas = new javax.swing.JButton();
         panelFinal = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         fieldTotal = new javax.swing.JTextField();
@@ -190,7 +190,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
                         .addGap(23, 23, 23)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(fieldfecha)
-                            .addComponent(cb_tienda2, javax.swing.GroupLayout.Alignment.TRAILING, 0, 583, Short.MAX_VALUE)
+                            .addComponent(cb_tienda2, javax.swing.GroupLayout.Alignment.TRAILING, 0, 596, Short.MAX_VALUE)
                             .addComponent(cb_tienda1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel7)
@@ -253,11 +253,11 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("Generar Reporte Total");
-        jButton1.setToolTipText("Genera el Reporte de Toda la Mercancía Asignada Pendiente o Procesada");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bt_ReportePendientsProcesadas.setText("Generar Reporte Total");
+        bt_ReportePendientsProcesadas.setToolTipText("Genera el Reporte de Toda la Mercancía Asignada Pendiente o Procesada");
+        bt_ReportePendientsProcesadas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bt_ReportePendientsProcesadasActionPerformed(evt);
             }
         });
 
@@ -272,8 +272,8 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
                     .addComponent(jRadioButtonRevisado)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jRadioButtonPendiente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                        .addComponent(bt_ReportePendientsProcesadas)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -282,7 +282,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
                 .addGap(13, 13, 13)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRadioButtonPendiente)
-                    .addComponent(jButton1))
+                    .addComponent(bt_ReportePendientsProcesadas))
                 .addGap(29, 29, 29)
                 .addComponent(jRadioButtonRevisado)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
@@ -880,14 +880,15 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
         pos = cb_salidasregistradas.getSelectedIndex();
     }//GEN-LAST:event_cb_salidasregistradasActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void bt_ReportePendientsProcesadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ReportePendientsProcesadasActionPerformed
      
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_bt_ReportePendientsProcesadasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bGenerarReporte;
     private javax.swing.JButton bImprimirEtiquetas;
+    private javax.swing.JButton bt_ReportePendientsProcesadas;
     private javax.swing.ButtonGroup buttonGrouptipo;
     private javax.swing.JComboBox cb_salidasregistradas;
     private javax.swing.JComboBox cb_tienda1;
@@ -897,7 +898,6 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
     private javax.swing.JTextField fieldPersonalDep;
     private javax.swing.JTextField fieldTotal;
     private javax.swing.JTextField fieldfecha;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
