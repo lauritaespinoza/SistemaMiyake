@@ -900,7 +900,6 @@
                       <SubComponents>
                         <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneModuloDistribuidor">
                           <Properties>
-                            <Property name="collapsed" type="boolean" value="true"/>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                               <Image iconType="3" name="/icon_almacen/1416862043_inventory-maintenance.png"/>
                             </Property>
