@@ -23,7 +23,7 @@ import org.exolab.castor.types.Date;
  *
  * @author Usuario
  */
-public class panelReportePreciosActualizados extends javax.swing.JPanel {
+public class JPConsultaProd extends javax.swing.JPanel {
 
     public final InputStream rutaJasper = this.getClass().getResourceAsStream("/reportes/ReporteActualizacionPreciosFecha.jasper");
     public final InputStream rutaJrxml = this.getClass().getResourceAsStream("/reportes/ReporteActualizacionPreciosFecha.jrxml");
@@ -31,7 +31,7 @@ public class panelReportePreciosActualizados extends javax.swing.JPanel {
     /**
      * Creates new form panelReportePreciosActualizados
      */
-    public panelReportePreciosActualizados() {
+    public JPConsultaProd() {
         initComponents();
     }
 
@@ -49,6 +49,7 @@ public class panelReportePreciosActualizados extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        bt_consultarCambios = new javax.swing.JButton();
 
         jButton1.setText("Generar Reporte");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -60,6 +61,13 @@ public class panelReportePreciosActualizados extends javax.swing.JPanel {
         jLabel1.setText("Fecha Desde:");
 
         jLabel2.setText("Fecha Hasta:");
+
+        bt_consultarCambios.setText("Consultar Cambios");
+        bt_consultarCambios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_consultarCambiosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -77,6 +85,8 @@ public class panelReportePreciosActualizados extends javax.swing.JPanel {
                 .addContainerGap(94, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bt_consultarCambios)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addGap(25, 25, 25))
         );
@@ -92,7 +102,9 @@ public class panelReportePreciosActualizados extends javax.swing.JPanel {
                     .addComponent(fechaHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(bt_consultarCambios))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -124,8 +136,13 @@ public class panelReportePreciosActualizados extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void bt_consultarCambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_consultarCambiosActionPerformed
+        
+    }//GEN-LAST:event_bt_consultarCambiosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_consultarCambios;
     private org.jdesktop.swingx.JXDatePicker fechaDesde;
     private org.jdesktop.swingx.JXDatePicker fechaHasta;
     private javax.swing.JButton jButton1;
