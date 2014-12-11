@@ -41,10 +41,10 @@ public class JPproducto extends javax.swing.JPanel {
     private List resultListProducto;
     private int pos;
     private Thread hilo = null;
-    private final Integer tabCrud;
+    private Integer tabCrud;
 
     public JPproducto() {
-        this(0);
+        this(null);
     }
     
     public JPproducto(Integer tabCrud) {

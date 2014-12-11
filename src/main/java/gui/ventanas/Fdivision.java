@@ -6,7 +6,7 @@
 package gui.ventanas;
 
 import util.JavaUtil;
-import hibernate.DAO.ObjectModelDAO;
+import hibernate.DAO.ObjectModelDAO; 
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
