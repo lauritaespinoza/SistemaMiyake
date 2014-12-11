@@ -478,7 +478,6 @@
                       <SubComponents>
                         <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneModuloDistribuidor">
                           <Properties>
-                            <Property name="collapsed" type="boolean" value="true"/>
                             <Property name="title" type="java.lang.String" value="Distribuidora"/>
                           </Properties>
                           <SubComponents>

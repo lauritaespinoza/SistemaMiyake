@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.ImageIO;
+import javax.imageio.ImageIO; 
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -291,12 +291,14 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jXCollapsiblePaneIzquierdo.setAnimated(false);
         jXCollapsiblePaneIzquierdo.setDirection(org.jdesktop.swingx.JXCollapsiblePane.Direction.LEFT);
+        org.jdesktop.swingx.VerticalLayout verticalLayout13 = new org.jdesktop.swingx.VerticalLayout();
+        verticalLayout13.setGap(2);
+        jXCollapsiblePaneIzquierdo.getContentPane().setLayout(verticalLayout13);
 
         jXCollapsiblePaneAbajo.setOpaque(false);
         jXCollapsiblePaneAbajo.setAlignmentX(0.0F);
         jXCollapsiblePaneAbajo.getContentPane().setLayout(new org.jdesktop.swingx.VerticalLayout());
 
-        taskPaneModuloDistribuidor.setCollapsed(true);
         taskPaneModuloDistribuidor.setTitle("Distribuidora");
 
         btnContainer.setText("Registrar Container        ");
