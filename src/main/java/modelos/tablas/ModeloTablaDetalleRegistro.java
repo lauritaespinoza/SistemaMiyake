@@ -35,17 +35,7 @@ public class ModeloTablaDetalleRegistro extends AbstractTableModel {
         this.listaDetalleResgistro = listaDetalleResgistro;
     }
 
-//    @Override
-//    public boolean isCellEditable(int rowIndex, int columnIndex) {
-//        switch (columnIndex) {
-//            case 2://penultima
-//                return true;
-//            case 3://ultima
-//                return true;
-//            default:
-//                return false;
-//        }
-//    }
+ 
     @Override
     public int getRowCount() {
         int filas = 0;

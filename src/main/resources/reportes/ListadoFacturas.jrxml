@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f195b3a0-b7ae-4af6-8993-c56751328db2">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="100"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -24,12 +24,12 @@
 		</box>
 	</style>
 	<subDataset name="Table Dataset 1" uuid="001f0c56-5da9-4b59-960e-abf740b6542f">
-		<field name="Nro Factura" class="java.lang.Integer"/>
-		<field name="Total Factura" class="java.lang.Float"/>
-		<field name="Recibido Por" class="java.lang.String"/>
-		<field name="Embarcado Via" class="java.lang.String"/>
-		<field name="Almacen" class="java.lang.String"/>
-		<field name="Proveedor" class="java.lang.String"/>
+		<field name="NRO FACTURA" class="java.lang.Integer"/>
+		<field name="TOTAL FACTURA" class="java.lang.Float"/>
+		<field name="RECIBIDO POR" class="java.lang.String"/>
+		<field name="EMBARCADO VIA" class="java.lang.String"/>
+		<field name="ALMACEN" class="java.lang.String"/>
+		<field name="PROVEEDOR" class="java.lang.String"/>
 	</subDataset>
 	<background>
 		<band splitType="Stretch"/>
@@ -48,8 +48,8 @@
 			<componentElement>
 				<reportElement key="table" style="table" x="0" y="0" width="538" height="125" uuid="ae2a701f-fafa-4fdd-b193-f6f74be2c98d"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="Table Dataset 1" uuid="72cc66b4-cf95-42e2-996e-96ba35a42da7">
-						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(1)]]></dataSourceExpression>
+					<datasetRun subDataset="Table Dataset 1" uuid="f6ccdb09-b0d6-4351-bb6a-e273c57ff4fd">
+						<dataSourceExpression><![CDATA[$P{REPORT_DATA_SOURCE}]]></dataSourceExpression>
 					</datasetRun>
 					<jr:column width="90" uuid="8ee53163-75b4-4b7d-8d60-749b4315aaf3">
 						<jr:columnHeader style="table_CH" height="30">
@@ -61,9 +61,8 @@
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="b541c150-80eb-4c44-83bd-b14dd05a16c8"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{Nro Factura}]]></textFieldExpression>
+								<reportElement x="0" y="0" width="90" height="20" uuid="e481a284-6f3d-4525-b6bb-291b3611db61"/>
+								<textFieldExpression><![CDATA[$F{NRO FACTURA}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -77,9 +76,8 @@
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="55c1a5fc-3f66-4e51-a68f-cb7202c4fc50"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{Total Factura}]]></textFieldExpression>
+								<reportElement x="0" y="0" width="90" height="20" uuid="629f0d41-2e24-436e-9d48-672889752cde"/>
+								<textFieldExpression><![CDATA[$F{TOTAL FACTURA}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -93,9 +91,8 @@
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="eb7a9071-91a1-423d-a2f2-88d5dacff512"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{Recibido Por}]]></textFieldExpression>
+								<reportElement x="0" y="0" width="90" height="20" uuid="246af581-ea80-461f-8e13-17449b758b24"/>
+								<textFieldExpression><![CDATA[$F{RECIBIDO POR}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -109,9 +106,8 @@
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="844ba344-fc6a-4d57-9759-4ccf70c05fb9"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{Embarcado Via}]]></textFieldExpression>
+								<reportElement x="0" y="0" width="90" height="20" uuid="04479882-a469-472b-a038-cfdaa72a660f"/>
+								<textFieldExpression><![CDATA[$F{EMBARCADO VIA}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -125,9 +121,8 @@
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="df02a72e-2ef5-47d1-a35c-3986f261ceee"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{Almacen}]]></textFieldExpression>
+								<reportElement x="0" y="0" width="90" height="20" uuid="bd991e23-8da1-48b6-a53b-6ce90ae66a05"/>
+								<textFieldExpression><![CDATA[$F{ALMACEN}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -141,9 +136,8 @@
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="4f55a362-3d82-453f-a6d7-0cb7ddc97e4d"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{Proveedor}]]></textFieldExpression>
+								<reportElement x="0" y="0" width="90" height="20" uuid="c9fd3bcb-5061-4a54-8238-a34d33e91aeb"/>
+								<textFieldExpression><![CDATA[$F{PROVEEDOR}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>

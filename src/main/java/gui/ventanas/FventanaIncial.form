@@ -367,6 +367,7 @@
                   <SubComponents>
                     <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneModuloFacturacion">
                       <Properties>
+                        <Property name="collapsed" type="boolean" value="true"/>
                         <Property name="title" type="java.lang.String" value="Facturaci&#xf3;n"/>
                       </Properties>
 
@@ -622,6 +623,7 @@
                     </Container>
                     <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneModuloTienda">
                       <Properties>
+                        <Property name="collapsed" type="boolean" value="true"/>
                         <Property name="title" type="java.lang.String" value="Tienda"/>
                       </Properties>
 
@@ -685,7 +687,6 @@
                     </Container>
                     <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneModuloDeposito">
                       <Properties>
-                        <Property name="collapsed" type="boolean" value="true"/>
                         <Property name="title" type="java.lang.String" value="Dep&#xf3;sito"/>
                       </Properties>
 

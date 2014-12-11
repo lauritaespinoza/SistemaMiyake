@@ -292,6 +292,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         jXCollapsiblePane1.setOpaque(false);
         jXCollapsiblePane1.setAlignmentX(0.0F);
 
+        taskPaneModuloFacturacion.setCollapsed(true);
         taskPaneModuloFacturacion.setTitle("Facturación");
 
         taskPaneProducto.setCollapsed(true);
@@ -489,6 +490,7 @@ public class FventanaIncial extends javax.swing.JFrame {
                 .addComponent(taskPaneEtiquetas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        taskPaneModuloTienda.setCollapsed(true);
         taskPaneModuloTienda.setTitle("Tienda");
 
         jButton6.setText("Almacen");
@@ -540,7 +542,6 @@ public class FventanaIncial extends javax.swing.JFrame {
                 .addComponent(btND))
         );
 
-        taskPaneModuloDeposito.setCollapsed(true);
         taskPaneModuloDeposito.setTitle("Depósito");
 
         taskPaneGestionMercancia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415667180_application-vnd.ms-excel.png"))); // NOI18N

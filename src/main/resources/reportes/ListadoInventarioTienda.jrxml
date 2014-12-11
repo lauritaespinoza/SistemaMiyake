@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d5577b7f-8af4-42d3-89dd-5946fe8d0798">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="152"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -84,16 +84,16 @@
 		</box>
 	</style>
 	<subDataset name="Table Dataset 2" uuid="ebc48397-6fb4-4a9e-ac38-30dca8030402">
-		<field name="Tienda" class="java.lang.String"/>
-		<field name="Código" class="java.lang.Integer"/>
-		<field name="Descripcion" class="java.lang.String"/>
-		<field name="SinDesc" class="java.lang.String"/>
-		<field name="Descuento" class="java.lang.String"/>
-		<field name="ConDesc" class="java.lang.String"/>
-		<field name="Creación" class="java.util.Date"/>
-		<field name="Modificación" class="java.util.Date"/>
-		<field name="Existencia" class="java.lang.Integer"/>
-		<field name="Procesado" class="java.lang.Integer"/>
+		<field name="TIENDA" class="java.lang.String"/>
+		<field name="CODIGO" class="java.lang.Integer"/>
+		<field name="DESCRIPCION" class="java.lang.String"/>
+		<field name="SINDESC" class="java.lang.String"/>
+		<field name="DESCUENTO" class="java.lang.String"/>
+		<field name="CONDESC" class="java.lang.String"/>
+		<field name="CREACION" class="java.util.Date"/>
+		<field name="MODIFICACION" class="java.util.Date"/>
+		<field name="EXISTENCIA" class="java.lang.Integer"/>
+		<field name="PROCESADO" class="java.lang.Integer"/>
 	</subDataset>
 	<parameter name="facturas" class="java.lang.Integer"/>
 	<parameter name="fecha" class="java.util.Date"/>
@@ -148,92 +148,92 @@
 						<dataSourceExpression><![CDATA[$P{REPORT_DATA_SOURCE}]]></dataSourceExpression>
 					</datasetRun>
 					<jr:column width="90" uuid="6faab107-ca99-4cb0-a287-633e4c59eda3">
-						<jr:columnHeader style="table 3_CH" height="30"/>
-						<jr:detailCell style="table 3_TD" height="20">
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="e42ddc5b-2f43-4cde-ae73-218fd03b76c1"/>
-								<textFieldExpression><![CDATA[$F{Tienda}]]></textFieldExpression>
+								<reportElement x="0" y="0" width="90" height="20" uuid="a8edf383-24ae-4230-b5a6-43a0e76566e2"/>
+								<textFieldExpression><![CDATA[$F{TIENDA}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="90" uuid="4f866cf7-33a4-4f64-8f37-13120a0537e8">
-						<jr:columnHeader style="table 3_CH" height="30"/>
-						<jr:detailCell style="table 3_TD" height="20">
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="72871d72-5f07-46c1-8cf3-1160a12923df"/>
-								<textFieldExpression><![CDATA[$F{Código}]]></textFieldExpression>
+								<reportElement x="0" y="0" width="90" height="20" uuid="8718c7ca-3334-4c16-9be9-a978a3a1124f"/>
+								<textFieldExpression><![CDATA[$F{CODIGO}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="90" uuid="923a7257-42a2-4c55-80f0-0ac1746d62db">
-						<jr:columnHeader style="table 3_CH" height="30"/>
-						<jr:detailCell style="table 3_TD" height="20">
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="289f8824-8bdd-4194-aaf3-548791d2eee8"/>
-								<textFieldExpression><![CDATA[$F{Descripcion}]]></textFieldExpression>
+								<reportElement x="0" y="0" width="90" height="20" uuid="6b21dc6b-0314-40cd-9ab3-8ed50fa3950f"/>
+								<textFieldExpression><![CDATA[$F{DESCRIPCION}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="90" uuid="a8c96ee5-79dd-4432-b4da-31f1fed8d771">
-						<jr:columnHeader style="table 3_CH" height="30"/>
-						<jr:detailCell style="table 3_TD" height="20">
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="fcfb42e6-6629-42c2-a44d-d4a6f72783bc"/>
-								<textFieldExpression><![CDATA[$F{SinDesc}]]></textFieldExpression>
+								<reportElement x="0" y="0" width="90" height="20" uuid="4ec41778-0ecd-4586-b838-284c231010d4"/>
+								<textFieldExpression><![CDATA[$F{SINDESC}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="90" uuid="05b9683c-9165-434d-b747-56ec0645e4dc">
-						<jr:columnHeader style="table 3_CH" height="30"/>
-						<jr:detailCell style="table 3_TD" height="20">
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="26205185-b384-41fc-862b-c6cd313075a8"/>
-								<textFieldExpression><![CDATA[$F{Descuento}]]></textFieldExpression>
+								<reportElement x="0" y="0" width="90" height="20" uuid="e27bbbb1-40a3-4462-bb35-e3aa633736f6"/>
+								<textFieldExpression><![CDATA[$F{DESCUENTO}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="90" uuid="072bc1f7-4049-409b-ac41-3c2aa217c503">
-						<jr:columnHeader style="table 3_CH" height="30"/>
-						<jr:detailCell style="table 3_TD" height="20">
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="3c5ea4d6-b9b7-4a32-9d3d-99192d8c72b6"/>
-								<textFieldExpression><![CDATA[$F{ConDesc}]]></textFieldExpression>
+								<reportElement x="0" y="0" width="90" height="20" uuid="6800b7ab-b02f-482c-a276-5c5c0a7fe6fa"/>
+								<textFieldExpression><![CDATA[$F{CONDESC}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="90" uuid="2cd94530-a086-41bb-9170-d72f31af44e5">
-						<jr:columnHeader style="table 3_CH" height="30"/>
-						<jr:detailCell style="table 3_TD" height="20">
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="d1096079-75bd-44d4-a261-d4e73d173be1"/>
-								<textFieldExpression><![CDATA[$F{Creación}]]></textFieldExpression>
+								<reportElement x="0" y="0" width="90" height="20" uuid="00ca5bc3-4ba6-44e1-88f9-8dff48e04ef5"/>
+								<textFieldExpression><![CDATA[$F{CREACION}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="432a3de8-619d-4b61-852e-23e2e3bfdb1a">
-						<jr:columnHeader style="table 3_CH" height="30"/>
-						<jr:detailCell style="table 3_TD" height="20">
+					<jr:column width="95" uuid="432a3de8-619d-4b61-852e-23e2e3bfdb1a">
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="38feb6bb-0d86-431e-ba83-459efb9dab32"/>
-								<textFieldExpression><![CDATA[$F{Modificación}]]></textFieldExpression>
+								<reportElement x="0" y="0" width="95" height="20" uuid="4b79db44-d430-4e84-aa16-82d88ce507a3"/>
+								<textFieldExpression><![CDATA[$F{MODIFICACION}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="90" uuid="8af1ed29-2339-4059-a110-6307d20f7060">
-						<jr:columnHeader style="table 3_CH" height="30"/>
-						<jr:detailCell style="table 3_TD" height="20">
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="d5354071-36b7-433c-87e6-8df0d8a7532b"/>
-								<textFieldExpression><![CDATA[$F{Existencia}]]></textFieldExpression>
+								<reportElement x="0" y="0" width="90" height="20" uuid="a1ad60f8-9050-405b-899e-d73b019166fb"/>
+								<textFieldExpression><![CDATA[$F{EXISTENCIA}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="90" uuid="d986dbe7-40d8-4466-a2d1-c9c9124e538f">
-						<jr:columnHeader style="table 3_CH" height="30"/>
-						<jr:detailCell style="table 3_TD" height="20">
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="f1aaad23-2bb0-409b-a2f0-d841c991f7da"/>
-								<textFieldExpression><![CDATA[$F{Procesado}]]></textFieldExpression>
+								<reportElement x="0" y="0" width="90" height="20" uuid="2896232d-75b0-4eca-9baf-be5ab44ffbb7"/>
+								<textFieldExpression><![CDATA[$F{PROCESADO}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>

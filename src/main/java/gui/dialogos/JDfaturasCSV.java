@@ -151,6 +151,7 @@ public class JDfaturasCSV extends javax.swing.JDialog {
         seleccionar = new javax.swing.JButton();
         ruta = new javax.swing.JLabel();
         aceptar = new javax.swing.JButton();
+        txtTitulo = new javax.swing.JLabel();
 
         filesc.setCurrentDirectory(new java.io.File("C:\\Users\\Usuario\\Documents\\PASANTIA\\prueba"));
 
@@ -270,7 +271,7 @@ public class JDfaturasCSV extends javax.swing.JDialog {
                                         .addGap(87, 87, 87)
                                         .addComponent(modificado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(0, 87, Short.MAX_VALUE)
+                                        .addGap(0, 76, Short.MAX_VALUE)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(usuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(transaccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -337,11 +338,13 @@ public class JDfaturasCSV extends javax.swing.JDialog {
 
         tabpanel.addTab("Lista", jPanel1);
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416789180_Timetable.png"))); // NOI18N
         jLabel1.setText("Fecha");
 
         fecha.setText(" ");
         fecha.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1418331485_coins.png"))); // NOI18N
         jLabel2.setText("Total sin IVA");
 
         totalSinIva.setText(" ");
@@ -350,8 +353,10 @@ public class JDfaturasCSV extends javax.swing.JDialog {
         totalConIva.setText(" ");
         totalConIva.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1418331222_coins.png"))); // NOI18N
         jLabel3.setText("Total con IVA");
 
+        actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/reiniciar.png"))); // NOI18N
         actualizar.setText("Actualizar Inventario");
         actualizar.setToolTipText("Actualiza el Inventario de la Tienda");
         actualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -360,6 +365,7 @@ public class JDfaturasCSV extends javax.swing.JDialog {
             }
         });
 
+        imprimirInv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1418331399_Print.png"))); // NOI18N
         imprimirInv.setText("Imprimir Inventario Diario");
         imprimirInv.setToolTipText("Actualiza el Inventario de la Tienda");
         imprimirInv.addActionListener(new java.awt.event.ActionListener() {
@@ -368,6 +374,7 @@ public class JDfaturasCSV extends javax.swing.JDialog {
             }
         });
 
+        imprimirFac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1418331399_Print.png"))); // NOI18N
         imprimirFac.setText("Imprimir Factura");
         imprimirFac.setToolTipText("Actualiza el Inventario de la Tienda");
         imprimirFac.addActionListener(new java.awt.event.ActionListener() {
@@ -387,6 +394,7 @@ public class JDfaturasCSV extends javax.swing.JDialog {
 
         ruta.setText(" ");
 
+        aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1418331240_accept.png"))); // NOI18N
         aceptar.setText("Aceptar");
         aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -394,15 +402,24 @@ public class JDfaturasCSV extends javax.swing.JDialog {
             }
         });
 
+        txtTitulo.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
+        txtTitulo.setForeground(new java.awt.Color(102, 102, 102));
+        txtTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415416322_list-accept.png"))); // NOI18N
+        txtTitulo.setText("DETALLES DE FACTURAS DIARIAS");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(seleccionar)
+                                .addGap(15, 15, 15)
+                                .addComponent(ruta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(layout.createSequentialGroup()
@@ -418,27 +435,29 @@ public class JDfaturasCSV extends javax.swing.JDialog {
                                         .addGap(26, 26, 26)
                                         .addComponent(totalSinIva, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(tabpanel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(imprimirInv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(actualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(imprimirFac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(aceptar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(seleccionar)
-                        .addGap(18, 18, 18)
-                        .addComponent(ruta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(tabpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(211, Short.MAX_VALUE)
+                        .addComponent(txtTitulo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)))
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(imprimirInv, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                    .addComponent(actualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(imprimirFac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(aceptar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addContainerGap()
+                .addComponent(txtTitulo)
+                .addGap(18, 21, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(seleccionar)
-                    .addComponent(ruta))
-                .addGap(18, 18, 18)
+                    .addComponent(ruta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(fecha)
                     .addComponent(jLabel1))
@@ -450,9 +469,11 @@ public class JDfaturasCSV extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(totalConIva))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tabpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(tabpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(imprimirFac)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -461,8 +482,7 @@ public class JDfaturasCSV extends javax.swing.JDialog {
                         .addComponent(actualizar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(aceptar)
-                        .addGap(113, 113, 113)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                        .addGap(126, 126, 126))))
         );
 
         pack();
@@ -616,6 +636,7 @@ public class JDfaturasCSV extends javax.swing.JDialog {
     private javax.swing.JLabel totalConIva;
     private javax.swing.JLabel totalSinIva;
     private javax.swing.JLabel transaccion;
+    private javax.swing.JLabel txtTitulo;
     private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
 
