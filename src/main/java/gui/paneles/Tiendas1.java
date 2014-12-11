@@ -1600,7 +1600,6 @@ public class Tiendas1 extends javax.swing.JPanel {
     private void btNCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNCActionPerformed
         JPnotaCreditoDebito jpNcd = new JPnotaCreditoDebito(true);
         jpNcd.setNcd(sobrante);
-        
         JavaUtil.createJDialogGeneric(jpNcd);
     }//GEN-LAST:event_btNCActionPerformed
 
