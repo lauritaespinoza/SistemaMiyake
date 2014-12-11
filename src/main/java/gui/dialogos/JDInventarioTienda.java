@@ -42,7 +42,7 @@ public class JDInventarioTienda extends javax.swing.JDialog {
             final List<List> inventarioTienda) throws Exception {
         super(parent, modal);
         initComponents();
-        this.setLocationRelativeTo(null);
+        
         //activar JavaHelp
         ayudaActionPerformed(null);
         //busy
@@ -129,7 +129,7 @@ public class JDInventarioTienda extends javax.swing.JDialog {
         txtTitulo.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
         txtTitulo.setForeground(new java.awt.Color(102, 102, 102));
         txtTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415416322_list-accept.png"))); // NOI18N
-        txtTitulo.setText("PRODUCTOS EXISTENTES EN INVENTARIO");
+        txtTitulo.setText("PRODUCTOS DISPONIBLE PARA ASIGNAR");
 
         imprimir_InventarioTiendas_.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         imprimir_InventarioTiendas_.setText("Imprimir");
