@@ -279,6 +279,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(9, 182, 201));
         setMinimumSize(new java.awt.Dimension(412, 641));
+        setPreferredSize(new java.awt.Dimension(800, 600));
 
         panelPrincipal.setAlignmentX(0.0F);
         panelPrincipal.setAlignmentY(0.0F);
@@ -413,7 +414,6 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jXCollapsiblePaneAbajo.getContentPane().add(taskPaneModuloDistribuidor);
 
-        taskPaneModuloTienda.setCollapsed(true);
         taskPaneModuloTienda.setTitle("Tiendas");
 
         jButtonAlmacen.setText("Almacen");
@@ -630,11 +630,9 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jXCollapsiblePaneAbajo.getContentPane().add(taskPaneModuloGestionProductos);
 
-        jXTaskPaneReportes.setCollapsed(true);
         jXTaskPaneReportes.setTitle("Reportes");
         jXTaskPaneReportes.setToolTipText("");
 
-        jXTaskPaneDistribuidor.setCollapsed(true);
         jXTaskPaneDistribuidor.setTitle("Resportes Distribuidor");
 
         Boton_Inprimir_Reporte_conteo_Distribuidora.setText("Reporte Conteo Mercancia");
@@ -661,7 +659,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         jXTaskPaneTiendas.setTitle("Reportes Tiendas");
         jXTaskPaneReportes.getContentPane().add(jXTaskPaneTiendas);
 
-        jXTaskPaneGestionProductos.setCollapsed(true);
         jXTaskPaneGestionProductos.setTitle("Reportes Productos");
 
         jButtonInventario.setText("Inventario Diario");
