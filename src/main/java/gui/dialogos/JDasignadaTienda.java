@@ -5,13 +5,33 @@
  */
 package gui.dialogos;
 
-import modelos.mapeos.SalidaParaTienda;
+import gui.paneles.Distribuidora1;
 import modelos.mapeos.SalidaParaTiendaDetalle;
-import hibernate.DAO.DaoQuery;
 import util.JavaUtil;
-import hibernate.DAO.ObjectModelDAO;
+import java.awt.HeadlessException;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.help.HelpBroker;
+import javax.help.HelpSet;
+import javax.help.HelpSetException;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import modelos.mapeos.Contacto;
+import modelos.tablas.TableModelReport;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -22,14 +42,36 @@ public class JDasignadaTienda extends javax.swing.JDialog {
     public SalidaParaTiendaDetalle sptd = null;
     private List resultListSptDetalle;
 
-    public JDasignadaTienda(java.awt.Frame parent, boolean modal, List resultListSptDetalle) {
+    public JDasignadaTienda(java.awt.Frame parent, boolean modal, List resultListSptDetallep) {
         super(parent, modal);
         initComponents();
+        //activar JavaHelp
+        ayudaActionPerformed(null);
+        //busy
+        busy.setVisible(false);
+        //barra Busqueda
+        this.tablaAsignadaTienda.setAutoCreateRowSorter(true);
+        this.tablaAsignadaTienda.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        this.tablaAsignadaTienda.setColumnControlVisible(true);
 
         if (resultListSptDetalle != null) {
-            this.resultListSptDetalle = resultListSptDetalle;
-            JavaUtil.displayResult(resultListSptDetalle, tabla);
+            this.resultListSptDetalle = resultListSptDetallep;
+            JavaUtil.displayResult(resultListSptDetallep, tablaAsignadaTienda);
         }
+        
+         tablaAsignadaTienda.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent lse) {
+                if (!lse.getValueIsAdjusting()) {
+
+                    if (tablaAsignadaTienda.getSelectedRow() == -1) {
+                        return;
+                    }
+                     
+                    sptd = (SalidaParaTiendaDetalle) ((Object[]) resultListSptDetalle.get(tablaAsignadaTienda.getSelectedRow()))[0];
+                }
+            }
+        });
+
     }
 
     /**
@@ -42,12 +84,21 @@ public class JDasignadaTienda extends javax.swing.JDialog {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabla = new org.jdesktop.swingx.JXTable();
-        jLabel1 = new javax.swing.JLabel();
+        tablaAsignadaTienda = new org.jdesktop.swingx.JXTable();
+        txtTitulo = new javax.swing.JLabel();
+        ayuda = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        busy = new org.jdesktop.swingx.JXBusyLabel();
+        botonImprimir = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        barraBusqueda = new org.jdesktop.swingx.JXFindBar(tablaAsignadaTienda.getSearchable());
+        jMenuBarDialogoFac = new javax.swing.JMenuBar();
+        jMenuOpciones = new javax.swing.JMenu();
+        jMenu_Ayuda_ = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        tabla.setModel(new javax.swing.table.DefaultTableModel(
+        tablaAsignadaTienda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -58,50 +109,220 @@ public class JDasignadaTienda extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tabla.setEditable(false);
-        tabla.setSortable(false);
-        tabla.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaMouseClicked(evt);
+        tablaAsignadaTienda.setEditable(false);
+        tablaAsignadaTienda.setSortable(false);
+        jScrollPane1.setViewportView(tablaAsignadaTienda);
+
+        txtTitulo.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
+        txtTitulo.setForeground(new java.awt.Color(102, 102, 102));
+        txtTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415416322_list-accept.png"))); // NOI18N
+        txtTitulo.setText("LISTADO DE PRODUCTOS ASIGNADOS PARA TIENDA");
+
+        ayuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416510931_Help.png"))); // NOI18N
+        ayuda.setBorder(null);
+        ayuda.setBorderPainted(false);
+        ayuda.setContentAreaFilled(false);
+        ayuda.setDefaultCapable(false);
+        ayuda.setFocusPainted(false);
+        ayuda.setFocusable(false);
+        ayuda.setRequestFocusEnabled(false);
+        ayuda.setVerifyInputWhenFocusTarget(false);
+        ayuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ayudaActionPerformed(evt);
             }
         });
-        jScrollPane1.setViewportView(tabla);
 
-        jLabel1.setText("MODIFICAR INTERFAZ AMIGABLE");
+        jButton2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jButton2.setText("Cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        busy.setText("Procesando...!!!");
+
+        botonImprimir.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        botonImprimir.setText("Imprimir");
+        botonImprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonImprimirActionPerformed(evt);
+            }
+        });
+
+        jButton1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jButton1.setText("Aceptar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jMenuOpciones.setText("Opciones");
+        jMenuBarDialogoFac.add(jMenuOpciones);
+
+        jMenu_Ayuda_.setText("Ayuda");
+        jMenuBarDialogoFac.add(jMenu_Ayuda_);
+
+        setJMenuBar(jMenuBarDialogoFac);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(266, 266, 266)
-                .addComponent(jLabel1)
-                .addContainerGap(346, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 755, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(txtTitulo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ayuda, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addGap(27, 27, 27))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(146, 146, 146)
+                        .addComponent(botonImprimir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(barraBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtTitulo)
+                    .addComponent(ayuda))
+                .addGap(18, 18, 18)
+                .addComponent(barraBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1)
+                    .addComponent(botonImprimir)
+                    .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
-        if (evt.getClickCount() == 2 && tabla.getSelectedRow() != -1) {
-            sptd = (SalidaParaTiendaDetalle) ((Object[]) resultListSptDetalle.get(tabla.getSelectedRow()))[0];
+    private void ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ayudaActionPerformed
 
-            dispose();
+        try {
+            File  archivo = new File(this.getClass().getResource("/JavaHelp/JavaHelp/ejemplo.hs").getFile());
+            URL hsURL = archivo.toURI().toURL();
+
+            HelpSet helpset = null;
+            helpset = new HelpSet(null, hsURL);
+
+            HelpSet.Presentation hsp;
+            hsp = helpset.getPresentation("MainWin");
+
+            HelpBroker help_browser = helpset.createHelpBroker();
+            help_browser.setHelpSetPresentation(hsp);
+
+            // Cuando pulsemos F1 se mostrará la ayuda de la página de introducion
+            help_browser.enableHelpOnButton(this.ayuda, "introduction", helpset);
+            help_browser.enableHelpKey(getContentPane(), "introduction", helpset);
+
+        } catch (HelpSetException | MalformedURLException ex) {
+            Logger.getLogger(JDFacturasPendientes.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Excepcion Ayuda Factura " + ex);
+            System.err.println("Excepcion Ayuda Factura " + ex);
         }
-    }//GEN-LAST:event_tablaMouseClicked
+    }//GEN-LAST:event_ayudaActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.dispose();
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void botonImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonImprimirActionPerformed
+        // TODO add your handling code here:    resultList
+        Thread hilo = new Thread() {
+
+            @Override
+            public void run() {
+
+                busy.setEnabled(true);
+                busy.setVisible(true);
+                busy.setBusy(true);
+                try {
+                    JasperPrint jasperPrint = null;
+
+                    Map<String, Object> parametro = new HashMap<>();
+                    String s = "";
+                    TableModelReport dataSourse = new TableModelReport(tablaAsignadaTienda.getModel());
+                    parametro.put("REPORT_DATA_SOURSE", dataSourse);
+                    //JasperCompileManager.compileReport(rutaJrxml);
+                    JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ListadoFacturas.jasper"));
+
+                    jasperPrint = JasperFillManager.fillReport(reporte, null, dataSourse);
+                    JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
+                    jasperViewer.setTitle("Reporte de Toma Fisica Distribuidoras.");
+                    jasperViewer.setVisible(true);
+
+                    busy.setEnabled(false);
+                    busy.setVisible(false);
+                    busy.setBusy(false);
+                    //                    int respuesta = JOptionPane.showConfirmDialog(null, "El Archivo fue Generado con Exito,"
+                        //                            + "¿Desea Continuar Selecionando Una Factura Pendiente?");
+                    //
+                    //                    if (respuesta == JOptionPane.YES_OPTION) {
+                        //
+                        //                    }
+                    //                    if (respuesta == JOptionPane.NO_OPTION) {
+                        //                        dispose();
+                        //                        setVisible(false);
+                        //
+                        //                    }
+                    //                    dispose();
+                    //                    setVisible(false);
+
+                } catch (JRException | HeadlessException e) {
+                    JOptionPane.showMessageDialog(null, "Se a Dectectado Un Proble Con Proceso de Seleccion de Facturas,"
+                        + "Por Favor Vuelva a Intentarlo.");
+                    Logger.getLogger(Distribuidora1.class.getName()).log(Level.SEVERE, null, e);
+                    System.err.println("Seleccionando Facturas" + e);
+
+                }
+
+            }
+        };
+        hilo.start();
+    }//GEN-LAST:event_botonImprimirActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        SeleccionarFactura();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+       private void SeleccionarFactura() {
+
+        try {
+            if (sptd != null) {
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Seleccione un Item del Listado de Mercancia Asignada Para Tienda");
+            }
+        } catch (Exception e) {
+            Logger.getLogger(JDFacturasPendientes.class.getName()).log(Level.SEVERE, null, e);
+            JOptionPane.showMessageDialog(this, "Excepcion Listado Mercancia Asignada Para Tienda :" + e);
+        }
+
+    }
 
     /**
      * @param args the command line arguments
@@ -146,8 +367,17 @@ public class JDasignadaTienda extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton ayuda;
+    private org.jdesktop.swingx.JXFindBar barraBusqueda;
+    private javax.swing.JButton botonImprimir;
+    private org.jdesktop.swingx.JXBusyLabel busy;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JMenuBar jMenuBarDialogoFac;
+    private javax.swing.JMenu jMenuOpciones;
+    private javax.swing.JMenu jMenu_Ayuda_;
     private javax.swing.JScrollPane jScrollPane1;
-    private org.jdesktop.swingx.JXTable tabla;
+    private org.jdesktop.swingx.JXTable tablaAsignadaTienda;
+    private javax.swing.JLabel txtTitulo;
     // End of variables declaration//GEN-END:variables
 }

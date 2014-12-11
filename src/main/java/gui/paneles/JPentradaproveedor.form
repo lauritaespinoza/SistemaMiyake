@@ -144,13 +144,16 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,63,0,0,4,-114"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,65,0,0,4,-74"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
   <SubComponents>
     <Container class="org.jdesktop.swingx.JXTaskPane" name="factura">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/icon_almacen/1416856442_page_white_edit.png"/>
+        </Property>
         <Property name="scrollOnExpand" type="boolean" value="true"/>
         <Property name="title" type="java.lang.String" value="Datos de Factura"/>
       </Properties>
@@ -282,11 +285,17 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/icon_almacen/facturas.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="N&#xb0; Factura"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/icon_almacen/responsable2.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Recibido por"/>
           </Properties>
         </Component>
@@ -294,16 +303,25 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/icon_almacen/1416789180_Timetable.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Fecha emision"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/icon_almacen/1417576112_Order_tracking.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Proveedor"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/icon_almacen/1418331236_doc_pdf.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Archivo digital"/>
           </Properties>
         </Component>
@@ -314,6 +332,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/icon_almacen/1417636330_store.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Tienda"/>
           </Properties>
         </Component>
@@ -347,6 +368,9 @@
     </Container>
     <Container class="org.jdesktop.swingx.JXTaskPane" name="panel_detalle">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/icon_almacen/1416789183_data-16.png"/>
+        </Property>
         <Property name="title" type="java.lang.String" value="Tabla de productos por archivo"/>
         <Property name="autoscrolls" type="boolean" value="true"/>
       </Properties>
