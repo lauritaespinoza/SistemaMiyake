@@ -139,6 +139,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuTomaFisicaDistribuidora">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+D"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Toma Fisica Distribuidora"/>
               </Properties>
               <Events>
@@ -147,6 +150,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuAsignarMercanciaTiendas_">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+G"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Asignar Mercancia Tiendas"/>
               </Properties>
             </MenuItem>
@@ -201,6 +207,9 @@
             </Menu>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemTomaFisicaTiendas">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+T"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Toma Fisica Tiendas"/>
               </Properties>
             </MenuItem>
@@ -208,6 +217,19 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Gestion Inventario"/>
               </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jMenuItemInvDiario">
+                  <Properties>
+                    <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                      <KeyStroke key="Ctrl+I"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Inventario Diario"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemInvDiarioActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
             </Menu>
             <Menu class="javax.swing.JMenu" name="jMenuNotasDebitoCredito_">
               <Properties>
@@ -482,11 +504,18 @@
                       <SubComponents>
                         <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneModuloDistribuidor">
                           <Properties>
+                            <Property name="collapsed" type="boolean" value="true"/>
+                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                              <Image iconType="3" name="/icon_almacen/1416862043_inventory-maintenance.png"/>
+                            </Property>
                             <Property name="title" type="java.lang.String" value="Distribuidora"/>
                           </Properties>
                           <SubComponents>
                             <Component class="javax.swing.JButton" name="btnContainer">
                               <Properties>
+                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                  <Image iconType="3" name="/icon_almacen/1417636398_document.png"/>
+                                </Property>
                                 <Property name="text" type="java.lang.String" value="Registrar Container        "/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
@@ -504,7 +533,10 @@
                             </Component>
                             <Component class="javax.swing.JButton" name="btnCrudProveedr">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Proveedor                       "/>
+                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                  <Image iconType="3" name="/icon_almacen/1417576112_Order_tracking.png"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="Proveedor                        "/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                                     <BevelBorder/>
@@ -521,7 +553,10 @@
                             </Component>
                             <Component class="javax.swing.JButton" name="TomaFisicaDistribuidora_boton_">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Toma Fisica Distribuidora"/>
+                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                  <Image iconType="3" name="/icon_almacen/1417901443_Warehouse_icon_3D_rev-16.png"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="Toma Fisica                        "/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                                     <BevelBorder/>
@@ -543,7 +578,10 @@
                                     <BevelBorder/>
                                   </Border>
                                 </Property>
-                                <Property name="text" type="java.lang.String" value="Asignar Mercancia "/>
+                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                  <Image iconType="3" name="/icon_almacen/1416789791_database_add.png"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="Asignar Mercancia            "/>
                                 <Property name="borderPainted" type="boolean" value="false"/>
                                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                               </Properties>
@@ -555,7 +593,11 @@
                             </Component>
                             <Component class="javax.swing.JButton" name="jButtonActualizarPrecio">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Actualizar Precio"/>
+                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                  <Image iconType="3" name="/icon_almacen/reiniciar.png"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="Actualizar Precio              "/>
+                                <Property name="toolTipText" type="java.lang.String" value=""/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                                     <BevelBorder/>
@@ -572,7 +614,10 @@
                             </Component>
                             <Component class="javax.swing.JButton" name="botonEnvio">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Control de Envios"/>
+                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                  <Image iconType="3" name="/icon_almacen/1416789780_database_gear.png"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="Control de Envios            "/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                                     <BevelBorder/>
@@ -737,12 +782,17 @@
                         </Container>
                         <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneModuloTienda">
                           <Properties>
-                            <Property name="collapsed" type="boolean" value="true"/>
+                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                              <Image iconType="3" name="/icon_almacen/1417636353_shop.png"/>
+                            </Property>
                             <Property name="title" type="java.lang.String" value="Tiendas"/>
                           </Properties>
                           <SubComponents>
                             <Component class="javax.swing.JButton" name="jButtonAlmacen">
                               <Properties>
+                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                  <Image iconType="3" name="/icon_almacen/1417901443_Warehouse_icon_3D_rev-16.png"/>
+                                </Property>
                                 <Property name="text" type="java.lang.String" value="Almacen"/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
@@ -765,7 +815,7 @@
                                     <BevelBorder/>
                                   </Border>
                                 </Property>
-                                <Property name="text" type="java.lang.String" value="Toma Fisica Tiendas"/>
+                                <Property name="text" type="java.lang.String" value="Toma Fisica"/>
                                 <Property name="borderPainted" type="boolean" value="false"/>
                                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                               </Properties>

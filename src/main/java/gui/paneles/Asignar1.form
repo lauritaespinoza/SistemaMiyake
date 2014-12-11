@@ -357,7 +357,7 @@
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       <Component id="jXButtonTotalizar" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jLayeredPaneBuscarProducto" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jLayeredPaneBuscarProducto" alignment="0" pref="691" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -368,9 +368,9 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLayeredPaneBuscarProducto" max="32767" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="jLayeredPaneDatosProductos" pref="135" max="32767" attributes="0"/>
+                              <Component id="jLayeredPaneDatosProductos" pref="143" max="32767" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="jScrollPane5" pref="158" max="32767" attributes="0"/>
+                              <Component id="jScrollPane5" pref="165" max="32767" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Component id="jXButtonTotalizar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -387,9 +387,12 @@
                           </Border>
                         </Property>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[691, 62]"/>
+                          <Dimension value="[492, 47]"/>
                         </Property>
                       </Properties>
+                      <AccessibilityProperties>
+                        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Panel de Busqueda"/>
+                      </AccessibilityProperties>
 
                       <Layout>
                         <DimensionLayout dim="0">
@@ -593,7 +596,7 @@
                                           <Component id="botonLimpiarAgregar" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="14" max="32767" attributes="0"/>
+                                  <EmptySpace pref="21" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>

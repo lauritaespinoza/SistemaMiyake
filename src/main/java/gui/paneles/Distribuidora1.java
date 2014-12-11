@@ -502,6 +502,11 @@ public class Distribuidora1 extends javax.swing.JPanel {
         jXLabel9.setText("Bulto");
 
         txtNroBulto.setEnabled(false);
+        txtNroBulto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNroBultoActionPerformed(evt);
+            }
+        });
         txtNroBulto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNroBultoKeyTyped(evt);
@@ -694,7 +699,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
             }
         });
 
-        botonGeneralNotas.setText("Generear Notas");
+        botonGeneralNotas.setText("reiniciar");
 
         jButtonGuardarConteo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/database_save.png"))); // NOI18N
         jButtonGuardarConteo.setText("Guardar");
@@ -1519,7 +1524,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
                 this.txtCantidad.setText("");
                 this.txtNroBulto.setText("");
                 this.txtNroBulto.setEnabled(false);
-                this.txtCodigo.requestFocus();
+                this.txtBusqueda.requestFocus();
 
                 //Remover de Lista Actual Producto Agregago
                 //this.proEPaux = proEP;
@@ -1566,7 +1571,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
 
             parametro.put("REPORT_DATA_SOURSE", dataSourse);
             //JasperCompileManager.compileReport(rutaJrxml);
-            JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ReporteTomaFisicaDistribuidora.jasper"));
+            JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ConteoTomaFisicaDistribuidora.jasper"));
 
             jasperPrint = JasperFillManager.fillReport(reporte, parametro, dataSourse);
             JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
@@ -1594,6 +1599,11 @@ public class Distribuidora1 extends javax.swing.JPanel {
 
 
     }//GEN-LAST:event_txtNroBultoKeyTyped
+
+    private void txtNroBultoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNroBultoActionPerformed
+       
+        botonAgregarActionPerformed(null);
+    }//GEN-LAST:event_txtNroBultoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

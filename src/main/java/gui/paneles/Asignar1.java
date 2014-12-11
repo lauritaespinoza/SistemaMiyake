@@ -311,7 +311,7 @@ public class Asignar1 extends javax.swing.JPanel {
         jLayeredPaneProductos.setAutoscrolls(true);
 
         jLayeredPaneBuscarProducto.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar"));
-        jLayeredPaneBuscarProducto.setPreferredSize(new java.awt.Dimension(691, 62));
+        jLayeredPaneBuscarProducto.setPreferredSize(new java.awt.Dimension(492, 47));
 
         jXLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/tipo.png"))); // NOI18N
         jXLabel7.setText("Tipo Busqueda");
@@ -545,7 +545,7 @@ public class Asignar1 extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPaneDatosProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(botonAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(botonLimpiarAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jLayeredPaneDatosProductos.setLayer(txtDescripcion, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPaneDatosProductos.setLayer(txtExistencia, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -603,7 +603,7 @@ public class Asignar1 extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPaneProductosLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jXButtonTotalizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLayeredPaneBuscarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLayeredPaneBuscarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 691, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jLayeredPaneProductosLayout.setVerticalGroup(
@@ -611,14 +611,16 @@ public class Asignar1 extends javax.swing.JPanel {
             .addGroup(jLayeredPaneProductosLayout.createSequentialGroup()
                 .addComponent(jLayeredPaneBuscarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLayeredPaneDatosProductos, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                .addComponent(jLayeredPaneDatosProductos, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jXButtonTotalizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jLayeredPaneProductos.setLayer(jLayeredPaneBuscarProducto, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLayeredPaneBuscarProducto.getAccessibleContext().setAccessibleDescription("Panel de Busqueda");
         jLayeredPaneProductos.setLayer(jLayeredPaneDatosProductos, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPaneProductos.setLayer(jScrollPane5, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPaneProductos.setLayer(jXButtonTotalizar, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -1278,20 +1280,22 @@ public class Asignar1 extends javax.swing.JPanel {
 
     private void txtNroBultoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNroBultoActionPerformed
 
-        try {
-            if ("".equals(this.txtCantidad.getText()) || "".equals(this.txtNroBulto.getText())) {
-                JOptionPane.showMessageDialog(null, "¡¡¡Intriduzca Cantidad  de Productos Contabilizados "
-                        + "y Numero deBulto Asignado Por Favor!!!");
-
-            } else {
-            botonAgregarActionPerformed(null);
-            }
-        } catch (Exception e) {
-            Logger.getLogger(Asignar1.class.getName()).log(Level.SEVERE, null, e);
-            JOptionPane.showMessageDialog(null, "Por Favor, Seleccione Un Pedido Valido Para Continuar.!!!");
-            System.err.println("ERROR ó Excepcion Boton Reiniciar Todo Desde Pedido : " + e);
-
-        }
+        botonAgregarActionPerformed(null);
+        
+//        try {
+//            if ("".equals(this.txtCantidad.getText()) || "".equals(this.txtNroBulto.getText())) {
+//                JOptionPane.showMessageDialog(null, "¡¡¡Intriduzca Cantidad  de Productos Contabilizados "
+//                        + "y Numero deBulto Asignado Por Favor!!!");
+//
+//            } else {
+//            botonAgregarActionPerformed(null);
+//            }
+//        } catch (Exception e) {
+//            Logger.getLogger(Asignar1.class.getName()).log(Level.SEVERE, null, e);
+//            JOptionPane.showMessageDialog(null, "Por Favor, Seleccione Un Pedido Valido Para Continuar.!!!");
+//            System.err.println("ERROR ó Excepcion Boton Reiniciar Todo Desde Pedido : " + e);
+//
+//        }
 
     }//GEN-LAST:event_txtNroBultoActionPerformed
 

@@ -181,7 +181,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/iconos/1415416322_list-accept.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="PRODUCTOS EXISTENTES EN INVENTARIO"/>
+        <Property name="text" type="java.lang.String" value="PRODUCTOS DISPONIBLE PARA ASIGNAR"/>
       </Properties>
     </Component>
     <Component class="org.jdesktop.swingx.JXFindBar" name="jXBarraBusquedaProductosEntrantes">
