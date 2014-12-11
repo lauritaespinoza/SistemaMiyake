@@ -230,6 +230,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         jMenuGestionAlmacenes_ = new javax.swing.JMenu();
         jMenuItemTomaFisicaTiendas = new javax.swing.JMenuItem();
         jMenuControlInventario_ = new javax.swing.JMenu();
+        jMenuItemInvDiario = new javax.swing.JMenuItem();
         jMenuNotasDebitoCredito_ = new javax.swing.JMenu();
         jMenuItemControlExistencia_ = new javax.swing.JMenuItem();
         jMenuItemDetFactura = new javax.swing.JMenuItem();
@@ -322,8 +323,10 @@ public class FventanaIncial extends javax.swing.JFrame {
         jXCollapsiblePaneAbajo.getContentPane().setLayout(new org.jdesktop.swingx.VerticalLayout());
 
         taskPaneModuloDistribuidor.setCollapsed(true);
+        taskPaneModuloDistribuidor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416862043_inventory-maintenance.png"))); // NOI18N
         taskPaneModuloDistribuidor.setTitle("Distribuidora");
 
+        btnContainer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636398_document.png"))); // NOI18N
         btnContainer.setText("Registrar Container        ");
         btnContainer.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnContainer.setBorderPainted(false);
@@ -343,7 +346,8 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
         taskPaneModuloDistribuidor.getContentPane().add(btnContainer);
 
-        btnCrudProveedr.setText("Proveedor                       ");
+        btnCrudProveedr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417576112_Order_tracking.png"))); // NOI18N
+        btnCrudProveedr.setText("Proveedor                        ");
         btnCrudProveedr.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCrudProveedr.setBorderPainted(false);
         btnCrudProveedr.setContentAreaFilled(false);
@@ -362,7 +366,8 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
         taskPaneModuloDistribuidor.getContentPane().add(btnCrudProveedr);
 
-        TomaFisicaDistribuidora_boton_.setText("Toma Fisica Distribuidora");
+        TomaFisicaDistribuidora_boton_.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417901443_Warehouse_icon_3D_rev-16.png"))); // NOI18N
+        TomaFisicaDistribuidora_boton_.setText("Toma Fisica                        ");
         TomaFisicaDistribuidora_boton_.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         TomaFisicaDistribuidora_boton_.setBorderPainted(false);
         TomaFisicaDistribuidora_boton_.setContentAreaFilled(false);
@@ -382,7 +387,8 @@ public class FventanaIncial extends javax.swing.JFrame {
         taskPaneModuloDistribuidor.getContentPane().add(TomaFisicaDistribuidora_boton_);
 
         AsignarMercancia_boton_.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        AsignarMercancia_boton_.setText("Asignar Mercancia ");
+        AsignarMercancia_boton_.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416789791_database_add.png"))); // NOI18N
+        AsignarMercancia_boton_.setText("Asignar Mercancia            ");
         AsignarMercancia_boton_.setBorderPainted(false);
         AsignarMercancia_boton_.setContentAreaFilled(false);
         AsignarMercancia_boton_.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -400,7 +406,9 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
         taskPaneModuloDistribuidor.getContentPane().add(AsignarMercancia_boton_);
 
-        jButtonActualizarPrecio.setText("Actualizar Precio");
+        jButtonActualizarPrecio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/reiniciar.png"))); // NOI18N
+        jButtonActualizarPrecio.setText("Actualizar Precio              ");
+        jButtonActualizarPrecio.setToolTipText("");
         jButtonActualizarPrecio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonActualizarPrecio.setBorderPainted(false);
         jButtonActualizarPrecio.setContentAreaFilled(false);
@@ -419,7 +427,8 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
         taskPaneModuloDistribuidor.getContentPane().add(jButtonActualizarPrecio);
 
-        botonEnvio.setText("Control de Envios");
+        botonEnvio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416789780_database_gear.png"))); // NOI18N
+        botonEnvio.setText("Control de Envios            ");
         botonEnvio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botonEnvio.setBorderPainted(false);
         botonEnvio.setContentAreaFilled(false);
@@ -435,9 +444,10 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jXCollapsiblePaneAbajo.getContentPane().add(taskPaneModuloDistribuidor);
 
-        taskPaneModuloTienda.setCollapsed(true);
+        taskPaneModuloTienda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636353_shop.png"))); // NOI18N
         taskPaneModuloTienda.setTitle("Tiendas");
 
+        jButtonAlmacen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417901443_Warehouse_icon_3D_rev-16.png"))); // NOI18N
         jButtonAlmacen.setText("Almacen");
         jButtonAlmacen.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonAlmacen.setBorderPainted(false);
@@ -458,7 +468,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         taskPaneModuloTienda.getContentPane().add(jButtonAlmacen);
 
         TomaFisicaTiendas_boton_.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        TomaFisicaTiendas_boton_.setText("Toma Fisica Tiendas");
+        TomaFisicaTiendas_boton_.setText("Toma Fisica");
         TomaFisicaTiendas_boton_.setBorderPainted(false);
         TomaFisicaTiendas_boton_.setContentAreaFilled(false);
         TomaFisicaTiendas_boton_.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -958,6 +968,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         jMenuRegistroContainer_.setText("Registro de Container");
         menuDistribuidor.add(jMenuRegistroContainer_);
 
+        jMenuTomaFisicaDistribuidora.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
         jMenuTomaFisicaDistribuidora.setText("Toma Fisica Distribuidora");
         jMenuTomaFisicaDistribuidora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -966,6 +977,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
         menuDistribuidor.add(jMenuTomaFisicaDistribuidora);
 
+        jMenuAsignarMercanciaTiendas_.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
         jMenuAsignarMercanciaTiendas_.setText("Asignar Mercancia Tiendas");
         menuDistribuidor.add(jMenuAsignarMercanciaTiendas_);
 
@@ -1001,10 +1013,21 @@ public class FventanaIncial extends javax.swing.JFrame {
         jMenuGestionAlmacenes_.setText("Gestion Almacenes");
         menuTiendas.add(jMenuGestionAlmacenes_);
 
+        jMenuItemTomaFisicaTiendas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItemTomaFisicaTiendas.setText("Toma Fisica Tiendas");
         menuTiendas.add(jMenuItemTomaFisicaTiendas);
 
         jMenuControlInventario_.setText("Gestion Inventario");
+
+        jMenuItemInvDiario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItemInvDiario.setText("Inventario Diario");
+        jMenuItemInvDiario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemInvDiarioActionPerformed(evt);
+            }
+        });
+        jMenuControlInventario_.add(jMenuItemInvDiario);
+
         menuTiendas.add(jMenuControlInventario_);
 
         jMenuNotasDebitoCredito_.setText("Notas Credito/Debito");
@@ -1591,6 +1614,7 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemExportarBD;
     private javax.swing.JMenuItem jMenuItemExportarDatDesc;
     private javax.swing.JMenuItem jMenuItemImprimirEtiquetas;
+    private javax.swing.JMenuItem jMenuItemInvDiario;
     private javax.swing.JMenuItem jMenuItemReiniciarPanel;
     private javax.swing.JMenuItem jMenuItemRestaurarDatos;
     private javax.swing.JMenuItem jMenuItemSalir;

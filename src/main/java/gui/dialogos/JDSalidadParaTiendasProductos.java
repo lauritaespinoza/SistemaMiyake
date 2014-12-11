@@ -33,6 +33,7 @@ public class JDSalidadParaTiendasProductos extends javax.swing.JDialog {
             final List resultListSalidadParaTienda)throws Exception{
          super(parent, modal);
         initComponents();
+        ayudaActionPerformed(null);
         //jtListaEntradaProveedor.setModel(resulList);
         this.setLocationRelativeTo(null);
         // this.resultList = inventarioTienda;

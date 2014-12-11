@@ -10,23 +10,22 @@ import clases.csv.Factura;
 import clases.csv.InventarioDiario;
 import clases.csv.Producto;
 import java.io.File;
-import java.util.HashMap;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Map;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.help.HelpBroker;
+import javax.help.HelpSet;
+import javax.help.HelpSetException;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.ListModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
-import modelos.tablas.TableModelReport;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.util.JRLoader;
-import net.sf.jasperreports.view.JasperViewer;
 import util.JavaUtil;
 
 /**
@@ -44,7 +43,8 @@ public class JDfaturasCSV extends javax.swing.JDialog {
     public JDfaturasCSV(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-
+        ayudaActionPerformed(null);
+        this.setLocationRelativeTo(null);
         listaFacturas.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent lse) {
                 if (!lse.getValueIsAdjusting()) {
@@ -149,11 +149,16 @@ public class JDfaturasCSV extends javax.swing.JDialog {
         seleccionar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         ruta = new javax.swing.JLabel();
+        txtTitulo = new javax.swing.JLabel();
+        ayuda = new javax.swing.JButton();
         PanelLado = new javax.swing.JPanel();
         imprimirFac = new javax.swing.JButton();
         imprimirInv = new javax.swing.JButton();
         actualizar = new javax.swing.JButton();
         aceptar = new javax.swing.JButton();
+        jMenuBarDialogoInV = new javax.swing.JMenuBar();
+        jMenuOpciones = new javax.swing.JMenu();
+        jMenu_Ayuda_ = new javax.swing.JMenu();
 
         filesc.setCurrentDirectory(new java.io.File("C:\\Users\\Usuario\\Documents\\PASANTIA\\prueba"));
 
@@ -240,7 +245,7 @@ public class JDfaturasCSV extends javax.swing.JDialog {
                             .addComponent(lbestado))
                         .addGap(27, 27, 27)
                         .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(estado, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                            .addComponent(estado, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
                             .addComponent(facToSinIva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(PanelDatosLayout.createSequentialGroup()
                         .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,7 +273,7 @@ public class JDfaturasCSV extends javax.swing.JDialog {
                         .addComponent(lbusuariomodif3)))
                 .addGap(18, 18, 18)
                 .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(facToConIva, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                    .addComponent(facToConIva, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
                     .addComponent(cedula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(impresora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(numero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -345,11 +350,13 @@ public class JDfaturasCSV extends javax.swing.JDialog {
 
         getContentPane().add(tabpanel, java.awt.BorderLayout.CENTER);
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416789180_Timetable.png"))); // NOI18N
         jLabel1.setText("Fecha");
 
         fecha.setText(" ");
         fecha.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1418331222_coins.png"))); // NOI18N
         jLabel2.setText("Total sin IVA");
 
         totalSinIva.setText(" ");
@@ -367,37 +374,73 @@ public class JDfaturasCSV extends javax.swing.JDialog {
             }
         });
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1418331222_coins.png"))); // NOI18N
         jLabel3.setText("Total con IVA");
 
         ruta.setText(" ");
+
+        txtTitulo.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
+        txtTitulo.setForeground(new java.awt.Color(102, 102, 102));
+        txtTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415416322_list-accept.png"))); // NOI18N
+        txtTitulo.setText("DETALLES DE FACTURA DIARIA");
+
+        ayuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416510931_Help.png"))); // NOI18N
+        ayuda.setBorder(null);
+        ayuda.setBorderPainted(false);
+        ayuda.setContentAreaFilled(false);
+        ayuda.setDefaultCapable(false);
+        ayuda.setFocusPainted(false);
+        ayuda.setFocusable(false);
+        ayuda.setRequestFocusEnabled(false);
+        ayuda.setVerifyInputWhenFocusTarget(false);
+        ayuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ayudaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelCabLayout = new javax.swing.GroupLayout(PanelCab);
         PanelCab.setLayout(PanelCabLayout);
         PanelCabLayout.setHorizontalGroup(
             PanelCabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelCabLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(PanelCabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelCabLayout.createSequentialGroup()
-                        .addComponent(seleccionar)
-                        .addGap(18, 18, 18)
-                        .addComponent(ruta, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap()
+                        .addGroup(PanelCabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelCabLayout.createSequentialGroup()
+                                .addComponent(seleccionar)
+                                .addGap(18, 18, 18)
+                                .addComponent(ruta, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(PanelCabLayout.createSequentialGroup()
+                                .addGroup(PanelCabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3))
+                                .addGap(28, 28, 28)
+                                .addGroup(PanelCabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(totalConIva, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(totalSinIva, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(PanelCabLayout.createSequentialGroup()
-                        .addGroup(PanelCabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(28, 28, 28)
-                        .addGroup(PanelCabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(totalConIva, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(totalSinIva, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(159, 159, 159)
+                        .addComponent(txtTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+                        .addGap(147, 147, 147)
+                        .addComponent(ayuda, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                        .addGap(72, 72, 72)))
+                .addContainerGap())
         );
         PanelCabLayout.setVerticalGroup(
             PanelCabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCabLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGroup(PanelCabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelCabLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(txtTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(PanelCabLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ayuda)))
+                .addGap(21, 21, 21)
                 .addGroup(PanelCabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(seleccionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ruta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -418,6 +461,7 @@ public class JDfaturasCSV extends javax.swing.JDialog {
 
         getContentPane().add(PanelCab, java.awt.BorderLayout.NORTH);
 
+        imprimirFac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1418331399_Print.png"))); // NOI18N
         imprimirFac.setText("Imprimir Factura");
         imprimirFac.setToolTipText("Actualiza el Inventario de la Tienda");
         imprimirFac.addActionListener(new java.awt.event.ActionListener() {
@@ -426,6 +470,7 @@ public class JDfaturasCSV extends javax.swing.JDialog {
             }
         });
 
+        imprimirInv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1418331399_Print.png"))); // NOI18N
         imprimirInv.setText("Imprimir Inventario Diario");
         imprimirInv.setToolTipText("Actualiza el Inventario de la Tienda");
         imprimirInv.addActionListener(new java.awt.event.ActionListener() {
@@ -434,6 +479,7 @@ public class JDfaturasCSV extends javax.swing.JDialog {
             }
         });
 
+        actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416789278_history_clear.png"))); // NOI18N
         actualizar.setText("Actualizar Inventario");
         actualizar.setToolTipText("Actualiza el Inventario de la Tienda");
         actualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -442,6 +488,7 @@ public class JDfaturasCSV extends javax.swing.JDialog {
             }
         });
 
+        aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416789267_clean.png"))); // NOI18N
         aceptar.setText("Aceptar");
         aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -473,10 +520,18 @@ public class JDfaturasCSV extends javax.swing.JDialog {
                 .addComponent(actualizar)
                 .addGap(18, 18, 18)
                 .addComponent(aceptar)
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         getContentPane().add(PanelLado, java.awt.BorderLayout.EAST);
+
+        jMenuOpciones.setText("Opciones");
+        jMenuBarDialogoInV.add(jMenuOpciones);
+
+        jMenu_Ayuda_.setText("Ayuda");
+        jMenuBarDialogoInV.add(jMenu_Ayuda_);
+
+        setJMenuBar(jMenuBarDialogoInV);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -544,6 +599,32 @@ public class JDfaturasCSV extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_aceptarActionPerformed
 
+    private void ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ayudaActionPerformed
+
+        try {
+            File  archivo = new File(this.getClass().getResource("/JavaHelp/JavaHelp/ejemplo.hs").getFile());
+            URL hsURL = archivo.toURI().toURL();
+
+            HelpSet helpset = null;
+            helpset = new HelpSet(null, hsURL);
+
+            HelpSet.Presentation hsp;
+            hsp = helpset.getPresentation("MainWin");
+
+            HelpBroker help_browser = helpset.createHelpBroker();
+            help_browser.setHelpSetPresentation(hsp);
+
+            // Cuando pulsemos F1 se mostrará la ayuda de la página de introducion
+            help_browser.enableHelpOnButton(this.ayuda, "introduction", helpset);
+            help_browser.enableHelpKey(getContentPane(), "introduction", helpset);
+
+        } catch (HelpSetException | MalformedURLException ex) {
+            Logger.getLogger(JDFacturasPendientes.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Excepcion Ayuda Factura " + ex);
+            System.err.println("Excepcion Ayuda Factura " + ex);
+        }
+    }//GEN-LAST:event_ayudaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -595,6 +676,7 @@ public class JDfaturasCSV extends javax.swing.JDialog {
     private javax.swing.JPanel PanelLado;
     private javax.swing.JButton aceptar;
     private javax.swing.JButton actualizar;
+    private javax.swing.JButton ayuda;
     private javax.swing.JLabel cedula;
     private javax.swing.JLabel estado;
     private javax.swing.JLabel facToConIva;
@@ -610,6 +692,9 @@ public class JDfaturasCSV extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JMenuBar jMenuBarDialogoInV;
+    private javax.swing.JMenu jMenuOpciones;
+    private javax.swing.JMenu jMenu_Ayuda_;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -632,6 +717,7 @@ public class JDfaturasCSV extends javax.swing.JDialog {
     private javax.swing.JLabel totalConIva;
     private javax.swing.JLabel totalSinIva;
     private javax.swing.JLabel transaccion;
+    private javax.swing.JLabel txtTitulo;
     private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
 
