@@ -62,7 +62,7 @@
                               <EmptySpace pref="142" max="32767" attributes="0"/>
                               <Component id="busy1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-                              <Component id="jXButton1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jXButtonImprimir_" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jXButtonAsignarMercancia" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -88,7 +88,7 @@
                           </Group>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jXButtonAsignarMercancia" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jXButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jXButtonImprimir_" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="busy1" alignment="3" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -566,21 +566,18 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="txtReferencia" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="3" attributes="0">
-                                              <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                                              <Component id="jXLabel6" min="-2" max="-2" attributes="0"/>
-                                          </Group>
                                           <Component id="txtExistencia" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="labelReferencia" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                          <Group type="102" alignment="3" attributes="0">
-                                              <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                                              <Component id="jXLabel4" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtMarca" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jXLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jXLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="txtMarca" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -760,6 +757,9 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Totalizar"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXButtonTotalizarActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -780,7 +780,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXButtonAsignarMercanciaActionPerformed"/>
               </Events>
             </Component>
-            <Component class="org.jdesktop.swingx.JXButton" name="jXButton1">
+            <Component class="org.jdesktop.swingx.JXButton" name="jXButtonImprimir_">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/icon_almacen/1417901858_698969-icon-123-printer-16.png"/>
@@ -792,11 +792,12 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXButton1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXButtonImprimir_ActionPerformed"/>
               </Events>
             </Component>
             <Component class="org.jdesktop.swingx.JXBusyLabel" name="busy1">
               <Properties>
+                <Property name="busy" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="GUARDANDO!!!"/>
                 <Property name="enabled" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">

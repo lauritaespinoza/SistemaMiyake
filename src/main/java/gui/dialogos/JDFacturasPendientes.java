@@ -76,6 +76,7 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFrameImprimir = new javax.swing.JFrame();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -88,6 +89,19 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
         jMenuBarDialogoFac = new javax.swing.JMenuBar();
         jMenuOpciones = new javax.swing.JMenu();
         jMenu_Ayuda_ = new javax.swing.JMenu();
+
+        jFrameImprimir.setName("jFrameImprimir"); // NOI18N
+
+        javax.swing.GroupLayout jFrameImprimirLayout = new javax.swing.GroupLayout(jFrameImprimir.getContentPane());
+        jFrameImprimir.getContentPane().setLayout(jFrameImprimirLayout);
+        jFrameImprimirLayout.setHorizontalGroup(
+            jFrameImprimirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jFrameImprimirLayout.setVerticalGroup(
+            jFrameImprimirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setName("Form"); // NOI18N
@@ -299,8 +313,7 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
                     JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
                     jasperViewer.setTitle("Reporte de Toma Fisica Distribuidoras.");
                     jasperViewer.setVisible(true);
-
-                    //busy
+                     
                     busy.setEnabled(false);
                     busy.setVisible(false);
                     busy.setBusy(false);
@@ -337,6 +350,7 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
     private org.jdesktop.swingx.JXBusyLabel busy;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JFrame jFrameImprimir;
     private javax.swing.JMenuBar jMenuBarDialogoFac;
     private javax.swing.JMenu jMenuOpciones;
     private javax.swing.JMenu jMenu_Ayuda_;

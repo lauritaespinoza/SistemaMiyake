@@ -55,6 +55,9 @@
                   <SubComponents>
                     <MenuItem class="javax.swing.JMenuItem" name="jMenuItemAbrirCerrar">
                       <Properties>
+                        <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                          <KeyStroke key="Ctrl+A"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Abrir/Cerrar Panel de Acceso Directo"/>
                       </Properties>
                       <Events>
@@ -468,6 +471,7 @@
                     <Property name="direction" type="org.jdesktop.swingx.JXCollapsiblePane$Direction" editor="org.jdesktop.swingx.JXCollapsiblePaneBeanInfo$DirectionPropertyEditor">
                       <SerializedValue value="-84,-19,0,5,126,114,0,47,111,114,103,46,106,100,101,115,107,116,111,112,46,115,119,105,110,103,120,46,74,88,67,111,108,108,97,112,115,105,98,108,101,80,97,110,101,36,68,105,114,101,99,116,105,111,110,0,0,0,0,0,0,0,0,18,0,0,120,114,0,14,106,97,118,97,46,108,97,110,103,46,69,110,117,109,0,0,0,0,0,0,0,0,18,0,0,120,112,116,0,4,76,69,70,84"/>
                     </Property>
+                    <Property name="toolTipText" type="java.lang.String" value="Para Abrir/Cerrar (Ctrl+A)"/>
                   </Properties>
                   <SubComponents>
                     <Container class="org.jdesktop.swingx.JXCollapsiblePane" name="jXCollapsiblePaneAbajo">
@@ -491,7 +495,6 @@
                                 </Property>
                                 <Property name="borderPainted" type="boolean" value="false"/>
                                 <Property name="contentAreaFilled" type="boolean" value="false"/>
-                                <Property name="rolloverEnabled" type="boolean" value="false"/>
                               </Properties>
                               <Events>
                                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnContainerMouseEntered"/>
@@ -509,7 +512,6 @@
                                 </Property>
                                 <Property name="borderPainted" type="boolean" value="false"/>
                                 <Property name="contentAreaFilled" type="boolean" value="false"/>
-                                <Property name="rolloverEnabled" type="boolean" value="false"/>
                               </Properties>
                               <Events>
                                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCrudProveedrMouseEntered"/>
@@ -527,7 +529,6 @@
                                 </Property>
                                 <Property name="borderPainted" type="boolean" value="false"/>
                                 <Property name="contentAreaFilled" type="boolean" value="false"/>
-                                <Property name="rolloverEnabled" type="boolean" value="false"/>
                               </Properties>
                               <Events>
                                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="TomaFisicaDistribuidora_boton_MouseEntered"/>
@@ -562,7 +563,6 @@
                                 </Property>
                                 <Property name="borderPainted" type="boolean" value="false"/>
                                 <Property name="contentAreaFilled" type="boolean" value="false"/>
-                                <Property name="rolloverEnabled" type="boolean" value="false"/>
                               </Properties>
                               <Events>
                                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonActualizarPrecioMouseEntered"/>
@@ -580,7 +580,6 @@
                                 </Property>
                                 <Property name="borderPainted" type="boolean" value="false"/>
                                 <Property name="contentAreaFilled" type="boolean" value="false"/>
-                                <Property name="rolloverEnabled" type="boolean" value="false"/>
                               </Properties>
                               <Events>
                                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botonEnvioMouseEntered"/>
@@ -752,7 +751,6 @@
                                 </Property>
                                 <Property name="borderPainted" type="boolean" value="false"/>
                                 <Property name="contentAreaFilled" type="boolean" value="false"/>
-                                <Property name="rolloverEnabled" type="boolean" value="false"/>
                               </Properties>
                               <Events>
                                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonAlmacenMouseEntered"/>
@@ -789,7 +787,6 @@
                                 </Property>
                                 <Property name="borderPainted" type="boolean" value="false"/>
                                 <Property name="contentAreaFilled" type="boolean" value="false"/>
-                                <Property name="rolloverEnabled" type="boolean" value="false"/>
                               </Properties>
                               <Events>
                                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonControldeInvetarioMouseEntered"/>
@@ -806,7 +803,6 @@
                                 </Property>
                                 <Property name="borderPainted" type="boolean" value="false"/>
                                 <Property name="contentAreaFilled" type="boolean" value="false"/>
-                                <Property name="rolloverEnabled" type="boolean" value="false"/>
                               </Properties>
                               <Events>
                                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonPrecioMouseEntered"/>
@@ -823,7 +819,6 @@
                                 </Property>
                                 <Property name="borderPainted" type="boolean" value="false"/>
                                 <Property name="contentAreaFilled" type="boolean" value="false"/>
-                                <Property name="rolloverEnabled" type="boolean" value="false"/>
                               </Properties>
                               <Events>
                                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonNotasMouseEntered"/>
@@ -840,7 +835,6 @@
                                 </Property>
                                 <Property name="borderPainted" type="boolean" value="false"/>
                                 <Property name="contentAreaFilled" type="boolean" value="false"/>
-                                <Property name="rolloverEnabled" type="boolean" value="false"/>
                               </Properties>
                               <Events>
                                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton5ExistenciasMouseEntered"/>
@@ -857,7 +851,6 @@
                                 </Property>
                                 <Property name="borderPainted" type="boolean" value="false"/>
                                 <Property name="contentAreaFilled" type="boolean" value="false"/>
-                                <Property name="rolloverEnabled" type="boolean" value="false"/>
                               </Properties>
                               <Events>
                                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonFacturasMouseEntered"/>
@@ -1064,7 +1057,6 @@
                                 </Property>
                                 <Property name="borderPainted" type="boolean" value="false"/>
                                 <Property name="contentAreaFilled" type="boolean" value="false"/>
-                                <Property name="rolloverEnabled" type="boolean" value="false"/>
                               </Properties>
                               <Events>
                                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCrudProductoMouseEntered"/>
@@ -1082,7 +1074,6 @@
                                 </Property>
                                 <Property name="borderPainted" type="boolean" value="false"/>
                                 <Property name="contentAreaFilled" type="boolean" value="false"/>
-                                <Property name="rolloverEnabled" type="boolean" value="false"/>
                               </Properties>
                               <Events>
                                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCrudMarcaMouseEntered"/>
@@ -1103,7 +1094,6 @@
                                 </Property>
                                 <Property name="borderPainted" type="boolean" value="false"/>
                                 <Property name="contentAreaFilled" type="boolean" value="false"/>
-                                <Property name="rolloverEnabled" type="boolean" value="false"/>
                               </Properties>
                               <Events>
                                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCrudClasificacionMouseEntered"/>
@@ -1124,7 +1114,6 @@
                                 </Property>
                                 <Property name="borderPainted" type="boolean" value="false"/>
                                 <Property name="contentAreaFilled" type="boolean" value="false"/>
-                                <Property name="rolloverEnabled" type="boolean" value="false"/>
                               </Properties>
                               <Events>
                                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCrudDeptoMouseEntered"/>
@@ -1142,7 +1131,6 @@
                                 </Property>
                                 <Property name="borderPainted" type="boolean" value="false"/>
                                 <Property name="contentAreaFilled" type="boolean" value="false"/>
-                                <Property name="rolloverEnabled" type="boolean" value="false"/>
                               </Properties>
                               <Events>
                                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCrudDivisionMouseEntered"/>
@@ -1306,7 +1294,6 @@
                                     </Property>
                                     <Property name="borderPainted" type="boolean" value="false"/>
                                     <Property name="contentAreaFilled" type="boolean" value="false"/>
-                                    <Property name="rolloverEnabled" type="boolean" value="false"/>
                                   </Properties>
                                   <Events>
                                     <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Boton_Inprimir_Reporte_conteo_DistribuidoraMouseEntered"/>
@@ -1455,7 +1442,6 @@
                                     </Property>
                                     <Property name="borderPainted" type="boolean" value="false"/>
                                     <Property name="contentAreaFilled" type="boolean" value="false"/>
-                                    <Property name="rolloverEnabled" type="boolean" value="false"/>
                                   </Properties>
                                   <Events>
                                     <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonInventarioMouseEntered"/>
@@ -1473,7 +1459,6 @@
                                     </Property>
                                     <Property name="borderPainted" type="boolean" value="false"/>
                                     <Property name="contentAreaFilled" type="boolean" value="false"/>
-                                    <Property name="rolloverEnabled" type="boolean" value="false"/>
                                   </Properties>
                                   <Events>
                                     <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btNCMouseEntered"/>
@@ -1491,7 +1476,6 @@
                                     </Property>
                                     <Property name="borderPainted" type="boolean" value="false"/>
                                     <Property name="contentAreaFilled" type="boolean" value="false"/>
-                                    <Property name="rolloverEnabled" type="boolean" value="false"/>
                                   </Properties>
                                   <Events>
                                     <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btNDMouseEntered"/>
@@ -1509,7 +1493,6 @@
                                     </Property>
                                     <Property name="borderPainted" type="boolean" value="false"/>
                                     <Property name="contentAreaFilled" type="boolean" value="false"/>
-                                    <Property name="rolloverEnabled" type="boolean" value="false"/>
                                   </Properties>
                                   <Events>
                                     <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCrudUbicacionMouseEntered"/>
@@ -1544,7 +1527,6 @@
                                     </Property>
                                     <Property name="borderPainted" type="boolean" value="false"/>
                                     <Property name="contentAreaFilled" type="boolean" value="false"/>
-                                    <Property name="rolloverEnabled" type="boolean" value="false"/>
                                   </Properties>
                                   <Events>
                                     <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ExportData_boton_MouseEntered"/>
@@ -1562,7 +1544,6 @@
                                     </Property>
                                     <Property name="borderPainted" type="boolean" value="false"/>
                                     <Property name="contentAreaFilled" type="boolean" value="false"/>
-                                    <Property name="rolloverEnabled" type="boolean" value="false"/>
                                   </Properties>
                                   <Events>
                                     <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCrudContactMouseEntered"/>
@@ -1598,7 +1579,6 @@
                                     </Property>
                                     <Property name="borderPainted" type="boolean" value="false"/>
                                     <Property name="contentAreaFilled" type="boolean" value="false"/>
-                                    <Property name="rolloverEnabled" type="boolean" value="false"/>
                                   </Properties>
                                   <Events>
                                     <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSalidaTiendaMouseEntered"/>

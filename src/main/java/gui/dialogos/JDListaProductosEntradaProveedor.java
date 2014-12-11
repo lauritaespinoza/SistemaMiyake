@@ -5,9 +5,12 @@
  */
 package gui.dialogos;
 
+import gui.paneles.Distribuidora1;
 import util.JavaUtil;
 import hibernate.DAO.ObjectModelDAO;
+import java.awt.HeadlessException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
 import modelos.mapeos.Producto;
 import javax.help.*;
@@ -20,6 +23,13 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import modelos.mapeos.EntradaProveedor;
+import modelos.tablas.TableModelReport;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -44,6 +54,8 @@ public class JDListaProductosEntradaProveedor extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         resultList = listaEP;
+        //busy
+        busy.setVisible(false);
 //        jtListaProductos.setModel(mtp);
         this.jtListaEntradaProveedor.setAutoCreateRowSorter(true);
         this.jtListaEntradaProveedor.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
@@ -94,7 +106,7 @@ public class JDListaProductosEntradaProveedor extends javax.swing.JDialog {
         jXFindBar1 = new org.jdesktop.swingx.JXFindBar(jtListaEntradaProveedor.getSearchable());
         jButton3 = new javax.swing.JButton();
         txtTitulo = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        busy = new org.jdesktop.swingx.JXBusyLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -146,44 +158,47 @@ public class JDListaProductosEntradaProveedor extends javax.swing.JDialog {
 
         jButton3.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jButton3.setText("Imprimir");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         txtTitulo.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
         txtTitulo.setForeground(new java.awt.Color(102, 102, 102));
         txtTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415416322_list-accept.png"))); // NOI18N
-        txtTitulo.setText("Producto Toma Fisica de Mercancia Entrante");
+        txtTitulo.setText("Producto Disponibles Para Toma Fisica Distribuidora");
 
-        jCheckBox1.setText("jCheckBox1");
+        busy.setText("Cargando...!!!");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(219, 219, 219))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jXFindBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jCheckBox1)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(102, 102, 102)
-                        .addComponent(labelAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 763, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGap(229, 229, 229))
+                                .addComponent(jXFindBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(76, 76, 76)
+                            .addComponent(txtTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(87, 87, 87)
+                            .addComponent(labelAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 763, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -192,10 +207,8 @@ public class JDListaProductosEntradaProveedor extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jCheckBox1))
-                        .addGap(16, 16, 16))
+                        .addComponent(txtTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labelAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -206,7 +219,8 @@ public class JDListaProductosEntradaProveedor extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -239,63 +253,74 @@ public class JDListaProductosEntradaProveedor extends javax.swing.JDialog {
       
     }//GEN-LAST:event_labelAyudaMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(JDListaProductosEntradaProveedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(JDListaProductosEntradaProveedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(JDListaProductosEntradaProveedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(JDListaProductosEntradaProveedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:    resultList
+        Thread hilo = new Thread() {
+           
+            @Override
+            public void run() {
+
+                busy.setEnabled(true);
+                busy.setVisible(true);
+                busy.setBusy(true);
+                try {
+                    JasperPrint jasperPrint = null;
+
+                    java.util.Map<String, Object> parametro = new HashMap<>();
+                    String s = "";
+                    TableModelReport dataSourse = new TableModelReport(jtListaEntradaProveedor.getModel());
+                    parametro.put("REPORT_DATA_SOURSE", dataSourse);
+                    //JasperCompileManager.compileReport(rutaJrxml);
+                    JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ListaProdTomaFisicaDistribuidor.jasper"));
+
+                    jasperPrint = JasperFillManager.fillReport(reporte, null, dataSourse);
+                    JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
+                    jasperViewer.setTitle("Producto Disponibles Para Toma Fisica Distribuidora.");
+                    jasperViewer.setVisible(true);
+                    //busy
+                    busy.setEnabled(false);
+                    busy.setVisible(false);
+                    busy.setBusy(false);
+//                    int respuesta = JOptionPane.showConfirmDialog(null, "El Archivo fue Generado con Exito,"
+//                            + "¿Desea Continuar Selecionando Una Factura Pendiente?");
 //
-//        /* Create and display the dialog */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            @Override
-//            public void run() {
-//                JDListaProductosEntradaProveedor dialog = new JDListaProductosEntradaProveedor(new javax.swing.JFrame(), true, null);
-//                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-//                    @Override
-//                    public void windowClosing(java.awt.event.WindowEvent e) {
-//                        System.exit(0);
+//                    if (respuesta == JOptionPane.YES_OPTION) {
+//
 //                    }
-//                });
-//                dialog.setVisible(true);
-//            }
-//        });
-//    }
+//                    if (respuesta == JOptionPane.NO_OPTION) {
+//                        dispose();
+//                        setVisible(false);
+//                        
+//                    }
+//                    dispose();
+//                    setVisible(false);
+
+                } catch (JRException | HeadlessException e) {
+                    JOptionPane.showMessageDialog(null, "Se a Dectectado Un Proble Con Proceso de Seleccion de Facturas,"
+                            + "Por Favor Vuelva a Intentarlo.");
+                    Logger.getLogger(Distribuidora1.class.getName()).log(Level.SEVERE, null, e);
+                    System.err.println("Seleccionando Facturas" + e);
+
+                }
+
+            }
+        };
+        hilo.start();
+    }//GEN-LAST:event_jButton3ActionPerformed
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private org.jdesktop.swingx.JXBusyLabel busy;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JScrollPane jScrollPane2;
     private org.jdesktop.swingx.JXFindBar jXFindBar1;
     private org.jdesktop.swingx.JXTable jtListaEntradaProveedor;
     private org.jdesktop.swingx.JXLabel labelAyuda;
     private javax.swing.JLabel txtTitulo;
     // End of variables declaration//GEN-END:variables
+
 
     private void ListarProductos() {
         try {

@@ -407,7 +407,7 @@ public abstract class JavaUtil {
         }
 
         if (o instanceof EntradaProveedor) {
-            header.add("CODIGO PRODUCTO");
+            header.add("CODIGO");
             header.add("DESCRIPCION");
             header.add("UM");
             header.add("CANTIDAD PRODUCTO");
