@@ -242,33 +242,6 @@
         </MenuItem>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JMenu" name="menuNotas">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jMenu1"/>
-      </Properties>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
-        <Property name="useNullLayout" type="boolean" value="true"/>
-      </Layout>
-      <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="jmNotaCredito">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jMenuItem1"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmNotaCreditoActionPerformed"/>
-          </Events>
-        </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="jmNotaDebito">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jMenuItem1"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmNotaDebitoActionPerformed"/>
-          </Events>
-        </MenuItem>
-      </SubComponents>
-    </Container>
     <Container class="javax.swing.JPopupMenu" name="menuCRUDProveedor">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
@@ -309,10 +282,31 @@
         </MenuItem>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JMenu" name="menuGestionPrecio">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jMenu1"/>
-      </Properties>
+    <Container class="javax.swing.JPopupMenu" name="menuControlEnvio">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+        <Property name="useNullLayout" type="boolean" value="true"/>
+      </Layout>
+      <SubComponents>
+        <MenuItem class="javax.swing.JMenuItem" name="jmMercanciaProceso">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Mercancia en Proceso"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmMercanciaProcesoActionPerformed"/>
+          </Events>
+        </MenuItem>
+        <MenuItem class="javax.swing.JMenuItem" name="jmConsultarInventario">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Consultar Inventario"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmConsultarInventarioActionPerformed"/>
+          </Events>
+        </MenuItem>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPopupMenu" name="menuGestionPrecio">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
         <Property name="useNullLayout" type="boolean" value="true"/>
@@ -320,7 +314,7 @@
       <SubComponents>
         <MenuItem class="javax.swing.JMenuItem" name="jmImprimirEtiquetas">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jMenuItem1"/>
+            <Property name="text" type="java.lang.String" value="Imprimir Etiquetas"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmImprimirEtiquetasActionPerformed"/>
@@ -328,12 +322,12 @@
         </MenuItem>
         <Menu class="javax.swing.JMenu" name="jmMenuActualizarPrecio">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jMenu1"/>
+            <Property name="text" type="java.lang.String" value="Actualizar Precios"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jmConsultarPrecio">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jMenuItem1"/>
+                <Property name="text" type="java.lang.String" value="Consultar"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmConsultarPrecioActionPerformed"/>
@@ -341,7 +335,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmModificarPrecio">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jMenuItem2"/>
+                <Property name="text" type="java.lang.String" value="Modificar"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmModificarPrecioActionPerformed"/>
@@ -349,6 +343,54 @@
             </MenuItem>
           </SubComponents>
         </Menu>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPopupMenu" name="menuNotas">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+        <Property name="useNullLayout" type="boolean" value="true"/>
+      </Layout>
+      <SubComponents>
+        <MenuItem class="javax.swing.JMenuItem" name="jmNotaCredito">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Notas de Cr&#xe9;dito"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmNotaCreditoActionPerformed"/>
+          </Events>
+        </MenuItem>
+        <MenuItem class="javax.swing.JMenuItem" name="jmNotaDebito">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Notas de D&#xe9;bito"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmNotaDebitoActionPerformed"/>
+          </Events>
+        </MenuItem>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPopupMenu" name="menuControlInventario">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+        <Property name="useNullLayout" type="boolean" value="true"/>
+      </Layout>
+      <SubComponents>
+        <MenuItem class="javax.swing.JMenuItem" name="jmInventarioDiario">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Inventario Diario"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmInventarioDiarioActionPerformed"/>
+          </Events>
+        </MenuItem>
+        <MenuItem class="javax.swing.JMenuItem" name="jmExistenciaFisica">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Existencia F&#xed;sica"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmExistenciaFisicaActionPerformed"/>
+          </Events>
+        </MenuItem>
       </SubComponents>
     </Container>
     <Menu class="javax.swing.JMenuBar" name="jMenuBarSistemaMiyake">
@@ -604,21 +646,33 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Consultar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemUsuarioConsultaActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemUsuarioCrear">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Crear"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemUsuarioCrearActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemUsuarioModificar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Modificar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemUsuarioModificarActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemUsuarioEliminar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Eliminar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemUsuarioEliminarActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -636,21 +690,33 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Consultar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemUbicacionConsultarActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItemUbicacionCrear">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Crear"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemUbicacionCrearActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItemUbicacionModificar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Modificar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemUbicacionModificarActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItemUbicacionEliminar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Eliminar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemUbicacionEliminarActionPerformed"/>
+                  </Events>
                 </MenuItem>
               </SubComponents>
             </Menu>
@@ -663,21 +729,33 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Consultar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemContactoConsultarActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItemContactoCrear">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Crear"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemContactoCrearActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItemContactoModificar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Modificar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemContactoModificarActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItemContactoEliminar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Eliminar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemContactoEliminarActionPerformed"/>
+                  </Events>
                 </MenuItem>
               </SubComponents>
             </Menu>
@@ -707,6 +785,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Exportar Datos de Descuento"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemExportarDatDescActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItemExportarBD">
                   <Properties>
@@ -819,6 +900,7 @@
                       <SubComponents>
                         <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneModuloDistribuidor">
                           <Properties>
+                            <Property name="collapsed" type="boolean" value="true"/>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                               <Image iconType="3" name="/icon_almacen/1416862043_inventory-maintenance.png"/>
                             </Property>
@@ -1058,6 +1140,7 @@
                         </Container>
                         <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneModuloTienda">
                           <Properties>
+                            <Property name="collapsed" type="boolean" value="true"/>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                               <Image iconType="3" name="/icon_almacen/1417636353_shop.png"/>
                             </Property>
@@ -1151,25 +1234,9 @@
                                 <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonNotasMouseExited"/>
                               </Events>
                             </Component>
-                            <Component class="javax.swing.JButton" name="jButton5Existencias">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Existencia"/>
-                                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                  <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                                    <BevelBorder/>
-                                  </Border>
-                                </Property>
-                                <Property name="borderPainted" type="boolean" value="false"/>
-                                <Property name="contentAreaFilled" type="boolean" value="false"/>
-                              </Properties>
-                              <Events>
-                                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton5ExistenciasMouseEntered"/>
-                                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton5ExistenciasMouseExited"/>
-                              </Events>
-                            </Component>
                             <Component class="javax.swing.JButton" name="jButtonFacturas">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Facturas de Ventas"/>
+                                <Property name="text" type="java.lang.String" value="Ventas Diarias"/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                                     <BevelBorder/>
@@ -1181,6 +1248,7 @@
                               <Events>
                                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonFacturasMouseEntered"/>
                                 <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonFacturasMouseExited"/>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonFacturasActionPerformed"/>
                               </Events>
                             </Component>
                           </SubComponents>
@@ -1336,23 +1404,7 @@
                                 <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                               </StatementProvider>
                               <Parameters>
-                                <CodeExpression id="20_jButton5Existencias">
-                                  <CodeVariable name="jButton5Existencias" type="8194" declaredType="javax.swing.JButton"/>
-                                  <ExpressionOrigin>
-                                    <ExpressionProvider type="ComponentRef">
-                                      <ComponentRef name="jButton5Existencias"/>
-                                    </ExpressionProvider>
-                                  </ExpressionOrigin>
-                                </CodeExpression>
-                              </Parameters>
-                            </CodeStatement>
-                            <CodeStatement>
-                              <CodeExpression id="12"/>
-                              <StatementProvider type="CodeMethod">
-                                <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
-                              </StatementProvider>
-                              <Parameters>
-                                <CodeExpression id="21_jButtonFacturas">
+                                <CodeExpression id="20_jButtonFacturas">
                                   <CodeVariable name="jButtonFacturas" type="8194" declaredType="javax.swing.JButton"/>
                                   <ExpressionOrigin>
                                     <ExpressionProvider type="ComponentRef">
@@ -1387,7 +1439,6 @@
                               <Events>
                                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCrudProductoMouseEntered"/>
                                 <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCrudProductoMouseExited"/>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCrudProductoActionPerformed"/>
                               </Events>
                             </Component>
                             <Component class="javax.swing.JButton" name="btnCrudMarca">
@@ -1404,7 +1455,6 @@
                               <Events>
                                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCrudMarcaMouseEntered"/>
                                 <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCrudMarcaMouseExited"/>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCrudMarcaActionPerformed"/>
                               </Events>
                             </Component>
                             <Component class="javax.swing.JButton" name="btnCrudClasificacion">
@@ -1424,7 +1474,6 @@
                               <Events>
                                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCrudClasificacionMouseEntered"/>
                                 <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCrudClasificacionMouseExited"/>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCrudClasificacionActionPerformed"/>
                               </Events>
                             </Component>
                             <Component class="javax.swing.JButton" name="btnCrudDepto">
@@ -1444,7 +1493,6 @@
                               <Events>
                                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCrudDeptoMouseEntered"/>
                                 <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCrudDeptoMouseExited"/>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCrudDeptoActionPerformed"/>
                               </Events>
                             </Component>
                             <Component class="javax.swing.JButton" name="btnCrudDivision">
@@ -1461,13 +1509,12 @@
                               <Events>
                                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCrudDivisionMouseEntered"/>
                                 <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCrudDivisionMouseExited"/>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCrudDivisionActionPerformed"/>
                               </Events>
                             </Component>
                           </SubComponents>
                           <LayoutCode>
                             <CodeStatement>
-                              <CodeExpression id="22_verticalLayout15">
+                              <CodeExpression id="21_verticalLayout15">
                                 <CodeVariable name="verticalLayout15" type="4096" declaredType="org.jdesktop.swingx.VerticalLayout"/>
                                 <ExpressionOrigin>
                                   <ExpressionProvider type="CodeConstructor">
@@ -1476,16 +1523,16 @@
                                 </ExpressionOrigin>
                               </CodeExpression>
                               <StatementProvider type="CodeExpression">
-                                <CodeExpression id="22_verticalLayout15"/>
+                                <CodeExpression id="21_verticalLayout15"/>
                               </StatementProvider>
                             </CodeStatement>
                             <CodeStatement>
-                              <CodeExpression id="22_verticalLayout15"/>
+                              <CodeExpression id="21_verticalLayout15"/>
                               <StatementProvider type="CodeMethod">
                                 <CodeMethod name="setGap" class="org.jdesktop.swingx.VerticalLayout" parameterTypes="int"/>
                               </StatementProvider>
                               <Parameters>
-                                <CodeExpression id="23">
+                                <CodeExpression id="22">
                                   <ExpressionOrigin>
                                     <Value type="int" value="2"/>
                                   </ExpressionOrigin>
@@ -1493,9 +1540,9 @@
                               </Parameters>
                             </CodeStatement>
                             <CodeStatement>
-                              <CodeExpression id="24">
+                              <CodeExpression id="23">
                                 <ExpressionOrigin>
-                                  <CodeExpression id="25_taskPaneModuloGestionProductos">
+                                  <CodeExpression id="24_taskPaneModuloGestionProductos">
                                     <CodeVariable name="taskPaneModuloGestionProductos" type="8194" declaredType="org.jdesktop.swingx.JXTaskPane"/>
                                     <ExpressionOrigin>
                                       <ExpressionProvider type="ComponentRef">
@@ -1512,16 +1559,16 @@
                                 <CodeMethod name="setLayout" class="java.awt.Container" parameterTypes="java.awt.LayoutManager"/>
                               </StatementProvider>
                               <Parameters>
-                                <CodeExpression id="22_verticalLayout15"/>
+                                <CodeExpression id="21_verticalLayout15"/>
                               </Parameters>
                             </CodeStatement>
                             <CodeStatement>
-                              <CodeExpression id="24"/>
+                              <CodeExpression id="23"/>
                               <StatementProvider type="CodeMethod">
                                 <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                               </StatementProvider>
                               <Parameters>
-                                <CodeExpression id="26_btnCrudProducto">
+                                <CodeExpression id="25_btnCrudProducto">
                                   <CodeVariable name="btnCrudProducto" type="8194" declaredType="javax.swing.JButton"/>
                                   <ExpressionOrigin>
                                     <ExpressionProvider type="ComponentRef">
@@ -1532,12 +1579,12 @@
                               </Parameters>
                             </CodeStatement>
                             <CodeStatement>
-                              <CodeExpression id="24"/>
+                              <CodeExpression id="23"/>
                               <StatementProvider type="CodeMethod">
                                 <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                               </StatementProvider>
                               <Parameters>
-                                <CodeExpression id="27_btnCrudMarca">
+                                <CodeExpression id="26_btnCrudMarca">
                                   <CodeVariable name="btnCrudMarca" type="8194" declaredType="javax.swing.JButton"/>
                                   <ExpressionOrigin>
                                     <ExpressionProvider type="ComponentRef">
@@ -1548,12 +1595,12 @@
                               </Parameters>
                             </CodeStatement>
                             <CodeStatement>
-                              <CodeExpression id="24"/>
+                              <CodeExpression id="23"/>
                               <StatementProvider type="CodeMethod">
                                 <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                               </StatementProvider>
                               <Parameters>
-                                <CodeExpression id="28_btnCrudClasificacion">
+                                <CodeExpression id="27_btnCrudClasificacion">
                                   <CodeVariable name="btnCrudClasificacion" type="8194" declaredType="javax.swing.JButton"/>
                                   <ExpressionOrigin>
                                     <ExpressionProvider type="ComponentRef">
@@ -1564,12 +1611,12 @@
                               </Parameters>
                             </CodeStatement>
                             <CodeStatement>
-                              <CodeExpression id="24"/>
+                              <CodeExpression id="23"/>
                               <StatementProvider type="CodeMethod">
                                 <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                               </StatementProvider>
                               <Parameters>
-                                <CodeExpression id="29_btnCrudDepto">
+                                <CodeExpression id="28_btnCrudDepto">
                                   <CodeVariable name="btnCrudDepto" type="8194" declaredType="javax.swing.JButton"/>
                                   <ExpressionOrigin>
                                     <ExpressionProvider type="ComponentRef">
@@ -1580,12 +1627,12 @@
                               </Parameters>
                             </CodeStatement>
                             <CodeStatement>
-                              <CodeExpression id="24"/>
+                              <CodeExpression id="23"/>
                               <StatementProvider type="CodeMethod">
                                 <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                               </StatementProvider>
                               <Parameters>
-                                <CodeExpression id="30_btnCrudDivision">
+                                <CodeExpression id="29_btnCrudDivision">
                                   <CodeVariable name="btnCrudDivision" type="8194" declaredType="javax.swing.JButton"/>
                                   <ExpressionOrigin>
                                     <ExpressionProvider type="ComponentRef">
@@ -1599,14 +1646,12 @@
                         </Container>
                         <Container class="org.jdesktop.swingx.JXTaskPane" name="jXTaskPaneReportes">
                           <Properties>
-                            <Property name="collapsed" type="boolean" value="true"/>
                             <Property name="title" type="java.lang.String" value="Reportes"/>
                             <Property name="toolTipText" type="java.lang.String" value=""/>
                           </Properties>
                           <SubComponents>
                             <Container class="org.jdesktop.swingx.JXTaskPane" name="jXTaskPaneDistribuidor">
                               <Properties>
-                                <Property name="collapsed" type="boolean" value="true"/>
                                 <Property name="title" type="java.lang.String" value="Resportes Distribuidor"/>
                               </Properties>
                               <SubComponents>
@@ -1630,7 +1675,7 @@
                               </SubComponents>
                               <LayoutCode>
                                 <CodeStatement>
-                                  <CodeExpression id="31_verticalLayout16">
+                                  <CodeExpression id="30_verticalLayout16">
                                     <CodeVariable name="verticalLayout16" type="4096" declaredType="org.jdesktop.swingx.VerticalLayout"/>
                                     <ExpressionOrigin>
                                       <ExpressionProvider type="CodeConstructor">
@@ -1639,16 +1684,16 @@
                                     </ExpressionOrigin>
                                   </CodeExpression>
                                   <StatementProvider type="CodeExpression">
-                                    <CodeExpression id="31_verticalLayout16"/>
+                                    <CodeExpression id="30_verticalLayout16"/>
                                   </StatementProvider>
                                 </CodeStatement>
                                 <CodeStatement>
-                                  <CodeExpression id="31_verticalLayout16"/>
+                                  <CodeExpression id="30_verticalLayout16"/>
                                   <StatementProvider type="CodeMethod">
                                     <CodeMethod name="setGap" class="org.jdesktop.swingx.VerticalLayout" parameterTypes="int"/>
                                   </StatementProvider>
                                   <Parameters>
-                                    <CodeExpression id="32">
+                                    <CodeExpression id="31">
                                       <ExpressionOrigin>
                                         <Value type="int" value="2"/>
                                       </ExpressionOrigin>
@@ -1656,9 +1701,9 @@
                                   </Parameters>
                                 </CodeStatement>
                                 <CodeStatement>
-                                  <CodeExpression id="33">
+                                  <CodeExpression id="32">
                                     <ExpressionOrigin>
-                                      <CodeExpression id="34_jXTaskPaneDistribuidor">
+                                      <CodeExpression id="33_jXTaskPaneDistribuidor">
                                         <CodeVariable name="jXTaskPaneDistribuidor" type="8194" declaredType="org.jdesktop.swingx.JXTaskPane"/>
                                         <ExpressionOrigin>
                                           <ExpressionProvider type="ComponentRef">
@@ -1675,16 +1720,16 @@
                                     <CodeMethod name="setLayout" class="java.awt.Container" parameterTypes="java.awt.LayoutManager"/>
                                   </StatementProvider>
                                   <Parameters>
-                                    <CodeExpression id="31_verticalLayout16"/>
+                                    <CodeExpression id="30_verticalLayout16"/>
                                   </Parameters>
                                 </CodeStatement>
                                 <CodeStatement>
-                                  <CodeExpression id="33"/>
+                                  <CodeExpression id="32"/>
                                   <StatementProvider type="CodeMethod">
                                     <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                                   </StatementProvider>
                                   <Parameters>
-                                    <CodeExpression id="35_Boton_Inprimir_Reporte_conteo_Distribuidora">
+                                    <CodeExpression id="34_Boton_Inprimir_Reporte_conteo_Distribuidora">
                                       <CodeVariable name="Boton_Inprimir_Reporte_conteo_Distribuidora" type="8194" declaredType="javax.swing.JButton"/>
                                       <ExpressionOrigin>
                                         <ExpressionProvider type="ComponentRef">
@@ -1702,7 +1747,7 @@
                               </Properties>
                               <LayoutCode>
                                 <CodeStatement>
-                                  <CodeExpression id="36_verticalLayout17">
+                                  <CodeExpression id="35_verticalLayout17">
                                     <CodeVariable name="verticalLayout17" type="4096" declaredType="org.jdesktop.swingx.VerticalLayout"/>
                                     <ExpressionOrigin>
                                       <ExpressionProvider type="CodeConstructor">
@@ -1711,16 +1756,16 @@
                                     </ExpressionOrigin>
                                   </CodeExpression>
                                   <StatementProvider type="CodeExpression">
-                                    <CodeExpression id="36_verticalLayout17"/>
+                                    <CodeExpression id="35_verticalLayout17"/>
                                   </StatementProvider>
                                 </CodeStatement>
                                 <CodeStatement>
-                                  <CodeExpression id="36_verticalLayout17"/>
+                                  <CodeExpression id="35_verticalLayout17"/>
                                   <StatementProvider type="CodeMethod">
                                     <CodeMethod name="setGap" class="org.jdesktop.swingx.VerticalLayout" parameterTypes="int"/>
                                   </StatementProvider>
                                   <Parameters>
-                                    <CodeExpression id="37">
+                                    <CodeExpression id="36">
                                       <ExpressionOrigin>
                                         <Value type="int" value="2"/>
                                       </ExpressionOrigin>
@@ -1728,9 +1773,9 @@
                                   </Parameters>
                                 </CodeStatement>
                                 <CodeStatement>
-                                  <CodeExpression id="38">
+                                  <CodeExpression id="37">
                                     <ExpressionOrigin>
-                                      <CodeExpression id="39_jXTaskPaneTiendas">
+                                      <CodeExpression id="38_jXTaskPaneTiendas">
                                         <CodeVariable name="jXTaskPaneTiendas" type="8194" declaredType="org.jdesktop.swingx.JXTaskPane"/>
                                         <ExpressionOrigin>
                                           <ExpressionProvider type="ComponentRef">
@@ -1747,141 +1792,18 @@
                                     <CodeMethod name="setLayout" class="java.awt.Container" parameterTypes="java.awt.LayoutManager"/>
                                   </StatementProvider>
                                   <Parameters>
-                                    <CodeExpression id="36_verticalLayout17"/>
+                                    <CodeExpression id="35_verticalLayout17"/>
                                   </Parameters>
                                 </CodeStatement>
                               </LayoutCode>
                             </Container>
                             <Container class="org.jdesktop.swingx.JXTaskPane" name="jXTaskPaneGestionProductos">
                               <Properties>
-                                <Property name="collapsed" type="boolean" value="true"/>
                                 <Property name="title" type="java.lang.String" value="Reportes Productos"/>
                               </Properties>
-                              <SubComponents>
-                                <Component class="javax.swing.JButton" name="jButtonInventario">
-                                  <Properties>
-                                    <Property name="text" type="java.lang.String" value="Inventario Diario"/>
-                                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                      <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                                        <BevelBorder/>
-                                      </Border>
-                                    </Property>
-                                    <Property name="borderPainted" type="boolean" value="false"/>
-                                    <Property name="contentAreaFilled" type="boolean" value="false"/>
-                                  </Properties>
-                                  <Events>
-                                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonInventarioMouseEntered"/>
-                                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonInventarioMouseExited"/>
-                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonInventarioActionPerformed"/>
-                                  </Events>
-                                </Component>
-                                <Component class="javax.swing.JButton" name="btnCrudUbicacion">
-                                  <Properties>
-                                    <Property name="text" type="java.lang.String" value="Ubicaci&#xf3;n"/>
-                                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                      <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                                        <BevelBorder/>
-                                      </Border>
-                                    </Property>
-                                    <Property name="borderPainted" type="boolean" value="false"/>
-                                    <Property name="contentAreaFilled" type="boolean" value="false"/>
-                                  </Properties>
-                                  <Events>
-                                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCrudUbicacionMouseEntered"/>
-                                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCrudUbicacionMouseExited"/>
-                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCrudUbicacionActionPerformed"/>
-                                  </Events>
-                                </Component>
-                                <Component class="org.jdesktop.swingx.JXButton" name="jXButton1">
-                                  <Properties>
-                                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                      <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                                        <BevelBorder/>
-                                      </Border>
-                                    </Property>
-                                    <Property name="text" type="java.lang.String" value="Usuarios"/>
-                                    <Property name="borderPainted" type="boolean" value="false"/>
-                                    <Property name="contentAreaFilled" type="boolean" value="false"/>
-                                  </Properties>
-                                  <Events>
-                                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jXButton1MouseEntered"/>
-                                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jXButton1MouseExited"/>
-                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXButton1ActionPerformed"/>
-                                  </Events>
-                                </Component>
-                                <Component class="javax.swing.JButton" name="ExportData_boton_">
-                                  <Properties>
-                                    <Property name="text" type="java.lang.String" value="Export Datos"/>
-                                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                      <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                                        <BevelBorder/>
-                                      </Border>
-                                    </Property>
-                                    <Property name="borderPainted" type="boolean" value="false"/>
-                                    <Property name="contentAreaFilled" type="boolean" value="false"/>
-                                  </Properties>
-                                  <Events>
-                                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ExportData_boton_MouseEntered"/>
-                                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ExportData_boton_MouseExited"/>
-                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExportData_boton_ActionPerformed"/>
-                                  </Events>
-                                </Component>
-                                <Component class="javax.swing.JButton" name="btnCrudContact">
-                                  <Properties>
-                                    <Property name="text" type="java.lang.String" value="Contacto"/>
-                                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                      <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                                        <BevelBorder/>
-                                      </Border>
-                                    </Property>
-                                    <Property name="borderPainted" type="boolean" value="false"/>
-                                    <Property name="contentAreaFilled" type="boolean" value="false"/>
-                                  </Properties>
-                                  <Events>
-                                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCrudContactMouseEntered"/>
-                                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCrudContactMouseExited"/>
-                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCrudContactActionPerformed"/>
-                                  </Events>
-                                </Component>
-                                <Component class="org.jdesktop.swingx.JXButton" name="ConsultaExistencia_boton_">
-                                  <Properties>
-                                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                      <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                                        <BevelBorder/>
-                                      </Border>
-                                    </Property>
-                                    <Property name="text" type="java.lang.String" value="Consultar Existencia"/>
-                                    <Property name="actionCommand" type="java.lang.String" value="Consultar Inventario "/>
-                                    <Property name="borderPainted" type="boolean" value="false"/>
-                                    <Property name="contentAreaFilled" type="boolean" value="false"/>
-                                  </Properties>
-                                  <Events>
-                                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ConsultaExistencia_boton_MouseEntered"/>
-                                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ConsultaExistencia_boton_MouseExited"/>
-                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ConsultaExistencia_boton_ActionPerformed"/>
-                                  </Events>
-                                </Component>
-                                <Component class="org.jdesktop.swingx.JXButton" name="jXButton2">
-                                  <Properties>
-                                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                      <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                                        <BevelBorder/>
-                                      </Border>
-                                    </Property>
-                                    <Property name="text" type="java.lang.String" value="Mercancia en Proceso"/>
-                                    <Property name="borderPainted" type="boolean" value="false"/>
-                                    <Property name="contentAreaFilled" type="boolean" value="false"/>
-                                  </Properties>
-                                  <Events>
-                                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jXButton2MouseEntered"/>
-                                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jXButton2MouseExited"/>
-                                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXButton2ActionPerformed"/>
-                                  </Events>
-                                </Component>
-                              </SubComponents>
                               <LayoutCode>
                                 <CodeStatement>
-                                  <CodeExpression id="40_verticalLayout18">
+                                  <CodeExpression id="39_verticalLayout18">
                                     <CodeVariable name="verticalLayout18" type="4096" declaredType="org.jdesktop.swingx.VerticalLayout"/>
                                     <ExpressionOrigin>
                                       <ExpressionProvider type="CodeConstructor">
@@ -1890,16 +1812,16 @@
                                     </ExpressionOrigin>
                                   </CodeExpression>
                                   <StatementProvider type="CodeExpression">
-                                    <CodeExpression id="40_verticalLayout18"/>
+                                    <CodeExpression id="39_verticalLayout18"/>
                                   </StatementProvider>
                                 </CodeStatement>
                                 <CodeStatement>
-                                  <CodeExpression id="40_verticalLayout18"/>
+                                  <CodeExpression id="39_verticalLayout18"/>
                                   <StatementProvider type="CodeMethod">
                                     <CodeMethod name="setGap" class="org.jdesktop.swingx.VerticalLayout" parameterTypes="int"/>
                                   </StatementProvider>
                                   <Parameters>
-                                    <CodeExpression id="41">
+                                    <CodeExpression id="40">
                                       <ExpressionOrigin>
                                         <Value type="int" value="2"/>
                                       </ExpressionOrigin>
@@ -1907,9 +1829,9 @@
                                   </Parameters>
                                 </CodeStatement>
                                 <CodeStatement>
-                                  <CodeExpression id="42">
+                                  <CodeExpression id="41">
                                     <ExpressionOrigin>
-                                      <CodeExpression id="43_jXTaskPaneGestionProductos">
+                                      <CodeExpression id="42_jXTaskPaneGestionProductos">
                                         <CodeVariable name="jXTaskPaneGestionProductos" type="8194" declaredType="org.jdesktop.swingx.JXTaskPane"/>
                                         <ExpressionOrigin>
                                           <ExpressionProvider type="ComponentRef">
@@ -1926,119 +1848,7 @@
                                     <CodeMethod name="setLayout" class="java.awt.Container" parameterTypes="java.awt.LayoutManager"/>
                                   </StatementProvider>
                                   <Parameters>
-                                    <CodeExpression id="40_verticalLayout18"/>
-                                  </Parameters>
-                                </CodeStatement>
-                                <CodeStatement>
-                                  <CodeExpression id="42"/>
-                                  <StatementProvider type="CodeMethod">
-                                    <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
-                                  </StatementProvider>
-                                  <Parameters>
-                                    <CodeExpression id="44_jButtonInventario">
-                                      <CodeVariable name="jButtonInventario" type="8194" declaredType="javax.swing.JButton"/>
-                                      <ExpressionOrigin>
-                                        <ExpressionProvider type="ComponentRef">
-                                          <ComponentRef name="jButtonInventario"/>
-                                        </ExpressionProvider>
-                                      </ExpressionOrigin>
-                                    </CodeExpression>
-                                  </Parameters>
-                                </CodeStatement>
-                                <CodeStatement>
-                                  <CodeExpression id="42"/>
-                                  <StatementProvider type="CodeMethod">
-                                    <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
-                                  </StatementProvider>
-                                  <Parameters>
-                                    <CodeExpression id="45_btnCrudUbicacion">
-                                      <CodeVariable name="btnCrudUbicacion" type="8194" declaredType="javax.swing.JButton"/>
-                                      <ExpressionOrigin>
-                                        <ExpressionProvider type="ComponentRef">
-                                          <ComponentRef name="btnCrudUbicacion"/>
-                                        </ExpressionProvider>
-                                      </ExpressionOrigin>
-                                    </CodeExpression>
-                                  </Parameters>
-                                </CodeStatement>
-                                <CodeStatement>
-                                  <CodeExpression id="42"/>
-                                  <StatementProvider type="CodeMethod">
-                                    <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
-                                  </StatementProvider>
-                                  <Parameters>
-                                    <CodeExpression id="46_jXButton1">
-                                      <CodeVariable name="jXButton1" type="8194" declaredType="org.jdesktop.swingx.JXButton"/>
-                                      <ExpressionOrigin>
-                                        <ExpressionProvider type="ComponentRef">
-                                          <ComponentRef name="jXButton1"/>
-                                        </ExpressionProvider>
-                                      </ExpressionOrigin>
-                                    </CodeExpression>
-                                  </Parameters>
-                                </CodeStatement>
-                                <CodeStatement>
-                                  <CodeExpression id="42"/>
-                                  <StatementProvider type="CodeMethod">
-                                    <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
-                                  </StatementProvider>
-                                  <Parameters>
-                                    <CodeExpression id="47_ExportData_boton_">
-                                      <CodeVariable name="ExportData_boton_" type="8194" declaredType="javax.swing.JButton"/>
-                                      <ExpressionOrigin>
-                                        <ExpressionProvider type="ComponentRef">
-                                          <ComponentRef name="ExportData_boton_"/>
-                                        </ExpressionProvider>
-                                      </ExpressionOrigin>
-                                    </CodeExpression>
-                                  </Parameters>
-                                </CodeStatement>
-                                <CodeStatement>
-                                  <CodeExpression id="42"/>
-                                  <StatementProvider type="CodeMethod">
-                                    <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
-                                  </StatementProvider>
-                                  <Parameters>
-                                    <CodeExpression id="48_btnCrudContact">
-                                      <CodeVariable name="btnCrudContact" type="8194" declaredType="javax.swing.JButton"/>
-                                      <ExpressionOrigin>
-                                        <ExpressionProvider type="ComponentRef">
-                                          <ComponentRef name="btnCrudContact"/>
-                                        </ExpressionProvider>
-                                      </ExpressionOrigin>
-                                    </CodeExpression>
-                                  </Parameters>
-                                </CodeStatement>
-                                <CodeStatement>
-                                  <CodeExpression id="42"/>
-                                  <StatementProvider type="CodeMethod">
-                                    <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
-                                  </StatementProvider>
-                                  <Parameters>
-                                    <CodeExpression id="49_ConsultaExistencia_boton_">
-                                      <CodeVariable name="ConsultaExistencia_boton_" type="8194" declaredType="org.jdesktop.swingx.JXButton"/>
-                                      <ExpressionOrigin>
-                                        <ExpressionProvider type="ComponentRef">
-                                          <ComponentRef name="ConsultaExistencia_boton_"/>
-                                        </ExpressionProvider>
-                                      </ExpressionOrigin>
-                                    </CodeExpression>
-                                  </Parameters>
-                                </CodeStatement>
-                                <CodeStatement>
-                                  <CodeExpression id="42"/>
-                                  <StatementProvider type="CodeMethod">
-                                    <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
-                                  </StatementProvider>
-                                  <Parameters>
-                                    <CodeExpression id="50_jXButton2">
-                                      <CodeVariable name="jXButton2" type="8194" declaredType="org.jdesktop.swingx.JXButton"/>
-                                      <ExpressionOrigin>
-                                        <ExpressionProvider type="ComponentRef">
-                                          <ComponentRef name="jXButton2"/>
-                                        </ExpressionProvider>
-                                      </ExpressionOrigin>
-                                    </CodeExpression>
+                                    <CodeExpression id="39_verticalLayout18"/>
                                   </Parameters>
                                 </CodeStatement>
                               </LayoutCode>
@@ -2046,7 +1856,7 @@
                           </SubComponents>
                           <LayoutCode>
                             <CodeStatement>
-                              <CodeExpression id="51_verticalLayout19">
+                              <CodeExpression id="43_verticalLayout19">
                                 <CodeVariable name="verticalLayout19" type="4096" declaredType="org.jdesktop.swingx.VerticalLayout"/>
                                 <ExpressionOrigin>
                                   <ExpressionProvider type="CodeConstructor">
@@ -2055,16 +1865,16 @@
                                 </ExpressionOrigin>
                               </CodeExpression>
                               <StatementProvider type="CodeExpression">
-                                <CodeExpression id="51_verticalLayout19"/>
+                                <CodeExpression id="43_verticalLayout19"/>
                               </StatementProvider>
                             </CodeStatement>
                             <CodeStatement>
-                              <CodeExpression id="51_verticalLayout19"/>
+                              <CodeExpression id="43_verticalLayout19"/>
                               <StatementProvider type="CodeMethod">
                                 <CodeMethod name="setGap" class="org.jdesktop.swingx.VerticalLayout" parameterTypes="int"/>
                               </StatementProvider>
                               <Parameters>
-                                <CodeExpression id="52">
+                                <CodeExpression id="44">
                                   <ExpressionOrigin>
                                     <Value type="int" value="2"/>
                                   </ExpressionOrigin>
@@ -2072,9 +1882,9 @@
                               </Parameters>
                             </CodeStatement>
                             <CodeStatement>
-                              <CodeExpression id="53">
+                              <CodeExpression id="45">
                                 <ExpressionOrigin>
-                                  <CodeExpression id="54_jXTaskPaneReportes">
+                                  <CodeExpression id="46_jXTaskPaneReportes">
                                     <CodeVariable name="jXTaskPaneReportes" type="8194" declaredType="org.jdesktop.swingx.JXTaskPane"/>
                                     <ExpressionOrigin>
                                       <ExpressionProvider type="ComponentRef">
@@ -2091,34 +1901,34 @@
                                 <CodeMethod name="setLayout" class="java.awt.Container" parameterTypes="java.awt.LayoutManager"/>
                               </StatementProvider>
                               <Parameters>
-                                <CodeExpression id="51_verticalLayout19"/>
+                                <CodeExpression id="43_verticalLayout19"/>
                               </Parameters>
                             </CodeStatement>
                             <CodeStatement>
-                              <CodeExpression id="53"/>
+                              <CodeExpression id="45"/>
                               <StatementProvider type="CodeMethod">
                                 <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                               </StatementProvider>
                               <Parameters>
-                                <CodeExpression id="34_jXTaskPaneDistribuidor"/>
+                                <CodeExpression id="33_jXTaskPaneDistribuidor"/>
                               </Parameters>
                             </CodeStatement>
                             <CodeStatement>
-                              <CodeExpression id="53"/>
+                              <CodeExpression id="45"/>
                               <StatementProvider type="CodeMethod">
                                 <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                               </StatementProvider>
                               <Parameters>
-                                <CodeExpression id="39_jXTaskPaneTiendas"/>
+                                <CodeExpression id="38_jXTaskPaneTiendas"/>
                               </Parameters>
                             </CodeStatement>
                             <CodeStatement>
-                              <CodeExpression id="53"/>
+                              <CodeExpression id="45"/>
                               <StatementProvider type="CodeMethod">
                                 <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                               </StatementProvider>
                               <Parameters>
-                                <CodeExpression id="43_jXTaskPaneGestionProductos"/>
+                                <CodeExpression id="42_jXTaskPaneGestionProductos"/>
                               </Parameters>
                             </CodeStatement>
                           </LayoutCode>
@@ -2126,9 +1936,9 @@
                       </SubComponents>
                       <LayoutCode>
                         <CodeStatement>
-                          <CodeExpression id="55">
+                          <CodeExpression id="47">
                             <ExpressionOrigin>
-                              <CodeExpression id="56_jXCollapsiblePaneAbajo">
+                              <CodeExpression id="48_jXCollapsiblePaneAbajo">
                                 <CodeVariable name="jXCollapsiblePaneAbajo" type="8194" declaredType="org.jdesktop.swingx.JXCollapsiblePane"/>
                                 <ExpressionOrigin>
                                   <ExpressionProvider type="ComponentRef">
@@ -2145,7 +1955,7 @@
                             <CodeMethod name="setLayout" class="java.awt.Container" parameterTypes="java.awt.LayoutManager"/>
                           </StatementProvider>
                           <Parameters>
-                            <CodeExpression id="57">
+                            <CodeExpression id="49">
                               <ExpressionOrigin>
                                 <ExpressionProvider type="CodeConstructor">
                                   <CodeConstructor class="org.jdesktop.swingx.VerticalLayout" parameterTypes=""/>
@@ -2155,7 +1965,7 @@
                           </Parameters>
                         </CodeStatement>
                         <CodeStatement>
-                          <CodeExpression id="55"/>
+                          <CodeExpression id="47"/>
                           <StatementProvider type="CodeMethod">
                             <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                           </StatementProvider>
@@ -2164,7 +1974,7 @@
                           </Parameters>
                         </CodeStatement>
                         <CodeStatement>
-                          <CodeExpression id="55"/>
+                          <CodeExpression id="47"/>
                           <StatementProvider type="CodeMethod">
                             <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                           </StatementProvider>
@@ -2173,21 +1983,21 @@
                           </Parameters>
                         </CodeStatement>
                         <CodeStatement>
-                          <CodeExpression id="55"/>
+                          <CodeExpression id="47"/>
                           <StatementProvider type="CodeMethod">
                             <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                           </StatementProvider>
                           <Parameters>
-                            <CodeExpression id="25_taskPaneModuloGestionProductos"/>
+                            <CodeExpression id="24_taskPaneModuloGestionProductos"/>
                           </Parameters>
                         </CodeStatement>
                         <CodeStatement>
-                          <CodeExpression id="55"/>
+                          <CodeExpression id="47"/>
                           <StatementProvider type="CodeMethod">
                             <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                           </StatementProvider>
                           <Parameters>
-                            <CodeExpression id="54_jXTaskPaneReportes"/>
+                            <CodeExpression id="46_jXTaskPaneReportes"/>
                           </Parameters>
                         </CodeStatement>
                       </LayoutCode>
@@ -2195,7 +2005,7 @@
                   </SubComponents>
                   <LayoutCode>
                     <CodeStatement>
-                      <CodeExpression id="58_verticalLayout13">
+                      <CodeExpression id="50_verticalLayout13">
                         <CodeVariable name="verticalLayout13" type="4096" declaredType="org.jdesktop.swingx.VerticalLayout"/>
                         <ExpressionOrigin>
                           <ExpressionProvider type="CodeConstructor">
@@ -2204,16 +2014,16 @@
                         </ExpressionOrigin>
                       </CodeExpression>
                       <StatementProvider type="CodeExpression">
-                        <CodeExpression id="58_verticalLayout13"/>
+                        <CodeExpression id="50_verticalLayout13"/>
                       </StatementProvider>
                     </CodeStatement>
                     <CodeStatement>
-                      <CodeExpression id="58_verticalLayout13"/>
+                      <CodeExpression id="50_verticalLayout13"/>
                       <StatementProvider type="CodeMethod">
                         <CodeMethod name="setGap" class="org.jdesktop.swingx.VerticalLayout" parameterTypes="int"/>
                       </StatementProvider>
                       <Parameters>
-                        <CodeExpression id="59">
+                        <CodeExpression id="51">
                           <ExpressionOrigin>
                             <Value type="int" value="2"/>
                           </ExpressionOrigin>
@@ -2221,9 +2031,9 @@
                       </Parameters>
                     </CodeStatement>
                     <CodeStatement>
-                      <CodeExpression id="60">
+                      <CodeExpression id="52">
                         <ExpressionOrigin>
-                          <CodeExpression id="61_jXCollapsiblePaneIzquierdo">
+                          <CodeExpression id="53_jXCollapsiblePaneIzquierdo">
                             <CodeVariable name="jXCollapsiblePaneIzquierdo" type="8194" declaredType="org.jdesktop.swingx.JXCollapsiblePane"/>
                             <ExpressionOrigin>
                               <ExpressionProvider type="ComponentRef">
@@ -2240,16 +2050,16 @@
                         <CodeMethod name="setLayout" class="java.awt.Container" parameterTypes="java.awt.LayoutManager"/>
                       </StatementProvider>
                       <Parameters>
-                        <CodeExpression id="58_verticalLayout13"/>
+                        <CodeExpression id="50_verticalLayout13"/>
                       </Parameters>
                     </CodeStatement>
                     <CodeStatement>
-                      <CodeExpression id="60"/>
+                      <CodeExpression id="52"/>
                       <StatementProvider type="CodeMethod">
                         <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component"/>
                       </StatementProvider>
                       <Parameters>
-                        <CodeExpression id="56_jXCollapsiblePaneAbajo"/>
+                        <CodeExpression id="48_jXCollapsiblePaneAbajo"/>
                       </Parameters>
                     </CodeStatement>
                   </LayoutCode>
