@@ -18,6 +18,7 @@ public class JFInicioSecionMiyake extends javax.swing.JFrame {
 
     public JFInicioSecionMiyake() throws Exception {
         initComponents();
+        this.setIconImage(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/login.png")).getImage()); 
         this.setLocationRelativeTo(null);
         listar_usuarios1();
     }
@@ -42,6 +43,7 @@ public class JFInicioSecionMiyake extends javax.swing.JFrame {
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 3, true));
 
         jLabel1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417576149_change_password.png"))); // NOI18N
         jLabel1.setText("Contraseña");
 
         txtContraseña.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
@@ -65,9 +67,11 @@ public class JFInicioSecionMiyake extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417576012_Login.png"))); // NOI18N
         jLabel2.setText("Usuario");
 
         btnAceptar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416789267_clean.png"))); // NOI18N
         btnAceptar.setText("Aceptar");
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,6 +80,7 @@ public class JFInicioSecionMiyake extends javax.swing.JFrame {
         });
 
         btnCancelar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416789274_clear_left.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,8 +101,8 @@ public class JFInicioSecionMiyake extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cbUsuario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                        .addComponent(btnAceptar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                         .addComponent(btnCancelar))
                     .addComponent(txtContraseña))
                 .addContainerGap())
@@ -123,10 +128,11 @@ public class JFInicioSecionMiyake extends javax.swing.JFrame {
         jLabel3.setBackground(new java.awt.Color(204, 255, 153));
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Sistema de Almacen");
+        jLabel3.setText("Acceso Sistema Miyake.");
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         btnSalir.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416856421_Log Out.png"))); // NOI18N
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

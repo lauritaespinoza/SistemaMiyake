@@ -177,11 +177,11 @@ public abstract class JavaUtil {
             oneRow.add(ivt.getAlmacen().getNombre());
             oneRow.add(ivt.getProducto().getIdProducto());
             oneRow.add(ivt.getProducto().getDescripcion());
-            oneRow.add( dosDecimales.format(ivt.getPrecioSinDescuento() == null ? 0f : ivt.getPrecioSinDescuento()).trim());
+            oneRow.add(dosDecimales.format(ivt.getPrecioSinDescuento() == null ? 0f : ivt.getPrecioSinDescuento()).trim());
             //oneRow.add(ivt.getPrecioSinDescuento());
             oneRow.add(ivt.getDescuento().toString() + "%");
-            oneRow.add( dosDecimales.format(ivt.getPrecioConDescuento() == null ? 0f : ivt.getPrecioConDescuento()).trim());
-           //oneRow.add(ivt.getPrecioConDescuento());
+            oneRow.add(dosDecimales.format(ivt.getPrecioConDescuento() == null ? 0f : ivt.getPrecioConDescuento()).trim());
+            //oneRow.add(ivt.getPrecioConDescuento());
             oneRow.add(ivt.getFechaCreacion());
             oneRow.add(ivt.getFechaModificacion());
             oneRow.add(ivt.getCantidad());
@@ -232,10 +232,15 @@ public abstract class JavaUtil {
         if (o instanceof SalidaParaTienda) {
             SalidaParaTienda sa = (SalidaParaTienda) o;
             oneRow.add(sa.getIdAlmacenDesde().getNombre());
-            oneRow.add(sa.getIdUsuario2().getNombre()+" : "+sa.getIdUsuario2().getDescripcion());
+            oneRow.add(sa.getIdUsuario2().getNombre() + " : " + sa.getIdUsuario2().getDescripcion());
             oneRow.add(sa.getIdAlmacenHasta().getNombre());
             oneRow.add(sa.getIdAlmacenHasta().getTelefono1());
-            oneRow.add(sa.getRevisado());
+            //oneRow.add(sa.getRevisado());
+            if(sa.getRevisado()==false){
+               oneRow.add("Pendiente"); 
+            }else{
+                oneRow.add("Procesado"); 
+            } 
             oneRow.add(sa.getTotal());
             oneRow.add(sa.getFechaAsignacion());
         }
@@ -347,7 +352,7 @@ public abstract class JavaUtil {
             header.add("CREACION");
             header.add("MODIFICACION");
             header.add("EXISTENCIA");
-            header.add("PROCESADO");
+            header.add("ENVIADO");
         }
 
         if (o instanceof Almacen) {
@@ -611,59 +616,115 @@ public abstract class JavaUtil {
         logoview.setIcon(new ImageIcon(img.getScaledInstance(logoview.getWidth(), logoview.getHeight(), Image.SCALE_SMOOTH)));
     }
 
-    public static void backupPGSQL(JTextArea texto) {
-        
-        try {
-            String rutaCT = "C:\\Users\\Usuario\\Desktop";
-                    //"C:\\Users\\Pablo\\Desktop\\BackUpDB";
-            String IP = "tecnosys.dyndns.tv";
-            String pgdump="C:\\Program Files\\PostgreSQL\\9.3\\bin\\pg_dump.exe";
-                    //"C:\\Program Files\\PostgreSQL\\9.3\\bin\\pg_dump.exe";
-            Process p;
-            ProcessBuilder pb;
-            java.io.File file = new java.io.File(rutaCT);
-            file.createNewFile();
+    public static void backupPGSQL(final JTextArea texto) {
 
-            //C:/Program Files/PostgreSQL/9.3/bin\pg_restore.exe --host
-            //localhost --port 5432 --username "postgres" --dbname "pruebabackup" --no-password  --verbose "C:\Users\Pablo\Desktop\p1.backup"
-            StringBuffer fechafile = new StringBuffer();
-            fechafile.append(rutaCT);
-            fechafile.append("DBbackup");
-            fechafile.append(".backup");
-            
-             pb = new ProcessBuilder(
-                     pgdump,
-                     "--host",
-                     IP,
-                     "--port",
-                     "5432",
-                     "--username",
-                     "postgres",
-                     "--no-password",
-                     "--format",
-                     "tar",
-                     "--blobs",
-                     "--verbose",
-                     "--file",
-                      "C:\\Users\\Usuario\\Desktop\\p1.backup",
-                     "miyake_pasantia"
-             );
-            pb.environment().put("PGPASSWORD", "admin");
-            pb.redirectErrorStream(true);
-            p = pb.start();
-            InputStream is = p.getInputStream();
-            InputStreamReader isr = new InputStreamReader(is);
-            BufferedReader br = new BufferedReader(isr);
-            String ll;
-            while ((ll = br.readLine()) != null) {
-              
-                texto.append(ll+"\n");
+        Thread hilo = new Thread() {
+
+            @Override
+            public void run() {
+                try {
+                    //                    try {
+                    String rutaCT = "C:\\Users\\Usuario\\Desktop\\";
+                    //"C:\\Users\\Pablo\\Desktop\\BackUpDB";
+                    String IP = "tecnosys.dyndns.tv";
+                    String pgdump = "C:\\Program Files\\PostgreSQL\\9.3\\bin\\pg_dump.exe";
+                    //"C:\\Program Files\\PostgreSQL\\9.3\\bin\\pg_dump.exe";
+                    Process p;
+                    ProcessBuilder pb;
+                    java.io.File file = new java.io.File(rutaCT);
+                    file.createNewFile();
+
+                    pb = new ProcessBuilder(
+                            pgdump,
+                            "--host",
+                            IP,
+                            "--port",
+                            "5432",
+                            "--username",
+                            "postgres",
+                            "--no-password",
+                            "--format",
+                            "tar",
+                            "--blobs",
+                            "--verbose",
+                            "--file",
+                            rutaCT + "back_up_miyake.backup",
+                            "miyake_pasantia"
+                    );
+                    pb.environment().put("PGPASSWORD", "admin");
+                    pb.redirectErrorStream(true);
+                    p = pb.start();
+                    InputStream is = p.getInputStream();
+                    InputStreamReader isr = new InputStreamReader(is);
+                    BufferedReader br = new BufferedReader(isr);
+                    String ll;
+                    while ((ll = br.readLine()) != null) {
+
+                        texto.append(ll + "\n");
+                        texto.repaint();
+//                        System.out.println(ll);
+                    }
+
+                    texto.append("\n\nBACKUP READY\n\n");
+                    texto.repaint();
+                } catch (Exception ex) {
+                    Logger.getLogger(JavaUtil.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
-            
-            texto.append("\n\nBACKUP READY\n\n");
-        } catch (Exception e) {
-            texto.append(e.getMessage());
-        }
+        };
+
+        hilo.start();
+
+    }
+
+    public static void restorePGSQL(final JTextArea texto, final String path) {
+
+        Thread hilo = new Thread() {
+
+            @Override
+            public void run() {
+                try {
+                    String IP = "tecnosys.dyndns.tv";
+                    String pgdump = "C:\\Program Files\\PostgreSQL\\9.3\\bin\\pg_restore.exe";
+
+                    Process p;
+                    ProcessBuilder pb;
+                    pb = new ProcessBuilder(
+                            pgdump,
+                            "--host",
+                            "localhost",
+                            "--port",
+                            "5432",
+                            "--username",
+                            "postgres",
+                            "--dbname",
+                            "miyake_pasantia",
+                            "--no-password",
+                            "--verbose",
+                            path
+                    );
+                    pb.environment().put("PGPASSWORD", "admin");
+                    pb.redirectErrorStream(true);
+                    p = pb.start();
+                    InputStream is = p.getInputStream();
+                    InputStreamReader isr = new InputStreamReader(is);
+                    BufferedReader br = new BufferedReader(isr);
+                    String ll;
+                    while ((ll = br.readLine()) != null) {
+
+                        texto.append(ll + "\n");
+                        texto.repaint();
+                    }
+
+                    texto.append("\n\nRESTORE READY\n\n");
+                } catch (Exception ex) {
+                    Logger.getLogger(JavaUtil.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        };
+
+        hilo.start();
+
     }
 
 }
