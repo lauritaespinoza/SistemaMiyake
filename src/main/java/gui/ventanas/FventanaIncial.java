@@ -2242,7 +2242,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         if (jdBackUp == null) {
             jdBackUp = new JDbackupDB(this, true);
         }
-
+        jdBackUp.setLocationRelativeTo(null);
         jdBackUp.setVisible(true);
     }//GEN-LAST:event_jMenuItemExportarBDActionPerformed
 
