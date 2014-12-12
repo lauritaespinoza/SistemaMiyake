@@ -14,6 +14,7 @@ import javax.help.HelpBroker;
 import javax.help.HelpSet;
 import javax.help.HelpSetException;
 import javax.swing.JOptionPane;
+import util.JavaUtil;
 
 /**
  *
@@ -171,14 +172,7 @@ public class JDbackupDB extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btBackUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBackUpActionPerformed
-        Thread hilo = new Thread() {
-
-            @Override
-            public void run() {
-            //    JavaUtil.backupPGSQL(texto);
-            }
-        };
-        hilo.start();
+        JavaUtil.backupPGSQL(texto);
     }//GEN-LAST:event_btBackUpActionPerformed
 
     private void ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ayudaActionPerformed
