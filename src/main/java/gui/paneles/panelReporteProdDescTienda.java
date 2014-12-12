@@ -6,6 +6,7 @@
 package gui.paneles;
 
 import hibernate.DAO.ObjectModelDAO;
+import java.awt.Dialog;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -24,14 +25,14 @@ import net.sf.jasperreports.view.JasperViewer;
  * @author Usuario
  */
 public class panelReporteProdDescTienda extends javax.swing.JPanel {
+
     private List resultListAlmacen;
     public final InputStream rutaJasper1 = this.getClass().getResourceAsStream("/reportes/ReporteProductosDescuentoTienda.jasper");
     public final InputStream rutaJrxml1 = this.getClass().getResourceAsStream("/reportes/ReporteProductosDescuentoTienda.jrxml");
-    
-    
+
     public panelReporteProdDescTienda() {
         initComponents();
-        
+
         setCB();
     }
 
@@ -126,14 +127,16 @@ public class panelReporteProdDescTienda extends javax.swing.JPanel {
             jasperPrint = JasperFillManager.fillReport(rutaJasper1, parametro, conexion);
             JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
             jasperViewer.setTitle("Reporte de Todos los Productos con Descuento");
+            jasperViewer.setModalExclusionType(Dialog.ModalExclusionType.TOOLKIT_EXCLUDE);
             jasperViewer.setVisible(true);
+
 //          
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "error" + e);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void setCB(){
+    private void setCB() {
         resultListAlmacen = ObjectModelDAO.getResultQuery("FROM Almacen a order by a.idAlmacen asc");
         cb_tiendas.removeAllItems();
         for (Object object : resultListAlmacen) {
@@ -142,7 +145,7 @@ public class panelReporteProdDescTienda extends javax.swing.JPanel {
         }
     }
     private void cb_tiendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_tiendasActionPerformed
-       // setCB();  
+        // setCB();  
         Almacen alc = (Almacen) resultListAlmacen.get(cb_tiendas.getSelectedIndex());
         lb_rif_tienda.setText(alc.getRif());
     }//GEN-LAST:event_cb_tiendasActionPerformed
