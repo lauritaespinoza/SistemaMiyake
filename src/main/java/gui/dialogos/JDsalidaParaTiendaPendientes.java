@@ -36,10 +36,10 @@ public class JDsalidaParaTiendaPendientes extends javax.swing.JDialog {
     // ModeloTablaFacturaPendientes mtf = new ModeloTablaFacturaPendientes();
     // DAOFactura daoFactura = new DAOFactura();
     public SalidaParaTienda sa = null;
-    private List resultList = null;
+    public List resultList = null;
     private int pos = -1;
     private Almacen al_actual = null;
-     public final File  archivo = new File(this.getClass().getResource("/JavaHelp/JavaHelp/ejemplo.hs").getFile());
+    public final File archivo = new File(this.getClass().getResource("/JavaHelp/JavaHelp/ejemplo.hs").getFile());
 
     public JDsalidaParaTiendaPendientes(java.awt.Frame parent, boolean modal, Almacen idAlmacen) throws Exception {
         super(parent, modal);
@@ -48,13 +48,11 @@ public class JDsalidaParaTiendaPendientes extends javax.swing.JDialog {
         this.ayudaActionPerformed(null);
         //busy
         busy.setVisible(false);
-        //Centro Pantalla
-        this.setLocationRelativeTo(null);
-        
-         this.jtListaSalidaPendientes_.setAutoCreateRowSorter(true);
+
+        this.jtListaSalidaPendientes_.setAutoCreateRowSorter(true);
         this.jtListaSalidaPendientes_.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         this.jtListaSalidaPendientes_.setColumnControlVisible(true);
-        
+
         this.al_actual = idAlmacen;
         jtListaSalidaPendientes_.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
@@ -248,7 +246,7 @@ public class JDsalidaParaTiendaPendientes extends javax.swing.JDialog {
                     jasperViewer.setTitle("Reporte de Toma Fisica Distribuidoras.");
                     jasperViewer.setVisible(true);
                     int respuesta = JOptionPane.showConfirmDialog(null, "El Archivo fue Generado con Exito,"
-                        + "¿Desea Continuar Selecionando Una Factura Pendiente?");
+                            + "¿Desea Continuar Selecionando Una Factura Pendiente?");
 
                     if (respuesta == JOptionPane.YES_OPTION) {
 
@@ -260,8 +258,8 @@ public class JDsalidaParaTiendaPendientes extends javax.swing.JDialog {
                     }
 
                 } catch (JRException | HeadlessException e) {
-                    JOptionPane.showMessageDialog(null, "Se a Dectectado Un Proble Con Proceso de Seleccion de Facturas,"
-                        + "Por Favor Vuelva a Intentarlo.");
+                    JOptionPane.showMessageDialog(null, "Se a Dectectado Un Proble Con Proceso de Seleccion de Facturas,\n"
+                            + "Por Favor Vuelva a Intentarlo.");
                     Logger.getLogger(Distribuidora1.class.getName()).log(Level.SEVERE, null, e);
                     System.err.println("Seleccionando Facturas" + e);
 
@@ -377,10 +375,21 @@ public class JDsalidaParaTiendaPendientes extends javax.swing.JDialog {
             String sql = "SELECT s FROM SalidaParaTienda s WHERE  s.revisado =false and s.idAlmacenHasta.idAlmacen =" + al_actual.getIdAlmacen();
             // String sql = "SELECT s FROM SalidaParaTienda s WHERE  s.revisado =false and s.idAlmacenHasta.idAlmacen =3";
             resultList = ObjectModelDAO.getResultQuery(sql);
-            JavaUtil.displayResult(resultList, jtListaSalidaPendientes_);
-            jtListaSalidaPendientes_.setEditable(false);
-            pos = -1;
-            sa = null;
+            if (resultList.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "No Se Encontraron Asignaciones Disponibles Para Esta Tienda.\n"
+                        + "Por Favor, Seleccione una Tienda Nueva Con Existencia Física de Productos.");
+                this.dispose();
+
+            } else {
+                //Centro Pantalla
+                this.setLocationRelativeTo(null);
+                this.setVisible(true);
+                //ctabla
+                JavaUtil.displayResult(resultList, jtListaSalidaPendientes_);
+                jtListaSalidaPendientes_.setEditable(false);
+                pos = -1;
+                sa = null;
+            }
         } catch (Exception e) {
             Logger.getLogger(JDsalidaParaTiendaPendientes.class.getName()).log(Level.SEVERE, null, e);
             JOptionPane.showMessageDialog(this, "El Almacen Seleccionado No Contiene Asignacion de Mercancia");

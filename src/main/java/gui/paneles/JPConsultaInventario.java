@@ -122,7 +122,7 @@ public class JPConsultaInventario extends javax.swing.JPanel {
 
         jScrollPane2.setAutoscrolls(true);
 
-        jLayeredPaneTienda.setBorder(javax.swing.BorderFactory.createTitledBorder("Seleccionar Datos Para Asignar Mercancia"));
+        jLayeredPaneTienda.setBorder(javax.swing.BorderFactory.createTitledBorder("SeleccionarTienda Para Consultar Existencia Física de Mercancia"));
         jLayeredPaneTienda.setToolTipText("Seleciones Una Tienda y Presione Confirmar");
         jLayeredPaneTienda.setPreferredSize(new java.awt.Dimension(610, 80));
         jLayeredPaneTienda.setRequestFocusEnabled(false);
@@ -152,8 +152,8 @@ public class JPConsultaInventario extends javax.swing.JPanel {
             }
         });
 
-        jXLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/hasta.png"))); // NOI18N
-        jXLabel10.setText("Desde Tienda");
+        jXLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636333_store.png"))); // NOI18N
+        jXLabel10.setText("Tienda");
 
         javax.swing.GroupLayout jLayeredPaneTiendaLayout = new javax.swing.GroupLayout(jLayeredPaneTienda);
         jLayeredPaneTienda.setLayout(jLayeredPaneTiendaLayout);
@@ -166,9 +166,9 @@ public class JPConsultaInventario extends javax.swing.JPanel {
                 .addGroup(jLayeredPaneTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jLayeredPaneTiendaLayout.createSequentialGroup()
                         .addGap(82, 82, 82)
-                        .addComponent(jXButtonConfirmar, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                        .addComponent(jXButtonConfirmar, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
                         .addGap(11, 11, 11)
-                        .addComponent(jXButtonReiniciar, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                        .addComponent(jXButtonReiniciar, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
                         .addGap(172, 172, 172))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jLayeredPaneTiendaLayout.createSequentialGroup()
                         .addComponent(comboBoxAlmacenDesde, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -237,10 +237,13 @@ public class JPConsultaInventario extends javax.swing.JPanel {
 
         jScrollPane4.setViewportView(jLayeredPaneProductos);
 
+        jXButtonAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416789267_clean.png"))); // NOI18N
         jXButtonAceptar.setText("Aceptar");
 
+        jXButtonImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1418331399_Print.png"))); // NOI18N
         jXButtonImprimir.setText("Imprimir");
 
+        jXButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416789274_clear_left.png"))); // NOI18N
         jXButtonCancelar.setText("Cancelar");
 
         busy.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
