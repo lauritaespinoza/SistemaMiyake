@@ -84,7 +84,7 @@
 		</box>
 	</style>
 	<subDataset name="New Dataset 1" uuid="2920e85d-1083-4537-92e6-f698cd4514fa">
-		<queryString language="SQL">
+		<queryString>
 			<![CDATA[SELECT 
   inventario_tienda.id_producto, 
   inventario_tienda.id_almacen, 
@@ -177,7 +177,7 @@ WHERE
 			<componentElement>
 				<reportElement key="table 3" style="table 3" x="0" y="0" width="555" height="55" uuid="5255d1e3-9584-4d1c-8d88-babf03a55ed2"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="New Dataset 1" uuid="806431a2-7ca3-444d-b83e-c33cdaea53ca">
+					<datasetRun subDataset="New Dataset 1" uuid="d9680efe-e40a-4cc8-8de2-b73e5bae7228">
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
 					<jr:column width="65" uuid="faba9fa3-3b05-4ef0-959c-3ae85b2fb4b8">
