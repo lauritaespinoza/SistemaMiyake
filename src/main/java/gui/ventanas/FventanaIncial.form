@@ -461,6 +461,9 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Abrir/Cerrar Paneles Internos"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemAbrirCerrarInternosActionPerformed"/>
+                      </Events>
                     </MenuItem>
                   </SubComponents>
                 </Menu>
@@ -469,15 +472,13 @@
                     <Property name="text" type="java.lang.String" value="Panel de Operaciones"/>
                   </Properties>
                   <SubComponents>
-                    <MenuItem class="javax.swing.JMenuItem" name="jMenuItemBuscarPanel">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Buscar Panel"/>
-                      </Properties>
-                    </MenuItem>
                     <MenuItem class="javax.swing.JMenuItem" name="jMenuItemReiniciarPanel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Reiniciar Panel"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemReiniciarPanelActionPerformed"/>
+                      </Events>
                     </MenuItem>
                   </SubComponents>
                 </Menu>
@@ -2140,6 +2141,7 @@
                             </Container>
                             <Container class="org.jdesktop.swingx.JXTaskPane" name="jXTaskPaneGestionProductos">
                               <Properties>
+                                <Property name="collapsed" type="boolean" value="true"/>
                                 <Property name="title" type="java.lang.String" value="Reportes Productos"/>
                               </Properties>
                               <LayoutCode>

@@ -33,7 +33,7 @@ public class JPdepartamento extends javax.swing.JPanel {
     private int pos;
     public final String rutaJasper = "/reportes/ReporteDepartamento.jasper";
     private Integer tabCrud;
-    
+
     public JPdepartamento() {
         this(0);
     }
@@ -41,14 +41,13 @@ public class JPdepartamento extends javax.swing.JPanel {
     public JPdepartamento(Integer tabCrud) {
         this.tabCrud = tabCrud;
         initComponents();
-        
+
         setTableCellAlignment(JLabel.CENTER, listadoDepartamentos);
         setTableCellAlignment(JLabel.CENTER, tablaModfDep);
         setTableCellAlignment(JLabel.CENTER, tablaDeletDep);
         listadoDepartamentos.getTableHeader().setReorderingAllowed(false);
         tablaModfDep.getTableHeader().setReorderingAllowed(false);
         tablaDeletDep.getTableHeader().setReorderingAllowed(false);
-
 
         tablaDeletDep.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent lse) {
@@ -518,21 +517,18 @@ public class JPdepartamento extends javax.swing.JPanel {
 
     private void panelScrudDepStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_panelScrudDepStateChanged
 
-        
-          if (panelScrudDep.getTabCount() != 4) {
+        if (panelScrudDep.getTabCount() != 4) {
             return;
         }
 
         //verifica si debe abrir un panel desde la llamada
         if (this.tabCrud != null) {
-            int tabCrud=this.tabCrud.intValue();
+            int tabCrud = this.tabCrud.intValue();
             this.tabCrud = null;
             panelScrudDep.setSelectedIndex(tabCrud);
             return;
         }
-        
-        
-        
+
         if (panelScrudDep.getSelectedIndex() == 0) {
             String sql = "FROM Departamento d order by d.idDepartamento asc";
             List resultList = ObjectModelDAO.getResultQuery(sql);

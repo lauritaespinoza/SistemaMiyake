@@ -5,6 +5,7 @@
  */
 package gui.dialogos;
 
+import com.sun.java.help.impl.SwingWorker;
 import util.JavaUtil;
 
 /**
@@ -74,14 +75,7 @@ public class JDbackupDB extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btBackUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBackUpActionPerformed
-        Thread hilo = new Thread() {
-
-            @Override
-            public void run() {
-                JavaUtil.backupPGSQL(texto);
-            }
-        };
-        hilo.start();
+        JavaUtil.backupPGSQL(texto);
     }//GEN-LAST:event_btBackUpActionPerformed
 
     /**

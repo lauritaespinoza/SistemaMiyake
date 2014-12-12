@@ -2,6 +2,7 @@ package gui.ventanas;
 
 import gui.dialogos.JDbackupDB;
 import gui.dialogos.JDfaturasCSV;
+import gui.dialogos.JDrestoreDB;
 import gui.paneles.Asignar1;
 import gui.paneles.Distribuidora1;
 import java.awt.Graphics;
@@ -75,6 +76,7 @@ public class FventanaIncial extends javax.swing.JFrame {
     public static List<List> listaUsuarioMain;
     private JDfaturasCSV jdFacturasCSV;
     private JDbackupDB jdBackUp;
+    private JDrestoreDB jdRestore;
 
     public FventanaIncial() {
         initComponents();
@@ -247,7 +249,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         jMenuItemAbrirCerrar = new javax.swing.JMenuItem();
         jMenuItemAbrirCerrarInternos = new javax.swing.JMenuItem();
         jMenuPanelOperacionInterno = new javax.swing.JMenu();
-        jMenuItemBuscarPanel = new javax.swing.JMenuItem();
         jMenuItemReiniciarPanel = new javax.swing.JMenuItem();
         jMenuItemSalir = new javax.swing.JMenuItem();
         menuDistribuidor = new javax.swing.JMenu();
@@ -993,6 +994,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         jXTaskPaneTiendas.setTitle("Reportes Tiendas");
         jXTaskPaneReportes.getContentPane().add(jXTaskPaneTiendas);
 
+        jXTaskPaneGestionProductos.setCollapsed(true);
         jXTaskPaneGestionProductos.setTitle("Reportes Productos");
         jXTaskPaneReportes.getContentPane().add(jXTaskPaneGestionProductos);
 
@@ -1029,16 +1031,23 @@ public class FventanaIncial extends javax.swing.JFrame {
         jMenuPanelAccesoDirect.add(jMenuItemAbrirCerrar);
 
         jMenuItemAbrirCerrarInternos.setText("Abrir/Cerrar Paneles Internos");
+        jMenuItemAbrirCerrarInternos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAbrirCerrarInternosActionPerformed(evt);
+            }
+        });
         jMenuPanelAccesoDirect.add(jMenuItemAbrirCerrarInternos);
 
         jMenuOpciones.add(jMenuPanelAccesoDirect);
 
         jMenuPanelOperacionInterno.setText("Panel de Operaciones");
 
-        jMenuItemBuscarPanel.setText("Buscar Panel");
-        jMenuPanelOperacionInterno.add(jMenuItemBuscarPanel);
-
         jMenuItemReiniciarPanel.setText("Reiniciar Panel");
+        jMenuItemReiniciarPanel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemReiniciarPanelActionPerformed(evt);
+            }
+        });
         jMenuPanelOperacionInterno.add(jMenuItemReiniciarPanel);
 
         jMenuOpciones.add(jMenuPanelOperacionInterno);
@@ -2247,12 +2256,36 @@ public class FventanaIncial extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemExportarBDActionPerformed
 
     private void jMenuItemRestaurarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRestaurarDatosActionPerformed
-//        if (jdBackUp == null) {
-//            jdBackUp = new JDbackupDB(this, true);
-//        }
-//
-//        jdBackUp.setVisible(true);
+        if (jdRestore == null) {
+            jdRestore = new JDrestoreDB(this, true);
+        }
+
+        jdRestore.setVisible(true);
     }//GEN-LAST:event_jMenuItemRestaurarDatosActionPerformed
+
+    private void jMenuItemReiniciarPanelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemReiniciarPanelActionPerformed
+        if (JOptionPane.showConfirmDialog(this, "¿Está seguro de cerrar todos"
+                + " los paneles de trabajo? se "
+                + "perderá la información no guardada", "Advertencia",
+                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+
+            for (Component component : panelClosableCentral.getComponents()) {
+                if(component instanceof JPanel){
+                    panelClosableCentral.remove(component);
+                }
+            }
+        }
+    }//GEN-LAST:event_jMenuItemReiniciarPanelActionPerformed
+
+    private void jMenuItemAbrirCerrarInternosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAbrirCerrarInternosActionPerformed
+        taskPaneModuloDistribuidor.setCollapsed(!taskPaneModuloDistribuidor.isCollapsed());
+        taskPaneModuloTienda.setCollapsed(!taskPaneModuloTienda.isCollapsed());
+        taskPaneModuloGestionProductos.setCollapsed(!taskPaneModuloGestionProductos.isCollapsed());
+        jXTaskPaneReportes.setCollapsed(!jXTaskPaneReportes.isCollapsed());
+        jXTaskPaneDistribuidor.setCollapsed(!jXTaskPaneDistribuidor.isCollapsed());
+        jXTaskPaneTiendas.setCollapsed(!jXTaskPaneTiendas.isCollapsed());
+        jXTaskPaneGestionProductos.setCollapsed(!jXTaskPaneGestionProductos.isCollapsed());
+    }//GEN-LAST:event_jMenuItemAbrirCerrarInternosActionPerformed
 
     public static void main(String args[]) {
 
@@ -2315,7 +2348,6 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemAlmacenCrear;
     private javax.swing.JMenuItem jMenuItemAlmacenEliminar;
     private javax.swing.JMenuItem jMenuItemAlmacenModificar;
-    private javax.swing.JMenuItem jMenuItemBuscarPanel;
     private javax.swing.JMenuItem jMenuItemClasificacionConsultar;
     private javax.swing.JMenuItem jMenuItemClasificacionCrear;
     private javax.swing.JMenuItem jMenuItemClasificacionEliminar;
