@@ -572,6 +572,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
         menuControlEnvio.add(jmConsultarInventario);
 
+        jmImprimirEtiquetas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/ImprimirEtiquetas.png"))); // NOI18N
         jmImprimirEtiquetas.setText("Imprimir Etiquetas");
         jmImprimirEtiquetas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -580,6 +581,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
         menuControlPrecio.add(jmImprimirEtiquetas);
 
+        jmMenuActualizarPrecio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/ActualizarPRecio.png"))); // NOI18N
         jmMenuActualizarPrecio.setText("Actualizar Precios");
 
         jmConsultarPrecio.setText("Consultar");
@@ -600,6 +602,7 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         menuControlPrecio.add(jmMenuActualizarPrecio);
 
+        jmNotaCredito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Sobrante.png"))); // NOI18N
         jmNotaCredito.setText("Notas de Crédito");
         jmNotaCredito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -608,6 +611,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
         menuNotas.add(jmNotaCredito);
 
+        jmNotaDebito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Faltante.png"))); // NOI18N
         jmNotaDebito.setText("Notas de Débito");
         jmNotaDebito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -765,7 +769,8 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
         taskPaneModuloDistribuidor.getContentPane().add(botonEnvio);
 
-        jButtonPrecio.setText("Control de Precios");
+        jButtonPrecio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/ControlPrecio.png"))); // NOI18N
+        jButtonPrecio.setText("Control de Precios         ");
         jButtonPrecio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonPrecio.setBorderPainted(false);
         jButtonPrecio.setContentAreaFilled(false);
@@ -833,7 +838,8 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
         taskPaneModuloTienda.getContentPane().add(jButtonControldeInvetario);
 
-        jButtonNotas.setText("Notas");
+        jButtonNotas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Notas.png"))); // NOI18N
+        jButtonNotas.setText("Notas                       ");
         jButtonNotas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonNotas.setBorderPainted(false);
         jButtonNotas.setContentAreaFilled(false);
@@ -847,7 +853,8 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
         taskPaneModuloTienda.getContentPane().add(jButtonNotas);
 
-        jButtonFacturas.setText("Ventas Diarias");
+        jButtonFacturas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/ventas.png"))); // NOI18N
+        jButtonFacturas.setText("Ventas Diarias           ");
         jButtonFacturas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonFacturas.setBorderPainted(false);
         jButtonFacturas.setContentAreaFilled(false);
@@ -882,11 +889,11 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jXCollapsiblePaneAbajo.getContentPane().add(taskPaneModuloTienda);
 
-        taskPaneModuloGestionProductos.setCollapsed(true);
+        taskPaneModuloGestionProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/GestionProducto.png"))); // NOI18N
         taskPaneModuloGestionProductos.setTitle("Gestión de Productos");
 
-        btnCrudProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415416322_list-accept.png"))); // NOI18N
-        btnCrudProducto.setText("Producto       ");
+        btnCrudProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Product.png"))); // NOI18N
+        btnCrudProducto.setText("Producto               ");
         btnCrudProducto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCrudProducto.setBorderPainted(false);
         btnCrudProducto.setContentAreaFilled(false);
@@ -900,7 +907,8 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
         taskPaneModuloGestionProductos.getContentPane().add(btnCrudProducto);
 
-        btnCrudMarca.setText("Marca");
+        btnCrudMarca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Marca.png"))); // NOI18N
+        btnCrudMarca.setText("Marca                     ");
         btnCrudMarca.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCrudMarca.setBorderPainted(false);
         btnCrudMarca.setContentAreaFilled(false);
@@ -914,8 +922,8 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
         taskPaneModuloGestionProductos.getContentPane().add(btnCrudMarca);
 
-        btnCrudClasificacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416862043_inventory-maintenance.png"))); // NOI18N
-        btnCrudClasificacion.setText("Clasificación    ");
+        btnCrudClasificacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/clasificacion.png"))); // NOI18N
+        btnCrudClasificacion.setText("Clasificación              ");
         btnCrudClasificacion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCrudClasificacion.setBorderPainted(false);
         btnCrudClasificacion.setContentAreaFilled(false);
@@ -929,8 +937,8 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
         taskPaneModuloGestionProductos.getContentPane().add(btnCrudClasificacion);
 
-        btnCrudDepto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415667180_application-vnd.ms-excel.png"))); // NOI18N
-        btnCrudDepto.setText("Departamento");
+        btnCrudDepto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/departamento.png"))); // NOI18N
+        btnCrudDepto.setText("Departamento          ");
         btnCrudDepto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCrudDepto.setBorderPainted(false);
         btnCrudDepto.setContentAreaFilled(false);
@@ -944,7 +952,8 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
         taskPaneModuloGestionProductos.getContentPane().add(btnCrudDepto);
 
-        btnCrudDivision.setText("División");
+        btnCrudDivision.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/division.png"))); // NOI18N
+        btnCrudDivision.setText("División                      ");
         btnCrudDivision.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCrudDivision.setBorderPainted(false);
         btnCrudDivision.setContentAreaFilled(false);
