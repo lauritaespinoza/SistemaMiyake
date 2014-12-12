@@ -5,7 +5,15 @@
  */
 package gui.dialogos;
 
-import com.sun.java.help.impl.SwingWorker;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.help.HelpBroker;
+import javax.help.HelpSet;
+import javax.help.HelpSetException;
+import javax.swing.JOptionPane;
 import util.JavaUtil;
 
 /**
