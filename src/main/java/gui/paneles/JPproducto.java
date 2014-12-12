@@ -960,7 +960,6 @@ public class JPproducto extends javax.swing.JPanel {
 
                 if (panelScrudProducto.getSelectedIndex() == 0) {
 
-                    JOptionPane.showMessageDialog(null, "consulta");
                     setNULLS(0);
                     String sql = " FROM Producto p order by p.idProducto asc";
 
@@ -973,7 +972,6 @@ public class JPproducto extends javax.swing.JPanel {
 
                 }
                 if (panelScrudProducto.getSelectedIndex() == 1) {
-                    JOptionPane.showMessageDialog(null, "crea");
                     setNULLS(1);
                     //resultListDivision = ObjectModelDAO.getResultQuery("FROM Division d order by d.idDivision asc");
                     //resultListDepartamento = ObjectModelDAO.getResultQuery("FROM Departamento d order by d.idDepartamento asc");
@@ -1003,7 +1001,6 @@ public class JPproducto extends javax.swing.JPanel {
                 }
 
                 if (panelScrudProducto.getSelectedIndex() == 2) {
-                    JOptionPane.showMessageDialog(null, "modifica");
                     setNULLS(2);
                     //resultListDivision = ObjectModelDAO.getResultQuery("FROM Division d order by d.idDivision asc");
                     //resultListDepartamento = ObjectModelDAO.getResultQuery("FROM Departamento d order by d.idDepartamento asc");
