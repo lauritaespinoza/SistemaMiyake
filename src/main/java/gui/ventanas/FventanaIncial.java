@@ -82,6 +82,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         FventanaIncial.listaUsuarioMain = user;
 
         initComponents();
+         this.setIconImage(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1418331232_house.png")).getImage()); 
 
         ClockLabel clock = new ClockLabel();
         getContentPane().add(clock, BorderLayout.PAGE_END);
@@ -648,7 +649,9 @@ public class FventanaIncial extends javax.swing.JFrame {
         menuActualizarPrecios.add(jmModificarPrecio1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema Miyake Distribuidora.");
         setBackground(new java.awt.Color(9, 182, 201));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMinimumSize(new java.awt.Dimension(412, 641));
 
         panelPrincipal.setAlignmentX(0.0F);
@@ -709,7 +712,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
         taskPaneModuloDistribuidor.getContentPane().add(btnCrudProveedr);
 
-        TomaFisicaDistribuidora_boton_.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417901443_Warehouse_icon_3D_rev-16.png"))); // NOI18N
         TomaFisicaDistribuidora_boton_.setText("Toma Fisica                        ");
         TomaFisicaDistribuidora_boton_.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         TomaFisicaDistribuidora_boton_.setBorderPainted(false);
@@ -750,7 +752,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
         taskPaneModuloDistribuidor.getContentPane().add(AsignarMercancia_boton_);
 
-        botonEnvio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416789780_database_gear.png"))); // NOI18N
         botonEnvio.setText("Control de Envios            ");
         botonEnvio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botonEnvio.setBorderPainted(false);
@@ -1569,6 +1570,11 @@ public class FventanaIncial extends javax.swing.JFrame {
         jMenuExportarDatos.add(jMenuItemExportarDatDesc);
 
         jMenuItemExportarBD.setText("Exportar Base de Datos");
+        jMenuItemExportarBD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemExportarBDActionPerformed(evt);
+            }
+        });
         jMenuExportarDatos.add(jMenuItemExportarBD);
 
         menuUtilidades.add(jMenuExportarDatos);
@@ -1586,6 +1592,8 @@ public class FventanaIncial extends javax.swing.JFrame {
         jMenuBarSistemaMiyake.add(menuAyuda);
 
         setJMenuBar(jMenuBarSistemaMiyake);
+
+        getAccessibleContext().setAccessibleDescription("Sistema Miyake Distribuidora.");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -2210,6 +2218,10 @@ public class FventanaIncial extends javax.swing.JFrame {
     private void TomaFisicaTiendas_boton_MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TomaFisicaTiendas_boton_MouseExited
         TomaFisicaTiendas_boton_.setBorderPainted(false);
     }//GEN-LAST:event_TomaFisicaTiendas_boton_MouseExited
+
+    private void jMenuItemExportarBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemExportarBDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemExportarBDActionPerformed
 
     public static void main(String args[]) {
 

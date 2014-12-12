@@ -1090,6 +1090,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Exportar Base de Datos"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemExportarBDActionPerformed"/>
+                  </Events>
                 </MenuItem>
               </SubComponents>
             </Menu>
@@ -1251,9 +1254,6 @@
                             </Component>
                             <Component class="javax.swing.JButton" name="TomaFisicaDistribuidora_boton_">
                               <Properties>
-                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                                  <Image iconType="3" name="/icon_almacen/1417901443_Warehouse_icon_3D_rev-16.png"/>
-                                </Property>
                                 <Property name="text" type="java.lang.String" value="Toma Fisica                        "/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
@@ -1294,9 +1294,6 @@
                             </Component>
                             <Component class="javax.swing.JButton" name="botonEnvio">
                               <Properties>
-                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                                  <Image iconType="3" name="/icon_almacen/1416789780_database_gear.png"/>
-                                </Property>
                                 <Property name="text" type="java.lang.String" value="Control de Envios            "/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
