@@ -44,10 +44,10 @@
 		</box>
 	</style>
 	<subDataset name="New Dataset 1" uuid="5f02f02a-a739-4c4d-addc-fb15448630dd">
-		<parameter name="Desde" class="net.sf.jasperreports.types.date.DateRange">
+		<parameter name="Desde" class="java.lang.String">
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
-		<parameter name="Hasta" class="net.sf.jasperreports.types.date.DateRange">
+		<parameter name="Hasta" class="java.lang.String">
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
 		<queryString>
@@ -72,8 +72,8 @@ AND ivt.fecha_modificacion <= $P!{Hasta};]]>
 		<field name="descripcion" class="java.lang.String"/>
 		<field name="nombre" class="java.lang.String"/>
 	</subDataset>
-	<parameter name="FechaDesde" class="net.sf.jasperreports.types.date.DateRange"/>
-	<parameter name="FechaHasta" class="net.sf.jasperreports.types.date.DateRange"/>
+	<parameter name="FechaDesde" class="java.lang.String"/>
+	<parameter name="FechaHasta" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -91,7 +91,7 @@ AND ivt.fecha_modificacion <= $P!{Hasta};]]>
 			<componentElement>
 				<reportElement key="table 1" style="table 1" x="0" y="0" width="555" height="66" uuid="dbadbf76-c66f-414a-85ec-e148c77274ec"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="New Dataset 1" uuid="bdc5e234-bd61-4f1c-80a5-65e51a606347">
+					<datasetRun subDataset="New Dataset 1" uuid="46348537-f111-455d-abd9-353916005719">
 						<datasetParameter name="Desde">
 							<datasetParameterExpression><![CDATA[$P{FechaDesde}]]></datasetParameterExpression>
 						</datasetParameter>
@@ -102,32 +102,37 @@ AND ivt.fecha_modificacion <= $P!{Hasta};]]>
 					</datasetRun>
 					<jr:column width="90" uuid="96462738-1166-4592-81ef-4c1faa9da838">
 						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
-						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
+						<jr:detailCell style="table 1_TD" height="32" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="30" uuid="b068c972-8432-4da8-825d-2fed64e8f0e6"/>
+								<reportElement x="0" y="0" width="90" height="32" uuid="7fa0b6bc-3acf-4f17-8d2c-ff7fc5e74e7c"/>
 								<textFieldExpression><![CDATA[$F{id_producto}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="90" uuid="949a2dd5-3734-4d40-88f5-918da8a8fd67">
 						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
-						<jr:detailCell style="table 1_TD" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="32" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="32" uuid="a11f5ada-5f2d-48fc-992b-db82b71b3f61"/>
+								<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
 					</jr:column>
 					<jr:column width="90" uuid="2174463d-25af-452c-bb88-5260e3e9f2d5">
 						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
-						<jr:detailCell style="table 1_TD" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="32" rowSpan="1"/>
 					</jr:column>
 					<jr:column width="90" uuid="35e4de81-691d-4bfe-b8bc-e6b8fdef0855">
 						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
-						<jr:detailCell style="table 1_TD" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="32" rowSpan="1"/>
 					</jr:column>
 					<jr:column width="90" uuid="80a1c6f6-beae-40cc-81b0-c570056a191c">
 						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
-						<jr:detailCell style="table 1_TD" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="32" rowSpan="1"/>
 					</jr:column>
-					<jr:column width="90" uuid="f114e19e-4027-4ad5-bf47-57d1ed33cad3">
+					<jr:column width="103" uuid="f114e19e-4027-4ad5-bf47-57d1ed33cad3">
 						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1"/>
-						<jr:detailCell style="table 1_TD" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 1_TD" height="32" rowSpan="1"/>
 					</jr:column>
 				</jr:table>
 			</componentElement>
