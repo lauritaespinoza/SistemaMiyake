@@ -1,5 +1,6 @@
 package gui.ventanas;
 
+import gui.dialogos.JDbackupDB;
 import gui.dialogos.JDfaturasCSV;
 import gui.paneles.Asignar1;
 import gui.paneles.Distribuidora1;
@@ -73,6 +74,7 @@ public class FventanaIncial extends javax.swing.JFrame {
 
     public static List<List> listaUsuarioMain;
     private JDfaturasCSV jdFacturasCSV;
+    private JDbackupDB jdBackUp;
 
     public FventanaIncial() {
         initComponents();
@@ -286,25 +288,25 @@ public class FventanaIncial extends javax.swing.JFrame {
         jMenuItemProductoModificar = new javax.swing.JMenuItem();
         jMenuItemProductoEliminar = new javax.swing.JMenuItem();
         jMenuMarcas_ = new javax.swing.JMenu();
-        jMenuItemAlmacenConsultar2 = new javax.swing.JMenuItem();
-        jMenuItemAlmacenCrear2 = new javax.swing.JMenuItem();
-        jMenuItemAlmacenModificar2 = new javax.swing.JMenuItem();
-        jMenuItemAlmacenEliminar2 = new javax.swing.JMenuItem();
+        jMenuItemMarcaConsultar = new javax.swing.JMenuItem();
+        jMenuItemMarcaCrear = new javax.swing.JMenuItem();
+        jMenuItemMarcaModificar = new javax.swing.JMenuItem();
+        jMenuItemMarcaEliminar = new javax.swing.JMenuItem();
         jMenuClasificacion_ = new javax.swing.JMenu();
-        jMenuItemAlmacenConsultar3 = new javax.swing.JMenuItem();
-        jMenuItemAlmacenCrear3 = new javax.swing.JMenuItem();
-        jMenuItemAlmacenModificar3 = new javax.swing.JMenuItem();
-        jMenuItemAlmacenEliminar3 = new javax.swing.JMenuItem();
+        jMenuItemClasificacionConsultar = new javax.swing.JMenuItem();
+        jMenuItemClasificacionCrear = new javax.swing.JMenuItem();
+        jMenuItemClasificacionModificar = new javax.swing.JMenuItem();
+        jMenuItemClasificacionEliminar = new javax.swing.JMenuItem();
         jMenuDepartamento = new javax.swing.JMenu();
-        jMenuItemAlmacenConsultar4 = new javax.swing.JMenuItem();
-        jMenuItemAlmacenCrear4 = new javax.swing.JMenuItem();
-        jMenuItemAlmacenModificar4 = new javax.swing.JMenuItem();
-        jMenuItemAlmacenEliminar4 = new javax.swing.JMenuItem();
+        jMenuItemDepartamentoConsultar = new javax.swing.JMenuItem();
+        jMenuItemDepartamentoCrear = new javax.swing.JMenuItem();
+        jMenuItemDepartamentoModificar = new javax.swing.JMenuItem();
+        jMenuItemDepartamentoEliminar = new javax.swing.JMenuItem();
         jMenuDivision = new javax.swing.JMenu();
-        jMenuItemAlmacenConsultar5 = new javax.swing.JMenuItem();
-        jMenuItemAlmacenCrear5 = new javax.swing.JMenuItem();
-        jMenuItemAlmacenModificar5 = new javax.swing.JMenuItem();
-        jMenuItemAlmacenEliminar5 = new javax.swing.JMenuItem();
+        jMenuItemDivisionConsultar = new javax.swing.JMenuItem();
+        jMenuItemDivisionCrear = new javax.swing.JMenuItem();
+        jMenuItemDivisionModificar = new javax.swing.JMenuItem();
+        jMenuItemDivisionEliminar = new javax.swing.JMenuItem();
         menuUsuario = new javax.swing.JMenu();
         jMenuItemUsuarioConsulta = new javax.swing.JMenuItem();
         jMenuItemUsuarioCrear = new javax.swing.JMenuItem();
@@ -1294,145 +1296,145 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jMenuMarcas_.setText("Marcas");
 
-        jMenuItemAlmacenConsultar2.setText("Consultar");
-        jMenuItemAlmacenConsultar2.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemMarcaConsultar.setText("Consultar");
+        jMenuItemMarcaConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemAlmacenConsultar2ActionPerformed(evt);
+                jMenuItemMarcaConsultarActionPerformed(evt);
             }
         });
-        jMenuMarcas_.add(jMenuItemAlmacenConsultar2);
+        jMenuMarcas_.add(jMenuItemMarcaConsultar);
 
-        jMenuItemAlmacenCrear2.setText("Crear");
-        jMenuItemAlmacenCrear2.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemMarcaCrear.setText("Crear");
+        jMenuItemMarcaCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemAlmacenCrear2ActionPerformed(evt);
+                jMenuItemMarcaCrearActionPerformed(evt);
             }
         });
-        jMenuMarcas_.add(jMenuItemAlmacenCrear2);
+        jMenuMarcas_.add(jMenuItemMarcaCrear);
 
-        jMenuItemAlmacenModificar2.setText("Modificar");
-        jMenuItemAlmacenModificar2.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemMarcaModificar.setText("Modificar");
+        jMenuItemMarcaModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemAlmacenModificar2ActionPerformed(evt);
+                jMenuItemMarcaModificarActionPerformed(evt);
             }
         });
-        jMenuMarcas_.add(jMenuItemAlmacenModificar2);
+        jMenuMarcas_.add(jMenuItemMarcaModificar);
 
-        jMenuItemAlmacenEliminar2.setText("Eliminar");
-        jMenuItemAlmacenEliminar2.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemMarcaEliminar.setText("Eliminar");
+        jMenuItemMarcaEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemAlmacenEliminar2ActionPerformed(evt);
+                jMenuItemMarcaEliminarActionPerformed(evt);
             }
         });
-        jMenuMarcas_.add(jMenuItemAlmacenEliminar2);
+        jMenuMarcas_.add(jMenuItemMarcaEliminar);
 
         menuProducto.add(jMenuMarcas_);
 
         jMenuClasificacion_.setText("Clasificacion");
 
-        jMenuItemAlmacenConsultar3.setText("Consultar");
-        jMenuItemAlmacenConsultar3.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemClasificacionConsultar.setText("Consultar");
+        jMenuItemClasificacionConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemAlmacenConsultar3ActionPerformed(evt);
+                jMenuItemClasificacionConsultarActionPerformed(evt);
             }
         });
-        jMenuClasificacion_.add(jMenuItemAlmacenConsultar3);
+        jMenuClasificacion_.add(jMenuItemClasificacionConsultar);
 
-        jMenuItemAlmacenCrear3.setText("Crear");
-        jMenuItemAlmacenCrear3.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemClasificacionCrear.setText("Crear");
+        jMenuItemClasificacionCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemAlmacenCrear3ActionPerformed(evt);
+                jMenuItemClasificacionCrearActionPerformed(evt);
             }
         });
-        jMenuClasificacion_.add(jMenuItemAlmacenCrear3);
+        jMenuClasificacion_.add(jMenuItemClasificacionCrear);
 
-        jMenuItemAlmacenModificar3.setText("Modificar");
-        jMenuItemAlmacenModificar3.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemClasificacionModificar.setText("Modificar");
+        jMenuItemClasificacionModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemAlmacenModificar3ActionPerformed(evt);
+                jMenuItemClasificacionModificarActionPerformed(evt);
             }
         });
-        jMenuClasificacion_.add(jMenuItemAlmacenModificar3);
+        jMenuClasificacion_.add(jMenuItemClasificacionModificar);
 
-        jMenuItemAlmacenEliminar3.setText("Eliminar");
-        jMenuItemAlmacenEliminar3.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemClasificacionEliminar.setText("Eliminar");
+        jMenuItemClasificacionEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemAlmacenEliminar3ActionPerformed(evt);
+                jMenuItemClasificacionEliminarActionPerformed(evt);
             }
         });
-        jMenuClasificacion_.add(jMenuItemAlmacenEliminar3);
+        jMenuClasificacion_.add(jMenuItemClasificacionEliminar);
 
         menuProducto.add(jMenuClasificacion_);
 
         jMenuDepartamento.setText("Departamento");
 
-        jMenuItemAlmacenConsultar4.setText("Consultar");
-        jMenuItemAlmacenConsultar4.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemDepartamentoConsultar.setText("Consultar");
+        jMenuItemDepartamentoConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemAlmacenConsultar4ActionPerformed(evt);
+                jMenuItemDepartamentoConsultarActionPerformed(evt);
             }
         });
-        jMenuDepartamento.add(jMenuItemAlmacenConsultar4);
+        jMenuDepartamento.add(jMenuItemDepartamentoConsultar);
 
-        jMenuItemAlmacenCrear4.setText("Crear");
-        jMenuItemAlmacenCrear4.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemDepartamentoCrear.setText("Crear");
+        jMenuItemDepartamentoCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemAlmacenCrear4ActionPerformed(evt);
+                jMenuItemDepartamentoCrearActionPerformed(evt);
             }
         });
-        jMenuDepartamento.add(jMenuItemAlmacenCrear4);
+        jMenuDepartamento.add(jMenuItemDepartamentoCrear);
 
-        jMenuItemAlmacenModificar4.setText("Modificar");
-        jMenuItemAlmacenModificar4.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemDepartamentoModificar.setText("Modificar");
+        jMenuItemDepartamentoModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemAlmacenModificar4ActionPerformed(evt);
+                jMenuItemDepartamentoModificarActionPerformed(evt);
             }
         });
-        jMenuDepartamento.add(jMenuItemAlmacenModificar4);
+        jMenuDepartamento.add(jMenuItemDepartamentoModificar);
 
-        jMenuItemAlmacenEliminar4.setText("Eliminar");
-        jMenuItemAlmacenEliminar4.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemDepartamentoEliminar.setText("Eliminar");
+        jMenuItemDepartamentoEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemAlmacenEliminar4ActionPerformed(evt);
+                jMenuItemDepartamentoEliminarActionPerformed(evt);
             }
         });
-        jMenuDepartamento.add(jMenuItemAlmacenEliminar4);
+        jMenuDepartamento.add(jMenuItemDepartamentoEliminar);
 
         menuProducto.add(jMenuDepartamento);
 
         jMenuDivision.setText("Division");
 
-        jMenuItemAlmacenConsultar5.setText("Consultar");
-        jMenuItemAlmacenConsultar5.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemDivisionConsultar.setText("Consultar");
+        jMenuItemDivisionConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemAlmacenConsultar5ActionPerformed(evt);
+                jMenuItemDivisionConsultarActionPerformed(evt);
             }
         });
-        jMenuDivision.add(jMenuItemAlmacenConsultar5);
+        jMenuDivision.add(jMenuItemDivisionConsultar);
 
-        jMenuItemAlmacenCrear5.setText("Crear");
-        jMenuItemAlmacenCrear5.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemDivisionCrear.setText("Crear");
+        jMenuItemDivisionCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemAlmacenCrear5ActionPerformed(evt);
+                jMenuItemDivisionCrearActionPerformed(evt);
             }
         });
-        jMenuDivision.add(jMenuItemAlmacenCrear5);
+        jMenuDivision.add(jMenuItemDivisionCrear);
 
-        jMenuItemAlmacenModificar5.setText("Modificar");
-        jMenuItemAlmacenModificar5.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemDivisionModificar.setText("Modificar");
+        jMenuItemDivisionModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemAlmacenModificar5ActionPerformed(evt);
+                jMenuItemDivisionModificarActionPerformed(evt);
             }
         });
-        jMenuDivision.add(jMenuItemAlmacenModificar5);
+        jMenuDivision.add(jMenuItemDivisionModificar);
 
-        jMenuItemAlmacenEliminar5.setText("Eliminar");
-        jMenuItemAlmacenEliminar5.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemDivisionEliminar.setText("Eliminar");
+        jMenuItemDivisionEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemAlmacenEliminar5ActionPerformed(evt);
+                jMenuItemDivisionEliminarActionPerformed(evt);
             }
         });
-        jMenuDivision.add(jMenuItemAlmacenEliminar5);
+        jMenuDivision.add(jMenuItemDivisionEliminar);
 
         menuProducto.add(jMenuDivision);
 
@@ -1556,6 +1558,11 @@ public class FventanaIncial extends javax.swing.JFrame {
         menuUtilidades.setText("Utilidades");
 
         jMenuItemRestaurarDatos.setText("Restaurar Bases de Datos");
+        jMenuItemRestaurarDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemRestaurarDatosActionPerformed(evt);
+            }
+        });
         menuUtilidades.add(jMenuItemRestaurarDatos);
 
         jMenuExportarDatos.setText("Exportar Datos");
@@ -1569,6 +1576,11 @@ public class FventanaIncial extends javax.swing.JFrame {
         jMenuExportarDatos.add(jMenuItemExportarDatDesc);
 
         jMenuItemExportarBD.setText("Exportar Base de Datos");
+        jMenuItemExportarBD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemExportarBDActionPerformed(evt);
+            }
+        });
         jMenuExportarDatos.add(jMenuItemExportarBD);
 
         menuUtilidades.add(jMenuExportarDatos);
@@ -2103,88 +2115,88 @@ public class FventanaIncial extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemNotaCreditoActionPerformed
 
     private void jMenuItemNotaDebitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNotaDebitoActionPerformed
-        addPaneles(tabNotaCredito, JPnotaCreditoDebito.class, false, null);
+        addPaneles(tabNotaDebito, JPnotaCreditoDebito.class, false, null);
     }//GEN-LAST:event_jMenuItemNotaDebitoActionPerformed
 
     private void jMenuItemProductoConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProductoConsultarActionPerformed
-        // TODO add your handling code here:
+        addPaneles(tabProducto, JPproducto.class, null, 0);
     }//GEN-LAST:event_jMenuItemProductoConsultarActionPerformed
 
     private void jMenuItemProductoCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProductoCrearActionPerformed
-        // TODO add your handling code here:
+        addPaneles(tabProducto, JPproducto.class, null, 1);
     }//GEN-LAST:event_jMenuItemProductoCrearActionPerformed
 
     private void jMenuItemProductoModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProductoModificarActionPerformed
-        // TODO add your handling code here:
+        addPaneles(tabProducto, JPproducto.class, null, 2);
     }//GEN-LAST:event_jMenuItemProductoModificarActionPerformed
 
     private void jMenuItemProductoEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProductoEliminarActionPerformed
-        // TODO add your handling code here:
+        addPaneles(tabProducto, JPproducto.class, null, 3);
     }//GEN-LAST:event_jMenuItemProductoEliminarActionPerformed
 
-    private void jMenuItemAlmacenConsultar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenConsultar2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemAlmacenConsultar2ActionPerformed
+    private void jMenuItemMarcaConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMarcaConsultarActionPerformed
+        addPaneles(tabMarca, JPmarca.class, null, 0);
+    }//GEN-LAST:event_jMenuItemMarcaConsultarActionPerformed
 
-    private void jMenuItemAlmacenCrear2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenCrear2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemAlmacenCrear2ActionPerformed
+    private void jMenuItemMarcaCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMarcaCrearActionPerformed
+        addPaneles(tabMarca, JPmarca.class, null, 1);
+    }//GEN-LAST:event_jMenuItemMarcaCrearActionPerformed
 
-    private void jMenuItemAlmacenModificar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenModificar2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemAlmacenModificar2ActionPerformed
+    private void jMenuItemMarcaModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMarcaModificarActionPerformed
+        addPaneles(tabMarca, JPmarca.class, null, 2);
+    }//GEN-LAST:event_jMenuItemMarcaModificarActionPerformed
 
-    private void jMenuItemAlmacenEliminar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenEliminar2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemAlmacenEliminar2ActionPerformed
+    private void jMenuItemMarcaEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemMarcaEliminarActionPerformed
+        addPaneles(tabMarca, JPmarca.class, null, 3);
+    }//GEN-LAST:event_jMenuItemMarcaEliminarActionPerformed
 
-    private void jMenuItemAlmacenConsultar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenConsultar3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemAlmacenConsultar3ActionPerformed
+    private void jMenuItemClasificacionConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClasificacionConsultarActionPerformed
+        addPaneles(tabClasificacion, JPclasificacion.class, null, 0);
+    }//GEN-LAST:event_jMenuItemClasificacionConsultarActionPerformed
 
-    private void jMenuItemAlmacenCrear3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenCrear3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemAlmacenCrear3ActionPerformed
+    private void jMenuItemClasificacionCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClasificacionCrearActionPerformed
+        addPaneles(tabClasificacion, JPclasificacion.class, null, 1);
+    }//GEN-LAST:event_jMenuItemClasificacionCrearActionPerformed
 
-    private void jMenuItemAlmacenModificar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenModificar3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemAlmacenModificar3ActionPerformed
+    private void jMenuItemClasificacionModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClasificacionModificarActionPerformed
+        addPaneles(tabClasificacion, JPclasificacion.class, null, 2);
+    }//GEN-LAST:event_jMenuItemClasificacionModificarActionPerformed
 
-    private void jMenuItemAlmacenEliminar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenEliminar3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemAlmacenEliminar3ActionPerformed
+    private void jMenuItemClasificacionEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClasificacionEliminarActionPerformed
+        addPaneles(tabClasificacion, JPclasificacion.class, null, 3);
+    }//GEN-LAST:event_jMenuItemClasificacionEliminarActionPerformed
 
-    private void jMenuItemAlmacenConsultar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenConsultar4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemAlmacenConsultar4ActionPerformed
+    private void jMenuItemDepartamentoConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDepartamentoConsultarActionPerformed
+        addPaneles(tabDepartamento, JPdepartamento.class, null, 0);
+    }//GEN-LAST:event_jMenuItemDepartamentoConsultarActionPerformed
 
-    private void jMenuItemAlmacenCrear4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenCrear4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemAlmacenCrear4ActionPerformed
+    private void jMenuItemDepartamentoCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDepartamentoCrearActionPerformed
+        addPaneles(tabDepartamento, JPdepartamento.class, null, 1);
+    }//GEN-LAST:event_jMenuItemDepartamentoCrearActionPerformed
 
-    private void jMenuItemAlmacenModificar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenModificar4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemAlmacenModificar4ActionPerformed
+    private void jMenuItemDepartamentoModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDepartamentoModificarActionPerformed
+        addPaneles(tabDepartamento, JPdepartamento.class, null, 2);
+    }//GEN-LAST:event_jMenuItemDepartamentoModificarActionPerformed
 
-    private void jMenuItemAlmacenEliminar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenEliminar4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemAlmacenEliminar4ActionPerformed
+    private void jMenuItemDepartamentoEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDepartamentoEliminarActionPerformed
+        addPaneles(tabDepartamento, JPdepartamento.class, null, 3);
+    }//GEN-LAST:event_jMenuItemDepartamentoEliminarActionPerformed
 
-    private void jMenuItemAlmacenConsultar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenConsultar5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemAlmacenConsultar5ActionPerformed
+    private void jMenuItemDivisionConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDivisionConsultarActionPerformed
+        addPaneles(tabDivision, JPdivision.class, null, 0);
+    }//GEN-LAST:event_jMenuItemDivisionConsultarActionPerformed
 
-    private void jMenuItemAlmacenCrear5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenCrear5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemAlmacenCrear5ActionPerformed
+    private void jMenuItemDivisionCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDivisionCrearActionPerformed
+        addPaneles(tabDivision, JPdivision.class, null, 1);
+    }//GEN-LAST:event_jMenuItemDivisionCrearActionPerformed
 
-    private void jMenuItemAlmacenModificar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenModificar5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemAlmacenModificar5ActionPerformed
+    private void jMenuItemDivisionModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDivisionModificarActionPerformed
+        addPaneles(tabDivision, JPdivision.class, null, 2);
+    }//GEN-LAST:event_jMenuItemDivisionModificarActionPerformed
 
-    private void jMenuItemAlmacenEliminar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlmacenEliminar5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemAlmacenEliminar5ActionPerformed
+    private void jMenuItemDivisionEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDivisionEliminarActionPerformed
+        addPaneles(tabDivision, JPdivision.class, null, 3);
+    }//GEN-LAST:event_jMenuItemDivisionEliminarActionPerformed
 
     private void AsignarMercancia_boton_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsignarMercancia_boton_ActionPerformed
         addPaneles(tabAsignarMercancia, Asignar1.class, null, null);
@@ -2210,6 +2222,22 @@ public class FventanaIncial extends javax.swing.JFrame {
     private void TomaFisicaTiendas_boton_MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TomaFisicaTiendas_boton_MouseExited
         TomaFisicaTiendas_boton_.setBorderPainted(false);
     }//GEN-LAST:event_TomaFisicaTiendas_boton_MouseExited
+
+    private void jMenuItemExportarBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemExportarBDActionPerformed
+        if (jdBackUp == null) {
+            jdBackUp = new JDbackupDB(this, true);
+        }
+
+        jdBackUp.setVisible(true);
+    }//GEN-LAST:event_jMenuItemExportarBDActionPerformed
+
+    private void jMenuItemRestaurarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRestaurarDatosActionPerformed
+        if (jdBackUp == null) {
+            jdBackUp = new JDbackupDB(this, true);
+        }
+
+        jdBackUp.setVisible(true);
+    }//GEN-LAST:event_jMenuItemRestaurarDatosActionPerformed
 
     public static void main(String args[]) {
 
@@ -2269,36 +2297,36 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemAbrirCerrarInternos;
     private javax.swing.JMenuItem jMenuItemAcercaDe;
     private javax.swing.JMenuItem jMenuItemAlmacenConsultar;
-    private javax.swing.JMenuItem jMenuItemAlmacenConsultar2;
-    private javax.swing.JMenuItem jMenuItemAlmacenConsultar3;
-    private javax.swing.JMenuItem jMenuItemAlmacenConsultar4;
-    private javax.swing.JMenuItem jMenuItemAlmacenConsultar5;
     private javax.swing.JMenuItem jMenuItemAlmacenCrear;
-    private javax.swing.JMenuItem jMenuItemAlmacenCrear2;
-    private javax.swing.JMenuItem jMenuItemAlmacenCrear3;
-    private javax.swing.JMenuItem jMenuItemAlmacenCrear4;
-    private javax.swing.JMenuItem jMenuItemAlmacenCrear5;
     private javax.swing.JMenuItem jMenuItemAlmacenEliminar;
-    private javax.swing.JMenuItem jMenuItemAlmacenEliminar2;
-    private javax.swing.JMenuItem jMenuItemAlmacenEliminar3;
-    private javax.swing.JMenuItem jMenuItemAlmacenEliminar4;
-    private javax.swing.JMenuItem jMenuItemAlmacenEliminar5;
     private javax.swing.JMenuItem jMenuItemAlmacenModificar;
-    private javax.swing.JMenuItem jMenuItemAlmacenModificar2;
-    private javax.swing.JMenuItem jMenuItemAlmacenModificar3;
-    private javax.swing.JMenuItem jMenuItemAlmacenModificar4;
-    private javax.swing.JMenuItem jMenuItemAlmacenModificar5;
     private javax.swing.JMenuItem jMenuItemBuscarPanel;
+    private javax.swing.JMenuItem jMenuItemClasificacionConsultar;
+    private javax.swing.JMenuItem jMenuItemClasificacionCrear;
+    private javax.swing.JMenuItem jMenuItemClasificacionEliminar;
+    private javax.swing.JMenuItem jMenuItemClasificacionModificar;
     private javax.swing.JMenuItem jMenuItemContactoConsultar;
     private javax.swing.JMenuItem jMenuItemContactoCrear;
     private javax.swing.JMenuItem jMenuItemContactoEliminar;
     private javax.swing.JMenuItem jMenuItemContactoModificar;
+    private javax.swing.JMenuItem jMenuItemDepartamentoConsultar;
+    private javax.swing.JMenuItem jMenuItemDepartamentoCrear;
+    private javax.swing.JMenuItem jMenuItemDepartamentoEliminar;
+    private javax.swing.JMenuItem jMenuItemDepartamentoModificar;
     private javax.swing.JMenuItem jMenuItemDetFactura;
+    private javax.swing.JMenuItem jMenuItemDivisionConsultar;
+    private javax.swing.JMenuItem jMenuItemDivisionCrear;
+    private javax.swing.JMenuItem jMenuItemDivisionEliminar;
+    private javax.swing.JMenuItem jMenuItemDivisionModificar;
     private javax.swing.JMenuItem jMenuItemExistenciaFisica;
     private javax.swing.JMenuItem jMenuItemExportarBD;
     private javax.swing.JMenuItem jMenuItemExportarDatDesc;
     private javax.swing.JMenuItem jMenuItemImprimirEtiquetas;
     private javax.swing.JMenuItem jMenuItemInvDiario;
+    private javax.swing.JMenuItem jMenuItemMarcaConsultar;
+    private javax.swing.JMenuItem jMenuItemMarcaCrear;
+    private javax.swing.JMenuItem jMenuItemMarcaEliminar;
+    private javax.swing.JMenuItem jMenuItemMarcaModificar;
     private javax.swing.JMenuItem jMenuItemNotaCredito;
     private javax.swing.JMenuItem jMenuItemNotaDebito;
     private javax.swing.JMenuItem jMenuItemProductoConsultar;
