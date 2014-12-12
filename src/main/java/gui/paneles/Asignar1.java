@@ -1212,7 +1212,7 @@ public class Asignar1 extends javax.swing.JPanel {
             }
         } catch (NumberFormatException | HeadlessException e) {
             System.err.println("ERROR Siguiente : \n Imposible Asignar Mercancia (NO Hay Sufiente)  :" + e);
-            Logger.getLogger(JPAsignarMercancia.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(Asignar1.class.getName()).log(Level.SEVERE, null, e);
         }
 
     }//GEN-LAST:event_txtCantidadActionPerformed

@@ -391,9 +391,6 @@
                           <Dimension value="[492, 47]"/>
                         </Property>
                       </Properties>
-                      <AccessibilityProperties>
-                        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Panel de Busqueda"/>
-                      </AccessibilityProperties>
 
                       <Layout>
                         <DimensionLayout dim="0">

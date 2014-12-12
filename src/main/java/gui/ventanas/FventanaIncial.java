@@ -653,6 +653,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         menuActualizarPrecios.add(jmModificarPrecio1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema Miyake.");
         setBackground(new java.awt.Color(9, 182, 201));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
