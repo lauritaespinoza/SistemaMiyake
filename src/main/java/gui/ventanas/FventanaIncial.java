@@ -84,7 +84,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         FventanaIncial.listaUsuarioMain = user;
 
         initComponents();
-
+        this.setIconImage(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1418331232_house.png")).getImage()); 
         ClockLabel clock = new ClockLabel();
         getContentPane().add(clock, BorderLayout.PAGE_END);
     }
@@ -654,14 +654,17 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(9, 182, 201));
-        setMinimumSize(new java.awt.Dimension(412, 641));
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 600));
 
         panelPrincipal.setAlignmentX(0.0F);
         panelPrincipal.setAlignmentY(0.0F);
         panelPrincipal.setLayout(new java.awt.BorderLayout());
 
+        jScrollPane.setToolTipText("Para Abrir/Cerrar Panel (Ctrl+A)");
         jScrollPane.setHorizontalScrollBar(null);
 
+        jPanelControlesPrincipales.setToolTipText("Para Abrir/Cerrar Panel (Ctrl+A)");
         jPanelControlesPrincipales.setAlignmentX(0.0F);
         jPanelControlesPrincipales.setLayout(new javax.swing.BoxLayout(jPanelControlesPrincipales, javax.swing.BoxLayout.Y_AXIS));
 
@@ -1611,6 +1614,8 @@ public class FventanaIncial extends javax.swing.JFrame {
         jMenuBarSistemaMiyake.add(menuAyuda);
 
         setJMenuBar(jMenuBarSistemaMiyake);
+
+        getAccessibleContext().setAccessibleDescription("Sistema Miyake.");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
