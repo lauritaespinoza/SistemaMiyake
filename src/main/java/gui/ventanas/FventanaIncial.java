@@ -676,11 +676,10 @@ public class FventanaIncial extends javax.swing.JFrame {
         jXCollapsiblePaneAbajo.setAlignmentX(0.0F);
         jXCollapsiblePaneAbajo.getContentPane().setLayout(new org.jdesktop.swingx.VerticalLayout());
 
-        taskPaneModuloDistribuidor.setCollapsed(true);
         taskPaneModuloDistribuidor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416862043_inventory-maintenance.png"))); // NOI18N
         taskPaneModuloDistribuidor.setTitle("Distribuidora");
 
-        btnContainer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636398_document.png"))); // NOI18N
+        btnContainer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/CSV.png"))); // NOI18N
         btnContainer.setText("Registrar Container        ");
         btnContainer.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnContainer.setBorderPainted(false);
@@ -788,7 +787,6 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jXCollapsiblePaneAbajo.getContentPane().add(taskPaneModuloDistribuidor);
 
-        taskPaneModuloTienda.setCollapsed(true);
         taskPaneModuloTienda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636353_shop.png"))); // NOI18N
         taskPaneModuloTienda.setTitle("Tiendas");
 
@@ -880,7 +878,6 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jXCollapsiblePaneAbajo.getContentPane().add(taskPaneModuloTienda);
 
-        taskPaneModuloGestionProductos.setCollapsed(true);
         taskPaneModuloGestionProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/GestionProducto.png"))); // NOI18N
         taskPaneModuloGestionProductos.setTitle("Gestión de Productos");
 
@@ -962,6 +959,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         jXCollapsiblePaneAbajo.getContentPane().add(taskPaneModuloGestionProductos);
 
         jXTaskPaneReportes.setCollapsed(true);
+        jXTaskPaneReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Reporte.png"))); // NOI18N
         jXTaskPaneReportes.setTitle("Reportes");
         jXTaskPaneReportes.setToolTipText("");
 
