@@ -85,7 +85,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
+          <Component id="jScrollPane2" alignment="0" pref="814" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -113,16 +113,16 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="botonCencelarAgregar" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                                      <Component id="botonGenerarNotas" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
-                                      <Component id="botonImprimir" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="152" max="-2" attributes="0"/>
-                                      <Component id="jButtonGuardarConteo" min="-2" max="-2" attributes="0"/>
+                                      <Component id="botonCencelarAgregar" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                      <Component id="botonGenerarNotas" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="botonImprimir" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                      <Component id="jButtonGuardarConteo" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -132,9 +132,9 @@
                               </Group>
                           </Group>
                           <Component id="jXTaskPaneLCabeceraTiendas" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jScrollPane4" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jScrollPane4" alignment="0" pref="660" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -192,8 +192,8 @@
                       <EmptySpace min="0" pref="194" max="32767" attributes="0"/>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jScrollPane3" min="-2" pref="194" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="jScrollPane3" pref="183" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -225,7 +225,7 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jSeparator3" max="32767" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
@@ -242,54 +242,50 @@
                                               <Group type="102" attributes="0">
                                                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="jButtonListarPedidos" max="32767" attributes="0"/>
+                                                  <Component id="jButtonListarPedidos" pref="367" max="32767" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Group type="103" groupAlignment="1" attributes="0">
-                                                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jXLabel12" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                                       <Group type="102" attributes="0">
-                                                          <Component id="txtTiendaDesde" min="-2" pref="97" max="-2" attributes="0"/>
-                                                          <EmptySpace max="32767" attributes="0"/>
+                                                          <Component id="jXLabel12" min="-2" max="-2" attributes="0"/>
+                                                          <EmptySpace max="-2" attributes="0"/>
+                                                          <Component id="txtTiendaDesde" min="-2" pref="123" max="-2" attributes="0"/>
+                                                          <EmptySpace max="-2" attributes="0"/>
                                                           <Component id="jXLabel13" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="102" attributes="0">
-                                                          <Component id="txtSalidaID" min="-2" pref="63" max="-2" attributes="0"/>
                                                           <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                      <Component id="txtEmitidoPor" pref="40" max="32767" attributes="0"/>
-                                                      <Component id="txtEstatus" max="32767" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Group type="102" attributes="0">
-                                                          <Component id="jXLabel10" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="txtSalidaIDFecha" max="32767" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="102" attributes="0">
+                                                          <Component id="txtEstatus" max="32767" attributes="0"/>
+                                                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                                                           <Component id="jXLabel14" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <Group type="102" attributes="0">
+                                                          <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                                                           <EmptySpace max="-2" attributes="0"/>
+                                                          <Component id="txtSalidaID" max="32767" attributes="0"/>
+                                                          <EmptySpace max="-2" attributes="0"/>
+                                                          <Component id="jLabel8" min="-2" pref="73" max="-2" attributes="0"/>
+                                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                                          <Component id="txtEmitidoPor" max="32767" attributes="0"/>
+                                                          <EmptySpace max="-2" attributes="0"/>
+                                                          <Component id="jXLabel10" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                                  <Group type="103" groupAlignment="1" attributes="0">
+                                                      <Group type="102" alignment="1" attributes="0">
+                                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                                           <Component id="txtTotalSalidaID" max="32767" attributes="0"/>
                                                       </Group>
+                                                      <Component id="txtSalidaIDFecha" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="botonReiniciarTodoDesdeFActura" max="32767" attributes="0"/>
                                               <Component id="botonConfirmarFactura" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -328,15 +324,15 @@
                                               <Component id="jXLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="jXLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="txtTotalSalidaID" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="botonReiniciarTodoDesdeFActura" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
                                           <Component id="botonConfirmarFactura" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="botonReiniciarTodoDesdeFActura" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -435,6 +431,9 @@
                               <Dimension value="[40, 22]"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEmitidoPorActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel8">
                           <Properties>
@@ -455,6 +454,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel9">
                           <Properties>
+                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                              <Image iconType="3" name="/icon_almacen/1416789267_clean.png"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="ID"/>
                           </Properties>
                         </Component>
@@ -473,11 +475,23 @@
                           </Properties>
                         </Component>
                         <Component class="org.jdesktop.swingx.JXTextField" name="txtTiendaDesde">
+                          <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
+                          </Properties>
                         </Component>
                         <Component class="org.jdesktop.swingx.JXTextField" name="txtEstatus">
+                          <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEstatusActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="org.jdesktop.swingx.JXLabel" name="jXLabel12">
                           <Properties>
+                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                              <Image iconType="3" name="/icon_almacen/1417636330_store.png"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Tienda"/>
                           </Properties>
                         </Component>
@@ -488,10 +502,16 @@
                         </Component>
                         <Component class="org.jdesktop.swingx.JXLabel" name="jXLabel14">
                           <Properties>
+                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                              <Image iconType="3" name="/icon_almacen/1418331222_coins.png"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Total"/>
                           </Properties>
                         </Component>
                         <Component class="org.jdesktop.swingx.JXTextField" name="txtTotalSalidaID">
+                          <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
+                          </Properties>
                         </Component>
                         <Component class="javax.swing.JSeparator" name="jSeparator3">
                         </Component>
@@ -542,7 +562,7 @@
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Component id="jLayeredPaneDatosProductos" max="32767" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="jScrollPane5" pref="213" max="32767" attributes="0"/>
+                              <Component id="jScrollPane5" pref="269" max="32767" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Component id="botonTotalizar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
@@ -630,10 +650,9 @@
                         <Component class="javax.swing.JComboBox" name="comboBoxTipoBusqueda">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                              <StringArray count="3">
+                              <StringArray count="2">
                                 <StringItem index="0" value="Codigo SKU"/>
                                 <StringItem index="1" value="Referencia"/>
-                                <StringItem index="2" value="Descripcion"/>
                               </StringArray>
                             </Property>
                             <Property name="enabled" type="boolean" value="false"/>
@@ -1000,7 +1019,6 @@
                   <Image iconType="3" name="/icon_almacen/limpiar.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Reiniciar"/>
-                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonCencelarAgregarActionPerformed"/>

@@ -82,6 +82,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         FventanaIncial.listaUsuarioMain = user;
 
         initComponents();
+        this.setIconImage(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1418331232_house.png")).getImage()); 
 
         ClockLabel clock = new ClockLabel();
         getContentPane().add(clock, BorderLayout.PAGE_END);
@@ -649,7 +650,9 @@ public class FventanaIncial extends javax.swing.JFrame {
         menuActualizarPrecios.add(jmModificarPrecio1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema Miyake Distribuidora.");
         setBackground(new java.awt.Color(9, 182, 201));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMinimumSize(new java.awt.Dimension(412, 641));
 
         panelPrincipal.setAlignmentX(0.0F);
@@ -1600,6 +1603,8 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBarSistemaMiyake);
 
+        getAccessibleContext().setAccessibleDescription("Sistema Miyake Distribuidora.");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1638,13 +1643,15 @@ public class FventanaIncial extends javax.swing.JFrame {
     }//GEN-LAST:event_TomaFisicaDistribuidora_boton_ActionPerformed
 
     private void AsignarMercancia_boton_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsignarMercancia_boton_ActionPerformed
-
-        addPaneles(tabAsignarMercancia, Asignar1.class, null, null);
+panelClosableCentral.addTab(tabAsignarMercancia,new Asignar1());
+       // addPaneles(tabAsignarMercancia, Asignar1.class, null, null);
     }//GEN-LAST:event_AsignarMercancia_boton_ActionPerformed
 
     private void TomaFisicaTiendas_boton_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TomaFisicaTiendas_boton_ActionPerformed
 
         addPaneles(tabTomaFisicaTiendas, Tiendas1.class, null, null);
+       
+        
     }//GEN-LAST:event_TomaFisicaTiendas_boton_ActionPerformed
 
     private void btnCrudProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrudProductoMouseEntered

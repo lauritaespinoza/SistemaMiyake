@@ -113,7 +113,7 @@
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Seleccionar Datos Para Asignar Mercancia"/>
+                        <TitledBorder title="SeleccionarTienda Para Consultar Existencia F&#xed;sica de Mercancia"/>
                       </Border>
                     </Property>
                     <Property name="toolTipText" type="java.lang.String" value="Seleciones Una Tienda y Presione Confirmar"/>
@@ -134,9 +134,9 @@
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
-                                      <Component id="jXButtonConfirmar" pref="129" max="32767" attributes="0"/>
+                                      <Component id="jXButtonConfirmar" pref="149" max="32767" attributes="0"/>
                                       <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                                      <Component id="jXButtonReiniciar" pref="121" max="32767" attributes="0"/>
+                                      <Component id="jXButtonReiniciar" pref="142" max="32767" attributes="0"/>
                                       <EmptySpace min="-2" pref="172" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -207,9 +207,9 @@
                     <Component class="org.jdesktop.swingx.JXLabel" name="jXLabel10">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/icon_almacen/hasta.png"/>
+                          <Image iconType="3" name="/icon_almacen/1417636333_store.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Desde Tienda"/>
+                        <Property name="text" type="java.lang.String" value="Tienda"/>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -320,16 +320,25 @@
             </Container>
             <Component class="org.jdesktop.swingx.JXButton" name="jXButtonAceptar">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon_almacen/1416789267_clean.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Aceptar"/>
               </Properties>
             </Component>
             <Component class="org.jdesktop.swingx.JXButton" name="jXButtonImprimir">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon_almacen/1418331399_Print.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Imprimir"/>
               </Properties>
             </Component>
             <Component class="org.jdesktop.swingx.JXButton" name="jXButtonCancelar">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon_almacen/1416789274_clear_left.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Cancelar"/>
               </Properties>
             </Component>

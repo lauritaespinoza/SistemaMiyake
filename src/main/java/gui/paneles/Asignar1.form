@@ -49,7 +49,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jXTaskPaneCabeceraAsignacion" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
@@ -59,7 +59,7 @@
                           <Component id="jScrollPane4" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jXButtonReiniciarFooter" min="-2" pref="136" max="-2" attributes="0"/>
-                              <EmptySpace pref="142" max="32767" attributes="0"/>
+                              <EmptySpace pref="162" max="32767" attributes="0"/>
                               <Component id="busy1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                               <Component id="jXButtonImprimir_" min="-2" max="-2" attributes="0"/>
@@ -67,19 +67,19 @@
                               <Component id="jXButtonAsignarMercancia" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="jXTaskPaneCabeceraAsignacion" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="busy" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="jScrollPane4" pref="433" max="32767" attributes="0"/>
+                      <Component id="jScrollPane4" pref="444" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
@@ -187,7 +187,7 @@
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="comboBoxAlmacenHasta" alignment="0" pref="542" max="32767" attributes="0"/>
+                                              <Component id="comboBoxAlmacenHasta" alignment="0" pref="562" max="32767" attributes="0"/>
                                               <Component id="comboBoxAlmacenDesde" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
@@ -351,13 +351,13 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLayeredPaneDatosProductos" alignment="0" pref="691" max="32767" attributes="0"/>
+                                  <Component id="jLayeredPaneDatosProductos" alignment="0" pref="710" max="32767" attributes="0"/>
                                   <Component id="jScrollPane5" alignment="1" max="32767" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       <Component id="jXButtonTotalizar" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jLayeredPaneBuscarProducto" alignment="0" pref="691" max="32767" attributes="0"/>
+                                  <Component id="jLayeredPaneBuscarProducto" alignment="0" pref="710" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -366,11 +366,11 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLayeredPaneBuscarProducto" max="32767" attributes="0"/>
+                              <Component id="jLayeredPaneBuscarProducto" pref="52" max="32767" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="jLayeredPaneDatosProductos" pref="143" max="32767" attributes="0"/>
+                              <Component id="jLayeredPaneDatosProductos" pref="146" max="32767" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="jScrollPane5" pref="165" max="32767" attributes="0"/>
+                              <Component id="jScrollPane5" pref="168" max="32767" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Component id="jXButtonTotalizar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -386,6 +386,7 @@
                             <TitledBorder title="Buscar"/>
                           </Border>
                         </Property>
+                        <Property name="toolTipText" type="java.lang.String" value="Panel de Busqueda"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[492, 47]"/>
                         </Property>
@@ -585,7 +586,7 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jSeparator1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace pref="7" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jXLabel9" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtNroBulto" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -596,7 +597,7 @@
                                           <Component id="botonLimpiarAgregar" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="21" max="32767" attributes="0"/>
+                                  <EmptySpace pref="24" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -786,7 +787,7 @@
             <Component class="org.jdesktop.swingx.JXButton" name="jXButtonImprimir_">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/icon_almacen/1417901858_698969-icon-123-printer-16.png"/>
+                  <Image iconType="3" name="/icon_almacen/1418331399_Print.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="IMPRIMIR"/>
                 <Property name="enabled" type="boolean" value="false"/>

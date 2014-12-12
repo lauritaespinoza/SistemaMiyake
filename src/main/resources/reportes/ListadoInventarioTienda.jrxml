@@ -93,7 +93,7 @@
 		<field name="CREACION" class="java.util.Date"/>
 		<field name="MODIFICACION" class="java.util.Date"/>
 		<field name="EXISTENCIA" class="java.lang.Integer"/>
-		<field name="PROCESADO" class="java.lang.Integer"/>
+		<field name="ENVIADO" class="java.lang.Integer"/>
 	</subDataset>
 	<parameter name="facturas" class="java.lang.Integer"/>
 	<parameter name="fecha" class="java.util.Date"/>
@@ -232,8 +232,8 @@
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1"/>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="2896232d-75b0-4eca-9baf-be5ab44ffbb7"/>
-								<textFieldExpression><![CDATA[$F{PROCESADO}]]></textFieldExpression>
+								<reportElement x="0" y="0" width="90" height="20" uuid="345dd351-3b9a-40f1-800c-6e269c1ebc92"/>
+								<textFieldExpression><![CDATA[$F{ENVIADO}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>

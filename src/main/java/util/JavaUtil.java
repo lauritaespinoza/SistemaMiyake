@@ -235,7 +235,12 @@ public abstract class JavaUtil {
             oneRow.add(sa.getIdUsuario2().getNombre()+" : "+sa.getIdUsuario2().getDescripcion());
             oneRow.add(sa.getIdAlmacenHasta().getNombre());
             oneRow.add(sa.getIdAlmacenHasta().getTelefono1());
-            oneRow.add(sa.getRevisado());
+            //oneRow.add(sa.getRevisado());
+            if(sa.getRevisado()==false){
+               oneRow.add("Pendiente"); 
+            }else{
+                oneRow.add("Procesado"); 
+            } 
             oneRow.add(sa.getTotal());
             oneRow.add(sa.getFechaAsignacion());
         }
@@ -347,7 +352,7 @@ public abstract class JavaUtil {
             header.add("CREACION");
             header.add("MODIFICACION");
             header.add("EXISTENCIA");
-            header.add("PROCESADO");
+            header.add("ENVIADO");
         }
 
         if (o instanceof Almacen) {
