@@ -247,7 +247,7 @@ public class Tiendas1 extends javax.swing.JPanel {
         busy.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         jXTaskPaneLCabeceraTiendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416789183_data-16.png"))); // NOI18N
-        jXTaskPaneLCabeceraTiendas.setTitle("Detalle de Factura");
+        jXTaskPaneLCabeceraTiendas.setTitle("Cabecera de Pedidos");
 
         jScrollPane3.setPreferredSize(new java.awt.Dimension(800, 800));
 
@@ -265,8 +265,8 @@ public class Tiendas1 extends javax.swing.JPanel {
             }
         });
 
-        jXLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/distribuidora.png"))); // NOI18N
-        jXLabel1.setText("Almacen");
+        jXLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636330_store.png"))); // NOI18N
+        jXLabel1.setText("Tienda");
 
         comboBoxAlmacen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         comboBoxAlmacen.addItemListener(new java.awt.event.ItemListener() {
@@ -323,7 +323,7 @@ public class Tiendas1 extends javax.swing.JPanel {
             }
         });
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416789267_clean.png"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1418331286_counter_count_up.png"))); // NOI18N
         jLabel9.setText("ID");
 
         jXLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/fecha.png"))); // NOI18N
@@ -341,9 +341,10 @@ public class Tiendas1 extends javax.swing.JPanel {
             }
         });
 
-        jXLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636330_store.png"))); // NOI18N
-        jXLabel12.setText("Tienda");
+        jXLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636232_09.png"))); // NOI18N
+        jXLabel12.setText("Almacen");
 
+        jXLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1418331264_chart_bar.png"))); // NOI18N
         jXLabel13.setText("Estatus");
 
         jXLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1418331222_coins.png"))); // NOI18N
@@ -478,9 +479,7 @@ public class Tiendas1 extends javax.swing.JPanel {
             jXTaskPaneLCabeceraTiendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 194, Short.MAX_VALUE)
             .addGroup(jXTaskPaneLCabeceraTiendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jXTaskPaneLCabeceraTiendasLayout.createSequentialGroup()
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
-                    .addContainerGap()))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE))
         );
 
         jScrollPane4.setAutoscrolls(true);
@@ -605,6 +604,7 @@ public class Tiendas1 extends javax.swing.JPanel {
         txtMarca.setEditable(false);
         txtMarca.setEnabled(false);
 
+        jXLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416789267_clean.png"))); // NOI18N
         jXLabel8.setText("Cantidad");
 
         txtCantidad.setEnabled(false);
@@ -619,7 +619,7 @@ public class Tiendas1 extends javax.swing.JPanel {
             }
         });
 
-        jXLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/bulto.png"))); // NOI18N
+        jXLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1418352442_shipping.png"))); // NOI18N
         jXLabel9.setText("Bulto");
 
         txtNroBulto.setEditable(false);

@@ -198,7 +198,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
             }
         });
 
-        jXLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636330_store.png"))); // NOI18N
+        jXLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636232_09.png"))); // NOI18N
         jXLabel1.setText("Almacen");
 
         comboBoxAlmacen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -246,7 +246,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
         });
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1418331286_counter_count_up.png"))); // NOI18N
-        jLabel9.setText("Numero");
+        jLabel9.setText("ID");
 
         jXLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/fecha.png"))); // NOI18N
         jXLabel10.setText("Fecha");
@@ -486,6 +486,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
         txtMarca.setEditable(false);
         txtMarca.setEnabled(false);
 
+        jXLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416789267_clean.png"))); // NOI18N
         jXLabel8.setText("Cantidad");
 
         txtCantidad.setEnabled(false);
@@ -682,7 +683,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLayeredPaneDatosProductos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jXButtonTotalizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
