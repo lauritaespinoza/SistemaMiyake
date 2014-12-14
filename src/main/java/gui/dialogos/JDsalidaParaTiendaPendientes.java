@@ -375,7 +375,7 @@ public class JDsalidaParaTiendaPendientes extends javax.swing.JDialog {
             String sql = "SELECT s FROM SalidaParaTienda s WHERE  s.revisado =false and s.idAlmacenHasta.idAlmacen =" + al_actual.getIdAlmacen();
             // String sql = "SELECT s FROM SalidaParaTienda s WHERE  s.revisado =false and s.idAlmacenHasta.idAlmacen =3";
             resultList = ObjectModelDAO.getResultQuery(sql);
-            if (resultList.isEmpty()) {
+            if (resultList.isEmpty() || resultList ==null ) {
                 JOptionPane.showMessageDialog(null, "No Se Encontraron Asignaciones Disponibles Para Esta Tienda.\n"
                         + "Por Favor, Seleccione una Tienda Nueva Con Existencia Física de Productos.");
                 this.dispose();

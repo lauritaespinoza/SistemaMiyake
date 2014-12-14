@@ -39,11 +39,6 @@
   <SubComponents>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Toma Fisica Distribuidora. "/>
-          </Border>
-        </Property>
         <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="autoscrolls" type="boolean" value="true"/>
       </Properties>
@@ -61,16 +56,16 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jXTaskPane1" max="32767" attributes="0"/>
+                          <Component id="jXTaskPaneCabeceraDistribuidora" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="botonGeneralNotas" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="botonImprimir" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jButtonGuardarConteo" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jScrollPane4" alignment="0" pref="676" max="32767" attributes="0"/>
+                          <Component id="jScrollPane4" alignment="0" pref="684" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Component id="busy" min="-2" max="-2" attributes="0"/>
@@ -84,7 +79,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="jXTaskPane1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jXTaskPaneCabeceraDistribuidora" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="busy" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -110,7 +105,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Container class="org.jdesktop.swingx.JXTaskPane" name="jXTaskPane1">
+            <Container class="org.jdesktop.swingx.JXTaskPane" name="jXTaskPaneCabeceraDistribuidora">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/icon_almacen/1416789183_data-16.png"/>
@@ -121,7 +116,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="654" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="662" max="32767" attributes="0"/>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Component id="jScrollPane3" alignment="0" pref="654" max="32767" attributes="0"/>
                       </Group>
@@ -261,7 +256,7 @@
                         <Component class="org.jdesktop.swingx.JXLabel" name="jXLabel1">
                           <Properties>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/icon_almacen/distribuidora.png"/>
+                              <Image iconType="3" name="/icon_almacen/1417636330_store.png"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Almacen"/>
                           </Properties>
@@ -352,6 +347,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel9">
                           <Properties>
+                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                              <Image iconType="3" name="/icon_almacen/1418331286_counter_count_up.png"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Numero"/>
                           </Properties>
                         </Component>
@@ -401,7 +399,7 @@
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jXButton3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jXButtonTotalizar" min="-2" max="-2" attributes="0"/>
                                   <Component id="jScrollPane5" max="32767" attributes="0"/>
                                   <Component id="jLayeredPaneBuscarProducto" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jLayeredPaneDatosProductos" alignment="0" max="32767" attributes="0"/>
@@ -417,21 +415,22 @@
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Component id="jLayeredPaneDatosProductos" max="32767" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="jScrollPane5" pref="145" max="32767" attributes="0"/>
+                              <Component id="jScrollPane5" pref="155" max="32767" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="jXButton3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jXButtonTotalizar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="org.jdesktop.swingx.JXButton" name="jXButton3">
+                    <Component class="org.jdesktop.swingx.JXButton" name="jXButtonTotalizar">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Totalizar"/>
+                        <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXButton3ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXButtonTotalizarActionPerformed"/>
                       </Events>
                     </Component>
                     <Container class="javax.swing.JLayeredPane" name="jLayeredPaneBuscarProducto">
@@ -741,6 +740,9 @@
                         </Component>
                         <Component class="org.jdesktop.swingx.JXLabel" name="jXLabel9">
                           <Properties>
+                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                              <Image iconType="3" name="/icon_almacen/1418352442_shipping.png"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Bulto"/>
                           </Properties>
                         </Component>
@@ -824,7 +826,11 @@
             </Container>
             <Component class="org.jdesktop.swingx.JXButton" name="botonImprimir">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon_almacen/1418331399_Print.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Imprimir"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonImprimirActionPerformed"/>
@@ -832,8 +838,15 @@
             </Component>
             <Component class="org.jdesktop.swingx.JXButton" name="botonGeneralNotas">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon_almacen/reiniciar.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="reiniciar"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonGeneralNotasActionPerformed"/>
+              </Events>
             </Component>
             <Component class="org.jdesktop.swingx.JXButton" name="jButtonGuardarConteo">
               <Properties>
@@ -842,9 +855,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Guardar"/>
                 <Property name="enabled" type="boolean" value="false"/>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="14" style="1"/>
-                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonGuardarConteoActionPerformed"/>

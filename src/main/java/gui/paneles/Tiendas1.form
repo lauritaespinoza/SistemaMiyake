@@ -181,7 +181,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="638" max="32767" attributes="0"/>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Component id="jScrollPane3" alignment="0" pref="638" max="32767" attributes="0"/>
                       </Group>
@@ -270,10 +270,7 @@
                                                       </Group>
                                                   </Group>
                                                   <Group type="103" groupAlignment="1" attributes="0">
-                                                      <Group type="102" alignment="1" attributes="0">
-                                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                                          <Component id="txtTotalSalidaID" max="32767" attributes="0"/>
-                                                      </Group>
+                                                      <Component id="txtTotalSalidaID" alignment="1" max="32767" attributes="0"/>
                                                       <Component id="txtSalidaIDFecha" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
@@ -696,7 +693,7 @@
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Component id="labelReferencia" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="txtReferencia" max="32767" attributes="0"/>
+                                                  <Component id="txtReferencia" pref="136" max="32767" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Component id="jXLabel3" min="-2" max="-2" attributes="0"/>
@@ -714,19 +711,19 @@
                                               <Group type="102" alignment="1" attributes="0">
                                                   <Component id="jXLabel4" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                                                  <Component id="txtMarca" max="32767" attributes="0"/>
+                                                  <Component id="txtMarca" pref="38" max="32767" attributes="0"/>
                                                   <EmptySpace min="-2" max="-2" attributes="0"/>
                                                   <Component id="jXLabel9" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                                                  <Component id="txtNroBulto" max="32767" attributes="0"/>
+                                                  <Component id="txtNroBulto" pref="38" max="32767" attributes="0"/>
                                                   <EmptySpace min="-2" max="-2" attributes="0"/>
                                                   <Component id="jXLabel11" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                                                  <Component id="txtRenglon" max="32767" attributes="0"/>
+                                                  <Component id="txtRenglon" pref="38" max="32767" attributes="0"/>
                                                   <EmptySpace min="-2" max="-2" attributes="0"/>
                                                   <Component id="jXLabel6" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                                                  <Component id="txtCantidadSugeridad" max="32767" attributes="0"/>
+                                                  <Component id="txtCantidadSugeridad" pref="40" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -737,8 +734,8 @@
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="botonAgregar" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jSeparator2" min="-2" pref="11" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jSeparator2" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                           <Component id="botonLimpiarAgregar" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -773,9 +770,9 @@
                                       </Group>
                                       <Component id="labelReferencia" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" max="-2" attributes="0"/>
-                                  <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jSeparator1" min="-2" pref="5" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jSeparator2" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
                                       <Component id="botonLimpiarAgregar" alignment="0" min="-2" max="-2" attributes="0"/>

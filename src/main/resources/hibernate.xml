@@ -2,6 +2,8 @@
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
+    <!-- org.hibernate.dialect.PostgreSQLDialect -->
+    <!-- <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>-->
     <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
     <property name="hibernate.connection.url">jdbc:postgresql://tecnosys.dyndns.tv:5432/miyake_pasantia</property>
     <property name="hibernate.connection.username">postgres</property>
