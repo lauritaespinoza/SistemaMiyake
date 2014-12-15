@@ -40,7 +40,6 @@ public class JPusuario extends javax.swing.JPanel {
     public JPusuario(Integer tabCrud) {
         this.tabCrud = tabCrud;
         initComponents();
-        cargarCB();
 
         setTableCellAlignment(JLabel.CENTER, tablaListadoUsuarios);
         setTableCellAlignment(JLabel.CENTER, tablaModfUser);
@@ -64,7 +63,7 @@ public class JPusuario extends javax.swing.JPanel {
                     txtClave.setText(u.getContrasena());
                     txtUserDescripcion.setText(u.getDescripcion());
 
-                    jComboBoxTipoUsuario1.addItem(u.getTienda());
+                    jComboBoxTipoUsuario1.setSelectedItem(u.getTipoUsuario());
 
                 }
             }
@@ -83,6 +82,9 @@ public class JPusuario extends javax.swing.JPanel {
                 }
             }
         });
+
+        cargarCB();
+
     }
 
     /**
@@ -127,10 +129,8 @@ public class JPusuario extends javax.swing.JPanel {
         bModfContact = new javax.swing.JButton();
         txtClave = new javax.swing.JPasswordField();
         jLabel15 = new javax.swing.JLabel();
-        jXLabel3 = new org.jdesktop.swingx.JXLabel();
         jXLabel4 = new org.jdesktop.swingx.JXLabel();
         jComboBoxTipoUsuario1 = new javax.swing.JComboBox();
-        cb_tienda1 = new javax.swing.JComboBox();
         jLabel13 = new javax.swing.JLabel();
         jScrollPane17 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
@@ -203,7 +203,7 @@ public class JPusuario extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jPanel1);
@@ -367,13 +367,9 @@ public class JPusuario extends javax.swing.JPanel {
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417576149_change_password.png"))); // NOI18N
         jLabel15.setText("Contraseña");
 
-        jXLabel3.setText("Tienda");
-
         jXLabel4.setText("Tipo Usuario");
 
         jComboBoxTipoUsuario1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tipo 1", "Tipo 2", "Tipo 3", "Tipo 4" }));
-
-        cb_tienda1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -383,7 +379,6 @@ public class JPusuario extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel15)
-                    .addComponent(cb_tienda1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxTipoUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel6)
@@ -391,7 +386,6 @@ public class JPusuario extends javax.swing.JPanel {
                         .addComponent(lb_id))
                     .addComponent(jLabel7)
                     .addComponent(jLabel8)
-                    .addComponent(jXLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jXLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(txtClave, javax.swing.GroupLayout.Alignment.LEADING)
@@ -426,13 +420,9 @@ public class JPusuario extends javax.swing.JPanel {
                 .addComponent(jXLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBoxTipoUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addComponent(jXLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cb_tienda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(61, 61, 61)
                 .addComponent(bModfContact, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
 
         jPanel3.add(jPanel6, java.awt.BorderLayout.EAST);
@@ -533,11 +523,11 @@ public class JPusuario extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelScrudUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 798, Short.MAX_VALUE)
+            .addComponent(panelScrudUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 807, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelScrudUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
+            .addComponent(panelScrudUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -679,31 +669,32 @@ public class JPusuario extends javax.swing.JPanel {
 
         if (panelScrudUsuario.getSelectedIndex() == 1) {
             lb_id.setText("");
+            txtNombreUsuario.setText("");
+            txtDescripcionUsuario.setText("");
+            clave.setText("");
+            jComboBoxTipoUsuario.setSelectedIndex(0);
+            cb_tienda.setSelectedIndex(0);
+
+        }
+
+        if (panelScrudUsuario.getSelectedIndex() == 2) {
+            lb_id.setText("");
             txtNombreUser.setText("");
+            txtClave.setText("");
             txtUserDescripcion.setText("");
-//            fieldTlfContact1.setText("");
-//            fieldTlfContact2.setText("");
-//            fieldEmailContact.setText("");
+            jComboBoxTipoUsuario1.setSelectedIndex(0);
             String sql = "FROM Usuario u order by u.idUsuario asc";
             resultListUsuarios = ObjectModelDAO.getResultQuery(sql);
             JavaUtil.displayResult(resultListUsuarios, tablaModfUser);
             pos = -1;
             tablaModfUser.setEditable(false);
-
         }
-
-        if (panelScrudUsuario.getSelectedIndex() == 2) {
+        if (panelScrudUsuario.getSelectedIndex() == 3) {
             String sql = "FROM Usuario u order by u.idUsuario asc";
             resultListUsuarios = ObjectModelDAO.getResultQuery(sql);
-
             JavaUtil.displayResult(resultListUsuarios, tablaDeletContact);
             pos = -1;
             tablaDeletContact.setEditable(false);
-        }
-        if (panelScrudUsuario.getSelectedIndex() == 3) {
-            txtNombreUsuario.setText("");
-            txtDescripcionUsuario.setText("");
-
         }
     }//GEN-LAST:event_panelScrudUsuarioStateChanged
 
@@ -713,7 +704,6 @@ public class JPusuario extends javax.swing.JPanel {
     private javax.swing.JButton bDeletContact;
     private javax.swing.JButton bModfContact;
     private javax.swing.JComboBox cb_tienda;
-    private javax.swing.JComboBox cb_tienda1;
     private javax.swing.JPasswordField clave;
     private javax.swing.JComboBox jComboBoxTipoUsuario;
     private javax.swing.JComboBox jComboBoxTipoUsuario1;
@@ -741,7 +731,6 @@ public class JPusuario extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane5;
     private org.jdesktop.swingx.JXLabel jXLabel1;
     private org.jdesktop.swingx.JXLabel jXLabel2;
-    private org.jdesktop.swingx.JXLabel jXLabel3;
     private org.jdesktop.swingx.JXLabel jXLabel4;
     private javax.swing.JLabel lb_id;
     private javax.swing.JTabbedPane panelScrudUsuario;
