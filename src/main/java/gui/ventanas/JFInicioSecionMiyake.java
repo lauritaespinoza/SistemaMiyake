@@ -321,7 +321,7 @@ public class JFInicioSecionMiyake extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Seleccione un usuarios");
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error de Coneccion", "Usuarios", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Error de Conexión "+e, "Usuarios", JOptionPane.ERROR_MESSAGE);
         }
 
     }
