@@ -52,6 +52,8 @@ import modelos.tablas.TableModelReport;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
@@ -73,7 +75,7 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
     private boolean crear;
     private List<List> resultListSptDetalle;
     private Usuario user = JFInicioSecionMiyake.us1;
-    public final InputStream rutaJasper = this.getClass().getResourceAsStream("/reportes/ReporteNotasDebCred.jasper");
+    public final String rutaJasper = "/reportes/ReporteNotasDebCred.jasper";
     public final InputStream rutaJrxml = this.getClass().getResourceAsStream("/reportes/ReporteNotasDebCred.jrxml");
     
     public JPnotaCreditoDebito(Boolean tipo) {
@@ -642,8 +644,8 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
             
             parametro.put("REPORT_DATA_SOURCE", dataSourse);
             //parametro.put("Total", total.getText());
-            JasperCompileManager.compileReport(rutaJrxml);
-            jasperPrint = JasperFillManager.fillReport(rutaJasper, parametro, dataSourse);
+             JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream(rutaJasper));
+            jasperPrint = JasperFillManager.fillReport(reporte, parametro, dataSourse);
             JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
             jasperViewer.setTitle("Reporte de Nota");
             jasperViewer.setVisible(true);

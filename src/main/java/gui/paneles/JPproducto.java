@@ -56,7 +56,7 @@ public class JPproducto extends javax.swing.JPanel {
     public JPproducto(Integer tabCrud) {
         this.tabCrud = tabCrud;
         initComponents();
-        
+
         setTableCellAlignment(JLabel.CENTER, listadoProductos);
         setTableCellAlignment(JLabel.CENTER, tablaModifProducto);
         setTableCellAlignment(JLabel.CENTER, tablaEliminarProducto);
@@ -64,7 +64,6 @@ public class JPproducto extends javax.swing.JPanel {
         tablaModifProducto.getTableHeader().setReorderingAllowed(false);
         tablaEliminarProducto.getTableHeader().setReorderingAllowed(false);
 
-        
         tablaModifProducto.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent lse) {
                 if (!lse.getValueIsAdjusting()) {
@@ -779,14 +778,31 @@ public class JPproducto extends javax.swing.JPanel {
 
     private void bCrearClasifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearClasifActionPerformed
         createJDialogGeneric(new JPclasificacion(1));
+        resultListClasificacion = ObjectModelDAO.getResultQuery("FROM Clasificacion c order by c.idClasificacion asc");
+        for (Object object : resultListClasificacion) {
+            Clasificacion c = (Clasificacion) object;
+            cb_clasif.addItem(c.getNombre());
+        }
     }//GEN-LAST:event_bCrearClasifActionPerformed
 
     private void bCrearMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearMarcaActionPerformed
         createJDialogGeneric(new JPmarca(1));
+
+        resultListMarca = ObjectModelDAO.getResultQuery("FROM Marca m order by m.idMarca asc");
+
+        for (Object object : resultListMarca) {
+            Marca m = (Marca) object;
+            cb_marca.addItem(m.getNombre());
+        }
     }//GEN-LAST:event_bCrearMarcaActionPerformed
 
     private void bCrearProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearProveedorActionPerformed
         createJDialogGeneric(new JPproveedor(1));
+        resultListProveedor = ObjectModelDAO.getResultQuery("FROM Proveedor p order by p.idProveedor asc");
+        for (Object object : resultListProveedor) {
+            Proveedor p = (Proveedor) object;
+            cb_proveedor.addItem(p.getNombre());
+        }
     }//GEN-LAST:event_bCrearProveedorActionPerformed
 
     private void cb_clasifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_clasifActionPerformed
@@ -798,6 +814,7 @@ public class JPproducto extends javax.swing.JPanel {
 
         lb_dptoProduct.setText(((Clasificacion) resultListClasificacion.get(
                 cb_clasif.getSelectedIndex())).getIdDepartamento().getNombre());
+
     }//GEN-LAST:event_cb_clasifActionPerformed
 
     private void bModifProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bModifProductoActionPerformed
@@ -947,7 +964,7 @@ public class JPproducto extends javax.swing.JPanel {
 
         //verifica si debe abrir un panel desde la llamada
         if (this.tabCrud != null) {
-            int tabCrud=this.tabCrud.intValue();
+            int tabCrud = this.tabCrud.intValue();
             this.tabCrud = null;
             panelScrudProducto.setSelectedIndex(tabCrud);
             return;

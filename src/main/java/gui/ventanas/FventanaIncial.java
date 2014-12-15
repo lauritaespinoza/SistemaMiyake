@@ -59,6 +59,7 @@ import javax.help.HelpSetException;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import org.pushingpixels.substance.api.skin.SubstanceCremeCoffeeLookAndFeel;
 
 public class FventanaIncial extends javax.swing.JFrame {
 
@@ -2367,9 +2368,9 @@ public class FventanaIncial extends javax.swing.JFrame {
 
                 new FventanaIncial().setVisible(true);
                 try {
-                    UIManager.setLookAndFeel(new SubstanceBusinessBlueSteelLookAndFeel());
+                    //UIManager.setLookAndFeel(new SubstanceBusinessBlueSteelLookAndFeel());
 
-                    //me gusta    UIManager.setLookAndFeel(new SubstanceCremeCoffeeLookAndFeel());
+                UIManager.setLookAndFeel(new SubstanceCremeCoffeeLookAndFeel());
                     //TaskPaneUI.createUI(new (TaskPaneUI)SubstanceCremeCoffeeLookAndFeel());
                 } catch (UnsupportedLookAndFeelException ex) {
                     Logger.getLogger(FventanaIncial.class.getName()).log(Level.SEVERE, null, ex);

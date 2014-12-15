@@ -164,6 +164,7 @@ public class JPproveedor extends javax.swing.JPanel {
         tablaDeletProveedor = new org.jdesktop.swingx.JXTable();
         jLabel21 = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(700, 403));
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.X_AXIS));
 
         panelScrudProveedor.addChangeListener(new javax.swing.event.ChangeListener() {

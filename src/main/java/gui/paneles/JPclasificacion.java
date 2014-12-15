@@ -132,7 +132,7 @@ public class JPclasificacion extends javax.swing.JPanel {
         jLabel13 = new javax.swing.JLabel();
 
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(5, 5));
+        setPreferredSize(new java.awt.Dimension(700, 403));
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.X_AXIS));
 
         panelScrudClasif.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -483,6 +483,12 @@ public class JPclasificacion extends javax.swing.JPanel {
 //        dialogo.setVisible(true);
         
         createJDialogGeneric(new JPdepartamento(1));
+         resultList_departamento = ObjectModelDAO.getResultQuery("FROM Departamento d order by d.idDepartamento asc");
+            cb_dep.removeAllItems();
+            for (Object object : resultList_departamento) {
+                Departamento d = (Departamento) object;
+                cb_dep.addItem(d.getNombre());
+            }
     }//GEN-LAST:event_b_CrearDeptActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
