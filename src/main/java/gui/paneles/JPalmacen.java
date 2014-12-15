@@ -232,6 +232,7 @@ public class JPalmacen extends javax.swing.JPanel {
         });
         listadoAlmacenes.setToolTipText("Presione Ctrl+f  para buscar");
         listadoAlmacenes.setHorizontalScrollEnabled(true);
+        listadoAlmacenes.setSortable(false);
         jScrollPane2.setViewportView(listadoAlmacenes);
 
         logo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -462,6 +463,7 @@ public class JPalmacen extends javax.swing.JPanel {
         });
         tablaModfAlmacen.setToolTipText("Presione Ctrl+f  para buscar");
         tablaModfAlmacen.setHorizontalScrollEnabled(true);
+        tablaModfAlmacen.setSortable(false);
         jScrollPane5.setViewportView(tablaModfAlmacen);
 
         jLabel18.setText("Nombre:");
@@ -670,6 +672,7 @@ public class JPalmacen extends javax.swing.JPanel {
         });
         tablaDeletAlmacen.setToolTipText("Presione Ctrl+f  para buscar");
         tablaDeletAlmacen.setHorizontalScrollEnabled(true);
+        tablaDeletAlmacen.setSortable(false);
         jScrollPane6.setViewportView(tablaDeletAlmacen);
 
         fieldLogo2.setBorder(javax.swing.BorderFactory.createEtchedBorder());

@@ -5,7 +5,6 @@
  */
 package gui.paneles;
 
-import gui.ventanas.Fdepartamento;
 import util.JavaUtil;
 import static util.JavaUtil.createJDialogGeneric;
 import static util.JavaUtil.setTableCellAlignment;
