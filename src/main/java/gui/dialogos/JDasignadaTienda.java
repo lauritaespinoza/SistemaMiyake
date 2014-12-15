@@ -6,6 +6,7 @@
 package gui.dialogos;
 
 import gui.paneles.Distribuidora1;
+import java.awt.Dialog;
 import modelos.mapeos.SalidaParaTiendaDetalle;
 import util.JavaUtil;
 import java.awt.HeadlessException;
@@ -272,6 +273,7 @@ public class JDasignadaTienda extends javax.swing.JDialog {
 
                     jasperPrint = JasperFillManager.fillReport(reporte, null, dataSourse);
                     JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
+                     jasperViewer.setModalExclusionType(Dialog.ModalExclusionType.TOOLKIT_EXCLUDE);
                     jasperViewer.setTitle("Reporte de Toma Fisica Distribuidoras.");
                     jasperViewer.setVisible(true);
 

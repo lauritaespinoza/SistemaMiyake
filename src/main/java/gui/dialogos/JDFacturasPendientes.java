@@ -3,6 +3,7 @@ package gui.dialogos;
 import gui.paneles.Distribuidora1;
 import util.JavaUtil;
 import hibernate.DAO.ObjectModelDAO;
+import java.awt.Dialog;
 import java.awt.HeadlessException;
 import java.io.File;
 import java.io.InputStream;
@@ -312,6 +313,7 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
 
                     jasperPrint = JasperFillManager.fillReport(reporte, null, dataSourse);
                     JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
+                    jasperViewer.setModalExclusionType(Dialog.ModalExclusionType.TOOLKIT_EXCLUDE);
                     jasperViewer.setTitle("Reporte de Toma Fisica Distribuidoras.");
                     jasperViewer.setVisible(true);
                      

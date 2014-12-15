@@ -5,6 +5,7 @@ package gui.dialogos;
 import gui.paneles.Distribuidora1;
 import util.JavaUtil;
 import hibernate.DAO.ObjectModelDAO;
+import java.awt.Dialog;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -293,6 +294,7 @@ public class JDsalidaParaTiendaPendientes extends javax.swing.JDialog {
 
                     jasperPrint = JasperFillManager.fillReport(reporte, null, dataSourse);
                     JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
+                    jasperViewer.setModalExclusionType(Dialog.ModalExclusionType.TOOLKIT_EXCLUDE);
                     jasperViewer.setTitle("Reporte de Toma Fisica Distribuidoras.");
                     jasperViewer.setVisible(true);
                     int respuesta = JOptionPane.showConfirmDialog(null, "El Archivo fue Generado con Exito,"
