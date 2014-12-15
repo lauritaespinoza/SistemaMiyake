@@ -731,22 +731,22 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
     private void bGenerarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGenerarReporteActionPerformed
         if (checkboxRevisado.isSelected()) {
 
-            if (JOptionPane.showConfirmDialog(this, "¿Esta Seguro que desea marcar como revisado este Formulario de Mercancía Asignada a Tienda?", "Información", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-                cabecera.setRevisado(true);
-            if (jRadioButtonPendiente.isSelected()) {
-                 ObjectModelDAO.updateObject(cabecera);
-            }
+//            if (JOptionPane.showConfirmDialog(this, "¿Esta Seguro que desea marcar como revisado este Formulario de Mercancía Asignada a Tienda?", "Información", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+//                cabecera.setRevisado(true);
+                if (jRadioButtonPendiente.isSelected()) {
+                    ObjectModelDAO.updateObject(cabecera);
+                }
             // cb_Salidas.removeItemAt (cb_Salidas.getSelectedIndex());
-            // sw = true;
-            // pos = cb_Salidas.getSelectedIndex();
-            generarReporte();
+                // sw = true;
+                // pos = cb_Salidas.getSelectedIndex();
+                generarReporte();
             //    setCB();
-            
-        }
 
-        } else {
-            JOptionPane.showMessageDialog(this, "Deben Marcar que ha revisado este Formulario de Mercancía Asignada a Tienda");
-        }
+            }
+
+//        } else {
+//            JOptionPane.showMessageDialog(this, "Deben Marcar que ha revisado este Formulario de Mercancía Asignada a Tienda");
+//        }
     }//GEN-LAST:event_bGenerarReporteActionPerformed
 
     private void bImprimirEtiquetasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bImprimirEtiquetasActionPerformed
@@ -794,6 +794,8 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
     private void jRadioButtonRevisadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonRevisadoActionPerformed
 
         setCB_Salidas();
+        checkboxRevisado.setSelected(true);
+        checkboxRevisado.setEnabled(false);
     }//GEN-LAST:event_jRadioButtonRevisadoActionPerformed
 
     private void cb_tienda2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_tienda2ActionPerformed
@@ -882,7 +884,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
     }//GEN-LAST:event_cb_salidasregistradasActionPerformed
 
     private void bt_ReportePendientsProcesadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ReportePendientsProcesadasActionPerformed
-     
+
     }//GEN-LAST:event_bt_ReportePendientsProcesadasActionPerformed
 
 
