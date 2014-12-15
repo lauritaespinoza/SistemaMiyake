@@ -1,5 +1,6 @@
 package gui.ventanas;
 
+import gui.dialogos.JDFacturasPendientes;
 import gui.dialogos.JDbackupDB;
 import gui.dialogos.JDfaturasCSV;
 import gui.dialogos.JDrestoreDB;
@@ -39,9 +40,15 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Date;
+import javax.help.HelpBroker;
+import javax.help.HelpSet;
+import javax.help.HelpSetException;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
@@ -50,10 +57,10 @@ public class FventanaIncial extends javax.swing.JFrame {
 
     private static final String tabConsultarMerca = "Consultar Mecancia";
     private static final String tabMecanciaEnProceso = "Mecancia En Proceso";
-    private static final String tabTomaFisicaTiendas = "Toma Fisica Tiendas";
+    private static final String tabTomaFisicaTiendas = "Toma Física Tiendas";
     private static final String tabUsuarios = "Gestion De Usuarios";
     private static final String tabAsignarMercancia = "Asignar Mercancia";
-    private static final String tabTomaFisica = "Inventario Distribuidora";
+    private static final String tabTomaFisica = "Toma Física Distribuidora";
     private static final String tabExportData = "Exportacion de Datos";
     private static final String tabProducto = "Producto";
     private static final String tabSalida = "Mercancía Asignada a Tienda";
@@ -86,6 +93,8 @@ public class FventanaIncial extends javax.swing.JFrame {
         FventanaIncial.listaUsuarioMain = user;
 
         initComponents();
+        //Ayuda
+        jMenuItemAcercaDeActionPerformed(null);
 
         ClockLabel clock = new ClockLabel();
         getContentPane().add(clock, BorderLayout.PAGE_END);
@@ -654,6 +663,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         menuActualizarPrecios.add(jmModificarPrecio1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema Miyake.");
         setBackground(new java.awt.Color(9, 182, 201));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
@@ -720,6 +730,7 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         TomaFisicaDistribuidora_boton_.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/tomafisica.png"))); // NOI18N
         TomaFisicaDistribuidora_boton_.setText("Toma Fisica                        ");
+        TomaFisicaDistribuidora_boton_.setToolTipText("Entrada Distribuidora (Ctrl+D)");
         TomaFisicaDistribuidora_boton_.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         TomaFisicaDistribuidora_boton_.setBorderPainted(false);
         TomaFisicaDistribuidora_boton_.setContentAreaFilled(false);
@@ -740,6 +751,7 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         AsignarMercancia_boton_.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416789791_database_add.png"))); // NOI18N
         AsignarMercancia_boton_.setText("Asignar Mercancia            ");
+        AsignarMercancia_boton_.setToolTipText("Mercancia Entre Tiendas (Ctrl+G)");
         AsignarMercancia_boton_.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         AsignarMercancia_boton_.setBorderPainted(false);
         AsignarMercancia_boton_.setContentAreaFilled(false);
@@ -811,6 +823,7 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         TomaFisicaTiendas_boton_.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/tomafisica.png"))); // NOI18N
         TomaFisicaTiendas_boton_.setText("Toma Fisica                 ");
+        TomaFisicaTiendas_boton_.setToolTipText("Recepción Mercancia (Ctrl+T)");
         TomaFisicaTiendas_boton_.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         TomaFisicaTiendas_boton_.setBorderPainted(false);
         TomaFisicaTiendas_boton_.setContentAreaFilled(false);
@@ -1055,6 +1068,7 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         menuArchivo.add(jMenuOpciones);
 
+        jMenuItemSalir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItemSalir.setText("Salir");
         jMenuItemSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1617,7 +1631,13 @@ public class FventanaIncial extends javax.swing.JFrame {
         jMenuItemVerAyuda.setText("Ver Ayuda");
         menuAyuda.add(jMenuItemVerAyuda);
 
+        jMenuItemAcercaDe.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         jMenuItemAcercaDe.setText("Acerca de");
+        jMenuItemAcercaDe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAcercaDeActionPerformed(evt);
+            }
+        });
         menuAyuda.add(jMenuItemAcercaDe);
 
         jMenuBarSistemaMiyake.add(menuAyuda);
@@ -2289,6 +2309,33 @@ public class FventanaIncial extends javax.swing.JFrame {
         jXTaskPaneTiendas.setCollapsed(!jXTaskPaneTiendas.isCollapsed());
         jXTaskPaneGestionProductos.setCollapsed(!jXTaskPaneGestionProductos.isCollapsed());
     }//GEN-LAST:event_jMenuItemAbrirCerrarInternosActionPerformed
+
+    private void jMenuItemAcercaDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAcercaDeActionPerformed
+      
+        try {
+            File  archivo = new File(this.getClass().getResource("/JavaHelp/JavaHelp/ejemplo.hs").getFile());
+            URL hsURL = archivo.toURI().toURL();
+
+            HelpSet helpset = null;
+            helpset = new HelpSet(null, hsURL);
+
+            HelpSet.Presentation hsp;
+            hsp = helpset.getPresentation("MainWin");
+
+            HelpBroker help_browser = helpset.createHelpBroker();
+            help_browser.setHelpSetPresentation(hsp);
+
+            // Cuando pulsemos F1 se mostrará la ayuda de la página de introducion
+            help_browser.enableHelpOnButton(this.jMenuItemAcercaDe, "introduction", helpset);
+            help_browser.enableHelpKey(getContentPane(), "introduction", helpset);
+
+        } catch (HelpSetException | MalformedURLException ex) {
+            Logger.getLogger(JDFacturasPendientes.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Excepcion Ayuda Factura " + ex);
+            System.err.println("Excepcion Ayuda Factura " + ex);
+        }
+
+    }//GEN-LAST:event_jMenuItemAcercaDeActionPerformed
 
     public static void main(String args[]) {
 

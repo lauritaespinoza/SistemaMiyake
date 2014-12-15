@@ -15,7 +15,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-114,0,0,2,-33"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-107,0,0,2,-33"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -46,8 +46,6 @@
                           <Component id="jXTaskPaneCabeceraAsignacion" max="32767" attributes="0"/>
                           <Component id="jScrollPane4" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="jXButtonReiniciarFooter" min="-2" pref="136" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="busy1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="jXButtonImprimir_" min="-2" max="-2" attributes="0"/>
@@ -55,7 +53,6 @@
                               <Component id="jXButtonAsignarMercancia" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="busy" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
@@ -72,14 +69,11 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="busy" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                      <Component id="jScrollPane4" pref="368" max="32767" attributes="0"/>
+                      <Component id="jScrollPane4" pref="375" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jXButtonReiniciarFooter" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="busy1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="busy1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -217,6 +211,7 @@
                               <Image iconType="3" name="/icon_almacen/conect.png"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Confirmar"/>
+                            <Property name="toolTipText" type="java.lang.String" value=""/>
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXButtonConfirmarActionPerformed"/>
@@ -275,7 +270,7 @@
                                 <StringItem index="3" value="Item 4"/>
                               </StringArray>
                             </Property>
-                            <Property name="toolTipText" type="java.lang.String" value="Para Vizualizar Todas Las Tiendas debe Reiniciar"/>
+                            <Property name="toolTipText" type="java.lang.String" value=""/>
                           </Properties>
                         </Component>
                         <Component class="org.jdesktop.swingx.JXLabel" name="jXLabel10">
@@ -317,14 +312,15 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="jLayeredPaneDatosProductos" alignment="0" pref="694" max="32767" attributes="0"/>
                                   <Component id="jScrollPane5" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jLayeredPaneBuscarProducto" alignment="0" max="32767" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Component id="jXButtonReiniciarFooter" min="-2" pref="136" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                       <Component id="jXButtonTotalizar" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jLayeredPaneBuscarProducto" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -337,9 +333,12 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLayeredPaneDatosProductos" min="-2" pref="145" max="-2" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="jScrollPane5" pref="134" max="32767" attributes="0"/>
+                              <Component id="jScrollPane5" pref="132" max="32767" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="jXButtonTotalizar" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jXButtonTotalizar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jXButtonReiniciarFooter" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -738,6 +737,18 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXButtonTotalizarActionPerformed"/>
                       </Events>
                     </Component>
+                    <Component class="org.jdesktop.swingx.JXButton" name="jXButtonReiniciarFooter">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/icon_almacen/reiniciar.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Reiniciar"/>
+                        <Property name="enabled" type="boolean" value="false"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXButtonReiniciarFooterActionPerformed"/>
+                      </Events>
+                    </Component>
                   </SubComponents>
                 </Container>
               </SubComponents>
@@ -764,18 +775,6 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXButtonImprimir_ActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="org.jdesktop.swingx.JXButton" name="jXButtonReiniciarFooter">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/icon_almacen/reiniciar.png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Reiniciar"/>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXButtonReiniciarFooterActionPerformed"/>
               </Events>
             </Component>
             <Component class="org.jdesktop.swingx.JXBusyLabel" name="busy">

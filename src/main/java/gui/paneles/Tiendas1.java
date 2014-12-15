@@ -823,7 +823,7 @@ public class Tiendas1 extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLayeredPaneDatosProductos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonTotalizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -905,14 +905,15 @@ public class Tiendas1 extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jLayeredPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jLayeredPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jLayeredPanePrincipalLayout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addGroup(jLayeredPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(botonGenerarNotas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(botonCencelarAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jButtonGuardarConteo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonImprimir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jLayeredPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonGuardarConteo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonImprimir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(0, 0, 0))
         );
         jLayeredPanePrincipal.setLayer(jXTaskPaneLCabeceraTiendas, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -1086,6 +1087,7 @@ public class Tiendas1 extends javax.swing.JPanel {
 
             @Override
             public void run() {
+                botonTotalizar.setEnabled(false);
                 jButtonGuardarConteo.setEnabled(false);
                 busy.setEnabled(true);
                 busy.setVisible(true);
@@ -1276,7 +1278,9 @@ public class Tiendas1 extends javax.swing.JPanel {
                     if (respuesta == JOptionPane.YES_OPTION) {
                         jButtonGuardarConteo.setEnabled(true);
                         //Limpiar Tabla y Lista
-                        
+                        comboBoxAlmacen.setEnabled(true);
+                        listaDetalle.clear();
+                    //    listaDetalle=null;
                         jTDetalleRegistroTiendas.removeAll();
                         modeloTablaTomaFisicaInventarioTiendas.fireTableDataChanged();
                         //Desabilitar Controles
@@ -1287,8 +1291,9 @@ public class Tiendas1 extends javax.swing.JPanel {
                         txtBusqueda.setEnabled(false);
                         jXButtonBuscar.setEnabled(false);
                         botonListarProductosInventariTienda.setEnabled(false);
-                        jButtonListarPedidos.setEnabled(false);
+
                         //Destruir Objetos
+                        
                         listaprodSA = null;
                         sd = null;
 //                        proEPaux = null;
@@ -1306,7 +1311,6 @@ public class Tiendas1 extends javax.swing.JPanel {
                         txtRenglon.setText("");
                         txtTiendaDesde.setText("");
                         txtEstatus.setText("");
-//Limpiar Campos de Texto
                         txtSalidaID.setText("");
                         txtEmitidoPor.setText("");
                         txtSalidaIDFecha.setText("");
@@ -1319,6 +1323,7 @@ public class Tiendas1 extends javax.swing.JPanel {
                         txtCantidad.setText("");
                         txtNroBulto.setText("");
                         jXTaskPaneLCabeceraTiendas.setCollapsed(false);
+
                     }
 
                 } catch (Exception ex) {
@@ -1453,7 +1458,14 @@ public class Tiendas1 extends javax.swing.JPanel {
                 this.txtTiendaDesde.setText("");
                 this.txtEstatus.setText("");
                 this.txtTotalSalidaID.setText("");
-                //Destruir Objetos
+
+//Destruir Objetos
+                //Limpiar Tablas y Lista Detalles
+                listaDetalle.clear();
+                //listaDetalle = null;
+                jTDetalleRegistroTiendas.removeAll();
+                modeloTablaTomaFisicaInventarioTiendas.fireTableDataChanged();
+
                 listaprodSA = null;
                 sd = null;
 //                proEPaux = null;
@@ -1503,10 +1515,13 @@ public class Tiendas1 extends javax.swing.JPanel {
 
                 //Limpiar Tablas y Lista Detalles
                 listaDetalle.clear();
+              //  listaDetalle = null;
                 jTDetalleRegistroTiendas.removeAll();
                 modeloTablaTomaFisicaInventarioTiendas.fireTableDataChanged();
                 //Panel y Controles de Factura
+                this.comboBoxAlmacen.setSelectedIndex(-1);
                 this.jButtonListarPedidos.setEnabled(true);
+                botonConfirmarFactura.setEnabled(true);
                 this.txtSalidaID.setText("");
                 this.txtEmitidoPor.setText("");
                 this.txtSalidaIDFecha.setText("");
@@ -1518,7 +1533,7 @@ public class Tiendas1 extends javax.swing.JPanel {
                 this.botonListarProductosInventariTienda.setEnabled(false);
 
                 //Destruir Objetos
-                // listaEP = null;
+                listaprodSA = null;
                 sd = null;
                 Conteofaltante = 0;
                 posUs = -1;
@@ -1533,6 +1548,7 @@ public class Tiendas1 extends javax.swing.JPanel {
                 comboBoxAlmacen.setEnabled(true);
                 comboBoxUsuarios.setSelectedIndex(-1);
                 comboBoxUsuarios.setEnabled(true);
+
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Excepcion al Cencelar Agregar" + e);
@@ -1584,8 +1600,8 @@ public class Tiendas1 extends javax.swing.JPanel {
     }//GEN-LAST:event_txtBusquedaKeyTyped
 
     private void botonImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonImprimirActionPerformed
-       
-         // TODO add your handling code here:    resultList
+
+        // TODO add your handling code here:    resultList
         Thread hilo = new Thread() {
 
             @Override
@@ -1624,8 +1640,8 @@ public class Tiendas1 extends javax.swing.JPanel {
             }
         };
         hilo.start();
-        
-        
+
+
     }//GEN-LAST:event_botonImprimirActionPerformed
 
     private void botonGenerarNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGenerarNotasActionPerformed
