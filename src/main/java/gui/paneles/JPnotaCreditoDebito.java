@@ -75,7 +75,7 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
     private boolean crear;
     private List<List> resultListSptDetalle;
     private Usuario user = JFInicioSecionMiyake.us1;
-    public final String rutaJasper = "/reportes/ReporteNotasDebCred.jasper";
+    public String rutaJasper = "/reportes/ReporteNotasDebCred.jasper";
     public final InputStream rutaJrxml = this.getClass().getResourceAsStream("/reportes/ReporteNotasDebCred.jrxml");
     
     public JPnotaCreditoDebito(Boolean tipo) {
