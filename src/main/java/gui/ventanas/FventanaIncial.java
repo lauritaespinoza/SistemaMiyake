@@ -55,7 +55,7 @@ import javax.swing.Timer;
 
 public class FventanaIncial extends javax.swing.JFrame {
 
-    private static final String tabConsultarMerca = "Consultar Mecancia";
+    private static final String tabConsultarMerca = "Existencia Física";
     private static final String tabMecanciaEnProceso = "Mecancia En Proceso";
     private static final String tabTomaFisicaTiendas = "Toma Física Tiendas";
     private static final String tabUsuarios = "Gestion De Usuarios";

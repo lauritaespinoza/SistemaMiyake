@@ -1513,7 +1513,9 @@ public class Distribuidora1 extends javax.swing.JPanel {
                 deReg.setTotalFaltante(Math.abs(Conteofaltante) * proEP.getIdProducto().getPrecioOriginal());
 
                 deReg.getEp().setEstatus("Aprobado");
-
+                if (listaDetalle == null || listaDetalle.isEmpty()) {
+                    listaDetalle = new ArrayList<>();
+                }
                 listaDetalle.add(deReg);
 
                 modeloTablaTomaFisicaInventarioDistribuidora.setListaDetalleResgistro(listaDetalle);

@@ -1280,8 +1280,9 @@ public class Tiendas1 extends javax.swing.JPanel {
                         //Limpiar Tabla y Lista
                         comboBoxAlmacen.setEnabled(true);
                         listaDetalle.clear();
+
                     //    listaDetalle=null;
-                        jTDetalleRegistroTiendas.removeAll();
+                        //  jTDetalleRegistroTiendas.removeAll();
                         modeloTablaTomaFisicaInventarioTiendas.fireTableDataChanged();
                         //Desabilitar Controles
                         txtCantidad.setEnabled(false);
@@ -1293,7 +1294,6 @@ public class Tiendas1 extends javax.swing.JPanel {
                         botonListarProductosInventariTienda.setEnabled(false);
 
                         //Destruir Objetos
-                        
                         listaprodSA = null;
                         sd = null;
 //                        proEPaux = null;
@@ -1463,7 +1463,7 @@ public class Tiendas1 extends javax.swing.JPanel {
                 //Limpiar Tablas y Lista Detalles
                 listaDetalle.clear();
                 //listaDetalle = null;
-                jTDetalleRegistroTiendas.removeAll();
+                // jTDetalleRegistroTiendas.removeAll();
                 modeloTablaTomaFisicaInventarioTiendas.fireTableDataChanged();
 
                 listaprodSA = null;
@@ -1516,7 +1516,7 @@ public class Tiendas1 extends javax.swing.JPanel {
                 //Limpiar Tablas y Lista Detalles
                 listaDetalle.clear();
               //  listaDetalle = null;
-                jTDetalleRegistroTiendas.removeAll();
+                //  jTDetalleRegistroTiendas.removeAll();
                 modeloTablaTomaFisicaInventarioTiendas.fireTableDataChanged();
                 //Panel y Controles de Factura
                 this.comboBoxAlmacen.setSelectedIndex(-1);
@@ -1781,7 +1781,9 @@ public class Tiendas1 extends javax.swing.JPanel {
         deReg.setConteoFaltante(Conteofaltante);
         deReg.setTotalFaltante(Math.abs(Conteofaltante) * sd.getProducto().getPrecioOriginal());
 
-        // deReg.getSd().setEstatus("Aprobado");
+        if (listaDetalle == null || listaDetalle.isEmpty()) {
+            listaDetalle = new ArrayList<>();
+        }
         listaDetalle.add(deReg);
 
         modeloTablaTomaFisicaInventarioTiendas.setListaDetalleResgistro(listaDetalle);
