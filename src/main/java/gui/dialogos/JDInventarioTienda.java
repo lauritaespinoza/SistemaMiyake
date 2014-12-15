@@ -36,7 +36,7 @@ public class JDInventarioTienda extends javax.swing.JDialog {
 
     public InventarioTienda inv = null;
     private int pos = -1;
-     public final File  archivo = new File(this.getClass().getResource("/JavaHelp/JavaHelp/ejemplo.hs").getFile());
+    // public final File  archivo = new File(this.getClass().getResource("/JavaHelp/JavaHelp/ejemplo.hs").getFile());
 
 
     public JDInventarioTienda(java.awt.Frame parent, boolean modal,
@@ -69,7 +69,7 @@ public class JDInventarioTienda extends javax.swing.JDialog {
                     }
                 });
 
-        listarFacturas(inventarioTienda);
+        listarProductosInventarioTienda(inventarioTienda);
     }
 
     @SuppressWarnings("unchecked")
@@ -217,7 +217,7 @@ public class JDInventarioTienda extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_AceptarProductoSeleccionado_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_AceptarProductoSeleccionado_ActionPerformed
-        SeleccionarFactura();
+        SeleccionarProductosInventarioTienda();
     }//GEN-LAST:event_boton_AceptarProductoSeleccionado_ActionPerformed
 
     private void botonCancelarExit_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarExit_ActionPerformed
@@ -227,7 +227,7 @@ public class JDInventarioTienda extends javax.swing.JDialog {
 
     private void jtableListaProductosInventarioTiendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtableListaProductosInventarioTiendaMouseClicked
         if (evt.getClickCount() == 2) {
-            SeleccionarFactura();
+            SeleccionarProductosInventarioTienda();
         }
     }//GEN-LAST:event_jtableListaProductosInventarioTiendaMouseClicked
 
@@ -272,7 +272,7 @@ public class JDInventarioTienda extends javax.swing.JDialog {
                 } catch (JRException | HeadlessException e) {
                     JOptionPane.showMessageDialog(null, "Se a Dectectado Un Proble Con Proceso de Seleccion de Facturas,"
                             + "Por Favor Vuelva a Intentarlo.");
-                    Logger.getLogger(Distribuidora1.class.getName()).log(Level.SEVERE, null, e);
+                    Logger.getLogger(JDInventarioTienda.class.getName()).log(Level.SEVERE, null, e);
                     System.err.println("Seleccionando Facturas" + e);
 
                 }
@@ -382,7 +382,7 @@ public class JDInventarioTienda extends javax.swing.JDialog {
     private javax.swing.JLabel txtTitulo;
     // End of variables declaration//GEN-END:variables
 
-    private void SeleccionarFactura() {
+    private void SeleccionarProductosInventarioTienda() {
 
         try {
             if (inv != null) {
@@ -391,16 +391,23 @@ public class JDInventarioTienda extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(this, "Seleccione un Producto Del Inventario");
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error de Coneccion : " + e);
+            JOptionPane.showMessageDialog(this, "Error Seleccionando Producto Del Inventario : " + e);
+            Logger.getLogger(JDInventarioTienda.class.getName()).log(Level.SEVERE, null, e);
         }
 
     }
 
-    private void listarFacturas(List<List> inventarioTienda) {
-//       
-        JavaUtil.displayResult(inventarioTienda, jtableListaProductosInventarioTienda);
+    private void listarProductosInventarioTienda(List<List> inventarioTienda) {
+
+        try {
+            JavaUtil.displayResult(inventarioTienda, jtableListaProductosInventarioTienda);
         jtableListaProductosInventarioTienda.setEditable(false);
         pos = -1;
         inv = null;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error Listando Producto Del Inventario : " + e);
+            Logger.getLogger(JDInventarioTienda.class.getName()).log(Level.SEVERE, null, e);
+        }
+        
     }
 }

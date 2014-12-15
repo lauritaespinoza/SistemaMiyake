@@ -23,15 +23,14 @@ public class JDSalidadParaTiendasProductos extends javax.swing.JDialog {
 
     // ModeloTablaFacturaPendientes mtf = new ModeloTablaFacturaPendientes();
     // DAOFactura daoFactura = new DAOFactura();
-    public  SalidaParaTiendaDetalle  sd = null;
+    public SalidaParaTiendaDetalle sd = null;
     //public List<List> productosInventario =null;       
-   // private List resultList = null;
+    // private List resultList = null;
     private int pos = -1;
-    
 
-    public JDSalidadParaTiendasProductos(java.awt.Frame parent, boolean modal, 
-            final List resultListSalidadParaTienda)throws Exception{
-         super(parent, modal);
+    public JDSalidadParaTiendasProductos(java.awt.Frame parent, boolean modal,
+            final List resultListSalidadParaTienda) throws Exception {
+        super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
         //Inicializa ayuda
@@ -45,25 +44,25 @@ public class JDSalidadParaTiendasProductos extends javax.swing.JDialog {
         //this.productosInventario = inventarioTienda;
         jtableListaProductosInventarioTienda.getSelectionModel()
                 .addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent lse) {
-                if (!lse.getValueIsAdjusting()) {
+                    @Override
+                    public void valueChanged(ListSelectionEvent lse) {
+                        if (!lse.getValueIsAdjusting()) {
 
-                    pos = jtableListaProductosInventarioTienda.getSelectedRow();
-                    if (pos == -1) {
-                        sd = null;
-                        return;
+                            pos = jtableListaProductosInventarioTienda.getSelectedRow();
+                            if (pos == -1) {
+                                sd = null;
+                                return;
+                            }
+                            sd = (SalidaParaTiendaDetalle) resultListSalidadParaTienda.get(pos);
+
+                        }
                     }
-                    sd =  (SalidaParaTiendaDetalle) resultListSalidadParaTienda.get(pos);
+                });
 
-                }
-            }
-        });
-
-        listarFacturas(resultListSalidadParaTienda);
+        listarProductosAsignacionPendientes(resultListSalidadParaTienda);
     }
 
- private void SeleccionarFactura() {
+    private void SeleccionarProductosAsignacionPendiente() {
 
         try {
             if (sd != null) {
@@ -72,17 +71,26 @@ public class JDSalidadParaTiendasProductos extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(this, "Seleccione un Producto Del Inventario");
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error de Coneccion : " + e);
+            JOptionPane.showMessageDialog(this, "Ecepción Seleccionando Producto de Asignacion Pendiente : " + e);
+            Logger.getLogger(JDSalidadParaTiendasProductos.class.getName()).log(Level.SEVERE, null, e);
         }
 
     }
 
-    private void listarFacturas(List  resultListSalidadParaTienda) {
-        JavaUtil.displayResult(resultListSalidadParaTienda, jtableListaProductosInventarioTienda);
-        jtableListaProductosInventarioTienda.setEditable(false);
-        pos = -1;
-        sd = null;
+    private void listarProductosAsignacionPendientes(List resultListSalidadParaTienda) {
+        try {
+            JavaUtil.displayResult(resultListSalidadParaTienda, jtableListaProductosInventarioTienda);
+            jtableListaProductosInventarioTienda.setEditable(false);
+            pos = -1;
+            sd = null;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Ecepción Listando Productos de Asignacion Pendiente : " + e);
+            Logger.getLogger(JDSalidadParaTiendasProductos.class.getName()).log(Level.SEVERE, null, e);
+
+        }
+
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -218,7 +226,7 @@ public class JDSalidadParaTiendasProductos extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        SeleccionarFactura();
+        SeleccionarProductosAsignacionPendiente();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -228,7 +236,7 @@ public class JDSalidadParaTiendasProductos extends javax.swing.JDialog {
 
     private void jtableListaProductosInventarioTiendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtableListaProductosInventarioTiendaMouseClicked
         if (evt.getClickCount() == 2) {
-            SeleccionarFactura();
+            SeleccionarProductosAsignacionPendiente();
         }
     }//GEN-LAST:event_jtableListaProductosInventarioTiendaMouseClicked
 
@@ -277,5 +285,4 @@ public class JDSalidadParaTiendasProductos extends javax.swing.JDialog {
     private javax.swing.JLabel txtTitulo;
     // End of variables declaration//GEN-END:variables
 
-   
 }

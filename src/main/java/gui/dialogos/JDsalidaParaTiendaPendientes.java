@@ -43,7 +43,7 @@ public class JDsalidaParaTiendaPendientes extends javax.swing.JDialog {
     private List resultList = null;
     private int pos = -1;
     private Almacen al_actual = null;
-    public final File archivo = new File(this.getClass().getResource("/JavaHelp/JavaHelp/ejemplo.hs").getFile());
+//    public final File archivo = new File(this.getClass().getResource("/JavaHelp/JavaHelp/ejemplo.hs").getFile());
 
     public JDsalidaParaTiendaPendientes(java.awt.Frame parent, boolean modal, Almacen idAlmacen) throws Exception {
         super(parent, modal);
