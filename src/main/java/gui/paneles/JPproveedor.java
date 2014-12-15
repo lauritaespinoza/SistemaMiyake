@@ -221,6 +221,7 @@ public class JPproveedor extends javax.swing.JPanel {
         });
         listadoProveedores.setHorizontalScrollEnabled(true);
         listadoProveedores.setPreferredSize(new java.awt.Dimension(5, 5));
+        listadoProveedores.setSortable(false);
         jScrollPane1.setViewportView(listadoProveedores);
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1416622346_xmag.png"))); // NOI18N
@@ -461,6 +462,7 @@ public class JPproveedor extends javax.swing.JPanel {
             }
         });
         tablaModfProveedor.setHorizontalScrollEnabled(true);
+        tablaModfProveedor.setSortable(false);
         jScrollPane2.setViewportView(tablaModfProveedor);
 
         jPanel3.add(jScrollPane2, java.awt.BorderLayout.CENTER);
@@ -659,6 +661,7 @@ public class JPproveedor extends javax.swing.JPanel {
             }
         });
         tablaDeletProveedor.setHorizontalScrollEnabled(true);
+        tablaDeletProveedor.setSortable(false);
         jScrollPane3.setViewportView(tablaDeletProveedor);
 
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1416622346_xmag.png"))); // NOI18N

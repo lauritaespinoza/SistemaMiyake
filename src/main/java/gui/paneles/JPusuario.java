@@ -185,6 +185,7 @@ public class JPusuario extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tablaListadoUsuarios.setHorizontalScrollEnabled(true);
         tablaListadoUsuarios.setSortable(false);
         jScrollPane2.setViewportView(tablaListadoUsuarios);
 
@@ -342,6 +343,7 @@ public class JPusuario extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tablaModfUser.setHorizontalScrollEnabled(true);
         tablaModfUser.setSortable(false);
         jScrollPane4.setViewportView(tablaModfUser);
 
@@ -475,6 +477,8 @@ public class JPusuario extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tablaDeletContact.setHorizontalScrollEnabled(true);
+        tablaDeletContact.setSortable(false);
         jScrollPane3.setViewportView(tablaDeletContact);
 
         bDeletContact.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415663088_delete-user.png"))); // NOI18N
@@ -526,11 +530,11 @@ public class JPusuario extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelScrudUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
+            .addComponent(panelScrudUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 773, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelScrudUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+            .addComponent(panelScrudUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

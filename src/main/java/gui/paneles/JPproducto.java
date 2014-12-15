@@ -273,6 +273,7 @@ public class JPproducto extends javax.swing.JPanel {
             }
         });
         listadoProductos.setHorizontalScrollEnabled(true);
+        listadoProductos.setSortable(false);
         jScrollPane1.setViewportView(listadoProductos);
 
         panelConsulta.add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -502,6 +503,7 @@ public class JPproducto extends javax.swing.JPanel {
             }
         });
         tablaModifProducto.setHorizontalScrollEnabled(true);
+        tablaModifProducto.setSortable(false);
         jScrollPane2.setViewportView(tablaModifProducto);
 
         panelModificarProducto.add(jScrollPane2, java.awt.BorderLayout.CENTER);
@@ -690,6 +692,7 @@ public class JPproducto extends javax.swing.JPanel {
             }
         });
         tablaEliminarProducto.setHorizontalScrollEnabled(true);
+        tablaEliminarProducto.setSortable(false);
         jScrollPane3.setViewportView(tablaEliminarProducto);
 
         bEliminProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415657052_038.png"))); // NOI18N

@@ -160,6 +160,8 @@ public class JPclasificacion extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        listadoClasif.setHorizontalScrollEnabled(true);
+        listadoClasif.setSortable(false);
         jScrollPane1.setViewportView(listadoClasif);
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1416622346_xmag.png"))); // NOI18N
@@ -287,6 +289,7 @@ public class JPclasificacion extends javax.swing.JPanel {
             }
         });
         tablaModfClasif.setHorizontalScrollEnabled(true);
+        tablaModfClasif.setSortable(false);
         jScrollPane4.setViewportView(tablaModfClasif);
 
         jPanel3.add(jScrollPane4, java.awt.BorderLayout.CENTER);
@@ -407,6 +410,7 @@ public class JPclasificacion extends javax.swing.JPanel {
             }
         });
         tablaDeletClasif.setHorizontalScrollEnabled(true);
+        tablaDeletClasif.setSortable(false);
         jScrollPane3.setViewportView(tablaDeletClasif);
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1416622346_xmag.png"))); // NOI18N

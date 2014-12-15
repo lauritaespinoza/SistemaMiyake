@@ -65,6 +65,8 @@ public class JPConsultaProd extends javax.swing.JPanel {
                 "ID PRODUCTO", "NOMBRE PRODUCTO", "PRECIO", "FECHA DE CREACION", "FECHA DE MODIFICACION", "TIENDA"
             }
         ));
+        jXTable1.setHorizontalScrollEnabled(true);
+        jXTable1.setSortable(false);
         jScrollPane1.setViewportView(jXTable1);
 
         jLabel1.setText("Fecha Desde:");
