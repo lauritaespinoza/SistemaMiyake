@@ -3,6 +3,7 @@ package gui.dialogos;
 import gui.paneles.Distribuidora1;
 import util.JavaUtil;
 import hibernate.DAO.ObjectModelDAO;
+import java.awt.Dialog;
 import java.awt.HeadlessException;
 import java.io.File;
 import java.io.InputStream;

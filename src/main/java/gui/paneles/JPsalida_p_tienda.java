@@ -333,10 +333,10 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
         panelFinalLayout.setVerticalGroup(
             panelFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFinalLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(panelFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fieldTotal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(17, 17, 17)
+                .addGroup(panelFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(fieldTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bGenerarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -733,15 +733,16 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
 
 //            if (JOptionPane.showConfirmDialog(this, "¿Esta Seguro que desea marcar como revisado este Formulario de Mercancía Asignada a Tienda?", "Información", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 //                cabecera.setRevisado(true);
-            if (jRadioButtonPendiente.isSelected()) {
-                // ObjectModelDAO.updateObject(cabecera);
-            }
+                if (jRadioButtonPendiente.isSelected()) {
+                    ObjectModelDAO.updateObject(cabecera);
+                }
             // cb_Salidas.removeItemAt (cb_Salidas.getSelectedIndex());
-            // sw = true;
-            // pos = cb_Salidas.getSelectedIndex();
-            generarReporte();
-            //esto debe colocarse //setCB();
-        }
+                // sw = true;
+                // pos = cb_Salidas.getSelectedIndex();
+                generarReporte();
+            //    setCB();
+
+            }
 
 //        } else {
 //            JOptionPane.showMessageDialog(this, "Deben Marcar que ha revisado este Formulario de Mercancía Asignada a Tienda");
@@ -793,6 +794,8 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
     private void jRadioButtonRevisadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonRevisadoActionPerformed
 
         setCB_Salidas();
+        checkboxRevisado.setSelected(true);
+        checkboxRevisado.setEnabled(false);
     }//GEN-LAST:event_jRadioButtonRevisadoActionPerformed
 
     private void cb_tienda2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_tienda2ActionPerformed
@@ -881,7 +884,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
     }//GEN-LAST:event_cb_salidasregistradasActionPerformed
 
     private void bt_ReportePendientsProcesadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ReportePendientsProcesadasActionPerformed
-     
+
     }//GEN-LAST:event_bt_ReportePendientsProcesadasActionPerformed
 
 
