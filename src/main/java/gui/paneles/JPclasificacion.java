@@ -40,12 +40,13 @@ public class JPclasificacion extends javax.swing.JPanel {
     private List resultList_departamento;
     private int pos;
     public final String rutaJasper = "/reportes/ReporteClasificacion.jasper";
-    
+    private Integer tabCrud;
     public JPclasificacion() {
         this(0);
     }
     
     public JPclasificacion(int tabCrud) {
+        this.tabCrud = tabCrud;
         initComponents();
         
         setTableCellAlignment(JLabel.CENTER,listadoClasif);
@@ -54,7 +55,7 @@ public class JPclasificacion extends javax.swing.JPanel {
         listadoClasif.getTableHeader().setReorderingAllowed(false);
         tablaModfClasif.getTableHeader().setReorderingAllowed(false);
         tablaDeletClasif.getTableHeader().setReorderingAllowed(false);
-        panelScrudClasif.setSelectedIndex(tabCrud);
+        
         
         tablaDeletClasif.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent lse) {
@@ -444,6 +445,8 @@ public class JPclasificacion extends javax.swing.JPanel {
 
         panelScrudClasif.addTab("Eliminar", jScrollPane7);
 
+        panelScrudClasif.setSelectedIndex(-1);
+
         add(panelScrudClasif);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -533,6 +536,19 @@ public class JPclasificacion extends javax.swing.JPanel {
     }//GEN-LAST:event_bDeletClasifActionPerformed
 
     private void panelScrudClasifStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_panelScrudClasifStateChanged
+         if (panelScrudClasif.getTabCount() != 4) {
+            return;
+        }
+
+        //verifica si debe abrir un panel desde la llamada
+        if (this.tabCrud != null) {
+            int tabCrud = this.tabCrud.intValue();
+            this.tabCrud = null;
+            panelScrudClasif.setSelectedIndex(tabCrud);
+            return;
+        }
+        
+        
         if (panelScrudClasif.getSelectedIndex() == 0) {
             String sql = "FROM Clasificacion c order by c.idClasificacion asc";
             List resultList = ObjectModelDAO.getResultQuery(sql);

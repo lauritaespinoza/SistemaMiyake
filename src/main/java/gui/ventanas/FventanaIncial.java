@@ -40,8 +40,12 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
@@ -2312,52 +2316,44 @@ public class FventanaIncial extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemAbrirCerrarInternosActionPerformed
 
     private void jMenuItemAcercaDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAcercaDeActionPerformed
-
-        try {
-
-//            ClassLoader classLoader = getClass().getClassLoader();
-//            String rutas = "";
-//            Enumeration<URL> lista = classLoader.getResources("");
+//
+//        try {
+////            InputStream ip = this.getClass().getResourceAsStream("/JavaHelp/JavaHelp/ejemplo.hs");
+////            BufferedReader br = new BufferedReader(new InputStreamReader(ip));
+////
+////            byte[] buffer = new byte[ip.available()];
+////            ip.read(buffer);
+////
+////            File archivo = new File("ejemplo.hs");
+////            archivo.deleteOnExit();
+////            OutputStream outStream = new FileOutputStream(archivo);
+////            outStream.write(buffer);
+////            JOptionPane.showMessageDialog(this, archivo.exists()+" "+archivo.toURI().toURL());
+//
 //            
-//            while (lista.hasMoreElements()) {
-//                rutas += lista.nextElement().getPath()
-//                        + " "
-//                        + lista.nextElement()
-//                        + "\n";
-//            }
-//            
-//            JOptionPane.showMessageDialog(this, rutas);
-            //InputStream inputStream = this.getClass().getResourceAsStream("/iconos/CSV.png");
-//	File archivo = new File(classLoader.getResource("ejemplo.hs").getFile());
-            JOptionPane.showMessageDialog(this, this.getClass().getResource("iconos/CSV.png").getPath()
-            );
-
-            File archivo = new File(this.getClass().getResource("/iconos/CSV.png").getPath());
-            //getClass().getResource("/JavaHelp/JavaHelp/ejemplo.hs").getFile());
-            //this.getClass().getResource("/JavaHelp/JavaHelp/ejemplo.hs").getFile());
-            JOptionPane.showMessageDialog(this, "existe : " + archivo.exists());
-            URL hsURL = archivo.toURI().toURL();
-
-            HelpSet helpset = null;
-            helpset = new HelpSet(null, hsURL);
-
-            HelpSet.Presentation hsp;
-            hsp = helpset.getPresentation("MainWin");
-
-            HelpBroker help_browser = helpset.createHelpBroker();
-            help_browser.setHelpSetPresentation(hsp);
-
-            // Cuando pulsemos F1 se mostrará la ayuda de la página de introducion
-            help_browser.enableHelpOnButton(this.jMenuItemAcercaDe, "introduction", helpset);
-            help_browser.enableHelpKey(getContentPane(), "introduction", helpset);
-
-        } catch (HelpSetException | MalformedURLException ex) {
-            Logger.getLogger(FventanaIncial.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(this, "Excepcion Ayuda Factura " + ex);
-            System.err.println("Excepcion Ayuda Factura " + ex);
-        } catch (IOException ex) {
-            Logger.getLogger(FventanaIncial.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//             File archivo =null;
+//            URL hsURL = archivo.toURI().toURL();
+//
+//            HelpSet helpset = null;
+//            helpset = new HelpSet(null, hsURL);
+//
+//            HelpSet.Presentation hsp;
+//            hsp = helpset.getPresentation("MainWin");
+//
+//            HelpBroker help_browser = helpset.createHelpBroker();
+//            help_browser.setHelpSetPresentation(hsp);
+//
+//            // Cuando pulsemos F1 se mostrará la ayuda de la página de introducion
+//            help_browser.enableHelpOnButton(this.jMenuItemAcercaDe, "introduction", helpset);
+//            help_browser.enableHelpKey(getContentPane(), "introduction", helpset);
+//
+//        } catch (HelpSetException | MalformedURLException ex) {
+//            Logger.getLogger(FventanaIncial.class.getName()).log(Level.SEVERE, null, ex);
+//            JOptionPane.showMessageDialog(this, "Excepcion Ayuda Factura " + ex);
+//            System.err.println("Excepcion Ayuda Factura " + ex);
+//        } catch (IOException ex) {
+//            Logger.getLogger(FventanaIncial.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 
     }//GEN-LAST:event_jMenuItemAcercaDeActionPerformed
 
