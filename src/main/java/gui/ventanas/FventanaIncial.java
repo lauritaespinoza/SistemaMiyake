@@ -1888,7 +1888,7 @@ public class FventanaIncial extends javax.swing.JFrame {
     }//GEN-LAST:event_jmEliminarProductoActionPerformed
 
     private void jMenuItemInvDiarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInvDiarioActionPerformed
-        addPaneles(tabInventarioDiario, JPinventarioDiario.class, null, null);
+        addPaneles(tabInventarioDiario, JPinventarioDiario.class, null, null); 
     }//GEN-LAST:event_jMenuItemInvDiarioActionPerformed
 
     private void jmConsultarAlmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmConsultarAlmacenActionPerformed

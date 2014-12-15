@@ -704,7 +704,7 @@ public class JPinventarioDiario extends javax.swing.JPanel {
     }//GEN-LAST:event_detallesActionPerformed
 
     private void cb_tiendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_tiendasActionPerformed
-        if (cb_tiendas.getSelectedItem().equals(JavaUtil.cons_seleccionar)) {
+        if (cb_tiendas.getSelectedIndex() != -1 && cb_tiendas.getSelectedItem().equals(JavaUtil.cons_seleccionar)) {
             imprimir.setEnabled(false);
             guardar.setEnabled(false);
             recalcular.setEnabled(false);
@@ -868,7 +868,12 @@ public class JPinventarioDiario extends javax.swing.JPanel {
             jdFacturasCSV = new JDfaturasCSV(null, true);
         }
 
+        if (cb_tiendas.getSelectedIndex() > 0) {//toma en cuenta el seleccionar que es 0
+            jdFacturasCSV.cb_tiendas.setSelectedItem(cb_tiendas.getSelectedItem());
+        }
+
         jdFacturasCSV.setVisible(true);
+
         if (jdFacturasCSV.getIvtDiario() != null) {
             total_facturas.setText(JavaUtil.dosDecimales.format(jdFacturasCSV.getIvtDiario().getTotalConIva()).replace(",", "."));
             detalles.setEnabled(true);
