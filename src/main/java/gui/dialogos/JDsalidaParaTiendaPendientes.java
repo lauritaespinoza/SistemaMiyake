@@ -289,9 +289,7 @@ public class JDsalidaParaTiendaPendientes extends javax.swing.JDialog {
                     String s = "";                                      //jtableListaProductosInventarioTienda
                     TableModelReport dataSourse = new TableModelReport(jtListaSalidaPendientes_.getModel());
                     parametro.put("REPORT_DATA_SOURSE", dataSourse);
-                    //JasperCompileManager.compileReport(rutaJrxml);
                     JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ListadoSalidasPendientes.jasper"));
-
                     jasperPrint = JasperFillManager.fillReport(reporte, null, dataSourse);
                     JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
                     jasperViewer.setModalExclusionType(Dialog.ModalExclusionType.TOOLKIT_EXCLUDE);
