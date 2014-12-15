@@ -56,6 +56,8 @@ import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
 /**
@@ -69,7 +71,7 @@ public class JPinventarioDiario extends javax.swing.JPanel {
     private static final IVDDComparator comparator_ivdd = new IVDDComparator();
     private List resultListAlmacen = null;
     private boolean crear;
-    public final InputStream rutaJasper = this.getClass().getResourceAsStream("/reportes/ReporteInventarioDiario.jasper");
+    public final String rutaJasper = "/reportes/ReporteInventarioDiario.jasper";
     public final InputStream rutaJrxml = this.getClass().getResourceAsStream("/reportes/ReporteInventarioDiario.jrxml");
     private String rutaImagen = "src/main/resources/imagenes/Salir.png";
     private JDfaturasCSV jdFacturasCSV = null;
@@ -768,8 +770,8 @@ public class JPinventarioDiario extends javax.swing.JPanel {
             TableModelReport dataSourse = new TableModelReport(tabla.getModel());
             parametro.put("REPORT_DATA_SOURSE", dataSourse);
 
-            JasperCompileManager.compileReport(rutaJrxml);
-            jasperPrint = JasperFillManager.fillReport(rutaJasper, parametro, dataSourse);
+            JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream(rutaJasper));
+            jasperPrint = JasperFillManager.fillReport(reporte, parametro, dataSourse);
             JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
             jasperViewer.setTitle("Reporte de Inventario Diario");
             jasperViewer.setVisible(true);

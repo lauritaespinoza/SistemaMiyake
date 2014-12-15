@@ -459,6 +459,12 @@ public class JPdepartamento extends javax.swing.JPanel {
 
     private void bCrearDivisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearDivisionActionPerformed
         createJDialogGeneric(new JPdivision(1));
+         resultList_division = ObjectModelDAO.getResultQuery("FROM Division d order by d.idDivision asc");
+            cb_divisionCrear.removeAllItems();
+            for (Object object : resultList_division) {
+                Division d = (Division) object;
+                cb_divisionCrear.addItem(d.getNombre());
+            }
 
     }//GEN-LAST:event_bCrearDivisionActionPerformed
 
