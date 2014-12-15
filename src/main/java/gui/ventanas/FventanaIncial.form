@@ -1513,6 +1513,7 @@
                         </Container>
                         <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneModuloTienda">
                           <Properties>
+                            <Property name="collapsed" type="boolean" value="true"/>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                               <Image iconType="3" name="/icon_almacen/1417636353_shop.png"/>
                             </Property>
@@ -1755,6 +1756,7 @@
                         </Container>
                         <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneModuloGestionProductos">
                           <Properties>
+                            <Property name="collapsed" type="boolean" value="true"/>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                               <Image iconType="3" name="/iconos/GestionProducto.png"/>
                             </Property>
@@ -1991,7 +1993,6 @@
                         </Container>
                         <Container class="org.jdesktop.swingx.JXTaskPane" name="jXTaskPaneReportes">
                           <Properties>
-                            <Property name="collapsed" type="boolean" value="true"/>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                               <Image iconType="3" name="/iconos/Reporte.png"/>
                             </Property>
@@ -2001,7 +2002,6 @@
                           <SubComponents>
                             <Container class="org.jdesktop.swingx.JXTaskPane" name="jXTaskPaneDistribuidor">
                               <Properties>
-                                <Property name="collapsed" type="boolean" value="true"/>
                                 <Property name="title" type="java.lang.String" value="Resportes Distribuidor"/>
                               </Properties>
                               <SubComponents>
