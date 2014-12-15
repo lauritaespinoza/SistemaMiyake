@@ -41,6 +41,7 @@ public class JPusuario extends javax.swing.JPanel {
         this.tabCrud = tabCrud;
         initComponents();
         cargarCB();
+        clave.setText("");
 
         setTableCellAlignment(JLabel.CENTER, tablaListadoUsuarios);
         setTableCellAlignment(JLabel.CENTER, tablaModfUser);
@@ -533,11 +534,11 @@ public class JPusuario extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelScrudUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 798, Short.MAX_VALUE)
+            .addComponent(panelScrudUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelScrudUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
+            .addComponent(panelScrudUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

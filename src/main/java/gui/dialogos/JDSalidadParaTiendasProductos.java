@@ -35,7 +35,7 @@ public class JDSalidadParaTiendasProductos extends javax.swing.JDialog {
         initComponents();
         this.setLocationRelativeTo(null);
         //Inicializa ayuda
-        this.ayudaActionPerformed(null);
+//        this.ayudaActionPerformed(null);
         //busy
         busy.setVisible(false);
 
@@ -234,30 +234,30 @@ public class JDSalidadParaTiendasProductos extends javax.swing.JDialog {
 
     private void ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ayudaActionPerformed
 
-        try {
-            
-            File  archivo = new File(this.getClass().getResource("/JavaHelp/JavaHelp/ejemplo.hs").getFile());
-
-            URL hsURL = archivo.toURI().toURL();
-
-            HelpSet helpset = null;
-            helpset = new HelpSet(null, hsURL);
-
-            HelpSet.Presentation hsp;
-            hsp = helpset.getPresentation("MainWin");
-
-            HelpBroker help_browser = helpset.createHelpBroker();
-            help_browser.setHelpSetPresentation(hsp);
-
-            // Cuando pulsemos F1 se mostrará la ayuda de la página de introducion
-            help_browser.enableHelpOnButton(this.ayuda, "introduction", helpset);
-            help_browser.enableHelpKey(getContentPane(), "introduction", helpset);
-
-        } catch (HelpSetException | MalformedURLException ex) {
-            Logger.getLogger(JDFacturasPendientes.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(this, "Excepcion Ayuda Factura " + ex);
-            System.err.println("Excepcion Ayuda Factura " + ex);
-        }
+//        try {
+//            
+//            File  archivo = new File(this.getClass().getResource("/JavaHelp/JavaHelp/ejemplo.hs").getFile());
+//
+//            URL hsURL = archivo.toURI().toURL();
+//
+//            HelpSet helpset = null;
+//            helpset = new HelpSet(null, hsURL);
+//
+//            HelpSet.Presentation hsp;
+//            hsp = helpset.getPresentation("MainWin");
+//
+//            HelpBroker help_browser = helpset.createHelpBroker();
+//            help_browser.setHelpSetPresentation(hsp);
+//
+//            // Cuando pulsemos F1 se mostrará la ayuda de la página de introducion
+//            help_browser.enableHelpOnButton(this.ayuda, "introduction", helpset);
+//            help_browser.enableHelpKey(getContentPane(), "introduction", helpset);
+//
+//        } catch (HelpSetException | MalformedURLException ex) {
+//            Logger.getLogger(JDFacturasPendientes.class.getName()).log(Level.SEVERE, null, ex);
+//            JOptionPane.showMessageDialog(this, "Excepcion Ayuda Factura " + ex);
+//            System.err.println("Excepcion Ayuda Factura " + ex);
+//        }
     }//GEN-LAST:event_ayudaActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
