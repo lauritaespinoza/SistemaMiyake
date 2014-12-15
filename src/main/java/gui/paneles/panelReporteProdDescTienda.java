@@ -18,6 +18,8 @@ import modelos.mapeos.Almacen;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
 /**
@@ -110,7 +112,7 @@ public class panelReporteProdDescTienda extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      
+
         try {
             Almacen alc = (Almacen) resultListAlmacen.get(cb_tiendas.getSelectedIndex());
             JasperPrint jasperPrint = null;
@@ -123,8 +125,8 @@ public class panelReporteProdDescTienda extends javax.swing.JPanel {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection("jdbc:postgresql://tecnosys.dyndns.tv:5432/miyake_pasantia", "postgres", "admin");
             //+ "jdbc:postgresql://192.2.1.70:5432/miyake_pasantia", "postgres", "admin");
-            JasperCompileManager.compileReport(rutaJrxml1);
-            jasperPrint = JasperFillManager.fillReport(rutaJasper1, parametro, conexion);
+            JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ReporteProductosDescuento.jasper"));
+            jasperPrint = JasperFillManager.fillReport(reporte, parametro, conexion);
             JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
             jasperViewer.setTitle("Reporte de Todos los Productos con Descuento");
             jasperViewer.setModalExclusionType(Dialog.ModalExclusionType.TOOLKIT_EXCLUDE);

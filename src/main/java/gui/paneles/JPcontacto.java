@@ -142,7 +142,7 @@ public class JPcontacto extends javax.swing.JPanel {
         bDeletContact = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
 
-        setPreferredSize(new java.awt.Dimension(5, 5));
+        setPreferredSize(new java.awt.Dimension(621, 467));
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.X_AXIS));
 
         panelScrudContact.addChangeListener(new javax.swing.event.ChangeListener() {
