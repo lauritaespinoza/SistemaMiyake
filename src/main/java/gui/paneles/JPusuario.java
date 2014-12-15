@@ -18,7 +18,6 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import modelos.mapeos.Almacen;
-
 import modelos.mapeos.Contacto;
 import modelos.mapeos.Usuario;
 import static util.JavaUtil.cons_seleccionar;

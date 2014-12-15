@@ -8,7 +8,10 @@ package gui.dialogos;
 import gui.paneles.Distribuidora1;
 import util.JavaUtil;
 import hibernate.DAO.ObjectModelDAO;
+import java.awt.Dialog;
 import java.awt.HeadlessException;
+import java.io.File;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
@@ -56,6 +59,7 @@ public class JDListaProductosEntradaProveedor extends javax.swing.JDialog {
         resultList = listaEP;
         //busy
         busy.setVisible(false);
+        ayudaActionPerformed(null);
 //        jtListaProductos.setModel(mtp);
         this.jtListaEntradaProveedor.setAutoCreateRowSorter(true);
         this.jtListaEntradaProveedor.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
@@ -98,7 +102,6 @@ public class JDListaProductosEntradaProveedor extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        labelAyuda = new org.jdesktop.swingx.JXLabel();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -107,18 +110,12 @@ public class JDListaProductosEntradaProveedor extends javax.swing.JDialog {
         jButton3 = new javax.swing.JButton();
         txtTitulo = new javax.swing.JLabel();
         busy = new org.jdesktop.swingx.JXBusyLabel();
+        ayuda = new javax.swing.JButton();
+        jMenuBarDialogoFac = new javax.swing.JMenuBar();
+        jMenuOpciones = new javax.swing.JMenu();
+        jMenu_Ayuda_ = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        labelAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416510931_Help.png"))); // NOI18N
-        labelAyuda.setText("Ayuda");
-        labelAyuda.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        labelAyuda.setTextAlignment(null);
-        labelAyuda.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                labelAyudaMouseClicked(evt);
-            }
-        });
 
         jButton2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jButton2.setText("Cancelar");
@@ -169,57 +166,73 @@ public class JDListaProductosEntradaProveedor extends javax.swing.JDialog {
         txtTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415416322_list-accept.png"))); // NOI18N
         txtTitulo.setText("Producto Disponibles Para Toma Fisica Distribuidora");
 
-        busy.setText("Cargando...!!!");
+        busy.setText("Generando Archivo...!!!");
+
+        ayuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416510931_Help.png"))); // NOI18N
+        ayuda.setBorder(null);
+        ayuda.setBorderPainted(false);
+        ayuda.setContentAreaFilled(false);
+        ayuda.setDefaultCapable(false);
+        ayuda.setFocusPainted(false);
+        ayuda.setFocusable(false);
+        ayuda.setRequestFocusEnabled(false);
+        ayuda.setVerifyInputWhenFocusTarget(false);
+        ayuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ayudaActionPerformed(evt);
+            }
+        });
+
+        jMenuOpciones.setText("Opciones");
+        jMenuBarDialogoFac.add(jMenuOpciones);
+
+        jMenu_Ayuda_.setText("Ayuda");
+        jMenuBarDialogoFac.add(jMenu_Ayuda_);
+
+        setJMenuBar(jMenuBarDialogoFac);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGap(229, 229, 229))
-                                .addComponent(jXFindBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(76, 76, 76)
-                            .addComponent(txtTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGap(87, 87, 87)
-                            .addComponent(labelAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addContainerGap()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jXFindBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 763, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jButton1)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 763, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtTitulo)
+                                .addGap(50, 50, 50)
+                                .addComponent(ayuda)
+                                .addGap(28, 28, 28)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(ayuda)
+                    .addComponent(txtTitulo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jXFindBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1)
+                    .addComponent(jButton3)
                     .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -241,17 +254,6 @@ public class JDListaProductosEntradaProveedor extends javax.swing.JDialog {
             seleccionarProducto();
         }
     }//GEN-LAST:event_jtListaEntradaProveedorMouseClicked
-
-    private void labelAyudaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelAyudaMouseClicked
-        if(evt.getClickCount()==1){
-            JOptionPane.showMessageDialog(null, "Mensaje");
-            System.err.println("Mesaje_Ayuda");
-            //  JOptionPane.showInternalMessageDialog(this, evt, null, WIDTH);
-
-        }
-
-      
-    }//GEN-LAST:event_labelAyudaMouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:    resultList
@@ -275,6 +277,7 @@ public class JDListaProductosEntradaProveedor extends javax.swing.JDialog {
 
                     jasperPrint = JasperFillManager.fillReport(reporte, null, dataSourse);
                     JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
+                     jasperViewer.setModalExclusionType(Dialog.ModalExclusionType.TOOLKIT_EXCLUDE);
                     jasperViewer.setTitle("Producto Disponibles Para Toma Fisica Distribuidora.");
                     jasperViewer.setVisible(true);
                     //busy
@@ -307,17 +310,46 @@ public class JDListaProductosEntradaProveedor extends javax.swing.JDialog {
         };
         hilo.start();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ayudaActionPerformed
+
+        try {
+            File  archivo = new File(this.getClass().getResource("/JavaHelp/JavaHelp/ejemplo.hs").getFile());
+            URL hsURL = archivo.toURI().toURL();
+
+            HelpSet helpset = null;
+            helpset = new HelpSet(null, hsURL);
+
+            HelpSet.Presentation hsp;
+            hsp = helpset.getPresentation("MainWin");
+
+            HelpBroker help_browser = helpset.createHelpBroker();
+            help_browser.setHelpSetPresentation(hsp);
+
+            // Cuando pulsemos F1 se mostrará la ayuda de la página de introducion
+            help_browser.enableHelpOnButton(this.ayuda, "introduction", helpset);
+            help_browser.enableHelpKey(getContentPane(), "introduction", helpset);
+
+        } catch (HelpSetException | MalformedURLException ex) {
+            Logger.getLogger(JDFacturasPendientes.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Excepcion Ayuda Factura " + ex);
+            System.err.println("Excepcion Ayuda Factura " + ex);
+        }
+    }//GEN-LAST:event_ayudaActionPerformed
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ayuda;
     private org.jdesktop.swingx.JXBusyLabel busy;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JMenuBar jMenuBarDialogoFac;
+    private javax.swing.JMenu jMenuOpciones;
+    private javax.swing.JMenu jMenu_Ayuda_;
     private javax.swing.JScrollPane jScrollPane2;
     private org.jdesktop.swingx.JXFindBar jXFindBar1;
     private org.jdesktop.swingx.JXTable jtListaEntradaProveedor;
-    private org.jdesktop.swingx.JXLabel labelAyuda;
     private javax.swing.JLabel txtTitulo;
     // End of variables declaration//GEN-END:variables
 

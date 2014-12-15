@@ -486,6 +486,9 @@
             </Menu>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemSalir">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+Z"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Salir"/>
               </Properties>
               <Events>
@@ -1126,8 +1129,14 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemAcercaDe">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="F1"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Acerca de"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemAcercaDeActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -1136,6 +1145,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="Sistema Miyake."/>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
       <Color blue="c9" green="b6" red="9" type="rgb"/>
     </Property>
@@ -1275,6 +1285,7 @@
                                   <Image iconType="3" name="/iconos/tomafisica.png"/>
                                 </Property>
                                 <Property name="text" type="java.lang.String" value="Toma Fisica                        "/>
+                                <Property name="toolTipText" type="java.lang.String" value="Entrada Distribuidora (Ctrl+D)"/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                                     <BevelBorder/>
@@ -1295,6 +1306,7 @@
                                   <Image iconType="3" name="/icon_almacen/1416789791_database_add.png"/>
                                 </Property>
                                 <Property name="text" type="java.lang.String" value="Asignar Mercancia            "/>
+                                <Property name="toolTipText" type="java.lang.String" value="Mercancia Entre Tiendas (Ctrl+G)"/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                                     <BevelBorder/>
@@ -1532,6 +1544,7 @@
                                   <Image iconType="3" name="/iconos/tomafisica.png"/>
                                 </Property>
                                 <Property name="text" type="java.lang.String" value="Toma Fisica                 "/>
+                                <Property name="toolTipText" type="java.lang.String" value="Recepci&#xf3;n Mercancia (Ctrl+T)"/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                                     <BevelBorder/>

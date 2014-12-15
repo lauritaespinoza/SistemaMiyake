@@ -27,8 +27,8 @@
 		<presentation default="true" displayviews="true" displayviewimages="true">
 			<name>MainWin</name>
 			<size width="640" height="480"/>		<!-- Dimensiones iniciales -->
-			<location x="200" y="200"/>			<!-- Posición inicial -->
-			<title>Título de la ventana de ayuda</title> <!-- Título de la ventana -->
+			<location x="250" y="150"/>			<!-- Posición inicial -->
+			<title>Ayuda del Sistema Miyake.</title> <!-- Título de la ventana -->
 			<toolbar>	<!-- Definimos la barra de herramientas de la ventana -->
 				<!-- Permitimos ir a la página anterior -->
 				<helpaction image="BackwardIco">javax.help.BackAction</helpaction>
