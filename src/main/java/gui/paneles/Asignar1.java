@@ -45,7 +45,7 @@ public class Asignar1 extends javax.swing.JPanel {
 
     Usuario ususrioActual = null;
     Usuario user = JFInicioSecionMiyake.us1;
-    Almacen almacenHasta = null;
+    Almacen tiendaHasta = null;
     Almacen almacenDesde = null;
     List resultListAlmacen = null;
     List resultListInventarioTienda = null;
@@ -60,6 +60,7 @@ public class Asignar1 extends javax.swing.JPanel {
     private DetalleRegistro deReg;
     List<DetalleRegistro> listaDetalle = new ArrayList<>();
     ModeloTablaDetalleRegistroAsignacion modeloTablaAsignacion = new ModeloTablaDetalleRegistroAsignacion();
+    private int pos_almacen = -1;
 
     /**
      * Creates new form NewJPanel
@@ -70,8 +71,8 @@ public class Asignar1 extends javax.swing.JPanel {
         this.TablaDetalleRegistrosAsignacionMercancia1.setModel(modeloTablaAsignacion);
         cargarComboBoxAlmacen();
 //        posTi = this.comboBoxAlmacen.getSelectedIndex();
-//        almacenHasta = (Almacen) resultListAlmacen.get(posTi);
-//        System.err.println("Index Sleccion podTi, lod  dstpd Son : " + almacenHasta.getNombre() );
+//        tiendaHasta = (Almacen) resultListAlmacen.get(posTi);
+//        System.err.println("Index Sleccion podTi, lod  dstpd Son : " + tiendaHasta.getNombre() );
 //        Almacen al = (Almacen) this.comboBoxAlmacen.getSelectedItem();
 //        System.err.println("Almacen Seleccionado Objeto : " + al.getNombre()+al.getIdAlmacen() );
 //        
@@ -84,9 +85,8 @@ public class Asignar1 extends javax.swing.JPanel {
 
         }
 
-        //this.comboBoxAlmacenHasta.setEnabled(false);
         this.comboBoxUsuarios.setSelectedIndex(-1);
-        this.comboBoxUsuarios.setEnabled(false);
+
         this.busy.setVisible(false);
         this.busy1.setVisible(false);
 
@@ -119,14 +119,13 @@ public class Asignar1 extends javax.swing.JPanel {
 
         jScrollPane2 = new javax.swing.JScrollPane();
         jLayeredPanePrincipal = new javax.swing.JLayeredPane();
-        busy = new org.jdesktop.swingx.JXBusyLabel();
         jXTaskPaneCabeceraAsignacion = new org.jdesktop.swingx.JXTaskPane();
         jScrollPane3 = new javax.swing.JScrollPane();
         jLayeredPaneTienda = new javax.swing.JLayeredPane();
         jXLabel2 = new org.jdesktop.swingx.JXLabel();
         jXButtonConfirmar = new org.jdesktop.swingx.JXButton();
         jXLabel1 = new org.jdesktop.swingx.JXLabel();
-        comboBoxAlmacenHasta = new javax.swing.JComboBox();
+        comboBoxTiendaHasta = new javax.swing.JComboBox();
         comboBoxUsuarios = new javax.swing.JComboBox();
         jXButtonReiniciar = new org.jdesktop.swingx.JXButton();
         comboBoxAlmacenDesde = new javax.swing.JComboBox();
@@ -162,26 +161,21 @@ public class Asignar1 extends javax.swing.JPanel {
         jXButtonTotalizar = new org.jdesktop.swingx.JXButton();
         jXButtonAsignarMercancia = new org.jdesktop.swingx.JXButton();
         jXButtonImprimir_ = new org.jdesktop.swingx.JXButton();
-        busy1 = new org.jdesktop.swingx.JXBusyLabel();
         jXButtonReiniciarFooter = new org.jdesktop.swingx.JXButton();
+        busy = new org.jdesktop.swingx.JXBusyLabel();
+        busy1 = new org.jdesktop.swingx.JXBusyLabel();
 
+        setToolTipText("");
         setAutoscrolls(true);
         setLayout(new java.awt.BorderLayout());
 
         jLayeredPanePrincipal.setAutoscrolls(true);
 
-        busy.setIcon(null);
-        busy.setText("GUARDANDO!!!");
-        busy.setEnabled(false);
-        busy.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-
         jXTaskPaneCabeceraAsignacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416789183_data-16.png"))); // NOI18N
-        jXTaskPaneCabeceraAsignacion.setTitle("Cabecera Asignacion");
+        jXTaskPaneCabeceraAsignacion.setTitle("Cabecera Asignacion.");
 
         jLayeredPaneTienda.setBorder(javax.swing.BorderFactory.createTitledBorder("Seleccionar Datos Para Asignar Mercancia"));
-        jLayeredPaneTienda.setPreferredSize(new java.awt.Dimension(610, 140));
-        jLayeredPaneTienda.setRequestFocusEnabled(false);
-        jLayeredPaneTienda.setVerifyInputWhenFocusTarget(false);
+        jLayeredPaneTienda.setPreferredSize(new java.awt.Dimension(610, 150));
 
         jXLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/responsable1.png"))); // NOI18N
         jXLabel2.setText("Responsable");
@@ -197,20 +191,12 @@ public class Asignar1 extends javax.swing.JPanel {
         jXLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636330_store.png"))); // NOI18N
         jXLabel1.setText("   Tienda");
 
-        comboBoxAlmacenHasta.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        comboBoxAlmacenHasta.setEnabled(false);
-        comboBoxAlmacenHasta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboBoxAlmacenHastaActionPerformed(evt);
-            }
-        });
+        comboBoxTiendaHasta.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         comboBoxUsuarios.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        comboBoxUsuarios.setEnabled(false);
 
         jXButtonReiniciar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/reiniciar.png"))); // NOI18N
         jXButtonReiniciar.setText("Reiniciar");
-        jXButtonReiniciar.setEnabled(false);
         jXButtonReiniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jXButtonReiniciarActionPerformed(evt);
@@ -219,11 +205,6 @@ public class Asignar1 extends javax.swing.JPanel {
 
         comboBoxAlmacenDesde.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         comboBoxAlmacenDesde.setToolTipText("Para Vizualizar Todas Las Tiendas debe Reiniciar");
-        comboBoxAlmacenDesde.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboBoxAlmacenDesdeActionPerformed(evt);
-            }
-        });
 
         jXLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636232_09.png"))); // NOI18N
         jXLabel10.setText("  Almacen");
@@ -249,7 +230,7 @@ public class Asignar1 extends javax.swing.JPanel {
                         .addGap(172, 172, 172))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jLayeredPaneTiendaLayout.createSequentialGroup()
                         .addGroup(jLayeredPaneTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(comboBoxAlmacenHasta, javax.swing.GroupLayout.Alignment.LEADING, 0, 586, Short.MAX_VALUE)
+                            .addComponent(comboBoxTiendaHasta, javax.swing.GroupLayout.Alignment.LEADING, 0, 586, Short.MAX_VALUE)
                             .addComponent(comboBoxAlmacenDesde, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(27, 27, 27))))
         );
@@ -262,7 +243,7 @@ public class Asignar1 extends javax.swing.JPanel {
                     .addComponent(comboBoxAlmacenDesde))
                 .addGap(11, 11, 11)
                 .addGroup(jLayeredPaneTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(comboBoxAlmacenHasta)
+                    .addComponent(comboBoxTiendaHasta)
                     .addComponent(jXLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
                 .addGroup(jLayeredPaneTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,12 +252,12 @@ public class Asignar1 extends javax.swing.JPanel {
                         .addComponent(jXLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jXButtonConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jXButtonReiniciar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addGap(33, 33, 33))
         );
         jLayeredPaneTienda.setLayer(jXLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPaneTienda.setLayer(jXButtonConfirmar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPaneTienda.setLayer(jXLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPaneTienda.setLayer(comboBoxAlmacenHasta, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPaneTienda.setLayer(comboBoxTiendaHasta, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPaneTienda.setLayer(comboBoxUsuarios, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPaneTienda.setLayer(jXButtonReiniciar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPaneTienda.setLayer(comboBoxAlmacenDesde, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -294,9 +275,11 @@ public class Asignar1 extends javax.swing.JPanel {
         );
         jXTaskPaneCabeceraAsignacionLayout.setVerticalGroup(
             jXTaskPaneCabeceraAsignacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 145, Short.MAX_VALUE)
+            .addGap(0, 155, Short.MAX_VALUE)
             .addGroup(jXTaskPaneCabeceraAsignacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
+                .addGroup(jXTaskPaneCabeceraAsignacionLayout.createSequentialGroup()
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                    .addGap(0, 0, 0)))
         );
 
         jScrollPane4.setAutoscrolls(true);
@@ -470,7 +453,6 @@ public class Asignar1 extends javax.swing.JPanel {
             .addGroup(jLayeredPaneDatosProductosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jLayeredPaneDatosProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1)
                     .addGroup(jLayeredPaneDatosProductosLayout.createSequentialGroup()
                         .addComponent(jXLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -480,32 +462,36 @@ public class Asignar1 extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtNroBulto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(botonAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonLimpiarAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(botonAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                        .addGap(79, 79, 79)
+                        .addComponent(botonLimpiarAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                        .addGap(13, 13, 13))
                     .addGroup(jLayeredPaneDatosProductosLayout.createSequentialGroup()
-                        .addGroup(jLayeredPaneDatosProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(labelReferencia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jXLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(jLayeredPaneDatosProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator1)
                             .addGroup(jLayeredPaneDatosProductosLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jXLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jLayeredPaneDatosProductosLayout.createSequentialGroup()
-                                .addComponent(txtReferencia, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jXLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(txtMarca, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jXLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(txtExistencia, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)))))
-                .addContainerGap())
+                                .addGroup(jLayeredPaneDatosProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(labelReferencia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jXLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(jLayeredPaneDatosProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jLayeredPaneDatosProductosLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jXLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(jLayeredPaneDatosProductosLayout.createSequentialGroup()
+                                        .addComponent(txtReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jXLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, 0)
+                                        .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jXLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, 0)
+                                        .addComponent(txtExistencia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                        .addContainerGap())))
         );
         jLayeredPaneDatosProductosLayout.setVerticalGroup(
             jLayeredPaneDatosProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -540,7 +526,7 @@ public class Asignar1 extends javax.swing.JPanel {
                         .addComponent(txtNroBulto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(botonAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(botonLimpiarAgregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         jLayeredPaneDatosProductos.setLayer(txtDescripcion, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPaneDatosProductos.setLayer(txtExistencia, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -607,9 +593,9 @@ public class Asignar1 extends javax.swing.JPanel {
             .addGroup(jLayeredPaneProductosLayout.createSequentialGroup()
                 .addComponent(jLayeredPaneBuscarProducto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLayeredPaneDatosProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 126, Short.MAX_VALUE)
+                .addComponent(jLayeredPaneDatosProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jXButtonTotalizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -624,7 +610,6 @@ public class Asignar1 extends javax.swing.JPanel {
         jXButtonAsignarMercancia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/database_save.png"))); // NOI18N
         jXButtonAsignarMercancia.setText("ASIGNAR");
         jXButtonAsignarMercancia.setEnabled(false);
-        jXButtonAsignarMercancia.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
         jXButtonAsignarMercancia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jXButtonAsignarMercanciaActionPerformed(evt);
@@ -634,17 +619,11 @@ public class Asignar1 extends javax.swing.JPanel {
         jXButtonImprimir_.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1418331399_Print.png"))); // NOI18N
         jXButtonImprimir_.setText("IMPRIMIR");
         jXButtonImprimir_.setEnabled(false);
-        jXButtonImprimir_.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
         jXButtonImprimir_.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jXButtonImprimir_ActionPerformed(evt);
             }
         });
-
-        busy1.setBusy(true);
-        busy1.setText("GUARDANDO!!!");
-        busy1.setEnabled(false);
-        busy1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
 
         jXButtonReiniciarFooter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/reiniciar.png"))); // NOI18N
         jXButtonReiniciarFooter.setText("Reiniciar");
@@ -655,6 +634,10 @@ public class Asignar1 extends javax.swing.JPanel {
             }
         });
 
+        busy.setText("Cargando...!!!");
+
+        busy1.setText("Asignando...!!!");
+
         javax.swing.GroupLayout jLayeredPanePrincipalLayout = new javax.swing.GroupLayout(jLayeredPanePrincipal);
         jLayeredPanePrincipal.setLayout(jLayeredPanePrincipalLayout);
         jLayeredPanePrincipalLayout.setHorizontalGroup(
@@ -663,18 +646,19 @@ public class Asignar1 extends javax.swing.JPanel {
                 .addGap(0, 0, 0)
                 .addGroup(jLayeredPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jXTaskPaneCabeceraAsignacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jLayeredPanePrincipalLayout.createSequentialGroup()
-                        .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane4)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPanePrincipalLayout.createSequentialGroup()
                         .addComponent(jXButtonReiniciarFooter, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(busy1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jXButtonImprimir_, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jXButtonAsignarMercancia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jXButtonAsignarMercancia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jLayeredPanePrincipalLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(0, 0, 0))
         );
         jLayeredPanePrincipalLayout.setVerticalGroup(
@@ -682,28 +666,29 @@ public class Asignar1 extends javax.swing.JPanel {
             .addGroup(jLayeredPanePrincipalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jXTaskPaneCabeceraAsignacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
-                .addGap(0, 0, 0)
+                .addGap(4, 4, 4)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
+                .addGap(1, 1, 1)
                 .addGroup(jLayeredPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jLayeredPanePrincipalLayout.createSequentialGroup()
-                        .addComponent(jXButtonReiniciarFooter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jLayeredPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jXButtonReiniciarFooter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(busy1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(1, 1, 1))
                     .addGroup(jLayeredPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jXButtonAsignarMercancia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jXButtonImprimir_, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(busy1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jXButtonImprimir_, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(1, 1, 1))
         );
-        jLayeredPanePrincipal.setLayer(busy, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPanePrincipal.setLayer(jXTaskPaneCabeceraAsignacion, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPanePrincipal.setLayer(jScrollPane4, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPanePrincipal.setLayer(jXButtonAsignarMercancia, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPanePrincipal.setLayer(jXButtonImprimir_, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPanePrincipal.setLayer(busy1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPanePrincipal.setLayer(jXButtonReiniciarFooter, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPanePrincipal.setLayer(busy, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPanePrincipal.setLayer(busy1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jScrollPane2.setViewportView(jLayeredPanePrincipal);
 
@@ -722,35 +707,42 @@ public class Asignar1 extends javax.swing.JPanel {
                 try {
                     posUs = comboBoxUsuarios.getSelectedIndex();
                     posTi2 = comboBoxAlmacenDesde.getSelectedIndex();
-                    posTi = comboBoxAlmacenHasta.getSelectedIndex();
+                    posTi = comboBoxTiendaHasta.getSelectedIndex();
 
+                    if (posTi2 == posTi) {
+                        busy.setEnabled(false);
+                        busy.setVisible(false);
+                        busy.setBusy(false);
+                        //Controles ComboBox
+                        comboBoxAlmacenDesde.setEnabled(true);
+                        comboBoxTiendaHasta.setEnabled(true);
+                        comboBoxUsuarios.setEnabled(true);
+                        
+                        JOptionPane.showMessageDialog(null, "Por Favor, Selecione el Origen ó Destino Diferente.");
+                        return;
+                    }
                     if (posUs != -1 && posTi2 != -1 && posTi != -1) {
                         ususrioActual = (Usuario) resultListUsuarios.get(posUs);
                         almacenDesde = (Almacen) resultListAlmacen.get(posTi2);
-                        almacenHasta = (Almacen) resultListAlmacen.get(posTi);
+                        tiendaHasta = (Almacen) resultListAlmacen.get(posTi);
                         //COnstruir Consulta
                         String sql = "SELECT i FROM InventarioTienda i WHERE i.cantidad > 0 and i.inventarioTiendaPK.idAlmacen =" + almacenDesde.getIdAlmacen();
                         resultListInventarioTienda = ObjectModelDAO.getResultQuery(sql);
 
-                        for (Object listaInventarioTienda : resultListInventarioTienda) {
-                            System.err.println("Los datos son : " + ((InventarioTienda) listaInventarioTienda).getProducto());
-                        }
-                        //Controles ComboBox
-                        // comboBoxAlmacenDesde.setEnabled(false);
-                        // comboBoxAlmacenHasta.setEnabled(false);
+                        //Controles ComboBox 
                         comboBoxUsuarios.setEnabled(false);
-                        //Controles de Panel 2
-                        // jLayeredPaneBuscarProducto.setEnabled(true);
+                        comboBoxTiendaHasta.setEnabled(false);
+                        comboBoxAlmacenDesde.setEnabled(false);
+                        //Controles de Panel 2 
                         comboBoxTipoBusqueda.setEnabled(true);
                         txtBusqueda.requestFocus();
                         txtBusqueda.setEnabled(true);
                         jXButtonBuscar.setEnabled(true);
                         botonListarProductosInventariTienda.setEnabled(true);
                         jXButtonConfirmar.setEnabled(false);
-                        jXButtonReiniciar.setEnabled(true);
                         jXTaskPaneCabeceraAsignacion.setCollapsed(true);
                     } else {
-                        JOptionPane.showMessageDialog(null, "Debe Selecionar Todos Los Datos");
+                        JOptionPane.showMessageDialog(null, "Por Favor, Selecione Todos Los Datos Correctamente.");
                     }
                     busy.setEnabled(false);
                     busy.setVisible(false);
@@ -834,7 +826,6 @@ public class Asignar1 extends javax.swing.JPanel {
                     //Remover de Lista Actual Producto Agregago
                     this.invAux = inv;
                     this.resultListInventarioTienda.remove(inv);
-                    
 
                 }
             }
@@ -862,13 +853,13 @@ public class Asignar1 extends javax.swing.JPanel {
                     Float totalCosto = 0f;
 
                     //SalidaParaTienda cab = new SalidaParaTienda(ObjectModelDAO.getObject(al.getIdAlmacen(), Almacen.class), user, ayudante);
-                    SalidaParaTienda cab = new SalidaParaTienda(almacenDesde, almacenHasta, user, ususrioActual);
+                    SalidaParaTienda cab = new SalidaParaTienda(almacenDesde, tiendaHasta, user, ususrioActual);
                     Integer id_creado_cabecera = (Integer) ObjectModelDAO.saveObject(cab);
                     if (id_creado_cabecera != -1) {//se creo
 
                         for (DetalleRegistro dr : listaDetalle) {
 
-                            //String sql = "SELECT renglon FROM InventarioTienda renglon WHERE renglon.inventarioTiendaPK.idAlmacen =" + almacenHasta.getIdAlmacen();
+                            //String sql = "SELECT renglon FROM InventarioTienda renglon WHERE renglon.inventarioTiendaPK.idAlmacen =" + tiendaHasta.getIdAlmacen();
                             //List resultListInventarioHasta = ObjectModelDAO.getResultQuery(sql);
                             //InventarioTienda ivtHasta = resultListInventarioHasta.get(0)
                             System.out.println("Datos Lista : " + dr.toString());
@@ -930,8 +921,9 @@ public class Asignar1 extends javax.swing.JPanel {
                                     //Actualizar Obtener Precio en Los Productos del almacen Hasta donde se envia                            
                                     System.err.println("Creando PK inventario");
                                     InventarioTiendaPK inventarioPK2 = new InventarioTiendaPK(//Guaradar InventarioPK
+                                            //Guaradar InventarioPK
                                             dr.inv.getProducto().getIdProducto(),
-                                            almacenHasta.getIdAlmacen()
+                                            tiendaHasta.getIdAlmacen()
                                     );
                                     //Guaradar Inventario del almacen HASTA donde se envia
                                     InventarioTienda id_in2 = ObjectModelDAO.getObject(inventarioPK2, InventarioTienda.class);
@@ -943,7 +935,7 @@ public class Asignar1 extends javax.swing.JPanel {
                                                 inventarioPK2,
                                                 //dr.getCantidad(),
                                                 0,
-                                                almacenHasta,
+                                                tiendaHasta,
                                                 dr.inv.getProducto()
                                         );
 
@@ -991,17 +983,17 @@ public class Asignar1 extends javax.swing.JPanel {
                     jXButtonConfirmar.setEnabled(true);
                     //Controles ComboBox
                     comboBoxAlmacenDesde.setEnabled(true);
-                    comboBoxAlmacenHasta.setEnabled(true);
+                    comboBoxTiendaHasta.setEnabled(true);
                     comboBoxUsuarios.setEnabled(true);
                     //BOnton
-                    jXButtonConfirmar.setEnabled(false);
+                    jXButtonConfirmar.setEnabled(true);
                     //OBjetos
                     ususrioActual = null;
                     almacenDesde = null;
-                    almacenHasta = null;
+                    tiendaHasta = null;
                     //Controles ComboBox
                     comboBoxAlmacenDesde.setSelectedIndex(-1);
-                    comboBoxAlmacenHasta.setSelectedIndex(-1);
+                    comboBoxTiendaHasta.setSelectedIndex(-1);
                     comboBoxUsuarios.setSelectedIndex(-1);
                     //COntroles Panel desabilitar
                     //this.jLayeredPaneBuscarProducto.setEnabled(false);
@@ -1013,6 +1005,7 @@ public class Asignar1 extends javax.swing.JPanel {
                     botonLimpiarAgregar.setEnabled(false);
                     botonAgregar.setEnabled(false);
                     jXButtonAsignarMercancia.setEnabled(false);
+                    jXTaskPaneCabeceraAsignacion.setCollapsed(false);
 
                     busy1.setEnabled(false);
                     busy1.setVisible(false);
@@ -1070,7 +1063,7 @@ public class Asignar1 extends javax.swing.JPanel {
 
                 //Controles ComboBox
                 this.comboBoxAlmacenDesde.setEnabled(true);
-                this.comboBoxAlmacenHasta.setEnabled(true);
+                this.comboBoxTiendaHasta.setEnabled(true);
                 this.comboBoxUsuarios.setEnabled(true);
 
                 //BOntones de Pedido
@@ -1078,11 +1071,11 @@ public class Asignar1 extends javax.swing.JPanel {
                 //OBjetos
                 this.ususrioActual = null;
                 this.almacenDesde = null;
-                this.almacenHasta = null;
+                this.tiendaHasta = null;
 
                 //Controles ComboBox
                 this.comboBoxAlmacenDesde.setSelectedIndex(-1);
-                this.comboBoxAlmacenHasta.setSelectedIndex(-1);
+                this.comboBoxTiendaHasta.setSelectedIndex(-1);
                 this.comboBoxUsuarios.setSelectedIndex(-1);
 
                 //COntroles Panel Busqueda desabilitar
@@ -1126,20 +1119,6 @@ public class Asignar1 extends javax.swing.JPanel {
 
         botonAgregarActionPerformed(null);
 
-//        try {
-//            if ("".equals(this.txtCantidad.getText()) || "".equals(this.txtNroBulto.getText())) {
-//                JOptionPane.showMessageDialog(null, "¡¡¡Intriduzca Cantidad  de Productos Contabilizados "
-//                        + "y Numero deBulto Asignado Por Favor!!!");
-//
-//            } else {
-//            botonAgregarActionPerformed(null);
-//            }
-//        } catch (Exception e) {
-//            Logger.getLogger(Asignar1.class.getName()).log(Level.SEVERE, null, e);
-//            JOptionPane.showMessageDialog(null, "Por Favor, Seleccione Un Pedido Valido Para Continuar.!!!");
-//            System.err.println("ERROR ó Excepcion Boton Reiniciar Todo Desde Pedido : " + e);
-//
-//        }
 
     }//GEN-LAST:event_txtNroBultoActionPerformed
 
@@ -1205,20 +1184,6 @@ public class Asignar1 extends javax.swing.JPanel {
                     busy.setEnabled(false);
                     busy.setVisible(false);
                     busy.setBusy(false);
-//                    int respuesta = JOptionPane.showConfirmDialog(null, "El Archivo fue Generado con Exito,"
-//                            + "¿Desea Continuar Selecionando Una Factura Pendiente?");
-//
-//                    if (respuesta == JOptionPane.YES_OPTION) {
-//
-//                    }
-//                    if (respuesta == JOptionPane.NO_OPTION) {
-//                        dispose();
-//                        setVisible(false);
-//                        
-//                    }
-//                    dispose();
-//                    setVisible(false);
-
                 } catch (JRException | HeadlessException e) {
                     JOptionPane.showMessageDialog(null, "Se a Dectectado Un Proble Con Proceso de Seleccion de Facturas,"
                             + "Por Favor Vuelva a Intentarlo.");
@@ -1230,25 +1195,6 @@ public class Asignar1 extends javax.swing.JPanel {
             }
         };
         hilo.start();
-
-        //********************************************Export Data
-//        String SQL = "COPY (select 0 as a,1 as b,replicate(' ', 7) || id_producto As id_producto, \n"
-//                + "		LTRIM(replace((RTRIM(descripcion)),',',' ')) as descripcion, \n"
-//                + "		(REPLICATE(' ', 3)||Cast(id_clasificacion as varchar)) As id_clasificacion,\n"
-//                + "		0 as a1,0 as a2,0 as a3,0 as a4,65 as excento,\n"
-//                + "		\n"
-//                + "		' ' as i, ' ' as j, 0 as k, 0 as l,0 as m, 0 as n, 0 as p, 0 as q,0 as r,0 as s,\n"
-//                + "		' ' as t,0 as u,1 as v,0 as w,0 as x,0 as y,0 as z,0 as ab \n"
-//                + "		\n"
-//                + "From producto  \n"
-//                + "where precio_original>0.05 and descripcion not like ' '  and id_producto>=100000\n"
-//                + "Order By id_producto) TO 'C:/Users/Pablo/export/prueba.txt' WITH DELIMITER AS ',' ";
-        //     String SQL="select now() as laHora";
-//        String SQL="COPY (select * from usuario) TO "
-//                + "'C:/Users/Pablo/export/prueba.txt' WITH DELIMITER AS ','";
-//        ObjectModelDAO.getResultQueryString(SQL); 
-//        
-
     }//GEN-LAST:event_jXButtonImprimir_ActionPerformed
 
     private void jXButtonReiniciarFooterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXButtonReiniciarFooterActionPerformed
@@ -1265,7 +1211,7 @@ public class Asignar1 extends javax.swing.JPanel {
 
                 //Controles ComboBox
                 this.comboBoxAlmacenDesde.setEnabled(true);
-                this.comboBoxAlmacenHasta.setEnabled(true);
+                this.comboBoxTiendaHasta.setEnabled(true);
                 this.comboBoxUsuarios.setEnabled(true);
 
                 //BOntones de Pedido
@@ -1273,11 +1219,11 @@ public class Asignar1 extends javax.swing.JPanel {
                 //OBjetos
                 this.ususrioActual = null;
                 this.almacenDesde = null;
-                this.almacenHasta = null;
+                this.tiendaHasta = null;
 
                 //Controles ComboBox
                 this.comboBoxAlmacenDesde.setSelectedIndex(-1);
-                this.comboBoxAlmacenHasta.setSelectedIndex(-1);
+                this.comboBoxTiendaHasta.setSelectedIndex(-1);
                 this.comboBoxUsuarios.setSelectedIndex(-1);
 
                 //COntroles Panel Busqueda desabilitar
@@ -1302,8 +1248,7 @@ public class Asignar1 extends javax.swing.JPanel {
                 this.txtNroBulto.setText("");
                 this.txtNroBulto.setEnabled(false);
 
-                //Botones de Datos del Producto
-//                this.botonValidar.setEnabled(false);
+                //Botones de Datos del Producto 
                 this.botonAgregar.setEnabled(false);
                 this.botonLimpiarAgregar.setEnabled(false);
                 jXTaskPaneCabeceraAsignacion.setCollapsed(false);
@@ -1317,38 +1262,6 @@ public class Asignar1 extends javax.swing.JPanel {
 
 
     }//GEN-LAST:event_jXButtonReiniciarFooterActionPerformed
-
-    private void comboBoxAlmacenDesdeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxAlmacenDesdeActionPerformed
-
-        try {
-            if (comboBoxAlmacenDesde.getSelectedIndex() != -1) {
-
-                comboBoxAlmacenHasta.removeItem(comboBoxAlmacenDesde.getSelectedItem());
-                comboBoxAlmacenHasta.setEnabled(true);
-                comboBoxAlmacenDesde.setEnabled(false);
-            }
-        } catch (Exception e) {
-            Logger.getLogger(Asignar1.class.getName()).log(Level.SEVERE, null, e);
-            JOptionPane.showMessageDialog(null, "Por Favor, Seleccione Una Tienda Valido Para Continuar.!!!");
-            System.err.println("ERROR ó Excepcion Boton cambio de estado de combobox : " + e);
-        }
-    }//GEN-LAST:event_comboBoxAlmacenDesdeActionPerformed
-
-    private void comboBoxAlmacenHastaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxAlmacenHastaActionPerformed
-        try {
-            if (comboBoxAlmacenHasta.getSelectedIndex() != -1) {
-                comboBoxUsuarios.setEnabled(true);
-                comboBoxAlmacenHasta.setEnabled(false);
-
-            }
-        } catch (Exception e) {
-            Logger.getLogger(Asignar1.class.getName()).log(Level.SEVERE, null, e);
-            JOptionPane.showMessageDialog(null, "Por Favor, Seleccione Una Tienda Valido Para Continuar.!!!");
-            System.err.println("ERROR ó Excepcion Boton cambio de estado de combobox : " + e);
-        }
-
-
-    }//GEN-LAST:event_comboBoxAlmacenHastaActionPerformed
 
     private void TablaDetalleRegistrosAsignacionMercancia1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TablaDetalleRegistrosAsignacionMercancia1KeyReleased
 
@@ -1599,7 +1512,7 @@ public class Asignar1 extends javax.swing.JPanel {
     private org.jdesktop.swingx.JXBusyLabel busy;
     private org.jdesktop.swingx.JXBusyLabel busy1;
     private javax.swing.JComboBox comboBoxAlmacenDesde;
-    private javax.swing.JComboBox comboBoxAlmacenHasta;
+    private javax.swing.JComboBox comboBoxTiendaHasta;
     private javax.swing.JComboBox comboBoxTipoBusqueda;
     private javax.swing.JComboBox comboBoxUsuarios;
     private javax.swing.JLayeredPane jLayeredPaneBuscarProducto;
@@ -1645,7 +1558,7 @@ public class Asignar1 extends javax.swing.JPanel {
 
         String sql = "FROM Almacen a order by a.idAlmacen asc";
         resultListAlmacen = ObjectModelDAO.getResultQuery(sql);
-        comboBoxAlmacenHasta.removeAllItems();
+        comboBoxTiendaHasta.removeAllItems();
 
         comboBoxAlmacenDesde.removeAllItems();
 
@@ -1653,12 +1566,12 @@ public class Asignar1 extends javax.swing.JPanel {
         for (Object object : resultListAlmacen) {
             Almacen a = (Almacen) object;
 
-            comboBoxAlmacenHasta.addItem(a.getNombre() + " TLF:" + a.getTelefono1());
+            comboBoxTiendaHasta.addItem(a.getNombre() + " TLF:" + a.getTelefono1());
             comboBoxAlmacenDesde.addItem(a.getNombre() + " TLF:" + a.getTelefono1());
         }
         comboBoxAlmacenDesde.setEnabled(true);
         this.comboBoxAlmacenDesde.setSelectedIndex(-1);
-        this.comboBoxAlmacenHasta.setSelectedIndex(-1);
+        this.comboBoxTiendaHasta.setSelectedIndex(-1);
     }
 
 }

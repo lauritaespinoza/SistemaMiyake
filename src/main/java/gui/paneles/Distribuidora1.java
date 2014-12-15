@@ -87,7 +87,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
         comboBoxUsuarios.addItem(user.getNombre() + " :" + user.getDescripcion());
         //  this.comboBoxUsuarios.setEnabled(false);
         this.busy.setVisible(false);
-
+        this.busy2.setVisible(false);
     }
 
     public static void main(String args[]) {
@@ -117,7 +117,6 @@ public class Distribuidora1 extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        busy = new org.jdesktop.swingx.JXBusyLabel();
         jXTaskPaneCabeceraDistribuidora = new org.jdesktop.swingx.JXTaskPane();
         jScrollPane3 = new javax.swing.JScrollPane();
         jLayeredPaneTienda = new javax.swing.JLayeredPane();
@@ -168,17 +167,15 @@ public class Distribuidora1 extends javax.swing.JPanel {
         botonImprimir = new org.jdesktop.swingx.JXButton();
         botonGeneralNotas = new org.jdesktop.swingx.JXButton();
         jButtonGuardarConteo = new org.jdesktop.swingx.JXButton();
+        busy2 = new org.jdesktop.swingx.JXBusyLabel();
+        busy = new org.jdesktop.swingx.JXBusyLabel();
 
         setAutoscrolls(true);
+        setLayout(new java.awt.BorderLayout());
 
         jScrollPane1.setToolTipText("");
-        jScrollPane1.setAutoscrolls(true);
 
         jLayeredPane1.setAutoscrolls(true);
-
-        busy.setText("GUARDANDO!!!");
-        busy.setEnabled(false);
-        busy.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         jXTaskPaneCabeceraDistribuidora.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416789183_data-16.png"))); // NOI18N
         jXTaskPaneCabeceraDistribuidora.setTitle("Datos Cabecera Factura");
@@ -270,23 +267,23 @@ public class Distribuidora1 extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(comboBoxUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPaneTiendaLayout.createSequentialGroup()
-                        .addGroup(jLayeredPaneTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jLayeredPaneTiendaLayout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonListarFacturas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jLayeredPaneTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jLayeredPaneTiendaLayout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtFactura))
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jLayeredPaneTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonListarFacturas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jLayeredPaneTiendaLayout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtEmitidoPor, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtEmitidoPor, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jXLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtFechaFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(txtFechaFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jLayeredPaneTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(botonCancelarTodoDesdeFActura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -683,7 +680,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLayeredPaneDatosProductos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jXButtonTotalizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
@@ -722,6 +719,10 @@ public class Distribuidora1 extends javax.swing.JPanel {
             }
         });
 
+        busy2.setText("Guardando...!!!");
+
+        busy.setText("Cargando...!!!");
+
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
         jLayeredPane1Layout.setHorizontalGroup(
@@ -732,6 +733,8 @@ public class Distribuidora1 extends javax.swing.JPanel {
                     .addComponent(jXTaskPaneCabeceraDistribuidora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
                         .addComponent(botonGeneralNotas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(busy2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(botonImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -756,40 +759,27 @@ public class Distribuidora1 extends javax.swing.JPanel {
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonGeneralNotas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonGuardarConteo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonGuardarConteo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(busy2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
-        jLayeredPane1.setLayer(busy, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jXTaskPaneCabeceraDistribuidora, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jScrollPane4, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(botonImprimir, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(botonGeneralNotas, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jButtonGuardarConteo, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(busy2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(busy, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jScrollPane1.setViewportView(jLayeredPane1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jScrollPane1)
-                .addGap(0, 0, 0))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jScrollPane1)
-                .addGap(0, 0, 0))
-        );
+        add(jScrollPane1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonConfirmarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarFacturaActionPerformed
 
         try {
- 
+
             String hql = "FROM EntradaProveedor e WHERE  estatus='Pendiente' and e.idFactura =" + fa.getIdFactura();
             //  List resultListProEP = ObjectModelDAO.getResultQuery(sql);
             // String  hql =
@@ -812,7 +802,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
             Logger.getLogger(Distribuidora1.class.getName()).log(Level.SEVERE, null, e);
 
         }
- 
+
     }//GEN-LAST:event_botonConfirmarFacturaActionPerformed
 
     private void comboBoxAlmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxAlmacenActionPerformed
@@ -988,9 +978,9 @@ public class Distribuidora1 extends javax.swing.JPanel {
             @Override
             public void run() {
                 jButtonGuardarConteo.setEnabled(false);
-                busy.setEnabled(true);
-                busy.setVisible(true);
-                busy.setBusy(true);
+                busy2.setEnabled(true);
+                busy2.setVisible(true);
+                busy2.setBusy(true);
 
                 Float total = 0f;
 
@@ -1088,9 +1078,9 @@ public class Distribuidora1 extends javax.swing.JPanel {
                     cab.setTotalConteo(total);
                     ObjectModelDAO.updateObject(cab);
                     //busy
-                    busy.setEnabled(false);
-                    busy.setVisible(false);
-                    busy.setBusy(false);
+                    busy2.setEnabled(false);
+                    busy2.setVisible(false);
+                    busy2.setBusy(false);
 
                     //Validar y Verificar queLa factura NO Cambie el 
                     //Mensaje Registro Guardado
@@ -1142,9 +1132,6 @@ public class Distribuidora1 extends javax.swing.JPanel {
                         txtCantidadSugeridad.setText("");
                         txtCantidad.setText("");
                         txtNroBulto.setText("");
-                    }
-                    if (respuesta == JOptionPane.NO_OPTION) {
-                        JOptionPane.showMessageDialog(null, "Listo Para Eliminar Panel");
                     }
 
                 } catch (Exception ex) {
@@ -1720,6 +1707,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
     private org.jdesktop.swingx.JXButton botonListarProductosInventariTienda;
     private org.jdesktop.swingx.JXButton botonValidar;
     private org.jdesktop.swingx.JXBusyLabel busy;
+    private org.jdesktop.swingx.JXBusyLabel busy2;
     private javax.swing.JComboBox comboBoxAlmacen;
     private javax.swing.JComboBox comboBoxTipoBusqueda;
     private javax.swing.JComboBox comboBoxUsuarios;

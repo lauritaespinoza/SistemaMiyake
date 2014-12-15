@@ -18,7 +18,9 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -34,6 +36,13 @@ import modelos.mapeos.NotaCreditoDebitoDetalle;
 import modelos.mapeos.SalidaParaTienda;
 import modelos.mapeos.SalidaParaTiendaDetalle;
 import modelos.mapeos.Usuario;
+import modelos.tablas.TableModelReport;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import util.JavaUtil;
 
 /**
@@ -131,7 +140,6 @@ public class Tiendas1 extends javax.swing.JPanel {
         btND = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jLayeredPanePrincipal = new javax.swing.JLayeredPane();
-        busy = new org.jdesktop.swingx.JXBusyLabel();
         jXTaskPaneLCabeceraTiendas = new org.jdesktop.swingx.JXTaskPane();
         jScrollPane3 = new javax.swing.JScrollPane();
         jLayeredPaneTienda = new javax.swing.JLayeredPane();
@@ -192,6 +200,7 @@ public class Tiendas1 extends javax.swing.JPanel {
         jButtonGuardarConteo = new org.jdesktop.swingx.JXButton();
         botonImprimir = new org.jdesktop.swingx.JXButton();
         botonCencelarAgregar = new org.jdesktop.swingx.JXButton();
+        busy = new org.jdesktop.swingx.JXBusyLabel();
 
         jXTextField2.setText("jXTextField2");
 
@@ -239,12 +248,11 @@ public class Tiendas1 extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jScrollPane2.setAutoscrolls(true);
+        setLayout(new java.awt.BorderLayout());
 
-        busy.setBusy(true);
-        busy.setText("GUARDANDO!!!");
-        busy.setEnabled(false);
-        busy.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(674, 654));
+
+        jLayeredPanePrincipal.setAutoscrolls(true);
 
         jXTaskPaneLCabeceraTiendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416789183_data-16.png"))); // NOI18N
         jXTaskPaneLCabeceraTiendas.setTitle("Cabecera de Pedidos");
@@ -379,11 +387,11 @@ public class Tiendas1 extends javax.swing.JPanel {
                                     .addGroup(jLayeredPaneTiendaLayout.createSequentialGroup()
                                         .addComponent(jXLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtTiendaDesde, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtTiendaDesde, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jXLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtEstatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtEstatus, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
                                         .addGap(9, 9, 9)
                                         .addComponent(jXLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jLayeredPaneTiendaLayout.createSequentialGroup()
@@ -397,7 +405,9 @@ public class Tiendas1 extends javax.swing.JPanel {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jXLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(jLayeredPaneTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtTotalSalidaID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(jLayeredPaneTiendaLayout.createSequentialGroup()
+                                        .addGap(1, 1, 1)
+                                        .addComponent(txtTotalSalidaID, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE))
                                     .addComponent(txtSalidaIDFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jLayeredPaneTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -471,7 +481,7 @@ public class Tiendas1 extends javax.swing.JPanel {
         jXTaskPaneLCabeceraTiendas.getContentPane().setLayout(jXTaskPaneLCabeceraTiendasLayout);
         jXTaskPaneLCabeceraTiendasLayout.setHorizontalGroup(
             jXTaskPaneLCabeceraTiendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 638, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(jXTaskPaneLCabeceraTiendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE))
         );
@@ -694,8 +704,8 @@ public class Tiendas1 extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(botonAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(botonLimpiarAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -787,6 +797,7 @@ public class Tiendas1 extends javax.swing.JPanel {
         jScrollPane5.setViewportView(jTDetalleRegistroTiendas);
 
         botonTotalizar.setText("Totalizar");
+        botonTotalizar.setEnabled(false);
         botonTotalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonTotalizarActionPerformed(evt);
@@ -803,7 +814,7 @@ public class Tiendas1 extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPaneProductosLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botonTotalizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(19, 19, 19))
         );
         jLayeredPaneProductosLayout.setVerticalGroup(
             jLayeredPaneProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -812,10 +823,10 @@ public class Tiendas1 extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLayeredPaneDatosProductos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonTotalizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addContainerGap())
         );
         jLayeredPaneProductos.setLayer(jLayeredPaneBuscarProducto, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPaneProductos.setLayer(jLayeredPaneDatosProductos, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -831,6 +842,7 @@ public class Tiendas1 extends javax.swing.JPanel {
             }
         });
 
+        jButtonGuardarConteo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/database_save.png"))); // NOI18N
         jButtonGuardarConteo.setText("Guardar");
         jButtonGuardarConteo.setEnabled(false);
         jButtonGuardarConteo.addActionListener(new java.awt.event.ActionListener() {
@@ -839,6 +851,7 @@ public class Tiendas1 extends javax.swing.JPanel {
             }
         });
 
+        botonImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1418331399_Print.png"))); // NOI18N
         botonImprimir.setText("Imprimir");
         botonImprimir.setEnabled(false);
         botonImprimir.addActionListener(new java.awt.event.ActionListener() {
@@ -854,6 +867,8 @@ public class Tiendas1 extends javax.swing.JPanel {
                 botonCencelarAgregarActionPerformed(evt);
             }
         });
+
+        busy.setText("Cargando...!!!");
 
         javax.swing.GroupLayout jLayeredPanePrincipalLayout = new javax.swing.GroupLayout(jLayeredPanePrincipal);
         jLayeredPanePrincipal.setLayout(jLayeredPanePrincipalLayout);
@@ -888,35 +903,29 @@ public class Tiendas1 extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jLayeredPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonGenerarNotas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonGuardarConteo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonCencelarAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jLayeredPanePrincipalLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addGroup(jLayeredPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(botonGenerarNotas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonCencelarAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jButtonGuardarConteo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonImprimir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, 0))
         );
-        jLayeredPanePrincipal.setLayer(busy, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPanePrincipal.setLayer(jXTaskPaneLCabeceraTiendas, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPanePrincipal.setLayer(jScrollPane4, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPanePrincipal.setLayer(botonGenerarNotas, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPanePrincipal.setLayer(jButtonGuardarConteo, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPanePrincipal.setLayer(botonImprimir, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPanePrincipal.setLayer(botonCencelarAgregar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPanePrincipal.setLayer(busy, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jScrollPane2.setViewportView(jLayeredPanePrincipal);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 814, Short.MAX_VALUE)
-        );
+        add(jScrollPane2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonConfirmarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarFacturaActionPerformed
@@ -1267,7 +1276,7 @@ public class Tiendas1 extends javax.swing.JPanel {
                     if (respuesta == JOptionPane.YES_OPTION) {
                         jButtonGuardarConteo.setEnabled(true);
                         //Limpiar Tabla y Lista
-                        listaDetalle.clear();
+                        
                         jTDetalleRegistroTiendas.removeAll();
                         modeloTablaTomaFisicaInventarioTiendas.fireTableDataChanged();
                         //Desabilitar Controles
@@ -1280,22 +1289,28 @@ public class Tiendas1 extends javax.swing.JPanel {
                         botonListarProductosInventariTienda.setEnabled(false);
                         jButtonListarPedidos.setEnabled(false);
                         //Destruir Objetos
-                        listaprodSA.clear();
+                        listaprodSA = null;
                         sd = null;
 //                        proEPaux = null;
                         Conteofaltante = 0;
                         posUs = -1;
                         posAl = -1;
                         deReg = null;
-//                        listaDetalle = null;
+                        listaDetalle = null;
                         //Habilitar COntrol de Factura
                         jButtonListarPedidos.setEnabled(true);
                         botonConfirmarFactura.setEnabled(true);
                         //Limpiar texto de Factura
+                        //Limpiar Campos de Texto 
+
+                        txtRenglon.setText("");
+                        txtTiendaDesde.setText("");
+                        txtEstatus.setText("");
+//Limpiar Campos de Texto
                         txtSalidaID.setText("");
                         txtEmitidoPor.setText("");
                         txtSalidaIDFecha.setText("");
-                        //Limpiar Campos de Texto
+                        txtTotalSalidaID.setText("");
                         txtCodigo.setText("");
                         txtDescripcion.setText("");
                         txtReferencia.setText("");
@@ -1303,9 +1318,7 @@ public class Tiendas1 extends javax.swing.JPanel {
                         txtCantidadSugeridad.setText("");
                         txtCantidad.setText("");
                         txtNroBulto.setText("");
-                    }
-                    if (respuesta == JOptionPane.NO_OPTION) {
-                        JOptionPane.showMessageDialog(null, "Listo Para Eliminar Panel");
+                        jXTaskPaneLCabeceraTiendas.setCollapsed(false);
                     }
 
                 } catch (Exception ex) {
@@ -1334,37 +1347,33 @@ public class Tiendas1 extends javax.swing.JPanel {
                 busy.setBusy(true);
                 try {
                     JDsalidaParaTiendaPendientes jdSalidadParaTienda = new JDsalidaParaTiendaPendientes(null, true, almacenActual);
+                    jdSalidadParaTienda.setLocationRelativeTo(null);
+                    jdSalidadParaTienda.setVisible(true);
 
-                    if (jdSalidadParaTienda.resultList.isEmpty() ) {
-                        //Panel y Controles de Salidas Pendientes
-                        comboBoxAlmacen.setSelectedIndex(-1);
-                        comboBoxAlmacen.setEnabled(true);
-                        comboBoxUsuarios.setSelectedIndex(-1);
-                        comboBoxUsuarios.setEnabled(true);
+                    if (jdSalidadParaTienda.sa == null) {
+                        JOptionPane.showMessageDialog(null, "Deberia Seleccionar un item de lista de Pedidos para continuar...");
                     } else {
-                        if (jdSalidadParaTienda.sa == null) {
-                            JOptionPane.showMessageDialog(null, "no ha Seleccionado Facturas");
-                        } else {
-                            sa = jdSalidadParaTienda.sa;
-                            // listaEP = (List<EntradaProveedor>) sa.getEntradaProveedorCollection();
-                            txtSalidaID.setEnabled(true);
-                            txtSalidaID.setText(sa.getIdSalida().toString());
-                            txtEmitidoPor.setEnabled(true);
-                            u = sa.getIdUsuario1();
-                            txtEmitidoPor.setText(u.getNombre());
-                            txtSalidaIDFecha.setEnabled(true);
-                            txtSalidaIDFecha.setText(sa.getFechaAsignacion().toString());
 
-                            txtTiendaDesde.setText(sa.getIdAlmacenDesde().getNombre());
+                        sa = jdSalidadParaTienda.sa;
+                        // listaEP = (List<EntradaProveedor>) sa.getEntradaProveedorCollection();
+                        txtSalidaID.setEnabled(true);
+                        txtSalidaID.setText(sa.getIdSalida().toString());
+                        txtEmitidoPor.setEnabled(true);
+                        u = sa.getIdUsuario1();
+                        txtEmitidoPor.setText(u.getNombre());
+                        txtSalidaIDFecha.setEnabled(true);
+                        txtSalidaIDFecha.setText(sa.getFechaAsignacion().toString());
 
-                            txtEstatus.setText(sa.getRevisado().toString());
+                        txtTiendaDesde.setText(sa.getIdAlmacenDesde().getNombre());
 
-                            txtTotalSalidaID.setText(sa.getTotal().toString());
+                        txtEstatus.setText(sa.getRevisado().toString());
 
-                            botonConfirmarFactura.setEnabled(true);
+                        txtTotalSalidaID.setText(sa.getTotal().toString());
 
-                        }
+                        botonConfirmarFactura.setEnabled(true);
+
                     }
+
                     //busy
                     busy.setEnabled(false);
                     busy.setVisible(false);
@@ -1445,7 +1454,7 @@ public class Tiendas1 extends javax.swing.JPanel {
                 this.txtEstatus.setText("");
                 this.txtTotalSalidaID.setText("");
                 //Destruir Objetos
-                listaprodSA.clear();
+                listaprodSA = null;
                 sd = null;
 //                proEPaux = null;
                 Conteofaltante = 0;
@@ -1460,6 +1469,7 @@ public class Tiendas1 extends javax.swing.JPanel {
                 comboBoxAlmacen.setEnabled(true);
                 comboBoxUsuarios.setSelectedIndex(-1);
                 comboBoxUsuarios.setEnabled(true);
+
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Excepcion al Cancelar Todo Desde Factura" + e);
@@ -1477,7 +1487,7 @@ public class Tiendas1 extends javax.swing.JPanel {
             if (respuesta == JOptionPane.YES_OPTION) {
                 //Colapsar Panel
                 this.jXTaskPaneLCabeceraTiendas.setCollapsed(false);
-                listaprodSA.clear();
+                listaprodSA = null;
                 //Limpiar Campos de Texto
                 this.txtCodigo.setText("");
                 this.txtDescripcion.setText("");
@@ -1574,7 +1584,48 @@ public class Tiendas1 extends javax.swing.JPanel {
     }//GEN-LAST:event_txtBusquedaKeyTyped
 
     private void botonImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonImprimirActionPerformed
-        // TODO add your handling code here:
+       
+         // TODO add your handling code here:    resultList
+        Thread hilo = new Thread() {
+
+            @Override
+            public void run() {
+
+                busy.setEnabled(true);
+                busy.setVisible(true);
+                busy.setBusy(true);
+                try {
+                    JasperPrint jasperPrint = null;
+
+                    Map<String, Object> parametro = new HashMap<>();
+                    String s = "";
+                    TableModelReport dataSourse = new TableModelReport(jTDetalleRegistroTiendas.getModel());
+                    parametro.put("REPORT_DATA_SOURSE", dataSourse);
+                    //JasperCompileManager.compileReport(rutaJrxml);
+                    JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ReporteGestionMercancia.jasper"));
+
+                    jasperPrint = JasperFillManager.fillReport(reporte, null, dataSourse);
+                    JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
+                    jasperViewer.setTitle("Reporte de Toma Fisica Distribuidoras.");
+                    jasperViewer.setVisible(true);
+
+                    //busy
+                    busy.setEnabled(false);
+                    busy.setVisible(false);
+                    busy.setBusy(false);
+                } catch (JRException | HeadlessException e) {
+                    JOptionPane.showMessageDialog(null, "Se a Dectectado Un Proble Con Proceso de Seleccion de Facturas,"
+                            + "Por Favor Vuelva a Intentarlo.");
+                    Logger.getLogger(Distribuidora1.class.getName()).log(Level.SEVERE, null, e);
+                    System.err.println("Seleccionando Facturas" + e);
+
+                }
+
+            }
+        };
+        hilo.start();
+        
+        
     }//GEN-LAST:event_botonImprimirActionPerformed
 
     private void botonGenerarNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGenerarNotasActionPerformed
@@ -1680,7 +1731,8 @@ public class Tiendas1 extends javax.swing.JPanel {
                         agregar();
                     }
                     if (respuesta == JOptionPane.NO_OPTION) {
-                        agregar();
+                        txtCantidad.setText("");
+                        txtCantidad.requestFocus();
                     }
                 }
 
@@ -1734,6 +1786,7 @@ public class Tiendas1 extends javax.swing.JPanel {
         //Remover de Lista Actual Producto Agregago
         //this.proEPaux = sd;
         this.listaprodSA.remove(sd);
+        botonTotalizar.setEnabled(true);
     }
     private void botonLimpiarAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLimpiarAgregarActionPerformed
         // TODO add your handling code here:
