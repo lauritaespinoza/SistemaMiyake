@@ -45,7 +45,7 @@ public class JPclasificacion extends javax.swing.JPanel {
         this(0);
     }
     
-    public JPclasificacion(int tabCrud) {
+    public JPclasificacion(Integer tabCrud) {
         this.tabCrud = tabCrud;
         initComponents();
         
