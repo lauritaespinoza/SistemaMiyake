@@ -154,6 +154,7 @@ public class JPdepartamento extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        listadoDepartamentos.setSortable(false);
         jScrollPane1.setViewportView(listadoDepartamentos);
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1416622346_xmag.png"))); // NOI18N
@@ -280,6 +281,7 @@ public class JPdepartamento extends javax.swing.JPanel {
             }
         });
         tablaModfDep.setHorizontalScrollEnabled(true);
+        tablaModfDep.setSortable(false);
         jScrollPane3.setViewportView(tablaModfDep);
 
         jPanel3.add(jScrollPane3, java.awt.BorderLayout.CENTER);
@@ -391,6 +393,7 @@ public class JPdepartamento extends javax.swing.JPanel {
             }
         });
         tablaDeletDep.setHorizontalScrollEnabled(true);
+        tablaDeletDep.setSortable(false);
         jScrollPane2.setViewportView(tablaDeletDep);
 
         bDelet_dep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415657185_remove-sign-32.png"))); // NOI18N

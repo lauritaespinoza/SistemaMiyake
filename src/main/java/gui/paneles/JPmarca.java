@@ -158,6 +158,8 @@ public class JPmarca extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tablaConsultaMarca.setHorizontalScrollEnabled(true);
+        tablaConsultaMarca.setSortable(false);
         jScrollPane1.setViewportView(tablaConsultaMarca);
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1416622346_xmag.png"))); // NOI18N
@@ -281,6 +283,8 @@ public class JPmarca extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tablaModifMarca.setHorizontalScrollEnabled(true);
+        tablaModifMarca.setSortable(false);
         jScrollPane2.setViewportView(tablaModifMarca);
 
         jLabel3.setText("ID Marca:");
@@ -406,6 +410,8 @@ public class JPmarca extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tablaDeletMarca.setHorizontalScrollEnabled(true);
+        tablaDeletMarca.setSortable(false);
         jScrollPane3.setViewportView(tablaDeletMarca);
 
         deletMark.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415657185_remove-sign-32.png"))); // NOI18N

@@ -143,6 +143,7 @@ public class JPdivision extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tablaConsultaDivision.setSortable(false);
         jScrollPane1.setViewportView(tablaConsultaDivision);
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1416622346_xmag.png"))); // NOI18N
@@ -254,6 +255,7 @@ public class JPdivision extends javax.swing.JPanel {
         });
         tablaModificarDivision.setEditable(false);
         tablaModificarDivision.setHorizontalScrollEnabled(true);
+        tablaModificarDivision.setSortable(false);
         jScrollPane2.setViewportView(tablaModificarDivision);
 
         jPanel3.add(jScrollPane2, java.awt.BorderLayout.CENTER);
@@ -339,6 +341,7 @@ public class JPdivision extends javax.swing.JPanel {
             }
         });
         tablaEliminarDivision.setHorizontalScrollEnabled(true);
+        tablaEliminarDivision.setSortable(false);
         jScrollPane3.setViewportView(tablaEliminarDivision);
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415657185_remove-sign-32.png"))); // NOI18N

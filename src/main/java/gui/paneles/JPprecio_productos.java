@@ -165,6 +165,8 @@ public class JPprecio_productos extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tablaproductos_con_precios.setHorizontalScrollEnabled(true);
+        tablaproductos_con_precios.setSortable(false);
         jScrollPane1.setViewportView(tablaproductos_con_precios);
         if (tablaproductos_con_precios.getColumnModel().getColumnCount() > 0) {
             tablaproductos_con_precios.getColumnModel().getColumn(0).setPreferredWidth(50);

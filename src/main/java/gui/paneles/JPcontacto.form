@@ -92,6 +92,8 @@
                             <Column editable="false" title="Correo" type="java.lang.Object"/>
                           </Table>
                         </Property>
+                        <Property name="horizontalScrollEnabled" type="boolean" value="true"/>
+                        <Property name="sortable" type="boolean" value="false"/>
                         <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                           <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                         </Property>
@@ -305,6 +307,8 @@
                             <Column editable="false" title="Correo" type="java.lang.Object"/>
                           </Table>
                         </Property>
+                        <Property name="horizontalScrollEnabled" type="boolean" value="true"/>
+                        <Property name="sortable" type="boolean" value="false"/>
                         <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                           <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                         </Property>
@@ -532,6 +536,8 @@
                             <Column editable="false" title="Correo" type="java.lang.Object"/>
                           </Table>
                         </Property>
+                        <Property name="horizontalScrollEnabled" type="boolean" value="true"/>
+                        <Property name="sortable" type="boolean" value="false"/>
                         <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                           <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                         </Property>

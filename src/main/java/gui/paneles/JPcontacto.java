@@ -186,6 +186,8 @@ public class JPcontacto extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        listadoContactos.setHorizontalScrollEnabled(true);
+        listadoContactos.setSortable(false);
         jScrollPane2.setViewportView(listadoContactos);
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1416622346_xmag.png"))); // NOI18N
@@ -346,6 +348,8 @@ public class JPcontacto extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tablaModfContact.setHorizontalScrollEnabled(true);
+        tablaModfContact.setSortable(false);
         jScrollPane4.setViewportView(tablaModfContact);
 
         jPanel3.add(jScrollPane4, java.awt.BorderLayout.CENTER);
@@ -478,6 +482,8 @@ public class JPcontacto extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tablaDeletContact.setHorizontalScrollEnabled(true);
+        tablaDeletContact.setSortable(false);
         jScrollPane3.setViewportView(tablaDeletContact);
 
         bDeletContact.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415663088_delete-user.png"))); // NOI18N

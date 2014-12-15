@@ -354,6 +354,7 @@ public class JDfaturasCSV extends javax.swing.JDialog {
         });
         tabla.setToolTipText("Flecha hacia abajo para agregar renglón. Doble click en Fecha para agregar fecha");
         tabla.setEditable(false);
+        tabla.setHorizontalScrollEnabled(true);
         tabla.setSortable(false);
         tabla.getTableHeader().setReorderingAllowed(false);
         jScrollPane4.setViewportView(tabla);
