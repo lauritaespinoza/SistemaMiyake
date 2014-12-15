@@ -14,7 +14,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,125,0,0,2,-100"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-115,0,0,2,-5"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout">
@@ -124,20 +124,20 @@
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel1" min="-2" pref="46" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="cb_almacen" min="-2" pref="297" max="-2" attributes="0"/>
-                                  </Group>
                                   <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                      <Component id="cb_almacen" min="-2" pref="274" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jButton1" max="32767" attributes="0"/>
                                   <Component id="jButton2" max="32767" attributes="0"/>
                                   <Component id="jButton3" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="121" max="32767" attributes="0"/>
+                              <EmptySpace pref="146" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -170,6 +170,9 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabel1">
                       <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/icon_almacen/1417636330_store.png"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Tienda:"/>
                       </Properties>
                     </Component>
@@ -193,6 +196,9 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="jButton1">
                       <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/iconos/1418687782_Report.png"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Productos con Descuento"/>
                       </Properties>
                       <Events>
@@ -201,7 +207,10 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="jButton2">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Descuento en Tienda"/>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/iconos/1418688086_reports.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Descuento en Tienda       "/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
@@ -334,7 +343,7 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                                          <Component id="cb_descuento" pref="289" max="32767" attributes="0"/>
+                                          <Component id="cb_descuento" pref="307" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
@@ -386,6 +395,9 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel2">
                           <Properties>
+                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                              <Image iconType="3" name="/icon_almacen/1417636330_store.png"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Tienda:"/>
                           </Properties>
                         </Component>
@@ -434,6 +446,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel5">
                           <Properties>
+                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                              <Image iconType="3" name="/iconos/1418686950_rss-tag.png"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Precio del Producto:"/>
                           </Properties>
                         </Component>
@@ -483,7 +498,7 @@
                                                   <Component id="lb_preciocondescuento" min="-2" pref="132" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <EmptySpace min="0" pref="13" max="32767" attributes="0"/>
+                                          <EmptySpace min="0" pref="33" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -508,12 +523,12 @@
                                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                                       <Component id="lb_precioSinDescuento" min="-2" pref="21" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="26" max="32767" attributes="0"/>
+                                  <EmptySpace pref="27" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                                       <Component id="lb_preciocondescuento" min="-2" pref="18" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="65" max="32767" attributes="0"/>
+                                  <EmptySpace pref="66" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -521,6 +536,9 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel10">
                           <Properties>
+                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                              <Image iconType="3" name="/icon_almacen/1416789183_data-16.png"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Id Producto:"/>
                           </Properties>
                         </Component>
@@ -528,6 +546,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel7">
                           <Properties>
+                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                              <Image iconType="3" name="/iconos/1418687577_Database.png"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Producto Seleccionado:"/>
                           </Properties>
                         </Component>
@@ -535,6 +556,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel8">
                           <Properties>
+                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                              <Image iconType="3" name="/iconos/1418686950_rss-tag.png"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Precio sin Descuento:"/>
                           </Properties>
                         </Component>
@@ -542,6 +566,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel9">
                           <Properties>
+                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                              <Image iconType="3" name="/iconos/preciodescuento.png"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Precio con Descuento:"/>
                           </Properties>
                         </Component>

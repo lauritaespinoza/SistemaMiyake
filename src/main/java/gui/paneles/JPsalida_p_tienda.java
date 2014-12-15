@@ -122,7 +122,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
 
         panelCabezera.setLayout(new javax.swing.BoxLayout(panelCabezera, javax.swing.BoxLayout.LINE_AXIS));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636330_store.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/tienda2 (2).png"))); // NOI18N
         jLabel1.setText("Tienda desde:");
 
         cb_tienda1.addItemListener(new java.awt.event.ItemListener() {
@@ -136,14 +136,17 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/fecha.png"))); // NOI18N
         jLabel2.setText("Fecha:");
 
         fieldfecha.setEditable(false);
 
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1418682263_Person_Undefined_Male_Light.png"))); // NOI18N
         jLabel4.setText("Facturadora:");
 
         fieldPersonalDep.setEditable(false);
 
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1418682382_Person_Undefined_Female_Light.png"))); // NOI18N
         jLabel6.setText("Ayudante:");
 
         fieldAyudante.setEditable(false);
@@ -157,6 +160,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636330_store.png"))); // NOI18N
         jLabel5.setText("Tienda hasta:");
 
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417576112_Order_tracking.png"))); // NOI18N
         jLabel7.setText("Salidas Registradas:");
 
         cb_salidasregistradas.addActionListener(new java.awt.event.ActionListener() {
@@ -173,31 +177,27 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(37, 37, 37))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(7, 7, 7)))
-                        .addGap(10, 10, 10)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fieldAyudante)
-                            .addComponent(fieldPersonalDep)))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addGap(37, 37, 37)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fieldPersonalDep)
+                            .addComponent(fieldAyudante)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(30, 30, 30)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fieldfecha)
-                            .addComponent(cb_tienda2, javax.swing.GroupLayout.Alignment.TRAILING, 0, 596, Short.MAX_VALUE)
-                            .addComponent(cb_tienda1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(cb_tienda1, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cb_tienda2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(fieldfecha)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cb_salidasregistradas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(cb_salidasregistradas, 0, 576, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,6 +255,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
             }
         });
 
+        bt_ReportePendientsProcesadas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/reportsalidas1.png"))); // NOI18N
         bt_ReportePendientsProcesadas.setText("Generar Reporte Total");
         bt_ReportePendientsProcesadas.setToolTipText("Genera el Reporte de Toda la Mercancía Asignada Pendiente o Procesada");
         bt_ReportePendientsProcesadas.addActionListener(new java.awt.event.ActionListener() {
@@ -274,7 +275,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
                     .addComponent(jRadioButtonRevisado)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jRadioButtonPendiente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(bt_ReportePendientsProcesadas)))
                 .addContainerGap())
         );
@@ -308,7 +309,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
             }
         });
 
-        bImprimirEtiquetas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415666849_Print.png"))); // NOI18N
+        bImprimirEtiquetas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/imprimir_bar-code.png"))); // NOI18N
         bImprimirEtiquetas.setText("Imprimir Etiquetas");
         bImprimirEtiquetas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -321,7 +322,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
         panelFinalLayout.setHorizontalGroup(
             panelFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFinalLayout.createSequentialGroup()
-                .addContainerGap(605, Short.MAX_VALUE)
+                .addContainerGap(626, Short.MAX_VALUE)
                 .addComponent(bImprimirEtiquetas)
                 .addGap(40, 40, 40)
                 .addGroup(panelFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -401,7 +402,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
         panelTabla.setLayout(panelTablaLayout);
         panelTablaLayout.setHorizontalGroup(
             panelTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 999, Short.MAX_VALUE)
         );
         panelTablaLayout.setVerticalGroup(
             panelTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

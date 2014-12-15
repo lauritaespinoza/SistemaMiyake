@@ -57,20 +57,14 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="jLabel6" min="-2" pref="60" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Component id="jLabel4" max="32767" attributes="0"/>
-                                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="fieldAyudante" max="32767" attributes="0"/>
+                                          <Component id="jLabel4" min="-2" pref="90" max="-2" attributes="0"/>
+                                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="fieldPersonalDep" max="32767" attributes="0"/>
+                                          <Component id="fieldAyudante" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -79,17 +73,17 @@
                                           <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel1" min="-2" pref="97" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="cb_tienda1" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="cb_tienda2" max="32767" attributes="0"/>
                                           <Component id="fieldfecha" max="32767" attributes="0"/>
-                                          <Component id="cb_tienda2" alignment="1" pref="596" max="32767" attributes="0"/>
-                                          <Component id="cb_tienda1" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="cb_salidasregistradas" max="32767" attributes="0"/>
+                                      <Component id="cb_salidasregistradas" pref="576" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -137,7 +131,7 @@
                     <Component class="javax.swing.JLabel" name="jLabel1">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/icon_almacen/1417636330_store.png"/>
+                          <Image iconType="3" name="/iconos/tienda2 (2).png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Tienda desde:"/>
                       </Properties>
@@ -155,6 +149,9 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel2">
                       <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/icon_almacen/fecha.png"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Fecha:"/>
                       </Properties>
                     </Component>
@@ -165,6 +162,9 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel4">
                       <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/iconos/1418682263_Person_Undefined_Male_Light.png"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Facturadora:"/>
                       </Properties>
                     </Component>
@@ -175,6 +175,9 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel6">
                       <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/iconos/1418682382_Person_Undefined_Female_Light.png"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Ayudante:"/>
                       </Properties>
                     </Component>
@@ -203,6 +206,9 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel7">
                       <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/icon_almacen/1417576112_Order_tracking.png"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Salidas Registradas:"/>
                       </Properties>
                     </Component>
@@ -230,7 +236,7 @@
                                   <Component id="jRadioButtonRevisado" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Component id="jRadioButtonPendiente" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="20" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                       <Component id="bt_ReportePendientsProcesadas" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -289,6 +295,9 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="bt_ReportePendientsProcesadas">
                       <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/iconos/reportsalidas1.png"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Generar Reporte Total"/>
                         <Property name="toolTipText" type="java.lang.String" value="Genera el Reporte de Toda la Mercanc&#xed;a Asignada Pendiente o Procesada"/>
                       </Properties>
@@ -311,7 +320,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace pref="605" max="32767" attributes="0"/>
+                          <EmptySpace pref="626" max="32767" attributes="0"/>
                           <Component id="bImprimirEtiquetas" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -369,7 +378,7 @@
                 <Component class="javax.swing.JButton" name="bImprimirEtiquetas">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/iconos/1415666849_Print.png"/>
+                      <Image iconType="3" name="/iconos/imprimir_bar-code.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Imprimir Etiquetas"/>
                   </Properties>
@@ -389,7 +398,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane1" alignment="0" pref="982" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" alignment="0" pref="999" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
