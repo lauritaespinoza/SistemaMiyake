@@ -125,7 +125,7 @@ public class panelReporteProdDescTienda extends javax.swing.JPanel {
             Class.forName("org.postgresql.Driver");
             Connection conexion = DriverManager.getConnection("jdbc:postgresql://tecnosys.dyndns.tv:5432/miyake_pasantia", "postgres", "admin");
             //+ "jdbc:postgresql://192.2.1.70:5432/miyake_pasantia", "postgres", "admin");
-            JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ReporteProductosDescuento.jasper"));
+            JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ReporteProductosDescuentoTienda.jasper"));
             jasperPrint = JasperFillManager.fillReport(reporte, parametro, conexion);
             JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
             jasperViewer.setTitle("Reporte de Todos los Productos con Descuento");

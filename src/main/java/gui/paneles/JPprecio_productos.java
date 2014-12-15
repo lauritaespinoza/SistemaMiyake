@@ -179,6 +179,7 @@ public class JPprecio_productos extends javax.swing.JPanel {
 
         jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636330_store.png"))); // NOI18N
         jLabel1.setText("Tienda:");
 
         cb_almacen.addActionListener(new java.awt.event.ActionListener() {
@@ -190,6 +191,7 @@ public class JPprecio_productos extends javax.swing.JPanel {
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1416622346_xmag.png"))); // NOI18N
         jLabel11.setText("Para realizar Busqueda: Haga Click en la tabla + CTRL F");
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1418687782_Report.png"))); // NOI18N
         jButton1.setText("Productos con Descuento");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,7 +199,8 @@ public class JPprecio_productos extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setText("Descuento en Tienda");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1418688086_reports.png"))); // NOI18N
+        jButton2.setText("Descuento en Tienda       ");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -218,17 +221,17 @@ public class JPprecio_productos extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cb_almacen, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel11))
-                .addGap(92, 92, 92)
+                        .addComponent(jLabel1)
+                        .addGap(32, 32, 32)
+                        .addComponent(cb_almacen, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(47, 47, 47)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(146, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,6 +304,7 @@ public class JPprecio_productos extends javax.swing.JPanel {
 
         jPanel6.setLayout(new javax.swing.BoxLayout(jPanel6, javax.swing.BoxLayout.X_AXIS));
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636330_store.png"))); // NOI18N
         jLabel2.setText("Tienda:");
 
         cb_almacen_modf.addActionListener(new java.awt.event.ActionListener() {
@@ -316,6 +320,7 @@ public class JPprecio_productos extends javax.swing.JPanel {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1416622346_xmag.png"))); // NOI18N
         jLabel3.setText("Para realizar Busqueda: Haga Click en la tabla + CTRL F");
 
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1418686950_rss-tag.png"))); // NOI18N
         jLabel5.setText("Precio del Producto:");
 
         bt_actualizarprecio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415656862_Circulation.png"))); // NOI18N
@@ -340,7 +345,7 @@ public class JPprecio_productos extends javax.swing.JPanel {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(22, 22, 22)
-                        .addComponent(cb_descuento, 0, 289, Short.MAX_VALUE))
+                        .addComponent(cb_descuento, 0, 307, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
@@ -378,12 +383,16 @@ public class JPprecio_productos extends javax.swing.JPanel {
 
         jPanel6.add(jPanel4);
 
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416789183_data-16.png"))); // NOI18N
         jLabel10.setText("Id Producto:");
 
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1418687577_Database.png"))); // NOI18N
         jLabel7.setText("Producto Seleccionado:");
 
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1418686950_rss-tag.png"))); // NOI18N
         jLabel8.setText("Precio sin Descuento:");
 
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/preciodescuento.png"))); // NOI18N
         jLabel9.setText("Precio con Descuento:");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -411,7 +420,7 @@ public class JPprecio_productos extends javax.swing.JPanel {
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lb_preciocondescuento, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 13, Short.MAX_VALUE)))
+                        .addGap(0, 33, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -429,11 +438,11 @@ public class JPprecio_productos extends javax.swing.JPanel {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel8)
                     .addComponent(lb_precioSinDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
                     .addComponent(lb_preciocondescuento, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         jPanel6.add(jPanel5);
