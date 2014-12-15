@@ -696,6 +696,8 @@ public class JPproveedor extends javax.swing.JPanel {
 
         panelScrudProveedor.addTab("Eliminar", jScrollPane7);
 
+        panelScrudProveedor.setSelectedIndex(-1);
+
         add(panelScrudProveedor);
     }// </editor-fold>//GEN-END:initComponents
 
