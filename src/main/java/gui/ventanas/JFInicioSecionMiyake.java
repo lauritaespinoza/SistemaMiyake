@@ -3,6 +3,14 @@ package gui.ventanas;
 import gui.ventanas.FventanaIncial;
 import hibernate.DAO.DaoQuery;
 import hibernate.DAO.ObjectModelDAO;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.URL;
+import java.net.URLDecoder;
 import java.util.List;
 import modelos.mapeos.Usuario;
 import java.util.logging.Level;
@@ -18,7 +26,7 @@ public class JFInicioSecionMiyake extends javax.swing.JFrame {
 
     public JFInicioSecionMiyake() throws Exception {
         initComponents();
-        this.setIconImage(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/login.png")).getImage()); 
+        this.setIconImage(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/login.png")).getImage());
         this.setLocationRelativeTo(null);
         listar_usuarios1();
     }
@@ -306,8 +314,8 @@ public class JFInicioSecionMiyake extends javax.swing.JFrame {
 
                 us1 = (Usuario) resultListUsuarios.get(pos);
 
-                if (us1.getContrasena().equals(contrasena)) {
-
+                if (us1.getContrasena().equals(contrasena)) {                                   
+                    
                     JOptionPane.showMessageDialog(this, "Bienvenido al Sistema");
 
                     FventanaIncial principal = new FventanaIncial(resultListUsuarios);
@@ -321,7 +329,7 @@ public class JFInicioSecionMiyake extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Seleccione un usuarios");
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error de Coneccion", "Usuarios", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Error de Conexión " + e, "Usuarios", JOptionPane.ERROR_MESSAGE);
         }
 
     }

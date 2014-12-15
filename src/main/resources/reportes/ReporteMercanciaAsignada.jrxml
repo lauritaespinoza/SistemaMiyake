@@ -33,10 +33,10 @@
 		<field name="DESCUENTO" class="java.lang.Integer"/>
 		<field name="BULTO" class="java.lang.Integer"/>
 		<variable name="Total" class="java.lang.Float" calculation="Sum">
-			<variableExpression><![CDATA[$F{Precio}]]></variableExpression>
+			<variableExpression><![CDATA[$F{PRECIO}]]></variableExpression>
 		</variable>
 		<variable name="TotalCant" class="java.lang.Integer" calculation="Sum">
-			<variableExpression><![CDATA[$F{Cantidad}]]></variableExpression>
+			<variableExpression><![CDATA[$F{CANTIDAD}]]></variableExpression>
 		</variable>
 	</subDataset>
 	<parameter name="Fecha" class="java.lang.String"/>
@@ -169,12 +169,9 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="30" rowSpan="1">
-							<textField pattern="" isBlankWhenNull="false">
-								<reportElement mode="Transparent" x="0" y="0" width="24" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="4c13be51-c157-4512-a783-4e6b89cebf17"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
-									<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-									<paragraph lineSpacing="Single"/>
-								</textElement>
+							<textField>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="24" height="30" uuid="64506719-2435-498a-868d-d87789bd4ea4"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{N°}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -190,12 +187,9 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="30" rowSpan="1">
-							<textField pattern="" isBlankWhenNull="false">
-								<reportElement mode="Transparent" x="0" y="0" width="62" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="3e71e574-4330-4d82-9626-1ea945106cc0"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
-									<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-									<paragraph lineSpacing="Single"/>
-								</textElement>
+							<textField>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="62" height="30" uuid="2454d383-59aa-4b57-86f1-017e06dccb6d"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{CODIGO}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -211,12 +205,9 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="30" rowSpan="1">
-							<textField pattern="" isBlankWhenNull="false">
-								<reportElement mode="Transparent" x="0" y="0" width="73" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="64e2c795-402a-4cd0-8319-bf6b2cbbb8fa"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
-									<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-									<paragraph lineSpacing="Single"/>
-								</textElement>
+							<textField>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="73" height="30" uuid="f14ff116-3b38-47bc-9414-50d30182a2d1"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{REFERENCIA}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -241,12 +232,9 @@
 							</staticText>
 						</jr:columnFooter>
 						<jr:detailCell style="table_TD" height="30" rowSpan="1">
-							<textField pattern="" isBlankWhenNull="false">
-								<reportElement mode="Transparent" x="0" y="0" width="149" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="c52eb7fe-db2c-4651-81e9-11b01752fcad"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
-									<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-									<paragraph lineSpacing="Single"/>
-								</textElement>
+							<textField>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="149" height="30" uuid="908800ee-dc2f-4309-b2e9-df6699c8cce8"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{DESCRIPCION}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -263,18 +251,15 @@
 						</jr:columnHeader>
 						<jr:columnFooter style="table_CH" height="30" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="42" height="30" uuid="4b6ec4ce-4f36-4ac7-bf4a-d39a5186c9b0"/>
+								<reportElement x="0" y="0" width="42" height="30" uuid="3a5c6d06-2f72-4131-aae0-4943eb4556a6"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$V{TotalCant}]]></textFieldExpression>
 							</textField>
 						</jr:columnFooter>
 						<jr:detailCell style="table_TD" height="30" rowSpan="1">
-							<textField pattern="" isBlankWhenNull="false">
-								<reportElement mode="Transparent" x="0" y="0" width="42" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="b40f54f2-80d5-48a7-8859-eb9cbdfd5de9"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
-									<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-									<paragraph lineSpacing="Single"/>
-								</textElement>
+							<textField>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="42" height="30" uuid="5a161ad5-60c8-4df7-a35c-ae333280fa18"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{CANTIDAD}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -291,14 +276,15 @@
 						</jr:columnHeader>
 						<jr:columnFooter style="table_CH" height="30" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="51" height="30" uuid="933019ca-6a73-4a3e-9492-a5e04c334bad"/>
+								<reportElement x="0" y="0" width="51" height="30" uuid="916ac72f-dbb4-4a0e-b7bd-f44f9c5801c3"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$V{Total}]]></textFieldExpression>
 							</textField>
 						</jr:columnFooter>
 						<jr:detailCell style="table_TD" height="30" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="51" height="30" uuid="a0a333b7-097f-4162-a904-637e6c52fe19"/>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="51" height="30" uuid="b14e9d0b-50af-44b2-aa15-cbfca8bd0fb0"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{PRECIO}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -315,12 +301,9 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="30" rowSpan="1">
-							<textField pattern="" isBlankWhenNull="false">
-								<reportElement mode="Transparent" x="0" y="0" width="29" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="5e9d4777-dad9-4560-877a-0d31523624cd"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
-									<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-									<paragraph lineSpacing="Single"/>
-								</textElement>
+							<textField>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="29" height="30" uuid="bf0e1fca-3831-426d-964e-8eb9bcc1bd67"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{DESCUENTO}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -336,12 +319,9 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="30" rowSpan="1">
-							<textField pattern="" isBlankWhenNull="false">
-								<reportElement mode="Transparent" x="0" y="0" width="48" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="c1d83205-e63e-46ad-8f19-1cff3d48b2ca"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
-									<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-									<paragraph lineSpacing="Single"/>
-								</textElement>
+							<textField>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="48" height="30" uuid="c025d00b-61ef-4f28-aa92-266adebb2398"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{BULTO}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>

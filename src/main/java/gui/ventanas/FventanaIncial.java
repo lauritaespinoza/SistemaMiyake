@@ -40,12 +40,19 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Date;
+import java.util.Enumeration;
 import javax.help.HelpBroker;
 import javax.help.HelpSet;
 import javax.help.HelpSetException;
@@ -1882,7 +1889,7 @@ public class FventanaIncial extends javax.swing.JFrame {
     }//GEN-LAST:event_jmEliminarProductoActionPerformed
 
     private void jMenuItemInvDiarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInvDiarioActionPerformed
-        addPaneles(tabInventarioDiario, JPinventarioDiario.class, null, null);
+        addPaneles(tabInventarioDiario, JPinventarioDiario.class, null, null); 
     }//GEN-LAST:event_jMenuItemInvDiarioActionPerformed
 
     private void jmConsultarAlmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmConsultarAlmacenActionPerformed
@@ -2293,7 +2300,7 @@ public class FventanaIncial extends javax.swing.JFrame {
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 
             for (Component component : panelClosableCentral.getComponents()) {
-                if(component instanceof JPanel){
+                if (component instanceof JPanel) {
                     panelClosableCentral.remove(component);
                 }
             }
@@ -2311,11 +2318,24 @@ public class FventanaIncial extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemAbrirCerrarInternosActionPerformed
 
     private void jMenuItemAcercaDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAcercaDeActionPerformed
-      
+//
 //        try {
-//            File  archivo = new File(getClass().getResource("/JavaHelp/ejemplo.hs").getFile());
+////            InputStream ip = this.getClass().getResourceAsStream("/JavaHelp/JavaHelp/ejemplo.hs");
+////            BufferedReader br = new BufferedReader(new InputStreamReader(ip));
+////
+////            byte[] buffer = new byte[ip.available()];
+////            ip.read(buffer);
+////
+////            File archivo = new File("ejemplo.hs");
+////            archivo.deleteOnExit();
+////            OutputStream outStream = new FileOutputStream(archivo);
+////            outStream.write(buffer);
+////            JOptionPane.showMessageDialog(this, archivo.exists()+" "+archivo.toURI().toURL());
+//
+//            
+//             File archivo =null;
 //            URL hsURL = archivo.toURI().toURL();
-//            URL hsURL = new URL("http://localhost:8089/JavaHelp/ejemplo.hs");
+//
 //            HelpSet helpset = null;
 //            helpset = new HelpSet(null, hsURL);
 //
@@ -2330,9 +2350,11 @@ public class FventanaIncial extends javax.swing.JFrame {
 //            help_browser.enableHelpKey(getContentPane(), "introduction", helpset);
 //
 //        } catch (HelpSetException | MalformedURLException ex) {
-//            Logger.getLogger(JDFacturasPendientes.class.getName()).log(Level.SEVERE, null, ex);
+//            Logger.getLogger(FventanaIncial.class.getName()).log(Level.SEVERE, null, ex);
 //            JOptionPane.showMessageDialog(this, "Excepcion Ayuda Factura " + ex);
 //            System.err.println("Excepcion Ayuda Factura " + ex);
+//        } catch (IOException ex) {
+//            Logger.getLogger(FventanaIncial.class.getName()).log(Level.SEVERE, null, ex);
 //        }
 
     }//GEN-LAST:event_jMenuItemAcercaDeActionPerformed
