@@ -76,10 +76,10 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel2" min="-2" pref="84" max="-2" attributes="0"/>
-                                          <Component id="jLabel1" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
                                           <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel1" min="-2" pref="97" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="fieldfecha" max="32767" attributes="0"/>
                                           <Component id="cb_tienda2" alignment="1" pref="596" max="32767" attributes="0"/>
@@ -136,6 +136,9 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabel1">
                       <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/icon_almacen/1417636330_store.png"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Tienda desde:"/>
                       </Properties>
                     </Component>
@@ -192,6 +195,9 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel5">
                       <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/icon_almacen/1417636330_store.png"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Tienda hasta:"/>
                       </Properties>
                     </Component>

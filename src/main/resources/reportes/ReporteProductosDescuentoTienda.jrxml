@@ -119,7 +119,9 @@ WHERE
 		<field name="referencia_producto" class="java.lang.String"/>
 	</subDataset>
 	<parameter name="Tienda" class="java.lang.Integer"/>
-	<parameter name="RIF" class="java.lang.String"/>
+	<parameter name="RIF" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
 	<parameter name="nombreTienda" class="java.lang.String"/>
 	<parameter name="ImagenLogo" class="java.awt.Image"/>
 	<queryString>
@@ -177,7 +179,7 @@ WHERE
 					<font fontName="Calibri" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA["RIF: "+$P{RIF}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{RIF}]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="true">
 				<reportElement mode="Transparent" x="0" y="77" width="200" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="1d16f560-6cce-4799-9bd1-806c8db7e95f"/>

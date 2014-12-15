@@ -122,6 +122,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
 
         panelCabezera.setLayout(new javax.swing.BoxLayout(panelCabezera, javax.swing.BoxLayout.LINE_AXIS));
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636330_store.png"))); // NOI18N
         jLabel1.setText("Tienda desde:");
 
         cb_tienda1.addItemListener(new java.awt.event.ItemListener() {
@@ -153,6 +154,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
             }
         });
 
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636330_store.png"))); // NOI18N
         jLabel5.setText("Tienda hasta:");
 
         jLabel7.setText("Salidas Registradas:");
@@ -185,9 +187,9 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addGap(23, 23, 23)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(fieldfecha)
                             .addComponent(cb_tienda2, javax.swing.GroupLayout.Alignment.TRAILING, 0, 596, Short.MAX_VALUE)
@@ -733,16 +735,16 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
 
 //            if (JOptionPane.showConfirmDialog(this, "¿Esta Seguro que desea marcar como revisado este Formulario de Mercancía Asignada a Tienda?", "Información", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 //                cabecera.setRevisado(true);
-                if (jRadioButtonPendiente.isSelected()) {
-                    ObjectModelDAO.updateObject(cabecera);
-                }
+            if (jRadioButtonPendiente.isSelected()) {
+                ObjectModelDAO.updateObject(cabecera);
+            }
             // cb_Salidas.removeItemAt (cb_Salidas.getSelectedIndex());
-                // sw = true;
-                // pos = cb_Salidas.getSelectedIndex();
-                generarReporte();
+            // sw = true;
+            // pos = cb_Salidas.getSelectedIndex();
+            generarReporte();
             //    setCB();
 
-            }
+        }
 
 //        } else {
 //            JOptionPane.showMessageDialog(this, "Deben Marcar que ha revisado este Formulario de Mercancía Asignada a Tienda");
@@ -789,6 +791,8 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
     private void jRadioButtonPendienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonPendienteActionPerformed
 
         setCB_Salidas();
+        checkboxRevisado.setSelected(false);
+        checkboxRevisado.setEnabled(true);
     }//GEN-LAST:event_jRadioButtonPendienteActionPerformed
 
     private void jRadioButtonRevisadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonRevisadoActionPerformed
