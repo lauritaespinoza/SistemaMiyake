@@ -263,7 +263,7 @@ public class JDfaturasCSV extends javax.swing.JDialog {
                             .addComponent(lbestado))
                         .addGap(27, 27, 27)
                         .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(estado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(estado, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
                             .addComponent(facToSinIva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(PanelDatosLayout.createSequentialGroup()
                         .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,21 +277,21 @@ public class JDfaturasCSV extends javax.swing.JDialog {
                             .addComponent(usuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(PanelDatosLayout.createSequentialGroup()
-                            .addGap(26, 26, 26)
-                            .addComponent(jLabel6))
-                        .addGroup(PanelDatosLayout.createSequentialGroup()
-                            .addGap(18, 18, 18)
-                            .addComponent(impresoralb))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDatosLayout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(lbusuariomodif1)))
+                            .addGap(18, 18, 18)
+                            .addComponent(lbusuariomodif1))
+                        .addGap(26, 26, 26))
                     .addGroup(PanelDatosLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(lbusuariomodif3)))
+                        .addComponent(lbusuariomodif3))
+                    .addGroup(PanelDatosLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(impresoralb)
+                            .addComponent(jLabel6))))
                 .addGap(18, 18, 18)
                 .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(facToConIva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(facToConIva, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
                     .addComponent(cedula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(impresora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(numero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -562,7 +562,7 @@ public class JDfaturasCSV extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(PanelCab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 145, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(tabpanel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -596,21 +596,30 @@ public class JDfaturasCSV extends javax.swing.JDialog {
 
         Almacen alm = (Almacen) resultListAlmacen.get(cb_tiendas.getSelectedIndex() - 1);
         //aca recorre la lista y actualiza el inventario tienda
+        String errores = "";
         for (Factura factura : ivtDiario.getFacturas()) {
             for (Map.Entry<Producto, Integer> entry : factura.getProductos().entrySet()) {
                 Producto p = entry.getKey();
                 InventarioTiendaPK id = new InventarioTiendaPK(p.getCodigo(), alm.getIdAlmacen());
-                InventarioTienda ivt = ObjectModelDAO.getObject(id, InventarioTienda.class);
-                if (factura.getEstado() == Factura.Estado.devuelta) {//debe sumar al inventario
-                    ivt.setCantidad(ivt.getCantidad() + entry.getValue());
-                }
+                if (id == null) {
+                    errores += p.getCodigo() + "\n";
+                } else {
+                    InventarioTienda ivt = ObjectModelDAO.getObject(id, InventarioTienda.class);
+                    if (factura.getEstado() == Factura.Estado.devuelta) {//debe sumar al inventario
+                        ivt.setCantidad(ivt.getCantidad() + entry.getValue());
+                    }
 
-                if (factura.getEstado() == Factura.Estado.correcta) {//debe restar al inventario
-                    ivt.setCantidad(ivt.getCantidad() - entry.getValue());
+                    if (factura.getEstado() == Factura.Estado.correcta) {//debe restar al inventario
+                        ivt.setCantidad(ivt.getCantidad() - entry.getValue());
+                    }
+                    ObjectModelDAO.updateObject(ivt);
                 }
             }
         }
 
+        if (!errores.equals("")) {
+            JOptionPane.showMessageDialog(null, "Los siguientes productos no se encontraron en la tienda\n\n" + errores);
+        }
         actualizar.setEnabled(false);
 
     }//GEN-LAST:event_actualizarActionPerformed
