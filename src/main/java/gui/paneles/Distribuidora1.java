@@ -1133,6 +1133,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
                         txtCantidadSugeridad.setText("");
                         txtCantidad.setText("");
                         txtNroBulto.setText("");
+                        jXTaskPaneCabeceraDistribuidora.setCollapsed(false);
                     }
 
                 } catch (Exception ex) {
