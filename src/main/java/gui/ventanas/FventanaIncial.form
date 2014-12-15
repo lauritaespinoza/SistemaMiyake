@@ -1756,7 +1756,6 @@
                         </Container>
                         <Container class="org.jdesktop.swingx.JXTaskPane" name="taskPaneModuloGestionProductos">
                           <Properties>
-                            <Property name="collapsed" type="boolean" value="true"/>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                               <Image iconType="3" name="/iconos/GestionProducto.png"/>
                             </Property>

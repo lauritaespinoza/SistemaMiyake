@@ -149,6 +149,7 @@ public class JPdivision extends javax.swing.JPanel {
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1416622346_xmag.png"))); // NOI18N
         jLabel15.setText("Para realizar Busqueda: Haga Click en la tabla + CTRL F");
 
+        bt_GenerarReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Reporte.png"))); // NOI18N
         bt_GenerarReporte.setText("Generar Reporte");
         bt_GenerarReporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -184,6 +185,7 @@ public class JPdivision extends javax.swing.JPanel {
 
         panelScrudDiv.addTab("Consultar", jScrollPane4);
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1418698083_Card_file.png"))); // NOI18N
         jLabel3.setText("Nombre de Division :");
 
         tf_nombre.addActionListener(new java.awt.event.ActionListener() {
@@ -264,6 +266,7 @@ public class JPdivision extends javax.swing.JPanel {
 
         lb_numero.setText("numero");
 
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1418698083_Card_file.png"))); // NOI18N
         jLabel4.setText("Nombre:");
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415416498_Circulation.png"))); // NOI18N
@@ -281,18 +284,18 @@ public class JPdivision extends javax.swing.JPanel {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tf_nombre1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton2))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)
                                 .addComponent(lb_numero))
-                            .addComponent(jLabel4))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(tf_nombre1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(8, 8, 8))
         );
         jPanel5Layout.setVerticalGroup(
