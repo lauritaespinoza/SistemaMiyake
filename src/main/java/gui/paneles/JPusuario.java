@@ -84,6 +84,9 @@ public class JPusuario extends javax.swing.JPanel {
         });
 
         cargarCB();
+        String sql = "FROM Usuario u order by u.idUsuario asc";
+        resultListUsuarios = ObjectModelDAO.getResultQuery(sql);
+        this.clave.setText("");
 
     }
 
@@ -523,11 +526,11 @@ public class JPusuario extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelScrudUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 842, Short.MAX_VALUE)
+            .addComponent(panelScrudUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelScrudUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
+            .addComponent(panelScrudUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

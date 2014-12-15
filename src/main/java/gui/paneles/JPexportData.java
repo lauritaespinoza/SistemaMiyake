@@ -95,8 +95,6 @@ public class JPexportData extends javax.swing.JPanel {
         jLabel23 = new javax.swing.JLabel();
         exportarBD = new javax.swing.JButton();
 
-        filesc.setCurrentDirectory(new java.io.File("C:\\Users\\Pablo"));
-
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -311,26 +309,17 @@ public class JPexportData extends javax.swing.JPanel {
         if (filesc.getChoosableFileFilters().length > 1) {
             filesc.removeChoosableFileFilter(filesc.getChoosableFileFilters()[1]);
         }
-   //     switch (index) {
-        //       case 0:
         filesc.setFileFilter(new FileNameExtensionFilter("Archivos txt ", "txt"));
 
-       //         break;
-        //   }
         int returnVal = filesc.showOpenDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             try {
                 File file = filesc.getSelectedFile();
                 archivo.setText(file.getAbsolutePath());
 
-       //         switch (tabpanel.getSelectedIndex()) {
-                //           case 0:
                 csvReader = new CSVreader(file.getAbsolutePath());
-                //         lt1.setModel(csvReader.getListModel());
                 ta1.read(new FileReader(file.getAbsolutePath()), null);
-           //             break;
 
-                //   }
             } catch (IOException ex) {
                 Logger.getLogger(JPexportData.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(null, "ERROR AL Abrir Archivo : " + ex);
@@ -449,8 +438,8 @@ public class JPexportData extends javax.swing.JPanel {
     }//GEN-LAST:event_cb_tiendaActionPerformed
 
     private void exportarBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportarBDActionPerformed
-       JDbackupDB jdbackUP=new JDbackupDB(null,true);
-       jdbackUP.setVisible(true);
+        JDbackupDB jdbackUP = new JDbackupDB(null, true);
+        jdbackUP.setVisible(true);
     }//GEN-LAST:event_exportarBDActionPerformed
 
 

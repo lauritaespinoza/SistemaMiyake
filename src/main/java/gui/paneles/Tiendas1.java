@@ -984,7 +984,6 @@ public class Tiendas1 extends javax.swing.JPanel {
             } else {
                 this.sd = (SalidaParaTiendaDetalle) jdProductosSD.sd;
                 //****************AQUI Dierecciona los valores****************
-
                 this.txtCodigo.setText(sd.getProducto().getIdProducto().toString());
                 this.txtCodigo.setEnabled(true);
                 this.txtDescripcion.setText(sd.getProducto().getDescripcion());
