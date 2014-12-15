@@ -759,9 +759,9 @@ public class JPinventarioDiario extends javax.swing.JPanel {
 
             Map<String, Object> parametro = new HashMap<>();
 
-            BufferedImage imagen = ImageIO.read(getClass().getResource("/imagenes/boton-inicio.png"));
-
-            parametro.put("ImagenLogo", imagen);
+//            BufferedImage imagen = ImageIO.read(getClass().getResource("/imagenes/boton-inicio.png"));
+//
+//            parametro.put("ImagenLogo", imagen);
             parametro.put("Tienda", nombreAlmacen.getText());
             parametro.put("Direccion", direccionAlmacen.getText());
             parametro.put("Mes", mes.getSelectedItem());
@@ -776,7 +776,7 @@ public class JPinventarioDiario extends javax.swing.JPanel {
             jasperViewer.setTitle("Reporte de Inventario Diario");
             jasperViewer.setVisible(true);
 
-        } catch (IOException | JRException e) {
+        } catch (JRException e) {
             JOptionPane.showMessageDialog(this, "error" + e);
         }
 

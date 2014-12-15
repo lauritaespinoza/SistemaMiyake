@@ -811,6 +811,7 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jXCollapsiblePaneAbajo.getContentPane().add(taskPaneModuloDistribuidor);
 
+        taskPaneModuloTienda.setCollapsed(true);
         taskPaneModuloTienda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636353_shop.png"))); // NOI18N
         taskPaneModuloTienda.setTitle("Tiendas");
 
@@ -983,12 +984,10 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jXCollapsiblePaneAbajo.getContentPane().add(taskPaneModuloGestionProductos);
 
-        jXTaskPaneReportes.setCollapsed(true);
         jXTaskPaneReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Reporte.png"))); // NOI18N
         jXTaskPaneReportes.setTitle("Reportes");
         jXTaskPaneReportes.setToolTipText("");
 
-        jXTaskPaneDistribuidor.setCollapsed(true);
         jXTaskPaneDistribuidor.setTitle("Resportes Distribuidor");
 
         Boton_Inprimir_Reporte_conteo_Distribuidora.setText("Reporte Conteo Mercancia");
