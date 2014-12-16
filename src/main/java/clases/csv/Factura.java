@@ -179,7 +179,7 @@ public class Factura {
         Map.Entry<Producto, Integer> value;
         value = getValue(p);
         if (value != null) {
-            productos.replace(value.getKey(), value.getValue() + 1);
+           // productos.replace(value.getKey(), value.getValue() + 1);
         } else {
             productos.put(p, 1);
         }
@@ -233,7 +233,7 @@ public class Factura {
         value = getValue(p);
         if (value != null) {
             if (value.getValue() > 1) {
-               productos.replace(value.getKey(), value.getValue() - 1);
+              // productos.replace(value.getKey(), value.getValue() - 1);
             } else {
                 productos.remove(p);
             }

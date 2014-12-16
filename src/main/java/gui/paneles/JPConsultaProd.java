@@ -5,19 +5,23 @@
  */
 package gui.paneles;
 
+import hibernate.DAO.ObjectModelDAO;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import modelos.mapeos.Almacen;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
 import org.exolab.castor.types.Date;
+import util.JavaUtil;
 
 /**
  *
@@ -27,7 +31,7 @@ public class JPConsultaProd extends javax.swing.JPanel {
 
     public final InputStream rutaJasper = this.getClass().getResourceAsStream("/reportes/ReporteActualizacionPreciosFecha.jasper");
     public final InputStream rutaJrxml = this.getClass().getResourceAsStream("/reportes/ReporteActualizacionPreciosFecha.jrxml");
-
+    private List resultListProducto;
     /**
      * Creates new form panelReportePreciosActualizados
      */
@@ -45,7 +49,7 @@ public class JPConsultaProd extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jXTable1 = new org.jdesktop.swingx.JXTable();
+        tablaConsultaCambios = new org.jdesktop.swingx.JXTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         fechaDesde = new org.jdesktop.swingx.JXDatePicker();
@@ -54,7 +58,8 @@ public class JPConsultaProd extends javax.swing.JPanel {
         bt_consultarCambios = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
-        jXTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaConsultaCambios.setAutoCreateRowSorter(false);
+        tablaConsultaCambios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -64,10 +69,19 @@ public class JPConsultaProd extends javax.swing.JPanel {
             new String [] {
                 "ID PRODUCTO", "NOMBRE PRODUCTO", "PRECIO", "FECHA DE CREACION", "FECHA DE MODIFICACION", "TIENDA"
             }
-        ));
-        jXTable1.setHorizontalScrollEnabled(true);
-        jXTable1.setSortable(false);
-        jScrollPane1.setViewportView(jXTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaConsultaCambios.setEditable(false);
+        tablaConsultaCambios.setHorizontalScrollEnabled(true);
+        tablaConsultaCambios.setSortable(false);
+        jScrollPane1.setViewportView(tablaConsultaCambios);
 
         jLabel1.setText("Fecha Desde:");
 
@@ -170,7 +184,24 @@ public class JPConsultaProd extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void bt_consultarCambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_consultarCambiosActionPerformed
+
+        String fechaDesd= new SimpleDateFormat("yyyy-MM-dd").format(fechaDesde.getDate());
+        String fechaHast= new SimpleDateFormat("yyyy-MM-dd").format(fechaHasta.getDate());
         
+        String hql = "SELECT ivt.id_producto, ivt.precio_con_descuento, ivt.fecha_creacion, ivt.fecha_modificacion,"
+                + "  p.descripcion, a.nombre "
+                + "FROM  InventarioTienda ivt INNER JOIN  Producto p ON (ivt.id_producto=p.id_producto) "
+                + "INNER JOIN Almacen a ON (ivt.id_almacen=a.id_almacen)"
+                + "WHERE ivt.fecha_modificacion >= " +fechaDesd 
+                + "AND ivt.fecha_modificacion <= " + fechaHast;
+        
+        resultListProducto = ObjectModelDAO.getResultQuery(hql);
+
+        if (resultListProducto.isEmpty()) {
+            tablaConsultaCambios.setModel(new DefaultTableModel());
+            return;
+        }
+        JavaUtil.displayResult(resultListProducto, tablaConsultaCambios);
     }//GEN-LAST:event_bt_consultarCambiosActionPerformed
 
 
@@ -183,6 +214,6 @@ public class JPConsultaProd extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private org.jdesktop.swingx.JXTable jXTable1;
+    private org.jdesktop.swingx.JXTable tablaConsultaCambios;
     // End of variables declaration//GEN-END:variables
 }

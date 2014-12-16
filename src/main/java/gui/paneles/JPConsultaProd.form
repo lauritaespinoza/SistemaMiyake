@@ -39,16 +39,17 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="org.jdesktop.swingx.JXTable" name="jXTable1">
+        <Component class="org.jdesktop.swingx.JXTable" name="tablaConsultaCambios">
           <Properties>
+            <Property name="autoCreateRowSorter" type="boolean" value="false"/>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="6" rowCount="4">
-                <Column editable="true" title="ID PRODUCTO" type="java.lang.Object"/>
-                <Column editable="true" title="NOMBRE PRODUCTO" type="java.lang.Object"/>
-                <Column editable="true" title="PRECIO" type="java.lang.Object"/>
-                <Column editable="true" title="FECHA DE CREACION" type="java.lang.Object"/>
-                <Column editable="true" title="FECHA DE MODIFICACION" type="java.lang.Object"/>
-                <Column editable="true" title="TIENDA" type="java.lang.Object"/>
+                <Column editable="false" title="ID PRODUCTO" type="java.lang.Object"/>
+                <Column editable="false" title="NOMBRE PRODUCTO" type="java.lang.Object"/>
+                <Column editable="false" title="PRECIO" type="java.lang.Object"/>
+                <Column editable="false" title="FECHA DE CREACION" type="java.lang.Object"/>
+                <Column editable="false" title="FECHA DE MODIFICACION" type="java.lang.Object"/>
+                <Column editable="false" title="TIENDA" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -85,6 +86,7 @@
                 </Column>
               </TableColumnModel>
             </Property>
+            <Property name="editable" type="boolean" value="false"/>
             <Property name="horizontalScrollEnabled" type="boolean" value="true"/>
             <Property name="sortable" type="boolean" value="false"/>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">

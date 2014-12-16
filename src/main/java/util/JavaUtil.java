@@ -236,11 +236,11 @@ public abstract class JavaUtil {
             oneRow.add(sa.getIdAlmacenHasta().getNombre());
             oneRow.add(sa.getIdAlmacenHasta().getTelefono1());
             //oneRow.add(sa.getRevisado());
-            if(sa.getRevisado()==false){
-               oneRow.add("Pendiente"); 
-            }else{
-                oneRow.add("Procesado"); 
-            } 
+            if (sa.getRevisado() == false) {
+                oneRow.add("Pendiente");
+            } else {
+                oneRow.add("Procesado");
+            }
             oneRow.add(sa.getTotal());
             oneRow.add(sa.getFechaAsignacion());
         }
@@ -262,6 +262,15 @@ public abstract class JavaUtil {
             oneRow.add(ep.getCantidadSet() * ep.getCantidadProducto());
             oneRow.add(ep.getNroBulto());
             oneRow.add(ep.getFechaRecepcion());
+        }
+        if (o instanceof InventarioTienda){
+            InventarioTienda ivt = (InventarioTienda) o;
+            oneRow.add(ivt.getProducto().getIdProducto());
+            oneRow.add(ivt.getProducto().getDescripcion());
+            oneRow.add(ivt.getPrecioConDescuento());
+            oneRow.add(ivt.getFechaCreacion());
+            oneRow.add(ivt.getFechaModificacion());
+            oneRow.add(ivt.getAlmacen().getNombre());
         }
 
         return oneRow;
@@ -419,6 +428,15 @@ public abstract class JavaUtil {
             header.add("TOTAL CONTEO");
             header.add("NRO BULTO");
             header.add("FECHA RECEPCION");
+        }
+
+        if (o instanceof InventarioTienda) {            
+            header.add("ID PRODUCTO");
+            header.add("NOMBRE PRODUCTO");
+            header.add("PRECIO");
+            header.add("FECHA CREACION");
+            header.add("FECHA MODIFICACION");
+            header.add("TIENDA");
         }
         return header;
     }
