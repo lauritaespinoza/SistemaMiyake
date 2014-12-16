@@ -313,7 +313,7 @@
                         </manifest>
                         <manifestEntries>
                             <SplashScreen-Image>
-                                logomiyake.png
+                                loading-bar.gif
                             </SplashScreen-Image>
                         </manifestEntries>
                     </archive>
