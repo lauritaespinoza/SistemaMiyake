@@ -105,7 +105,7 @@ public class FventanaIncial extends javax.swing.JFrame {
 //        jMenuItemAcercaDeActionPerformed(null);
         //icon
          this.setIconImage(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417901477_file-roller.png")).getImage()); 
-
+         this.setLocationRelativeTo(null);
         ClockLabel clock = new ClockLabel();
         getContentPane().add(clock, BorderLayout.PAGE_END);
     }

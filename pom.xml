@@ -302,7 +302,7 @@
         
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.5.2</version>
+                <!--<version>2.5.2</version>-->
                 <configuration>
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
@@ -311,6 +311,11 @@
                         <manifest>
                             <mainClass>gui.ventanas.JFInicioSecionMiyake</mainClass>
                         </manifest>
+                        <manifestEntries>
+                            <SplashScreen-Image>
+                                logomiyake.png
+                            </SplashScreen-Image>
+                        </manifestEntries>
                     </archive>
                 </configuration>
                 <executions>
