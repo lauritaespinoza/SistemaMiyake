@@ -313,7 +313,7 @@
                         </manifest>
                         <manifestEntries>
                             <SplashScreen-Image>
-                                loading-bar.gif
+                                iconos.splash.png
                             </SplashScreen-Image>
                         </manifestEntries>
                     </archive>
