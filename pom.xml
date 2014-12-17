@@ -307,7 +307,7 @@
     </properties>
     <name>SistemaMiyakeActual</name>
   
-<!--    <build>
+    <build>
         <plugins>
         
             <plugin>
@@ -328,17 +328,17 @@
                         </manifestEntries>
                     </archive>
                 </configuration>
-                <executions>
+<!--                <executions>
                     <execution>
                         <id>make-assembly</id>  this is used for inheritance merges 
-                        <phase>package</phase>  bind to the packaging phase 
+                        <phase>package</phase>  bind to the packaging phase
                         <goals>
                             <goal>single</goal>
                         </goals>
                     </execution>
-                </executions>
+                </executions>-->
             </plugin>
         </plugins>
     </build>
-    -->
+    
 </project>

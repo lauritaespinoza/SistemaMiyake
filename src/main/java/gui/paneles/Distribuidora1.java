@@ -33,6 +33,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import modelos.tablas.TableModelReport;
+import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -1085,66 +1086,16 @@ public class Distribuidora1 extends javax.swing.JPanel {
 
                     //Validar y Verificar queLa factura NO Cambie el 
                     //Mensaje Registro Guardado
-                    int respuesta = JOptionPane.showConfirmDialog(null, "El Registro se Guardo Exitosamente...!!! \n ¿Desea Agregar Otra Factura?",
-                            "COMPROBACION DE REGISTROS", JOptionPane.YES_NO_OPTION);
+                    int respuesta = JOptionPane.showConfirmDialog(null, "El Registro se Guardo Exitosamente...!!! \n ¿Desea Generar el Reporte de Recepcion de Mercancia?",
+                            "INFORMACIÓN", JOptionPane.YES_NO_OPTION);
 
                     if (respuesta == JOptionPane.YES_OPTION) {
 
-                        jButtonGuardarConteo.setEnabled(true);
+                        generarReporte();
 
-                        //Limpiar Tabla y Lista
-                        listaDetalle.clear();
-                        jTDetalleRegistroDistribuidora.removeAll();
-                        modeloTablaTomaFisicaInventarioDistribuidora.fireTableDataChanged();
-
-                        //Desabilitar Controles
-                        txtCantidad.setEnabled(false);
-                        botonValidar.setEnabled(false);
-                        botonAgregar.setEnabled(false);
-                        botonLimpiarAgregar.setEnabled(false);
-                        comboBoxTipoBusqueda.setEnabled(false);
-                        txtBusqueda.setEnabled(false);
-                        jXButtonBuscar.setEnabled(false);
-                        botonListarProductosInventariTienda.setEnabled(false);
-                        jButtonListarFacturas.setEnabled(false);
-
-                        //Destruir Objetos
-                        listaEP.clear();
-                        proEP = null;
-                        Conteofaltante = 0;
-                        posUs = -1;
-                        posTi = -1;
-                        deReg = null;
-
-                        //Habilitar COntrol de Factura
-                        jButtonListarFacturas.setEnabled(true);
-                        botonConfirmarFactura.setEnabled(true);
-
-                        //Limpiar texto de Factura
-                        txtFactura.setText("");
-                        txtEmitidoPor.setText("");
-                        txtFechaFactura.setText("");
-
-                        //Limpiar Campos de Texto
-                        txtCodigo.setText("");
-                        txtDescripcion.setText("");
-                        txtReferencia.setText("");
-                        txtMarca.setText("");
-                        txtCantidadSugeridad.setText("");
-                        txtCantidad.setText("");
-                        txtNroBulto.setText("");
-                        jXTaskPaneCabeceraDistribuidora.setCollapsed(false);
-                        jButtonGuardarConteo.setEnabled(false);
-                        botonImprimir.setEnabled(false);
-                        botonReiniciar.setEnabled(false);
-                        botonCancelarTodoDesdeFActura.setEnabled(false);
-                        botonConfirmarFactura.setEnabled(false);
-                        //coMBObOX
-                        comboBoxAlmacen.setSelectedIndex(-1);
-                        comboBoxAlmacen.setEnabled(true);
-                        comboBoxUsuarios.setSelectedIndex(-1);
-                        comboBoxUsuarios.setEnabled(true);
-
+                    }
+                    if (respuesta == JOptionPane.NO_OPTION) {
+                        reiniciarDesdeFinal();
                     }
 
                 } catch (Exception ex) {
@@ -1157,6 +1108,103 @@ public class Distribuidora1 extends javax.swing.JPanel {
                     JOptionPane.showMessageDialog(null, "Por Favor, Vuelva a Intentar Guardar con Datos Correctos!!!");
                     System.err.println("ERROR ó Excepcion en Guardar Registro : " + ex);
                 }
+
+            }
+
+            private void reiniciarDesdeFinal() {
+
+                jButtonGuardarConteo.setEnabled(true);
+
+                //Limpiar Tabla y Lista
+                listaDetalle.clear();
+                jTDetalleRegistroDistribuidora.removeAll();
+                modeloTablaTomaFisicaInventarioDistribuidora.fireTableDataChanged();
+
+                //Desabilitar Controles
+                txtCantidad.setEnabled(false);
+                botonValidar.setEnabled(false);
+                botonAgregar.setEnabled(false);
+                botonLimpiarAgregar.setEnabled(false);
+                comboBoxTipoBusqueda.setEnabled(false);
+                txtBusqueda.setEnabled(false);
+                jXButtonBuscar.setEnabled(false);
+                botonListarProductosInventariTienda.setEnabled(false);
+                jButtonListarFacturas.setEnabled(false);
+
+                //Destruir Objetos
+                listaEP.clear();
+                proEP = null;
+                Conteofaltante = 0;
+                posUs = -1;
+                posTi = -1;
+                deReg = null;
+
+                //Habilitar COntrol de Factura
+                jButtonListarFacturas.setEnabled(true);
+                botonConfirmarFactura.setEnabled(true);
+
+                //Limpiar texto de Factura
+                txtFactura.setText("");
+                txtEmitidoPor.setText("");
+                txtFechaFactura.setText("");
+
+                //Limpiar Campos de Texto
+                txtCodigo.setText("");
+                txtDescripcion.setText("");
+                txtReferencia.setText("");
+                txtMarca.setText("");
+                txtCantidadSugeridad.setText("");
+                txtCantidad.setText("");
+                txtNroBulto.setText("");
+                jXTaskPaneCabeceraDistribuidora.setCollapsed(false);
+                jButtonGuardarConteo.setEnabled(false);
+                botonImprimir.setEnabled(false);
+                botonReiniciar.setEnabled(false);
+                botonCancelarTodoDesdeFActura.setEnabled(false);
+                botonConfirmarFactura.setEnabled(false);
+                //coMBObOX
+                comboBoxAlmacen.setSelectedIndex(-1);
+                comboBoxAlmacen.setEnabled(true);
+                comboBoxUsuarios.setSelectedIndex(-1);
+                comboBoxUsuarios.setEnabled(true);
+
+            }
+
+            private void generarReporte() throws JRException {
+                JasperPrint jasperPrint = null;
+
+                Map<String, Object> parametro = new HashMap<>();
+                String s = "";
+
+                TableModelReport dataSourse = new TableModelReport(jTDetalleRegistroDistribuidora.getModel());
+                parametro.put("facturas", fa.getNroFactura());
+                parametro.put("fecha", fa.getFechaEmision());
+                parametro.put("usuario", fa.getRecibidoPor());
+                parametro.put("almacen", fa.getIdAlmacen().getNombre());
+
+                parametro.put("REPORT_DATA_SOURSE", dataSourse);
+                //JasperCompileManager.compileReport(rutaJrxml);
+                JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ConteoTomaFisicaDistribuidora.jasper"));
+
+                jasperPrint = JasperFillManager.fillReport(reporte, parametro, dataSourse);
+                JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
+                jasperViewer.setTitle("Reporte de Toma Fisica Distribuidoras.");
+                jasperViewer.setVisible(true);
+                jasperViewer.setAutoRequestFocus(true);
+                //busy
+                    busy.setEnabled(false);
+                    busy.setVisible(false);
+                    busy.setBusy(false);
+                    int respuesta = JOptionPane.showConfirmDialog(null, "La Operación Ha Finalizado Satisfactoriamente..."
+                            + "¿Desea Realizar una Nueva Toma Física de Mercancia?");
+
+                    if (respuesta == JOptionPane.YES_OPTION) { 
+                        requestFocus();
+                        reiniciarDesdeFinal();
+                    }
+                    if (respuesta == JOptionPane.NO_OPTION) {
+                       // 
+                    } 
 
             }
         };
@@ -1185,9 +1233,9 @@ public class Distribuidora1 extends javax.swing.JPanel {
                         txtFechaFactura.setText("");
 
                         int respuesta = JOptionPane.showConfirmDialog(null,
-                                "Es Posible que Falte Registrar La Factura en el Modulo de Registrar Container.\n Presione (SI), si desea Registar Una Factura.\n"
-                                + "Tambien Es Posible que No halla Selecionado Ninguna Factura.\n  Preione (NO) si desea volver intentarlo.\n ",
-                                "COMPROBACION DE CANTIDADES", JOptionPane.YES_NO_OPTION);
+                                "Es Posible que Falte Cargar La Factura en el Modulo de Registrar Conteiner.\n Presione (SI), si desea Cargar Una Nueva Factura.\n"
+                                + "Es Posible que No halla Seleccionado Ninguna Factura.\n  Presione (NO), si desea volver intentarlo.\n ",
+                                "INFORMACION", JOptionPane.YES_NO_OPTION);
 
                         if (respuesta == JOptionPane.YES_OPTION) {
                             JPentradaproveedor en = new JPentradaproveedor();

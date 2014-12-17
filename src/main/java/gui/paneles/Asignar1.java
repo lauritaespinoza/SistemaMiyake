@@ -1037,7 +1037,7 @@ public class Asignar1 extends javax.swing.JPanel {
                     jasperPrint = JasperFillManager.fillReport(reporte, parametro, dataSourse);
                     JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
                     jasperViewer.setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
-                    jasperViewer.setTitle("Reporte Mercancia Asignada Tiendas.");
+                    jasperViewer.setTitle("Reporte de Asignacion de Mercancia.");
                     jasperViewer.setVisible(true);
                      
                     busy.setEnabled(false);
@@ -1236,7 +1236,7 @@ public class Asignar1 extends javax.swing.JPanel {
 
                         jasperPrint = JasperFillManager.fillReport(reporte, null, dataSourse);
                         JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
-                        jasperViewer.setTitle("Reporte de Toma Fisica Distribuidoras.");
+                        jasperViewer.setTitle("Reporte de Asignacion de Mercancia.");
                         jasperViewer.setVisible(true);
 
                         //busy
@@ -1593,7 +1593,7 @@ public class Asignar1 extends javax.swing.JPanel {
                 jdInventarioTienda.setLocationRelativeTo(null);
                 jdInventarioTienda.setVisible(true);
                 if (jdInventarioTienda.inv == null) {
-                    JOptionPane.showMessageDialog(this, "no ha Seleccionado Facturas");
+                    JOptionPane.showMessageDialog(this, "no ha Seleccionado Asignación");
                 } else {
                     inv = jdInventarioTienda.inv;
 
@@ -1618,7 +1618,7 @@ public class Asignar1 extends javax.swing.JPanel {
                 }
             }
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "Error al cargar Lista de Facturas" + ex);
+            JOptionPane.showMessageDialog(this, "Error al cargar Lista de Asignaciones" + ex);
             Logger.getLogger(Asignar1.class.getName()).log(Level.SEVERE, null, ex);
         }
 

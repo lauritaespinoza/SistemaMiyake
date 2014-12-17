@@ -259,7 +259,7 @@ public class Tiendas1 extends javax.swing.JPanel {
 
         jScrollPane3.setPreferredSize(new java.awt.Dimension(800, 800));
 
-        jLayeredPaneTienda.setBorder(javax.swing.BorderFactory.createTitledBorder("Seleccionar Factura"));
+        jLayeredPaneTienda.setBorder(javax.swing.BorderFactory.createTitledBorder("Seleccionar Asignacion."));
         jLayeredPaneTienda.setPreferredSize(new java.awt.Dimension(610, 130));
 
         jXLabel2.setText("Responsable:");
@@ -1010,7 +1010,7 @@ public class Tiendas1 extends javax.swing.JPanel {
             }
 
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "Excepcion al cargar Lista de Facturas" + ex);
+            JOptionPane.showMessageDialog(this, "Excepcion al cargar Lista de Asignacion" + ex);
             Logger.getLogger(Tiendas1.class.getName()).log(Level.SEVERE, null, ex);
 
         }
@@ -1288,75 +1288,127 @@ public class Tiendas1 extends javax.swing.JPanel {
 
                     //Validar y Verificar queLa sa NO Cambie el 
                     //Mensaje Registro Guardado
-                    int respuesta = JOptionPane.showConfirmDialog(null, "El Registro se Guardo Exitosamente...!!! \n ¿Desea Agregar Otra Factura?",
-                            "COMPROBACION DE REGISTROS", JOptionPane.YES_NO_OPTION);
+                    int respuesta = JOptionPane.showConfirmDialog(null, "El Registro se Guardo Exitosamente...!!! \n ¿Desea Generar el Reporte de Recepcion de Mercancia?",
+                            "INFORMACIÓN", JOptionPane.YES_NO_OPTION);
 
                     if (respuesta == JOptionPane.YES_OPTION) {
-                        jButtonGuardarConteo.setEnabled(true);
-                        //Limpiar Tabla y Lista
-
-                        listaprodSA = null;
-                        listaDetalle.clear();
-                        deReg = null;
-                        listaDetalle = null;
-
-                        //  jTDetalleRegistroTiendas.removeAll();
-                        modeloTablaTomaFisicaInventarioTiendas.fireTableDataChanged();
-                        //Desabilitar Controles
-                        txtCantidad.setEnabled(false);
-
-                        //jLayeredPaneBuscarProducto.setEnabled(false);
-                        comboBoxTipoBusqueda.setEnabled(false);
-                        txtBusqueda.setEnabled(false);
-                        jXButtonBuscar.setEnabled(false);
-                        botonListarProductosInventariTienda.setEnabled(false);
-
-                        //Destruir Objetos
-                        sd = null;
-//                        proEPaux = null;
-                        Conteofaltante = 0;
-                        posUs = -1;
-                        posAl = -1;
-
-                        //Habilitar COntrol de Factura
-                        jButtonListarPedidos.setEnabled(true);
-                        botonConfirmarFactura.setEnabled(true);
-                        //Limpiar texto de Factura
-                        //Limpiar Campos de Texto 
-
-                        txtRenglon.setText("");
-                        txtTiendaDesde.setText("");
-                        txtEstatus.setText("");
-                        txtSalidaID.setText("");
-                        txtEmitidoPor.setText("");
-                        txtSalidaIDFecha.setText("");
-                        txtTotalSalidaID.setText("");
-                        txtCodigo.setText("");
-                        txtDescripcion.setText("");
-                        txtReferencia.setText("");
-                        txtMarca.setText("");
-                        txtCantidadSugeridad.setText("");
-                        txtCantidad.setText("");
-                        txtNroBulto.setText("");
-                        jXTaskPaneLCabeceraTiendas.setCollapsed(false);
-                        jButtonGuardarConteo.setEnabled(false);
-                        botonImprimir.setEnabled(false);
-                        botonCencelarAgregar.setEnabled(false);
-                        botonReiniciarTodoDesdeFActura.setEnabled(false);
-                        //coMBObOX
-                        comboBoxAlmacen.setSelectedIndex(-1);
-                        comboBoxAlmacen.setEnabled(true);
-                        comboBoxUsuarios.setSelectedIndex(-1);
-                        comboBoxUsuarios.setEnabled(true);
+                        generarReporte();
+                    }
+                    if (respuesta == JOptionPane.NO_OPTION) {
+                        reiniciarDesdeFinal();
                     }
 
                 } catch (Exception ex) {
-                    System.err.println("Excepcion en Guardar Registro : " + ex);
-                    JOptionPane.showMessageDialog(null, "Excepcion en Guardar Registro : " + ex);
+                    System.err.println("Excepción en Guardar Registro : " + ex);
+                    JOptionPane.showMessageDialog(null, "Excepción en Guardar Registro : " + ex);
                     Logger.getLogger(Tiendas1.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (Throwable ex) {
-                    JOptionPane.showMessageDialog(null, "Excepcion en Guardar Registro : " + ex);
+                    JOptionPane.showMessageDialog(null, "Excepción en Guardar Registro : " + ex);
                     Logger.getLogger(Tiendas1.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            }
+
+            private void reiniciarDesdeFinal() {
+                jButtonGuardarConteo.setEnabled(true);
+                //Limpiar Tabla y Lista
+
+                listaprodSA = null;
+                listaDetalle.clear();
+                deReg = null;
+                listaDetalle = null;
+
+                //  jTDetalleRegistroTiendas.removeAll();
+                modeloTablaTomaFisicaInventarioTiendas.fireTableDataChanged();
+                //Desabilitar Controles
+                txtCantidad.setEnabled(false);
+
+                //jLayeredPaneBuscarProducto.setEnabled(false);
+                comboBoxTipoBusqueda.setEnabled(false);
+                txtBusqueda.setEnabled(false);
+                jXButtonBuscar.setEnabled(false);
+                botonListarProductosInventariTienda.setEnabled(false);
+
+                //Destruir Objetos
+                sd = null;
+//                        proEPaux = null;
+                Conteofaltante = 0;
+                posUs = -1;
+                posAl = -1;
+
+                //Habilitar COntrol de Asignacion
+                jButtonListarPedidos.setEnabled(true);
+                botonConfirmarFactura.setEnabled(true);
+                //Limpiar texto de Factura
+                //Limpiar Campos de Texto 
+
+                txtRenglon.setText("");
+                txtTiendaDesde.setText("");
+                txtEstatus.setText("");
+                txtSalidaID.setText("");
+                txtEmitidoPor.setText("");
+                txtSalidaIDFecha.setText("");
+                txtTotalSalidaID.setText("");
+                txtCodigo.setText("");
+                txtDescripcion.setText("");
+                txtReferencia.setText("");
+                txtMarca.setText("");
+                txtCantidadSugeridad.setText("");
+                txtCantidad.setText("");
+                txtNroBulto.setText("");
+                jXTaskPaneLCabeceraTiendas.setCollapsed(false);
+                jButtonGuardarConteo.setEnabled(false);
+                botonImprimir.setEnabled(false);
+                botonCencelarAgregar.setEnabled(false);
+                botonReiniciarTodoDesdeFActura.setEnabled(false);
+                //coMBObOX
+                comboBoxAlmacen.setSelectedIndex(-1);
+                comboBoxAlmacen.setEnabled(true);
+                comboBoxUsuarios.setSelectedIndex(-1);
+                comboBoxUsuarios.setEnabled(true);
+
+            }
+
+            private void generarReporte() {
+                busy.setText("Generando Archivo...!!!");
+                busy.setEnabled(true);
+                busy.setVisible(true);
+                busy.setBusy(true);
+                try {
+                    JasperPrint jasperPrint = null;
+
+                    Map<String, Object> parametro = new HashMap<>();
+                    String s = "";
+                    TableModelReport dataSourse = new TableModelReport(jTDetalleRegistroTiendas.getModel());
+                    parametro.put("REPORT_DATA_SOURSE", dataSourse);
+                    //JasperCompileManager.compileReport(rutaJrxml);
+                    JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ConteoTomaFisicaTienda.jasper"));
+
+                    jasperPrint = JasperFillManager.fillReport(reporte, null, dataSourse);
+                    JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
+                    jasperViewer.setTitle("Reporte de Toma Fisica Tiendas.");
+                    jasperViewer.setVisible(true);
+
+                    //busy
+                    busy.setEnabled(false);
+                    busy.setVisible(false);
+                    busy.setBusy(false);
+                    int respuesta = JOptionPane.showConfirmDialog(null, "La Operación Ha Finalizado Satisfactoriamente..."
+                            + "¿Desea Realizar una Nueva Toma Física de Mercancia?");
+
+                    if (respuesta == JOptionPane.YES_OPTION) {
+                        requestFocus();
+                        reiniciarDesdeFinal();
+                    }
+                    if (respuesta == JOptionPane.NO_OPTION) {
+                        // 
+                    }
+                } catch (JRException | HeadlessException e) {
+                    JOptionPane.showMessageDialog(null, "Sea Detectado Un Problema Con Proceso de Selección de Asignaciónes,"
+                            + "Por Favor Vuelva a Intentarlo.");
+                    Logger.getLogger(Distribuidora1.class.getName()).log(Level.SEVERE, null, e);
+                    System.err.println("Seleccionando Asignación" + e);
+
                 }
 
             }
@@ -1427,7 +1479,7 @@ public class Tiendas1 extends javax.swing.JPanel {
                     busy.setBusy(false);
 
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "Excepcion al cargar Lista de Facturas" + ex);
+                    JOptionPane.showMessageDialog(null, "Excepcion al cargar Lista de Asignación" + ex);
                     Logger.getLogger(Tiendas1.class.getName()).log(Level.SEVERE, null, ex);
 
                 }
@@ -1435,8 +1487,7 @@ public class Tiendas1 extends javax.swing.JPanel {
             }
         };
         hilo.start();
-
-        //    ListarFacturas();
+ 
     }//GEN-LAST:event_jButtonListarPedidosActionPerformed
 
     private void txtSalidaIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalidaIDActionPerformed
@@ -1666,7 +1717,7 @@ public class Tiendas1 extends javax.swing.JPanel {
 
                 @Override
                 public void run() {
-
+                    busy.setText("Generando Archivo...!!!");
                     busy.setEnabled(true);
                     busy.setVisible(true);
                     busy.setBusy(true);
@@ -1678,11 +1729,11 @@ public class Tiendas1 extends javax.swing.JPanel {
                         TableModelReport dataSourse = new TableModelReport(jTDetalleRegistroTiendas.getModel());
                         parametro.put("REPORT_DATA_SOURSE", dataSourse);
                         //JasperCompileManager.compileReport(rutaJrxml);
-                        JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ReporteGestionMercancia.jasper"));
+                        JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ConteoTomaFisicaTienda.jasper"));
 
                         jasperPrint = JasperFillManager.fillReport(reporte, null, dataSourse);
                         JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
-                        jasperViewer.setTitle("Reporte de Toma Fisica Distribuidoras.");
+                        jasperViewer.setTitle("Reporte de Toma Fisica Tienda.");
                         jasperViewer.setVisible(true);
 
                         //busy
@@ -1690,10 +1741,10 @@ public class Tiendas1 extends javax.swing.JPanel {
                         busy.setVisible(false);
                         busy.setBusy(false);
                     } catch (JRException | HeadlessException e) {
-                        JOptionPane.showMessageDialog(null, "Se a Dectectado Un Proble Con Proceso de Seleccion de Facturas,"
+                        JOptionPane.showMessageDialog(null, "Se a Dectectado Un Proble Con Proceso de Seleccion de Asignaciones,"
                                 + "Por Favor Vuelva a Intentarlo.");
                         Logger.getLogger(Distribuidora1.class.getName()).log(Level.SEVERE, null, e);
-                        System.err.println("Seleccionando Facturas" + e);
+                        System.err.println("Seleccionando Asignacion" + e);
 
                     }
 
@@ -1719,11 +1770,11 @@ public class Tiendas1 extends javax.swing.JPanel {
                 jButtonGuardarConteo.setEnabled(true);
                 botonImprimir.setEnabled(true);
             } else {
-                JOptionPane.showMessageDialog(null, "DEBE Finalizar de Contabilizar TODOS Los Productos"
-                        + "De Mercancia Asignada Para la Tienda");
+                JOptionPane.showMessageDialog(null, "DEBE Finalizar  de Contabilizar  TODOS Los Productos.\n"
+                        + "De Mercancía Asignada Para la Tienda\n");
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Excepcion al Totalizar Pedido" + e);
+            JOptionPane.showMessageDialog(null, "Excepción al Totalizar Asignacion" + e);
             Logger.getLogger(Tiendas1.class.getName()).log(Level.SEVERE, null, e);
 
         }
