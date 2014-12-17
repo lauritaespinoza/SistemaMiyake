@@ -93,9 +93,6 @@ public class JDasignadaTienda extends javax.swing.JDialog {
         botonImprimir = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         barraBusqueda = new org.jdesktop.swingx.JXFindBar(tablaAsignadaTienda.getSearchable());
-        jMenuBarDialogoFac = new javax.swing.JMenuBar();
-        jMenuOpciones = new javax.swing.JMenu();
-        jMenu_Ayuda_ = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -160,14 +157,6 @@ public class JDasignadaTienda extends javax.swing.JDialog {
             }
         });
 
-        jMenuOpciones.setText("Opciones");
-        jMenuBarDialogoFac.add(jMenuOpciones);
-
-        jMenu_Ayuda_.setText("Ayuda");
-        jMenuBarDialogoFac.add(jMenu_Ayuda_);
-
-        setJMenuBar(jMenuBarDialogoFac);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -179,7 +168,6 @@ public class JDasignadaTienda extends javax.swing.JDialog {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 755, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtTitulo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(ayuda)
@@ -375,9 +363,6 @@ public class JDasignadaTienda extends javax.swing.JDialog {
     private org.jdesktop.swingx.JXBusyLabel busy;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JMenuBar jMenuBarDialogoFac;
-    private javax.swing.JMenu jMenuOpciones;
-    private javax.swing.JMenu jMenu_Ayuda_;
     private javax.swing.JScrollPane jScrollPane1;
     private org.jdesktop.swingx.JXTable tablaAsignadaTienda;
     private javax.swing.JLabel txtTitulo;

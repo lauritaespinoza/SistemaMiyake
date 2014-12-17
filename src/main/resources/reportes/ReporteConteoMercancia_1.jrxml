@@ -128,7 +128,7 @@ WHERE
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<rectangle>
-				<reportElement mode="Transparent" x="0" y="0" width="555" height="120" uuid="5fc9f124-62bb-4701-b244-c42d02e05be2"/>
+				<reportElement mode="Transparent" x="0" y="0" width="389" height="120" uuid="5fc9f124-62bb-4701-b244-c42d02e05be2"/>
 			</rectangle>
 		</band>
 	</pageHeader>

@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package ayuda;
-
+//import com.sun.
+// import org.icepdf.ri.common.SwingController;
+//import org.icepdf.ri.common.SwingViewBuilder;
 
 //import chrriis.dj.nativeswing.swtimpl.components.JWebBrowser;
 //import java.awt.BorderLayout;
@@ -23,6 +25,14 @@ public class Introduccion extends javax.swing.JPanel {
      */
     public Introduccion() {
                 initComponents();
+               
+
+//InputStream inputStream = MY_PDF_AS_STREAM;
+//SwingController controller = new SwingController();
+//SwingViewBuilder factory = new SwingViewBuilder(controller);
+//JPanel viewerComponentPanel = factory.buildViewerPanel(); 
+//MY_MAIN_PANEL.add(viewerComponentPanel, BorderLayout.CENTER);
+//controller.openDocument(inputStream, "", "");
     }
  
     /**
@@ -34,52 +44,17 @@ public class Introduccion extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jButton1 = new javax.swing.JButton();
-
-        jLabel1.setText("Introduccion");
-
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(142, 142, 142)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(91, 91, 91))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+            .addGap(0, 539, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 371, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      readerPDF();
-    }//GEN-LAST:event_jButton1ActionPerformed
  public void readerPDF() {
         
 //        fileBrowser.setBarsVisible(false);
@@ -91,9 +66,6 @@ public class Introduccion extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
 }

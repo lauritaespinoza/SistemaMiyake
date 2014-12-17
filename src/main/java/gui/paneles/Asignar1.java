@@ -29,6 +29,7 @@ import modelos.mapeos.SalidaParaTiendaDetallePK;
 import modelos.mapeos.Usuario;
 import org.hibernate.Query;
 import static gui.ventanas.JFInicioSecionMiyake.resultListUsuarios;
+import java.awt.Dialog.ModalExclusionType;
 import modelos.tablas.TableModelReport;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -953,11 +954,32 @@ public class Asignar1 extends javax.swing.JPanel {
                     ObjectModelDAO.updateObject(cab);
                     //  jXTable1.clearSelection();
 
-                    int respuesta = JOptionPane.showConfirmDialog(null, "El Registro se Guardo Exitosamente...!!! \n ¿Desea Asignar Nueva Mercancia?",
+                    int respuesta = JOptionPane.showConfirmDialog(null, "El Registro se Guardo Exitosamente...!!! \n ¿Desea Generar el Reporte de la Mercancia Asignada?",
                             "COMPROBACION DE ASIGNACION", JOptionPane.YES_NO_OPTION);
 
                     if (respuesta == JOptionPane.YES_OPTION) {
-                        listaDetalle.clear();
+                        generarReporteAsignacionProcesada(); 
+                    }
+                    if (respuesta == JOptionPane.NO_OPTION) {
+                        
+                        reiniciar();
+                    }
+                    
+                    
+                    busy1.setEnabled(false);
+                    busy1.setVisible(false);
+                    busy1.setBusy(false);
+
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "ERROR Asignando Mercancia :" + e);
+                    System.err.println("ERROR Asignando Mercancia :" + e);
+                    Logger.getLogger(Asignar1.class.getName()).log(Level.SEVERE, null, e);
+                }
+
+            }
+
+            private void reiniciar() {
+                listaDetalle.clear();
                         listaDetalle = null;
                         TablaDetalleRegistrosAsignacionMercancia1.removeAll();
                         modeloTablaAsignacion.fireTableDataChanged();
@@ -992,17 +1014,55 @@ public class Asignar1 extends javax.swing.JPanel {
                         busy1.setEnabled(false);
                         busy1.setVisible(false);
                         busy1.setBusy(false);
-                    }
-                    busy1.setEnabled(false);
-                    busy1.setVisible(false);
-                    busy1.setBusy(false);
+            }
 
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "ERROR Asignando Mercancia :" + e);
-                    System.err.println("ERROR Asignando Mercancia :" + e);
-                    Logger.getLogger(Asignar1.class.getName()).log(Level.SEVERE, null, e);
+            private void generarReporteAsignacionProcesada() {
+                         
+
+                busy.setEnabled(true);
+                busy.setVisible(true);
+                busy.setBusy(true);
+                try {
+                    JasperPrint jasperPrint = null;
+
+                    Map<String, Object> parametro = new HashMap<>();
+                    String s = "";
+                    TableModelReport dataSourse = new TableModelReport(TablaDetalleRegistrosAsignacionMercancia1.getModel());
+                    parametro.put("origen", almacenDesde.getDescripcion());
+                    parametro.put("destino", tiendaHasta.getDescripcion());                    
+                    parametro.put("REPORT_DATA_SOURSE", dataSourse);
+                    //JasperCompileManager.compileReport(rutaJrxml);
+                    JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ListadoProductosAsignadosFinalizado.jasper"));
+
+                    jasperPrint = JasperFillManager.fillReport(reporte, parametro, dataSourse);
+                    JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
+                    jasperViewer.setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
+                    jasperViewer.setTitle("Reporte Mercancia Asignada Tiendas.");
+                    jasperViewer.setVisible(true);
+                     
+                    busy.setEnabled(false);
+                    busy.setVisible(false);
+                    busy.setBusy(false);
+                    int respuesta = JOptionPane.showConfirmDialog(null, "El Archivo fue Generado con Exito,"
+                            + "¿Desea Realizar Una Nueva Asignacion?");
+
+                    if (respuesta == JOptionPane.YES_OPTION) { 
+                        requestFocus();
+                        reiniciar();
+                    }
+                    if (respuesta == JOptionPane.NO_OPTION) {
+                       // 
+                    } 
+
+                } catch (JRException | HeadlessException e) {
+                    JOptionPane.showMessageDialog(null, "Se a Dectectado Un Proble Con Proceso de Seleccion de Facturas,"
+                            + "Por Favor Vuelva a Intentarlo.");
+                    Logger.getLogger(Distribuidora1.class.getName()).log(Level.SEVERE, null, e);
+                    System.err.println("Seleccionando Facturas" + e);
+
                 }
 
+             
             }
         };
         hilo.start();
@@ -1168,9 +1228,11 @@ public class Asignar1 extends javax.swing.JPanel {
                         Map<String, Object> parametro = new HashMap<>();
                         String s = "";
                         TableModelReport dataSourse = new TableModelReport(TablaDetalleRegistrosAsignacionMercancia1.getModel());
+                        parametro.put("origen", almacenDesde.getDescripcion());
+                        parametro.put("destino", tiendaHasta.getDescripcion());
                         parametro.put("REPORT_DATA_SOURSE", dataSourse);
                         //JasperCompileManager.compileReport(rutaJrxml);
-                        JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ReporteGestionMercancia.jasper"));
+                        JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ListadoProductosAsignadosFinalizado.jasper"));
 
                         jasperPrint = JasperFillManager.fillReport(reporte, null, dataSourse);
                         JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
@@ -1471,11 +1533,63 @@ public class Asignar1 extends javax.swing.JPanel {
         try {
             if (resultListInventarioTienda.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "No Hay Productos Disponibles Para Asignar");
+                
+                //Controles ComboBox
+                comboBoxAlmacenDesde.setEnabled(true);
+                comboBoxTiendaHasta.setEnabled(true);
+                comboBoxUsuarios.setEnabled(true);
+
+                //BOntones de Pedido
+                jXButtonConfirmar.setEnabled(true);
+                //OBjetos
+                ususrioActual = null;
+                almacenDesde = null;
+                tiendaHasta = null;
+
+                //Controles ComboBox
+                comboBoxAlmacenDesde.setSelectedIndex(-1);
+                comboBoxTiendaHasta.setSelectedIndex(-1);
+                comboBoxUsuarios.setSelectedIndex(-1);
+
+                //COntroles Panel Busqueda desabilitar
+                comboBoxTipoBusqueda.setEnabled(false);
+                txtBusqueda.setEnabled(false);
+                jXButtonBuscar.setEnabled(false);
+                botonListarProductosInventariTienda.setEnabled(false);
+
+                //Limpiar Campos de Texto
+                txtCodigo.setText("");
+                txtCodigo.setEnabled(false);
+                txtDescripcion.setText("");
+                txtDescripcion.setEnabled(false);
+                txtReferencia.setText("");
+                txtReferencia.setEnabled(false);
+                txtMarca.setText("");
+                txtMarca.setEnabled(false);
+                txtExistencia.setText("");
+                txtExistencia.setEnabled(false);
+                txtCantidad.setText("");
+                txtCantidad.setEnabled(false);
+                txtNroBulto.setText("");
+                txtNroBulto.setEnabled(false);
+
+                //Botones de Datos del Producto 
+                botonAgregar.setEnabled(false);
+                botonLimpiarAgregar.setEnabled(false);
+                //foot Panel
+                jXButtonAsignarMercancia.setEnabled(false);
+                jXButtonImprimir_.setEnabled(false);
+                jXButtonTotalizar.setEnabled(false);
+                jXButtonUbicacbionProducto.setEnabled(false);
+                jXTaskPaneCabeceraAsignacion.setCollapsed(false);
+                jXButtonReiniciarFooter.setEnabled(false);
+                jXButtonReiniciar.setEnabled(false);
+               
             } else {
 
                 JDInventarioTienda jdInventarioTienda
                         = new JDInventarioTienda(null, true,
-                                this.resultListInventarioTienda);
+                                this.resultListInventarioTienda, almacenDesde);
                 jdInventarioTienda.setLocationRelativeTo(null);
                 jdInventarioTienda.setVisible(true);
                 if (jdInventarioTienda.inv == null) {

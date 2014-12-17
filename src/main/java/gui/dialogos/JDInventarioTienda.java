@@ -22,6 +22,7 @@ import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import modelos.mapeos.Almacen;
 
 import modelos.mapeos.InventarioTienda;
 import modelos.tablas.TableModelReport;
@@ -36,14 +37,16 @@ public class JDInventarioTienda extends javax.swing.JDialog {
 
     public InventarioTienda inv = null;
     private int pos = -1;
+    private Almacen tienda= null;
     // public final File  archivo = new File(this.getClass().getResource("/JavaHelp/JavaHelp/ejemplo.hs").getFile());
 
 
     public JDInventarioTienda(java.awt.Frame parent, boolean modal,
-            final List<List> inventarioTienda) throws Exception {
+            final List<List> inventarioTienda, Almacen alamcenDesde) throws Exception {
         super(parent, modal);
         initComponents();
-        
+        //Recibi Tienda
+        this.tienda = alamcenDesde;
         //activar JavaHelp
 //        ayudaActionPerformed(null);
         //busy
@@ -85,9 +88,6 @@ public class JDInventarioTienda extends javax.swing.JDialog {
         imprimir_InventarioTiendas_ = new javax.swing.JButton();
         busy = new org.jdesktop.swingx.JXBusyLabel();
         ayuda = new javax.swing.JButton();
-        jMenuBarDialogoInV = new javax.swing.JMenuBar();
-        jMenuOpciones = new javax.swing.JMenu();
-        jMenu_Ayuda_ = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -157,14 +157,6 @@ public class JDInventarioTienda extends javax.swing.JDialog {
             }
         });
 
-        jMenuOpciones.setText("Opciones");
-        jMenuBarDialogoInV.add(jMenuOpciones);
-
-        jMenu_Ayuda_.setText("Ayuda");
-        jMenuBarDialogoInV.add(jMenu_Ayuda_);
-
-        setJMenuBar(jMenuBarDialogoInV);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -174,20 +166,20 @@ public class JDInventarioTienda extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jXBarraBusquedaProductosEntrantes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(botonCancelarExit_, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
+                        .addComponent(botonCancelarExit_)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39)
-                        .addComponent(imprimir_InventarioTiendas_, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(imprimir_InventarioTiendas_)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(boton_AceptarProductoSeleccionado_, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
+                        .addComponent(boton_AceptarProductoSeleccionado_))
                     .addComponent(jScrollPane2))
                 .addGap(28, 28, 28))
             .addGroup(layout.createSequentialGroup()
                 .addGap(107, 107, 107)
                 .addComponent(txtTitulo)
                 .addGap(34, 34, 34)
-                .addComponent(ayuda, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(ayuda, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -195,22 +187,23 @@ public class JDInventarioTienda extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(ayuda)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jXBarraBusquedaProductosEntrantes, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(boton_AceptarProductoSeleccionado_, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(botonCancelarExit_, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonCancelarExit_)
                         .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(imprimir_InventarioTiendas_, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(imprimir_InventarioTiendas_)
+                        .addComponent(boton_AceptarProductoSeleccionado_)))
+                .addContainerGap())
         );
 
         pack();
@@ -248,26 +241,26 @@ public class JDInventarioTienda extends javax.swing.JDialog {
                     Map<String, Object> parametro = new HashMap<>();
                     String s = "";                                      //jtableListaProductosInventarioTienda
                     TableModelReport dataSourse = new TableModelReport(jtableListaProductosInventarioTienda.getModel());
-                    parametro.put("REPORT_DATA_SOURSE", dataSourse);
+                    parametro.put("tienda", tienda.getDescripcion());
+                    parametro.put("REPORT_DATA_SOURSE", dataSourse); 
                     //JasperCompileManager.compileReport(rutaJrxml);
                     JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ListadoInventarioTienda.jasper"));
 
-                    jasperPrint = JasperFillManager.fillReport(reporte, null, dataSourse);
+                    jasperPrint = JasperFillManager.fillReport(reporte, parametro, dataSourse);
                     JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
                     jasperViewer.setModalExclusionType(Dialog.ModalExclusionType.TOOLKIT_EXCLUDE);
                     jasperViewer.setTitle("Reporte de Toma Fisica Distribuidoras.");
                     jasperViewer.setVisible(true);
-                    int respuesta = JOptionPane.showConfirmDialog(null, "El Archivo fue Generado con Exito,"
-                            + "¿Desea Continuar Selecionando Una Factura Pendiente?");
-
-                    if (respuesta == JOptionPane.YES_OPTION) {
-
-                    }
-                    if (respuesta == JOptionPane.NO_OPTION) {
-
-                        setVisible(false);
-                        jasperViewer.requestFocus();
-                    }
+//                    int respuesta = JOptionPane.showConfirmDialog(null, "El Archivo fue Generado con Exito,"
+//                            + "¿Desea Continuar Selecionando Una Factura Pendiente?");
+//
+//                    if (respuesta == JOptionPane.YES_OPTION) {
+//
+//                    }
+//                    if (respuesta == JOptionPane.NO_OPTION) {
+//
+//                        jasperViewer.requestFocus();
+//                    }
 
                 } catch (JRException | HeadlessException e) {
                     JOptionPane.showMessageDialog(null, "Se a Dectectado Un Proble Con Proceso de Seleccion de Facturas,"
@@ -373,9 +366,6 @@ public class JDInventarioTienda extends javax.swing.JDialog {
     private javax.swing.JButton boton_AceptarProductoSeleccionado_;
     private org.jdesktop.swingx.JXBusyLabel busy;
     private javax.swing.JButton imprimir_InventarioTiendas_;
-    private javax.swing.JMenuBar jMenuBarDialogoInV;
-    private javax.swing.JMenu jMenuOpciones;
-    private javax.swing.JMenu jMenu_Ayuda_;
     private javax.swing.JScrollPane jScrollPane2;
     private org.jdesktop.swingx.JXFindBar jXBarraBusquedaProductosEntrantes;
     private org.jdesktop.swingx.JXTable jtableListaProductosInventarioTienda;

@@ -255,14 +255,14 @@ public class Tiendas1 extends javax.swing.JPanel {
         jLayeredPanePrincipal.setAutoscrolls(true);
 
         jXTaskPaneLCabeceraTiendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416789183_data-16.png"))); // NOI18N
-        jXTaskPaneLCabeceraTiendas.setTitle("Cabecera de Pedidos");
+        jXTaskPaneLCabeceraTiendas.setTitle("Cabecera de Asignaciones Pendientes.");
 
         jScrollPane3.setPreferredSize(new java.awt.Dimension(800, 800));
 
         jLayeredPaneTienda.setBorder(javax.swing.BorderFactory.createTitledBorder("Seleccionar Factura"));
         jLayeredPaneTienda.setPreferredSize(new java.awt.Dimension(610, 130));
 
-        jXLabel2.setText("Responsable");
+        jXLabel2.setText("Responsable:");
 
         botonConfirmarFactura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/conect.png"))); // NOI18N
         botonConfirmarFactura.setText("Confirmar");
@@ -274,7 +274,7 @@ public class Tiendas1 extends javax.swing.JPanel {
         });
 
         jXLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636330_store.png"))); // NOI18N
-        jXLabel1.setText("Tienda");
+        jXLabel1.setText("Tienda Local:");
 
         comboBoxAlmacen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         comboBoxAlmacen.addItemListener(new java.awt.event.ItemListener() {
@@ -300,7 +300,7 @@ public class Tiendas1 extends javax.swing.JPanel {
         });
 
         jButtonListarPedidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/confirmar.png"))); // NOI18N
-        jButtonListarPedidos.setText("Seleccionar Pedidos Pendientes");
+        jButtonListarPedidos.setText("Seleccionar Asignacion Pendientes");
         jButtonListarPedidos.setEnabled(false);
         jButtonListarPedidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -309,7 +309,7 @@ public class Tiendas1 extends javax.swing.JPanel {
         });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/facturas.png"))); // NOI18N
-        jLabel2.setText(" Pedidos Pendientes:");
+        jLabel2.setText("Asignaciones Pendientes:");
 
         txtEmitidoPor.setEditable(false);
         txtEmitidoPor.setEnabled(false);
@@ -331,8 +331,8 @@ public class Tiendas1 extends javax.swing.JPanel {
             }
         });
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1418331286_counter_count_up.png"))); // NOI18N
-        jLabel9.setText("ID");
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1418352281_order.png"))); // NOI18N
+        jLabel9.setText("Asignacion");
 
         jXLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/fecha.png"))); // NOI18N
         jXLabel10.setText("Fecha");
@@ -350,7 +350,7 @@ public class Tiendas1 extends javax.swing.JPanel {
         });
 
         jXLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636232_09.png"))); // NOI18N
-        jXLabel12.setText("Almacen");
+        jXLabel12.setText("Desde Almacen");
 
         jXLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1418331264_chart_bar.png"))); // NOI18N
         jXLabel13.setText("Estatus");
@@ -381,17 +381,17 @@ public class Tiendas1 extends javax.swing.JPanel {
                             .addGroup(jLayeredPaneTiendaLayout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonListarPedidos, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE))
+                                .addComponent(jButtonListarPedidos, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE))
                             .addGroup(jLayeredPaneTiendaLayout.createSequentialGroup()
                                 .addGroup(jLayeredPaneTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jLayeredPaneTiendaLayout.createSequentialGroup()
                                         .addComponent(jXLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtTiendaDesde, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                                        .addComponent(txtTiendaDesde, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jXLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtEstatus, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                                        .addComponent(txtEstatus, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
                                         .addGap(9, 9, 9)
                                         .addComponent(jXLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jLayeredPaneTiendaLayout.createSequentialGroup()
@@ -407,7 +407,7 @@ public class Tiendas1 extends javax.swing.JPanel {
                                 .addGroup(jLayeredPaneTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jLayeredPaneTiendaLayout.createSequentialGroup()
                                         .addGap(1, 1, 1)
-                                        .addComponent(txtTotalSalidaID, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE))
+                                        .addComponent(txtTotalSalidaID, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE))
                                     .addComponent(txtSalidaIDFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jLayeredPaneTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1294,11 +1294,12 @@ public class Tiendas1 extends javax.swing.JPanel {
                     if (respuesta == JOptionPane.YES_OPTION) {
                         jButtonGuardarConteo.setEnabled(true);
                         //Limpiar Tabla y Lista
-                        
-                        listaprodSA = null;listaDetalle.clear();
+
+                        listaprodSA = null;
+                        listaDetalle.clear();
                         deReg = null;
                         listaDetalle = null;
-                        
+
                         //  jTDetalleRegistroTiendas.removeAll();
                         modeloTablaTomaFisicaInventarioTiendas.fireTableDataChanged();
                         //Desabilitar Controles
@@ -1379,7 +1380,25 @@ public class Tiendas1 extends javax.swing.JPanel {
                     jdSalidadParaTienda.setVisible(true);
 
                     if (jdSalidadParaTienda.sa == null) {
-                        JOptionPane.showMessageDialog(null, "Deberia Seleccionar un item de lista de Pedidos para continuar...");
+                        //JOptionPane.showMessageDialog(null, "Deberia Seleccionar un item de lista de Pedidos para continuar...");
+                        //Limpiar Campos de Texto
+                        txtCodigo.setText("");
+                        txtDescripcion.setText("");
+                        txtReferencia.setText("");
+                        txtMarca.setText("");
+                        txtCantidad.setText("");
+                        txtNroBulto.setText("");
+                        txtCantidadSugeridad.setText("");
+                        //Panel y Controles de Salidas Pendientes
+                        comboBoxAlmacen.setSelectedIndex(-1);
+                        jButtonListarPedidos.setEnabled(true);
+                        txtSalidaID.setText("");
+                        txtEmitidoPor.setText("");
+                        txtSalidaIDFecha.setText("");
+                        txtTiendaDesde.setText("");
+                        txtEstatus.setText("");
+                        txtTotalSalidaID.setText("");
+
                     } else {
 
                         sa = jdSalidadParaTienda.sa;

@@ -39,6 +39,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import util.JavaUtil;
 
 /**
  *
@@ -1177,7 +1178,29 @@ public class Distribuidora1 extends javax.swing.JPanel {
                     jdFactura.setLocationRelativeTo(null);
                     jdFactura.setVisible(true);
                     if (jdFactura.factura == null) {
-                        JOptionPane.showMessageDialog(null, "no ha Seleccionado Facturas");
+                        //Panel y Controles de Factura
+                        jButtonListarFacturas.setEnabled(true);
+                        txtFactura.setText("");
+                        txtEmitidoPor.setText("");
+                        txtFechaFactura.setText("");
+
+                        int respuesta = JOptionPane.showConfirmDialog(null,
+                                "Es Posible que Falte Registrar La Factura en el Modulo de Registrar Container.\n Presione (SI), si desea Registar Una Factura.\n"
+                                + "Tambien Es Posible que No halla Selecionado Ninguna Factura.\n  Preione (NO) si desea volver intentarlo.\n ",
+                                "COMPROBACION DE CANTIDADES", JOptionPane.YES_NO_OPTION);
+
+                        if (respuesta == JOptionPane.YES_OPTION) {
+                            JPentradaproveedor en = new JPentradaproveedor();
+                            en.setVisible(true);
+                            JavaUtil.createJDialogGeneric(en);
+                        }
+                        if (respuesta == JOptionPane.NO_OPTION) {
+                            //Panel y Controles de Factura
+                            jButtonListarFacturas.setEnabled(true);
+                            txtFactura.setText("");
+                            txtEmitidoPor.setText("");
+                            txtFechaFactura.setText("");
+                        }
                     } else {
                         fa = jdFactura.factura;
                         // listaEP = (List<EntradaProveedor>) fa.getEntradaProveedorCollection();
@@ -1579,10 +1602,10 @@ public class Distribuidora1 extends javax.swing.JPanel {
                 jButtonGuardarConteo.setEnabled(true);
                 botonReiniciar.setEnabled(true);
                 botonImprimir.setEnabled(true);
-            }else{
-                  JOptionPane.showMessageDialog(null, "DEBE Finalizar de Contabilizar TODOS Los Productos"
+            } else {
+                JOptionPane.showMessageDialog(null, "DEBE Finalizar de Contabilizar TODOS Los Productos"
                         + "Registrado en la Factura.");
-          
+
             }
         } catch (Exception e) {
         }

@@ -111,9 +111,6 @@ public class JDListaProductosEntradaProveedor extends javax.swing.JDialog {
         txtTitulo = new javax.swing.JLabel();
         busy = new org.jdesktop.swingx.JXBusyLabel();
         ayuda = new javax.swing.JButton();
-        jMenuBarDialogoFac = new javax.swing.JMenuBar();
-        jMenuOpciones = new javax.swing.JMenu();
-        jMenu_Ayuda_ = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -182,14 +179,6 @@ public class JDListaProductosEntradaProveedor extends javax.swing.JDialog {
                 ayudaActionPerformed(evt);
             }
         });
-
-        jMenuOpciones.setText("Opciones");
-        jMenuBarDialogoFac.add(jMenuOpciones);
-
-        jMenu_Ayuda_.setText("Ayuda");
-        jMenuBarDialogoFac.add(jMenu_Ayuda_);
-
-        setJMenuBar(jMenuBarDialogoFac);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -344,9 +333,6 @@ public class JDListaProductosEntradaProveedor extends javax.swing.JDialog {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JMenuBar jMenuBarDialogoFac;
-    private javax.swing.JMenu jMenuOpciones;
-    private javax.swing.JMenu jMenu_Ayuda_;
     private javax.swing.JScrollPane jScrollPane2;
     private org.jdesktop.swingx.JXFindBar jXFindBar1;
     private org.jdesktop.swingx.JXTable jtListaEntradaProveedor;

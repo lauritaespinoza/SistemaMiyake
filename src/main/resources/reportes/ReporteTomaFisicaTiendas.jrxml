@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d5577b7f-8af4-42d3-89dd-5946fe8d0798">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="48"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -62,8 +62,8 @@
 	<pageHeader>
 		<band height="113" splitType="Stretch">
 			<staticText>
-				<reportElement x="212" y="19" width="100" height="20" uuid="8245c650-e2b7-45e0-a87f-a958c66e3e1a"/>
-				<text><![CDATA[Static text]]></text>
+				<reportElement x="208" y="17" width="144" height="20" uuid="8245c650-e2b7-45e0-a87f-a958c66e3e1a"/>
+				<text><![CDATA[PRODUCTOS ASIGNADOS]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="433" y="17" width="100" height="20" uuid="1014807f-4705-4960-b69e-533a095f677b"/>

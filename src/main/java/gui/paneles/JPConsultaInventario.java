@@ -364,11 +364,8 @@ public class JPConsultaInventario extends javax.swing.JPanel {
             int respuesta = JOptionPane.showConfirmDialog(null, "¿Seguro Desea Cancelar?", "Confirmacion", JOptionPane.YES_NO_OPTION);
 
             if (respuesta == JOptionPane.YES_OPTION) {
-
-                this.resultListInventarioTienda.clear();  
-                resultListInventarioTienda=null;
-                this.jXTablaConsultarMercanciaInventarios.removeAll();
-                JavaUtil.displayResult(null, jXTablaConsultarMercanciaInventarios);
+ 
+                resultListInventarioTienda=null; 
                 //OBjetos 
                 this.almacenDesde = null;
                 this.almacenHasta = null;
