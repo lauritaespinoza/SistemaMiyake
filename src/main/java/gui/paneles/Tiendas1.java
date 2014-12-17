@@ -1294,10 +1294,11 @@ public class Tiendas1 extends javax.swing.JPanel {
                     if (respuesta == JOptionPane.YES_OPTION) {
                         jButtonGuardarConteo.setEnabled(true);
                         //Limpiar Tabla y Lista
-                        comboBoxAlmacen.setEnabled(true);
-                        listaDetalle.clear();
-
-                        //    listaDetalle=null;
+                        
+                        listaprodSA = null;listaDetalle.clear();
+                        deReg = null;
+                        listaDetalle = null;
+                        
                         //  jTDetalleRegistroTiendas.removeAll();
                         modeloTablaTomaFisicaInventarioTiendas.fireTableDataChanged();
                         //Desabilitar Controles
@@ -1310,14 +1311,12 @@ public class Tiendas1 extends javax.swing.JPanel {
                         botonListarProductosInventariTienda.setEnabled(false);
 
                         //Destruir Objetos
-                        listaprodSA = null;
                         sd = null;
 //                        proEPaux = null;
                         Conteofaltante = 0;
                         posUs = -1;
                         posAl = -1;
-                        deReg = null;
-                        listaDetalle = null;
+
                         //Habilitar COntrol de Factura
                         jButtonListarPedidos.setEnabled(true);
                         botonConfirmarFactura.setEnabled(true);
@@ -1343,7 +1342,11 @@ public class Tiendas1 extends javax.swing.JPanel {
                         botonImprimir.setEnabled(false);
                         botonCencelarAgregar.setEnabled(false);
                         botonReiniciarTodoDesdeFActura.setEnabled(false);
-
+                        //coMBObOX
+                        comboBoxAlmacen.setSelectedIndex(-1);
+                        comboBoxAlmacen.setEnabled(true);
+                        comboBoxUsuarios.setSelectedIndex(-1);
+                        comboBoxUsuarios.setEnabled(true);
                     }
 
                 } catch (Exception ex) {
@@ -1847,7 +1850,7 @@ public class Tiendas1 extends javax.swing.JPanel {
 
     }
     private void botonLimpiarAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLimpiarAgregarActionPerformed
-       
+
         int respuesta = JOptionPane.showConfirmDialog(null, "¿Seguro Desea Cancelar?", "Confirmacion", JOptionPane.YES_NO_OPTION);
 
         if (respuesta == JOptionPane.YES_OPTION) {
@@ -1861,8 +1864,8 @@ public class Tiendas1 extends javax.swing.JPanel {
             this.txtCantidadSugeridad.setText("");
 
         }
-        
-        
+
+
     }//GEN-LAST:event_botonLimpiarAgregarActionPerformed
 
     private void txtEmitidoPorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmitidoPorActionPerformed

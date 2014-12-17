@@ -797,7 +797,6 @@ public class Distribuidora1 extends javax.swing.JPanel {
             this.botonConfirmarFactura.setEnabled(false);
             this.botonCancelarTodoDesdeFActura.setEnabled(true);
             jXTaskPaneCabeceraDistribuidora.setCollapsed(true);
-             
 
         } catch (Exception e) {
             Logger.getLogger(Distribuidora1.class.getName()).log(Level.SEVERE, null, e);
@@ -844,8 +843,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
                 this.txtCantidad.setEnabled(true);
                 this.txtCantidad.requestFocus();
                 this.botonValidar.setEnabled(true);
-                this.jXButtonTotalizar.setEnabled(true);
-                this.botonReiniciar.setEnabled(true);
+
             }
 
         } catch (Exception ex) {
@@ -1138,6 +1136,13 @@ public class Distribuidora1 extends javax.swing.JPanel {
                         jButtonGuardarConteo.setEnabled(false);
                         botonImprimir.setEnabled(false);
                         botonReiniciar.setEnabled(false);
+                        botonCancelarTodoDesdeFActura.setEnabled(false);
+                        botonConfirmarFactura.setEnabled(false);
+                        //coMBObOX
+                        comboBoxAlmacen.setSelectedIndex(-1);
+                        comboBoxAlmacen.setEnabled(true);
+                        comboBoxUsuarios.setSelectedIndex(-1);
+                        comboBoxUsuarios.setEnabled(true);
 
                     }
 
@@ -1316,8 +1321,8 @@ public class Distribuidora1 extends javax.swing.JPanel {
                 jButtonGuardarConteo.setEnabled(false);
                 botonImprimir.setEnabled(false);
                 botonCancelarTodoDesdeFActura.setEnabled(false);
-                 botonImprimir.setEnabled(false);
-                 botonReiniciar.setEnabled(false);
+                botonImprimir.setEnabled(false);
+                botonReiniciar.setEnabled(false);
 
             }
         } catch (Exception e) {
@@ -1548,7 +1553,8 @@ public class Distribuidora1 extends javax.swing.JPanel {
                 this.txtNroBulto.setEnabled(false);
                 this.txtCantidad.setEnabled(false);
                 this.txtBusqueda.requestFocus();
-                botonReiniciar.setEnabled(true);
+                this.jXButtonTotalizar.setEnabled(true);
+                this.botonReiniciar.setEnabled(true);
 
                 //Remover de Lista Actual Producto Agregago
                 //this.proEPaux = proEP;
@@ -1566,16 +1572,21 @@ public class Distribuidora1 extends javax.swing.JPanel {
     }//GEN-LAST:event_botonAgregarActionPerformed
 
     private void jXButtonTotalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXButtonTotalizarActionPerformed
+        try {
+            if (jTDetalleRegistroDistribuidora.getRowCount() != 0
+                    && listaEP.isEmpty()) {
 
-        if (jTDetalleRegistroDistribuidora.getRowCount() != 0) {
-            try {
-                this.jButtonGuardarConteo.setEnabled(true);
+                jButtonGuardarConteo.setEnabled(true);
                 botonReiniciar.setEnabled(true);
                 botonImprimir.setEnabled(true);
-
-            } catch (Exception e) {
+            }else{
+                  JOptionPane.showMessageDialog(null, "DEBE Finalizar de Contabilizar TODOS Los Productos"
+                        + "Registrado en la Factura.");
+          
             }
+        } catch (Exception e) {
         }
+
     }//GEN-LAST:event_jXButtonTotalizarActionPerformed
 
     private void botonImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonImprimirActionPerformed
@@ -1714,6 +1725,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
                 jXButtonTotalizar.setEnabled(false);
                 botonReiniciar.setEnabled(false);
                 botonCancelarTodoDesdeFActura.setEnabled(false);
+
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Excepcion al Cencelar Agregar" + e);
