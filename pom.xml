@@ -6,10 +6,10 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <dependencies>
-        <!--  <dependency>
-            <groupId>analizador-xml</groupId>
-            <artifactId>analizador-xml</artifactId>
-            <version>1.2.Final</version>
+<!--        <dependency>
+            <groupId>analizador-PDF2</groupId>
+            <artifactId>analizador-PDF2</artifactId>
+            <version>1.22.Final</version>
         </dependency> -->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -297,7 +297,7 @@
     </properties>
     <name>SistemaMiyakeActual</name>
   
-    <build>
+<!--    <build>
         <plugins>
         
             <plugin>
@@ -315,8 +315,8 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>make-assembly</id> <!-- this is used for inheritance merges -->
-                        <phase>package</phase> <!-- bind to the packaging phase -->
+                        <id>make-assembly</id>  this is used for inheritance merges 
+                        <phase>package</phase>  bind to the packaging phase 
                         <goals>
                             <goal>single</goal>
                         </goals>
@@ -325,5 +325,5 @@
             </plugin>
         </plugins>
     </build>
-    
+    -->
 </project>

@@ -165,7 +165,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
         jScrollPane5 = new javax.swing.JScrollPane();
         jTDetalleRegistroDistribuidora = new javax.swing.JTable();
         botonImprimir = new org.jdesktop.swingx.JXButton();
-        botonGeneralNotas = new org.jdesktop.swingx.JXButton();
+        botonReiniciar = new org.jdesktop.swingx.JXButton();
         jButtonGuardarConteo = new org.jdesktop.swingx.JXButton();
         busy2 = new org.jdesktop.swingx.JXBusyLabel();
         busy = new org.jdesktop.swingx.JXBusyLabel();
@@ -701,12 +701,12 @@ public class Distribuidora1 extends javax.swing.JPanel {
             }
         });
 
-        botonGeneralNotas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/reiniciar.png"))); // NOI18N
-        botonGeneralNotas.setText("reiniciar");
-        botonGeneralNotas.setEnabled(false);
-        botonGeneralNotas.addActionListener(new java.awt.event.ActionListener() {
+        botonReiniciar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/reiniciar.png"))); // NOI18N
+        botonReiniciar.setText("reiniciar");
+        botonReiniciar.setEnabled(false);
+        botonReiniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonGeneralNotasActionPerformed(evt);
+                botonReiniciarActionPerformed(evt);
             }
         });
 
@@ -732,7 +732,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jXTaskPaneCabeceraDistribuidora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addComponent(botonGeneralNotas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botonReiniciar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(busy2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -758,7 +758,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonGeneralNotas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonReiniciar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonGuardarConteo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(busy2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -766,7 +766,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
         jLayeredPane1.setLayer(jXTaskPaneCabeceraDistribuidora, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jScrollPane4, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(botonImprimir, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(botonGeneralNotas, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(botonReiniciar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jButtonGuardarConteo, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(busy2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(busy, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -797,6 +797,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
             this.botonConfirmarFactura.setEnabled(false);
             this.botonCancelarTodoDesdeFActura.setEnabled(true);
             jXTaskPaneCabeceraDistribuidora.setCollapsed(true);
+             
 
         } catch (Exception e) {
             Logger.getLogger(Distribuidora1.class.getName()).log(Level.SEVERE, null, e);
@@ -844,7 +845,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
                 this.txtCantidad.requestFocus();
                 this.botonValidar.setEnabled(true);
                 this.jXButtonTotalizar.setEnabled(true);
-                this.botonGeneralNotas.setEnabled(true);
+                this.botonReiniciar.setEnabled(true);
             }
 
         } catch (Exception ex) {
@@ -1134,6 +1135,10 @@ public class Distribuidora1 extends javax.swing.JPanel {
                         txtCantidad.setText("");
                         txtNroBulto.setText("");
                         jXTaskPaneCabeceraDistribuidora.setCollapsed(false);
+                        jButtonGuardarConteo.setEnabled(false);
+                        botonImprimir.setEnabled(false);
+                        botonReiniciar.setEnabled(false);
+
                     }
 
                 } catch (Exception ex) {
@@ -1307,6 +1312,12 @@ public class Distribuidora1 extends javax.swing.JPanel {
                 comboBoxAlmacen.setEnabled(true);
                 comboBoxUsuarios.setSelectedIndex(-1);
                 comboBoxUsuarios.setEnabled(true);
+
+                jButtonGuardarConteo.setEnabled(false);
+                botonImprimir.setEnabled(false);
+                botonCancelarTodoDesdeFActura.setEnabled(false);
+                 botonImprimir.setEnabled(false);
+                 botonReiniciar.setEnabled(false);
 
             }
         } catch (Exception e) {
@@ -1535,7 +1546,9 @@ public class Distribuidora1 extends javax.swing.JPanel {
                 this.txtCantidad.setText("");
                 this.txtNroBulto.setText("");
                 this.txtNroBulto.setEnabled(false);
+                this.txtCantidad.setEnabled(false);
                 this.txtBusqueda.requestFocus();
+                botonReiniciar.setEnabled(true);
 
                 //Remover de Lista Actual Producto Agregago
                 //this.proEPaux = proEP;
@@ -1557,7 +1570,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
         if (jTDetalleRegistroDistribuidora.getRowCount() != 0) {
             try {
                 this.jButtonGuardarConteo.setEnabled(true);
-                botonGeneralNotas.setEnabled(true);
+                botonReiniciar.setEnabled(true);
                 botonImprimir.setEnabled(true);
 
             } catch (Exception e) {
@@ -1616,7 +1629,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
         botonAgregarActionPerformed(null);
     }//GEN-LAST:event_txtNroBultoActionPerformed
 
-    private void botonGeneralNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGeneralNotasActionPerformed
+    private void botonReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonReiniciarActionPerformed
         try {
             int respuesta = JOptionPane.showConfirmDialog(null, "¿Seguro Desea Cancelar?", "Confirmacion", JOptionPane.YES_NO_OPTION);
 
@@ -1624,6 +1637,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
                 //Colapsar Panel
                 this.jXTaskPaneCabeceraDistribuidora.setCollapsed(false);
                 listaEP.clear();
+
                 //Limpiar Campos de Texto
                 this.txtCodigo.setText("");
                 this.txtDescripcion.setText("");
@@ -1635,6 +1649,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
 
                 //Limpiar Tablas y Lista Detalles
                 listaDetalle.clear();
+
                 jTDetalleRegistroDistribuidora.removeAll();
                 modeloTablaTomaFisicaInventarioDistribuidora.fireTableDataChanged();
 
@@ -1693,22 +1708,28 @@ public class Distribuidora1 extends javax.swing.JPanel {
                 comboBoxAlmacen.setEnabled(true);
                 comboBoxUsuarios.setSelectedIndex(-1);
                 comboBoxUsuarios.setEnabled(true);
+
+                jButtonGuardarConteo.setEnabled(false);
+                botonImprimir.setEnabled(false);
+                jXButtonTotalizar.setEnabled(false);
+                botonReiniciar.setEnabled(false);
+                botonCancelarTodoDesdeFActura.setEnabled(false);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Excepcion al Cencelar Agregar" + e);
             Logger.getLogger(Tiendas1.class.getName()).log(Level.SEVERE, null, e);
         }
-    }//GEN-LAST:event_botonGeneralNotasActionPerformed
+    }//GEN-LAST:event_botonReiniciarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.jdesktop.swingx.JXButton botonAgregar;
     private org.jdesktop.swingx.JXButton botonCancelarTodoDesdeFActura;
     private org.jdesktop.swingx.JXButton botonConfirmarFactura;
-    private org.jdesktop.swingx.JXButton botonGeneralNotas;
     private org.jdesktop.swingx.JXButton botonImprimir;
     private org.jdesktop.swingx.JXButton botonLimpiarAgregar;
     private org.jdesktop.swingx.JXButton botonListarProductosInventariTienda;
+    private org.jdesktop.swingx.JXButton botonReiniciar;
     private org.jdesktop.swingx.JXButton botonValidar;
     private org.jdesktop.swingx.JXBusyLabel busy;
     private org.jdesktop.swingx.JXBusyLabel busy2;

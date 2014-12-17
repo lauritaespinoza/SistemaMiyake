@@ -373,7 +373,7 @@ public class JPexportData extends javax.swing.JPanel {
                                     + "  departamento.id_division = division.id_division AND "
                                     + "  division.id_division<>9 AND "
                                     + "  producto.descripcion not like ' ' AND "
-                                    + "  inventario_tienda.precio_con_descuento>=0.05 ) TO '" + System.getProperty("user.home") + "\\" + nombreFileCodeBar + "' WITH DELIMITER AS ',' ";
+                                    + "  inventario_tienda.precio_con_descuento>=0.05 ) TO '" + System.getProperty("user.home") + "\\Documents\\" + nombreFileCodeBar + "' WITH DELIMITER AS ',' ";
 
                             ObjectModelDAO.executeQueryString(SQLDB);
                             break;
@@ -405,12 +405,10 @@ public class JPexportData extends javax.swing.JPanel {
                                     + "  departamento.id_division = division.id_division AND "
                                     + "  inventario_tienda.precio_con_descuento>0.05 and public.division.id_division<>9 and producto.descripcion not like ' ' and "
                                     + "  inventario_tienda.id_almacen = 2 "
-                                    + "  Order by producto.id_producto ) TO '" + System.getProperty("user.home") + "\\" + nombreFile + "' WITH DELIMITER AS ',' ";
+                                    + "  Order by producto.id_producto ) TO '" + System.getProperty("user.home") + "\\Documents\\" + nombreFile + "' WITH DELIMITER AS ',' ";
                             ObjectModelDAO.executeQueryString(SQL);
                             break;
-                        case 3:// Generar archivos por Productos
 
-                            break;
                     }
 
                     busy.setEnabled(false);

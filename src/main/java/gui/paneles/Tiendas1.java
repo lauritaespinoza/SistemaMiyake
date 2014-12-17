@@ -823,7 +823,7 @@ public class Tiendas1 extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLayeredPaneDatosProductos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonTotalizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -836,6 +836,7 @@ public class Tiendas1 extends javax.swing.JPanel {
         jScrollPane4.setViewportView(jLayeredPaneProductos);
 
         botonGenerarNotas.setText("Mostrar Notas");
+        botonGenerarNotas.setEnabled(false);
         botonGenerarNotas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonGenerarNotasActionPerformed(evt);
@@ -862,6 +863,7 @@ public class Tiendas1 extends javax.swing.JPanel {
 
         botonCencelarAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/limpiar.png"))); // NOI18N
         botonCencelarAgregar.setText("Reiniciar");
+        botonCencelarAgregar.setEnabled(false);
         botonCencelarAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCencelarAgregarActionPerformed(evt);
@@ -903,7 +905,7 @@ public class Tiendas1 extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jLayeredPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jLayeredPanePrincipalLayout.createSequentialGroup()
@@ -953,6 +955,7 @@ public class Tiendas1 extends javax.swing.JPanel {
                 this.comboBoxAlmacen.setEnabled(false);
                 this.botonConfirmarFactura.setEnabled(false);
                 this.botonReiniciarTodoDesdeFActura.setEnabled(true);
+
                 jXTaskPaneLCabeceraTiendas.setCollapsed(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Debe Selecionar Todos Los Datos");
@@ -1214,6 +1217,7 @@ public class Tiendas1 extends javax.swing.JPanel {
                                     if (faltante == null) {
                                         faltante = new NotaCreditoDebito(false, sa, user);
                                         ObjectModelDAO.saveObject(faltante);
+
                                     }
                                     ncdd = new NotaCreditoDebitoDetalle(
                                             Math.abs(dr.getConteoFaltante()),
@@ -1223,6 +1227,13 @@ public class Tiendas1 extends javax.swing.JPanel {
                                     );
 
                                     totalNotaD += ncdd.getCantidadProducto() * id_in.getPrecioSinDescuento();
+                                    JOptionPane.showMessageDialog(null, "GENERANDO NOTA DE DEBITO..." + "\n"
+                                            + "Con Los Siguientes Datos:" + "\n" + "Codigo Producto: " + detalle.getProducto().getIdProducto() + "\n"
+                                            + "Refefrrencia: " + detalle.getProducto().getReferenciaProducto() + "\n"
+                                            + "Descripcion: " + detalle.getProducto().getDescripcion() + "\n"
+                                            + "Cantidad Faltante: " + dr.getConteoFaltante() + "\n"
+                                            + "Bolivares Faltante: " + dr.getTotalFaltante() + "\n");
+                                    botonGenerarNotas.setEnabled(true);
                                 }
                                 //Es Mayor el Salida Para Tienda Detalle a lo que introduce el user
                                 //(NOTA SOBRANTE o de CREDITO)*************************************
@@ -1239,7 +1250,13 @@ public class Tiendas1 extends javax.swing.JPanel {
                                     );
 
                                     totalNotaC += ncdd.getCantidadProducto() * id_in.getPrecioSinDescuento();
-
+                                    JOptionPane.showMessageDialog(null, "GENERANDO NOTA DE CREDITO..." + "\n"
+                                            + "Con Los Siguientes Datos:" + "\n" + "Codigo Producto: " + detalle.getProducto().getIdProducto() + "\n"
+                                            + "Refefrrencia: " + detalle.getProducto().getReferenciaProducto() + "\n"
+                                            + "Descripcion: " + detalle.getProducto().getDescripcion() + "\n"
+                                            + "Cantidad Faltante: " + dr.getConteoFaltante() + "\n"
+                                            + "Bolivares Faltante: " + dr.getTotalFaltante() + "\n");
+                                    botonGenerarNotas.setEnabled(true);
                                 }
 
                                 ObjectModelDAO.saveObject(ncdd);
@@ -1280,7 +1297,7 @@ public class Tiendas1 extends javax.swing.JPanel {
                         comboBoxAlmacen.setEnabled(true);
                         listaDetalle.clear();
 
-                    //    listaDetalle=null;
+                        //    listaDetalle=null;
                         //  jTDetalleRegistroTiendas.removeAll();
                         modeloTablaTomaFisicaInventarioTiendas.fireTableDataChanged();
                         //Desabilitar Controles
@@ -1322,6 +1339,10 @@ public class Tiendas1 extends javax.swing.JPanel {
                         txtCantidad.setText("");
                         txtNroBulto.setText("");
                         jXTaskPaneLCabeceraTiendas.setCollapsed(false);
+                        jButtonGuardarConteo.setEnabled(false);
+                        botonImprimir.setEnabled(false);
+                        botonCencelarAgregar.setEnabled(false);
+                        botonReiniciarTodoDesdeFActura.setEnabled(false);
 
                     }
 
@@ -1481,9 +1502,15 @@ public class Tiendas1 extends javax.swing.JPanel {
                 comboBoxUsuarios.setSelectedIndex(-1);
                 comboBoxUsuarios.setEnabled(true);
 
+                botonGenerarNotas.setEnabled(false);
+                botonImprimir.setEnabled(false);
+                botonReiniciarTodoDesdeFActura.setEnabled(false);
+
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Excepcion al Cancelar Todo Desde Factura" + e);
+            JOptionPane.showMessageDialog(null, "Error al Reiniciar Operanciones, "
+                    + "Se Recomienda Cerrar Forma Manual "
+                    + "e Iniciar Nuevamente.");
             Logger.getLogger(Tiendas1.class.getName()).log(Level.SEVERE, null, e);
         }
 
@@ -1514,7 +1541,7 @@ public class Tiendas1 extends javax.swing.JPanel {
 
                 //Limpiar Tablas y Lista Detalles
                 listaDetalle.clear();
-              //  listaDetalle = null;
+                //  listaDetalle = null;
                 //  jTDetalleRegistroTiendas.removeAll();
                 modeloTablaTomaFisicaInventarioTiendas.fireTableDataChanged();
                 //Panel y Controles de Factura
@@ -1548,9 +1575,17 @@ public class Tiendas1 extends javax.swing.JPanel {
                 comboBoxUsuarios.setSelectedIndex(-1);
                 comboBoxUsuarios.setEnabled(true);
 
+                botonGenerarNotas.setEnabled(false);
+                botonImprimir.setEnabled(false);
+                botonTotalizar.setEnabled(false);
+                botonCencelarAgregar.setEnabled(false);
+                botonReiniciarTodoDesdeFActura.setEnabled(false);
+
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Excepcion al Cencelar Agregar" + e);
+            JOptionPane.showMessageDialog(null, "Error al Reiniciar Operanciones, "
+                    + "Se Recomienda Cerrar Forma Manual "
+                    + "e Iniciar Nuevamente.");
             Logger.getLogger(Tiendas1.class.getName()).log(Level.SEVERE, null, e);
         }
 
@@ -1600,46 +1635,50 @@ public class Tiendas1 extends javax.swing.JPanel {
 
     private void botonImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonImprimirActionPerformed
 
-        // TODO add your handling code here:    resultList
-        Thread hilo = new Thread() {
+        if (listaDetalle.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Para Imprimir debe Tener Datos en la Tabla.");
 
-            @Override
-            public void run() {
+        } else {
+            // TODO add your handling code here:    resultList
+            Thread hilo = new Thread() {
 
-                busy.setEnabled(true);
-                busy.setVisible(true);
-                busy.setBusy(true);
-                try {
-                    JasperPrint jasperPrint = null;
+                @Override
+                public void run() {
 
-                    Map<String, Object> parametro = new HashMap<>();
-                    String s = "";
-                    TableModelReport dataSourse = new TableModelReport(jTDetalleRegistroTiendas.getModel());
-                    parametro.put("REPORT_DATA_SOURSE", dataSourse);
-                    //JasperCompileManager.compileReport(rutaJrxml);
-                    JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ReporteGestionMercancia.jasper"));
+                    busy.setEnabled(true);
+                    busy.setVisible(true);
+                    busy.setBusy(true);
+                    try {
+                        JasperPrint jasperPrint = null;
 
-                    jasperPrint = JasperFillManager.fillReport(reporte, null, dataSourse);
-                    JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
-                    jasperViewer.setTitle("Reporte de Toma Fisica Distribuidoras.");
-                    jasperViewer.setVisible(true);
+                        Map<String, Object> parametro = new HashMap<>();
+                        String s = "";
+                        TableModelReport dataSourse = new TableModelReport(jTDetalleRegistroTiendas.getModel());
+                        parametro.put("REPORT_DATA_SOURSE", dataSourse);
+                        //JasperCompileManager.compileReport(rutaJrxml);
+                        JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ReporteGestionMercancia.jasper"));
 
-                    //busy
-                    busy.setEnabled(false);
-                    busy.setVisible(false);
-                    busy.setBusy(false);
-                } catch (JRException | HeadlessException e) {
-                    JOptionPane.showMessageDialog(null, "Se a Dectectado Un Proble Con Proceso de Seleccion de Facturas,"
-                            + "Por Favor Vuelva a Intentarlo.");
-                    Logger.getLogger(Distribuidora1.class.getName()).log(Level.SEVERE, null, e);
-                    System.err.println("Seleccionando Facturas" + e);
+                        jasperPrint = JasperFillManager.fillReport(reporte, null, dataSourse);
+                        JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
+                        jasperViewer.setTitle("Reporte de Toma Fisica Distribuidoras.");
+                        jasperViewer.setVisible(true);
+
+                        //busy
+                        busy.setEnabled(false);
+                        busy.setVisible(false);
+                        busy.setBusy(false);
+                    } catch (JRException | HeadlessException e) {
+                        JOptionPane.showMessageDialog(null, "Se a Dectectado Un Proble Con Proceso de Seleccion de Facturas,"
+                                + "Por Favor Vuelva a Intentarlo.");
+                        Logger.getLogger(Distribuidora1.class.getName()).log(Level.SEVERE, null, e);
+                        System.err.println("Seleccionando Facturas" + e);
+
+                    }
 
                 }
-
-            }
-        };
-        hilo.start();
-
+            };
+            hilo.start();
+        }
 
     }//GEN-LAST:event_botonImprimirActionPerformed
 
@@ -1804,9 +1843,26 @@ public class Tiendas1 extends javax.swing.JPanel {
         //this.proEPaux = sd;
         this.listaprodSA.remove(sd);
         botonTotalizar.setEnabled(true);
+        botonCencelarAgregar.setEnabled(true);
+
     }
     private void botonLimpiarAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLimpiarAgregarActionPerformed
-        // TODO add your handling code here:
+       
+        int respuesta = JOptionPane.showConfirmDialog(null, "¿Seguro Desea Cancelar?", "Confirmacion", JOptionPane.YES_NO_OPTION);
+
+        if (respuesta == JOptionPane.YES_OPTION) {
+            //Limpiar Campos de Texto
+            this.txtCodigo.setText("");
+            this.txtDescripcion.setText("");
+            this.txtReferencia.setText("");
+            this.txtMarca.setText("");
+            this.txtCantidad.setText("");
+            this.txtNroBulto.setText("");
+            this.txtCantidadSugeridad.setText("");
+
+        }
+        
+        
     }//GEN-LAST:event_botonLimpiarAgregarActionPerformed
 
     private void txtEmitidoPorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmitidoPorActionPerformed

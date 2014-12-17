@@ -26,21 +26,12 @@ import modelos.mapeos.Usuario;
  */
 public class JPConsultaInventario extends javax.swing.JPanel {
 
-    Usuario ususrioActual = null;
     Usuario user = JFInicioSecionMiyake.us1;
     Almacen almacenHasta = null;
     Almacen almacenDesde = null;
     List resultListAlmacen = null;
     List resultListInventarioTienda = null;
-
-    InventarioTienda inv = null;
-    InventarioTienda invAux = null;
-    int posUs = -1;
-    int posTi = -1;
     int posTi2 = -1;
-    List<DetalleRegistro> listaDetalle = new ArrayList<>();
-    ModeloTablaDetalleRegistroAsignacion modeloTablaAsignacion = new ModeloTablaDetalleRegistroAsignacion();
-
     /**
      * Creates new form NewJPanel
      */
@@ -374,11 +365,11 @@ public class JPConsultaInventario extends javax.swing.JPanel {
 
             if (respuesta == JOptionPane.YES_OPTION) {
 
-                this.resultListInventarioTienda.clear();
+                this.resultListInventarioTienda.clear();  
+                resultListInventarioTienda=null;
                 this.jXTablaConsultarMercanciaInventarios.removeAll();
-
-                //OBjetos
-                this.ususrioActual = null;
+                JavaUtil.displayResult(null, jXTablaConsultarMercanciaInventarios);
+                //OBjetos 
                 this.almacenDesde = null;
                 this.almacenHasta = null;
                 //Controles ComboBox
