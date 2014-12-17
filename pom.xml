@@ -321,6 +321,11 @@
                         <manifest>
                             <mainClass>gui.ventanas.JFInicioSecionMiyake</mainClass>
                         </manifest>
+                        <manifestEntries>
+                            <SplashScreen-Image>
+                                splash.png
+                            </SplashScreen-Image>
+                        </manifestEntries>
                     </archive>
                 </configuration>
                 <executions>

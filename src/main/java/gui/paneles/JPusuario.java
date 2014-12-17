@@ -63,7 +63,7 @@ public class JPusuario extends javax.swing.JPanel {
                     txtClave.setText(u.getContrasena());
                     txtUserDescripcion.setText(u.getDescripcion());
 
-                    jComboBoxTipoUsuario1.setSelectedItem(u.getTipoUsuario());
+                    jComboBoxTipoUsuario1.setSelectedIndex(u.getTipoUsuario()-1);
 
                 }
             }
@@ -141,8 +141,6 @@ public class JPusuario extends javax.swing.JPanel {
         tablaDeletContact = new org.jdesktop.swingx.JXTable();
         bDeletContact = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
-
-        setPreferredSize(new java.awt.Dimension(5, 5));
 
         panelScrudUsuario.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -230,7 +228,7 @@ public class JPusuario extends javax.swing.JPanel {
 
         jXLabel1.setText("Tipo Usuario");
 
-        jComboBoxTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tipo 1", "Tipo 2", "Tipo 3", "Tipo 4" }));
+        jComboBoxTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tipo 1  Administrador", "Tipo 2  Gerente", "Tipo 3  Facturación", "Tipo 4  Depósito", "Tipo 5  Inventario" }));
 
         jXLabel2.setText("Tienda");
 
@@ -374,7 +372,7 @@ public class JPusuario extends javax.swing.JPanel {
 
         jXLabel4.setText("Tipo Usuario");
 
-        jComboBoxTipoUsuario1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tipo 1", "Tipo 2", "Tipo 3", "Tipo 4" }));
+        jComboBoxTipoUsuario1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tipo 1  Administrador", "Tipo 2  Gerente", "Tipo 3  Facturación", "Tipo 4  Depósito", "Tipo 5  Inventario" }));
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -530,11 +528,11 @@ public class JPusuario extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelScrudUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 773, Short.MAX_VALUE)
+            .addComponent(panelScrudUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 744, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelScrudUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
+            .addComponent(panelScrudUsuario)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -563,7 +561,7 @@ public class JPusuario extends javax.swing.JPanel {
                     "Información", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 
                 pos_tienda = this.cb_tienda.getSelectedIndex();
-                Integer pos_tipo = this.jComboBoxTipoUsuario.getSelectedIndex();
+                Integer pos_tipo = this.jComboBoxTipoUsuario.getSelectedIndex()+1;
                 short t = pos_tipo.shortValue();
                 if (pos_tienda != -1) {
 
@@ -601,7 +599,7 @@ public class JPusuario extends javax.swing.JPanel {
 
             try {
                 pos_tienda = this.cb_tienda.getSelectedIndex();
-                Integer pos_tipo = this.jComboBoxTipoUsuario.getSelectedIndex();
+                Integer pos_tipo = this.jComboBoxTipoUsuario.getSelectedIndex()+1;
                 short t = pos_tipo.shortValue();
 
                 int pos1 = this.pos;

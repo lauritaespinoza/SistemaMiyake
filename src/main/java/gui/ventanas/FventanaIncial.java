@@ -104,10 +104,92 @@ public class FventanaIncial extends javax.swing.JFrame {
         //Ayuda
 //        jMenuItemAcercaDeActionPerformed(null);
         //icon
-         this.setIconImage(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417901477_file-roller.png")).getImage()); 
-
+        this.setIconImage(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417901477_file-roller.png")).getImage());
+        this.setLocationRelativeTo(null);
         ClockLabel clock = new ClockLabel();
         getContentPane().add(clock, BorderLayout.PAGE_END);
+        preparePanelsMenusEnable();
+    }
+
+    //depende del nivel de usuario logeado habilita o inhabilita los paneles y menus.
+    private void preparePanelsMenusEnable() {
+        switch (JFInicioSecionMiyake.us1.getTipoUsuario()) {
+
+            case 2://gerente
+                menuUtilidades.setEnabled(false);
+                break;
+            case 3://facturacion
+                TomaFisicaDistribuidora_boton_.setEnabled(false);
+                AsignarMercancia_boton_.setEnabled(false);
+                jMenuTomaFisicaDistribuidora.setEnabled(false);
+                jMenuAsignarMercanciaTiendas_.setEnabled(false);
+                jMenuEstadoEnvios_.setEnabled(false);
+                TomaFisicaTiendas_boton_.setEnabled(false);
+                jMenuItemTomaFisicaTiendas.setEnabled(false);
+                jMenuControlInventario_.setEnabled(false);
+                jButtonControldeInvetario.setEnabled(false);
+                jMenuNotasDebitoCredito_.setEnabled(false);
+                jMenuItemDetFactura.setEnabled(false);
+                jButtonNotas.setEnabled(false);
+                jButtonFacturas.setEnabled(false);
+                jMenuItemUsuarioCrear.setEnabled(false);
+                jMenuItemUsuarioModificar.setEnabled(false);
+                jMenuItemUsuarioEliminar.setEnabled(false);
+                menuUtilidades.setEnabled(false);
+                break;
+            case 4://deposito
+                btnContainer.setEnabled(false);
+                jButtonPrecio.setEnabled(false);
+                btnCrudProveedr.setEnabled(false);
+                jButtonAlmacen.setEnabled(false);
+                jmInventarioDiario.setEnabled(false);
+                jButtonNotas.setEnabled(false);
+                jButtonFacturas.setEnabled(false);
+                btnCrudProducto.setEnabled(false);
+                btnCrudMarca.setEnabled(false);
+                btnCrudClasificacion.setEnabled(false);
+                btnCrudDepto.setEnabled(false);
+                btnCrudDivision.setEnabled(false);
+                jMenuProveedor_.setEnabled(false);
+                jMenuRegistroContainer_.setEnabled(false);
+                jMenuGestionPrecios_.setEnabled(false);
+                jMenuGestionAlmacenes_.setEnabled(false);
+                jMenuItemTomaFisicaTiendas.setEnabled(false);
+                jMenuItemInvDiario.setEnabled(false);
+                jMenuNotasDebitoCredito_.setEnabled(false);
+                jMenuItemDetFactura.setEnabled(false);
+                menuProducto.setEnabled(false);
+                jMenuItemUsuarioCrear.setEnabled(false);
+                jMenuItemUsuarioModificar.setEnabled(false);
+                jMenuItemUsuarioEliminar.setEnabled(false);
+                menuDetalles.setEnabled(false);
+                menuUtilidades.setEnabled(false);
+                TomaFisicaTiendas_boton_.setEnabled(false);
+                break;
+            case 5://inventario (tambien en tienda)
+                btnContainer.setEnabled(false);
+                btnCrudProveedr.setEnabled(false);
+                TomaFisicaDistribuidora_boton_.setEnabled(false);
+                AsignarMercancia_boton_.setEnabled(false);
+                botonEnvio.setEnabled(false);
+                jButtonPrecio.setEnabled(false);
+                jButtonAlmacen.setEnabled(false);
+                btnCrudProducto.setEnabled(false);
+                btnCrudMarca.setEnabled(false);
+                btnCrudClasificacion.setEnabled(false);
+                btnCrudDepto.setEnabled(false);
+                btnCrudDivision.setEnabled(false);
+                menuDistribuidor.setEnabled(false);
+                jMenuGestionAlmacenes_.setEnabled(false);
+                menuProducto.setEnabled(false);
+                jMenuItemUsuarioCrear.setEnabled(false);
+                jMenuItemUsuarioModificar.setEnabled(false);
+                jMenuItemUsuarioEliminar.setEnabled(false);
+                menuDetalles.setEnabled(false);
+                menuUtilidades.setEnabled(false);
+                break;
+            default://1     administrador
+        }
     }
 
     //el tipo se usa en nota de credito debito
@@ -811,7 +893,6 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jXCollapsiblePaneAbajo.getContentPane().add(taskPaneModuloDistribuidor);
 
-        taskPaneModuloTienda.setCollapsed(true);
         taskPaneModuloTienda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636353_shop.png"))); // NOI18N
         taskPaneModuloTienda.setTitle("Tiendas");
 
@@ -1692,10 +1773,12 @@ public class FventanaIncial extends javax.swing.JFrame {
 
     private void btnCrudProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrudProductoMouseEntered
         btnCrudProducto.setBorderPainted(true);
+        if(btnCrudProducto.isEnabled()){
         Component cpm = (Component) evt.getSource();
         menuCRUDProducto.show(cpm,
                 cpm.getWidth(),
                 0);
+        }
     }//GEN-LAST:event_btnCrudProductoMouseEntered
 
     private void btnCrudProductoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrudProductoMouseExited
@@ -1734,10 +1817,12 @@ public class FventanaIncial extends javax.swing.JFrame {
 
     private void btnCrudProveedrMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrudProveedrMouseEntered
         btnCrudProveedr.setBorderPainted(true);
+        if(btnCrudProveedr.isEnabled()){
         Component cpm = (Component) evt.getSource();
         menuCRUDProveedor.show(cpm,
                 cpm.getWidth(),
                 0);
+        }
     }//GEN-LAST:event_btnCrudProveedrMouseEntered
 
     private void TomaFisicaDistribuidora_boton_MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TomaFisicaDistribuidora_boton_MouseEntered
@@ -1746,42 +1831,52 @@ public class FventanaIncial extends javax.swing.JFrame {
 
     private void botonEnvioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEnvioMouseEntered
         botonEnvio.setBorderPainted(true);
+        if(botonEnvio.isEnabled()){
         Component cpm = (Component) evt.getSource();
         menuControlEnvio.show(cpm,
                 cpm.getWidth(),
                 0);
+        }
     }//GEN-LAST:event_botonEnvioMouseEntered
 
     private void jButtonAlmacenMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAlmacenMouseEntered
         jButtonAlmacen.setBorderPainted(true);
+        if(jButtonAlmacen.isEnabled()){
         Component cpm = (Component) evt.getSource();
         menuCRUDAlmacen.show(cpm,
                 cpm.getWidth(),
                 0);
+        }
     }//GEN-LAST:event_jButtonAlmacenMouseEntered
 
     private void jButtonControldeInvetarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonControldeInvetarioMouseEntered
         jButtonControldeInvetario.setBorderPainted(true);
+        if(jButtonControldeInvetario.isEnabled()){
         Component cpm = (Component) evt.getSource();
         menuControlInventario.show(cpm,
                 cpm.getWidth(),
                 0);
+        }
     }//GEN-LAST:event_jButtonControldeInvetarioMouseEntered
 
     private void jButtonPrecioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPrecioMouseEntered
         jButtonPrecio.setBorderPainted(true);
+        if(jButtonPrecio.isEnabled()){
         Component cpm = (Component) evt.getSource();
         menuControlPrecio.show(cpm,
                 cpm.getWidth(),
                 0);
+        }
     }//GEN-LAST:event_jButtonPrecioMouseEntered
 
     private void jButtonNotasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNotasMouseEntered
         jButtonNotas.setBorderPainted(true);
+        if(jButtonNotas.isEnabled()){
         Component cpm = (Component) evt.getSource();
         menuNotas.show(cpm,
                 cpm.getWidth(),
                 0);
+        }
     }//GEN-LAST:event_jButtonNotasMouseEntered
 
     private void jButtonFacturasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonFacturasMouseEntered
@@ -1790,34 +1885,42 @@ public class FventanaIncial extends javax.swing.JFrame {
 
     private void btnCrudMarcaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrudMarcaMouseEntered
         btnCrudMarca.setBorderPainted(true);
+        if(btnCrudMarca.isEnabled()){
         Component cpm = (Component) evt.getSource();
         menuCRUDMarca.show(cpm,
                 cpm.getWidth(),
                 0);
+        }
     }//GEN-LAST:event_btnCrudMarcaMouseEntered
 
     private void btnCrudClasificacionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrudClasificacionMouseEntered
         btnCrudClasificacion.setBorderPainted(true);
+        if(btnCrudClasificacion.isEnabled()){
         Component cpm = (Component) evt.getSource();
         menuCRUDClasificacion.show(cpm,
                 cpm.getWidth(),
                 0);
+        }
     }//GEN-LAST:event_btnCrudClasificacionMouseEntered
 
     private void btnCrudDeptoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrudDeptoMouseEntered
         btnCrudDepto.setBorderPainted(true);
+        if(btnCrudDepto.isEnabled()){
         Component cpm = (Component) evt.getSource();
         menuCRUDDepartamento.show(cpm,
                 cpm.getWidth(),
                 0);
+        }
     }//GEN-LAST:event_btnCrudDeptoMouseEntered
 
     private void btnCrudDivisionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrudDivisionMouseEntered
         btnCrudDivision.setBorderPainted(true);
+        if(btnCrudDivision.isEnabled()){
         Component cpm = (Component) evt.getSource();
         menuCRUDDivision.show(cpm,
                 cpm.getWidth(),
                 0);
+        }
     }//GEN-LAST:event_btnCrudDivisionMouseEntered
 
     private void Boton_Inprimir_Reporte_conteo_DistribuidoraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Boton_Inprimir_Reporte_conteo_DistribuidoraMouseEntered
@@ -1889,7 +1992,7 @@ public class FventanaIncial extends javax.swing.JFrame {
     }//GEN-LAST:event_jmEliminarProductoActionPerformed
 
     private void jMenuItemInvDiarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInvDiarioActionPerformed
-        addPaneles(tabInventarioDiario, JPinventarioDiario.class, null, null); 
+        addPaneles(tabInventarioDiario, JPinventarioDiario.class, null, null);
     }//GEN-LAST:event_jMenuItemInvDiarioActionPerformed
 
     private void jmConsultarAlmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmConsultarAlmacenActionPerformed
@@ -2369,7 +2472,7 @@ public class FventanaIncial extends javax.swing.JFrame {
                 try {
                     //UIManager.setLookAndFeel(new SubstanceBusinessBlueSteelLookAndFeel());
 
-                UIManager.setLookAndFeel(new SubstanceCremeCoffeeLookAndFeel());
+                    UIManager.setLookAndFeel(new SubstanceCremeCoffeeLookAndFeel());
                     //TaskPaneUI.createUI(new (TaskPaneUI)SubstanceCremeCoffeeLookAndFeel());
                 } catch (UnsupportedLookAndFeelException ex) {
                     Logger.getLogger(FventanaIncial.class.getName()).log(Level.SEVERE, null, ex);
