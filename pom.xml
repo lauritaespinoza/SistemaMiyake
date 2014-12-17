@@ -313,7 +313,7 @@
                         </manifest>
                         <manifestEntries>
                             <SplashScreen-Image>
-                                iconos.splash.png
+                                splash.png
                             </SplashScreen-Image>
                         </manifestEntries>
                     </archive>

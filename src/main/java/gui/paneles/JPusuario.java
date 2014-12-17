@@ -228,7 +228,7 @@ public class JPusuario extends javax.swing.JPanel {
 
         jXLabel1.setText("Tipo Usuario");
 
-        jComboBoxTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tipo 1", "Tipo 2", "Tipo 3", "Tipo 4" }));
+        jComboBoxTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tipo 1  Administrador", "Tipo 2  Gerente", "Tipo 3  Facturación", "Tipo 4  Depósito", "Tipo 5  Inventario" }));
 
         jXLabel2.setText("Tienda");
 
@@ -372,7 +372,7 @@ public class JPusuario extends javax.swing.JPanel {
 
         jXLabel4.setText("Tipo Usuario");
 
-        jComboBoxTipoUsuario1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tipo 1", "Tipo 2", "Tipo 3", "Tipo 4" }));
+        jComboBoxTipoUsuario1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tipo 1  Administrador", "Tipo 2  Gerente", "Tipo 3  Facturación", "Tipo 4  Depósito", "Tipo 5  Inventario" }));
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
