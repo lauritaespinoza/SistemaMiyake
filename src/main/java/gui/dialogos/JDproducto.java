@@ -268,6 +268,7 @@ public class JDproducto extends javax.swing.JDialog {
             }
         });
         listadoProductos.setHorizontalScrollEnabled(true);
+        listadoProductos.setSortable(false);
         jScrollPane1.setViewportView(listadoProductos);
 
         panelConsulta.add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -276,7 +277,7 @@ public class JDproducto extends javax.swing.JDialog {
 
         panelScrudProducto.addTab("Consultar", jScrollPane4);
 
-        panelCrearProducto.setLayout(new javax.swing.BoxLayout(panelCrearProducto, javax.swing.BoxLayout.X_AXIS));
+        panelCrearProducto.setLayout(new javax.swing.BoxLayout(panelCrearProducto, javax.swing.BoxLayout.LINE_AXIS));
 
         jLabel4.setText("Descripción:");
 
@@ -321,7 +322,7 @@ public class JDproducto extends javax.swing.JDialog {
                             .addComponent(f_precio_orig)
                             .addComponent(lb_dptoProduct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lb_divisionProd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(188, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(bCrearProducto)
@@ -420,7 +421,7 @@ public class JDproducto extends javax.swing.JDialog {
                                 .addComponent(cb_clasif, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(bCrearClasif)))))
-                .addContainerGap(187, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -497,6 +498,7 @@ public class JDproducto extends javax.swing.JDialog {
             }
         });
         tablaModifProducto.setHorizontalScrollEnabled(true);
+        tablaModifProducto.setSortable(false);
         jScrollPane2.setViewportView(tablaModifProducto);
 
         panelModificarProducto.add(jScrollPane2, java.awt.BorderLayout.CENTER);
@@ -685,6 +687,7 @@ public class JDproducto extends javax.swing.JDialog {
             }
         });
         tablaEliminarProducto.setHorizontalScrollEnabled(true);
+        tablaEliminarProducto.setSortable(false);
         jScrollPane3.setViewportView(tablaEliminarProducto);
 
         bEliminProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415657052_038.png"))); // NOI18N
@@ -742,7 +745,9 @@ public class JDproducto extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelScrudProducto)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelScrudProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 867, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

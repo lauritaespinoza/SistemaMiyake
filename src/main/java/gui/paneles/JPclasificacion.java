@@ -5,7 +5,6 @@
  */
 package gui.paneles;
 
-import gui.ventanas.Fdepartamento;
 import util.JavaUtil;
 import static util.JavaUtil.createJDialogGeneric;
 import static util.JavaUtil.setTableCellAlignment;
@@ -133,7 +132,7 @@ public class JPclasificacion extends javax.swing.JPanel {
         jLabel13 = new javax.swing.JLabel();
 
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(5, 5));
+        setPreferredSize(new java.awt.Dimension(700, 403));
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.X_AXIS));
 
         panelScrudClasif.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -161,11 +160,14 @@ public class JPclasificacion extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        listadoClasif.setHorizontalScrollEnabled(true);
+        listadoClasif.setSortable(false);
         jScrollPane1.setViewportView(listadoClasif);
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1416622346_xmag.png"))); // NOI18N
         jLabel11.setText("Para realizar Busqueda: Haga Click en la tabla + CTRL F");
 
+        bt_GenerarReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Reporte.png"))); // NOI18N
         bt_GenerarReporte.setText("Generar Reporte");
         bt_GenerarReporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,13 +179,13 @@ public class JPclasificacion extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 676, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(95, 95, 95)
                 .addComponent(bt_GenerarReporte)
-                .addGap(60, 60, 60))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,7 +196,7 @@ public class JPclasificacion extends javax.swing.JPanel {
                     .addComponent(bt_GenerarReporte))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jScrollPane2.setViewportView(jPanel1);
@@ -242,7 +244,7 @@ public class JPclasificacion extends javax.swing.JPanel {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(b_CrearDept, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(bCrear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(206, Short.MAX_VALUE))
+                .addContainerGap(342, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -288,6 +290,7 @@ public class JPclasificacion extends javax.swing.JPanel {
             }
         });
         tablaModfClasif.setHorizontalScrollEnabled(true);
+        tablaModfClasif.setSortable(false);
         jScrollPane4.setViewportView(tablaModfClasif);
 
         jPanel3.add(jScrollPane4, java.awt.BorderLayout.CENTER);
@@ -408,6 +411,7 @@ public class JPclasificacion extends javax.swing.JPanel {
             }
         });
         tablaDeletClasif.setHorizontalScrollEnabled(true);
+        tablaDeletClasif.setSortable(false);
         jScrollPane3.setViewportView(tablaDeletClasif);
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1416622346_xmag.png"))); // NOI18N
@@ -418,7 +422,7 @@ public class JPclasificacion extends javax.swing.JPanel {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
                 .addGap(14, 14, 14)
                 .addComponent(bDeletClasif)
                 .addContainerGap())
@@ -480,6 +484,12 @@ public class JPclasificacion extends javax.swing.JPanel {
 //        dialogo.setVisible(true);
         
         createJDialogGeneric(new JPdepartamento(1));
+         resultList_departamento = ObjectModelDAO.getResultQuery("FROM Departamento d order by d.idDepartamento asc");
+            cb_dep.removeAllItems();
+            for (Object object : resultList_departamento) {
+                Departamento d = (Departamento) object;
+                cb_dep.addItem(d.getNombre());
+            }
     }//GEN-LAST:event_b_CrearDeptActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

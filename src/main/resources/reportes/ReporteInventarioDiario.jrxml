@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e1b47aaf-929c-4b30-8b21-ce4618bf1181">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="58"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -44,11 +44,11 @@
 		</box>
 	</style>
 	<subDataset name="Table Dataset 1" uuid="9a3aa3c1-27b9-40dd-abfe-55046dcae235">
-		<field name="Fecha" class="java.lang.String"/>
-		<field name="Concepto" class="java.lang.String"/>
-		<field name="Entrada" class="java.lang.String"/>
-		<field name="Salida" class="java.lang.String"/>
-		<field name="Saldo" class="java.lang.String"/>
+		<field name="FECHA" class="java.lang.String"/>
+		<field name="CONCEPTO" class="java.lang.String"/>
+		<field name="ENTRADA" class="java.lang.String"/>
+		<field name="SALIDA" class="java.lang.String"/>
+		<field name="SALDO" class="java.lang.String"/>
 	</subDataset>
 	<parameter name="ImagenLogo" class="java.awt.Image"/>
 	<parameter name="Tienda" class="java.lang.String"/>
@@ -149,9 +149,9 @@
 						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="95" height="30" uuid="fa52ea17-3a06-466d-a488-7dbd7e2cdf90"/>
+								<reportElement x="0" y="0" width="95" height="30" uuid="0ec94833-71b1-4ca6-bb6e-39c4888e0087"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{Fecha}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{FECHA}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -167,9 +167,9 @@
 						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
 							<textField>
-								<reportElement x="10" y="0" width="219" height="30" uuid="97c2070f-b24d-47dc-a6ab-429534ab69da"/>
-								<textElement textAlignment="Justified" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{Concepto}]]></textFieldExpression>
+								<reportElement x="0" y="0" width="229" height="30" uuid="1214827c-bd0e-4598-8dee-f9ede6f85553"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{CONCEPTO}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -185,9 +185,9 @@
 						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="76" height="30" uuid="9ab29cb4-d359-4926-84ab-f70d46dbd3e0"/>
+								<reportElement x="0" y="0" width="76" height="30" uuid="e9178785-4f9d-44ba-b7f1-978cb8d97012"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{Entrada}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{ENTRADA}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -203,9 +203,9 @@
 						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="76" height="30" uuid="459b9918-9fa8-4638-905d-47bff334c1fd"/>
+								<reportElement x="0" y="0" width="77" height="30" uuid="976bc4eb-6cbb-4d44-9020-9b0a2add74e2"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{Salida}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{SALIDA}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -221,9 +221,9 @@
 						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="76" height="30" uuid="493dc8de-6483-4d64-9350-6eb793762dad"/>
+								<reportElement x="0" y="0" width="77" height="30" uuid="a6299def-52bd-4df1-b0f7-ee88fa9522b5"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{Saldo}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{SALDO}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>

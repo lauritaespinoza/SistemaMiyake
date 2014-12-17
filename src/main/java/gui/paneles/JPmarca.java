@@ -158,11 +158,14 @@ public class JPmarca extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tablaConsultaMarca.setHorizontalScrollEnabled(true);
+        tablaConsultaMarca.setSortable(false);
         jScrollPane1.setViewportView(tablaConsultaMarca);
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1416622346_xmag.png"))); // NOI18N
         jLabel15.setText("Para realizar Busqueda: Haga Click en la tabla + CTRL F");
 
+        bt_GenerarReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Reporte.png"))); // NOI18N
         bt_GenerarReporte.setText("Generar Reporte");
         bt_GenerarReporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,6 +198,7 @@ public class JPmarca extends javax.swing.JPanel {
 
         panelScrudMarca.addTab("Consultar", jPanel1);
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1418697743_label_new red.png"))); // NOI18N
         jLabel1.setText("Nombre Marca:");
 
         bCrear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415656550_Add.png"))); // NOI18N
@@ -219,7 +223,7 @@ public class JPmarca extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(189, 189, 189)
                         .addComponent(bCrear)))
-                .addContainerGap(379, Short.MAX_VALUE))
+                .addContainerGap(359, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,7 +234,7 @@ public class JPmarca extends javax.swing.JPanel {
                     .addComponent(jLabel1))
                 .addGap(59, 59, 59)
                 .addComponent(bCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
 
         panelScrudMarca.addTab("Crear", jPanel2);
@@ -281,10 +285,13 @@ public class JPmarca extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tablaModifMarca.setHorizontalScrollEnabled(true);
+        tablaModifMarca.setSortable(false);
         jScrollPane2.setViewportView(tablaModifMarca);
 
         jLabel3.setText("ID Marca:");
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1418697743_label_new red.png"))); // NOI18N
         jLabel2.setText("Nombre Marca");
 
         bModfmark.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415656862_Circulation.png"))); // NOI18N
@@ -351,7 +358,7 @@ public class JPmarca extends javax.swing.JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 31, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel17)
@@ -406,6 +413,8 @@ public class JPmarca extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tablaDeletMarca.setHorizontalScrollEnabled(true);
+        tablaDeletMarca.setSortable(false);
         jScrollPane3.setViewportView(tablaDeletMarca);
 
         deletMark.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415657185_remove-sign-32.png"))); // NOI18N
@@ -440,7 +449,7 @@ public class JPmarca extends javax.swing.JPanel {
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(deletMark)
                         .addGap(0, 0, Short.MAX_VALUE))))

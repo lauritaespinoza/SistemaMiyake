@@ -95,6 +95,9 @@ public class JPexportData extends javax.swing.JPanel {
         jLabel23 = new javax.swing.JLabel();
         exportarBD = new javax.swing.JButton();
 
+        filesc.setControlButtonsAreShown(false);
+        filesc.setCurrentDirectory(new java.io.File("\\\\192.2.1.70\\nueva"));
+
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -212,7 +215,7 @@ public class JPexportData extends javax.swing.JPanel {
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel12Layout.setVerticalGroup(
@@ -353,7 +356,10 @@ public class JPexportData extends javax.swing.JPanel {
                     System.err.println("tipo valor : " + tipo);
                     switch (tipo) {
                         case 1: // Generar archivos por codigo de barras
-                            String nombreFileCodeBar = JOptionPane.showInputDialog(null, "Introduc Nombre del Archivo");
+                            String nombreFileCodeBar = JOptionPane.showInputDialog(null, "Introduc Nombre del Archivo");                            
+                           File carpeta=new File("\\\\192.2.1.70\\nueva");//cuando se ejecuta esta operacion
+                            carpeta.mkdirs();
+
                             String SQLDB = "COPY (SELECT "
                                     + " 0 as az, "
                                     + " 2 as ay,  "
@@ -373,7 +379,8 @@ public class JPexportData extends javax.swing.JPanel {
                                     + "  departamento.id_division = division.id_division AND "
                                     + "  division.id_division<>9 AND "
                                     + "  producto.descripcion not like ' ' AND "
-                                    + "  inventario_tienda.precio_con_descuento>=0.05 ) TO '" + System.getProperty("user.home") + "\\Documents\\" + nombreFileCodeBar + "' WITH DELIMITER AS ',' ";
+                                    //+ "  inventario_tienda.precio_con_descuento>=0.05 ) TO '" + System.getProperty("user.home") + "\\" + nombreFileCodeBar + "' WITH DELIMITER AS ',' ";
+                                    + "  inventario_tienda.precio_con_descuento>=0.05 ) TO 'C:\\wamp\\www\\sistema_miyake\\exports\\" + nombreFileCodeBar + "' WITH DELIMITER AS ',' ";
 
                             ObjectModelDAO.executeQueryString(SQLDB);
                             break;

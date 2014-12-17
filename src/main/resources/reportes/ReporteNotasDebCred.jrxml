@@ -44,13 +44,13 @@
 		</box>
 	</style>
 	<subDataset name="Table Dataset 1" uuid="9a3aa3c1-27b9-40dd-abfe-55046dcae235">
-		<field name="Renglon" class="java.lang.Integer"/>
-		<field name="Referencia" class="java.lang.String"/>
-		<field name="Descripcion" class="java.lang.String"/>
-		<field name="Cantidad" class="java.lang.Integer"/>
-		<field name="Precio" class="java.lang.Float"/>
+		<field name="RENGLON" class="java.lang.Integer"/>
+		<field name="REFERENCIA" class="java.lang.String"/>
+		<field name="DESCRIPCION" class="java.lang.String"/>
+		<field name="CANTIDAD" class="java.lang.Integer"/>
+		<field name="PRECIO" class="java.lang.Float"/>
 		<variable name="Total" class="java.lang.Float" calculation="Sum">
-			<variableExpression><![CDATA[$F{Cantidad}*$F{Precio}]]></variableExpression>
+			<variableExpression><![CDATA[$F{CANTIDAD}*$F{PRECIO}]]></variableExpression>
 		</variable>
 	</subDataset>
 	<parameter name="ImagenLogo" class="java.awt.Image"/>
@@ -162,9 +162,9 @@
 						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="57" height="30" uuid="638a7e69-ebfb-4e5d-8007-cc8bad5fd5ef"/>
+								<reportElement x="0" y="0" width="58" height="30" uuid="241cbe67-ba62-448d-bb2d-1c2dafef7ac9"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{Renglon}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{RENGLON}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -180,9 +180,9 @@
 						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="30" uuid="98921378-db5c-4b47-b7b4-677dc3df65b0"/>
+								<reportElement x="0" y="0" width="90" height="30" uuid="96f74354-39f1-47f0-bcdf-f8195762238a"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{Referencia}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{REFERENCIA}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -198,9 +198,9 @@
 						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
 							<textField>
-								<reportElement x="13" y="0" width="243" height="30" uuid="e4a32891-0222-4ba1-96ee-ab2abf6a1ee9"/>
-								<textElement textAlignment="Justified" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{Descripcion}]]></textFieldExpression>
+								<reportElement x="0" y="0" width="256" height="30" uuid="41d2044f-8a8c-4edb-915b-d93b64ab94ad"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{DESCRIPCION}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -225,9 +225,9 @@
 						</jr:columnFooter>
 						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="63" height="30" uuid="b4d218f7-690d-42ed-a37d-36a2526754fe"/>
+								<reportElement x="0" y="0" width="63" height="30" uuid="b3728a5c-0ae0-479b-8d78-d1a16b845027"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{Cantidad}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{CANTIDAD}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -242,20 +242,17 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:columnFooter height="30" rowSpan="1">
-							<textField pattern="" isBlankWhenNull="false">
-								<reportElement mode="Transparent" x="0" y="0" width="86" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="783b5abf-fdbe-4ed2-b623-d62b9f424bd1"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
-									<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
-									<paragraph lineSpacing="Single"/>
-								</textElement>
+							<textField>
+								<reportElement x="0" y="0" width="86" height="30" uuid="a951d52c-b843-4f5d-a22d-59f94876b5e0"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$V{Total}]]></textFieldExpression>
 							</textField>
 						</jr:columnFooter>
 						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="86" height="30" uuid="aa8d96a7-6c50-4aaf-8699-f24beddd3c8f"/>
+								<reportElement x="0" y="0" width="86" height="30" uuid="c5e865e1-89d5-4f1e-a810-54f98047bbad"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{Precio}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{PRECIO}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>

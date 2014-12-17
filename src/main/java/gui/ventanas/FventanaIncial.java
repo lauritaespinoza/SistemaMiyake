@@ -59,6 +59,7 @@ import javax.help.HelpSetException;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import org.pushingpixels.substance.api.skin.SubstanceCremeCoffeeLookAndFeel;
 
 public class FventanaIncial extends javax.swing.JFrame {
 
@@ -810,6 +811,7 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jXCollapsiblePaneAbajo.getContentPane().add(taskPaneModuloDistribuidor);
 
+        taskPaneModuloTienda.setCollapsed(true);
         taskPaneModuloTienda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636353_shop.png"))); // NOI18N
         taskPaneModuloTienda.setTitle("Tiendas");
 
@@ -982,12 +984,10 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jXCollapsiblePaneAbajo.getContentPane().add(taskPaneModuloGestionProductos);
 
-        jXTaskPaneReportes.setCollapsed(true);
         jXTaskPaneReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Reporte.png"))); // NOI18N
         jXTaskPaneReportes.setTitle("Reportes");
         jXTaskPaneReportes.setToolTipText("");
 
-        jXTaskPaneDistribuidor.setCollapsed(true);
         jXTaskPaneDistribuidor.setTitle("Resportes Distribuidor");
 
         Boton_Inprimir_Reporte_conteo_Distribuidora.setText("Reporte Conteo Mercancia");
@@ -2367,9 +2367,9 @@ public class FventanaIncial extends javax.swing.JFrame {
 
                 new FventanaIncial().setVisible(true);
                 try {
-                    UIManager.setLookAndFeel(new SubstanceBusinessBlueSteelLookAndFeel());
+                    //UIManager.setLookAndFeel(new SubstanceBusinessBlueSteelLookAndFeel());
 
-                    //me gusta    UIManager.setLookAndFeel(new SubstanceCremeCoffeeLookAndFeel());
+                UIManager.setLookAndFeel(new SubstanceCremeCoffeeLookAndFeel());
                     //TaskPaneUI.createUI(new (TaskPaneUI)SubstanceCremeCoffeeLookAndFeel());
                 } catch (UnsupportedLookAndFeelException ex) {
                     Logger.getLogger(FventanaIncial.class.getName()).log(Level.SEVERE, null, ex);

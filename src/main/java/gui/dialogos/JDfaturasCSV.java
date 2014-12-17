@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui.dialogos;
+package gui.dialogos; 
 
 import clases.csv.CSVreader;
 import clases.csv.Factura;
@@ -276,11 +276,9 @@ public class JDfaturasCSV extends javax.swing.JDialog {
                             .addComponent(modificado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(usuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDatosLayout.createSequentialGroup()
-                            .addGap(18, 18, 18)
-                            .addComponent(lbusuariomodif1))
-                        .addGap(26, 26, 26))
+                    .addGroup(PanelDatosLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(lbusuariomodif1))
                     .addGroup(PanelDatosLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(lbusuariomodif3))
@@ -356,6 +354,7 @@ public class JDfaturasCSV extends javax.swing.JDialog {
         });
         tabla.setToolTipText("Flecha hacia abajo para agregar renglón. Doble click en Fecha para agregar fecha");
         tabla.setEditable(false);
+        tabla.setHorizontalScrollEnabled(true);
         tabla.setSortable(false);
         tabla.getTableHeader().setReorderingAllowed(false);
         jScrollPane4.setViewportView(tabla);
@@ -576,9 +575,7 @@ public class JDfaturasCSV extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tabpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(PanelLado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(PanelLado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         pack();

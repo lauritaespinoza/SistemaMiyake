@@ -186,11 +186,14 @@ public class JPcontacto extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        listadoContactos.setHorizontalScrollEnabled(true);
+        listadoContactos.setSortable(false);
         jScrollPane2.setViewportView(listadoContactos);
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1416622346_xmag.png"))); // NOI18N
         jLabel12.setText("Para realizar Busqueda: Haga Click en la tabla + CTRL F");
 
+        jb_GenerarReporteContacto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Reporte.png"))); // NOI18N
         jb_GenerarReporteContacto.setText("Generar Reporte");
         jb_GenerarReporteContacto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -224,14 +227,19 @@ public class JPcontacto extends javax.swing.JPanel {
 
         panelScrudContact.addTab("Consultar", jScrollPane1);
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1418698596_user-24.png"))); // NOI18N
         jLabel1.setText("Nombre:");
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1418698876_id-card.png"))); // NOI18N
         jLabel2.setText("Puesto:");
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/telefono.png"))); // NOI18N
         jLabel3.setText("Telefono 1:");
 
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/telefono.png"))); // NOI18N
         jLabel4.setText("Telefono 2:");
 
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/correo.png"))); // NOI18N
         jLabel5.setText("Correo:");
 
         bCrearContac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415663093_add-user.png"))); // NOI18N
@@ -301,7 +309,7 @@ public class JPcontacto extends javax.swing.JPanel {
                     .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addComponent(bCrearContac)
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
 
         jScrollPane5.setViewportView(jPanel2);
@@ -346,20 +354,27 @@ public class JPcontacto extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tablaModfContact.setHorizontalScrollEnabled(true);
+        tablaModfContact.setSortable(false);
         jScrollPane4.setViewportView(tablaModfContact);
 
         jPanel3.add(jScrollPane4, java.awt.BorderLayout.CENTER);
 
         jLabel6.setText("ID:");
 
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1418698596_user-24.png"))); // NOI18N
         jLabel7.setText("Nombre Contacto:");
 
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1418698876_id-card.png"))); // NOI18N
         jLabel8.setText("Puesto del Conctacto:");
 
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/telefono.png"))); // NOI18N
         jLabel9.setText("Telefono 1 :");
 
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/telefono.png"))); // NOI18N
         jLabel10.setText("Telefono 2:");
 
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/correo.png"))); // NOI18N
         jLabel11.setText("Correo:");
 
         lb_id.setText("id contacto");
@@ -478,6 +493,8 @@ public class JPcontacto extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tablaDeletContact.setHorizontalScrollEnabled(true);
+        tablaDeletContact.setSortable(false);
         jScrollPane3.setViewportView(tablaDeletContact);
 
         bDeletContact.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415663088_delete-user.png"))); // NOI18N
@@ -497,7 +514,7 @@ public class JPcontacto extends javax.swing.JPanel {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(4, 4, 4)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 489, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bDeletContact)
                 .addContainerGap())
@@ -513,7 +530,7 @@ public class JPcontacto extends javax.swing.JPanel {
                 .addComponent(jLabel14)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(bDeletContact, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
