@@ -224,10 +224,10 @@ public class JPmarca extends javax.swing.JPanel {
 
         jPanel2.add(jScrollPane4, java.awt.BorderLayout.CENTER);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1418697743_label_new red.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/christmas_star.png"))); // NOI18N
         jLabel1.setText("Nombre Marca:");
 
-        bCrear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415656550_Add.png"))); // NOI18N
+        bCrear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1418876086_star-add.png"))); // NOI18N
         bCrear.setText("Crear Marca");
         bCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -321,7 +321,7 @@ public class JPmarca extends javax.swing.JPanel {
 
         jLabel3.setText("ID Marca:");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1418697743_label_new red.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/christmas_star.png"))); // NOI18N
         jLabel2.setText("Nombre Marca");
 
         bModfmark.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415656862_Circulation.png"))); // NOI18N

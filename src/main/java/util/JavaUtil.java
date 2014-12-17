@@ -142,8 +142,8 @@ public abstract class JavaUtil {
             oneRow.add(p.getIdContactoGerente() == null ? null : p.getIdContactoGerente().getNombre());
             oneRow.add(p.getIdContacto1() == null ? null : p.getIdContacto1().getNombre());
             oneRow.add(p.getIdContacto2() == null ? null : p.getIdContacto2().getNombre());
-            oneRow.add(p.getFechaCreacion());
-            oneRow.add(p.getFechaModificacion());
+            oneRow.add(p.getFechaCreacion()== null ? "" : new SimpleDateFormat("yyyy-MM-dd").format(p.getFechaCreacion()));
+            oneRow.add(p.getFechaModificacion()== null ? "" : new SimpleDateFormat("yyyy-MM-dd").format(p.getFechaModificacion()));
         }
         if (o instanceof Producto) {
             Producto p = (Producto) o;

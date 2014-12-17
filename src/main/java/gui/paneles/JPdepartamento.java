@@ -237,7 +237,7 @@ public class JPdepartamento extends javax.swing.JPanel {
             }
         });
 
-        bCrear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415656550_Add.png"))); // NOI18N
+        bCrear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1418876431_chart_organisation_add.png"))); // NOI18N
         bCrear.setText("Crear Departamento");
         bCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -283,7 +283,7 @@
                     <Component class="javax.swing.JButton" name="bCrear">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/iconos/1415656550_Add.png"/>
+                          <Image iconType="3" name="/iconos/1418876431_chart_organisation_add.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Crear Departamento"/>
                       </Properties>

@@ -218,7 +218,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel1">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/iconos/1418697743_label_new red.png"/>
+                      <Image iconType="3" name="/iconos/christmas_star.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Nombre Marca:"/>
                   </Properties>
@@ -228,7 +228,7 @@
                 <Component class="javax.swing.JButton" name="bCrear">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/iconos/1415656550_Add.png"/>
+                      <Image iconType="3" name="/iconos/1418876086_star-add.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Crear Marca"/>
                   </Properties>
@@ -355,7 +355,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel2">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/iconos/1418697743_label_new red.png"/>
+                      <Image iconType="3" name="/iconos/christmas_star.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Nombre Marca"/>
                   </Properties>

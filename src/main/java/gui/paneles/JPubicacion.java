@@ -80,13 +80,16 @@ public class JPubicacion extends javax.swing.JPanel {
         tablaConsultaUbicacion = new org.jdesktop.swingx.JXTable();
         jLabel15 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         tf_pais = new javax.swing.JTextField();
-        crear = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         tf_ciudad = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         tf_direccion1 = new javax.swing.JTextField();
+        crear = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tablaCrearUbicacion = new org.jdesktop.swingx.JXTable();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaModificarUbicacion = new org.jdesktop.swingx.JXTable();
@@ -126,11 +129,11 @@ public class JPubicacion extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "ID Ubicación", "Pais", "Ciudad", "Dirección"
+                "ID UBICACION", "PAIS", "CIUDAD", "DIRECCION"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -148,7 +151,7 @@ public class JPubicacion extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel15)
@@ -160,13 +163,15 @@ public class JPubicacion extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE))
         );
 
         panelScrudUbic.addTab("Consultar", jPanel2);
 
         jPanel1.setPreferredSize(new java.awt.Dimension(5, 5));
+        jPanel1.setLayout(new java.awt.BorderLayout());
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/World-024.png"))); // NOI18N
         jLabel3.setText("Pais");
 
         tf_pais.addActionListener(new java.awt.event.ActionListener() {
@@ -175,14 +180,7 @@ public class JPubicacion extends javax.swing.JPanel {
             }
         });
 
-        crear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415656550_Add.png"))); // NOI18N
-        crear.setText("Crear Ubicación");
-        crear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                crearActionPerformed(evt);
-            }
-        });
-
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/companies.png"))); // NOI18N
         jLabel6.setText("Ciudad");
 
         tf_ciudad.addActionListener(new java.awt.event.ActionListener() {
@@ -191,7 +189,8 @@ public class JPubicacion extends javax.swing.JPanel {
             }
         });
 
-        jLabel7.setText("Dirección 1");
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1418871427_map-24.png"))); // NOI18N
+        jLabel7.setText("Dirección");
 
         tf_direccion1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -199,51 +198,74 @@ public class JPubicacion extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addGap(57, 57, 57)
-                                    .addComponent(tf_pais, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel6)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(tf_ciudad, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                                        .addComponent(tf_direccion1))))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(175, 175, 175)
-                        .addComponent(crear)))
-                .addContainerGap(217, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(tf_pais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(tf_ciudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        crear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/crearUbicacion.png"))); // NOI18N
+        crear.setText("Crear Ubicación");
+        crear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(crear)
+                    .addComponent(tf_ciudad, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_pais, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_direccion1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(tf_direccion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
-                .addComponent(crear, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(117, Short.MAX_VALUE))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35))
         );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(tf_pais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addComponent(jLabel6)
+                .addGap(18, 18, 18)
+                .addComponent(tf_ciudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jLabel7)
+                .addGap(18, 18, 18)
+                .addComponent(tf_direccion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(crear)
+                .addContainerGap(99, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel6, java.awt.BorderLayout.WEST);
+
+        tablaCrearUbicacion.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID UBICACION", "PAIS", "CIUDAD", "DIRECCION"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(tablaCrearUbicacion);
+
+        jPanel1.add(jScrollPane4, java.awt.BorderLayout.CENTER);
 
         panelScrudUbic.addTab("Crear", jPanel1);
 
@@ -258,7 +280,7 @@ public class JPubicacion extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "ID Ubicación", "Pais", "Ciudad", "Dirección"
+                "ID UBICACION", "PAIS", "CIUDAD", "DIRECCION"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -293,6 +315,7 @@ public class JPubicacion extends javax.swing.JPanel {
             }
         });
 
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/World-024.png"))); // NOI18N
         jLabel10.setText("Pais");
 
         tf_pais1.addActionListener(new java.awt.event.ActionListener() {
@@ -301,6 +324,7 @@ public class JPubicacion extends javax.swing.JPanel {
             }
         });
 
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/companies.png"))); // NOI18N
         jLabel11.setText("Ciudad");
 
         tf_ciudad1.addActionListener(new java.awt.event.ActionListener() {
@@ -309,7 +333,8 @@ public class JPubicacion extends javax.swing.JPanel {
             }
         });
 
-        jLabel12.setText("Dirección 1");
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1418871427_map-24.png"))); // NOI18N
+        jLabel12.setText("Dirección");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -318,18 +343,21 @@ public class JPubicacion extends javax.swing.JPanel {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tf_pais1)
+                    .addComponent(tf_ciudad1)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lb_numero))
-                    .addComponent(jLabel10)
-                    .addComponent(tf_pais1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11)
-                    .addComponent(tf_direccion3, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12)
-                    .addComponent(tf_ciudad1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(modificar))
-                .addGap(10, 10, 10))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(modificar)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lb_numero))
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(tf_direccion3))
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -348,11 +376,11 @@ public class JPubicacion extends javax.swing.JPanel {
                 .addComponent(tf_ciudad1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
                 .addComponent(jLabel12)
-                .addGap(4, 4, 4)
-                .addComponent(tf_direccion3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(tf_direccion3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
                 .addComponent(modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         jPanel3.add(jPanel5, java.awt.BorderLayout.EAST);
@@ -373,7 +401,7 @@ public class JPubicacion extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "ID Ubicación", "Pais", "Ciudad", "Dirección"
+                "ID UBICACION", "PAIS", "CIUDAD", "DIRECCION"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -403,14 +431,14 @@ public class JPubicacion extends javax.swing.JPanel {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 567, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(eliminar)
                 .addContainerGap())
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel17)
-                .addContainerGap(259, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -418,7 +446,7 @@ public class JPubicacion extends javax.swing.JPanel {
                 .addComponent(jLabel17)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
@@ -448,6 +476,11 @@ public class JPubicacion extends javax.swing.JPanel {
                         tf_direccion1.getText()
                 ));
 
+                String sql = "FROM Ubicacion u order by u.idUbicacion asc";
+                resultList = ObjectModelDAO.getResultQuery(sql);
+                JavaUtil.displayResult(resultList, tablaCrearUbicacion);
+                tablaModificarUbicacion.setEditable(false);
+                tablaModificarUbicacion.setRowSelectionInterval(resultList.size()-1, resultList.size()-1);
             }
         }
     }//GEN-LAST:event_crearActionPerformed
@@ -551,6 +584,9 @@ public class JPubicacion extends javax.swing.JPanel {
             tf_pais.setText("");
             tf_ciudad.setText("");
             tf_direccion1.setText("");
+            String sql = "FROM Ubicacion u order by u.idUbicacion asc";
+            resultList = ObjectModelDAO.getResultQuery(sql);
+            JavaUtil.displayResult(resultList, tablaCrearUbicacion);
         }
 
         if (panelScrudUbic.getSelectedIndex() == 2) {
@@ -595,13 +631,16 @@ public class JPubicacion extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lb_numero;
     private javax.swing.JButton modificar;
     private javax.swing.JTabbedPane panelScrudUbic;
     private org.jdesktop.swingx.JXTable tablaConsultaUbicacion;
+    private org.jdesktop.swingx.JXTable tablaCrearUbicacion;
     private org.jdesktop.swingx.JXTable tablaEliminarUbicacion;
     private org.jdesktop.swingx.JXTable tablaModificarUbicacion;
     private javax.swing.JTextField tf_ciudad;
