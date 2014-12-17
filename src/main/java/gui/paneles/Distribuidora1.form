@@ -44,7 +44,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jXTaskPaneCabeceraDistribuidora" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="botonGeneralNotas" min="-2" max="-2" attributes="0"/>
+                              <Component id="botonReiniciar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="busy2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
@@ -75,7 +75,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="botonImprimir" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="botonGeneralNotas" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="botonReiniciar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButtonGuardarConteo" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="busy2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -820,7 +820,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonImprimirActionPerformed"/>
               </Events>
             </Component>
-            <Component class="org.jdesktop.swingx.JXButton" name="botonGeneralNotas">
+            <Component class="org.jdesktop.swingx.JXButton" name="botonReiniciar">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/icon_almacen/reiniciar.png"/>
@@ -829,7 +829,7 @@
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonGeneralNotasActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonReiniciarActionPerformed"/>
               </Events>
             </Component>
             <Component class="org.jdesktop.swingx.JXButton" name="jButtonGuardarConteo">

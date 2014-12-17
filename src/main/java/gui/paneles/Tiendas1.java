@@ -18,6 +18,7 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,6 +52,7 @@ import util.JavaUtil;
  */
 public class Tiendas1 extends javax.swing.JPanel {
 
+    Date fechaRegistro = null;
     Usuario user = JFInicioSecionMiyake.us1;
     Usuario ususrioActual = null;
     Almacen almacenActual = null;
@@ -138,6 +140,7 @@ public class Tiendas1 extends javax.swing.JPanel {
         dialogoMostrarNotas = new javax.swing.JDialog();
         btNC = new javax.swing.JButton();
         btND = new javax.swing.JButton();
+        jXLabel15 = new org.jdesktop.swingx.JXLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jLayeredPanePrincipal = new javax.swing.JLayeredPane();
         jXTaskPaneLCabeceraTiendas = new org.jdesktop.swingx.JXTaskPane();
@@ -212,7 +215,9 @@ public class Tiendas1 extends javax.swing.JPanel {
             (int) ((d.getWidth() - dialogoMostrarNotas.getWidth()) / 2),
             (int) ((d.getHeight() - dialogoMostrarNotas.getHeight()) / 2));
         dialogoMostrarNotas.setLocation(p);
+        dialogoMostrarNotas.setLocationRelativeTo(null);
 
+        btNC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/hasta1.png"))); // NOI18N
         btNC.setText("Mostrar Nota de Crédito");
         btNC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -220,6 +225,7 @@ public class Tiendas1 extends javax.swing.JPanel {
             }
         });
 
+        btND.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/hasta.png"))); // NOI18N
         btND.setText("Mostrar Nota de Débito");
         btND.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -227,25 +233,33 @@ public class Tiendas1 extends javax.swing.JPanel {
             }
         });
 
+        jXLabel15.setForeground(new java.awt.Color(102, 102, 102));
+        jXLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636449_invoice.png"))); // NOI18N
+        jXLabel15.setText("NOTAS GENERADAS");
+        jXLabel15.setFont(new java.awt.Font("Impact", 1, 18)); // NOI18N
+
         javax.swing.GroupLayout dialogoMostrarNotasLayout = new javax.swing.GroupLayout(dialogoMostrarNotas.getContentPane());
         dialogoMostrarNotas.getContentPane().setLayout(dialogoMostrarNotasLayout);
         dialogoMostrarNotasLayout.setHorizontalGroup(
             dialogoMostrarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dialogoMostrarNotasLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(dialogoMostrarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btND, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btNC, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dialogoMostrarNotasLayout.createSequentialGroup()
+                .addGap(0, 55, Short.MAX_VALUE)
+                .addGroup(dialogoMostrarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btND, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btNC, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jXLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         dialogoMostrarNotasLayout.setVerticalGroup(
             dialogoMostrarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dialogoMostrarNotasLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(jXLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addComponent(btNC)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btND)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         setLayout(new java.awt.BorderLayout());
@@ -255,14 +269,14 @@ public class Tiendas1 extends javax.swing.JPanel {
         jLayeredPanePrincipal.setAutoscrolls(true);
 
         jXTaskPaneLCabeceraTiendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416789183_data-16.png"))); // NOI18N
-        jXTaskPaneLCabeceraTiendas.setTitle("Cabecera de Pedidos");
+        jXTaskPaneLCabeceraTiendas.setTitle("Cabecera de Asignaciones Pendientes.");
 
         jScrollPane3.setPreferredSize(new java.awt.Dimension(800, 800));
 
-        jLayeredPaneTienda.setBorder(javax.swing.BorderFactory.createTitledBorder("Seleccionar Factura"));
+        jLayeredPaneTienda.setBorder(javax.swing.BorderFactory.createTitledBorder("Seleccionar Asignacion."));
         jLayeredPaneTienda.setPreferredSize(new java.awt.Dimension(610, 130));
 
-        jXLabel2.setText("Responsable");
+        jXLabel2.setText("Responsable:");
 
         botonConfirmarFactura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/conect.png"))); // NOI18N
         botonConfirmarFactura.setText("Confirmar");
@@ -274,7 +288,7 @@ public class Tiendas1 extends javax.swing.JPanel {
         });
 
         jXLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636330_store.png"))); // NOI18N
-        jXLabel1.setText("Tienda");
+        jXLabel1.setText("Tienda Local:");
 
         comboBoxAlmacen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         comboBoxAlmacen.addItemListener(new java.awt.event.ItemListener() {
@@ -300,7 +314,7 @@ public class Tiendas1 extends javax.swing.JPanel {
         });
 
         jButtonListarPedidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/confirmar.png"))); // NOI18N
-        jButtonListarPedidos.setText("Seleccionar Pedidos Pendientes");
+        jButtonListarPedidos.setText("Seleccionar Asignacion Pendientes");
         jButtonListarPedidos.setEnabled(false);
         jButtonListarPedidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -309,7 +323,7 @@ public class Tiendas1 extends javax.swing.JPanel {
         });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/facturas.png"))); // NOI18N
-        jLabel2.setText(" Pedidos Pendientes:");
+        jLabel2.setText("Asignaciones Pendientes:");
 
         txtEmitidoPor.setEditable(false);
         txtEmitidoPor.setEnabled(false);
@@ -331,8 +345,8 @@ public class Tiendas1 extends javax.swing.JPanel {
             }
         });
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1418331286_counter_count_up.png"))); // NOI18N
-        jLabel9.setText("ID");
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1418352281_order.png"))); // NOI18N
+        jLabel9.setText("Asignacion");
 
         jXLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/fecha.png"))); // NOI18N
         jXLabel10.setText("Fecha");
@@ -350,7 +364,7 @@ public class Tiendas1 extends javax.swing.JPanel {
         });
 
         jXLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636232_09.png"))); // NOI18N
-        jXLabel12.setText("Almacen");
+        jXLabel12.setText("Desde Almacen");
 
         jXLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1418331264_chart_bar.png"))); // NOI18N
         jXLabel13.setText("Estatus");
@@ -381,17 +395,17 @@ public class Tiendas1 extends javax.swing.JPanel {
                             .addGroup(jLayeredPaneTiendaLayout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonListarPedidos, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE))
+                                .addComponent(jButtonListarPedidos, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE))
                             .addGroup(jLayeredPaneTiendaLayout.createSequentialGroup()
                                 .addGroup(jLayeredPaneTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jLayeredPaneTiendaLayout.createSequentialGroup()
                                         .addComponent(jXLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtTiendaDesde, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                                        .addComponent(txtTiendaDesde, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jXLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtEstatus, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                                        .addComponent(txtEstatus, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
                                         .addGap(9, 9, 9)
                                         .addComponent(jXLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jLayeredPaneTiendaLayout.createSequentialGroup()
@@ -407,7 +421,7 @@ public class Tiendas1 extends javax.swing.JPanel {
                                 .addGroup(jLayeredPaneTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jLayeredPaneTiendaLayout.createSequentialGroup()
                                         .addGap(1, 1, 1)
-                                        .addComponent(txtTotalSalidaID, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE))
+                                        .addComponent(txtTotalSalidaID, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE))
                                     .addComponent(txtSalidaIDFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jLayeredPaneTiendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -823,7 +837,7 @@ public class Tiendas1 extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLayeredPaneDatosProductos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonTotalizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -836,6 +850,7 @@ public class Tiendas1 extends javax.swing.JPanel {
         jScrollPane4.setViewportView(jLayeredPaneProductos);
 
         botonGenerarNotas.setText("Mostrar Notas");
+        botonGenerarNotas.setEnabled(false);
         botonGenerarNotas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonGenerarNotasActionPerformed(evt);
@@ -862,6 +877,7 @@ public class Tiendas1 extends javax.swing.JPanel {
 
         botonCencelarAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/limpiar.png"))); // NOI18N
         botonCencelarAgregar.setText("Reiniciar");
+        botonCencelarAgregar.setEnabled(false);
         botonCencelarAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCencelarAgregarActionPerformed(evt);
@@ -903,7 +919,7 @@ public class Tiendas1 extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jLayeredPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jLayeredPanePrincipalLayout.createSequentialGroup()
@@ -953,6 +969,7 @@ public class Tiendas1 extends javax.swing.JPanel {
                 this.comboBoxAlmacen.setEnabled(false);
                 this.botonConfirmarFactura.setEnabled(false);
                 this.botonReiniciarTodoDesdeFActura.setEnabled(true);
+
                 jXTaskPaneLCabeceraTiendas.setCollapsed(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Debe Selecionar Todos Los Datos");
@@ -1007,7 +1024,7 @@ public class Tiendas1 extends javax.swing.JPanel {
             }
 
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "Excepcion al cargar Lista de Facturas" + ex);
+            JOptionPane.showMessageDialog(this, "Excepcion al cargar Lista de Asignacion" + ex);
             Logger.getLogger(Tiendas1.class.getName()).log(Level.SEVERE, null, ex);
 
         }
@@ -1214,6 +1231,7 @@ public class Tiendas1 extends javax.swing.JPanel {
                                     if (faltante == null) {
                                         faltante = new NotaCreditoDebito(false, sa, user);
                                         ObjectModelDAO.saveObject(faltante);
+
                                     }
                                     ncdd = new NotaCreditoDebitoDetalle(
                                             Math.abs(dr.getConteoFaltante()),
@@ -1223,6 +1241,13 @@ public class Tiendas1 extends javax.swing.JPanel {
                                     );
 
                                     totalNotaD += ncdd.getCantidadProducto() * id_in.getPrecioSinDescuento();
+                                    JOptionPane.showMessageDialog(null, "GENERANDO NOTA DE DEBITO..." + "\n"
+                                            + "Con Los Siguientes Datos:" + "\n" + "Codigo Producto: " + detalle.getProducto().getIdProducto() + "\n"
+                                            + "Refefrrencia: " + detalle.getProducto().getReferenciaProducto() + "\n"
+                                            + "Descripcion: " + detalle.getProducto().getDescripcion() + "\n"
+                                            + "Cantidad Faltante: " + dr.getConteoFaltante() + "\n"
+                                            + "Bolivares Faltante: " + dr.getTotalFaltante() + "\n");
+                                    botonGenerarNotas.setEnabled(true);
                                 }
                                 //Es Mayor el Salida Para Tienda Detalle a lo que introduce el user
                                 //(NOTA SOBRANTE o de CREDITO)*************************************
@@ -1239,7 +1264,13 @@ public class Tiendas1 extends javax.swing.JPanel {
                                     );
 
                                     totalNotaC += ncdd.getCantidadProducto() * id_in.getPrecioSinDescuento();
-
+                                    JOptionPane.showMessageDialog(null, "GENERANDO NOTA DE CREDITO..." + "\n"
+                                            + "Con Los Siguientes Datos:" + "\n" + "Codigo Producto: " + detalle.getProducto().getIdProducto() + "\n"
+                                            + "Refefrrencia: " + detalle.getProducto().getReferenciaProducto() + "\n"
+                                            + "Descripcion: " + detalle.getProducto().getDescripcion() + "\n"
+                                            + "Cantidad Faltante: " + dr.getConteoFaltante() + "\n"
+                                            + "Bolivares Faltante: " + dr.getTotalFaltante() + "\n");
+                                    botonGenerarNotas.setEnabled(true);
                                 }
 
                                 ObjectModelDAO.saveObject(ncdd);
@@ -1262,6 +1293,8 @@ public class Tiendas1 extends javax.swing.JPanel {
 
                     cab.setTotalConteo(totalCosto);
                     ObjectModelDAO.updateObject(cab);
+                    fechaRegistro = cab.getFecharegistro();
+
                     sa.setRevisado(Boolean.TRUE);
                     ObjectModelDAO.updateObject(sa);
                     //busys
@@ -1271,67 +1304,142 @@ public class Tiendas1 extends javax.swing.JPanel {
 
                     //Validar y Verificar queLa sa NO Cambie el 
                     //Mensaje Registro Guardado
-                    int respuesta = JOptionPane.showConfirmDialog(null, "El Registro se Guardo Exitosamente...!!! \n ¿Desea Agregar Otra Factura?",
-                            "COMPROBACION DE REGISTROS", JOptionPane.YES_NO_OPTION);
+                    int respuesta = JOptionPane.showConfirmDialog(null, "El Registro se Guardo Exitosamente...!!! \n ¿Desea Generar el Reporte de Recepcion de Mercancia?",
+                            "INFORMACIÓN", JOptionPane.YES_NO_OPTION);
 
                     if (respuesta == JOptionPane.YES_OPTION) {
-                        jButtonGuardarConteo.setEnabled(true);
-                        //Limpiar Tabla y Lista
-                        comboBoxAlmacen.setEnabled(true);
-                        listaDetalle.clear();
-
-                    //    listaDetalle=null;
-                        //  jTDetalleRegistroTiendas.removeAll();
-                        modeloTablaTomaFisicaInventarioTiendas.fireTableDataChanged();
-                        //Desabilitar Controles
-                        txtCantidad.setEnabled(false);
-
-                        //jLayeredPaneBuscarProducto.setEnabled(false);
-                        comboBoxTipoBusqueda.setEnabled(false);
-                        txtBusqueda.setEnabled(false);
-                        jXButtonBuscar.setEnabled(false);
-                        botonListarProductosInventariTienda.setEnabled(false);
-
-                        //Destruir Objetos
-                        listaprodSA = null;
-                        sd = null;
-//                        proEPaux = null;
-                        Conteofaltante = 0;
-                        posUs = -1;
-                        posAl = -1;
-                        deReg = null;
-                        listaDetalle = null;
-                        //Habilitar COntrol de Factura
-                        jButtonListarPedidos.setEnabled(true);
-                        botonConfirmarFactura.setEnabled(true);
-                        //Limpiar texto de Factura
-                        //Limpiar Campos de Texto 
-
-                        txtRenglon.setText("");
-                        txtTiendaDesde.setText("");
-                        txtEstatus.setText("");
-                        txtSalidaID.setText("");
-                        txtEmitidoPor.setText("");
-                        txtSalidaIDFecha.setText("");
-                        txtTotalSalidaID.setText("");
-                        txtCodigo.setText("");
-                        txtDescripcion.setText("");
-                        txtReferencia.setText("");
-                        txtMarca.setText("");
-                        txtCantidadSugeridad.setText("");
-                        txtCantidad.setText("");
-                        txtNroBulto.setText("");
-                        jXTaskPaneLCabeceraTiendas.setCollapsed(false);
-
+                        generarReporte();
+                    }
+                    if (respuesta == JOptionPane.NO_OPTION) {
+                        // reiniciarDesdeFinal();
                     }
 
                 } catch (Exception ex) {
-                    System.err.println("Excepcion en Guardar Registro : " + ex);
-                    JOptionPane.showMessageDialog(null, "Excepcion en Guardar Registro : " + ex);
+                    System.err.println("Excepción en Guardar Registro : " + ex);
+                    JOptionPane.showMessageDialog(null, "Excepción en Guardar Registro : " + ex);
                     Logger.getLogger(Tiendas1.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (Throwable ex) {
-                    JOptionPane.showMessageDialog(null, "Excepcion en Guardar Registro : " + ex);
+                    JOptionPane.showMessageDialog(null, "Excepción en Guardar Registro : " + ex);
                     Logger.getLogger(Tiendas1.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            }
+
+            private void reiniciarDesdeFinal() {
+                jButtonGuardarConteo.setEnabled(true);
+                //Limpiar Tabla y Lista
+
+                listaprodSA = null;
+                listaDetalle.clear();
+                deReg = null;
+                listaDetalle = null;
+
+                //  jTDetalleRegistroTiendas.removeAll();
+                modeloTablaTomaFisicaInventarioTiendas.fireTableDataChanged();
+                //Desabilitar Controles
+                txtCantidad.setEnabled(false);
+
+                //jLayeredPaneBuscarProducto.setEnabled(false);
+                comboBoxTipoBusqueda.setEnabled(false);
+                txtBusqueda.setEnabled(false);
+                jXButtonBuscar.setEnabled(false);
+                botonListarProductosInventariTienda.setEnabled(false);
+
+                //Destruir Objetos
+                sd = null;
+//                        proEPaux = null;
+                Conteofaltante = 0;
+                posUs = -1;
+                posAl = -1;
+
+                //Habilitar COntrol de Asignacion
+                jButtonListarPedidos.setEnabled(true);
+                botonConfirmarFactura.setEnabled(true);
+                //Limpiar texto de Factura
+                //Limpiar Campos de Texto 
+
+                txtRenglon.setText("");
+                txtTiendaDesde.setText("");
+                txtEstatus.setText("");
+                txtSalidaID.setText("");
+                txtEmitidoPor.setText("");
+                txtSalidaIDFecha.setText("");
+                txtTotalSalidaID.setText("");
+                txtCodigo.setText("");
+                txtDescripcion.setText("");
+                txtReferencia.setText("");
+                txtMarca.setText("");
+                txtCantidadSugeridad.setText("");
+                txtCantidad.setText("");
+                txtNroBulto.setText("");
+                jXTaskPaneLCabeceraTiendas.setCollapsed(false);
+                jButtonGuardarConteo.setEnabled(false);
+                botonImprimir.setEnabled(false);
+                botonCencelarAgregar.setEnabled(false);
+                botonReiniciarTodoDesdeFActura.setEnabled(false);
+                //coMBObOX
+                comboBoxAlmacen.setSelectedIndex(-1);
+                comboBoxAlmacen.setEnabled(true);
+                comboBoxUsuarios.setSelectedIndex(-1);
+                comboBoxUsuarios.setEnabled(true);
+
+            }
+
+            private void generarReporte() {
+                busy.setText("Generando Archivo...!!!");
+                busy.setEnabled(true);
+                busy.setVisible(true);
+                busy.setBusy(true);
+                try {
+                    JasperPrint jasperPrint = null;
+
+                    Map<String, Object> parametro = new HashMap<>();
+                    String s = "";
+                    TableModelReport dataSourse = new TableModelReport(jTDetalleRegistroTiendas.getModel());
+                    parametro.put("almacen", almacenActual.getNombre());
+                    parametro.put("fecha", fechaRegistro);
+                    parametro.put("REPORT_DATA_SOURSE", dataSourse);
+                    //JasperCompileManager.compileReport(rutaJrxml);
+                    JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ConteoTomaFisicaTienda.jasper"));
+
+                    jasperPrint = JasperFillManager.fillReport(reporte, parametro, dataSourse);
+                    JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
+                    jasperViewer.setTitle("Reporte de Toma Física Tiendas.");
+                    jasperViewer.setVisible(true);
+
+                    //busy
+                    busy.setEnabled(false);
+                    busy.setVisible(false);
+                    busy.setBusy(false);
+
+                    if (botonGenerarNotas.isVisible()) {
+                        int respuesta = JOptionPane.showConfirmDialog(null, "Se Han Generado Notas Debito/Credito...\n ¿Desea Visualizarlar?");
+
+                        if (respuesta == JOptionPane.YES_OPTION) {
+                            botonGenerarNotasActionPerformed(null);
+                        }
+                        if (respuesta == JOptionPane.NO_OPTION) {
+                            requestFocus();
+                            reiniciarDesdeFinal();
+                        }
+                    }
+
+//                    int respuesta = JOptionPane.showConfirmDialog(null, "La Operación Ha Finalizado Satisfactoriamente..."
+//                            + "¿Desea Realizar una Nueva Toma Física de Mercancia?");
+//
+//                    if (respuesta == JOptionPane.YES_OPTION) {
+//                        requestFocus();
+//                        reiniciarDesdeFinal();
+//                    }
+//                    if (respuesta == JOptionPane.NO_OPTION) {
+//                        // Nada
+//                    }
+                } catch (JRException | HeadlessException e) {
+                    JOptionPane.showMessageDialog(null, "Sea Detectado Un Problema Con Proceso de Selección de Asignaciónes,"
+                            + "Por Favor Vuelva a Intentarlo.");
+                    Logger.getLogger(Distribuidora1.class.getName()).log(Level.SEVERE, null, e);
+                    System.err.println("Seleccionando Asignación" + e);
+
                 }
 
             }
@@ -1355,7 +1463,25 @@ public class Tiendas1 extends javax.swing.JPanel {
                     jdSalidadParaTienda.setVisible(true);
 
                     if (jdSalidadParaTienda.sa == null) {
-                        JOptionPane.showMessageDialog(null, "Deberia Seleccionar un item de lista de Pedidos para continuar...");
+                        //JOptionPane.showMessageDialog(null, "Deberia Seleccionar un item de lista de Pedidos para continuar...");
+                        //Limpiar Campos de Texto
+                        txtCodigo.setText("");
+                        txtDescripcion.setText("");
+                        txtReferencia.setText("");
+                        txtMarca.setText("");
+                        txtCantidad.setText("");
+                        txtNroBulto.setText("");
+                        txtCantidadSugeridad.setText("");
+                        //Panel y Controles de Salidas Pendientes
+                        comboBoxAlmacen.setSelectedIndex(-1);
+                        jButtonListarPedidos.setEnabled(true);
+                        txtSalidaID.setText("");
+                        txtEmitidoPor.setText("");
+                        txtSalidaIDFecha.setText("");
+                        txtTiendaDesde.setText("");
+                        txtEstatus.setText("");
+                        txtTotalSalidaID.setText("");
+
                     } else {
 
                         sa = jdSalidadParaTienda.sa;
@@ -1384,7 +1510,7 @@ public class Tiendas1 extends javax.swing.JPanel {
                     busy.setBusy(false);
 
                 } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "Excepcion al cargar Lista de Facturas" + ex);
+                    JOptionPane.showMessageDialog(null, "Excepcion al cargar Lista de Asignación" + ex);
                     Logger.getLogger(Tiendas1.class.getName()).log(Level.SEVERE, null, ex);
 
                 }
@@ -1393,7 +1519,6 @@ public class Tiendas1 extends javax.swing.JPanel {
         };
         hilo.start();
 
-        //    ListarFacturas();
     }//GEN-LAST:event_jButtonListarPedidosActionPerformed
 
     private void txtSalidaIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalidaIDActionPerformed
@@ -1481,9 +1606,15 @@ public class Tiendas1 extends javax.swing.JPanel {
                 comboBoxUsuarios.setSelectedIndex(-1);
                 comboBoxUsuarios.setEnabled(true);
 
+                botonGenerarNotas.setEnabled(false);
+                botonImprimir.setEnabled(false);
+                botonReiniciarTodoDesdeFActura.setEnabled(false);
+
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Excepcion al Cancelar Todo Desde Factura" + e);
+            JOptionPane.showMessageDialog(null, "Error al Reiniciar Operanciones, "
+                    + "Se Recomienda Cerrar Forma Manual "
+                    + "e Iniciar Nuevamente.");
             Logger.getLogger(Tiendas1.class.getName()).log(Level.SEVERE, null, e);
         }
 
@@ -1514,7 +1645,7 @@ public class Tiendas1 extends javax.swing.JPanel {
 
                 //Limpiar Tablas y Lista Detalles
                 listaDetalle.clear();
-              //  listaDetalle = null;
+                //  listaDetalle = null;
                 //  jTDetalleRegistroTiendas.removeAll();
                 modeloTablaTomaFisicaInventarioTiendas.fireTableDataChanged();
                 //Panel y Controles de Factura
@@ -1548,9 +1679,17 @@ public class Tiendas1 extends javax.swing.JPanel {
                 comboBoxUsuarios.setSelectedIndex(-1);
                 comboBoxUsuarios.setEnabled(true);
 
+                botonGenerarNotas.setEnabled(false);
+                botonImprimir.setEnabled(false);
+                botonTotalizar.setEnabled(false);
+                botonCencelarAgregar.setEnabled(false);
+                botonReiniciarTodoDesdeFActura.setEnabled(false);
+
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Excepcion al Cencelar Agregar" + e);
+            JOptionPane.showMessageDialog(null, "Error al Reiniciar Operanciones, "
+                    + "Se Recomienda Cerrar Forma Manual "
+                    + "e Iniciar Nuevamente.");
             Logger.getLogger(Tiendas1.class.getName()).log(Level.SEVERE, null, e);
         }
 
@@ -1600,46 +1739,52 @@ public class Tiendas1 extends javax.swing.JPanel {
 
     private void botonImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonImprimirActionPerformed
 
-        // TODO add your handling code here:    resultList
-        Thread hilo = new Thread() {
+        if (listaDetalle.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Para Imprimir debe Tener Datos en la Tabla.");
 
-            @Override
-            public void run() {
+        } else {
+            // TODO add your handling code here:    resultList
+            Thread hilo = new Thread() {
 
-                busy.setEnabled(true);
-                busy.setVisible(true);
-                busy.setBusy(true);
-                try {
-                    JasperPrint jasperPrint = null;
+                @Override
+                public void run() {
+                    busy.setText("Generando Archivo...!!!");
+                    busy.setEnabled(true);
+                    busy.setVisible(true);
+                    busy.setBusy(true);
+                    try {
+                        JasperPrint jasperPrint = null;
 
-                    Map<String, Object> parametro = new HashMap<>();
-                    String s = "";
-                    TableModelReport dataSourse = new TableModelReport(jTDetalleRegistroTiendas.getModel());
-                    parametro.put("REPORT_DATA_SOURSE", dataSourse);
-                    //JasperCompileManager.compileReport(rutaJrxml);
-                    JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ReporteGestionMercancia.jasper"));
+                        Map<String, Object> parametro = new HashMap<>();
+                        String s = "";
+                        TableModelReport dataSourse = new TableModelReport(jTDetalleRegistroTiendas.getModel());
+                        parametro.put("almacen", almacenActual.getNombre());
+                        parametro.put("fecha", fechaRegistro);
+                        parametro.put("REPORT_DATA_SOURSE", dataSourse);
+                        //JasperCompileManager.compileReport(rutaJrxml);
+                        JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ConteoTomaFisicaTienda.jasper"));
 
-                    jasperPrint = JasperFillManager.fillReport(reporte, null, dataSourse);
-                    JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
-                    jasperViewer.setTitle("Reporte de Toma Fisica Distribuidoras.");
-                    jasperViewer.setVisible(true);
+                        jasperPrint = JasperFillManager.fillReport(reporte, parametro, dataSourse);
+                        JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
+                        jasperViewer.setTitle("Reporte de Toma Fisica Tienda.");
+                        jasperViewer.setVisible(true);
 
-                    //busy
-                    busy.setEnabled(false);
-                    busy.setVisible(false);
-                    busy.setBusy(false);
-                } catch (JRException | HeadlessException e) {
-                    JOptionPane.showMessageDialog(null, "Se a Dectectado Un Proble Con Proceso de Seleccion de Facturas,"
-                            + "Por Favor Vuelva a Intentarlo.");
-                    Logger.getLogger(Distribuidora1.class.getName()).log(Level.SEVERE, null, e);
-                    System.err.println("Seleccionando Facturas" + e);
+                        //busy
+                        busy.setEnabled(false);
+                        busy.setVisible(false);
+                        busy.setBusy(false);
+                    } catch (JRException | HeadlessException e) {
+                        JOptionPane.showMessageDialog(null, "Se a Dectectado Un Proble Con Proceso de Seleccion de Asignaciones,"
+                                + "Por Favor Vuelva a Intentarlo.");
+                        Logger.getLogger(Distribuidora1.class.getName()).log(Level.SEVERE, null, e);
+                        System.err.println("Seleccionando Asignacion" + e);
+
+                    }
 
                 }
-
-            }
-        };
-        hilo.start();
-
+            };
+            hilo.start();
+        }
 
     }//GEN-LAST:event_botonImprimirActionPerformed
 
@@ -1658,11 +1803,11 @@ public class Tiendas1 extends javax.swing.JPanel {
                 jButtonGuardarConteo.setEnabled(true);
                 botonImprimir.setEnabled(true);
             } else {
-                JOptionPane.showMessageDialog(null, "DEBE Finalizar de Contabilizar TODOS Los Productos"
-                        + "De Mercancia Asignada Para la Tienda");
+                JOptionPane.showMessageDialog(null, "DEBE Finalizar  de Contabilizar  TODOS Los Productos.\n"
+                        + "De Mercancía Asignada Para la Tienda\n");
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Excepcion al Totalizar Pedido" + e);
+            JOptionPane.showMessageDialog(null, "Excepción al Totalizar Asignacion" + e);
             Logger.getLogger(Tiendas1.class.getName()).log(Level.SEVERE, null, e);
 
         }
@@ -1804,9 +1949,26 @@ public class Tiendas1 extends javax.swing.JPanel {
         //this.proEPaux = sd;
         this.listaprodSA.remove(sd);
         botonTotalizar.setEnabled(true);
+        botonCencelarAgregar.setEnabled(true);
+
     }
     private void botonLimpiarAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLimpiarAgregarActionPerformed
-        // TODO add your handling code here:
+
+        int respuesta = JOptionPane.showConfirmDialog(null, "¿Seguro Desea Cancelar?", "Confirmacion", JOptionPane.YES_NO_OPTION);
+
+        if (respuesta == JOptionPane.YES_OPTION) {
+            //Limpiar Campos de Texto
+            this.txtCodigo.setText("");
+            this.txtDescripcion.setText("");
+            this.txtReferencia.setText("");
+            this.txtMarca.setText("");
+            this.txtCantidad.setText("");
+            this.txtNroBulto.setText("");
+            this.txtCantidadSugeridad.setText("");
+
+        }
+
+
     }//GEN-LAST:event_botonLimpiarAgregarActionPerformed
 
     private void txtEmitidoPorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmitidoPorActionPerformed
@@ -1860,6 +2022,7 @@ public class Tiendas1 extends javax.swing.JPanel {
     private org.jdesktop.swingx.JXLabel jXLabel12;
     private org.jdesktop.swingx.JXLabel jXLabel13;
     private org.jdesktop.swingx.JXLabel jXLabel14;
+    private org.jdesktop.swingx.JXLabel jXLabel15;
     private org.jdesktop.swingx.JXLabel jXLabel2;
     private org.jdesktop.swingx.JXLabel jXLabel3;
     private org.jdesktop.swingx.JXLabel jXLabel4;

@@ -1,6 +1,6 @@
 package gui.ventanas;
 
-import gui.dialogos.JDFacturasPendientes;
+import ayuda.Introduccion;
 import gui.dialogos.JDbackupDB;
 import gui.dialogos.JDfaturasCSV;
 import gui.dialogos.JDrestoreDB;
@@ -21,7 +21,6 @@ import gui.paneles.JPConsultaInventario;
 import gui.paneles.JPMecanciaEnProceso;
 import gui.paneles.JPalmacen;
 import gui.paneles.JPclasificacion;
-import gui.paneles.JPcontacto;
 import gui.paneles.JPdepartamento;
 import gui.paneles.JPdivision;
 import gui.paneles.JPentradaproveedor;
@@ -31,37 +30,18 @@ import gui.paneles.JPprecio_productos;
 import gui.paneles.JPproducto;
 import gui.paneles.JPproveedor;
 import gui.paneles.JPsalida_p_tienda;
-import gui.paneles.JPubicacion;
 import gui.paneles.JPexportData;
 import gui.paneles.JPnotaCreditoDebito;
-import gui.paneles.JPusuario;
 import gui.paneles.Tiendas1;
 import java.awt.BorderLayout;
 import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.Date;
-import java.util.Enumeration;
-import javax.help.HelpBroker;
-import javax.help.HelpSet;
-import javax.help.HelpSetException;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.Timer;
-import org.pushingpixels.substance.api.skin.SubstanceCremeCoffeeLookAndFeel;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreePath;
 
-public class FventanaIncial extends javax.swing.JFrame {
+public class JFSistemaAyuda extends javax.swing.JFrame {
 
     private static final String tabConsultarMerca = "Existencia Física";
     private static final String tabMecanciaEnProceso = "Mecancia En Proceso";
@@ -93,103 +73,21 @@ public class FventanaIncial extends javax.swing.JFrame {
     private JDbackupDB jdBackUp;
     private JDrestoreDB jdRestore;
 
-    public FventanaIncial() {
+    public JFSistemaAyuda() {
         initComponents();
     }
 
-    public FventanaIncial(List<List> user) {
-        FventanaIncial.listaUsuarioMain = user;
+    public JFSistemaAyuda(List<List> user) {
+        JFSistemaAyuda.listaUsuarioMain = user;
 
         initComponents();
         //Ayuda
 //        jMenuItemAcercaDeActionPerformed(null);
         //icon
         this.setIconImage(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417901477_file-roller.png")).getImage());
-        this.setLocationRelativeTo(null);
+
         ClockLabel clock = new ClockLabel();
         getContentPane().add(clock, BorderLayout.PAGE_END);
-        preparePanelsMenusEnable();
-    }
-
-    //depende del nivel de usuario logeado habilita o inhabilita los paneles y menus.
-    private void preparePanelsMenusEnable() {
-        switch (JFInicioSecionMiyake.us1.getTipoUsuario()) {
-
-            case 2://gerente
-                menuUtilidades.setEnabled(false);
-                break;
-            case 3://facturacion
-                TomaFisicaDistribuidora_boton_.setEnabled(false);
-                AsignarMercancia_boton_.setEnabled(false);
-                jMenuTomaFisicaDistribuidora.setEnabled(false);
-                jMenuAsignarMercanciaTiendas_.setEnabled(false);
-                jMenuEstadoEnvios_.setEnabled(false);
-                TomaFisicaTiendas_boton_.setEnabled(false);
-                jMenuItemTomaFisicaTiendas.setEnabled(false);
-                jMenuControlInventario_.setEnabled(false);
-                jButtonControldeInvetario.setEnabled(false);
-                jMenuNotasDebitoCredito_.setEnabled(false);
-                jMenuItemDetFactura.setEnabled(false);
-                jButtonNotas.setEnabled(false);
-                jButtonFacturas.setEnabled(false);
-                jMenuItemUsuarioCrear.setEnabled(false);
-                jMenuItemUsuarioModificar.setEnabled(false);
-                jMenuItemUsuarioEliminar.setEnabled(false);
-                menuUtilidades.setEnabled(false);
-                break;
-            case 4://deposito
-                btnContainer.setEnabled(false);
-                jButtonPrecio.setEnabled(false);
-                btnCrudProveedr.setEnabled(false);
-                jButtonAlmacen.setEnabled(false);
-                jmInventarioDiario.setEnabled(false);
-                jButtonNotas.setEnabled(false);
-                jButtonFacturas.setEnabled(false);
-                btnCrudProducto.setEnabled(false);
-                btnCrudMarca.setEnabled(false);
-                btnCrudClasificacion.setEnabled(false);
-                btnCrudDepto.setEnabled(false);
-                btnCrudDivision.setEnabled(false);
-                jMenuProveedor_.setEnabled(false);
-                jMenuRegistroContainer_.setEnabled(false);
-                jMenuGestionPrecios_.setEnabled(false);
-                jMenuGestionAlmacenes_.setEnabled(false);
-                jMenuItemTomaFisicaTiendas.setEnabled(false);
-                jMenuItemInvDiario.setEnabled(false);
-                jMenuNotasDebitoCredito_.setEnabled(false);
-                jMenuItemDetFactura.setEnabled(false);
-                menuProducto.setEnabled(false);
-                jMenuItemUsuarioCrear.setEnabled(false);
-                jMenuItemUsuarioModificar.setEnabled(false);
-                jMenuItemUsuarioEliminar.setEnabled(false);
-                menuDetalles.setEnabled(false);
-                menuUtilidades.setEnabled(false);
-                TomaFisicaTiendas_boton_.setEnabled(false);
-                break;
-            case 5://inventario (tambien en tienda)
-                btnContainer.setEnabled(false);
-                btnCrudProveedr.setEnabled(false);
-                TomaFisicaDistribuidora_boton_.setEnabled(false);
-                AsignarMercancia_boton_.setEnabled(false);
-                botonEnvio.setEnabled(false);
-                jButtonPrecio.setEnabled(false);
-                jButtonAlmacen.setEnabled(false);
-                btnCrudProducto.setEnabled(false);
-                btnCrudMarca.setEnabled(false);
-                btnCrudClasificacion.setEnabled(false);
-                btnCrudDepto.setEnabled(false);
-                btnCrudDivision.setEnabled(false);
-                menuDistribuidor.setEnabled(false);
-                jMenuGestionAlmacenes_.setEnabled(false);
-                menuProducto.setEnabled(false);
-                jMenuItemUsuarioCrear.setEnabled(false);
-                jMenuItemUsuarioModificar.setEnabled(false);
-                jMenuItemUsuarioEliminar.setEnabled(false);
-                menuDetalles.setEnabled(false);
-                menuUtilidades.setEnabled(false);
-                break;
-            default://1     administrador
-        }
     }
 
     //el tipo se usa en nota de credito debito
@@ -218,11 +116,11 @@ public class FventanaIncial extends javax.swing.JFrame {
             }
 
         } catch (InstantiationException | IllegalAccessException ex) {
-            Logger.getLogger(FventanaIncial.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JFSistemaAyuda.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NoSuchMethodException | SecurityException ex) {
-            Logger.getLogger(FventanaIncial.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JFSistemaAyuda.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalArgumentException | InvocationTargetException ex) {
-            Logger.getLogger(FventanaIncial.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JFSistemaAyuda.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -299,25 +197,34 @@ public class FventanaIncial extends javax.swing.JFrame {
         jPanelControlesPrincipales = new javax.swing.JPanel();
         jXCollapsiblePaneIzquierdo = new org.jdesktop.swingx.JXCollapsiblePane();
         jXCollapsiblePaneAbajo = new org.jdesktop.swingx.JXCollapsiblePane();
-        taskPaneModuloDistribuidor = new org.jdesktop.swingx.JXTaskPane();
-        btnContainer = new javax.swing.JButton();
-        btnCrudProveedr = new javax.swing.JButton();
-        TomaFisicaDistribuidora_boton_ = new javax.swing.JButton();
-        AsignarMercancia_boton_ = new javax.swing.JButton();
-        botonEnvio = new javax.swing.JButton();
-        jButtonPrecio = new javax.swing.JButton();
         taskPaneModuloTienda = new org.jdesktop.swingx.JXTaskPane();
-        jButtonAlmacen = new javax.swing.JButton();
-        TomaFisicaTiendas_boton_ = new javax.swing.JButton();
-        jButtonControldeInvetario = new javax.swing.JButton();
-        jButtonNotas = new javax.swing.JButton();
-        jButtonFacturas = new javax.swing.JButton();
-        taskPaneModuloGestionProductos = new org.jdesktop.swingx.JXTaskPane();
-        btnCrudProducto = new javax.swing.JButton();
-        btnCrudMarca = new javax.swing.JButton();
-        btnCrudClasificacion = new javax.swing.JButton();
-        btnCrudDepto = new javax.swing.JButton();
-        btnCrudDivision = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        DefaultMutableTreeNode carpetaRaiz = new DefaultMutableTreeNode("Carpeta");
+        /**Definimos el modelo donde se agregaran los nodos*/
+        DefaultTreeModel modelo = new DefaultTreeModel(carpetaRaiz);
+
+        /**agregamos el modelo al arbol, donde previamente establecimos la raiz*/
+        arbol = new org.jdesktop.swingx.JXTree(modelo );
+        /**Definimos mas nodos del arbol y se lo agregamos al modelo*/
+        DefaultMutableTreeNode carpeta2 = new DefaultMutableTreeNode("SubCarpetaPrueba");
+        DefaultMutableTreeNode archivo1 = new DefaultMutableTreeNode("Archivo1");
+        DefaultMutableTreeNode archivo2 = new DefaultMutableTreeNode("Archivo2");
+        DefaultMutableTreeNode archivo3 = new DefaultMutableTreeNode("Archivo3");
+
+        /**Definimos donde se agrega el nodo, dentro de que rama y que posicion*/
+        modelo.insertNodeInto(carpeta2, carpetaRaiz, 0);
+        modelo.insertNodeInto(archivo1, carpetaRaiz, 1);
+        modelo.insertNodeInto(archivo2, carpetaRaiz, 2);
+
+        /**Creamos las hojas del arbol*/
+        DefaultMutableTreeNode archivo4 = new DefaultMutableTreeNode("Archivo4");
+        DefaultMutableTreeNode archivo5 = new DefaultMutableTreeNode("Archivo5");
+        DefaultMutableTreeNode archivo6 = new DefaultMutableTreeNode("Prueba");
+
+        modelo.insertNodeInto(archivo3, carpeta2, 0);
+        modelo.insertNodeInto(archivo4, carpeta2, 1);
+        modelo.insertNodeInto(archivo5, carpeta2, 2);
+        modelo.insertNodeInto(archivo6, carpeta2, 3);
         jXTaskPaneReportes = new org.jdesktop.swingx.JXTaskPane();
         jXTaskPaneDistribuidor = new org.jdesktop.swingx.JXTaskPane();
         Boton_Inprimir_Reporte_conteo_Distribuidora = new javax.swing.JButton();
@@ -406,22 +313,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         jMenuItemDivisionCrear = new javax.swing.JMenuItem();
         jMenuItemDivisionModificar = new javax.swing.JMenuItem();
         jMenuItemDivisionEliminar = new javax.swing.JMenuItem();
-        menuUsuario = new javax.swing.JMenu();
-        jMenuItemUsuarioConsulta = new javax.swing.JMenuItem();
-        jMenuItemUsuarioCrear = new javax.swing.JMenuItem();
-        jMenuItemUsuarioModificar = new javax.swing.JMenuItem();
-        jMenuItemUsuarioEliminar = new javax.swing.JMenuItem();
-        menuDetalles = new javax.swing.JMenu();
-        jMenuUbicaciones = new javax.swing.JMenu();
-        jMenuItemUbicacionConsultar = new javax.swing.JMenuItem();
-        jMenuItemUbicacionCrear = new javax.swing.JMenuItem();
-        jMenuItemUbicacionModificar = new javax.swing.JMenuItem();
-        jMenuItemUbicacionEliminar = new javax.swing.JMenuItem();
-        jMenuGestionContactos = new javax.swing.JMenu();
-        jMenuItemContactoConsultar = new javax.swing.JMenuItem();
-        jMenuItemContactoCrear = new javax.swing.JMenuItem();
-        jMenuItemContactoModificar = new javax.swing.JMenuItem();
-        jMenuItemContactoEliminar = new javax.swing.JMenuItem();
         menuReportes = new javax.swing.JMenu();
         menuUtilidades = new javax.swing.JMenu();
         jMenuItemRestaurarDatos = new javax.swing.JMenuItem();
@@ -780,295 +671,26 @@ public class FventanaIncial extends javax.swing.JFrame {
         jXCollapsiblePaneAbajo.setAlignmentX(0.0F);
         jXCollapsiblePaneAbajo.getContentPane().setLayout(new org.jdesktop.swingx.VerticalLayout());
 
-        taskPaneModuloDistribuidor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416862043_inventory-maintenance.png"))); // NOI18N
-        taskPaneModuloDistribuidor.setTitle("Distribuidora");
+        taskPaneModuloTienda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416510931_Help.png"))); // NOI18N
+        taskPaneModuloTienda.setTitle("Ayuda");
 
-        btnContainer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/CSV.png"))); // NOI18N
-        btnContainer.setText("Registrar Container        ");
-        btnContainer.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnContainer.setBorderPainted(false);
-        btnContainer.setContentAreaFilled(false);
-        btnContainer.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnContainerMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnContainerMouseExited(evt);
+        arbol.addTreeSelectionListener(new javax.swing.event.TreeSelectionListener() {
+            public void valueChanged(javax.swing.event.TreeSelectionEvent evt) {
+                arbolValueChanged(evt);
             }
         });
-        btnContainer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnContainerActionPerformed(evt);
-            }
-        });
-        taskPaneModuloDistribuidor.getContentPane().add(btnContainer);
+        jScrollPane1.setViewportView(arbol);
 
-        btnCrudProveedr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417576112_Order_tracking.png"))); // NOI18N
-        btnCrudProveedr.setText("Proveedor                        ");
-        btnCrudProveedr.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnCrudProveedr.setBorderPainted(false);
-        btnCrudProveedr.setContentAreaFilled(false);
-        btnCrudProveedr.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnCrudProveedrMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnCrudProveedrMouseExited(evt);
-            }
-        });
-        taskPaneModuloDistribuidor.getContentPane().add(btnCrudProveedr);
-
-        TomaFisicaDistribuidora_boton_.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/tomafisica.png"))); // NOI18N
-        TomaFisicaDistribuidora_boton_.setText("Toma Fisica                        ");
-        TomaFisicaDistribuidora_boton_.setToolTipText("Entrada Distribuidora (Ctrl+D)");
-        TomaFisicaDistribuidora_boton_.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        TomaFisicaDistribuidora_boton_.setBorderPainted(false);
-        TomaFisicaDistribuidora_boton_.setContentAreaFilled(false);
-        TomaFisicaDistribuidora_boton_.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                TomaFisicaDistribuidora_boton_MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                TomaFisicaDistribuidora_boton_MouseExited(evt);
-            }
-        });
-        TomaFisicaDistribuidora_boton_.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TomaFisicaDistribuidora_boton_ActionPerformed(evt);
-            }
-        });
-        taskPaneModuloDistribuidor.getContentPane().add(TomaFisicaDistribuidora_boton_);
-
-        AsignarMercancia_boton_.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416789791_database_add.png"))); // NOI18N
-        AsignarMercancia_boton_.setText("Asignar Mercancia            ");
-        AsignarMercancia_boton_.setToolTipText("Mercancia Entre Tiendas (Ctrl+G)");
-        AsignarMercancia_boton_.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        AsignarMercancia_boton_.setBorderPainted(false);
-        AsignarMercancia_boton_.setContentAreaFilled(false);
-        AsignarMercancia_boton_.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        AsignarMercancia_boton_.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                AsignarMercancia_boton_MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                AsignarMercancia_boton_MouseExited(evt);
-            }
-        });
-        AsignarMercancia_boton_.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AsignarMercancia_boton_ActionPerformed(evt);
-            }
-        });
-        taskPaneModuloDistribuidor.getContentPane().add(AsignarMercancia_boton_);
-
-        botonEnvio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/envio.png"))); // NOI18N
-        botonEnvio.setText("Control de Envios            ");
-        botonEnvio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        botonEnvio.setBorderPainted(false);
-        botonEnvio.setContentAreaFilled(false);
-        botonEnvio.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                botonEnvioMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                botonEnvioMouseExited(evt);
-            }
-        });
-        taskPaneModuloDistribuidor.getContentPane().add(botonEnvio);
-
-        jButtonPrecio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/ControlPrecio.png"))); // NOI18N
-        jButtonPrecio.setText("Control de Precios         ");
-        jButtonPrecio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButtonPrecio.setBorderPainted(false);
-        jButtonPrecio.setContentAreaFilled(false);
-        jButtonPrecio.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButtonPrecioMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButtonPrecioMouseExited(evt);
-            }
-        });
-        taskPaneModuloDistribuidor.getContentPane().add(jButtonPrecio);
-
-        jXCollapsiblePaneAbajo.getContentPane().add(taskPaneModuloDistribuidor);
-
-        taskPaneModuloTienda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636353_shop.png"))); // NOI18N
-        taskPaneModuloTienda.setTitle("Tiendas");
-
-        jButtonAlmacen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417901443_Warehouse_icon_3D_rev-16.png"))); // NOI18N
-        jButtonAlmacen.setText("Almacen                      ");
-        jButtonAlmacen.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButtonAlmacen.setBorderPainted(false);
-        jButtonAlmacen.setContentAreaFilled(false);
-        jButtonAlmacen.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButtonAlmacenMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButtonAlmacenMouseExited(evt);
-            }
-        });
-        taskPaneModuloTienda.getContentPane().add(jButtonAlmacen);
-
-        TomaFisicaTiendas_boton_.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/tomafisica.png"))); // NOI18N
-        TomaFisicaTiendas_boton_.setText("Toma Fisica                 ");
-        TomaFisicaTiendas_boton_.setToolTipText("Recepción Mercancia (Ctrl+T)");
-        TomaFisicaTiendas_boton_.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        TomaFisicaTiendas_boton_.setBorderPainted(false);
-        TomaFisicaTiendas_boton_.setContentAreaFilled(false);
-        TomaFisicaTiendas_boton_.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        TomaFisicaTiendas_boton_.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                TomaFisicaTiendas_boton_MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                TomaFisicaTiendas_boton_MouseExited(evt);
-            }
-        });
-        TomaFisicaTiendas_boton_.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TomaFisicaTiendas_boton_ActionPerformed(evt);
-            }
-        });
-        taskPaneModuloTienda.getContentPane().add(TomaFisicaTiendas_boton_);
-
-        jButtonControldeInvetario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/inventario.png"))); // NOI18N
-        jButtonControldeInvetario.setText("Control Inventario       ");
-        jButtonControldeInvetario.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButtonControldeInvetario.setBorderPainted(false);
-        jButtonControldeInvetario.setContentAreaFilled(false);
-        jButtonControldeInvetario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButtonControldeInvetarioMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButtonControldeInvetarioMouseExited(evt);
-            }
-        });
-        taskPaneModuloTienda.getContentPane().add(jButtonControldeInvetario);
-
-        jButtonNotas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Notas.png"))); // NOI18N
-        jButtonNotas.setText("Notas                           ");
-        jButtonNotas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButtonNotas.setBorderPainted(false);
-        jButtonNotas.setContentAreaFilled(false);
-        jButtonNotas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButtonNotasMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButtonNotasMouseExited(evt);
-            }
-        });
-        taskPaneModuloTienda.getContentPane().add(jButtonNotas);
-
-        jButtonFacturas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/ventas.png"))); // NOI18N
-        jButtonFacturas.setText("Ventas Diarias               ");
-        jButtonFacturas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButtonFacturas.setBorderPainted(false);
-        jButtonFacturas.setContentAreaFilled(false);
-        jButtonFacturas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButtonFacturasMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButtonFacturasMouseExited(evt);
-            }
-        });
-        jButtonFacturas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonFacturasActionPerformed(evt);
-            }
-        });
-        taskPaneModuloTienda.getContentPane().add(jButtonFacturas);
+        taskPaneModuloTienda.getContentPane().add(jScrollPane1);
 
         jXCollapsiblePaneAbajo.getContentPane().add(taskPaneModuloTienda);
 
-        taskPaneModuloGestionProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/GestionProducto.png"))); // NOI18N
-        taskPaneModuloGestionProductos.setTitle("Gestión de Productos");
-
-        btnCrudProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Product.png"))); // NOI18N
-        btnCrudProducto.setText("Producto                 ");
-        btnCrudProducto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnCrudProducto.setBorderPainted(false);
-        btnCrudProducto.setContentAreaFilled(false);
-        btnCrudProducto.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnCrudProductoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnCrudProductoMouseExited(evt);
-            }
-        });
-        taskPaneModuloGestionProductos.getContentPane().add(btnCrudProducto);
-
-        btnCrudMarca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Marca.png"))); // NOI18N
-        btnCrudMarca.setText("Marca                       ");
-        btnCrudMarca.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnCrudMarca.setBorderPainted(false);
-        btnCrudMarca.setContentAreaFilled(false);
-        btnCrudMarca.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnCrudMarcaMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnCrudMarcaMouseExited(evt);
-            }
-        });
-        taskPaneModuloGestionProductos.getContentPane().add(btnCrudMarca);
-
-        btnCrudClasificacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/clasificacion.png"))); // NOI18N
-        btnCrudClasificacion.setText("Clasificación              ");
-        btnCrudClasificacion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnCrudClasificacion.setBorderPainted(false);
-        btnCrudClasificacion.setContentAreaFilled(false);
-        btnCrudClasificacion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnCrudClasificacionMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnCrudClasificacionMouseExited(evt);
-            }
-        });
-        taskPaneModuloGestionProductos.getContentPane().add(btnCrudClasificacion);
-
-        btnCrudDepto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/departamento.png"))); // NOI18N
-        btnCrudDepto.setText("Departamento          ");
-        btnCrudDepto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnCrudDepto.setBorderPainted(false);
-        btnCrudDepto.setContentAreaFilled(false);
-        btnCrudDepto.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnCrudDeptoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnCrudDeptoMouseExited(evt);
-            }
-        });
-        taskPaneModuloGestionProductos.getContentPane().add(btnCrudDepto);
-
-        btnCrudDivision.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/division.png"))); // NOI18N
-        btnCrudDivision.setText("División                      ");
-        btnCrudDivision.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnCrudDivision.setBorderPainted(false);
-        btnCrudDivision.setContentAreaFilled(false);
-        btnCrudDivision.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnCrudDivisionMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnCrudDivisionMouseExited(evt);
-            }
-        });
-        taskPaneModuloGestionProductos.getContentPane().add(btnCrudDivision);
-
-        jXCollapsiblePaneAbajo.getContentPane().add(taskPaneModuloGestionProductos);
-
+        jXTaskPaneReportes.setCollapsed(true);
         jXTaskPaneReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/Reporte.png"))); // NOI18N
         jXTaskPaneReportes.setTitle("Reportes");
         jXTaskPaneReportes.setToolTipText("");
 
+        jXTaskPaneDistribuidor.setCollapsed(true);
         jXTaskPaneDistribuidor.setTitle("Resportes Distribuidor");
 
         Boton_Inprimir_Reporte_conteo_Distribuidora.setText("Reporte Conteo Mercancia");
@@ -1567,118 +1189,6 @@ public class FventanaIncial extends javax.swing.JFrame {
 
         jMenuBarSistemaMiyake.add(menuProducto);
 
-        menuUsuario.setText("Usuarios");
-
-        jMenuItemUsuarioConsulta.setText("Consultar");
-        jMenuItemUsuarioConsulta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemUsuarioConsultaActionPerformed(evt);
-            }
-        });
-        menuUsuario.add(jMenuItemUsuarioConsulta);
-
-        jMenuItemUsuarioCrear.setText("Crear");
-        jMenuItemUsuarioCrear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemUsuarioCrearActionPerformed(evt);
-            }
-        });
-        menuUsuario.add(jMenuItemUsuarioCrear);
-
-        jMenuItemUsuarioModificar.setText("Modificar");
-        jMenuItemUsuarioModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemUsuarioModificarActionPerformed(evt);
-            }
-        });
-        menuUsuario.add(jMenuItemUsuarioModificar);
-
-        jMenuItemUsuarioEliminar.setText("Eliminar");
-        jMenuItemUsuarioEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemUsuarioEliminarActionPerformed(evt);
-            }
-        });
-        menuUsuario.add(jMenuItemUsuarioEliminar);
-
-        jMenuBarSistemaMiyake.add(menuUsuario);
-
-        menuDetalles.setText("Detalles");
-
-        jMenuUbicaciones.setText("Ubicaciones Geográficas");
-
-        jMenuItemUbicacionConsultar.setText("Consultar");
-        jMenuItemUbicacionConsultar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemUbicacionConsultarActionPerformed(evt);
-            }
-        });
-        jMenuUbicaciones.add(jMenuItemUbicacionConsultar);
-
-        jMenuItemUbicacionCrear.setText("Crear");
-        jMenuItemUbicacionCrear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemUbicacionCrearActionPerformed(evt);
-            }
-        });
-        jMenuUbicaciones.add(jMenuItemUbicacionCrear);
-
-        jMenuItemUbicacionModificar.setText("Modificar");
-        jMenuItemUbicacionModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemUbicacionModificarActionPerformed(evt);
-            }
-        });
-        jMenuUbicaciones.add(jMenuItemUbicacionModificar);
-
-        jMenuItemUbicacionEliminar.setText("Eliminar");
-        jMenuItemUbicacionEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemUbicacionEliminarActionPerformed(evt);
-            }
-        });
-        jMenuUbicaciones.add(jMenuItemUbicacionEliminar);
-
-        menuDetalles.add(jMenuUbicaciones);
-
-        jMenuGestionContactos.setText("Gestión de Contactos");
-
-        jMenuItemContactoConsultar.setText("Consultar");
-        jMenuItemContactoConsultar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemContactoConsultarActionPerformed(evt);
-            }
-        });
-        jMenuGestionContactos.add(jMenuItemContactoConsultar);
-
-        jMenuItemContactoCrear.setText("Crear");
-        jMenuItemContactoCrear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemContactoCrearActionPerformed(evt);
-            }
-        });
-        jMenuGestionContactos.add(jMenuItemContactoCrear);
-
-        jMenuItemContactoModificar.setText("Modificar");
-        jMenuItemContactoModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemContactoModificarActionPerformed(evt);
-            }
-        });
-        jMenuGestionContactos.add(jMenuItemContactoModificar);
-
-        jMenuItemContactoEliminar.setText("Eliminar");
-        jMenuItemContactoEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemContactoEliminarActionPerformed(evt);
-            }
-        });
-        jMenuGestionContactos.add(jMenuItemContactoEliminar);
-
-        menuDetalles.add(jMenuGestionContactos);
-
-        jMenuBarSistemaMiyake.add(menuDetalles);
-
         menuReportes.setText("Reportes");
         jMenuBarSistemaMiyake.add(menuReportes);
 
@@ -1763,28 +1273,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         addPaneles(tabSalida, JPsalida_p_tienda.class, null, null);
     }//GEN-LAST:event_jMenuItemImprimirEtiquetasActionPerformed
 
-    private void btnContainerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContainerActionPerformed
-        addPaneles(tabFactura, JPentradaproveedor.class, null, null);
-    }//GEN-LAST:event_btnContainerActionPerformed
-
-    private void TomaFisicaDistribuidora_boton_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TomaFisicaDistribuidora_boton_ActionPerformed
-        addPaneles(tabTomaFisica, Distribuidora1.class, null, null);
-    }//GEN-LAST:event_TomaFisicaDistribuidora_boton_ActionPerformed
-
-    private void btnCrudProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrudProductoMouseEntered
-        btnCrudProducto.setBorderPainted(true);
-        if(btnCrudProducto.isEnabled()){
-        Component cpm = (Component) evt.getSource();
-        menuCRUDProducto.show(cpm,
-                cpm.getWidth(),
-                0);
-        }
-    }//GEN-LAST:event_btnCrudProductoMouseEntered
-
-    private void btnCrudProductoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrudProductoMouseExited
-        btnCrudProducto.setBorderPainted(false);
-    }//GEN-LAST:event_btnCrudProductoMouseExited
-
     private void Boton_Inprimir_Reporte_conteo_DistribuidoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_Inprimir_Reporte_conteo_DistribuidoraActionPerformed
 
         //        try {
@@ -1811,173 +1299,9 @@ public class FventanaIncial extends javax.swing.JFrame {
         //        }
     }//GEN-LAST:event_Boton_Inprimir_Reporte_conteo_DistribuidoraActionPerformed
 
-    private void btnContainerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContainerMouseEntered
-        btnContainer.setBorderPainted(true);
-    }//GEN-LAST:event_btnContainerMouseEntered
-
-    private void btnCrudProveedrMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrudProveedrMouseEntered
-        btnCrudProveedr.setBorderPainted(true);
-        if(btnCrudProveedr.isEnabled()){
-        Component cpm = (Component) evt.getSource();
-        menuCRUDProveedor.show(cpm,
-                cpm.getWidth(),
-                0);
-        }
-    }//GEN-LAST:event_btnCrudProveedrMouseEntered
-
-    private void TomaFisicaDistribuidora_boton_MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TomaFisicaDistribuidora_boton_MouseEntered
-        TomaFisicaDistribuidora_boton_.setBorderPainted(true);
-    }//GEN-LAST:event_TomaFisicaDistribuidora_boton_MouseEntered
-
-    private void botonEnvioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEnvioMouseEntered
-        botonEnvio.setBorderPainted(true);
-        if(botonEnvio.isEnabled()){
-        Component cpm = (Component) evt.getSource();
-        menuControlEnvio.show(cpm,
-                cpm.getWidth(),
-                0);
-        }
-    }//GEN-LAST:event_botonEnvioMouseEntered
-
-    private void jButtonAlmacenMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAlmacenMouseEntered
-        jButtonAlmacen.setBorderPainted(true);
-        if(jButtonAlmacen.isEnabled()){
-        Component cpm = (Component) evt.getSource();
-        menuCRUDAlmacen.show(cpm,
-                cpm.getWidth(),
-                0);
-        }
-    }//GEN-LAST:event_jButtonAlmacenMouseEntered
-
-    private void jButtonControldeInvetarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonControldeInvetarioMouseEntered
-        jButtonControldeInvetario.setBorderPainted(true);
-        if(jButtonControldeInvetario.isEnabled()){
-        Component cpm = (Component) evt.getSource();
-        menuControlInventario.show(cpm,
-                cpm.getWidth(),
-                0);
-        }
-    }//GEN-LAST:event_jButtonControldeInvetarioMouseEntered
-
-    private void jButtonPrecioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPrecioMouseEntered
-        jButtonPrecio.setBorderPainted(true);
-        if(jButtonPrecio.isEnabled()){
-        Component cpm = (Component) evt.getSource();
-        menuControlPrecio.show(cpm,
-                cpm.getWidth(),
-                0);
-        }
-    }//GEN-LAST:event_jButtonPrecioMouseEntered
-
-    private void jButtonNotasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNotasMouseEntered
-        jButtonNotas.setBorderPainted(true);
-        if(jButtonNotas.isEnabled()){
-        Component cpm = (Component) evt.getSource();
-        menuNotas.show(cpm,
-                cpm.getWidth(),
-                0);
-        }
-    }//GEN-LAST:event_jButtonNotasMouseEntered
-
-    private void jButtonFacturasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonFacturasMouseEntered
-        jButtonFacturas.setBorderPainted(true);
-    }//GEN-LAST:event_jButtonFacturasMouseEntered
-
-    private void btnCrudMarcaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrudMarcaMouseEntered
-        btnCrudMarca.setBorderPainted(true);
-        if(btnCrudMarca.isEnabled()){
-        Component cpm = (Component) evt.getSource();
-        menuCRUDMarca.show(cpm,
-                cpm.getWidth(),
-                0);
-        }
-    }//GEN-LAST:event_btnCrudMarcaMouseEntered
-
-    private void btnCrudClasificacionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrudClasificacionMouseEntered
-        btnCrudClasificacion.setBorderPainted(true);
-        if(btnCrudClasificacion.isEnabled()){
-        Component cpm = (Component) evt.getSource();
-        menuCRUDClasificacion.show(cpm,
-                cpm.getWidth(),
-                0);
-        }
-    }//GEN-LAST:event_btnCrudClasificacionMouseEntered
-
-    private void btnCrudDeptoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrudDeptoMouseEntered
-        btnCrudDepto.setBorderPainted(true);
-        if(btnCrudDepto.isEnabled()){
-        Component cpm = (Component) evt.getSource();
-        menuCRUDDepartamento.show(cpm,
-                cpm.getWidth(),
-                0);
-        }
-    }//GEN-LAST:event_btnCrudDeptoMouseEntered
-
-    private void btnCrudDivisionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrudDivisionMouseEntered
-        btnCrudDivision.setBorderPainted(true);
-        if(btnCrudDivision.isEnabled()){
-        Component cpm = (Component) evt.getSource();
-        menuCRUDDivision.show(cpm,
-                cpm.getWidth(),
-                0);
-        }
-    }//GEN-LAST:event_btnCrudDivisionMouseEntered
-
     private void Boton_Inprimir_Reporte_conteo_DistribuidoraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Boton_Inprimir_Reporte_conteo_DistribuidoraMouseEntered
         Boton_Inprimir_Reporte_conteo_Distribuidora.setBorderPainted(true);
     }//GEN-LAST:event_Boton_Inprimir_Reporte_conteo_DistribuidoraMouseEntered
-
-    private void btnContainerMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContainerMouseExited
-        btnContainer.setBorderPainted(false);
-    }//GEN-LAST:event_btnContainerMouseExited
-
-    private void btnCrudProveedrMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrudProveedrMouseExited
-        btnCrudProveedr.setBorderPainted(false);
-    }//GEN-LAST:event_btnCrudProveedrMouseExited
-
-    private void TomaFisicaDistribuidora_boton_MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TomaFisicaDistribuidora_boton_MouseExited
-        TomaFisicaDistribuidora_boton_.setBorderPainted(false);
-    }//GEN-LAST:event_TomaFisicaDistribuidora_boton_MouseExited
-
-    private void botonEnvioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEnvioMouseExited
-        botonEnvio.setBorderPainted(false);
-    }//GEN-LAST:event_botonEnvioMouseExited
-
-    private void jButtonAlmacenMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAlmacenMouseExited
-        jButtonAlmacen.setBorderPainted(false);
-    }//GEN-LAST:event_jButtonAlmacenMouseExited
-
-    private void jButtonControldeInvetarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonControldeInvetarioMouseExited
-        jButtonControldeInvetario.setBorderPainted(false);
-    }//GEN-LAST:event_jButtonControldeInvetarioMouseExited
-
-    private void jButtonPrecioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPrecioMouseExited
-        jButtonPrecio.setBorderPainted(false);
-    }//GEN-LAST:event_jButtonPrecioMouseExited
-
-    private void jButtonNotasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNotasMouseExited
-        jButtonNotas.setBorderPainted(false);
-    }//GEN-LAST:event_jButtonNotasMouseExited
-
-    private void jButtonFacturasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonFacturasMouseExited
-        jButtonFacturas.setBorderPainted(false);
-    }//GEN-LAST:event_jButtonFacturasMouseExited
-
-    private void btnCrudMarcaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrudMarcaMouseExited
-        btnCrudMarca.setBorderPainted(false);
-    }//GEN-LAST:event_btnCrudMarcaMouseExited
-
-    private void btnCrudClasificacionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrudClasificacionMouseExited
-        btnCrudClasificacion.setBorderPainted(false);
-    }//GEN-LAST:event_btnCrudClasificacionMouseExited
-
-    private void btnCrudDeptoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrudDeptoMouseExited
-        btnCrudDepto.setBorderPainted(false);
-    }//GEN-LAST:event_btnCrudDeptoMouseExited
-
-    private void btnCrudDivisionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrudDivisionMouseExited
-        btnCrudDivision.setBorderPainted(false);
-    }//GEN-LAST:event_btnCrudDivisionMouseExited
 
     private void Boton_Inprimir_Reporte_conteo_DistribuidoraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Boton_Inprimir_Reporte_conteo_DistribuidoraMouseExited
         Boton_Inprimir_Reporte_conteo_Distribuidora.setBorderPainted(false);
@@ -2126,62 +1450,6 @@ public class FventanaIncial extends javax.swing.JFrame {
     private void jmExistenciaFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmExistenciaFisicaActionPerformed
         addPaneles(tabConsultarMerca, JPConsultaInventario.class, null, null);
     }//GEN-LAST:event_jmExistenciaFisicaActionPerformed
-
-    private void jButtonFacturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFacturasActionPerformed
-        if (jdFacturasCSV == null) {
-            jdFacturasCSV = new JDfaturasCSV(this, true);
-        }
-
-        jdFacturasCSV.setVisible(true);
-    }//GEN-LAST:event_jButtonFacturasActionPerformed
-
-    private void jMenuItemUsuarioConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUsuarioConsultaActionPerformed
-        addPaneles(tabUsuarios, JPusuario.class, null, 0);
-    }//GEN-LAST:event_jMenuItemUsuarioConsultaActionPerformed
-
-    private void jMenuItemUsuarioCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUsuarioCrearActionPerformed
-        addPaneles(tabUsuarios, JPusuario.class, null, 1);
-    }//GEN-LAST:event_jMenuItemUsuarioCrearActionPerformed
-
-    private void jMenuItemUsuarioModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUsuarioModificarActionPerformed
-        addPaneles(tabUsuarios, JPusuario.class, null, 2);
-    }//GEN-LAST:event_jMenuItemUsuarioModificarActionPerformed
-
-    private void jMenuItemUsuarioEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUsuarioEliminarActionPerformed
-        addPaneles(tabUsuarios, JPusuario.class, null, 3);
-    }//GEN-LAST:event_jMenuItemUsuarioEliminarActionPerformed
-
-    private void jMenuItemUbicacionConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUbicacionConsultarActionPerformed
-        addPaneles(tabUbicacion, JPubicacion.class, null, 0);
-    }//GEN-LAST:event_jMenuItemUbicacionConsultarActionPerformed
-
-    private void jMenuItemUbicacionCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUbicacionCrearActionPerformed
-        addPaneles(tabUbicacion, JPubicacion.class, null, 1);
-    }//GEN-LAST:event_jMenuItemUbicacionCrearActionPerformed
-
-    private void jMenuItemUbicacionModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUbicacionModificarActionPerformed
-        addPaneles(tabUbicacion, JPubicacion.class, null, 2);
-    }//GEN-LAST:event_jMenuItemUbicacionModificarActionPerformed
-
-    private void jMenuItemUbicacionEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUbicacionEliminarActionPerformed
-        addPaneles(tabUbicacion, JPubicacion.class, null, 3);
-    }//GEN-LAST:event_jMenuItemUbicacionEliminarActionPerformed
-
-    private void jMenuItemContactoConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemContactoConsultarActionPerformed
-        addPaneles(tabContacto, JPcontacto.class, null, 0);
-    }//GEN-LAST:event_jMenuItemContactoConsultarActionPerformed
-
-    private void jMenuItemContactoCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemContactoCrearActionPerformed
-        addPaneles(tabContacto, JPcontacto.class, null, 1);
-    }//GEN-LAST:event_jMenuItemContactoCrearActionPerformed
-
-    private void jMenuItemContactoModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemContactoModificarActionPerformed
-        addPaneles(tabContacto, JPcontacto.class, null, 2);
-    }//GEN-LAST:event_jMenuItemContactoModificarActionPerformed
-
-    private void jMenuItemContactoEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemContactoEliminarActionPerformed
-        addPaneles(tabContacto, JPcontacto.class, null, 3);
-    }//GEN-LAST:event_jMenuItemContactoEliminarActionPerformed
 
     private void jMenuItemExportarDatDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemExportarDatDescActionPerformed
         addPaneles(tabExportData, JPexportData.class, null, null);
@@ -2355,31 +1623,6 @@ public class FventanaIncial extends javax.swing.JFrame {
         addPaneles(tabDivision, JPdivision.class, null, 3);
     }//GEN-LAST:event_jMenuItemDivisionEliminarActionPerformed
 
-    private void AsignarMercancia_boton_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsignarMercancia_boton_ActionPerformed
-        addPaneles(tabAsignarMercancia, Asignar1.class, null, null);
-    }//GEN-LAST:event_AsignarMercancia_boton_ActionPerformed
-
-    private void AsignarMercancia_boton_MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AsignarMercancia_boton_MouseEntered
-        AsignarMercancia_boton_.setBorderPainted(true);
-    }//GEN-LAST:event_AsignarMercancia_boton_MouseEntered
-
-    private void AsignarMercancia_boton_MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AsignarMercancia_boton_MouseExited
-        AsignarMercancia_boton_.setBorderPainted(false);
-    }//GEN-LAST:event_AsignarMercancia_boton_MouseExited
-
-    private void TomaFisicaTiendas_boton_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TomaFisicaTiendas_boton_ActionPerformed
-
-        addPaneles(tabTomaFisicaTiendas, Tiendas1.class, null, null);
-    }//GEN-LAST:event_TomaFisicaTiendas_boton_ActionPerformed
-
-    private void TomaFisicaTiendas_boton_MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TomaFisicaTiendas_boton_MouseEntered
-        TomaFisicaTiendas_boton_.setBorderPainted(true);
-    }//GEN-LAST:event_TomaFisicaTiendas_boton_MouseEntered
-
-    private void TomaFisicaTiendas_boton_MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TomaFisicaTiendas_boton_MouseExited
-        TomaFisicaTiendas_boton_.setBorderPainted(false);
-    }//GEN-LAST:event_TomaFisicaTiendas_boton_MouseExited
-
     private void jMenuItemExportarBDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemExportarBDActionPerformed
         if (jdBackUp == null) {
             jdBackUp = new JDbackupDB(this, true);
@@ -2411,9 +1654,8 @@ public class FventanaIncial extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemReiniciarPanelActionPerformed
 
     private void jMenuItemAbrirCerrarInternosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAbrirCerrarInternosActionPerformed
-        taskPaneModuloDistribuidor.setCollapsed(!taskPaneModuloDistribuidor.isCollapsed());
-        taskPaneModuloTienda.setCollapsed(!taskPaneModuloTienda.isCollapsed());
-        taskPaneModuloGestionProductos.setCollapsed(!taskPaneModuloGestionProductos.isCollapsed());
+
+        taskPaneModuloTienda.setCollapsed(!taskPaneModuloTienda.isCollapsed()); 
         jXTaskPaneReportes.setCollapsed(!jXTaskPaneReportes.isCollapsed());
         jXTaskPaneDistribuidor.setCollapsed(!jXTaskPaneDistribuidor.isCollapsed());
         jXTaskPaneTiendas.setCollapsed(!jXTaskPaneTiendas.isCollapsed());
@@ -2462,20 +1704,83 @@ public class FventanaIncial extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jMenuItemAcercaDeActionPerformed
 
-    public static void main(String args[]) {
+    private void eventosNodoSeleccionado(DefaultMutableTreeNode nodo) {
+
+        if (nodo.getUserObject().equals("Archivo1")) {
+            System.out.println("Selecciona : " + nodo.toString());
+             addPaneles("Introduccion", Introduccion.class, null, null);
+//		  defineVisibilidad(true,false,false,false,false,false);
+        }
+
+        if (nodo.getUserObject().equals("Archivo2")) {
+            System.out.println("Selecciona : " + nodo.toString());
+//			defineVisibilidad(false,true,false,false,false,false);
+        }
+
+        if (nodo.getUserObject().equals("Archivo3")) {
+            System.out.println("Selecciona : " + nodo.toString());
+//			defineVisibilidad(false,false,true,false,false,false);
+        }
+
+        if (nodo.getUserObject().equals("Archivo4")) {
+            System.out.println("Selecciona : " + nodo.toString());
+//			defineVisibilidad(false,false,false,true,false,false);
+        }
+
+        if (nodo.getUserObject().equals("Archivo5")) {
+            System.out.println("Selecciona : " + nodo.toString());
+//			defineVisibilidad(false,false,false,false,true,false);
+        }
+
+        if (nodo.getUserObject().equals("Archivo6")) {
+            System.out.println("Selecciona : " + nodo.toString());
+//			defineVisibilidad(false,false,false,false,false,true);
+        }
+
+    }
+
+
+    private void arbolValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_arbolValueChanged
+         
+        
+        DefaultMutableTreeNode nodoSeleccionado = (DefaultMutableTreeNode) arbol.getLastSelectedPathComponent();
+		 
+		 eventosNodoSeleccionado(nodoSeleccionado);
+		 
+		 
+		    /*Obtenemos la ruta seleccionada*/
+			TreePath rutaSeleccionada = evt.getPath();
+			Object [] nodos = rutaSeleccionada.getPath();
+			
+			for (int i=0; i<nodos.length;i++){
+				Object nodo=nodos[i];
+				 System.err.println("Nodos: " + nodo.toString() + " / ");
+				//s+=nodo.toString() + " : / ";
+			}
+			 
+                        
+    }//GEN-LAST:event_arbolValueChanged
+
+public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
-            public void run() {
+        public void run() {
 
-                new FventanaIncial().setVisible(true);
+                new JFSistemaAyuda().setVisible(true);
                 try {
-                    //UIManager.setLookAndFeel(new SubstanceBusinessBlueSteelLookAndFeel());
+                    UIManager.setLookAndFeel(new SubstanceBusinessBlueSteelLookAndFeel());
 
-                    UIManager.setLookAndFeel(new SubstanceCremeCoffeeLookAndFeel());
+                    //me gusta    UIManager.setLookAndFeel(new SubstanceCremeCoffeeLookAndFeel());
                     //TaskPaneUI.createUI(new (TaskPaneUI)SubstanceCremeCoffeeLookAndFeel());
-                } catch (UnsupportedLookAndFeelException ex) {
-                    Logger.getLogger(FventanaIncial.class.getName()).log(Level.SEVERE, null, ex);
+                
+
+
+
+} catch (UnsupportedLookAndFeelException ex) {
+                    Logger.getLogger(JFSistemaAyuda.class  
+
+.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
@@ -2484,23 +1789,8 @@ public class FventanaIncial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AsignarMercancia_boton_;
     private javax.swing.JButton Boton_Inprimir_Reporte_conteo_Distribuidora;
-    private javax.swing.JButton TomaFisicaDistribuidora_boton_;
-    private javax.swing.JButton TomaFisicaTiendas_boton_;
-    private javax.swing.JButton botonEnvio;
-    private javax.swing.JButton btnContainer;
-    private javax.swing.JButton btnCrudClasificacion;
-    private javax.swing.JButton btnCrudDepto;
-    private javax.swing.JButton btnCrudDivision;
-    private javax.swing.JButton btnCrudMarca;
-    private javax.swing.JButton btnCrudProducto;
-    private javax.swing.JButton btnCrudProveedr;
-    private javax.swing.JButton jButtonAlmacen;
-    private javax.swing.JButton jButtonControldeInvetario;
-    private javax.swing.JButton jButtonFacturas;
-    private javax.swing.JButton jButtonNotas;
-    private javax.swing.JButton jButtonPrecio;
+    private org.jdesktop.swingx.JXTree arbol;
     private javax.swing.JMenu jMenuActualizarPreciosDistribuidora;
     private javax.swing.JMenuItem jMenuAsignarMercanciaTiendas_;
     private javax.swing.JMenuBar jMenuBarSistemaMiyake;
@@ -2512,7 +1802,6 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuExistenciaFisica;
     private javax.swing.JMenu jMenuExportarDatos;
     private javax.swing.JMenu jMenuGestionAlmacenes_;
-    private javax.swing.JMenu jMenuGestionContactos;
     private javax.swing.JMenu jMenuGestionPrecios_;
     private javax.swing.JMenuItem jMenuItemAPDConsultar;
     private javax.swing.JMenuItem jMenuItemAPDModificar;
@@ -2527,10 +1816,6 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemClasificacionCrear;
     private javax.swing.JMenuItem jMenuItemClasificacionEliminar;
     private javax.swing.JMenuItem jMenuItemClasificacionModificar;
-    private javax.swing.JMenuItem jMenuItemContactoConsultar;
-    private javax.swing.JMenuItem jMenuItemContactoCrear;
-    private javax.swing.JMenuItem jMenuItemContactoEliminar;
-    private javax.swing.JMenuItem jMenuItemContactoModificar;
     private javax.swing.JMenuItem jMenuItemDepartamentoConsultar;
     private javax.swing.JMenuItem jMenuItemDepartamentoCrear;
     private javax.swing.JMenuItem jMenuItemDepartamentoEliminar;
@@ -2559,14 +1844,6 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemRestaurarDatos;
     private javax.swing.JMenuItem jMenuItemSalir;
     private javax.swing.JMenuItem jMenuItemTomaFisicaTiendas;
-    private javax.swing.JMenuItem jMenuItemUbicacionConsultar;
-    private javax.swing.JMenuItem jMenuItemUbicacionCrear;
-    private javax.swing.JMenuItem jMenuItemUbicacionEliminar;
-    private javax.swing.JMenuItem jMenuItemUbicacionModificar;
-    private javax.swing.JMenuItem jMenuItemUsuarioConsulta;
-    private javax.swing.JMenuItem jMenuItemUsuarioCrear;
-    private javax.swing.JMenuItem jMenuItemUsuarioEliminar;
-    private javax.swing.JMenuItem jMenuItemUsuarioModificar;
     private javax.swing.JMenuItem jMenuItemVerAyuda;
     private javax.swing.JMenu jMenuMarcas_;
     private javax.swing.JMenuItem jMenuMercanciaProceso_;
@@ -2582,9 +1859,9 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuProveedor__Modificar_;
     private javax.swing.JMenuItem jMenuRegistroContainer_;
     private javax.swing.JMenuItem jMenuTomaFisicaDistribuidora;
-    private javax.swing.JMenu jMenuUbicaciones;
     private javax.swing.JPanel jPanelControlesPrincipales;
     private javax.swing.JScrollPane jScrollPane;
+    private javax.swing.JScrollPane jScrollPane1;
     private org.jdesktop.swingx.JXCollapsiblePane jXCollapsiblePaneAbajo;
     private org.jdesktop.swingx.JXCollapsiblePane jXCollapsiblePaneIzquierdo;
     private org.jdesktop.swingx.JXTaskPane jXTaskPaneDistribuidor;
@@ -2644,32 +1921,14 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JPopupMenu menuControlEnvio;
     private javax.swing.JPopupMenu menuControlInventario;
     private javax.swing.JPopupMenu menuControlPrecio;
-    private javax.swing.JMenu menuDetalles;
     private javax.swing.JMenu menuDistribuidor;
     private javax.swing.JPopupMenu menuNotas;
     private javax.swing.JMenu menuProducto;
     private javax.swing.JMenu menuReportes;
     private javax.swing.JMenu menuTiendas;
-    private javax.swing.JMenu menuUsuario;
     private javax.swing.JMenu menuUtilidades;
     private com.ClosableTabbedPane panelClosableCentral;
     private javax.swing.JPanel panelPrincipal;
-    private org.jdesktop.swingx.JXTaskPane taskPaneModuloDistribuidor;
-    private org.jdesktop.swingx.JXTaskPane taskPaneModuloGestionProductos;
     private org.jdesktop.swingx.JXTaskPane taskPaneModuloTienda;
     // End of variables declaration//GEN-END:variables
-}
-
-class ClockLabel extends JLabel implements ActionListener {
-
-    public ClockLabel() {
-        super("" + new Date());
-        Timer t = new Timer(1000, this);
-        t.start();
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent ae) {
-        setText((new Date()).toString());
-    }
 }

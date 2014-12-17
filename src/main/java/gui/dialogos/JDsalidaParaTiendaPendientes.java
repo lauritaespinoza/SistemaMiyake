@@ -92,13 +92,6 @@ public class JDsalidaParaTiendaPendientes extends javax.swing.JDialog {
         busy = new org.jdesktop.swingx.JXBusyLabel();
         txtTitulo = new javax.swing.JLabel();
         ayuda = new javax.swing.JButton();
-        jMenuBarDialogosSalidaTienda = new javax.swing.JMenuBar();
-        jMenuOpciones = new javax.swing.JMenu();
-        jItemAceptar = new javax.swing.JMenuItem();
-        ItemImprimir = new javax.swing.JMenuItem();
-        jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -176,79 +169,49 @@ public class JDsalidaParaTiendaPendientes extends javax.swing.JDialog {
             }
         });
 
-        jMenuOpciones.setText("Opciones");
-
-        jItemAceptar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
-        jItemAceptar.setText("Aceptar");
-        jMenuOpciones.add(jItemAceptar);
-
-        ItemImprimir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
-        ItemImprimir.setText("Imprimir");
-        jMenuOpciones.add(ItemImprimir);
-        jMenuOpciones.add(jSeparator1);
-
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem2.setText("Cancelar");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jMenuOpciones.add(jMenuItem2);
-
-        jMenuBarDialogosSalidaTienda.add(jMenuOpciones);
-
-        jMenu2.setText("Edit");
-        jMenuBarDialogosSalidaTienda.add(jMenu2);
-
-        setJMenuBar(jMenuBarDialogosSalidaTienda);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(138, Short.MAX_VALUE)
-                        .addComponent(txtTitulo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 227, Short.MAX_VALUE)
-                        .addComponent(ayuda)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jXFindBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jButtonCancelar)
-                                    .addGap(141, 141, 141)
-                                    .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(76, 76, 76)
-                                    .addComponent(imprimir_InventarioTiendas_, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 763, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jButtonCancelar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(imprimir_InventarioTiendas_)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 763, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtTitulo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ayuda)
+                        .addGap(59, 59, 59))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(26, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(ayuda)))
-                .addGap(0, 0, 0)
+                    .addComponent(txtTitulo)
+                    .addComponent(ayuda))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jXFindBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1)
                     .addComponent(jButtonCancelar)
-                    .addComponent(imprimir_InventarioTiendas_, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(imprimir_InventarioTiendas_)
                     .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -288,24 +251,14 @@ public class JDsalidaParaTiendaPendientes extends javax.swing.JDialog {
                     Map<String, Object> parametro = new HashMap<>();
                     String s = "";                                      //jtableListaProductosInventarioTienda
                     TableModelReport dataSourse = new TableModelReport(jtListaSalidaPendientes_.getModel());
+                    parametro.put("tienda", al_actual.getDescripcion());
                     parametro.put("REPORT_DATA_SOURSE", dataSourse);
-                    JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ListadoSalidasPendientes.jasper"));
-                    jasperPrint = JasperFillManager.fillReport(reporte, null, dataSourse);
+                    JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ListadoAsignacionesPendientes.jasper"));
+                    jasperPrint = JasperFillManager.fillReport(reporte, parametro, dataSourse);
                     JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
                     jasperViewer.setModalExclusionType(Dialog.ModalExclusionType.TOOLKIT_EXCLUDE);
                     jasperViewer.setTitle("Reporte de Toma Fisica Distribuidoras.");
-                    jasperViewer.setVisible(true);
-                    int respuesta = JOptionPane.showConfirmDialog(null, "El Archivo fue Generado con Exito,"
-                            + "¿Desea Continuar Selecionando Una Factura Pendiente?");
-
-                    if (respuesta == JOptionPane.YES_OPTION) {
-
-                    }
-                    if (respuesta == JOptionPane.NO_OPTION) {
-
-                        setVisible(false);
-                        jasperViewer.requestFocus();
-                    }
+                    jasperViewer.setVisible(true); 
 
                 } catch (JRException | HeadlessException e) {
                     JOptionPane.showMessageDialog(null, "Se a Dectectado Un Proble Con Proceso de Seleccion de Facturas,\n"
@@ -350,10 +303,6 @@ public class JDsalidaParaTiendaPendientes extends javax.swing.JDialog {
 //            System.err.println("Excepcion Ayuda Factura " + ex);
 //        }
     }//GEN-LAST:event_ayudaActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        jButtonCancelarActionPerformed(evt);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jButtonCancelarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonCancelarKeyReleased
        
@@ -404,20 +353,13 @@ public class JDsalidaParaTiendaPendientes extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem ItemImprimir;
     private javax.swing.JButton ayuda;
     private org.jdesktop.swingx.JXBusyLabel busy;
     private javax.swing.JButton imprimir_InventarioTiendas_;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonCancelar;
-    private javax.swing.JMenuItem jItemAceptar;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBarDialogosSalidaTienda;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenu jMenuOpciones;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JPopupMenu.Separator jSeparator1;
     private org.jdesktop.swingx.JXFindBar jXFindBar1;
     private org.jdesktop.swingx.JXTable jtListaSalidaPendientes_;
     private javax.swing.JLabel txtTitulo;

@@ -20,32 +20,12 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Menu class="javax.swing.JMenuBar" name="jMenuBarDialogoFac">
-      <Properties>
-        <Property name="name" type="java.lang.String" value="jMenuBarDialogoFac" noResource="true"/>
-      </Properties>
-      <SubComponents>
-        <Menu class="javax.swing.JMenu" name="jMenuOpciones">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Opciones"/>
-            <Property name="name" type="java.lang.String" value="jMenuOpciones" noResource="true"/>
-          </Properties>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu_Ayuda_">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Ayuda"/>
-            <Property name="name" type="java.lang.String" value="jMenu_Ayuda_" noResource="true"/>
-          </Properties>
-        </Menu>
-      </SubComponents>
-    </Menu>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="name" type="java.lang.String" value="Form" noResource="true"/>
   </Properties>
   <SyntheticProperties>
-    <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBarDialogoFac"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
@@ -84,6 +64,7 @@
                           </Group>
                           <Component id="jScrollPane1" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="159" max="-2" attributes="0"/>
                               <Component id="txtTitulo" min="-2" pref="366" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="ayuda" min="-2" max="-2" attributes="0"/>
@@ -101,12 +82,12 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="ayuda" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtTitulo" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtTitulo" min="-2" pref="53" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jXFindBar1" min="-2" pref="39" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="256" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="268" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>

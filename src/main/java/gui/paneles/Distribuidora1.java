@@ -33,12 +33,14 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import modelos.tablas.TableModelReport;
+import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import util.JavaUtil;
 
 /**
  *
@@ -165,7 +167,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
         jScrollPane5 = new javax.swing.JScrollPane();
         jTDetalleRegistroDistribuidora = new javax.swing.JTable();
         botonImprimir = new org.jdesktop.swingx.JXButton();
-        botonGeneralNotas = new org.jdesktop.swingx.JXButton();
+        botonReiniciar = new org.jdesktop.swingx.JXButton();
         jButtonGuardarConteo = new org.jdesktop.swingx.JXButton();
         busy2 = new org.jdesktop.swingx.JXBusyLabel();
         busy = new org.jdesktop.swingx.JXBusyLabel();
@@ -701,12 +703,12 @@ public class Distribuidora1 extends javax.swing.JPanel {
             }
         });
 
-        botonGeneralNotas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/reiniciar.png"))); // NOI18N
-        botonGeneralNotas.setText("reiniciar");
-        botonGeneralNotas.setEnabled(false);
-        botonGeneralNotas.addActionListener(new java.awt.event.ActionListener() {
+        botonReiniciar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/reiniciar.png"))); // NOI18N
+        botonReiniciar.setText("reiniciar");
+        botonReiniciar.setEnabled(false);
+        botonReiniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonGeneralNotasActionPerformed(evt);
+                botonReiniciarActionPerformed(evt);
             }
         });
 
@@ -732,7 +734,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jXTaskPaneCabeceraDistribuidora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addComponent(botonGeneralNotas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botonReiniciar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(busy2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -758,7 +760,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonGeneralNotas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonReiniciar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonGuardarConteo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(busy2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -766,7 +768,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
         jLayeredPane1.setLayer(jXTaskPaneCabeceraDistribuidora, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jScrollPane4, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(botonImprimir, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(botonGeneralNotas, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(botonReiniciar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jButtonGuardarConteo, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(busy2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(busy, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -843,8 +845,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
                 this.txtCantidad.setEnabled(true);
                 this.txtCantidad.requestFocus();
                 this.botonValidar.setEnabled(true);
-                this.jXButtonTotalizar.setEnabled(true);
-                this.botonGeneralNotas.setEnabled(true);
+
             }
 
         } catch (Exception ex) {
@@ -1085,55 +1086,16 @@ public class Distribuidora1 extends javax.swing.JPanel {
 
                     //Validar y Verificar queLa factura NO Cambie el 
                     //Mensaje Registro Guardado
-                    int respuesta = JOptionPane.showConfirmDialog(null, "El Registro se Guardo Exitosamente...!!! \n ¿Desea Agregar Otra Factura?",
-                            "COMPROBACION DE REGISTROS", JOptionPane.YES_NO_OPTION);
+                    int respuesta = JOptionPane.showConfirmDialog(null, "El Registro se Guardo Exitosamente...!!! \n ¿Desea Generar el Reporte de Recepcion de Mercancia?",
+                            "INFORMACIÓN", JOptionPane.YES_NO_OPTION);
 
                     if (respuesta == JOptionPane.YES_OPTION) {
 
-                        jButtonGuardarConteo.setEnabled(true);
+                        generarReporte();
 
-                        //Limpiar Tabla y Lista
-                        listaDetalle.clear();
-                        jTDetalleRegistroDistribuidora.removeAll();
-                        modeloTablaTomaFisicaInventarioDistribuidora.fireTableDataChanged();
-
-                        //Desabilitar Controles
-                        txtCantidad.setEnabled(false);
-                        botonValidar.setEnabled(false);
-                        botonAgregar.setEnabled(false);
-                        botonLimpiarAgregar.setEnabled(false);
-                        comboBoxTipoBusqueda.setEnabled(false);
-                        txtBusqueda.setEnabled(false);
-                        jXButtonBuscar.setEnabled(false);
-                        botonListarProductosInventariTienda.setEnabled(false);
-                        jButtonListarFacturas.setEnabled(false);
-
-                        //Destruir Objetos
-                        listaEP.clear();
-                        proEP = null;
-                        Conteofaltante = 0;
-                        posUs = -1;
-                        posTi = -1;
-                        deReg = null;
-
-                        //Habilitar COntrol de Factura
-                        jButtonListarFacturas.setEnabled(true);
-                        botonConfirmarFactura.setEnabled(true);
-
-                        //Limpiar texto de Factura
-                        txtFactura.setText("");
-                        txtEmitidoPor.setText("");
-                        txtFechaFactura.setText("");
-
-                        //Limpiar Campos de Texto
-                        txtCodigo.setText("");
-                        txtDescripcion.setText("");
-                        txtReferencia.setText("");
-                        txtMarca.setText("");
-                        txtCantidadSugeridad.setText("");
-                        txtCantidad.setText("");
-                        txtNroBulto.setText("");
-                        jXTaskPaneCabeceraDistribuidora.setCollapsed(false);
+                    }
+                    if (respuesta == JOptionPane.NO_OPTION) {
+                        reiniciarDesdeFinal();
                     }
 
                 } catch (Exception ex) {
@@ -1146,6 +1108,103 @@ public class Distribuidora1 extends javax.swing.JPanel {
                     JOptionPane.showMessageDialog(null, "Por Favor, Vuelva a Intentar Guardar con Datos Correctos!!!");
                     System.err.println("ERROR ó Excepcion en Guardar Registro : " + ex);
                 }
+
+            }
+
+            private void reiniciarDesdeFinal() {
+
+                jButtonGuardarConteo.setEnabled(true);
+
+                //Limpiar Tabla y Lista
+                listaDetalle.clear();
+                jTDetalleRegistroDistribuidora.removeAll();
+                modeloTablaTomaFisicaInventarioDistribuidora.fireTableDataChanged();
+
+                //Desabilitar Controles
+                txtCantidad.setEnabled(false);
+                botonValidar.setEnabled(false);
+                botonAgregar.setEnabled(false);
+                botonLimpiarAgregar.setEnabled(false);
+                comboBoxTipoBusqueda.setEnabled(false);
+                txtBusqueda.setEnabled(false);
+                jXButtonBuscar.setEnabled(false);
+                botonListarProductosInventariTienda.setEnabled(false);
+                jButtonListarFacturas.setEnabled(false);
+
+                //Destruir Objetos
+                listaEP.clear();
+                proEP = null;
+                Conteofaltante = 0;
+                posUs = -1;
+                posTi = -1;
+                deReg = null;
+
+                //Habilitar COntrol de Factura
+                jButtonListarFacturas.setEnabled(true);
+                botonConfirmarFactura.setEnabled(true);
+
+                //Limpiar texto de Factura
+                txtFactura.setText("");
+                txtEmitidoPor.setText("");
+                txtFechaFactura.setText("");
+
+                //Limpiar Campos de Texto
+                txtCodigo.setText("");
+                txtDescripcion.setText("");
+                txtReferencia.setText("");
+                txtMarca.setText("");
+                txtCantidadSugeridad.setText("");
+                txtCantidad.setText("");
+                txtNroBulto.setText("");
+                jXTaskPaneCabeceraDistribuidora.setCollapsed(false);
+                jButtonGuardarConteo.setEnabled(false);
+                botonImprimir.setEnabled(false);
+                botonReiniciar.setEnabled(false);
+                botonCancelarTodoDesdeFActura.setEnabled(false);
+                botonConfirmarFactura.setEnabled(false);
+                //coMBObOX
+                comboBoxAlmacen.setSelectedIndex(-1);
+                comboBoxAlmacen.setEnabled(true);
+                comboBoxUsuarios.setSelectedIndex(-1);
+                comboBoxUsuarios.setEnabled(true);
+
+            }
+
+            private void generarReporte() throws JRException {
+                JasperPrint jasperPrint = null;
+
+                Map<String, Object> parametro = new HashMap<>();
+                String s = "";
+
+                TableModelReport dataSourse = new TableModelReport(jTDetalleRegistroDistribuidora.getModel());
+                parametro.put("facturas", fa.getNroFactura());
+                parametro.put("fecha", fa.getFechaEmision());
+                parametro.put("usuario", fa.getRecibidoPor());
+                parametro.put("almacen", fa.getIdAlmacen().getNombre());
+
+                parametro.put("REPORT_DATA_SOURSE", dataSourse);
+                //JasperCompileManager.compileReport(rutaJrxml);
+                JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ConteoTomaFisicaDistribuidora.jasper"));
+
+                jasperPrint = JasperFillManager.fillReport(reporte, parametro, dataSourse);
+                JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
+                jasperViewer.setTitle("Reporte de Toma Fisica Distribuidoras.");
+                jasperViewer.setVisible(true);
+                jasperViewer.setAutoRequestFocus(true);
+                //busy
+                    busy.setEnabled(false);
+                    busy.setVisible(false);
+                    busy.setBusy(false);
+                    int respuesta = JOptionPane.showConfirmDialog(null, "La Operación Ha Finalizado Satisfactoriamente..."
+                            + "¿Desea Realizar una Nueva Toma Física de Mercancia?");
+
+                    if (respuesta == JOptionPane.YES_OPTION) { 
+                        requestFocus();
+                        reiniciarDesdeFinal();
+                    }
+                    if (respuesta == JOptionPane.NO_OPTION) {
+                       // 
+                    } 
 
             }
         };
@@ -1167,7 +1226,29 @@ public class Distribuidora1 extends javax.swing.JPanel {
                     jdFactura.setLocationRelativeTo(null);
                     jdFactura.setVisible(true);
                     if (jdFactura.factura == null) {
-                        JOptionPane.showMessageDialog(null, "no ha Seleccionado Facturas");
+                        //Panel y Controles de Factura
+                        jButtonListarFacturas.setEnabled(true);
+                        txtFactura.setText("");
+                        txtEmitidoPor.setText("");
+                        txtFechaFactura.setText("");
+
+                        int respuesta = JOptionPane.showConfirmDialog(null,
+                                "Es Posible que Falte Cargar La Factura en el Modulo de Registrar Conteiner.\n Presione (SI), si desea Cargar Una Nueva Factura.\n"
+                                + "Es Posible que No halla Seleccionado Ninguna Factura.\n  Presione (NO), si desea volver intentarlo.\n ",
+                                "INFORMACION", JOptionPane.YES_NO_OPTION);
+
+                        if (respuesta == JOptionPane.YES_OPTION) {
+                            JPentradaproveedor en = new JPentradaproveedor();
+                            en.setVisible(true);
+                            JavaUtil.createJDialogGeneric(en);
+                        }
+                        if (respuesta == JOptionPane.NO_OPTION) {
+                            //Panel y Controles de Factura
+                            jButtonListarFacturas.setEnabled(true);
+                            txtFactura.setText("");
+                            txtEmitidoPor.setText("");
+                            txtFechaFactura.setText("");
+                        }
                     } else {
                         fa = jdFactura.factura;
                         // listaEP = (List<EntradaProveedor>) fa.getEntradaProveedorCollection();
@@ -1307,6 +1388,12 @@ public class Distribuidora1 extends javax.swing.JPanel {
                 comboBoxAlmacen.setEnabled(true);
                 comboBoxUsuarios.setSelectedIndex(-1);
                 comboBoxUsuarios.setEnabled(true);
+
+                jButtonGuardarConteo.setEnabled(false);
+                botonImprimir.setEnabled(false);
+                botonCancelarTodoDesdeFActura.setEnabled(false);
+                botonImprimir.setEnabled(false);
+                botonReiniciar.setEnabled(false);
 
             }
         } catch (Exception e) {
@@ -1535,7 +1622,10 @@ public class Distribuidora1 extends javax.swing.JPanel {
                 this.txtCantidad.setText("");
                 this.txtNroBulto.setText("");
                 this.txtNroBulto.setEnabled(false);
+                this.txtCantidad.setEnabled(false);
                 this.txtBusqueda.requestFocus();
+                this.jXButtonTotalizar.setEnabled(true);
+                this.botonReiniciar.setEnabled(true);
 
                 //Remover de Lista Actual Producto Agregago
                 //this.proEPaux = proEP;
@@ -1553,16 +1643,21 @@ public class Distribuidora1 extends javax.swing.JPanel {
     }//GEN-LAST:event_botonAgregarActionPerformed
 
     private void jXButtonTotalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXButtonTotalizarActionPerformed
+        try {
+            if (jTDetalleRegistroDistribuidora.getRowCount() != 0
+                    && listaEP.isEmpty()) {
 
-        if (jTDetalleRegistroDistribuidora.getRowCount() != 0) {
-            try {
-                this.jButtonGuardarConteo.setEnabled(true);
-                botonGeneralNotas.setEnabled(true);
+                jButtonGuardarConteo.setEnabled(true);
+                botonReiniciar.setEnabled(true);
                 botonImprimir.setEnabled(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "DEBE Finalizar de Contabilizar TODOS Los Productos"
+                        + "Registrado en la Factura.");
 
-            } catch (Exception e) {
             }
+        } catch (Exception e) {
         }
+
     }//GEN-LAST:event_jXButtonTotalizarActionPerformed
 
     private void botonImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonImprimirActionPerformed
@@ -1616,7 +1711,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
         botonAgregarActionPerformed(null);
     }//GEN-LAST:event_txtNroBultoActionPerformed
 
-    private void botonGeneralNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGeneralNotasActionPerformed
+    private void botonReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonReiniciarActionPerformed
         try {
             int respuesta = JOptionPane.showConfirmDialog(null, "¿Seguro Desea Cancelar?", "Confirmacion", JOptionPane.YES_NO_OPTION);
 
@@ -1624,6 +1719,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
                 //Colapsar Panel
                 this.jXTaskPaneCabeceraDistribuidora.setCollapsed(false);
                 listaEP.clear();
+
                 //Limpiar Campos de Texto
                 this.txtCodigo.setText("");
                 this.txtDescripcion.setText("");
@@ -1635,6 +1731,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
 
                 //Limpiar Tablas y Lista Detalles
                 listaDetalle.clear();
+
                 jTDetalleRegistroDistribuidora.removeAll();
                 modeloTablaTomaFisicaInventarioDistribuidora.fireTableDataChanged();
 
@@ -1693,22 +1790,29 @@ public class Distribuidora1 extends javax.swing.JPanel {
                 comboBoxAlmacen.setEnabled(true);
                 comboBoxUsuarios.setSelectedIndex(-1);
                 comboBoxUsuarios.setEnabled(true);
+
+                jButtonGuardarConteo.setEnabled(false);
+                botonImprimir.setEnabled(false);
+                jXButtonTotalizar.setEnabled(false);
+                botonReiniciar.setEnabled(false);
+                botonCancelarTodoDesdeFActura.setEnabled(false);
+
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Excepcion al Cencelar Agregar" + e);
             Logger.getLogger(Tiendas1.class.getName()).log(Level.SEVERE, null, e);
         }
-    }//GEN-LAST:event_botonGeneralNotasActionPerformed
+    }//GEN-LAST:event_botonReiniciarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.jdesktop.swingx.JXButton botonAgregar;
     private org.jdesktop.swingx.JXButton botonCancelarTodoDesdeFActura;
     private org.jdesktop.swingx.JXButton botonConfirmarFactura;
-    private org.jdesktop.swingx.JXButton botonGeneralNotas;
     private org.jdesktop.swingx.JXButton botonImprimir;
     private org.jdesktop.swingx.JXButton botonLimpiarAgregar;
     private org.jdesktop.swingx.JXButton botonListarProductosInventariTienda;
+    private org.jdesktop.swingx.JXButton botonReiniciar;
     private org.jdesktop.swingx.JXButton botonValidar;
     private org.jdesktop.swingx.JXBusyLabel busy;
     private org.jdesktop.swingx.JXBusyLabel busy2;

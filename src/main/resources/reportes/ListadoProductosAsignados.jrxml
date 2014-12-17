@@ -53,6 +53,8 @@
 	</subDataset>
 	<parameter name="facturas" class="java.lang.Integer"/>
 	<parameter name="fecha" class="java.util.Date"/>
+	<parameter name="origen" class="java.lang.String"/>
+	<parameter name="destino" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -62,8 +64,8 @@
 	<pageHeader>
 		<band height="113" splitType="Stretch">
 			<staticText>
-				<reportElement x="227" y="19" width="100" height="20" uuid="8245c650-e2b7-45e0-a87f-a958c66e3e1a"/>
-				<text><![CDATA[Static text]]></text>
+				<reportElement x="189" y="17" width="184" height="20" uuid="8245c650-e2b7-45e0-a87f-a958c66e3e1a"/>
+				<text><![CDATA[LISTADO PRODUCTOS ASIGNADOS]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="435" y="53" width="100" height="20" uuid="1014807f-4705-4960-b69e-533a095f677b"/>
@@ -73,10 +75,14 @@
 				<reportElement x="435" y="19" width="100" height="20" uuid="4882eaef-ef2e-4e46-8305-881a36e2d744"/>
 				<textFieldExpression><![CDATA[$P{fecha}]]></textFieldExpression>
 			</textField>
-			<image>
-				<reportElement mode="Transparent" x="14" y="17" width="98" height="56" uuid="5edd3297-a199-4bab-b544-e56113c1e904"/>
-				<imageExpression><![CDATA["C:\\Users\\Pablo\\Documents\\NetBeansProjects\\SistemaMiyake\\SistemaMiyake\\src\\main\\resources\\iconos\\logomiyakeMini.png"]]></imageExpression>
-			</image>
+			<staticText>
+				<reportElement x="10" y="53" width="53" height="20" uuid="9e4f9909-826c-4fc7-bace-86a9dfc88e5e"/>
+				<text><![CDATA[ORIGEN:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="83" width="53" height="16" uuid="a67eb844-948c-4556-8608-0be7f9ac6fec"/>
+				<text><![CDATA[DESTINO:]]></text>
+			</staticText>
 		</band>
 	</pageHeader>
 	<columnHeader>

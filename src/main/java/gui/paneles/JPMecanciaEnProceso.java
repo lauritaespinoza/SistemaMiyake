@@ -5,6 +5,7 @@
  */
 package gui.paneles;
 
+import gui.dialogos.JDInventarioTienda;
 import gui.ventanas.JFInicioSecionMiyake;
 import util.almacen.DetalleRegistro;
 import modelos.tablas.ModeloTablaDetalleRegistroAsignacion;
@@ -28,7 +29,18 @@ import modelos.mapeos.SalidaParaTiendaDetalle;
 import modelos.mapeos.SalidaParaTiendaDetallePK;
 import modelos.mapeos.Usuario;
 import static gui.ventanas.JFInicioSecionMiyake.resultListUsuarios;
+import java.awt.Dialog;
+import java.awt.HeadlessException;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.table.DefaultTableModel;
+import modelos.tablas.TableModelReport;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -98,7 +110,6 @@ public class JPMecanciaEnProceso extends javax.swing.JPanel {
         barraBusquedaMercanciaProceso = new org.jdesktop.swingx.JXFindBar(jXTableMercanciaEnProceso.getSearchable());
         busy = new org.jdesktop.swingx.JXBusyLabel();
         jXButtonImprimir = new org.jdesktop.swingx.JXButton();
-        jXButtonCancelar = new org.jdesktop.swingx.JXButton();
 
         setAutoscrolls(true);
         setLayout(new java.awt.BorderLayout());
@@ -193,6 +204,7 @@ public class JPMecanciaEnProceso extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jXTableMercanciaEnProceso.setToolTipText("Presione (Ctrl + F) Para Buscar.");
         jXTableMercanciaEnProceso.setSortable(false);
         jScrollPane5.setViewportView(jXTableMercanciaEnProceso);
 
@@ -215,8 +227,8 @@ public class JPMecanciaEnProceso extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(barraBusquedaMercanciaProceso, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jLayeredPaneProductos.setLayer(jScrollPane5, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPaneProductos.setLayer(barraBusquedaMercanciaProceso, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -230,12 +242,9 @@ public class JPMecanciaEnProceso extends javax.swing.JPanel {
 
         jXButtonImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1418331399_Print.png"))); // NOI18N
         jXButtonImprimir.setText("Imprimir");
-
-        jXButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416789274_clear_left.png"))); // NOI18N
-        jXButtonCancelar.setText("Cancelar");
-        jXButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+        jXButtonImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jXButtonCancelarActionPerformed(evt);
+                jXButtonImprimirActionPerformed(evt);
             }
         });
 
@@ -249,8 +258,7 @@ public class JPMecanciaEnProceso extends javax.swing.JPanel {
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
                     .addGroup(jLayeredPanePrincipalLayout.createSequentialGroup()
-                        .addComponent(jXButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jXButtonImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jLayeredPanePrincipalLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -266,18 +274,15 @@ public class JPMecanciaEnProceso extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jLayeredPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jXButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jXButtonImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addComponent(jXButtonImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
         );
         jLayeredPanePrincipal.setLayer(jScrollPane3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPanePrincipal.setLayer(jScrollPane4, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPanePrincipal.setLayer(busy, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPanePrincipal.setLayer(jXButtonImprimir, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPanePrincipal.setLayer(jXButtonCancelar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jScrollPane2.setViewportView(jLayeredPanePrincipal);
 
@@ -370,25 +375,59 @@ public class JPMecanciaEnProceso extends javax.swing.JPanel {
 
     }//GEN-LAST:event_comboBoxAlmacenDesdeMouseClicked
 
-    private void jXButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXButtonCancelarActionPerformed
-//        String SQL = "COPY (select 0 as a,1 as b,replicate(' ', 7) || id_producto As id_producto, \n"
-//                + "		LTRIM(replace((RTRIM(descripcion)),',',' ')) as descripcion, \n"
-//                + "		(REPLICATE(' ', 3)||Cast(id_clasificacion as varchar)) As id_clasificacion,\n"
-//                + "		0 as a1,0 as a2,0 as a3,0 as a4,65 as excento,\n"
-//                + "		\n"
-//                + "		' ' as i, ' ' as j, 0 as k, 0 as l,0 as m, 0 as n, 0 as p, 0 as q,0 as r,0 as s,\n"
-//                + "		' ' as t,0 as u,1 as v,0 as w,0 as x,0 as y,0 as z,0 as ab \n"
-//                + "		\n"
-//                + "From producto  \n"
-//                + "where precio_original>0.05 and descripcion not like ' '  and id_producto>=100000\n"
-//                + "Order By id_producto) TO 'C:/Users/Pablo/export/prueba.txt' WITH DELIMITER AS ',' ";
-        //     String SQL="select now() as laHora";
+    private void jXButtonImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXButtonImprimirActionPerformed
+      Thread hilo = new Thread() {
 
-        String SQL = "COPY (select * from usuario) TO "
-                + "'C:/Users/Pablo/export/prueba.txt' WITH DELIMITER AS ','";
-        ObjectModelDAO.getResultQueryString(SQL);
+            @Override
+            public void run() {
+                busy.setText("Generando Archivo...!!!");
+                busy.setEnabled(true);
+                busy.setVisible(true);
+                busy.setBusy(true);
+                try {
 
-    }//GEN-LAST:event_jXButtonCancelarActionPerformed
+                    JasperPrint jasperPrint = null;
+
+                    Map<String, Object> parametro = new HashMap<>();
+                    String s = "";                                      //jtableListaProductosInventarioTienda
+                    TableModelReport dataSourse = new TableModelReport(jXTableMercanciaEnProceso.getModel());
+                    parametro.put("tienda", almacenDesde.getDescripcion());
+                    parametro.put("REPORT_DATA_SOURSE", dataSourse); 
+                    //JasperCompileManager.compileReport(rutaJrxml);
+                    JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ListadoInventarioTienda.jasper"));
+
+                    jasperPrint = JasperFillManager.fillReport(reporte, parametro, dataSourse);
+                    JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
+                    jasperViewer.setModalExclusionType(Dialog.ModalExclusionType.TOOLKIT_EXCLUDE);
+                    jasperViewer.setTitle("Listado de Productos Asignados en Proceso.");
+                    jasperViewer.setVisible(true);
+//                    int respuesta = JOptionPane.showConfirmDialog(null, "El Archivo fue Generado con Exito,"
+//                            + "¿Desea Continuar Selecionando Una Factura Pendiente?");
+//
+//                    if (respuesta == JOptionPane.YES_OPTION) {
+//
+//                    }
+//                    if (respuesta == JOptionPane.NO_OPTION) {
+//
+//                        jasperViewer.requestFocus();
+//                    }
+
+                } catch (JRException | HeadlessException e) {
+                    JOptionPane.showMessageDialog(null, "Se a Dectectado Un Proble Con Proceso de Seleccion de Productos Disponible en Inventario,"
+                            + "Por Favor Vuelva a Intentarlo.");
+                    Logger.getLogger(JDInventarioTienda.class.getName()).log(Level.SEVERE, null, e);
+                    System.err.println("Seleccionando Productos Disponible en Inventario" + e);
+
+                }
+                //busy
+                busy.setEnabled(false);
+                busy.setVisible(false);
+                busy.setBusy(false);
+
+            }
+        };
+        hilo.start();
+    }//GEN-LAST:event_jXButtonImprimirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -402,7 +441,6 @@ public class JPMecanciaEnProceso extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private org.jdesktop.swingx.JXButton jXButtonCancelar;
     private org.jdesktop.swingx.JXButton jXButtonConfirmar;
     private org.jdesktop.swingx.JXButton jXButtonImprimir;
     private org.jdesktop.swingx.JXButton jXButtonReiniciar;

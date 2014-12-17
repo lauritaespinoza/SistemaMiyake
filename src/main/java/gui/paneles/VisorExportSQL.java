@@ -20,7 +20,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import modelos.mapeos.Almacen;
 import static util.JavaUtil.cons_seleccionar;
 
-
 /**
  *
  * @author Pablo
@@ -28,9 +27,9 @@ import static util.JavaUtil.cons_seleccionar;
 public class VisorExportSQL extends javax.swing.JFrame {
 
     private CSVreader csvReader;
-     
-   private int pos_tienda ;
-   // private int pos_proveedor;
+
+    private int pos_tienda;
+    // private int pos_proveedor;
     private List tiendas;
 
     public VisorExportSQL() {
@@ -405,19 +404,19 @@ public class VisorExportSQL extends javax.swing.JFrame {
     private void cargarCB() {
         try {
             tiendas = ObjectModelDAO.getResultQuery("from Almacen a order by a.idAlmacen asc");
-        cb_tienda.removeAllItems();
-        cb_tienda.addItem(cons_seleccionar);
-        for (Object object : tiendas) {
-            Almacen a = (Almacen) object;
-            cb_tienda.addItem(a.getNombre());
-        }
-        pos_tienda = -1;
+            cb_tienda.removeAllItems();
+            cb_tienda.addItem(cons_seleccionar);
+            for (Object object : tiendas) {
+                Almacen a = (Almacen) object;
+                cb_tienda.addItem(a.getNombre());
+            }
+            pos_tienda = -1;
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "ERROR AL CARGAR ComBox : "+e);
-            System.err.println("ERROR AL CARGAR ComBox : "+e);
+            JOptionPane.showMessageDialog(null, "ERROR AL CARGAR ComBox : " + e);
+            System.err.println("ERROR AL CARGAR ComBox : " + e);
         }
-       
+
     }
 
     private void AbrirArchivoBoton_ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbrirArchivoBoton_ActionPerformed
@@ -461,11 +460,10 @@ public class VisorExportSQL extends javax.swing.JFrame {
 
             @Override
             public void run() {
-               
 
                 try {
                     String nombreFile = JOptionPane.showInputDialog(null, "Introduc Nombre del Archivo");
-                    
+
                     String SQL = "COPY (  SELECT E'\\r' as zx, "
                             + "  0 as a,1 as b, "
                             + "  REPLICATE(' ', 7)||inventario_tienda.id_producto AS codigo,  "
@@ -492,29 +490,31 @@ public class VisorExportSQL extends javax.swing.JFrame {
                             + "  inventario_tienda.precio_con_descuento>0.05 and public.division.id_division<>9 and producto.descripcion not like ' ' and "
                             + "  inventario_tienda.id_almacen = 2 "
                             //+ "  Order by producto.id_producto ) TO '"+System.getProperty("user.home", "C:\\")+"\\"+nombreFile+"' WITH DELIMITER AS ',' ";
-                            + "  Order by producto.id_producto ) TO '"+ System.getProperty("user.home")+"\\Documents\\"+nombreFile+"' WITH DELIMITER AS ',' ";
+                            + "  Order by producto.id_producto ) TO '" + System.getProperty("user.home") + "\\Documents\\" + nombreFile + "' WITH DELIMITER AS ',' ";
 
                     //List l= 
-                     busy.setEnabled(true);
-                busy.setVisible(true);
-                busy.setBusy(true);
-                
+                    busy.setEnabled(true);
+                    busy.setVisible(true);
+                    busy.setBusy(true);
+
                     ObjectModelDAO.executeQueryString(SQL);
 //           if(l==null){
 //               JOptionPane.showInputDialog("Mensaje");
 //           }else{
 //               JOptionPane.showInputDialog("Mensaje2");
-//           }
-                    busy.setEnabled(false);
-                    busy.setVisible(false);
-                    busy.setBusy(false);
+////           }
+//                    busy.setEnabled(false);
+//                    busy.setVisible(false);
+//                    busy.setBusy(false);
 
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "ERROR Asignando Mercancia :" + e);
                     System.err.println("ERROR Asignando Mercancia :" + e);
                     Logger.getLogger(VisorExportSQL.class.getName()).log(Level.SEVERE, null, e);
                 }
-
+                busy.setEnabled(false);
+                busy.setVisible(false);
+                busy.setBusy(false);
             }
         };
         hilo.start();

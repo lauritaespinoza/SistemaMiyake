@@ -5,13 +5,15 @@
  */
 package gui.paneles;
 
+import gui.dialogos.JDInventarioTienda;
 import gui.ventanas.JFInicioSecionMiyake;
-import util.almacen.DetalleRegistro;
-import modelos.tablas.ModeloTablaDetalleRegistroAsignacion;
 import util.JavaUtil;
 import hibernate.DAO.ObjectModelDAO;
-import java.util.ArrayList;
+import java.awt.Dialog;
+import java.awt.HeadlessException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -19,6 +21,13 @@ import javax.swing.ListSelectionModel;
 import modelos.mapeos.Almacen;
 import modelos.mapeos.InventarioTienda;
 import modelos.mapeos.Usuario;
+import modelos.tablas.TableModelReport;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -26,21 +35,12 @@ import modelos.mapeos.Usuario;
  */
 public class JPConsultaInventario extends javax.swing.JPanel {
 
-    Usuario ususrioActual = null;
     Usuario user = JFInicioSecionMiyake.us1;
     Almacen almacenHasta = null;
     Almacen almacenDesde = null;
     List resultListAlmacen = null;
     List resultListInventarioTienda = null;
-
-    InventarioTienda inv = null;
-    InventarioTienda invAux = null;
-    int posUs = -1;
-    int posTi = -1;
     int posTi2 = -1;
-    List<DetalleRegistro> listaDetalle = new ArrayList<>();
-    ModeloTablaDetalleRegistroAsignacion modeloTablaAsignacion = new ModeloTablaDetalleRegistroAsignacion();
-
     /**
      * Creates new form NewJPanel
      */
@@ -68,10 +68,10 @@ public class JPConsultaInventario extends javax.swing.JPanel {
         //  List<List> resultListUsuarios = FventanaIncial.listaUsuarioMain;
         this.comboBoxAlmacenDesde.setSelectedIndex(-1);
         this.busy.setVisible(false);
-//        this.jXTablaConsultarMercanciaInventarios.setAutoCreateRowSorter(true);
-//        this.jXTablaConsultarMercanciaInventarios.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-//        this.jXTablaConsultarMercanciaInventarios.setColumnControlVisible(true);
-        //  TableRowFilterSupport.forTable(jXTable1).searchable(true).apply();
+        this.jXTablaConsultarMercanciaInventarios.setAutoCreateRowSorter(true);
+        this.jXTablaConsultarMercanciaInventarios.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        this.jXTablaConsultarMercanciaInventarios.setColumnControlVisible(true);
+        //TableRowFilterSupport.forTable(jXTable1).searchable(true).apply();
 
     }
 
@@ -113,12 +113,11 @@ public class JPConsultaInventario extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jXTablaConsultarMercanciaInventarios = new org.jdesktop.swingx.JXTable();
         barraBusquedaExistencia = new org.jdesktop.swingx.JXFindBar(jXTablaConsultarMercanciaInventarios.getSearchable());
-        jXButtonAceptar = new org.jdesktop.swingx.JXButton();
         jXButtonImprimir = new org.jdesktop.swingx.JXButton();
-        jXButtonCancelar = new org.jdesktop.swingx.JXButton();
         busy = new org.jdesktop.swingx.JXBusyLabel();
 
         setAutoscrolls(true);
+        setLayout(new java.awt.BorderLayout());
 
         jScrollPane2.setAutoscrolls(true);
 
@@ -229,22 +228,21 @@ public class JPConsultaInventario extends javax.swing.JPanel {
             .addGroup(jLayeredPaneProductosLayout.createSequentialGroup()
                 .addComponent(barraBusquedaExistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+                .addGap(12, 12, 12))
         );
         jLayeredPaneProductos.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPaneProductos.setLayer(barraBusquedaExistencia, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jScrollPane4.setViewportView(jLayeredPaneProductos);
 
-        jXButtonAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416789267_clean.png"))); // NOI18N
-        jXButtonAceptar.setText("Aceptar");
-
         jXButtonImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1418331399_Print.png"))); // NOI18N
         jXButtonImprimir.setText("Imprimir");
-
-        jXButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416789274_clear_left.png"))); // NOI18N
-        jXButtonCancelar.setText("Cancelar");
+        jXButtonImprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jXButtonImprimirActionPerformed(evt);
+            }
+        });
 
         busy.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         busy.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -255,6 +253,10 @@ public class JPConsultaInventario extends javax.swing.JPanel {
         jLayeredPanePrincipal.setLayout(jLayeredPanePrincipalLayout);
         jLayeredPanePrincipalLayout.setHorizontalGroup(
             jLayeredPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPanePrincipalLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jLayeredPanePrincipalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jLayeredPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,16 +265,8 @@ public class JPConsultaInventario extends javax.swing.JPanel {
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
                         .addGap(14, 14, 14))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPanePrincipalLayout.createSequentialGroup()
-                        .addComponent(jXButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jXButtonImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jXButtonAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
-            .addGroup(jLayeredPanePrincipalLayout.createSequentialGroup()
-                .addGap(289, 289, 289)
-                .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jXButtonImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         jLayeredPanePrincipalLayout.setVerticalGroup(
             jLayeredPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -282,39 +276,19 @@ public class JPConsultaInventario extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jLayeredPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jXButtonAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jXButtonImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jXButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jXButtonImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jLayeredPanePrincipal.setLayer(jScrollPane3, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPanePrincipal.setLayer(jScrollPane4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPanePrincipal.setLayer(jXButtonAceptar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPanePrincipal.setLayer(jXButtonImprimir, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPanePrincipal.setLayer(jXButtonCancelar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPanePrincipal.setLayer(busy, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jScrollPane2.setViewportView(jLayeredPanePrincipal);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        add(jScrollPane2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jXButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXButtonConfirmarActionPerformed
@@ -373,12 +347,9 @@ public class JPConsultaInventario extends javax.swing.JPanel {
             int respuesta = JOptionPane.showConfirmDialog(null, "¿Seguro Desea Cancelar?", "Confirmacion", JOptionPane.YES_NO_OPTION);
 
             if (respuesta == JOptionPane.YES_OPTION) {
-
-                this.resultListInventarioTienda.clear();
-                this.jXTablaConsultarMercanciaInventarios.removeAll();
-
-                //OBjetos
-                this.ususrioActual = null;
+ 
+                resultListInventarioTienda=null; 
+                //OBjetos 
                 this.almacenDesde = null;
                 this.almacenHasta = null;
                 //Controles ComboBox
@@ -400,6 +371,60 @@ public class JPConsultaInventario extends javax.swing.JPanel {
 
     }//GEN-LAST:event_comboBoxAlmacenDesdeMouseClicked
 
+    private void jXButtonImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXButtonImprimirActionPerformed
+         Thread hilo = new Thread() {
+
+            @Override
+            public void run() {
+                busy.setText("Generando Archivo...!!!");
+                busy.setEnabled(true);
+                busy.setVisible(true);
+                busy.setBusy(true);
+                try {
+
+                    JasperPrint jasperPrint = null;
+
+                    Map<String, Object> parametro = new HashMap<>();
+                    String s = "";                                      //jtableListaProductosInventarioTienda
+                    TableModelReport dataSourse = new TableModelReport(jXTablaConsultarMercanciaInventarios.getModel());
+                    parametro.put("tienda", almacenDesde.getDescripcion());
+                    parametro.put("REPORT_DATA_SOURSE", dataSourse); 
+                    //JasperCompileManager.compileReport(rutaJrxml);
+                    JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ListadoInventarioTienda.jasper"));
+
+                    jasperPrint = JasperFillManager.fillReport(reporte, parametro, dataSourse);
+                    JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
+                    jasperViewer.setModalExclusionType(Dialog.ModalExclusionType.TOOLKIT_EXCLUDE);
+                    jasperViewer.setTitle("Listado de Productos Disponible en Inventario.");
+                    jasperViewer.setVisible(true);
+//                    int respuesta = JOptionPane.showConfirmDialog(null, "El Archivo fue Generado con Exito,"
+//                            + "¿Desea Continuar Selecionando Una Factura Pendiente?");
+//
+//                    if (respuesta == JOptionPane.YES_OPTION) {
+//
+//                    }
+//                    if (respuesta == JOptionPane.NO_OPTION) {
+//
+//                        jasperViewer.requestFocus();
+//                    }
+
+                } catch (JRException | HeadlessException e) {
+                    JOptionPane.showMessageDialog(null, "Se a Dectectado Un Proble Con Proceso de Seleccion de Productos Disponible en Inventario,"
+                            + "Por Favor Vuelva a Intentarlo.");
+                    Logger.getLogger(JDInventarioTienda.class.getName()).log(Level.SEVERE, null, e);
+                    System.err.println("Seleccionando Productos Disponible en Inventario" + e);
+
+                }
+                //busy
+                busy.setEnabled(false);
+                busy.setVisible(false);
+                busy.setBusy(false);
+
+            }
+        };
+        hilo.start();
+    }//GEN-LAST:event_jXButtonImprimirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.jdesktop.swingx.JXFindBar barraBusquedaExistencia;
@@ -412,8 +437,6 @@ public class JPConsultaInventario extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private org.jdesktop.swingx.JXButton jXButtonAceptar;
-    private org.jdesktop.swingx.JXButton jXButtonCancelar;
     private org.jdesktop.swingx.JXButton jXButtonConfirmar;
     private org.jdesktop.swingx.JXButton jXButtonImprimir;
     private org.jdesktop.swingx.JXButton jXButtonReiniciar;

@@ -87,9 +87,6 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
         txtTitulo = new javax.swing.JLabel();
         botonImprimir = new javax.swing.JButton();
         busy = new org.jdesktop.swingx.JXBusyLabel();
-        jMenuBarDialogoFac = new javax.swing.JMenuBar();
-        jMenuOpciones = new javax.swing.JMenu();
-        jMenu_Ayuda_ = new javax.swing.JMenu();
 
         jFrameImprimir.setName("jFrameImprimir"); // NOI18N
 
@@ -183,18 +180,6 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
         busy.setText("Procesando...!!!");
         busy.setName("busy"); // NOI18N
 
-        jMenuBarDialogoFac.setName("jMenuBarDialogoFac"); // NOI18N
-
-        jMenuOpciones.setText("Opciones");
-        jMenuOpciones.setName("jMenuOpciones"); // NOI18N
-        jMenuBarDialogoFac.add(jMenuOpciones);
-
-        jMenu_Ayuda_.setText("Ayuda");
-        jMenu_Ayuda_.setName("jMenu_Ayuda_"); // NOI18N
-        jMenuBarDialogoFac.add(jMenu_Ayuda_);
-
-        setJMenuBar(jMenuBarDialogoFac);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -217,11 +202,10 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
                                 .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE))
                             .addComponent(jScrollPane1)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(159, 159, 159)
                                 .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(ayuda)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(ayuda)))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -230,11 +214,11 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ayuda)
-                    .addComponent(txtTitulo))
-                .addGap(18, 18, 18)
+                    .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jXFindBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
@@ -354,9 +338,6 @@ public class JDFacturasPendientes extends javax.swing.JDialog {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JFrame jFrameImprimir;
-    private javax.swing.JMenuBar jMenuBarDialogoFac;
-    private javax.swing.JMenu jMenuOpciones;
-    private javax.swing.JMenu jMenu_Ayuda_;
     private javax.swing.JScrollPane jScrollPane1;
     private org.jdesktop.swingx.JXFindBar jXFindBar1;
     private org.jdesktop.swingx.JXTable jtListaFactura;
