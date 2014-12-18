@@ -344,6 +344,11 @@ public class JPexportData extends javax.swing.JPanel {
 
     private void GenerarArchivoBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerarArchivoBotonActionPerformed
 
+        if (cb_tienda.getSelectedIndex() <= 0) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar una tienda");
+            return;
+        }
+
         Thread hilo = new Thread() {
 
             @Override
@@ -410,7 +415,8 @@ public class JPexportData extends javax.swing.JPanel {
                                     + "  clasificacion.id_departamento = departamento.id_departamento AND "
                                     + "  departamento.id_division = division.id_division AND "
                                     + "  inventario_tienda.precio_con_descuento>0.05 and public.division.id_division<>9 and producto.descripcion not like ' ' and "
-                                    + "  inventario_tienda.id_almacen = 2 "
+                                    + "  inventario_tienda.id_almacen = "
+                                    + ((Almacen) tiendas.get(cb_tienda.getSelectedIndex() - 1)).getIdAlmacen()
                                     + "  Order by producto.id_producto ) TO 'C:\\SistemaMiyake\\exportScript\\" + nombreFile + "' WITH DELIMITER AS ',' ";
                             ObjectModelDAO.executeQueryString(SQL);
                             break;
