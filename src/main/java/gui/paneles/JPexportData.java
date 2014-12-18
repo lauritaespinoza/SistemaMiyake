@@ -95,8 +95,9 @@ public class JPexportData extends javax.swing.JPanel {
         jLabel23 = new javax.swing.JLabel();
         exportarBD = new javax.swing.JButton();
 
+        filesc.setApproveButtonToolTipText("");
         filesc.setControlButtonsAreShown(false);
-        filesc.setCurrentDirectory(new java.io.File("\\\\192.2.1.70\\nueva"));
+        filesc.setCurrentDirectory(new java.io.File("\\\\192.2.1.70\\SistemaMiyake\\exportScript"));
 
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
 
@@ -356,9 +357,7 @@ public class JPexportData extends javax.swing.JPanel {
                     System.err.println("tipo valor : " + tipo);
                     switch (tipo) {
                         case 1: // Generar archivos por codigo de barras
-                            String nombreFileCodeBar = JOptionPane.showInputDialog(null, "Introduc Nombre del Archivo");                            
-                           File carpeta=new File("\\\\192.2.1.70\\nueva");//cuando se ejecuta esta operacion
-                            carpeta.mkdirs();
+                            String nombreFileCodeBar = JOptionPane.showInputDialog(null, "Introduc Nombre del Archivo");
 
                             String SQLDB = "COPY (SELECT "
                                     + " 0 as az, "
@@ -380,7 +379,7 @@ public class JPexportData extends javax.swing.JPanel {
                                     + "  division.id_division<>9 AND "
                                     + "  producto.descripcion not like ' ' AND "
                                     //+ "  inventario_tienda.precio_con_descuento>=0.05 ) TO '" + System.getProperty("user.home") + "\\" + nombreFileCodeBar + "' WITH DELIMITER AS ',' ";
-                                    + "  inventario_tienda.precio_con_descuento>=0.05 ) TO 'C:\\wamp\\www\\sistema_miyake\\exports\\" + nombreFileCodeBar + "' WITH DELIMITER AS ',' ";
+                                    + "  inventario_tienda.precio_con_descuento>=0.05 ) TO 'C:\\SistemaMiyake\\exportScript\\" + nombreFileCodeBar + "' WITH DELIMITER AS ',' ";
 
                             ObjectModelDAO.executeQueryString(SQLDB);
                             break;
@@ -412,7 +411,7 @@ public class JPexportData extends javax.swing.JPanel {
                                     + "  departamento.id_division = division.id_division AND "
                                     + "  inventario_tienda.precio_con_descuento>0.05 and public.division.id_division<>9 and producto.descripcion not like ' ' and "
                                     + "  inventario_tienda.id_almacen = 2 "
-                                    + "  Order by producto.id_producto ) TO '" + System.getProperty("user.home") + "\\Documents\\" + nombreFile + "' WITH DELIMITER AS ',' ";
+                                    + "  Order by producto.id_producto ) TO 'C:\\SistemaMiyake\\exportScript\\" + nombreFile + "' WITH DELIMITER AS ',' ";
                             ObjectModelDAO.executeQueryString(SQL);
                             break;
 
