@@ -273,11 +273,6 @@
             <artifactId>pdf-renderer</artifactId>
             <version>1.0.5</version>
         </dependency>
-        <dependency>
-            <groupId>analizador-PDF2</groupId>
-            <artifactId>analizador-PDF2</artifactId>
-            <version>1.22.Final</version>
-        </dependency>
     </dependencies>
     
     <repositories>
