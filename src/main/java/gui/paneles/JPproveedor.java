@@ -673,22 +673,20 @@ public class JPproveedor extends javax.swing.JPanel {
                 .addComponent(jLabel21)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 704, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 781, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(bEliminarProveedor)
-                .addGap(0, 10, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addComponent(jLabel21)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 705, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 705, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
                         .addComponent(bEliminarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
@@ -696,6 +694,8 @@ public class JPproveedor extends javax.swing.JPanel {
         jScrollPane7.setViewportView(jPanel4);
 
         panelScrudProveedor.addTab("Eliminar", jScrollPane7);
+
+        panelScrudProveedor.setSelectedIndex(-1);
 
         add(panelScrudProveedor);
     }// </editor-fold>//GEN-END:initComponents
