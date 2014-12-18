@@ -225,7 +225,7 @@ public class JPusuario extends javax.swing.JPanel {
         jLabel5.setText("Contraseña");
 
         botonCrearUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415663093_add-user.png"))); // NOI18N
-        botonCrearUsuarios.setText("Crear Contacto");
+        botonCrearUsuarios.setText("Crear Usuario");
         botonCrearUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCrearUsuariosActionPerformed(evt);
