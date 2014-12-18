@@ -249,7 +249,7 @@ public class JDInventarioTienda extends javax.swing.JDialog {
                     jasperPrint = JasperFillManager.fillReport(reporte, parametro, dataSourse);
                     JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
                     jasperViewer.setModalExclusionType(Dialog.ModalExclusionType.TOOLKIT_EXCLUDE);
-                    jasperViewer.setTitle("Reporte de Toma Fisica Distribuidoras.");
+                    jasperViewer.setTitle("Listado de Productos Disponible en Inventario.");
                     jasperViewer.setVisible(true);
 //                    int respuesta = JOptionPane.showConfirmDialog(null, "El Archivo fue Generado con Exito,"
 //                            + "¿Desea Continuar Selecionando Una Factura Pendiente?");
@@ -263,10 +263,10 @@ public class JDInventarioTienda extends javax.swing.JDialog {
 //                    }
 
                 } catch (JRException | HeadlessException e) {
-                    JOptionPane.showMessageDialog(null, "Se a Dectectado Un Proble Con Proceso de Seleccion de Facturas,"
+                    JOptionPane.showMessageDialog(null, "Se a Dectectado Un Proble Con Proceso de Seleccion de Productos Disponible en Inventario,"
                             + "Por Favor Vuelva a Intentarlo.");
                     Logger.getLogger(JDInventarioTienda.class.getName()).log(Level.SEVERE, null, e);
-                    System.err.println("Seleccionando Facturas" + e);
+                    System.err.println("Seleccionando Productos Disponible en Inventario" + e);
 
                 }
                 //busy
