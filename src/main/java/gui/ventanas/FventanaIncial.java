@@ -132,9 +132,7 @@ public class FventanaIncial extends javax.swing.JFrame {
                 jMenuItemDetFactura.setEnabled(false);
                 jButtonNotas.setEnabled(false);
                 jButtonFacturas.setEnabled(false);
-                jMenuItemUsuarioCrear.setEnabled(false);
-                jMenuItemUsuarioModificar.setEnabled(false);
-                jMenuItemUsuarioEliminar.setEnabled(false);
+                menuUsuario.setEnabled(false);
                 menuUtilidades.setEnabled(false);
                 break;
             case 4://deposito
@@ -142,7 +140,6 @@ public class FventanaIncial extends javax.swing.JFrame {
                 jButtonPrecio.setEnabled(false);
                 btnCrudProveedr.setEnabled(false);
                 jButtonAlmacen.setEnabled(false);
-                jmInventarioDiario.setEnabled(false);
                 jButtonNotas.setEnabled(false);
                 jButtonFacturas.setEnabled(false);
                 btnCrudProducto.setEnabled(false);
@@ -153,18 +150,13 @@ public class FventanaIncial extends javax.swing.JFrame {
                 jMenuProveedor_.setEnabled(false);
                 jMenuRegistroContainer_.setEnabled(false);
                 jMenuGestionPrecios_.setEnabled(false);
-                jMenuGestionAlmacenes_.setEnabled(false);
-                jMenuItemTomaFisicaTiendas.setEnabled(false);
-                jMenuItemInvDiario.setEnabled(false);
-                jMenuNotasDebitoCredito_.setEnabled(false);
-                jMenuItemDetFactura.setEnabled(false);
                 menuProducto.setEnabled(false);
-                jMenuItemUsuarioCrear.setEnabled(false);
-                jMenuItemUsuarioModificar.setEnabled(false);
-                jMenuItemUsuarioEliminar.setEnabled(false);
+                menuUsuario.setEnabled(false);
                 menuDetalles.setEnabled(false);
                 menuUtilidades.setEnabled(false);
                 TomaFisicaTiendas_boton_.setEnabled(false);
+                jButtonControldeInvetario.setEnabled(false);
+                menuTiendas.setEnabled(false);
                 break;
             case 5://inventario (tambien en tienda)
                 btnContainer.setEnabled(false);
@@ -182,9 +174,7 @@ public class FventanaIncial extends javax.swing.JFrame {
                 menuDistribuidor.setEnabled(false);
                 jMenuGestionAlmacenes_.setEnabled(false);
                 menuProducto.setEnabled(false);
-                jMenuItemUsuarioCrear.setEnabled(false);
-                jMenuItemUsuarioModificar.setEnabled(false);
-                jMenuItemUsuarioEliminar.setEnabled(false);
+                menuUsuario.setEnabled(false);
                 menuDetalles.setEnabled(false);
                 menuUtilidades.setEnabled(false);
                 break;
@@ -664,7 +654,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
         menuControlEnvio.add(jmMercanciaProceso);
 
-        jmConsultarInventario.setText("Consultar Inventario");
+        jmConsultarInventario.setText("Existencia Física");
         jmConsultarInventario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmConsultarInventarioActionPerformed(evt);
@@ -1773,11 +1763,11 @@ public class FventanaIncial extends javax.swing.JFrame {
 
     private void btnCrudProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrudProductoMouseEntered
         btnCrudProducto.setBorderPainted(true);
-        if(btnCrudProducto.isEnabled()){
-        Component cpm = (Component) evt.getSource();
-        menuCRUDProducto.show(cpm,
-                cpm.getWidth(),
-                0);
+        if (btnCrudProducto.isEnabled()) {
+            Component cpm = (Component) evt.getSource();
+            menuCRUDProducto.show(cpm,
+                    cpm.getWidth(),
+                    0);
         }
     }//GEN-LAST:event_btnCrudProductoMouseEntered
 
@@ -1817,11 +1807,11 @@ public class FventanaIncial extends javax.swing.JFrame {
 
     private void btnCrudProveedrMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrudProveedrMouseEntered
         btnCrudProveedr.setBorderPainted(true);
-        if(btnCrudProveedr.isEnabled()){
-        Component cpm = (Component) evt.getSource();
-        menuCRUDProveedor.show(cpm,
-                cpm.getWidth(),
-                0);
+        if (btnCrudProveedr.isEnabled()) {
+            Component cpm = (Component) evt.getSource();
+            menuCRUDProveedor.show(cpm,
+                    cpm.getWidth(),
+                    0);
         }
     }//GEN-LAST:event_btnCrudProveedrMouseEntered
 
@@ -1831,51 +1821,51 @@ public class FventanaIncial extends javax.swing.JFrame {
 
     private void botonEnvioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEnvioMouseEntered
         botonEnvio.setBorderPainted(true);
-        if(botonEnvio.isEnabled()){
-        Component cpm = (Component) evt.getSource();
-        menuControlEnvio.show(cpm,
-                cpm.getWidth(),
-                0);
+        if (botonEnvio.isEnabled()) {
+            Component cpm = (Component) evt.getSource();
+            menuControlEnvio.show(cpm,
+                    cpm.getWidth(),
+                    0);
         }
     }//GEN-LAST:event_botonEnvioMouseEntered
 
     private void jButtonAlmacenMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAlmacenMouseEntered
         jButtonAlmacen.setBorderPainted(true);
-        if(jButtonAlmacen.isEnabled()){
-        Component cpm = (Component) evt.getSource();
-        menuCRUDAlmacen.show(cpm,
-                cpm.getWidth(),
-                0);
+        if (jButtonAlmacen.isEnabled()) {
+            Component cpm = (Component) evt.getSource();
+            menuCRUDAlmacen.show(cpm,
+                    cpm.getWidth(),
+                    0);
         }
     }//GEN-LAST:event_jButtonAlmacenMouseEntered
 
     private void jButtonControldeInvetarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonControldeInvetarioMouseEntered
         jButtonControldeInvetario.setBorderPainted(true);
-        if(jButtonControldeInvetario.isEnabled()){
-        Component cpm = (Component) evt.getSource();
-        menuControlInventario.show(cpm,
-                cpm.getWidth(),
-                0);
+        if (jButtonControldeInvetario.isEnabled()) {
+            Component cpm = (Component) evt.getSource();
+            menuControlInventario.show(cpm,
+                    cpm.getWidth(),
+                    0);
         }
     }//GEN-LAST:event_jButtonControldeInvetarioMouseEntered
 
     private void jButtonPrecioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPrecioMouseEntered
         jButtonPrecio.setBorderPainted(true);
-        if(jButtonPrecio.isEnabled()){
-        Component cpm = (Component) evt.getSource();
-        menuControlPrecio.show(cpm,
-                cpm.getWidth(),
-                0);
+        if (jButtonPrecio.isEnabled()) {
+            Component cpm = (Component) evt.getSource();
+            menuControlPrecio.show(cpm,
+                    cpm.getWidth(),
+                    0);
         }
     }//GEN-LAST:event_jButtonPrecioMouseEntered
 
     private void jButtonNotasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNotasMouseEntered
         jButtonNotas.setBorderPainted(true);
-        if(jButtonNotas.isEnabled()){
-        Component cpm = (Component) evt.getSource();
-        menuNotas.show(cpm,
-                cpm.getWidth(),
-                0);
+        if (jButtonNotas.isEnabled()) {
+            Component cpm = (Component) evt.getSource();
+            menuNotas.show(cpm,
+                    cpm.getWidth(),
+                    0);
         }
     }//GEN-LAST:event_jButtonNotasMouseEntered
 
@@ -1885,41 +1875,41 @@ public class FventanaIncial extends javax.swing.JFrame {
 
     private void btnCrudMarcaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrudMarcaMouseEntered
         btnCrudMarca.setBorderPainted(true);
-        if(btnCrudMarca.isEnabled()){
-        Component cpm = (Component) evt.getSource();
-        menuCRUDMarca.show(cpm,
-                cpm.getWidth(),
-                0);
+        if (btnCrudMarca.isEnabled()) {
+            Component cpm = (Component) evt.getSource();
+            menuCRUDMarca.show(cpm,
+                    cpm.getWidth(),
+                    0);
         }
     }//GEN-LAST:event_btnCrudMarcaMouseEntered
 
     private void btnCrudClasificacionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrudClasificacionMouseEntered
         btnCrudClasificacion.setBorderPainted(true);
-        if(btnCrudClasificacion.isEnabled()){
-        Component cpm = (Component) evt.getSource();
-        menuCRUDClasificacion.show(cpm,
-                cpm.getWidth(),
-                0);
+        if (btnCrudClasificacion.isEnabled()) {
+            Component cpm = (Component) evt.getSource();
+            menuCRUDClasificacion.show(cpm,
+                    cpm.getWidth(),
+                    0);
         }
     }//GEN-LAST:event_btnCrudClasificacionMouseEntered
 
     private void btnCrudDeptoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrudDeptoMouseEntered
         btnCrudDepto.setBorderPainted(true);
-        if(btnCrudDepto.isEnabled()){
-        Component cpm = (Component) evt.getSource();
-        menuCRUDDepartamento.show(cpm,
-                cpm.getWidth(),
-                0);
+        if (btnCrudDepto.isEnabled()) {
+            Component cpm = (Component) evt.getSource();
+            menuCRUDDepartamento.show(cpm,
+                    cpm.getWidth(),
+                    0);
         }
     }//GEN-LAST:event_btnCrudDeptoMouseEntered
 
     private void btnCrudDivisionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrudDivisionMouseEntered
         btnCrudDivision.setBorderPainted(true);
-        if(btnCrudDivision.isEnabled()){
-        Component cpm = (Component) evt.getSource();
-        menuCRUDDivision.show(cpm,
-                cpm.getWidth(),
-                0);
+        if (btnCrudDivision.isEnabled()) {
+            Component cpm = (Component) evt.getSource();
+            menuCRUDDivision.show(cpm,
+                    cpm.getWidth(),
+                    0);
         }
     }//GEN-LAST:event_btnCrudDivisionMouseEntered
 
