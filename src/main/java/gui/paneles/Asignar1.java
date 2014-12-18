@@ -1028,8 +1028,8 @@ public class Asignar1 extends javax.swing.JPanel {
                     Map<String, Object> parametro = new HashMap<>();
                     String s = "";
                     TableModelReport dataSourse = new TableModelReport(TablaDetalleRegistrosAsignacionMercancia1.getModel());
-                    parametro.put("origen", almacenDesde.getDescripcion());
-                    parametro.put("destino", tiendaHasta.getDescripcion());                    
+                    parametro.put("origen", almacenDesde.getNombre());
+                    parametro.put("destino", tiendaHasta.getNombre());                    
                     parametro.put("REPORT_DATA_SOURSE", dataSourse);
                     //JasperCompileManager.compileReport(rutaJrxml);
                     JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ListadoProductosAsignadosFinalizado.jasper"));
@@ -1228,13 +1228,13 @@ public class Asignar1 extends javax.swing.JPanel {
                         Map<String, Object> parametro = new HashMap<>();
                         String s = "";
                         TableModelReport dataSourse = new TableModelReport(TablaDetalleRegistrosAsignacionMercancia1.getModel());
-                        parametro.put("origen", almacenDesde.getDescripcion());
-                        parametro.put("destino", tiendaHasta.getDescripcion());
+                        parametro.put("origen", almacenDesde.getNombre());
+                        parametro.put("destino", tiendaHasta.getNombre());
                         parametro.put("REPORT_DATA_SOURSE", dataSourse);
                         //JasperCompileManager.compileReport(rutaJrxml);
                         JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ListadoProductosAsignadosFinalizado.jasper"));
 
-                        jasperPrint = JasperFillManager.fillReport(reporte, null, dataSourse);
+                        jasperPrint = JasperFillManager.fillReport(reporte, parametro, dataSourse);
                         JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
                         jasperViewer.setTitle("Reporte de Asignacion de Mercancia.");
                         jasperViewer.setVisible(true);

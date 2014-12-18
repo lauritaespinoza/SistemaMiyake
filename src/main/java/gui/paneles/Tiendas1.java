@@ -18,6 +18,7 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,6 +52,7 @@ import util.JavaUtil;
  */
 public class Tiendas1 extends javax.swing.JPanel {
 
+    Date fechaRegistro = null;
     Usuario user = JFInicioSecionMiyake.us1;
     Usuario ususrioActual = null;
     Almacen almacenActual = null;
@@ -138,6 +140,7 @@ public class Tiendas1 extends javax.swing.JPanel {
         dialogoMostrarNotas = new javax.swing.JDialog();
         btNC = new javax.swing.JButton();
         btND = new javax.swing.JButton();
+        jXLabel15 = new org.jdesktop.swingx.JXLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jLayeredPanePrincipal = new javax.swing.JLayeredPane();
         jXTaskPaneLCabeceraTiendas = new org.jdesktop.swingx.JXTaskPane();
@@ -212,7 +215,9 @@ public class Tiendas1 extends javax.swing.JPanel {
             (int) ((d.getWidth() - dialogoMostrarNotas.getWidth()) / 2),
             (int) ((d.getHeight() - dialogoMostrarNotas.getHeight()) / 2));
         dialogoMostrarNotas.setLocation(p);
+        dialogoMostrarNotas.setLocationRelativeTo(null);
 
+        btNC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/hasta1.png"))); // NOI18N
         btNC.setText("Mostrar Nota de Crédito");
         btNC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -220,6 +225,7 @@ public class Tiendas1 extends javax.swing.JPanel {
             }
         });
 
+        btND.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/hasta.png"))); // NOI18N
         btND.setText("Mostrar Nota de Débito");
         btND.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -227,25 +233,33 @@ public class Tiendas1 extends javax.swing.JPanel {
             }
         });
 
+        jXLabel15.setForeground(new java.awt.Color(102, 102, 102));
+        jXLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636449_invoice.png"))); // NOI18N
+        jXLabel15.setText("NOTAS GENERADAS");
+        jXLabel15.setFont(new java.awt.Font("Impact", 1, 18)); // NOI18N
+
         javax.swing.GroupLayout dialogoMostrarNotasLayout = new javax.swing.GroupLayout(dialogoMostrarNotas.getContentPane());
         dialogoMostrarNotas.getContentPane().setLayout(dialogoMostrarNotasLayout);
         dialogoMostrarNotasLayout.setHorizontalGroup(
             dialogoMostrarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dialogoMostrarNotasLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(dialogoMostrarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btND, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btNC, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dialogoMostrarNotasLayout.createSequentialGroup()
+                .addGap(0, 55, Short.MAX_VALUE)
+                .addGroup(dialogoMostrarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btND, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btNC, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jXLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         dialogoMostrarNotasLayout.setVerticalGroup(
             dialogoMostrarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dialogoMostrarNotasLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(jXLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addComponent(btNC)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btND)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         setLayout(new java.awt.BorderLayout());
@@ -1279,6 +1293,8 @@ public class Tiendas1 extends javax.swing.JPanel {
 
                     cab.setTotalConteo(totalCosto);
                     ObjectModelDAO.updateObject(cab);
+                    fechaRegistro = cab.getFecharegistro();
+
                     sa.setRevisado(Boolean.TRUE);
                     ObjectModelDAO.updateObject(sa);
                     //busys
@@ -1295,7 +1311,7 @@ public class Tiendas1 extends javax.swing.JPanel {
                         generarReporte();
                     }
                     if (respuesta == JOptionPane.NO_OPTION) {
-                        reiniciarDesdeFinal();
+                        // reiniciarDesdeFinal();
                     }
 
                 } catch (Exception ex) {
@@ -1380,29 +1396,44 @@ public class Tiendas1 extends javax.swing.JPanel {
                     Map<String, Object> parametro = new HashMap<>();
                     String s = "";
                     TableModelReport dataSourse = new TableModelReport(jTDetalleRegistroTiendas.getModel());
+                    parametro.put("almacen", almacenActual.getNombre());
+                    parametro.put("fecha", fechaRegistro);
                     parametro.put("REPORT_DATA_SOURSE", dataSourse);
                     //JasperCompileManager.compileReport(rutaJrxml);
                     JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ConteoTomaFisicaTienda.jasper"));
 
-                    jasperPrint = JasperFillManager.fillReport(reporte, null, dataSourse);
+                    jasperPrint = JasperFillManager.fillReport(reporte, parametro, dataSourse);
                     JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
-                    jasperViewer.setTitle("Reporte de Toma Fisica Tiendas.");
+                    jasperViewer.setTitle("Reporte de Toma Física Tiendas.");
                     jasperViewer.setVisible(true);
 
                     //busy
                     busy.setEnabled(false);
                     busy.setVisible(false);
                     busy.setBusy(false);
-                    int respuesta = JOptionPane.showConfirmDialog(null, "La Operación Ha Finalizado Satisfactoriamente..."
-                            + "¿Desea Realizar una Nueva Toma Física de Mercancia?");
 
-                    if (respuesta == JOptionPane.YES_OPTION) {
-                        requestFocus();
-                        reiniciarDesdeFinal();
+                    if (botonGenerarNotas.isVisible()) {
+                        int respuesta = JOptionPane.showConfirmDialog(null, "Se Han Generado Notas Debito/Credito...\n ¿Desea Visualizarlar?");
+
+                        if (respuesta == JOptionPane.YES_OPTION) {
+                            botonGenerarNotasActionPerformed(null);
+                        }
+                        if (respuesta == JOptionPane.NO_OPTION) {
+                            requestFocus();
+                            reiniciarDesdeFinal();
+                        }
                     }
-                    if (respuesta == JOptionPane.NO_OPTION) {
-                        // 
-                    }
+
+//                    int respuesta = JOptionPane.showConfirmDialog(null, "La Operación Ha Finalizado Satisfactoriamente..."
+//                            + "¿Desea Realizar una Nueva Toma Física de Mercancia?");
+//
+//                    if (respuesta == JOptionPane.YES_OPTION) {
+//                        requestFocus();
+//                        reiniciarDesdeFinal();
+//                    }
+//                    if (respuesta == JOptionPane.NO_OPTION) {
+//                        // Nada
+//                    }
                 } catch (JRException | HeadlessException e) {
                     JOptionPane.showMessageDialog(null, "Sea Detectado Un Problema Con Proceso de Selección de Asignaciónes,"
                             + "Por Favor Vuelva a Intentarlo.");
@@ -1487,7 +1518,7 @@ public class Tiendas1 extends javax.swing.JPanel {
             }
         };
         hilo.start();
- 
+
     }//GEN-LAST:event_jButtonListarPedidosActionPerformed
 
     private void txtSalidaIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalidaIDActionPerformed
@@ -1727,11 +1758,13 @@ public class Tiendas1 extends javax.swing.JPanel {
                         Map<String, Object> parametro = new HashMap<>();
                         String s = "";
                         TableModelReport dataSourse = new TableModelReport(jTDetalleRegistroTiendas.getModel());
+                        parametro.put("almacen", almacenActual.getNombre());
+                        parametro.put("fecha", fechaRegistro);
                         parametro.put("REPORT_DATA_SOURSE", dataSourse);
                         //JasperCompileManager.compileReport(rutaJrxml);
                         JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ConteoTomaFisicaTienda.jasper"));
 
-                        jasperPrint = JasperFillManager.fillReport(reporte, null, dataSourse);
+                        jasperPrint = JasperFillManager.fillReport(reporte, parametro, dataSourse);
                         JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
                         jasperViewer.setTitle("Reporte de Toma Fisica Tienda.");
                         jasperViewer.setVisible(true);
@@ -1989,6 +2022,7 @@ public class Tiendas1 extends javax.swing.JPanel {
     private org.jdesktop.swingx.JXLabel jXLabel12;
     private org.jdesktop.swingx.JXLabel jXLabel13;
     private org.jdesktop.swingx.JXLabel jXLabel14;
+    private org.jdesktop.swingx.JXLabel jXLabel15;
     private org.jdesktop.swingx.JXLabel jXLabel2;
     private org.jdesktop.swingx.JXLabel jXLabel3;
     private org.jdesktop.swingx.JXLabel jXLabel4;

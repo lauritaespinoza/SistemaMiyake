@@ -17,30 +17,33 @@
         <Property name="modal" type="boolean" value="true"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Dimension d = Toolkit.getDefaultToolkit().getScreenSize();&#xa;Point p= new Point(&#xa;         (int) ((d.getWidth() - dialogoMostrarNotas.getWidth()) / 2),&#xa;         (int) ((d.getHeight() - dialogoMostrarNotas.getHeight()) / 2));&#xa;dialogoMostrarNotas.setLocation(p);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Dimension d = Toolkit.getDefaultToolkit().getScreenSize();&#xa;Point p= new Point(&#xa;         (int) ((d.getWidth() - dialogoMostrarNotas.getWidth()) / 2),&#xa;         (int) ((d.getHeight() - dialogoMostrarNotas.getHeight()) / 2));&#xa;dialogoMostrarNotas.setLocation(p);&#xa;dialogoMostrarNotas.setLocationRelativeTo(null);"/>
       </AuxValues>
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btND" max="32767" attributes="0"/>
-                      <Component id="btNC" pref="162" max="32767" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="0" pref="55" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="btND" min="-2" pref="180" max="-2" attributes="0"/>
+                      <Component id="btNC" min="-2" pref="180" max="-2" attributes="0"/>
+                      <Component id="jXLabel15" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="49" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace pref="24" max="32767" attributes="0"/>
+                  <Component id="jXLabel15" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Component id="btNC" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btND" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="27" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -48,6 +51,9 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="btNC">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/icon_almacen/hasta1.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Mostrar Nota de Cr&#xe9;dito"/>
           </Properties>
           <Events>
@@ -56,11 +62,28 @@
         </Component>
         <Component class="javax.swing.JButton" name="btND">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/icon_almacen/hasta.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Mostrar Nota de D&#xe9;bito"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btNDActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="org.jdesktop.swingx.JXLabel" name="jXLabel15">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="66" green="66" red="66" type="rgb"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/icon_almacen/1417636449_invoice.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="NOTAS GENERADAS"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Impact" size="18" style="1"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
