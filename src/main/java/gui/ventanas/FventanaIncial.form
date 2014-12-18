@@ -298,7 +298,7 @@
         </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="jmConsultarInventario">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Consultar Inventario"/>
+            <Property name="text" type="java.lang.String" value="Existencia F&#xed;sica"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmConsultarInventarioActionPerformed"/>

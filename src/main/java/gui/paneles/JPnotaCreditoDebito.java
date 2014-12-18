@@ -23,6 +23,7 @@ import gui.ventanas.JFInicioSecionMiyake;
 import hibernate.DAO.DaoQuery;
 import util.JavaUtil;
 import hibernate.DAO.ObjectModelDAO;
+import java.awt.Dialog;
 import java.awt.Image;
 import java.awt.MouseInfo;
 import java.awt.event.KeyEvent;
@@ -647,6 +648,7 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
              JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream(rutaJasper));
             jasperPrint = JasperFillManager.fillReport(reporte, parametro, dataSourse);
             JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
+            jasperViewer.setModalExclusionType(Dialog.ModalExclusionType.TOOLKIT_EXCLUDE);
             jasperViewer.setTitle("Reporte de Nota");
             jasperViewer.setVisible(true);
             
