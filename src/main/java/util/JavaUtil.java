@@ -23,6 +23,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Vector;
 import java.util.logging.Level;
@@ -142,8 +143,8 @@ public abstract class JavaUtil {
             oneRow.add(p.getIdContactoGerente() == null ? null : p.getIdContactoGerente().getNombre());
             oneRow.add(p.getIdContacto1() == null ? null : p.getIdContacto1().getNombre());
             oneRow.add(p.getIdContacto2() == null ? null : p.getIdContacto2().getNombre());
-            oneRow.add(p.getFechaCreacion()== null ? "" : new SimpleDateFormat("yyyy-MM-dd").format(p.getFechaCreacion()));
-            oneRow.add(p.getFechaModificacion()== null ? "" : new SimpleDateFormat("yyyy-MM-dd").format(p.getFechaModificacion()));
+            oneRow.add(p.getFechaCreacion() == null ? "" : new SimpleDateFormat("yyyy-MM-dd").format(p.getFechaCreacion()));
+            oneRow.add(p.getFechaModificacion() == null ? "" : new SimpleDateFormat("yyyy-MM-dd").format(p.getFechaModificacion()));
         }
         if (o instanceof Producto) {
             Producto p = (Producto) o;
@@ -178,10 +179,8 @@ public abstract class JavaUtil {
             oneRow.add(ivt.getProducto().getIdProducto());
             oneRow.add(ivt.getProducto().getDescripcion());
             oneRow.add(dosDecimales.format(ivt.getPrecioSinDescuento() == null ? 0f : ivt.getPrecioSinDescuento()).trim());
-            //oneRow.add(ivt.getPrecioSinDescuento());
             oneRow.add(ivt.getDescuento().toString() + "%");
             oneRow.add(dosDecimales.format(ivt.getPrecioConDescuento() == null ? 0f : ivt.getPrecioConDescuento()).trim());
-            //oneRow.add(ivt.getPrecioConDescuento());
             oneRow.add(ivt.getFechaCreacion());
             oneRow.add(ivt.getFechaModificacion());
             oneRow.add(ivt.getCantidad());
@@ -263,15 +262,6 @@ public abstract class JavaUtil {
             oneRow.add(ep.getNroBulto());
             oneRow.add(ep.getFechaRecepcion());
         }
-        if (o instanceof InventarioTienda){
-            InventarioTienda ivt = (InventarioTienda) o;
-            oneRow.add(ivt.getProducto().getIdProducto());
-            oneRow.add(ivt.getProducto().getDescripcion());
-            oneRow.add(ivt.getPrecioConDescuento());
-            oneRow.add(ivt.getFechaCreacion());
-            oneRow.add(ivt.getFechaModificacion());
-            oneRow.add(ivt.getAlmacen().getNombre());
-        }
 
         return oneRow;
     }
@@ -352,16 +342,16 @@ public abstract class JavaUtil {
             header.add("BULTO");
         }
         if (o instanceof InventarioTienda) {
-            header.add("TIENDA");
+            header.add("TIENDA");//
             header.add("CODIGO");
             header.add("DESCRIPCION");
-            header.add("SINDESC");
+            header.add("SIN DESCUENTO");//
             header.add("DESCUENTO");
-            header.add("CONDESC");
+            header.add("CON DESCUENTO");
             header.add("CREACION");
             header.add("MODIFICACION");
-            header.add("EXISTENCIA");
-            header.add("ENVIADO");
+            header.add("EXISTENCIA");//
+            header.add("ASIGNADO");//
         }
 
         if (o instanceof Almacen) {
@@ -430,14 +420,6 @@ public abstract class JavaUtil {
             header.add("FECHA RECEPCION");
         }
 
-        if (o instanceof InventarioTienda) {            
-            header.add("ID PRODUCTO");
-            header.add("NOMBRE PRODUCTO");
-            header.add("PRECIO");
-            header.add("FECHA CREACION");
-            header.add("FECHA MODIFICACION");
-            header.add("TIENDA");
-        }
         return header;
     }
 
@@ -642,10 +624,15 @@ public abstract class JavaUtil {
             public void run() {
                 try {
                     //                    try {
-                    String rutaCT = "C:\\Users\\Usuario\\Desktop\\";
+                    String rutaCT = "C:\\SistemaMiyake\\"
+                            + "respaldosDB\\back_up_miyake"
+                            + Calendar.getInstance().getTimeInMillis() + ".backup";
+                    //"C:\\Users\\Usuario\\Desktop\\";
                     //"C:\\Users\\Pablo\\Desktop\\BackUpDB";
-                    String IP = "tecnosys.dyndns.tv";
-                    String pgdump = "C:\\Program Files\\PostgreSQL\\9.3\\bin\\pg_dump.exe";
+                    String IP = "localhost";
+
+                    String pgdump = "C:\\postgresql-9.3.5-1-windows-binaries\\pgsql\\bin\\pg_dump.exe";
+                    //"C:\\Program Files\\PostgreSQL\\9.3\\bin\\pg_dump.exe";
                     //"C:\\Program Files\\PostgreSQL\\9.3\\bin\\pg_dump.exe";
                     Process p;
                     ProcessBuilder pb;
@@ -666,7 +653,7 @@ public abstract class JavaUtil {
                             "--blobs",
                             "--verbose",
                             "--file",
-                            rutaCT + "back_up_miyake.backup",
+                            rutaCT,
                             "miyake_pasantia"
                     );
                     pb.environment().put("PGPASSWORD", "admin");
@@ -687,6 +674,7 @@ public abstract class JavaUtil {
                     texto.repaint();
                 } catch (Exception ex) {
                     Logger.getLogger(JavaUtil.class.getName()).log(Level.SEVERE, null, ex);
+                    texto.append(ex.getMessage());
                 }
             }
         };
@@ -702,15 +690,14 @@ public abstract class JavaUtil {
             @Override
             public void run() {
                 try {
-                    String IP = "tecnosys.dyndns.tv";
-                    String pgdump = "C:\\Program Files\\PostgreSQL\\9.3\\bin\\pg_restore.exe";
-
+                    String IP = "localhost";
+                    String pgrestore = "C:\\postgresql-9.3.5-1-windows-binaries\\pgsql\\bin\\pg_restore.exe";
                     Process p;
                     ProcessBuilder pb;
                     pb = new ProcessBuilder(
-                            pgdump,
+                            pgrestore,
                             "--host",
-                            "localhost",
+                            IP,
                             "--port",
                             "5432",
                             "--username",
