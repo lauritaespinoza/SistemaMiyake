@@ -214,7 +214,7 @@ public class JPclasificacion extends javax.swing.JPanel {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/departamento.png"))); // NOI18N
         jLabel2.setText("Nombre Departamento");
 
-        b_CrearDept.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415656550_Add.png"))); // NOI18N
+        b_CrearDept.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1418876431_chart_organisation_add.png"))); // NOI18N
         b_CrearDept.setText("Crear Departamento");
         b_CrearDept.setMargin(new java.awt.Insets(2, 8, 2, 8));
         b_CrearDept.addActionListener(new java.awt.event.ActionListener() {

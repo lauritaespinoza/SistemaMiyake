@@ -51,7 +51,7 @@ public class JDrestoreDB extends javax.swing.JDialog {
         jMenuOpciones = new javax.swing.JMenu();
         jMenu_Ayuda_ = new javax.swing.JMenu();
 
-        filesc.setCurrentDirectory(new java.io.File("C:\\Users\\Usuario\\Documents\\PASANTIA\\prueba"));
+        filesc.setCurrentDirectory(new java.io.File("C:\\SistemaMiyake\\respaldosDB"));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 

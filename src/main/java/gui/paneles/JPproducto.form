@@ -11,7 +11,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,25,0,0,3,88"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,64,0,0,3,92"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout">
@@ -58,7 +58,7 @@
                               <Component id="jLabel1" min="-2" pref="334" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
                               <Component id="busy" min="-2" pref="119" max="-2" attributes="0"/>
-                              <EmptySpace pref="601" max="32767" attributes="0"/>
+                              <EmptySpace pref="655" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -196,8 +196,22 @@
           <SubComponents>
             <Container class="javax.swing.JPanel" name="panelCrearProducto">
 
-              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout">
-                <Property name="axis" type="int" value="0"/>
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jPanel4" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
               </Layout>
               <SubComponents>
                 <Container class="javax.swing.JPanel" name="jPanel3">
@@ -207,34 +221,27 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                                      <Component id="f_descripcionProducto" min="-2" pref="215" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="f_ref_Product" max="32767" attributes="0"/>
-                                          <Component id="f_precio_orig" max="32767" attributes="0"/>
-                                          <Component id="lb_dptoProduct" max="32767" attributes="0"/>
-                                          <Component id="lb_divisionProd" alignment="0" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="184" max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="f_ref_Product" pref="233" max="32767" attributes="0"/>
+                                  <Component id="f_precio_orig" max="32767" attributes="0"/>
+                                  <Component id="lb_dptoProduct" max="32767" attributes="0"/>
+                                  <Component id="lb_divisionProd" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="f_descripcionProducto" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="bCrearProducto" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -276,6 +283,9 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabel4">
                       <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/iconos/1418687577_Database.png"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Descripci&#xf3;n:"/>
                       </Properties>
                     </Component>
@@ -290,6 +300,9 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel8">
                       <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/iconos/1418686950_rss-tag.png"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Precio Original:"/>
                       </Properties>
                     </Component>
@@ -297,11 +310,17 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel11">
                       <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/iconos/division.png"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Divisi&#xf3;n:"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel12">
                       <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/iconos/departamento.png"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Departamento:"/>
                       </Properties>
                     </Component>
@@ -337,9 +356,9 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="cb_proveedor" min="-2" pref="175" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                       <Component id="bCrearProveedor" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
@@ -362,7 +381,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="183" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -387,7 +406,7 @@
                                   <Component id="cb_proveedor" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="bCrearProveedor" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="348" max="32767" attributes="0"/>
+                              <EmptySpace pref="350" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -395,6 +414,9 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabel2">
                       <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/iconos/clasificacion.png"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Clasificaci&#xf3;n:"/>
                       </Properties>
                     </Component>
@@ -405,6 +427,9 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel5">
                       <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/iconos/christmas_star.png"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Marca:"/>
                       </Properties>
                     </Component>
@@ -412,6 +437,9 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel3">
                       <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/iconos/proveedor.png"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Proveedor:"/>
                       </Properties>
                     </Component>
@@ -431,7 +459,7 @@
                     <Component class="javax.swing.JButton" name="bCrearMarca">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/iconos/1415656550_Add.png"/>
+                          <Image iconType="3" name="/iconos/1418876086_star-add.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Crear Marca"/>
                       </Properties>
@@ -442,7 +470,7 @@
                     <Component class="javax.swing.JButton" name="bCrearProveedor">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/iconos/1415656550_Add.png"/>
+                          <Image iconType="3" name="/iconos/1418875864_testimonials.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Crear Proveedor"/>
                       </Properties>
@@ -560,15 +588,15 @@
                               <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="jLabel16" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel13" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel14" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="cb_marca1" alignment="0" max="32767" attributes="0"/>
                                           <Component id="cb_clasifProduct1" alignment="0" pref="154" max="32767" attributes="0"/>
@@ -577,33 +605,14 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                              <Group type="102" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="jLabel25" min="-2" pref="93" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <EmptySpace max="32767" attributes="0"/>
-                                                  <Group type="103" groupAlignment="1" attributes="0">
-                                                      <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jLabel23" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                                              <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="jLabel19" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel25" alignment="0" min="-2" pref="93" max="-2" attributes="0"/>
+                                          <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel22" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel23" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
+                                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="lb_divisionProd1" min="-2" pref="154" max="-2" attributes="0"/>
                                           <Component id="field_codproducto" min="-2" pref="151" max="-2" attributes="0"/>
@@ -614,7 +623,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -656,19 +665,19 @@
                                   <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="cb_clasifProduct1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cb_marca1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="cb_marca1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="cb_proveedor1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="bModifProducto" min="-2" pref="49" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="142" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -676,21 +685,33 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabel13">
                       <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/iconos/clasificacion.png"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Clasificaci&#xf3;n:"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel14">
                       <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/iconos/proveedor.png"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Proveedor:"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel15">
                       <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/iconos/1418687577_Database.png"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Descripci&#xf3;n:"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel16">
                       <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/iconos/christmas_star.png"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Marca"/>
                       </Properties>
                     </Component>
@@ -701,16 +722,25 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel19">
                       <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/iconos/1418686950_rss-tag.png"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Precio Original:"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel22">
                       <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/iconos/division.png"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Divisi&#xf3;n:"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel23">
                       <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/iconos/departamento.png"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Departamento:"/>
                       </Properties>
                     </Component>
@@ -725,12 +755,18 @@
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="0"/>
                         </Property>
+                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[31, 20]"/>
+                        </Property>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JComboBox" name="cb_proveedor1">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="0"/>
+                        </Property>
+                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[31, 20]"/>
                         </Property>
                       </Properties>
                     </Component>
@@ -758,7 +794,13 @@
                             <StringItem index="2" value="4"/>
                           </StringArray>
                         </Property>
+                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[31, 20]"/>
+                        </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cb_clasifProduct1ActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel25">
                       <Properties>
@@ -805,7 +847,10 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -820,16 +865,19 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jScrollPane3" pref="1019" max="32767" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="bEliminProducto" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jScrollPane3" min="-2" pref="835" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="32767" attributes="0"/>
+                                      <Component id="bEliminProducto" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>

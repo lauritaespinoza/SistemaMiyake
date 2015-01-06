@@ -41,6 +41,7 @@ public class JPConsultaInventario extends javax.swing.JPanel {
     List resultListAlmacen = null;
     List resultListInventarioTienda = null;
     int posTi2 = -1;
+
     /**
      * Creates new form NewJPanel
      */
@@ -313,7 +314,10 @@ public class JPConsultaInventario extends javax.swing.JPanel {
 
                         JavaUtil.displayResult(resultListInventarioTienda, jXTablaConsultarMercanciaInventarios);
                         jXTablaConsultarMercanciaInventarios.setEditable(false);
-
+                        jXTablaConsultarMercanciaInventarios.removeColumn(jXTablaConsultarMercanciaInventarios.getColumn(3));
+                        jXTablaConsultarMercanciaInventarios.removeColumn(jXTablaConsultarMercanciaInventarios.getColumn(3));//4 pasa ser 3
+                        jXTablaConsultarMercanciaInventarios.removeColumn(jXTablaConsultarMercanciaInventarios.getColumn(3));//5 pasa ser 3
+                        jXTablaConsultarMercanciaInventarios.removeColumn(jXTablaConsultarMercanciaInventarios.getColumn(3));//6 pasa ser 3
                         for (Object listaInventarioTienda : resultListInventarioTienda) {
                             System.err.println("Los datos son : " + ((InventarioTienda) listaInventarioTienda).getProducto());
                         }
@@ -347,8 +351,8 @@ public class JPConsultaInventario extends javax.swing.JPanel {
             int respuesta = JOptionPane.showConfirmDialog(null, "¿Seguro Desea Cancelar?", "Confirmacion", JOptionPane.YES_NO_OPTION);
 
             if (respuesta == JOptionPane.YES_OPTION) {
- 
-                resultListInventarioTienda=null; 
+
+                resultListInventarioTienda = null;
                 //OBjetos 
                 this.almacenDesde = null;
                 this.almacenHasta = null;
@@ -372,7 +376,7 @@ public class JPConsultaInventario extends javax.swing.JPanel {
     }//GEN-LAST:event_comboBoxAlmacenDesdeMouseClicked
 
     private void jXButtonImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXButtonImprimirActionPerformed
-         Thread hilo = new Thread() {
+        Thread hilo = new Thread() {
 
             @Override
             public void run() {
@@ -388,7 +392,7 @@ public class JPConsultaInventario extends javax.swing.JPanel {
                     String s = "";                                      //jtableListaProductosInventarioTienda
                     TableModelReport dataSourse = new TableModelReport(jXTablaConsultarMercanciaInventarios.getModel());
                     parametro.put("tienda", almacenDesde.getDescripcion());
-                    parametro.put("REPORT_DATA_SOURSE", dataSourse); 
+                    parametro.put("REPORT_DATA_SOURSE", dataSourse);
                     //JasperCompileManager.compileReport(rutaJrxml);
                     JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ListadoInventarioTienda.jasper"));
 

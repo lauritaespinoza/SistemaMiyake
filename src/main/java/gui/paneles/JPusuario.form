@@ -277,7 +277,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/iconos/1415663093_add-user.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Crear Contacto"/>
+                        <Property name="text" type="java.lang.String" value="Crear Usuario"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonCrearUsuariosActionPerformed"/>

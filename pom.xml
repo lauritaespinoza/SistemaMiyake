@@ -6,7 +6,7 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <dependencies>
-<!--        <dependency>
+        <!--        <dependency>
             <groupId>analizador-PDF2</groupId>
             <artifactId>analizador-PDF2</artifactId>
             <version>1.22.Final</version>
@@ -273,11 +273,6 @@
             <artifactId>pdf-renderer</artifactId>
             <version>1.0.5</version>
         </dependency>
-<!--        <dependency>
-            <groupId>analizador-PDF2</groupId>
-            <artifactId>analizador-PDF2</artifactId>
-            <version>1.22.Final</version>
-        </dependency>-->
     </dependencies>
     
     <repositories>
@@ -328,15 +323,15 @@
                         </manifestEntries>
                     </archive>
                 </configuration>
-<!--                <executions>
+                <executions>
                     <execution>
-                        <id>make-assembly</id>  this is used for inheritance merges 
-                        <phase>package</phase>  bind to the packaging phase
+                        <id>make-assembly</id> <!-- this is used for inheritance merges -->
+                        <phase>package</phase> <!--  bind to the packaging phase-->
                         <goals>
                             <goal>single</goal>
                         </goals>
                     </execution>
-                </executions>-->
+                </executions>
             </plugin>
         </plugins>
     </build>

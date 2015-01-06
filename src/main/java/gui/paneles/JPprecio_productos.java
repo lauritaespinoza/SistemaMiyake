@@ -57,6 +57,7 @@ public class JPprecio_productos extends javax.swing.JPanel {
     public final InputStream rutaJasper = this.getClass().getResourceAsStream("/reportes/ReporteProductosDescuento.jasper");
     public final InputStream rutaJrxml = this.getClass().getResourceAsStream("/reportes/ReporteProductosDescuento.jrxml");
     private Integer tabCrud;
+
     public JPprecio_productos(Integer tabCrud) {
         this.tabCrud = tabCrud;
         initComponents();
@@ -153,7 +154,7 @@ public class JPprecio_productos extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Id Producto", "Nombre Producto", "Precio", "Descuento", "Fecha de Creación", "Fecha de Modificación"
+                "Id Producto", "Nombre Producto", "Descuento", "Precio", "Fecha de Creación", "Fecha de Modificación"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -264,7 +265,7 @@ public class JPprecio_productos extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Id Producto", "Nombre Producto", "Precio", "Descuento", "Fecha de Creación", "Fecha de Modificación"
+                "Id Producto", "Nombre Producto", "Descuento", "Precio", "Fecha de Creación", "Fecha de Modificación"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -474,7 +475,12 @@ public class JPprecio_productos extends javax.swing.JPanel {
             return;
         }
         JavaUtil.displayResult(resultListProducto, tablaproductos_con_precios);
+        tablaproductos_con_precios.removeColumn(tablaproductos_con_precios.getColumn(0));
+        tablaproductos_con_precios.removeColumn(tablaproductos_con_precios.getColumn(2));//3 pasa ser 2
+        tablaproductos_con_precios.removeColumn(tablaproductos_con_precios.getColumn(6));//8 pasa ser 6
+        tablaproductos_con_precios.removeColumn(tablaproductos_con_precios.getColumn(6));//9 pasa ser 6
         tablaproductos_con_precios.setEditable(false);
+        setTableCellAlignment(JLabel.CENTER, tablaproductos_con_precios);
     }//GEN-LAST:event_cb_almacenActionPerformed
 
     private boolean busqueda_producto_tiendas(int id_producto) {
@@ -646,7 +652,12 @@ public class JPprecio_productos extends javax.swing.JPanel {
         }
         posi = -1;
         JavaUtil.displayResult(resultListProducto, tablaproductos_con_precios1);
+        tablaproductos_con_precios1.removeColumn(tablaproductos_con_precios1.getColumn(0));
+        tablaproductos_con_precios1.removeColumn(tablaproductos_con_precios1.getColumn(2));//3 pasa ser 2
+        tablaproductos_con_precios1.removeColumn(tablaproductos_con_precios1.getColumn(6));//8 pasa ser 6
+        tablaproductos_con_precios1.removeColumn(tablaproductos_con_precios1.getColumn(6));//9 pasa ser 6
         tablaproductos_con_precios1.setEditable(false);
+        setTableCellAlignment(JLabel.CENTER, tablaproductos_con_precios1);
 
     }//GEN-LAST:event_cb_almacen_modfActionPerformed
 

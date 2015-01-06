@@ -51,12 +51,9 @@
                           <Component id="jLabel17" min="-2" pref="311" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                           <Component id="bt_GenerarReporteProveedores" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="740" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jScrollPane1" min="-2" pref="784" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="483" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -68,7 +65,7 @@
                               <Component id="bt_GenerarReporteProveedores" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="429" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" pref="701" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -268,14 +265,14 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="414" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="390" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace pref="280" max="32767" attributes="0"/>
                           <Component id="bCrearProveedor" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                           <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="658" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="637" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -788,18 +785,15 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                  <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jScrollPane3" min="-2" pref="732" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="bEliminarProveedor" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jScrollPane3" min="-2" pref="704" max="-2" attributes="0"/>
+                          <EmptySpace pref="8" max="32767" attributes="0"/>
+                          <Component id="bEliminarProveedor" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -811,7 +805,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane3" pref="602" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane3" pref="705" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>

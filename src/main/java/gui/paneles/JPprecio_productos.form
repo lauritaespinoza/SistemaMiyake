@@ -64,8 +64,8 @@
                           <Table columnCount="6" rowCount="4">
                             <Column editable="false" title="Id Producto" type="java.lang.Object"/>
                             <Column editable="false" title="Nombre Producto" type="java.lang.Object"/>
-                            <Column editable="false" title="Precio" type="java.lang.Object"/>
                             <Column editable="false" title="Descuento" type="java.lang.Object"/>
+                            <Column editable="false" title="Precio" type="java.lang.Object"/>
                             <Column editable="false" title="Fecha de Creaci&#xf3;n" type="java.lang.Object"/>
                             <Column editable="false" title="Fecha de Modificaci&#xf3;n" type="java.lang.Object"/>
                           </Table>
@@ -260,8 +260,8 @@
                           <Table columnCount="6" rowCount="4">
                             <Column editable="false" title="Id Producto" type="java.lang.Object"/>
                             <Column editable="false" title="Nombre Producto" type="java.lang.Object"/>
-                            <Column editable="false" title="Precio" type="java.lang.Object"/>
                             <Column editable="false" title="Descuento" type="java.lang.Object"/>
+                            <Column editable="false" title="Precio" type="java.lang.Object"/>
                             <Column editable="false" title="Fecha de Creaci&#xf3;n" type="java.lang.Object"/>
                             <Column editable="false" title="Fecha de Modificaci&#xf3;n" type="java.lang.Object"/>
                           </Table>
