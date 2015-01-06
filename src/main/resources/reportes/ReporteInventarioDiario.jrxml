@@ -112,7 +112,7 @@
 			<rectangle>
 				<reportElement mode="Transparent" x="0" y="0" width="554" height="151" uuid="fb347e19-70f8-46e4-ad53-5d27d91172b8"/>
 			</rectangle>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="1" y="115" width="193" height="20" uuid="3f01001a-81a1-4563-966f-0d9b53e96161"/>
 				<textFieldExpression><![CDATA[$P{Rif}]]></textFieldExpression>
 			</textField>
@@ -233,7 +233,7 @@
 	</detail>
 	<columnFooter>
 		<band height="43">
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="20" y="23" width="518" height="20" uuid="f3c94802-b1ca-4ed4-9103-22c99dcf6df6"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Calibri" size="13" isBold="true"/>
