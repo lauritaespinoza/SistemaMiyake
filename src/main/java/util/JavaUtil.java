@@ -155,6 +155,8 @@ public abstract class JavaUtil {
             oneRow.add(p.getIdMarca().getNombre());
             oneRow.add(p.getIdProveedor().getNombre());
             oneRow.add(p.getPrecioOriginal());
+            oneRow.add(p.getPrimeraActividad());
+            oneRow.add(p.getUltimaActividad());
         }
 
         //si es un vector, y si el la primera es Salida para tienda detalle entonces es
@@ -328,6 +330,8 @@ public abstract class JavaUtil {
             header.add("MARCA");
             header.add("PROVEEDOR");
             header.add("PRECIO ORIGINAL");
+            header.add("FECHA CREACION");
+            header.add("FECHA MODIFICACION");
         }
         //si es un vector, y si el la primera es Salida para tienda detalle entonces es
         //salida para tienda detalle con precios y descuentos

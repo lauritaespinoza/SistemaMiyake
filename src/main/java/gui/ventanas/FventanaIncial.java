@@ -34,6 +34,7 @@ import gui.paneles.JPsalida_p_tienda;
 import gui.paneles.JPubicacion;
 import gui.paneles.JPexportData;
 import gui.paneles.JPnotaCreditoDebito;
+import gui.paneles.JPreduccionInventarioParticular;
 import gui.paneles.JPusuario;
 import gui.paneles.Tiendas1;
 import java.awt.BorderLayout;
@@ -85,6 +86,7 @@ public class FventanaIncial extends javax.swing.JFrame {
     private static final String tabAlmacen = "Almacen";
     private static final String tabNotaCredito = "Notas de Crédito en Tienda";
     private static final String tabNotaDebito = "Notas de Débito en Tienda";
+    private static final String tabReduccionInventario = "Reducir Productos de Inventario";
 
     private BufferedImage bg;
 
@@ -302,6 +304,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         jButtonControldeInvetario = new javax.swing.JButton();
         jButtonNotas = new javax.swing.JButton();
         jButtonFacturas = new javax.swing.JButton();
+        jButtonInventarioParticular = new javax.swing.JButton();
         taskPaneModuloGestionProductos = new org.jdesktop.swingx.JXTaskPane();
         btnCrudProducto = new javax.swing.JButton();
         btnCrudMarca = new javax.swing.JButton();
@@ -972,6 +975,17 @@ public class FventanaIncial extends javax.swing.JFrame {
             }
         });
         taskPaneModuloTienda.getContentPane().add(jButtonFacturas);
+
+        jButtonInventarioParticular.setText("Redución de Inventario");
+        jButtonInventarioParticular.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonInventarioParticular.setBorderPainted(false);
+        jButtonInventarioParticular.setContentAreaFilled(false);
+        jButtonInventarioParticular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonInventarioParticularActionPerformed(evt);
+            }
+        });
+        taskPaneModuloTienda.getContentPane().add(jButtonInventarioParticular);
 
         jXCollapsiblePaneAbajo.getContentPane().add(taskPaneModuloTienda);
 
@@ -2452,6 +2466,10 @@ public class FventanaIncial extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jMenuItemAcercaDeActionPerformed
 
+    private void jButtonInventarioParticularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInventarioParticularActionPerformed
+         addPaneles(tabReduccionInventario, JPreduccionInventarioParticular.class, null, null);
+    }//GEN-LAST:event_jButtonInventarioParticularActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -2489,6 +2507,7 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAlmacen;
     private javax.swing.JButton jButtonControldeInvetario;
     private javax.swing.JButton jButtonFacturas;
+    private javax.swing.JButton jButtonInventarioParticular;
     private javax.swing.JButton jButtonNotas;
     private javax.swing.JButton jButtonPrecio;
     private javax.swing.JMenu jMenuActualizarPreciosDistribuidora;

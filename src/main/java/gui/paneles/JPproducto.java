@@ -33,6 +33,8 @@ import modelos.mapeos.Marca;
 import modelos.mapeos.Producto;
 import modelos.mapeos.Proveedor;
 import org.hibernate.Query;
+import org.jdesktop.swingx.JXBusyLabel;
+import org.jdesktop.swingx.painter.BusyPainter;
 import org.pushingpixels.substance.api.skin.SubstanceBusinessBlueSteelLookAndFeel;
 
 /**
@@ -126,9 +128,7 @@ public class JPproducto extends javax.swing.JPanel {
         panelScrudProducto = new javax.swing.JTabbedPane();
         jScrollPane4 = new javax.swing.JScrollPane();
         panelConsulta = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        busy = new org.jdesktop.swingx.JXBusyLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listadoProductos = new org.jdesktop.swingx.JXTable();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -187,8 +187,9 @@ public class JPproducto extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         tablaEliminarProducto = new org.jdesktop.swingx.JXTable();
         bEliminProducto = new javax.swing.JButton();
+        busy = new org.jdesktop.swingx.JXBusyLabel();
 
-        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.X_AXIS));
+        setLayout(new java.awt.BorderLayout());
 
         panelScrudProducto.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -201,31 +202,7 @@ public class JPproducto extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415657451_database_search.png"))); // NOI18N
         jLabel1.setText("Para realizar una Búsqueda: Haga Click en la Tabla + CTRL F");
-
-        busy.setText("Cargando...");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(88, 88, 88)
-                .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(655, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
-        panelConsulta.add(jPanel1, java.awt.BorderLayout.NORTH);
+        panelConsulta.add(jLabel1, java.awt.BorderLayout.NORTH);
 
         listadoProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -261,11 +238,11 @@ public class JPproducto extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Código Producto", "Referencia", "Descripción", "Clasificación", "Marca", "Proveedor", "Precio Original", "Fecha Creación", "Fecha Modificación"
+                "CODIGO", "REFERENCIA", "DESCRIPCION", "CLASIFICACION", "MARCA", "PROVEEDOR", "PRECIO ORIGINAL", "FECHA CREACION", "FECHA MODIFICACION"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, true, true
+                false, false, false, false, false, false, false, true, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -766,7 +743,11 @@ public class JPproducto extends javax.swing.JPanel {
 
         panelScrudProducto.setSelectedIndex(-1);
 
-        add(panelScrudProducto);
+        add(panelScrudProducto, java.awt.BorderLayout.CENTER);
+
+        busy.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        busy.setText("Cargando...");
+        add(busy, java.awt.BorderLayout.NORTH);
     }// </editor-fold>//GEN-END:initComponents
 
     private void bCrearProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearProductoActionPerformed
@@ -989,9 +970,9 @@ public class JPproducto extends javax.swing.JPanel {
             panelScrudProducto.setSelectedIndex(tabCrud);
             return;
         }
-
+        
         hilo = new Thread() {
-
+        
             @Override
             public void run() {
                 panelScrudProducto.setEnabled(false);
@@ -1143,7 +1124,6 @@ public class JPproducto extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
