@@ -980,6 +980,14 @@ public class FventanaIncial extends javax.swing.JFrame {
         jButtonInventarioParticular.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonInventarioParticular.setBorderPainted(false);
         jButtonInventarioParticular.setContentAreaFilled(false);
+        jButtonInventarioParticular.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonInventarioParticularMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonInventarioParticularMouseExited(evt);
+            }
+        });
         jButtonInventarioParticular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonInventarioParticularActionPerformed(evt);
@@ -2469,6 +2477,14 @@ public class FventanaIncial extends javax.swing.JFrame {
     private void jButtonInventarioParticularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInventarioParticularActionPerformed
          addPaneles(tabReduccionInventario, JPreduccionInventarioParticular.class, null, null);
     }//GEN-LAST:event_jButtonInventarioParticularActionPerformed
+
+    private void jButtonInventarioParticularMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonInventarioParticularMouseEntered
+        jButtonInventarioParticular.setBorderPainted(true);
+    }//GEN-LAST:event_jButtonInventarioParticularMouseEntered
+
+    private void jButtonInventarioParticularMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonInventarioParticularMouseExited
+        jButtonInventarioParticular.setBorderPainted(false);
+    }//GEN-LAST:event_jButtonInventarioParticularMouseExited
 
     public static void main(String args[]) {
 

@@ -7,6 +7,7 @@ package gui.paneles;
 
 import hibernate.DAO.ObjectModelDAO;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
@@ -22,7 +23,7 @@ import util.JavaUtil;
  */
 public class JPreduccionInventarioParticular extends javax.swing.JPanel {
 
-    private List resultList;
+    private List resultListFinal = new ArrayList();
     private List resultListAlmacen;
     private int pos;
 
@@ -59,6 +60,12 @@ public class JPreduccionInventarioParticular extends javax.swing.JPanel {
         listadoProductosADescontar = new org.jdesktop.swingx.JXTable();
         btn_modfInventario = new javax.swing.JButton();
 
+        cb_Tiend_Inv_Part.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_Tiend_Inv_PartActionPerformed(evt);
+            }
+        });
+
         lb_Tiend.setText("Tienda:");
 
         listadoProductosADescontar.setModel(new javax.swing.table.DefaultTableModel(
@@ -69,22 +76,39 @@ public class JPreduccionInventarioParticular extends javax.swing.JPanel {
                 "CODIGO", "DESCRIPCION", "PRECIO CON DESCUENTO", "CANTIDAD"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class
+            };
             boolean[] canEdit = new boolean [] {
                 true, false, false, true
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        listadoProductosADescontar.setHorizontalScrollEnabled(true);
+        listadoProductosADescontar.setSortable(false);
         listadoProductosADescontar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 listadoProductosADescontarKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                listadoProductosADescontarKeyReleased(evt);
             }
         });
         jScrollPane1.setViewportView(listadoProductosADescontar);
 
         btn_modfInventario.setText("Actualizar Inventario");
+        btn_modfInventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modfInventarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -123,29 +147,59 @@ public class JPreduccionInventarioParticular extends javax.swing.JPanel {
     }
     private void listadoProductosADescontarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_listadoProductosADescontarKeyPressed
 
-        Object codigoingresado = listadoProductosADescontar.getValueAt(pos, 0);
-        Almacen almacenseleccionado = (Almacen) resultListAlmacen.get(cb_Tiend_Inv_Part.getSelectedIndex());
+    }//GEN-LAST:event_listadoProductosADescontarKeyPressed
 
-        String sql = "FROM InventarioTienda i WHERE i.inventarioTiendaPK.idProducto = " + codigoingresado
-                + " AND i.inventarioTiendaPK.idAlmacen = " + almacenseleccionado.getIdAlmacen();
-        resultList = ObjectModelDAO.getResultQuery(sql);
+    private void cb_Tiend_Inv_PartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_Tiend_Inv_PartActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_Tiend_Inv_PartActionPerformed
 
-        InventarioTienda ivt = (InventarioTienda) resultList.get(0);
-        int posOr = pos;
+    private void btn_modfInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modfInventarioActionPerformed
 
+    }//GEN-LAST:event_btn_modfInventarioActionPerformed
+
+    private void listadoProductosADescontarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_listadoProductosADescontarKeyReleased
+        if (pos == -1) {
+            return;
+        }
         if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
-//            ((DefaultTableModel) listadoProductosADescontar.getModel()).addRow(new Object[]{
-//                codigoingresado,
-//                ivt.getProducto().getDescripcion(),
-//                ivt.getPrecioConDescuento(),
-//                ivt.getCantidad()});
-            ((DefaultTableModel) listadoProductosADescontar.getModel()).addRow(new Object[listadoProductosADescontar.getColumnCount()]);
+            int rowCount = listadoProductosADescontar.getRowCount();
+            int rowSelected = listadoProductosADescontar.getSelectedRow();
+            //si la fila seleccionada es la ultima
+            if (rowSelected == rowCount - 1) {//0 hasta n-1
+                ((DefaultTableModel) listadoProductosADescontar.getModel()).addRow(new Object[listadoProductosADescontar.getColumnCount()]);
+                //se agrego una nueva asi que si se toma en cuenta n
+                listadoProductosADescontar.setRowSelectionInterval(rowCount, rowCount);
+            }
         }
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            listadoProductosADescontar.setValueAt(ivt.getProducto().getDescripcion().toString(), 0, 1);
-            listadoProductosADescontar.setValueAt(ivt.getPrecioConDescuento().toString(), 0, 2);
+
+            Object codigoingresado = listadoProductosADescontar.getValueAt(pos, 0);
+            Almacen almacenseleccionado = (Almacen) resultListAlmacen.get(cb_Tiend_Inv_Part.getSelectedIndex());
+
+            String sql = "FROM InventarioTienda i WHERE i.inventarioTiendaPK.idProducto = " + codigoingresado
+                    + " AND i.inventarioTiendaPK.idAlmacen = " + almacenseleccionado.getIdAlmacen();
+            List resultList = ObjectModelDAO.getResultQuery(sql);
+
+            if (resultList.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Código no encontrado");
+                return;
+            }
+
+            InventarioTienda ivt = (InventarioTienda) resultList.get(0);
+            resultListFinal.add(ivt);
+            listadoProductosADescontar.getModel().setValueAt(ivt.getProducto().getDescripcion(), pos, 1);
+            listadoProductosADescontar.getModel().setValueAt(ivt.getPrecioConDescuento(), pos, 2);
         }
-    }//GEN-LAST:event_listadoProductosADescontarKeyPressed
+
+        //si le da a delete
+        if (evt.getKeyCode() == KeyEvent.VK_DELETE
+                && JOptionPane.showConfirmDialog(null, "Desea eliminar el renglón?",
+                        "Advertencia", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+
+            resultListFinal.remove(listadoProductosADescontar.getSelectedRow());
+            ((DefaultTableModel) listadoProductosADescontar.getModel()).removeRow(listadoProductosADescontar.getSelectedRow());
+        }
+    }//GEN-LAST:event_listadoProductosADescontarKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
