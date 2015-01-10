@@ -99,6 +99,9 @@
             <Property name="editable" type="boolean" value="false"/>
             <Property name="sortable" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tablaAsignadaTiendaMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

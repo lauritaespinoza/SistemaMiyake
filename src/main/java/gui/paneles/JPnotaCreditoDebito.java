@@ -363,11 +363,11 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Renglón", "Referencia", "Descripción", "Cantidad", "Precio"
+                "Renglón", "Referencia", "Descripción", "Observación", "Cantidad", "Precio"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, true, true
+                false, true, true, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -585,6 +585,7 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
                             ncdd.getNroRenglon(),
                             ncdd.getIdProducto().getReferenciaProducto(),
                             ncdd.getIdProducto().getDescripcion(),
+                            "",
                             0,
                             ObjectModelDAO.getObject(new InventarioTiendaPK(
                             ncdd.getIdProducto().getIdProducto(),
@@ -602,23 +603,7 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_tablaMouseClicked
     
-    private boolean filaCorrecta(int i) {//hacer con for
-        Object o0 = tabla.getModel().getValueAt(i, 0);
-        Object o1 = tabla.getModel().getValueAt(i, 1);
-        Object o2 = tabla.getModel().getValueAt(i, 2);
-        Object o3 = tabla.getModel().getValueAt(i, 3);
-        Object o4 = tabla.getModel().getValueAt(i, 4);
-        if ((o0 != null && !o0.equals(""))//el primero debe estar
-                && (o1 != null && !o1.equals(""))//el segundo debe estar
-                && ((o2 != null && !o2.equals(""))//el tercero puede estar
-                || (o3 != null && !o3.equals(""))//el cuarto puede estar
-                || (o4 != null && !o4.equals(""))))//el quinto puede estar
-        {
-            return true;
-        }
-        return false;
-    }
-
+   
     private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
         try {
             JasperPrint jasperPrint = null;
@@ -664,7 +649,8 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
         int errores = 0;
         float total = 0f;
         for (int i = 0; i < tabla.getRowCount(); i++) {
-            Object o = tabla.getModel().getValueAt(i, 3);
+            //cantidad
+            Object o = tabla.getModel().getValueAt(i, 4);
             int cantidad = 0;
             String str;
             
@@ -677,12 +663,16 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
             
             if (cantidad > 0) {
                 if (errores == 0) {
-                    int precio = Integer.parseInt((String) tabla.getModel().getValueAt(i, 4));
+                    //precio
+                    int precio = Integer.parseInt((String) tabla.getModel().getValueAt(i, 5));
                     total += precio * cantidad;
                     ((NotaCreditoDebitoDetalle) resultListNcdDetalle.get(i)).setCantidadProducto(cantidad);
+                    //observacion
+                    String obs = (String) tabla.getModel().getValueAt(i, 3);
+                    ((NotaCreditoDebitoDetalle) resultListNcdDetalle.get(i)).setObservacion(obs);
                 }
             } else {
-                filas_incorrectas += (i + 1) + "\n";
+                filas_incorrectas += tabla.getModel().getValueAt(i, 0) + "\n";
                 errores++;
             }
         }
