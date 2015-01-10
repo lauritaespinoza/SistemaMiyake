@@ -86,7 +86,7 @@
 				</textElement>
 				<text><![CDATA[Fecha:]]></text>
 			</staticText>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="1" y="95" width="179" height="21" uuid="60289edf-3f0d-4e73-8d40-d3a02e23f407"/>
 				<textElement>
 					<font fontName="Calibri" size="12" isBold="true"/>
@@ -103,7 +103,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{Titulo}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="461" y="96" width="77" height="20" uuid="41fe526d-433d-4299-b0b5-c35651dc70c1"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="12" isUnderline="false"/>
@@ -262,7 +262,7 @@
 	</detail>
 	<columnFooter>
 		<band height="126">
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="16" y="99" width="518" height="20" uuid="f3c94802-b1ca-4ed4-9103-22c99dcf6df6"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Calibri" size="13" isBold="true"/>
@@ -290,14 +290,14 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{Caso}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="88" y="36" width="151" height="20" uuid="34c2b74f-c670-49f0-95a5-ce4cb172cf34"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="Calibri" size="14" isUnderline="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{Facturado}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="88" y="68" width="151" height="20" uuid="dc45bf8b-3fad-4aa7-b026-4385dedaa464"/>
 				<textElement>
 					<font fontName="Calibri" size="14" isUnderline="true"/>

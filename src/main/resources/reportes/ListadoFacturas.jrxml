@@ -60,8 +60,8 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="e481a284-6f3d-4525-b6bb-291b3611db61"/>
+							<textField isBlankWhenNull="true">
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="90" height="20" uuid="e481a284-6f3d-4525-b6bb-291b3611db61"/>
 								<textFieldExpression><![CDATA[$F{NRO FACTURA}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -75,8 +75,8 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="629f0d41-2e24-436e-9d48-672889752cde"/>
+							<textField isBlankWhenNull="true">
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="90" height="20" uuid="629f0d41-2e24-436e-9d48-672889752cde"/>
 								<textFieldExpression><![CDATA[$F{TOTAL FACTURA}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -90,8 +90,8 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="246af581-ea80-461f-8e13-17449b758b24"/>
+							<textField isBlankWhenNull="true">
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="90" height="20" uuid="246af581-ea80-461f-8e13-17449b758b24"/>
 								<textFieldExpression><![CDATA[$F{RECIBIDO POR}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -105,8 +105,8 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="04479882-a469-472b-a038-cfdaa72a660f"/>
+							<textField isBlankWhenNull="true">
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="90" height="20" uuid="04479882-a469-472b-a038-cfdaa72a660f"/>
 								<textFieldExpression><![CDATA[$F{EMBARCADO VIA}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -120,8 +120,8 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="bd991e23-8da1-48b6-a53b-6ce90ae66a05"/>
+							<textField isBlankWhenNull="true">
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="90" height="20" uuid="bd991e23-8da1-48b6-a53b-6ce90ae66a05"/>
 								<textFieldExpression><![CDATA[$F{ALMACEN}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -135,8 +135,8 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="c9fd3bcb-5061-4a54-8238-a34d33e91aeb"/>
+							<textField isBlankWhenNull="true">
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="90" height="20" uuid="c9fd3bcb-5061-4a54-8238-a34d33e91aeb"/>
 								<textFieldExpression><![CDATA[$F{PROVEEDOR}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>

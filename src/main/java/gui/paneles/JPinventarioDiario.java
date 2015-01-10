@@ -670,7 +670,7 @@ public class JPinventarioDiario extends javax.swing.JPanel {
         if (evt.getKeyCode() == KeyEvent.VK_DOWN && tabla.isEditable()) {
             int rowCount = tabla.getRowCount();
             int rowSelected = tabla.getSelectedRow();
-            int columnCount = tabla.getColumnCount();
+            //si la fila seleccionada es la ultima
             if (rowSelected == rowCount - 1) {//0 hasta n-1
                 if (filaCorrecta(rowSelected)) {
                     ((DefaultTableModel) tabla.getModel()).addRow(new Object[tabla.getColumnCount()]);
