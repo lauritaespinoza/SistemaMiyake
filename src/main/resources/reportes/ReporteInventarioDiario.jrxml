@@ -184,7 +184,7 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="76" height="30" uuid="e9178785-4f9d-44ba-b7f1-978cb8d97012"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{ENTRADA}]]></textFieldExpression>
@@ -202,7 +202,7 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="30" rowSpan="1">
-							<textField>
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="77" height="30" uuid="976bc4eb-6cbb-4d44-9020-9b0a2add74e2"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{SALIDA}]]></textFieldExpression>

@@ -59,13 +59,9 @@ public class JPreduccionInventarioParticular extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         listadoProductosADescontar = new org.jdesktop.swingx.JXTable();
         btn_modfInventario = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        cb_Tiend_Inv_Part.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_Tiend_Inv_PartActionPerformed(evt);
-            }
-        });
-
+        lb_Tiend.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636330_store.png"))); // NOI18N
         lb_Tiend.setText("Tienda:");
 
         listadoProductosADescontar.setModel(new javax.swing.table.DefaultTableModel(
@@ -94,15 +90,13 @@ public class JPreduccionInventarioParticular extends javax.swing.JPanel {
         listadoProductosADescontar.setHorizontalScrollEnabled(true);
         listadoProductosADescontar.setSortable(false);
         listadoProductosADescontar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                listadoProductosADescontarKeyPressed(evt);
-            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 listadoProductosADescontarKeyReleased(evt);
             }
         });
         jScrollPane1.setViewportView(listadoProductosADescontar);
 
+        btn_modfInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/inventario.png"))); // NOI18N
         btn_modfInventario.setText("Actualizar Inventario");
         btn_modfInventario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,19 +104,27 @@ public class JPreduccionInventarioParticular extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Californian FB", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel1.setText("Listado de Productos a Descontar del Inventario");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1)
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(lb_Tiend)
-                .addGap(55, 55, 55)
+                .addGap(18, 18, 18)
                 .addComponent(cb_Tiend_Inv_Part, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                 .addComponent(btn_modfInventario)
                 .addGap(80, 80, 80))
-            .addComponent(jScrollPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,8 +134,10 @@ public class JPreduccionInventarioParticular extends javax.swing.JPanel {
                     .addComponent(cb_Tiend_Inv_Part, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lb_Tiend)
                     .addComponent(btn_modfInventario))
-                .addGap(60, 60, 60)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -145,30 +149,34 @@ public class JPreduccionInventarioParticular extends javax.swing.JPanel {
             cb_Tiend_Inv_Part.addItem(a.getNombre());
         }
     }
-    private void listadoProductosADescontarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_listadoProductosADescontarKeyPressed
-
-    }//GEN-LAST:event_listadoProductosADescontarKeyPressed
-
-    private void cb_Tiend_Inv_PartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_Tiend_Inv_PartActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cb_Tiend_Inv_PartActionPerformed
-
     private void btn_modfInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modfInventarioActionPerformed
 
+        if (resultListFinal.isEmpty()) {
+
+        }
+//        Marca m = (Marca) resultList.get(posOr);
+//            m.setNombre(nomb_a_Modf.getText());
+//            ObjectModelDAO.updateObject(m);
     }//GEN-LAST:event_btn_modfInventarioActionPerformed
 
     private void listadoProductosADescontarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_listadoProductosADescontarKeyReleased
         if (pos == -1) {
             return;
         }
-        if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
-            int rowCount = listadoProductosADescontar.getRowCount();
-            int rowSelected = listadoProductosADescontar.getSelectedRow();
-            //si la fila seleccionada es la ultima
-            if (rowSelected == rowCount - 1) {//0 hasta n-1
-                ((DefaultTableModel) listadoProductosADescontar.getModel()).addRow(new Object[listadoProductosADescontar.getColumnCount()]);
-                //se agrego una nueva asi que si se toma en cuenta n
-                listadoProductosADescontar.setRowSelectionInterval(rowCount, rowCount);
+        if (evt.getKeyCode() == KeyEvent.VK_DOWN ) {
+           
+            if (listadoProductosADescontar.getValueAt(pos, 3).equals("")) {
+                JOptionPane.showMessageDialog(null, "Ingrese la cantidad");
+                return;
+            } else {
+                int rowCount = listadoProductosADescontar.getRowCount();
+                int rowSelected = listadoProductosADescontar.getSelectedRow();
+                //si la fila seleccionada es la ultima
+                if (rowSelected == rowCount - 1) {//0 hasta n-1
+                    ((DefaultTableModel) listadoProductosADescontar.getModel()).addRow(new Object[listadoProductosADescontar.getColumnCount()]);
+                    //se agrego una nueva asi que si se toma en cuenta n
+                    listadoProductosADescontar.setRowSelectionInterval(rowCount, rowCount);
+                }
             }
         }
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -205,6 +213,7 @@ public class JPreduccionInventarioParticular extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_modfInventario;
     private javax.swing.JComboBox cb_Tiend_Inv_Part;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lb_Tiend;
     private org.jdesktop.swingx.JXTable listadoProductosADescontar;
