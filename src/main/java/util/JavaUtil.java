@@ -216,6 +216,7 @@ public abstract class JavaUtil {
             oneRow.add(ntcd.getNroRenglon());
             oneRow.add(ntcd.getIdProducto().getReferenciaProducto());
             oneRow.add(ntcd.getIdProducto().getDescripcion());
+            oneRow.add(ntcd.getObservacion());
             oneRow.add(ntcd.getCantidadProducto());
             InventarioTienda ivt = ObjectModelDAO.getObject(new InventarioTiendaPK(ntcd.getIdProducto().getIdProducto(), ntcd.getIdNotaCreditoDebito().getIdSalida().getIdAlmacenHasta().getIdAlmacen()), InventarioTienda.class);
             oneRow.add(ivt.getPrecioConDescuento());
@@ -382,6 +383,7 @@ public abstract class JavaUtil {
             header.add("RENGLON");
             header.add("REFERENCIA");
             header.add("DESCRIPCION");
+            header.add("OBSERVACION");
             header.add("CANTIDAD");
             header.add("PRECIO");
         }
@@ -463,7 +465,7 @@ public abstract class JavaUtil {
         }
         if (clase instanceof NotaCreditoDebitoDetalle) {
             canEdit = new boolean[]{
-                false, false, false, true, false
+                false, false, false, true, true, false
             };
         }
         if (canEdit == null) {
