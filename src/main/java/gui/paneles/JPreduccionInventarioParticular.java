@@ -9,6 +9,7 @@ import hibernate.DAO.ObjectModelDAO;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -16,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import modelos.mapeos.Almacen;
 import modelos.mapeos.InventarioTienda;
 import util.JavaUtil;
+import static util.JavaUtil.setTableCellAlignment;
 
 /**
  *
@@ -26,9 +28,12 @@ public class JPreduccionInventarioParticular extends javax.swing.JPanel {
     private List resultListFinal = new ArrayList();
     private List resultListAlmacen;
     private int pos;
+    private InventarioTienda ivt = new InventarioTienda();
 
     public JPreduccionInventarioParticular() {
         initComponents();
+        setTableCellAlignment(JLabel.CENTER, listadoProductosADescontar);
+        listadoProductosADescontar.getTableHeader().setReorderingAllowed(false);
         SetCb();
 
         listadoProductosADescontar.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
@@ -73,7 +78,7 @@ public class JPreduccionInventarioParticular extends javax.swing.JPanel {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
                 true, false, false, true
@@ -89,6 +94,7 @@ public class JPreduccionInventarioParticular extends javax.swing.JPanel {
         });
         listadoProductosADescontar.setHorizontalScrollEnabled(true);
         listadoProductosADescontar.setSortable(false);
+        listadoProductosADescontar.getTableHeader().setReorderingAllowed(false);
         listadoProductosADescontar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 listadoProductosADescontarKeyReleased(evt);
@@ -152,23 +158,80 @@ public class JPreduccionInventarioParticular extends javax.swing.JPanel {
     private void btn_modfInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modfInventarioActionPerformed
 
         if (resultListFinal.isEmpty()) {
-
+            return;
         }
-//        Marca m = (Marca) resultList.get(posOr);
-//            m.setNombre(nomb_a_Modf.getText());
-//            ObjectModelDAO.updateObject(m);
+        for (Object o : resultListFinal) {
+            InventarioTienda ivt = (InventarioTienda) o;
+            int cantElem = ivt.getCantidad();
+            int cod = ivt.getProducto().getIdProducto();
+            int almacen = ivt.getAlmacen().getIdAlmacen();
+            System.out.println("listacreadafinal" + cantElem + cod + almacen);
+
+            String sql = "SELECT i.cantidad FROM InventarioTienda i WHERE i.inventarioTiendaPK.idProducto = " + cod
+                    + " AND i.inventarioTiendaPK.idAlmacen = " + almacen;
+            List consulta = ObjectModelDAO.getResultQuery(sql);
+
+            int cantConsultada = Integer.parseInt(consulta.get(0).toString());
+
+            System.out.println("cantidadconsultada" + cantConsultada);
+
+            int CantidadTotal = cantConsultada - cantElem;
+            ivt.setCantidad(CantidadTotal);
+            ObjectModelDAO.updateObject(ivt);
+        }
     }//GEN-LAST:event_btn_modfInventarioActionPerformed
 
+    boolean codigorepetido(Object cod) {
+
+        for (int i = 0; i < listadoProductosADescontar.getRowCount()-1; i++) {
+            if (listadoProductosADescontar.getValueAt(i, 0).equals(cod)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    boolean verificarcantidad(int cant) {
+        int codigo = ivt.getProducto().getIdProducto();
+        int almacen = ivt.getAlmacen().getIdAlmacen();
+
+        String sql = "SELECT i.cantidad FROM InventarioTienda i WHERE i.inventarioTiendaPK.idProducto = " + codigo
+                + " AND i.inventarioTiendaPK.idAlmacen = " + almacen;
+        List consulta = ObjectModelDAO.getResultQuery(sql);
+
+        int cantConsultada = Integer.parseInt(consulta.get(0).toString());
+
+        if (cant <= cantConsultada) {
+            return true;
+        }
+        return false;
+    }
+
     private void listadoProductosADescontarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_listadoProductosADescontarKeyReleased
+
         if (pos == -1) {
             return;
         }
-        if (evt.getKeyCode() == KeyEvent.VK_DOWN ) {
-           
-            if (listadoProductosADescontar.getValueAt(pos, 3).equals("")) {
+        if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
+
+            if (listadoProductosADescontar.getModel().getValueAt(pos, 1) == null
+                    || listadoProductosADescontar.getModel().getValueAt(pos, 2) == null) {
+                JOptionPane.showMessageDialog(null, "Todos los campos deben estar completos");
+                return;
+            }
+            if (listadoProductosADescontar.getModel().getValueAt(pos, 3) == null) {
                 JOptionPane.showMessageDialog(null, "Ingrese la cantidad");
+                //listadoProductosADescontar.setColumnSelectionInterval(0, 0);
+                return;
+            }
+            int cantidadingresada = Integer.parseInt(listadoProductosADescontar.getModel().getValueAt(pos, 3).toString());
+            if (!verificarcantidad(cantidadingresada)) {
+                JOptionPane.showMessageDialog(null, "No dispone de la cantidad ingresada en Inventario");             
                 return;
             } else {
+                ivt.setCantidad(cantidadingresada);
+                resultListFinal.add(ivt);
+
                 int rowCount = listadoProductosADescontar.getRowCount();
                 int rowSelected = listadoProductosADescontar.getSelectedRow();
                 //si la fila seleccionada es la ultima
@@ -176,27 +239,51 @@ public class JPreduccionInventarioParticular extends javax.swing.JPanel {
                     ((DefaultTableModel) listadoProductosADescontar.getModel()).addRow(new Object[listadoProductosADescontar.getColumnCount()]);
                     //se agrego una nueva asi que si se toma en cuenta n
                     listadoProductosADescontar.setRowSelectionInterval(rowCount, rowCount);
+                    listadoProductosADescontar.setColumnSelectionInterval(0, 0);
                 }
             }
         }
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        if (evt.getKeyCode() == KeyEvent.VK_TAB) {
 
-            Object codigoingresado = listadoProductosADescontar.getValueAt(pos, 0);
+            int codigoingresado = Integer.parseInt(listadoProductosADescontar.getValueAt(pos, 0).toString());
             Almacen almacenseleccionado = (Almacen) resultListAlmacen.get(cb_Tiend_Inv_Part.getSelectedIndex());
 
-            String sql = "FROM InventarioTienda i WHERE i.inventarioTiendaPK.idProducto = " + codigoingresado
-                    + " AND i.inventarioTiendaPK.idAlmacen = " + almacenseleccionado.getIdAlmacen();
-            List resultList = ObjectModelDAO.getResultQuery(sql);
+            if (listadoProductosADescontar.getRowCount() >= 2) {
+                if (codigorepetido(codigoingresado)) {
+                    JOptionPane.showMessageDialog(null, "El Código ya se encuentra en el listado");
+                    return;
+                } else {
+                    String sql = "FROM InventarioTienda i WHERE i.inventarioTiendaPK.idProducto = " + codigoingresado
+                            + " AND i.inventarioTiendaPK.idAlmacen = " + almacenseleccionado.getIdAlmacen();
+                    List resultList = ObjectModelDAO.getResultQuery(sql);
 
-            if (resultList.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Código no encontrado");
-                return;
+                    if (resultList.isEmpty()) {
+                        JOptionPane.showMessageDialog(null, "Código no encontrado, Verifique e Inténtelo nuevamente");
+                        return;
+                    }
+
+                    ivt = (InventarioTienda) resultList.get(0);
+
+                    listadoProductosADescontar.getModel().setValueAt(ivt.getProducto().getDescripcion(), pos, 1);
+                    listadoProductosADescontar.getModel().setValueAt(ivt.getPrecioConDescuento(), pos, 2);
+                    listadoProductosADescontar.setColumnSelectionInterval(3, 3);
+                }
+            } else {
+                String sql = "FROM InventarioTienda i WHERE i.inventarioTiendaPK.idProducto = " + codigoingresado
+                        + " AND i.inventarioTiendaPK.idAlmacen = " + almacenseleccionado.getIdAlmacen();
+                List resultList = ObjectModelDAO.getResultQuery(sql);
+
+                if (resultList.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Código no encontrado, Verifique e Inténtelo nuevamente");
+                    return;
+                }
+
+                ivt = (InventarioTienda) resultList.get(0);
+
+                listadoProductosADescontar.getModel().setValueAt(ivt.getProducto().getDescripcion(), pos, 1);
+                listadoProductosADescontar.getModel().setValueAt(ivt.getPrecioConDescuento(), pos, 2);
+                listadoProductosADescontar.setColumnSelectionInterval(3, 3);
             }
-
-            InventarioTienda ivt = (InventarioTienda) resultList.get(0);
-            resultListFinal.add(ivt);
-            listadoProductosADescontar.getModel().setValueAt(ivt.getProducto().getDescripcion(), pos, 1);
-            listadoProductosADescontar.getModel().setValueAt(ivt.getPrecioConDescuento(), pos, 2);
         }
 
         //si le da a delete
