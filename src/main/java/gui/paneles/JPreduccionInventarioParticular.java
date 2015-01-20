@@ -66,6 +66,8 @@ public class JPreduccionInventarioParticular extends javax.swing.JPanel {
         btn_modfInventario = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
+        cb_Tiend_Inv_Part.setPreferredSize(new java.awt.Dimension(58, 23));
+
         lb_Tiend.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636330_store.png"))); // NOI18N
         lb_Tiend.setText("Tienda:");
 
@@ -92,6 +94,7 @@ public class JPreduccionInventarioParticular extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        listadoProductosADescontar.setToolTipText("Presionar TAB luego de ingresar el código. Flecha abajo luego de ingresar cantidad.");
         listadoProductosADescontar.setHorizontalScrollEnabled(true);
         listadoProductosADescontar.setSortable(false);
         listadoProductosADescontar.getTableHeader().setReorderingAllowed(false);
@@ -120,17 +123,19 @@ public class JPreduccionInventarioParticular extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(lb_Tiend)
-                .addGap(18, 18, 18)
-                .addComponent(cb_Tiend_Inv_Part, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
-                .addComponent(btn_modfInventario)
-                .addGap(80, 80, 80))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lb_Tiend)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cb_Tiend_Inv_Part, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_modfInventario))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 115, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(0, 116, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,6 +183,7 @@ public class JPreduccionInventarioParticular extends javax.swing.JPanel {
             int CantidadTotal = cantConsultada - cantElem;
             ivt.setCantidad(CantidadTotal);
             ObjectModelDAO.updateObject(ivt);
+            JOptionPane.showMessageDialog(null, "Se ha actualizado el inventario.");
         }
     }//GEN-LAST:event_btn_modfInventarioActionPerformed
 

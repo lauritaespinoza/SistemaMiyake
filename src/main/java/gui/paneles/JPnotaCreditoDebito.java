@@ -672,8 +672,7 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
                 if (errores == 0) {
                     //precio
                     Object op=tabla.getModel().getValueAt(i, 5);
-                    int precio = Integer.parseInt(
-                            op instanceof String ? (String) op: ((Float) op).toString());
+                    Float precio =(Float) ((op instanceof String )? Float.parseFloat((String) op): op);
                     
                     total += precio * cantidad;
                     ((NotaCreditoDebitoDetalle) resultListNcdDetalle.get(i)).setCantidadProducto(cantidad);

@@ -102,12 +102,20 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JRadioButton" name="precioactual">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="grupoboton"/>
+            </Property>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="precioactualActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="precioleido">
           <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="grupoboton"/>
+            </Property>
             <Property name="selected" type="boolean" value="true"/>
           </Properties>
           <Events>
@@ -115,6 +123,11 @@
           </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="precioparticular">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="grupoboton"/>
+            </Property>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="precioparticularActionPerformed"/>
           </Events>
@@ -181,9 +194,9 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="fecha" alignment="0" min="-2" pref="149" max="-2" attributes="0"/>
                                       <Component id="nro_factura" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
-                                      <Component id="recibido_por" min="-2" pref="290" max="-2" attributes="0"/>
+                                      <Component id="recibido_por" min="-2" pref="280" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
@@ -363,13 +376,9 @@
         <Component class="javax.swing.JLabel" name="ruta">
         </Component>
         <Component class="javax.swing.JLabel" name="recibido_por">
-          <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                <BevelBorder/>
-              </Border>
-            </Property>
-          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="Font fontsub = recibido_por.getFont();&#xa;Map attributes = fontsub.getAttributes();&#xa;attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);&#xa;recibido_por.setFont(fontsub.deriveFont(attributes));"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

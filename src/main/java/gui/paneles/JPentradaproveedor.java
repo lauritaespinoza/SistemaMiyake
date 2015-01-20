@@ -22,6 +22,8 @@ import static util.JavaUtil.cons_rutaFacturasDigitales;
 import static util.JavaUtil.cons_seleccionar;
 import static util.JavaUtil.copyFile;
 import hibernate.DAO.ObjectModelDAO;
+import java.awt.Font;
+import java.awt.font.TextAttribute;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -141,12 +143,14 @@ public class JPentradaproveedor extends javax.swing.JPanel {
 
         jLabel13.setText("Precio Particular");
 
+        grupoboton.add(precioactual);
         precioactual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 precioactualActionPerformed(evt);
             }
         });
 
+        grupoboton.add(precioleido);
         precioleido.setSelected(true);
         precioleido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,6 +158,7 @@ public class JPentradaproveedor extends javax.swing.JPanel {
             }
         });
 
+        grupoboton.add(precioparticular);
         precioparticular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 precioparticularActionPerformed(evt);
@@ -264,7 +269,10 @@ public class JPentradaproveedor extends javax.swing.JPanel {
             }
         });
 
-        recibido_por.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Font fontsub = recibido_por.getFont();
+        Map attributes = fontsub.getAttributes();
+        attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+        recibido_por.setFont(fontsub.deriveFont(attributes));
 
         javax.swing.GroupLayout facturaLayout = new javax.swing.GroupLayout(factura.getContentPane());
         factura.getContentPane().setLayout(facturaLayout);
@@ -284,8 +292,8 @@ public class JPentradaproveedor extends javax.swing.JPanel {
                                 .addGroup(facturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(nro_factura, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(recibido_por, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(114, 114, 114)
+                                    .addComponent(recibido_por, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(124, 124, 124)
                                 .addGroup(facturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(facturaLayout.createSequentialGroup()
                                         .addGroup(facturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
