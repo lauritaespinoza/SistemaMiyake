@@ -977,6 +977,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
         taskPaneModuloTienda.getContentPane().add(jButtonFacturas);
 
+        jButtonInventarioParticular.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1421043165_stock_task-assigned-to.png"))); // NOI18N
         jButtonInventarioParticular.setText("Redución de Inventario");
         jButtonInventarioParticular.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonInventarioParticular.setBorderPainted(false);
