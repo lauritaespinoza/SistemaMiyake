@@ -355,6 +355,10 @@ public class JPMecanciaEnProceso extends javax.swing.JPanel {
                 //OBjetos
                 ususrioActual = null;
                 almacenDesde = null;
+                //Busy
+                busy.setEnabled(false);
+                busy.setVisible(false);
+                busy.setBusy(false);
 
                 //Controles ComboBox
                 this.comboBoxAlmacenDesde.setSelectedIndex(-1);

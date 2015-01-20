@@ -295,6 +295,9 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="nro_factura">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="nro_facturaKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
