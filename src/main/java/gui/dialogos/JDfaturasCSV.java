@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui.dialogos; 
+package gui.dialogos;
 
 import clases.csv.CSVreader;
 import clases.csv.Factura;
@@ -446,7 +446,7 @@ public class JDfaturasCSV extends javax.swing.JDialog {
                             .addComponent(totalConIva, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(totalSinIva, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cb_tiendas, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cb_tiendas, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel7))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -598,10 +598,12 @@ public class JDfaturasCSV extends javax.swing.JDialog {
             for (Map.Entry<Producto, Integer> entry : factura.getProductos().entrySet()) {
                 Producto p = entry.getKey();
                 InventarioTiendaPK id = new InventarioTiendaPK(p.getCodigo(), alm.getIdAlmacen());
-                if (id == null) {
+                InventarioTienda ivt = ObjectModelDAO.getObject(id, InventarioTienda.class);
+
+                if (ivt == null) {
                     errores += p.getCodigo() + "\n";
                 } else {
-                    InventarioTienda ivt = ObjectModelDAO.getObject(id, InventarioTienda.class);
+
                     if (factura.getEstado() == Factura.Estado.devuelta) {//debe sumar al inventario
                         ivt.setCantidad(ivt.getCantidad() + entry.getValue());
                     }
@@ -615,7 +617,7 @@ public class JDfaturasCSV extends javax.swing.JDialog {
         }
 
         if (!errores.equals("")) {
-            JOptionPane.showMessageDialog(null, "Los siguientes productos no se encontraron en la tienda\n\n" + errores);
+            JOptionPane.showMessageDialog(null, "Los siguientes productos no se encontraron en la tienda, presione Enter para aceptar\n\n" + errores);
         }
         actualizar.setEnabled(false);
 

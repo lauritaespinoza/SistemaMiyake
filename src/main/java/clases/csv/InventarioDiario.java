@@ -44,8 +44,10 @@ public class InventarioDiario {
         for (Iterator<Factura> it = facturas.iterator(); it.hasNext();) {
             // System.out.println(i++);
             Factura factura = it.next();
+
             if (factura.getProductos().isEmpty()) {
                 it.remove();
+
             }
         }
         calcularTotales();
@@ -130,14 +132,14 @@ public class InventarioDiario {
 
                     if (factura.getEstado() == Factura.Estado.correcta) {
                         if (value != null) {
-                           // relacion.replace(c, value + entry.getValue());
+                            // relacion.replace(c, value + entry.getValue());
                         } else {
                             relacion.put(c, entry.getValue());
                         }
                     }
                     if (factura.getEstado() == Factura.Estado.devuelta) {
                         if (value != null) {
-                          //  relacion.replace(c, value - entry.getValue());
+                            //  relacion.replace(c, value - entry.getValue());
                         }
                     }
                 }
