@@ -267,7 +267,7 @@ public class JDasignadaTienda extends javax.swing.JDialog {
                     jasperPrint = JasperFillManager.fillReport(reporte, null, dataSourse);
                     JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
                     jasperViewer.setModalExclusionType(Dialog.ModalExclusionType.TOOLKIT_EXCLUDE);
-                    jasperViewer.setTitle("Reporte de Toma Fisica Distribuidoras.");
+                    jasperViewer.setTitle("Listado de Productos Asignados a Tienda");
                     jasperViewer.setVisible(true);
 
                     busy.setEnabled(false);

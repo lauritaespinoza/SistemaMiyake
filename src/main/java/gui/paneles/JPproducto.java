@@ -133,8 +133,6 @@ public class JPproducto extends javax.swing.JPanel {
         panelCabBusq = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         f_productbuscado = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        field_Cod_Prod_Buscado = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         panelCrearProducto = new javax.swing.JPanel();
@@ -255,19 +253,12 @@ public class JPproducto extends javax.swing.JPanel {
 
         panelConsulta.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
-        jLabel6.setText("Buscar Referencia:");
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636473_edit-find-replace-20.png"))); // NOI18N
+        jLabel6.setText("Filtrar");
 
         f_productbuscado.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 f_productbuscadoKeyReleased(evt);
-            }
-        });
-
-        jLabel9.setText("Buscar Código:");
-
-        field_Cod_Prod_Buscado.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                field_Cod_Prod_BuscadoKeyReleased(evt);
             }
         });
 
@@ -285,11 +276,7 @@ public class JPproducto extends javax.swing.JPanel {
                     .addGroup(panelCabBusqLayout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(f_productbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(field_Cod_Prod_Buscado, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(f_productbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 694, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(277, Short.MAX_VALUE))
         );
@@ -299,9 +286,7 @@ public class JPproducto extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(panelCabBusqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel9)
-                    .addComponent(f_productbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(field_Cod_Prod_Buscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(f_productbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addComponent(jLabel1)
                 .addContainerGap())
@@ -1145,15 +1130,6 @@ public class JPproducto extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_f_productbuscadoKeyReleased
 
-    private void field_Cod_Prod_BuscadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_field_Cod_Prod_BuscadoKeyReleased
-        if (!busy.isBusy()) {
-            TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(listadoProductos.getModel());
-            listadoProductos.setRowSorter(sorter);
-            String referenciabuscada = field_Cod_Prod_Buscado.getText();
-            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + referenciabuscada));
-        }
-    }//GEN-LAST:event_field_Cod_Prod_BuscadoKeyReleased
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCrearClasif;
@@ -1173,7 +1149,6 @@ public class JPproducto extends javax.swing.JPanel {
     private javax.swing.JTextField f_precio_orig;
     private javax.swing.JTextField f_productbuscado;
     private javax.swing.JTextField f_ref_Product;
-    private javax.swing.JTextField field_Cod_Prod_Buscado;
     private javax.swing.JTextField field_codproducto;
     private javax.swing.JTextField field_descrip;
     private javax.swing.JTextField field_precioOrig;
@@ -1199,7 +1174,6 @@ public class JPproducto extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
