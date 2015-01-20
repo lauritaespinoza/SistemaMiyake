@@ -859,8 +859,15 @@ public class JPinventarioDiario extends javax.swing.JPanel {
             return;
         }
 
+        float totalIVD = ivdDetalle.get(ivdDetalle.size() - 1).getSaldo();
+        //si es negativo error
+        if (totalIVD < 0) {
+            JOptionPane.showMessageDialog(null, "Saldo final negativo, porfavor revisar.");
+            return;
+        }
+
         //guarda el saldo final en el ivd
-        ivd.setSaldoFinal(ivdDetalle.get(ivdDetalle.size() - 1).getSaldo());
+        ivd.setSaldoFinal(totalIVD);
 
         if (crear) {
             ObjectModelDAO.saveObject(ivd);
