@@ -32,9 +32,11 @@ import static gui.ventanas.JFInicioSecionMiyake.resultListUsuarios;
 import java.awt.Dialog.ModalExclusionType;
 import modelos.tablas.TableModelReport;
 import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRExporterParameter;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.export.JRPdfExporter;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
@@ -1039,7 +1041,12 @@ public class Asignar1 extends javax.swing.JPanel {
                     jasperViewer.setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
                     jasperViewer.setTitle("Reporte de Asignacion de Mercancia.");
                     jasperViewer.setVisible(true);
-                     
+                    //Guardar Reporte 
+                    JRPdfExporter exporter=new JRPdfExporter();
+                    exporter.setParameter(JRExporterParameter.JASPER_PRINT,reporte);
+                    exporter.exportReport();
+  
+                    
                     busy.setEnabled(false);
                     busy.setVisible(false);
                     busy.setBusy(false);
@@ -1238,7 +1245,10 @@ public class Asignar1 extends javax.swing.JPanel {
                         JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
                         jasperViewer.setTitle("Reporte de Asignacion de Mercancia.");
                         jasperViewer.setVisible(true);
-
+                        //Guardar Reporte 
+                    JRPdfExporter exporter=new JRPdfExporter();
+                    exporter.setParameter(JRExporterParameter.JASPER_PRINT,reporte);
+                    exporter.exportReport();
                         //busy
                         busy.setEnabled(false);
                         busy.setVisible(false);
