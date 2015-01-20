@@ -232,6 +232,12 @@ public class JPentradaproveedor extends javax.swing.JPanel {
             }
         });
 
+        nro_factura.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nro_facturaKeyTyped(evt);
+            }
+        });
+
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/facturas.png"))); // NOI18N
         jLabel3.setText("N° Factura");
 
@@ -674,6 +680,20 @@ public class JPentradaproveedor extends javax.swing.JPanel {
         precioescogido.setText("");
         precioescogido.setEnabled(true);
     }//GEN-LAST:event_precioparticularActionPerformed
+
+    private void nro_facturaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nro_facturaKeyTyped
+        
+          char car = evt.getKeyChar();
+        String cadena = " ,-_{}[¨*+´!°#$%&/()=?¡.;;><qwertyuiopñlkjhgfdsazxcvbnm,.-ç´+`¡'<º"
+                + "¨_:´:_.-*^+`QWERTYUIOPÑLKJHGFDSAZXCVBNM,.-´ç+`¡'º<>ª!^·$%&/()=?¿*"; // Caracterens no validos
+        char s = '"';
+        for (int i = 0; i < cadena.length(); i++) {
+            if (car == cadena.charAt(i) || car == s) {
+                evt.consume();
+            }
+        }
+        
+    }//GEN-LAST:event_nro_facturaKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

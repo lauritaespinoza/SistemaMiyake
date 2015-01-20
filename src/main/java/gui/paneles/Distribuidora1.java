@@ -32,6 +32,11 @@ import modelos.mapeos.Usuario;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import modelos.mapeos.NotaCreditoDebito;
+import modelos.mapeos.NotaCreditoDebitoDetalle;
+import modelos.mapeos.SalidaParaTienda;
+import modelos.mapeos.SalidaParaTiendaDetalle;
+import modelos.mapeos.SalidaParaTiendaDetallePK;
 import modelos.tablas.TableModelReport;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -51,6 +56,10 @@ public class Distribuidora1 extends javax.swing.JPanel {
     Usuario user = JFInicioSecionMiyake.us1;
     Usuario ususrioActual = null;
     Almacen almacenActual = null;
+    //NOTAS Credito/Debito
+    NotaCreditoDebito faltante = null;
+    NotaCreditoDebito sobrante = null;
+    private SalidaParaTienda sa = null;
 
     //Listas
     List listaEP = null;
@@ -985,12 +994,17 @@ public class Distribuidora1 extends javax.swing.JPanel {
                 busy2.setBusy(true);
 
                 Float total = 0f;
-
+                float totalNotaC = 0f;
+                float totalNotaD = 0f;
                 try {
+                       
                     ConteoMercanciaEntrada cab = new ConteoMercanciaEntrada(almacenActual, fa, user);
                     Integer id_creado_cabecera = (Integer) ObjectModelDAO.saveObject(cab);
                     if (id_creado_cabecera != -1) {//se creo
-
+                        //Cabecera de Salida Para Tienda
+                    sa = new SalidaParaTienda(almacenActual, almacenActual, user, user);
+                    ObjectModelDAO.saveObject(sa);
+                    
                         for (DetalleRegistro dr : listaDetalle) {
 
                             //Crear Objeto PK_DeatllesConteo
@@ -1026,7 +1040,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
                             }
 
                             //Guardando Inventario
-                            try {
+//                            try {
                                 //Guaradar InventarioPK
                                 System.err.println("Creando PK inventario");
                                 InventarioTiendaPK inventarioPK = new InventarioTiendaPK(
@@ -1067,18 +1081,98 @@ public class Distribuidora1 extends javax.swing.JPanel {
                                     total += dr.getCantidad() * id_in.getPrecioSinDescuento();
                                     System.err.println("Actualizando Inventario de Producto Existente");
                                 }
-                            } catch (Exception e) {
-                                Logger.getLogger(Distribuidora1.class.getName()).log(Level.SEVERE, null, e);
-                                JOptionPane.showMessageDialog(null, "Por Favor, Vuelva a Intentar Guardar con Datos Correctos del Inventario!!!");
-                                System.err.println("ERROR GUARDANDO EN INVENTARIO : " + e);
-                            }
+//                            } catch (Exception e) {
+//                                Logger.getLogger(Distribuidora1.class.getName()).log(Level.SEVERE, null, e);
+//                                JOptionPane.showMessageDialog(null, "Por Favor, Vuelva a Intentar Guardar con Datos Correctos del Inventario!!!");
+//                                System.err.println("ERROR GUARDANDO EN INVENTARIO : " + e);
+//                            }
 
                             ObjectModelDAO.updateObject(dr.getEp());
+                            
+                            
+                             // <editor-fold defaultstate="collapsed" desc="***NOTAS CD">
+                            //Creacion SalidaParaTiendaPK
+                            SalidaParaTiendaDetallePK sa_pk = new SalidaParaTiendaDetallePK(dr.getEp().getIdProducto().getIdProducto(), sa.getIdSalida());
+                            //Deatalle Salida Para Tienda
+                            SalidaParaTiendaDetalle sa_d = new SalidaParaTiendaDetalle(sa_pk, dr.getCantidad(), dr.getBulto(), dr.getRenglon(), dr.getEp().getIdProducto(), sa);
+                            ObjectModelDAO.saveObject(sa_d);
+                            
+                            
+                            
+                            if (dr.getConteoFaltante() != 0) {
+                                NotaCreditoDebitoDetalle ncdd = null;
+                                //Es menor el Salida Para Tienda Detalle a lo que introduce el user
+                                //(NOTA FALTANTE o de DEBITO)*************************************
+                                if (dr.getConteoFaltante() < 0) {
+                                    if (faltante == null) {
+                                        faltante = new NotaCreditoDebito(false, sa, user);
+                                        ObjectModelDAO.saveObject(faltante);
+
+                                    }
+                                    ncdd = new NotaCreditoDebitoDetalle(
+                                            Math.abs(dr.getConteoFaltante()),
+                                            sa_d.getNroRenglon(),
+                                            faltante,
+                                            sa_d.getProducto()
+                                    );
+
+                                    totalNotaD += ncdd.getCantidadProducto() * id_in.getPrecioSinDescuento();
+                                    JOptionPane.showMessageDialog(null, "GENERANDO NOTA DE DEBITO..." + "\n"
+                                            + "Con Los Siguientes Datos:" + "\n" + "Codigo Producto: " + detalle.getProducto().getIdProducto() + "\n"
+                                            + "Refefrrencia: " + detalle.getProducto().getReferenciaProducto() + "\n"
+                                            + "Descripcion: " + detalle.getProducto().getDescripcion() + "\n"
+                                            + "Cantidad Faltante: " + dr.getConteoFaltante() + "\n"
+                                            + "Bolivares Faltante: " + dr.getTotalFaltante() + "\n");
+                                //    botonGenerarNotas.setEnabled(true);
+                                }
+                                //Es Mayor el Salida Para Tienda Detalle a lo que introduce el user
+                                //(NOTA SOBRANTE o de CREDITO)*************************************
+                                if (dr.getConteoFaltante() > 0) {
+                                    if (sobrante == null) {
+                                        sobrante = new NotaCreditoDebito(true, sa, user);
+                                        ObjectModelDAO.saveObject(sobrante);
+                                    }
+                                    ncdd = new NotaCreditoDebitoDetalle(
+                                            Math.abs(dr.getConteoFaltante()),
+                                            sa_d.getNroRenglon(),
+                                            sobrante,
+                                            sa_d.getProducto()
+                                    );
+
+                                    totalNotaC += ncdd.getCantidadProducto() * id_in.getPrecioSinDescuento();
+                                    JOptionPane.showMessageDialog(null, "GENERANDO NOTA DE CREDITO..." + "\n"
+                                            + "Con Los Siguientes Datos:" + "\n" + "Codigo Producto: " + detalle.getProducto().getIdProducto() + "\n"
+                                            + "Refefrrencia: " + detalle.getProducto().getReferenciaProducto() + "\n"
+                                            + "Descripcion: " + detalle.getProducto().getDescripcion() + "\n"
+                                            + "Cantidad Faltante: " + dr.getConteoFaltante() + "\n"
+                                            + "Bolivares Faltante: " + dr.getTotalFaltante() + "\n");
+                                    //botonGenerarNotas.setEnabled(true);
+                                }
+
+                                ObjectModelDAO.saveObject(ncdd);
+                            }
+                            // </editor-fold> 
                         }
 
                     }
+                    
+                    // <editor-fold defaultstate="collapsed" desc="***NOTAS CD">
+                    if (sobrante != null) {
+                        sobrante.setTotal(totalNotaC);
+                        ObjectModelDAO.updateObject(sobrante);
+                    }
+                    if (faltante != null) {
+                        faltante.setTotal(totalNotaD);
+                        ObjectModelDAO.updateObject(faltante);
+                    }
+                    // </editor-fold> 
+
+                    
                     cab.setTotalConteo(total);
+                    sa.setTotal(total);
                     ObjectModelDAO.updateObject(cab);
+                    ObjectModelDAO.updateObject(sa);
+                    
                     //busy
                     busy2.setEnabled(false);
                     busy2.setVisible(false);
