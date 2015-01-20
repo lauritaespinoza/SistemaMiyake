@@ -350,9 +350,9 @@ public abstract class JavaUtil {
             header.add("TIENDA");//
             header.add("CODIGO");
             header.add("DESCRIPCION");
-            header.add("SIN DESCUENTO");//
+            header.add("PRECIO SIN DESCUENTO");//
             header.add("DESCUENTO");
-            header.add("CON DESCUENTO");
+            header.add("PRECIO CON DESCUENTO");
             header.add("CREACION");
             header.add("MODIFICACION");
             header.add("EXISTENCIA");//
