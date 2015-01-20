@@ -60,6 +60,7 @@ import javax.help.HelpSetException;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import modelos.mapeos.Usuario;
 import org.pushingpixels.substance.api.skin.SubstanceCremeCoffeeLookAndFeel;
 
 public class FventanaIncial extends javax.swing.JFrame {
@@ -109,7 +110,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         this.setIconImage(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417901477_file-roller.png")).getImage());
         this.setLocationRelativeTo(null);
         ClockLabel clock = new ClockLabel();
-        getContentPane().add(clock, BorderLayout.PAGE_END);
+        getContentPane().add(clock, BorderLayout.PAGE_END);       
         preparePanelsMenusEnable();
     }
 

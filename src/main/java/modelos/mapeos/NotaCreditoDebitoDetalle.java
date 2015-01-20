@@ -31,7 +31,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "NotaCreditoDebitoDetalle.findAll", query = "SELECT n FROM NotaCreditoDebitoDetalle n"),
     @NamedQuery(name = "NotaCreditoDebitoDetalle.findByCantidadProducto", query = "SELECT n FROM NotaCreditoDebitoDetalle n WHERE n.cantidadProducto = :cantidadProducto"),
     @NamedQuery(name = "NotaCreditoDebitoDetalle.findByIdNotaCreditoDebitoDetalle", query = "SELECT n FROM NotaCreditoDebitoDetalle n WHERE n.idNotaCreditoDebitoDetalle = :idNotaCreditoDebitoDetalle"),
-    @NamedQuery(name = "NotaCreditoDebitoDetalle.findByNroRenglon", query = "SELECT n FROM NotaCreditoDebitoDetalle n WHERE n.nroRenglon = :nroRenglon")})
+    @NamedQuery(name = "NotaCreditoDebitoDetalle.findByNroRenglon", query = "SELECT n FROM NotaCreditoDebitoDetalle n WHERE n.nroRenglon = :nroRenglon"),
+ @NamedQuery(name = "NotaCreditoDebitoDetalle.findByObservacion", query = "SELECT n FROM NotaCreditoDebitoDetalle n WHERE n.observacion = :observacion")})
 public class NotaCreditoDebitoDetalle implements Serializable {
 
     private static final long serialVersionUID = 1L;

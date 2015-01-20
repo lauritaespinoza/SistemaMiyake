@@ -16,6 +16,7 @@ import modelos.mapeos.Almacen;
 import modelos.mapeos.Proveedor;
 import hibernate.DAO.DaoQuery;
 import clases.excel.EXCELreader;
+import gui.ventanas.JFInicioSecionMiyake;
 import util.JavaUtil;
 import static util.JavaUtil.cons_rutaFacturasDigitales;
 import static util.JavaUtil.cons_seleccionar;
@@ -62,7 +63,7 @@ public class JPentradaproveedor extends javax.swing.JPanel {
 
     public JPentradaproveedor() {
         initComponents();
-
+        recibido_por.setText(JFInicioSecionMiyake.us1.getNombre());
         cargarCB();
     }
 
@@ -109,7 +110,6 @@ public class JPentradaproveedor extends javax.swing.JPanel {
         nro_factura = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        recibido_por = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -120,6 +120,7 @@ public class JPentradaproveedor extends javax.swing.JPanel {
         embarcado_via = new javax.swing.JTextField();
         cb_tienda = new javax.swing.JComboBox();
         ruta = new javax.swing.JLabel();
+        recibido_por = new javax.swing.JLabel();
         panel_detalle = new org.jdesktop.swingx.JXTaskPane();
         busy = new org.jdesktop.swingx.JXBusyLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -263,6 +264,8 @@ public class JPentradaproveedor extends javax.swing.JPanel {
             }
         });
 
+        recibido_por.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
         javax.swing.GroupLayout facturaLayout = new javax.swing.GroupLayout(factura.getContentPane());
         factura.getContentPane().setLayout(facturaLayout);
         facturaLayout.setHorizontalGroup(
@@ -279,9 +282,9 @@ public class JPentradaproveedor extends javax.swing.JPanel {
                                     .addComponent(jLabel5))
                                 .addGap(29, 29, 29)
                                 .addGroup(facturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(recibido_por, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(nro_factura, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(nro_factura, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(recibido_por, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(114, 114, 114)
                                 .addGroup(facturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(facturaLayout.createSequentialGroup()
@@ -315,9 +318,9 @@ public class JPentradaproveedor extends javax.swing.JPanel {
                             .addComponent(nro_factura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
                         .addGap(18, 18, 18)
-                        .addGroup(facturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(recibido_por, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
+                        .addGroup(facturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(recibido_por, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(facturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
@@ -710,7 +713,7 @@ public class JPentradaproveedor extends javax.swing.JPanel {
     private javax.swing.JRadioButton precioleido;
     private javax.swing.JRadioButton precioparticular;
     private javax.swing.JButton procesarEP;
-    private javax.swing.JTextField recibido_por;
+    private javax.swing.JLabel recibido_por;
     private javax.swing.JLabel ruta;
     private org.jdesktop.swingx.JXTable tabla;
     // End of variables declaration//GEN-END:variables
