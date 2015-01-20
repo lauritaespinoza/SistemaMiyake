@@ -55,19 +55,19 @@ public class JDasignadaTienda extends javax.swing.JDialog {
         this.tablaAsignadaTienda.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         this.tablaAsignadaTienda.setColumnControlVisible(true);
 
-        if (resultListSptDetalle != null) {
+        if (resultListSptDetallep != null) {
             this.resultListSptDetalle = resultListSptDetallep;
             JavaUtil.displayResult(resultListSptDetallep, tablaAsignadaTienda);
         }
-        
-         tablaAsignadaTienda.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+
+        tablaAsignadaTienda.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent lse) {
                 if (!lse.getValueIsAdjusting()) {
 
                     if (tablaAsignadaTienda.getSelectedRow() == -1) {
                         return;
                     }
-                     
+
                     sptd = (SalidaParaTiendaDetalle) ((Object[]) resultListSptDetalle.get(tablaAsignadaTienda.getSelectedRow()))[0];
                 }
             }
@@ -109,6 +109,11 @@ public class JDasignadaTienda extends javax.swing.JDialog {
         ));
         tablaAsignadaTienda.setEditable(false);
         tablaAsignadaTienda.setSortable(false);
+        tablaAsignadaTienda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaAsignadaTiendaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablaAsignadaTienda);
 
         txtTitulo.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
@@ -261,7 +266,7 @@ public class JDasignadaTienda extends javax.swing.JDialog {
 
                     jasperPrint = JasperFillManager.fillReport(reporte, null, dataSourse);
                     JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
-                     jasperViewer.setModalExclusionType(Dialog.ModalExclusionType.TOOLKIT_EXCLUDE);
+                    jasperViewer.setModalExclusionType(Dialog.ModalExclusionType.TOOLKIT_EXCLUDE);
                     jasperViewer.setTitle("Reporte de Toma Fisica Distribuidoras.");
                     jasperViewer.setVisible(true);
 
@@ -269,22 +274,22 @@ public class JDasignadaTienda extends javax.swing.JDialog {
                     busy.setVisible(false);
                     busy.setBusy(false);
                     //                    int respuesta = JOptionPane.showConfirmDialog(null, "El Archivo fue Generado con Exito,"
-                        //                            + "¿Desea Continuar Selecionando Una Factura Pendiente?");
+                    //                            + "¿Desea Continuar Selecionando Una Factura Pendiente?");
                     //
                     //                    if (respuesta == JOptionPane.YES_OPTION) {
-                        //
-                        //                    }
+                    //
+                    //                    }
                     //                    if (respuesta == JOptionPane.NO_OPTION) {
-                        //                        dispose();
-                        //                        setVisible(false);
-                        //
-                        //                    }
+                    //                        dispose();
+                    //                        setVisible(false);
+                    //
+                    //                    }
                     //                    dispose();
                     //                    setVisible(false);
 
                 } catch (JRException | HeadlessException e) {
                     JOptionPane.showMessageDialog(null, "Se a Dectectado Un Proble Con Proceso de Seleccion de Facturas,"
-                        + "Por Favor Vuelva a Intentarlo.");
+                            + "Por Favor Vuelva a Intentarlo.");
                     Logger.getLogger(Distribuidora1.class.getName()).log(Level.SEVERE, null, e);
                     System.err.println("Seleccionando Facturas" + e);
 
@@ -299,7 +304,13 @@ public class JDasignadaTienda extends javax.swing.JDialog {
         SeleccionarFactura();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-       private void SeleccionarFactura() {
+    private void tablaAsignadaTiendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaAsignadaTiendaMouseClicked
+        if (evt.getClickCount() == 2) {
+            SeleccionarFactura();
+        }
+    }//GEN-LAST:event_tablaAsignadaTiendaMouseClicked
+
+    private void SeleccionarFactura() {
 
         try {
             if (sptd != null) {

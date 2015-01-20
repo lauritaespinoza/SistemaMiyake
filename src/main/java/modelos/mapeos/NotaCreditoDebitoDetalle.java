@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -30,7 +31,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "NotaCreditoDebitoDetalle.findAll", query = "SELECT n FROM NotaCreditoDebitoDetalle n"),
     @NamedQuery(name = "NotaCreditoDebitoDetalle.findByCantidadProducto", query = "SELECT n FROM NotaCreditoDebitoDetalle n WHERE n.cantidadProducto = :cantidadProducto"),
     @NamedQuery(name = "NotaCreditoDebitoDetalle.findByIdNotaCreditoDebitoDetalle", query = "SELECT n FROM NotaCreditoDebitoDetalle n WHERE n.idNotaCreditoDebitoDetalle = :idNotaCreditoDebitoDetalle"),
-    @NamedQuery(name = "NotaCreditoDebitoDetalle.findByNroRenglon", query = "SELECT n FROM NotaCreditoDebitoDetalle n WHERE n.nroRenglon = :nroRenglon")})
+    @NamedQuery(name = "NotaCreditoDebitoDetalle.findByNroRenglon", query = "SELECT n FROM NotaCreditoDebitoDetalle n WHERE n.nroRenglon = :nroRenglon"),
+ @NamedQuery(name = "NotaCreditoDebitoDetalle.findByObservacion", query = "SELECT n FROM NotaCreditoDebitoDetalle n WHERE n.observacion = :observacion")})
 public class NotaCreditoDebitoDetalle implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,6 +45,9 @@ public class NotaCreditoDebitoDetalle implements Serializable {
     private Integer idNotaCreditoDebitoDetalle;
     @Column(name = "nro_renglon")
     private Integer nroRenglon;
+    @Size(max = 2147483647)
+    @Column(length = 2147483647)
+    private String observacion;
     @JoinColumn(name = "id_nota_credito_debito", referencedColumnName = "id_nota_credito_debito")
     @ManyToOne
     private NotaCreditoDebito idNotaCreditoDebito;
@@ -68,6 +73,14 @@ public class NotaCreditoDebitoDetalle implements Serializable {
         this.nroRenglon = nroRenglon;
         this.idNotaCreditoDebito = idNotaCreditoDebito;
         this.idProducto = idProducto;
+    }
+
+    public String getObservacion() {
+        return observacion;
+    }
+
+    public void setObservacion(String observacion) {
+        this.observacion = observacion;
     }
 
     public Integer getCantidadProducto() {

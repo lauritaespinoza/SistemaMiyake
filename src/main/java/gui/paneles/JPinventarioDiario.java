@@ -670,7 +670,7 @@ public class JPinventarioDiario extends javax.swing.JPanel {
         if (evt.getKeyCode() == KeyEvent.VK_DOWN && tabla.isEditable()) {
             int rowCount = tabla.getRowCount();
             int rowSelected = tabla.getSelectedRow();
-            int columnCount = tabla.getColumnCount();
+            //si la fila seleccionada es la ultima
             if (rowSelected == rowCount - 1) {//0 hasta n-1
                 if (filaCorrecta(rowSelected)) {
                     ((DefaultTableModel) tabla.getModel()).addRow(new Object[tabla.getColumnCount()]);
@@ -747,6 +747,8 @@ public class JPinventarioDiario extends javax.swing.JPanel {
                             - (isVacia(data2)
                                     ? 0f : Float.parseFloat(data2.replace(",", ".")))).replace(",", "."), i, 4);
         }
+
+
     }//GEN-LAST:event_recalcularActionPerformed
 
     private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
@@ -791,6 +793,11 @@ public class JPinventarioDiario extends javax.swing.JPanel {
         if (JOptionPane.showConfirmDialog(null, "¿Desea recalcular entes de guardar?", "Sugerencia", JOptionPane.YES_NO_OPTION)
                 == JOptionPane.YES_OPTION) {
             recalcularActionPerformed(null);
+        }
+
+        if (Double.parseDouble((String) tabla.getValueAt(tabla.getRowCount() - 1, tabla.getColumnCount() - 1)) < 0) {
+            JOptionPane.showMessageDialog(null, "El renglón total es negativo, por favor revifique y recalcule");
+            return;
         }
 
         int elementosDetalle = ivdDetalle.size();

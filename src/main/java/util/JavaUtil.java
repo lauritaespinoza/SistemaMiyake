@@ -155,6 +155,8 @@ public abstract class JavaUtil {
             oneRow.add(p.getIdMarca().getNombre());
             oneRow.add(p.getIdProveedor().getNombre());
             oneRow.add(p.getPrecioOriginal());
+            oneRow.add(p.getPrimeraActividad());
+            oneRow.add(p.getUltimaActividad());
         }
 
         //si es un vector, y si el la primera es Salida para tienda detalle entonces es
@@ -214,6 +216,7 @@ public abstract class JavaUtil {
             oneRow.add(ntcd.getNroRenglon());
             oneRow.add(ntcd.getIdProducto().getReferenciaProducto());
             oneRow.add(ntcd.getIdProducto().getDescripcion());
+            oneRow.add(ntcd.getObservacion());
             oneRow.add(ntcd.getCantidadProducto());
             InventarioTienda ivt = ObjectModelDAO.getObject(new InventarioTiendaPK(ntcd.getIdProducto().getIdProducto(), ntcd.getIdNotaCreditoDebito().getIdSalida().getIdAlmacenHasta().getIdAlmacen()), InventarioTienda.class);
             oneRow.add(ivt.getPrecioConDescuento());
@@ -328,6 +331,8 @@ public abstract class JavaUtil {
             header.add("MARCA");
             header.add("PROVEEDOR");
             header.add("PRECIO ORIGINAL");
+            header.add("FECHA CREACION");
+            header.add("FECHA MODIFICACION");
         }
         //si es un vector, y si el la primera es Salida para tienda detalle entonces es
         //salida para tienda detalle con precios y descuentos
@@ -378,6 +383,7 @@ public abstract class JavaUtil {
             header.add("RENGLON");
             header.add("REFERENCIA");
             header.add("DESCRIPCION");
+            header.add("OBSERVACION");
             header.add("CANTIDAD");
             header.add("PRECIO");
         }
@@ -459,7 +465,7 @@ public abstract class JavaUtil {
         }
         if (clase instanceof NotaCreditoDebitoDetalle) {
             canEdit = new boolean[]{
-                false, false, false, true, false
+                false, false, false, true, true, false
             };
         }
         if (canEdit == null) {

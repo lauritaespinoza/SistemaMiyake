@@ -75,7 +75,6 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
     private SalidaParaTienda spt;
     private boolean crear;
     private List<List> resultListSptDetalle;
-    private Usuario user = JFInicioSecionMiyake.us1;
     public String rutaJasper = "/reportes/ReporteNotasDebCred.jasper";
     public final InputStream rutaJrxml = this.getClass().getResourceAsStream("/reportes/ReporteNotasDebCred.jrxml");
     
@@ -247,9 +246,9 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
                     .addComponent(rifAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
                         .addComponent(titulo)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -312,46 +311,51 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(25, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel4)
                             .addComponent(jLabel1))
-                        .addGap(22, 22, 22)
+                        .addGap(33, 33, 33)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cb_ncd, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(fecha, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                            .addComponent(cb_ncd, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cb_salida, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)))
-                .addGap(21, 21, 21)
+                        .addComponent(cb_salida, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(nuevo))
-                .addGap(30, 30, 30))
+                    .addComponent(nuevo)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addGap(9, 9, 9)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(87, 87, 87)
+                .addGap(82, 82, 82)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(cb_ncd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nuevo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(cb_salida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(cb_ncd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(cb_salida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(74, 74, 74))))
         );
 
         PanelCabecera.add(jPanel3);
@@ -363,11 +367,11 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Renglón", "Referencia", "Descripción", "Cantidad", "Precio"
+                "Renglón", "Referencia", "Descripción", "Observación", "Cantidad", "Precio"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, true, true
+                false, true, true, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -409,7 +413,7 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
         );
         jPanelTablaLayout.setVerticalGroup(
             jPanelTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
             .addGroup(jPanelTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelTablaLayout.createSequentialGroup()
                     .addGap(102, 102, 102)
@@ -492,7 +496,7 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
         total.setText(" ");
         total.setToolTipText("Doble click para Recalcular");
         total.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        total.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        total.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         total.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         total.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -585,6 +589,7 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
                             ncdd.getNroRenglon(),
                             ncdd.getIdProducto().getReferenciaProducto(),
                             ncdd.getIdProducto().getDescripcion(),
+                            "",
                             0,
                             ObjectModelDAO.getObject(new InventarioTiendaPK(
                             ncdd.getIdProducto().getIdProducto(),
@@ -602,23 +607,7 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_tablaMouseClicked
     
-    private boolean filaCorrecta(int i) {//hacer con for
-        Object o0 = tabla.getModel().getValueAt(i, 0);
-        Object o1 = tabla.getModel().getValueAt(i, 1);
-        Object o2 = tabla.getModel().getValueAt(i, 2);
-        Object o3 = tabla.getModel().getValueAt(i, 3);
-        Object o4 = tabla.getModel().getValueAt(i, 4);
-        if ((o0 != null && !o0.equals(""))//el primero debe estar
-                && (o1 != null && !o1.equals(""))//el segundo debe estar
-                && ((o2 != null && !o2.equals(""))//el tercero puede estar
-                || (o3 != null && !o3.equals(""))//el cuarto puede estar
-                || (o4 != null && !o4.equals(""))))//el quinto puede estar
-        {
-            return true;
-        }
-        return false;
-    }
-
+   
     private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
         try {
             JasperPrint jasperPrint = null;
@@ -664,25 +653,36 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
         int errores = 0;
         float total = 0f;
         for (int i = 0; i < tabla.getRowCount(); i++) {
-            Object o = tabla.getModel().getValueAt(i, 3);
+            //cantidad
+            Object o = tabla.getModel().getValueAt(i, 4);
             int cantidad = 0;
             String str;
             
             if (o instanceof String) {
                 str = (String) o;
+                cantidad=JavaUtil.isNumeric(str)?Integer.parseInt(str):0;
+                System.out.println("\t string 1");
             }
             if (o instanceof Integer) {
                 cantidad = (Integer) o;
+                System.out.println("\t integer 2");
             }
             
             if (cantidad > 0) {
                 if (errores == 0) {
-                    int precio = Integer.parseInt((String) tabla.getModel().getValueAt(i, 4));
+                    //precio
+                    Object op=tabla.getModel().getValueAt(i, 5);
+                    int precio = Integer.parseInt(
+                            op instanceof String ? (String) op: ((Float) op).toString());
+                    
                     total += precio * cantidad;
                     ((NotaCreditoDebitoDetalle) resultListNcdDetalle.get(i)).setCantidadProducto(cantidad);
+                    //observacion
+                    String obs = (String) tabla.getModel().getValueAt(i, 3);
+                    ((NotaCreditoDebitoDetalle) resultListNcdDetalle.get(i)).setObservacion(obs);
                 }
             } else {
-                filas_incorrectas += (i + 1) + "\n";
+                filas_incorrectas += tabla.getModel().getValueAt(i, 0) + "\n";
                 errores++;
             }
         }
@@ -781,8 +781,8 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
                 JavaUtil.displayResult(resultListNcdDetalle, tabla);
                 fecha.setDate(ncd.getFecha());
                 total.setText(JavaUtil.dosDecimales.format(ncd.getTotal()));
-                facturado.setText(ncd.getIdUsuario().getNombre() + " : " + ncd.getIdUsuario().getDescripcion());
-                realizado.setText(user.getNombre() + " : " + user.getDescripcion());
+                facturado.setText(ncd.getIdUsuario().getNombre() + " : " + ncd.getIdUsuario().getDescripcion());                
+                realizado.setText(ncd.getIdUsuario().getNombre() + " : " + ncd.getIdUsuario().getDescripcion());
                 fecha.setEnabled(false);
                 cb_salida.setEnabled(false);
                 tabla.setEditable(false);
@@ -808,6 +808,7 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
         total.setText(" ");
         facturado.setText(" ");
         tabla.setEditable(true);
+        realizado.setText(JFInicioSecionMiyake.us1.getNombre() + " : " + JFInicioSecionMiyake.us1.getDescripcion());
         ncd = null;
     }//GEN-LAST:event_nuevoActionPerformed
 
@@ -830,9 +831,9 @@ public class JPnotaCreditoDebito extends javax.swing.JPanel {
             DaoQuery q = ObjectModelDAO.createQueryDAO(HQL);
             q.getQuery().setParameter("spt", spt);
             resultListSptDetalle = ObjectModelDAO.getResultQuery(q);
-            
+             facturado.setText(spt.getIdUsuario1().getNombre() + " : " + spt.getIdUsuario1().getDescripcion());
             if (ncd == null) {
-                ncd = new NotaCreditoDebito(getTipo(), spt, user);
+                ncd = new NotaCreditoDebito(getTipo(), spt, JFInicioSecionMiyake.us1);
             }
             
             JOptionPane.showMessageDialog(null, "Haga doble click en la tabla"

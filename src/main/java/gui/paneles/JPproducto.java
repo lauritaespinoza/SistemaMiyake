@@ -33,6 +33,8 @@ import modelos.mapeos.Marca;
 import modelos.mapeos.Producto;
 import modelos.mapeos.Proveedor;
 import org.hibernate.Query;
+import org.jdesktop.swingx.JXBusyLabel;
+import org.jdesktop.swingx.painter.BusyPainter;
 import org.pushingpixels.substance.api.skin.SubstanceBusinessBlueSteelLookAndFeel;
 
 /**
@@ -126,11 +128,14 @@ public class JPproducto extends javax.swing.JPanel {
         panelScrudProducto = new javax.swing.JTabbedPane();
         jScrollPane4 = new javax.swing.JScrollPane();
         panelConsulta = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        busy = new org.jdesktop.swingx.JXBusyLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listadoProductos = new org.jdesktop.swingx.JXTable();
+        panelCabBusq = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        f_productbuscado = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        field_Cod_Prod_Buscado = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         panelCrearProducto = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -187,8 +192,9 @@ public class JPproducto extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         tablaEliminarProducto = new org.jdesktop.swingx.JXTable();
         bEliminProducto = new javax.swing.JButton();
+        busy = new org.jdesktop.swingx.JXBusyLabel();
 
-        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.X_AXIS));
+        setLayout(new java.awt.BorderLayout());
 
         panelScrudProducto.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -197,35 +203,6 @@ public class JPproducto extends javax.swing.JPanel {
         });
 
         panelConsulta.setLayout(new java.awt.BorderLayout());
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415657451_database_search.png"))); // NOI18N
-        jLabel1.setText("Para realizar una Búsqueda: Haga Click en la Tabla + CTRL F");
-
-        busy.setText("Cargando...");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(88, 88, 88)
-                .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(655, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
-        panelConsulta.add(jPanel1, java.awt.BorderLayout.NORTH);
 
         listadoProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -261,11 +238,11 @@ public class JPproducto extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Código Producto", "Referencia", "Descripción", "Clasificación", "Marca", "Proveedor", "Precio Original", "Fecha Creación", "Fecha Modificación"
+                "CODIGO", "REFERENCIA", "DESCRIPCION", "CLASIFICACION", "MARCA", "PROVEEDOR", "PRECIO ORIGINAL", "FECHA CREACION", "FECHA MODIFICACION"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, true, true
+                false, false, false, false, false, false, false, true, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -277,6 +254,60 @@ public class JPproducto extends javax.swing.JPanel {
         jScrollPane1.setViewportView(listadoProductos);
 
         panelConsulta.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        jLabel6.setText("Buscar Referencia:");
+
+        f_productbuscado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                f_productbuscadoKeyReleased(evt);
+            }
+        });
+
+        jLabel9.setText("Buscar Código:");
+
+        field_Cod_Prod_Buscado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                field_Cod_Prod_BuscadoKeyReleased(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415657451_database_search.png"))); // NOI18N
+        jLabel1.setText("Para realizar una Búsqueda: Haga Click en la Tabla + CTRL F");
+
+        javax.swing.GroupLayout panelCabBusqLayout = new javax.swing.GroupLayout(panelCabBusq);
+        panelCabBusq.setLayout(panelCabBusqLayout);
+        panelCabBusqLayout.setHorizontalGroup(
+            panelCabBusqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCabBusqLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelCabBusqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCabBusqLayout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(f_productbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(field_Cod_Prod_Buscado, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 694, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(277, Short.MAX_VALUE))
+        );
+        panelCabBusqLayout.setVerticalGroup(
+            panelCabBusqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCabBusqLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelCabBusqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel9)
+                    .addComponent(f_productbuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(field_Cod_Prod_Buscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addComponent(jLabel1)
+                .addContainerGap())
+        );
+
+        panelConsulta.add(panelCabBusq, java.awt.BorderLayout.NORTH);
 
         jScrollPane4.setViewportView(panelConsulta);
 
@@ -766,7 +797,11 @@ public class JPproducto extends javax.swing.JPanel {
 
         panelScrudProducto.setSelectedIndex(-1);
 
-        add(panelScrudProducto);
+        add(panelScrudProducto, java.awt.BorderLayout.CENTER);
+
+        busy.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        busy.setText("Cargando...");
+        add(busy, java.awt.BorderLayout.NORTH);
     }// </editor-fold>//GEN-END:initComponents
 
     private void bCrearProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearProductoActionPerformed
@@ -989,9 +1024,9 @@ public class JPproducto extends javax.swing.JPanel {
             panelScrudProducto.setSelectedIndex(tabCrud);
             return;
         }
-
+        
         hilo = new Thread() {
-
+        
             @Override
             public void run() {
                 panelScrudProducto.setEnabled(false);
@@ -1101,6 +1136,24 @@ public class JPproducto extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_cb_clasifProduct1ActionPerformed
 
+    private void f_productbuscadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_f_productbuscadoKeyReleased
+        if (!busy.isBusy()) {
+            TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(listadoProductos.getModel());
+            listadoProductos.setRowSorter(sorter);
+            String referenciabuscada = f_productbuscado.getText();
+            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + referenciabuscada));
+        }
+    }//GEN-LAST:event_f_productbuscadoKeyReleased
+
+    private void field_Cod_Prod_BuscadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_field_Cod_Prod_BuscadoKeyReleased
+        if (!busy.isBusy()) {
+            TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(listadoProductos.getModel());
+            listadoProductos.setRowSorter(sorter);
+            String referenciabuscada = field_Cod_Prod_Buscado.getText();
+            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + referenciabuscada));
+        }
+    }//GEN-LAST:event_field_Cod_Prod_BuscadoKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCrearClasif;
@@ -1118,7 +1171,9 @@ public class JPproducto extends javax.swing.JPanel {
     private javax.swing.JComboBox cb_proveedor1;
     private javax.swing.JTextField f_descripcionProducto;
     private javax.swing.JTextField f_precio_orig;
+    private javax.swing.JTextField f_productbuscado;
     private javax.swing.JTextField f_ref_Product;
+    private javax.swing.JTextField field_Cod_Prod_Buscado;
     private javax.swing.JTextField field_codproducto;
     private javax.swing.JTextField field_descrip;
     private javax.swing.JTextField field_precioOrig;
@@ -1141,9 +1196,10 @@ public class JPproducto extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1160,6 +1216,7 @@ public class JPproducto extends javax.swing.JPanel {
     private javax.swing.JLabel lb_dptoProduct;
     private javax.swing.JLabel lb_dptoProduct1;
     private org.jdesktop.swingx.JXTable listadoProductos;
+    private javax.swing.JPanel panelCabBusq;
     private javax.swing.JPanel panelConsulta;
     private javax.swing.JPanel panelCrearProducto;
     private javax.swing.JPanel panelEliminarProducto;

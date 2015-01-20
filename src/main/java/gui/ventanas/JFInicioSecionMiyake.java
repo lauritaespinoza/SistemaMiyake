@@ -26,7 +26,7 @@ public class JFInicioSecionMiyake extends javax.swing.JFrame {
 
     public JFInicioSecionMiyake() throws Exception {
         initComponents();
-        this.setIconImage(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/login.png")).getImage());
+        this.setIconImage(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/log.png")).getImage());
         this.setLocationRelativeTo(null);
         listar_usuarios1();
     }
