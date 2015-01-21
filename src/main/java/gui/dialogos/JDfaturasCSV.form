@@ -514,7 +514,7 @@
                               <Component id="totalConIva" min="-2" pref="110" max="-2" attributes="0"/>
                               <Component id="totalSinIva" min="-2" pref="110" max="-2" attributes="0"/>
                               <Component id="fecha" min="-2" pref="110" max="-2" attributes="0"/>
-                              <Component id="cb_tiendas" alignment="0" min="-2" pref="211" max="-2" attributes="0"/>
+                              <Component id="cb_tiendas" alignment="0" min="-2" pref="374" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
