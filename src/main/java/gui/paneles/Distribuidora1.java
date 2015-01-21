@@ -173,7 +173,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
         txtNroBulto = new org.jdesktop.swingx.JXTextField();
         botonLimpiarAgregar = new org.jdesktop.swingx.JXButton();
         botonValidar = new org.jdesktop.swingx.JXButton();
-        jScrollPane5 = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
         jTDetalleRegistroDistribuidora = new javax.swing.JTable();
         botonImprimir = new org.jdesktop.swingx.JXButton();
         botonReiniciar = new org.jdesktop.swingx.JXButton();
@@ -638,9 +638,6 @@ public class Distribuidora1 extends javax.swing.JPanel {
         jLayeredPaneDatosProductos.setLayer(botonLimpiarAgregar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPaneDatosProductos.setLayer(botonValidar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jScrollPane5.setAutoscrolls(true);
-
-        jTDetalleRegistroDistribuidora.setAutoCreateRowSorter(true);
         jTDetalleRegistroDistribuidora.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -651,25 +648,14 @@ public class Distribuidora1 extends javax.swing.JPanel {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, true, true
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTDetalleRegistroDistribuidora.setToolTipText("Para Eliminar Precione La tecla \"Supr\"");
-        jTDetalleRegistroDistribuidora.setCellSelectionEnabled(true);
-        jTDetalleRegistroDistribuidora.setMinimumSize(new java.awt.Dimension(60, 220));
-        jTDetalleRegistroDistribuidora.setPreferredSize(new java.awt.Dimension(300, 65));
+        ));
+        jTDetalleRegistroDistribuidora.setPreferredSize(new java.awt.Dimension(300, 140));
         jTDetalleRegistroDistribuidora.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTDetalleRegistroDistribuidoraKeyReleased(evt);
             }
         });
-        jScrollPane5.setViewportView(jTDetalleRegistroDistribuidora);
+        jScrollPane2.setViewportView(jTDetalleRegistroDistribuidora);
 
         javax.swing.GroupLayout jLayeredPaneProductosLayout = new javax.swing.GroupLayout(jLayeredPaneProductos);
         jLayeredPaneProductos.setLayout(jLayeredPaneProductosLayout);
@@ -677,11 +663,13 @@ public class Distribuidora1 extends javax.swing.JPanel {
             jLayeredPaneProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPaneProductosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jLayeredPaneProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jXButtonTotalizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane5)
-                    .addComponent(jLayeredPaneBuscarProducto, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLayeredPaneDatosProductos, javax.swing.GroupLayout.Alignment.LEADING))
+                .addGroup(jLayeredPaneProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPaneProductosLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jXButtonTotalizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLayeredPaneBuscarProducto)
+                    .addComponent(jLayeredPaneDatosProductos)
+                    .addComponent(jScrollPane2))
                 .addContainerGap())
         );
         jLayeredPaneProductosLayout.setVerticalGroup(
@@ -691,7 +679,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLayeredPaneDatosProductos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jXButtonTotalizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
@@ -699,7 +687,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
         jLayeredPaneProductos.setLayer(jXButtonTotalizar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPaneProductos.setLayer(jLayeredPaneBuscarProducto, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPaneProductos.setLayer(jLayeredPaneDatosProductos, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPaneProductos.setLayer(jScrollPane5, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPaneProductos.setLayer(jScrollPane2, javax.swing.JLayeredPane.DRAG_LAYER);
 
         jScrollPane4.setViewportView(jLayeredPaneProductos);
 
@@ -765,7 +753,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1378,8 +1366,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
         //   ValidarFactura();
     }//GEN-LAST:event_txtFacturaActionPerformed
 
-    private void jTDetalleRegistroDistribuidoraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTDetalleRegistroDistribuidoraKeyReleased
-
+    private void eliminar_Fila_en_Detalleregistro(java.awt.event.KeyEvent evt){
         try {
             if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
                 if (JOptionPane.showConfirmDialog(this, "Desea eliminar el registro?",
@@ -1402,8 +1389,8 @@ public class Distribuidora1 extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Por Favor, Seleccione Una Celda Validad Para Eliminar");
             System.err.println("ERROR ó Excepcion Eliminando Celda de La Tabla : " + e);
         }
-    }//GEN-LAST:event_jTDetalleRegistroDistribuidoraKeyReleased
-
+    }
+    
     private void botonCancelarTodoDesdeFActuraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarTodoDesdeFActuraActionPerformed
 
         try {
@@ -1891,12 +1878,21 @@ public class Distribuidora1 extends javax.swing.JPanel {
                 botonReiniciar.setEnabled(false);
                 botonCancelarTodoDesdeFActura.setEnabled(false);
 
+                //busys
+                this.busy.setVisible(false);
+                this.busy2.setVisible(false);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Excepcion al Cencelar Agregar" + e);
             Logger.getLogger(Tiendas1.class.getName()).log(Level.SEVERE, null, e);
         }
     }//GEN-LAST:event_botonReiniciarActionPerformed
+
+    private void jTDetalleRegistroDistribuidoraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTDetalleRegistroDistribuidoraKeyReleased
+
+        eliminar_Fila_en_Detalleregistro(evt);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTDetalleRegistroDistribuidoraKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1924,9 +1920,9 @@ public class Distribuidora1 extends javax.swing.JPanel {
     private javax.swing.JLayeredPane jLayeredPaneProductos;
     private javax.swing.JLayeredPane jLayeredPaneTienda;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTDetalleRegistroDistribuidora;
     private org.jdesktop.swingx.JXButton jXButtonBuscar;

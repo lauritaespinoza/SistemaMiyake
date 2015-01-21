@@ -233,10 +233,10 @@ public abstract class JavaUtil {
         }
         if (o instanceof SalidaParaTienda) {
             SalidaParaTienda sa = (SalidaParaTienda) o;
+            oneRow.add(sa.getIdSalida());
             oneRow.add(sa.getIdAlmacenDesde().getNombre());
             oneRow.add(sa.getIdUsuario2().getNombre() + " : " + sa.getIdUsuario2().getDescripcion());
             oneRow.add(sa.getIdAlmacenHasta().getNombre());
-            oneRow.add(sa.getIdAlmacenHasta().getTelefono1());
             //oneRow.add(sa.getRevisado());
             if (sa.getRevisado() == false) {
                 oneRow.add("Pendiente");
@@ -258,6 +258,7 @@ public abstract class JavaUtil {
         if (o instanceof EntradaProveedor) {
             EntradaProveedor ep = (EntradaProveedor) o;
             oneRow.add(ep.getIdProducto().getIdProducto());
+            oneRow.add(ep.getIdProducto().getReferenciaProducto());
             oneRow.add(ep.getIdProducto().getDescripcion());
             oneRow.add(ep.getCantidadSet());
             oneRow.add(ep.getCantidadProducto());
@@ -398,11 +399,10 @@ public abstract class JavaUtil {
         }
 
         if (o instanceof SalidaParaTienda) {
-
+            header.add("NRO");
             header.add("ALMACEN DISTRIBUIDOR");
             header.add("ASIGNADO POR");
             header.add("ALMACEN ASIGNADO");
-            header.add("TELEFONO");
             header.add("ESTATUS DE PEDIDO");
             header.add("TOTAL");
             header.add("FECHA");
@@ -418,6 +418,7 @@ public abstract class JavaUtil {
 
         if (o instanceof EntradaProveedor) {
             header.add("CODIGO");
+            header.add("REFERENCIA");
             header.add("DESCRIPCION");
             header.add("UM");
             header.add("CANTIDAD PRODUCTO");
