@@ -11,7 +11,10 @@ import gui.ventanas.JFInicioSecionMiyake;
 import util.almacen.DetalleRegistro;
 import modelos.tablas.ModeloTablaDetalleRegistro;
 import hibernate.DAO.ObjectModelDAO;
+import java.awt.Dimension;
 import java.awt.HeadlessException;
+import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -126,6 +129,12 @@ public class Distribuidora1 extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dialogoMostrarNotas = new javax.swing.JDialog();
+        btNC = new javax.swing.JButton();
+        btND = new javax.swing.JButton();
+        jXLabel15 = new org.jdesktop.swingx.JXLabel();
+        jXTextField4 = new org.jdesktop.swingx.JXTextField();
+        jXTextField2 = new org.jdesktop.swingx.JXTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         jXTaskPaneCabeceraDistribuidora = new org.jdesktop.swingx.JXTaskPane();
@@ -179,7 +188,65 @@ public class Distribuidora1 extends javax.swing.JPanel {
         botonReiniciar = new org.jdesktop.swingx.JXButton();
         jButtonGuardarConteo = new org.jdesktop.swingx.JXButton();
         busy2 = new org.jdesktop.swingx.JXBusyLabel();
+        botonGenerarNotas = new org.jdesktop.swingx.JXButton();
         busy = new org.jdesktop.swingx.JXBusyLabel();
+
+        dialogoMostrarNotas.setModal(true);
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        Point p= new Point(
+            (int) ((d.getWidth() - dialogoMostrarNotas.getWidth()) / 2),
+            (int) ((d.getHeight() - dialogoMostrarNotas.getHeight()) / 2));
+        dialogoMostrarNotas.setLocation(p);
+        dialogoMostrarNotas.setLocationRelativeTo(null);
+
+        btNC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/hasta1.png"))); // NOI18N
+        btNC.setText("Mostrar Nota de Crédito");
+        btNC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btNCActionPerformed(evt);
+            }
+        });
+
+        btND.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/hasta.png"))); // NOI18N
+        btND.setText("Mostrar Nota de Débito");
+        btND.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btNDActionPerformed(evt);
+            }
+        });
+
+        jXLabel15.setForeground(new java.awt.Color(102, 102, 102));
+        jXLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1417636449_invoice.png"))); // NOI18N
+        jXLabel15.setText("NOTAS GENERADAS");
+        jXLabel15.setFont(new java.awt.Font("Impact", 1, 18)); // NOI18N
+
+        javax.swing.GroupLayout dialogoMostrarNotasLayout = new javax.swing.GroupLayout(dialogoMostrarNotas.getContentPane());
+        dialogoMostrarNotas.getContentPane().setLayout(dialogoMostrarNotasLayout);
+        dialogoMostrarNotasLayout.setHorizontalGroup(
+            dialogoMostrarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dialogoMostrarNotasLayout.createSequentialGroup()
+                .addGap(0, 55, Short.MAX_VALUE)
+                .addGroup(dialogoMostrarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btND, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btNC, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jXLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(49, Short.MAX_VALUE))
+        );
+        dialogoMostrarNotasLayout.setVerticalGroup(
+            dialogoMostrarNotasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogoMostrarNotasLayout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(jXLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(btNC)
+                .addGap(18, 18, 18)
+                .addComponent(btND)
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+
+        jXTextField4.setText("jXTextField4");
+
+        jXTextField2.setText("jXTextField2");
 
         setAutoscrolls(true);
         setLayout(new java.awt.BorderLayout());
@@ -720,6 +787,14 @@ public class Distribuidora1 extends javax.swing.JPanel {
 
         busy2.setText("Guardando...!!!");
 
+        botonGenerarNotas.setText("Mostrar Notas");
+        botonGenerarNotas.setEnabled(false);
+        botonGenerarNotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGenerarNotasActionPerformed(evt);
+            }
+        });
+
         busy.setText("Cargando...!!!");
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
@@ -732,6 +807,8 @@ public class Distribuidora1 extends javax.swing.JPanel {
                     .addComponent(jXTaskPaneCabeceraDistribuidora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
                         .addComponent(botonReiniciar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonGenerarNotas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(busy2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -759,7 +836,8 @@ public class Distribuidora1 extends javax.swing.JPanel {
                     .addComponent(botonImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonReiniciar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonGuardarConteo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(busy2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(busy2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonGenerarNotas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jLayeredPane1.setLayer(jXTaskPaneCabeceraDistribuidora, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -768,6 +846,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
         jLayeredPane1.setLayer(botonReiniciar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jButtonGuardarConteo, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(busy2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(botonGenerarNotas, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(busy, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jScrollPane1.setViewportView(jLayeredPane1);
@@ -1111,7 +1190,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
                                             + "Descripcion: " + detalle.getProducto().getDescripcion() + "\n"
                                             + "Cantidad Faltante: " + dr.getConteoFaltante() + "\n"
                                             + "Bolivares Faltante: " + dr.getTotalFaltante() + "\n");
-                                //    botonGenerarNotas.setEnabled(true);
+                                    botonGenerarNotas.setEnabled(true);
                                 }
                                 //Es Mayor el Salida Para Tienda Detalle a lo que introduce el user
                                 //(NOTA SOBRANTE o de CREDITO)*************************************
@@ -1277,16 +1356,44 @@ public class Distribuidora1 extends javax.swing.JPanel {
                     busy.setEnabled(false);
                     busy.setVisible(false);
                     busy.setBusy(false);
-                    int respuesta = JOptionPane.showConfirmDialog(null, "La Operación Ha Finalizado Satisfactoriamente..."
-                            + "¿Desea Realizar una Nueva Toma Física de Mercancia?");
+                    
+                     if (botonGenerarNotas.isVisible()) {
+                        int respuesta = JOptionPane.showConfirmDialog(null, "Se Han Generado Notas Debito/Credito...\n ¿Desea Visualizarlar?");
 
-                    if (respuesta == JOptionPane.YES_OPTION) { 
-                        requestFocus();
-                        reiniciarDesdeFinal();
-                    }
-                    if (respuesta == JOptionPane.NO_OPTION) {
-                       // 
+                        if (respuesta == JOptionPane.YES_OPTION) {
+                            botonGenerarNotasActionPerformed(null);
+                        }
+                        if (respuesta == JOptionPane.NO_OPTION) {
+                            requestFocus();
+                            reiniciarDesdeFinal();
+                        }
                     } 
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+//                    int respuesta = JOptionPane.showConfirmDialog(null, "La Operación Ha Finalizado Satisfactoriamente..."
+//                            + "¿Desea Realizar una Nueva Toma Física de Mercancia?");
+//
+//                    if (respuesta == JOptionPane.YES_OPTION) { 
+//                        requestFocus();
+//                        reiniciarDesdeFinal();
+//                    }
+//                    if (respuesta == JOptionPane.NO_OPTION) {
+//                       // 
+//                    } 
 
             }
         };
@@ -1894,21 +2001,44 @@ public class Distribuidora1 extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTDetalleRegistroDistribuidoraKeyReleased
 
+    private void botonGenerarNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGenerarNotasActionPerformed
+        btNC.setEnabled(sobrante != null);
+        btND.setEnabled(faltante != null);
+        dialogoMostrarNotas.pack();
+        dialogoMostrarNotas.setVisible(true);
+    }//GEN-LAST:event_botonGenerarNotasActionPerformed
+
+    private void btNCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNCActionPerformed
+        JPnotaCreditoDebito jpNcd = new JPnotaCreditoDebito(true);
+        jpNcd.setNcd(sobrante);
+        JavaUtil.createJDialogGeneric(jpNcd);
+    }//GEN-LAST:event_btNCActionPerformed
+
+    private void btNDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNDActionPerformed
+        JPnotaCreditoDebito jpNcd = new JPnotaCreditoDebito(false);
+        jpNcd.setNcd(faltante);
+        JavaUtil.createJDialogGeneric(jpNcd);
+    }//GEN-LAST:event_btNDActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.jdesktop.swingx.JXButton botonAgregar;
     private org.jdesktop.swingx.JXButton botonCancelarTodoDesdeFActura;
     private org.jdesktop.swingx.JXButton botonConfirmarFactura;
+    private org.jdesktop.swingx.JXButton botonGenerarNotas;
     private org.jdesktop.swingx.JXButton botonImprimir;
     private org.jdesktop.swingx.JXButton botonLimpiarAgregar;
     private org.jdesktop.swingx.JXButton botonListarProductosInventariTienda;
     private org.jdesktop.swingx.JXButton botonReiniciar;
     private org.jdesktop.swingx.JXButton botonValidar;
+    private javax.swing.JButton btNC;
+    private javax.swing.JButton btND;
     private org.jdesktop.swingx.JXBusyLabel busy;
     private org.jdesktop.swingx.JXBusyLabel busy2;
     private javax.swing.JComboBox comboBoxAlmacen;
     private javax.swing.JComboBox comboBoxTipoBusqueda;
     private javax.swing.JComboBox comboBoxUsuarios;
+    private javax.swing.JDialog dialogoMostrarNotas;
     private org.jdesktop.swingx.JXButton jButtonGuardarConteo;
     private javax.swing.JButton jButtonListarFacturas;
     private javax.swing.JLabel jLabel2;
@@ -1929,6 +2059,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
     private org.jdesktop.swingx.JXButton jXButtonTotalizar;
     private org.jdesktop.swingx.JXLabel jXLabel1;
     private org.jdesktop.swingx.JXLabel jXLabel10;
+    private org.jdesktop.swingx.JXLabel jXLabel15;
     private org.jdesktop.swingx.JXLabel jXLabel2;
     private org.jdesktop.swingx.JXLabel jXLabel3;
     private org.jdesktop.swingx.JXLabel jXLabel4;
@@ -1938,6 +2069,8 @@ public class Distribuidora1 extends javax.swing.JPanel {
     private org.jdesktop.swingx.JXLabel jXLabel8;
     private org.jdesktop.swingx.JXLabel jXLabel9;
     private org.jdesktop.swingx.JXTaskPane jXTaskPaneCabeceraDistribuidora;
+    private org.jdesktop.swingx.JXTextField jXTextField2;
+    private org.jdesktop.swingx.JXTextField jXTextField4;
     private org.jdesktop.swingx.JXLabel labelReferencia;
     private org.jdesktop.swingx.JXTextField txtBusqueda;
     private org.jdesktop.swingx.JXTextField txtCantidad;

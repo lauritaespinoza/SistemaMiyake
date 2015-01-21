@@ -1042,10 +1042,10 @@ public class Asignar1 extends javax.swing.JPanel {
                     jasperViewer.setTitle("Reporte de Asignacion de Mercancia.");
                     jasperViewer.setVisible(true);
                     //Guardar Reporte 
-                    JRPdfExporter exporter=new JRPdfExporter();
-                    exporter.setParameter(JRExporterParameter.JASPER_PRINT,reporte);
-                    exporter.exportReport();
-  
+//                    JRPdfExporter exporter=new JRPdfExporter();
+//                    exporter.setParameter(JRExporterParameter.JASPER_PRINT,reporte);
+//                    exporter.exportReport();
+//  
                     
                     busy.setEnabled(false);
                     busy.setVisible(false);
@@ -1246,9 +1246,9 @@ public class Asignar1 extends javax.swing.JPanel {
                         jasperViewer.setTitle("Reporte de Asignacion de Mercancia.");
                         jasperViewer.setVisible(true);
                         //Guardar Reporte 
-                    JRPdfExporter exporter=new JRPdfExporter();
-                    exporter.setParameter(JRExporterParameter.JASPER_PRINT,reporte);
-                    exporter.exportReport();
+//                    JRPdfExporter exporter=new JRPdfExporter();
+//                    exporter.setParameter(JRExporterParameter.JASPER_PRINT,reporte);
+//                    exporter.exportReport();
                         //busy
                         busy.setEnabled(false);
                         busy.setVisible(false);
