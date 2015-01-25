@@ -705,6 +705,8 @@ public class Distribuidora1 extends javax.swing.JPanel {
         jLayeredPaneDatosProductos.setLayer(botonLimpiarAgregar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPaneDatosProductos.setLayer(botonValidar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jScrollPane2.setAutoscrolls(true);
+
         jTDetalleRegistroDistribuidora.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -1263,11 +1265,19 @@ public class Distribuidora1 extends javax.swing.JPanel {
                     Logger.getLogger(Distribuidora1.class.getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, "Por Favor, Vuelva a Intentar Guardar con Datos Correctos!!!");
                     System.err.println("Excepcion en Guardar Registro : " + ex);
+                      //busy
+                    busy2.setEnabled(false);
+                    busy2.setVisible(false);
+                    busy2.setBusy(false);
 
                 } catch (Throwable ex) {
                     Logger.getLogger(Distribuidora1.class.getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, "Por Favor, Vuelva a Intentar Guardar con Datos Correctos!!!");
                     System.err.println("ERROR ó Excepcion en Guardar Registro : " + ex);
+                      //busy
+                    busy2.setEnabled(false);
+                    busy2.setVisible(false);
+                    busy2.setBusy(false);
                 }
 
             }

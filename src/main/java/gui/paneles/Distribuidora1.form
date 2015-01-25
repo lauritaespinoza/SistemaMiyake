@@ -859,6 +859,9 @@
                       </SubComponents>
                     </Container>
                     <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+                      <Properties>
+                        <Property name="autoscrolls" type="boolean" value="true"/>
+                      </Properties>
                       <AuxValues>
                         <AuxValue name="JLayeredPane.layer" type="java.lang.Integer" value="400"/>
                         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
