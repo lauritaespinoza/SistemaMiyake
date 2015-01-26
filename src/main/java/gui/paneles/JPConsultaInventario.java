@@ -239,6 +239,7 @@ public class JPConsultaInventario extends javax.swing.JPanel {
 
         jXButtonImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1418331399_Print.png"))); // NOI18N
         jXButtonImprimir.setText("Imprimir");
+        jXButtonImprimir.setEnabled(false);
         jXButtonImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jXButtonImprimirActionPerformed(evt);
@@ -325,6 +326,7 @@ public class JPConsultaInventario extends javax.swing.JPanel {
 
                         // jXButtonConfirmar.setEnabled(false);
                         jXButtonReiniciar.setEnabled(true);
+                        jXButtonImprimir.setEnabled(true);
                     } else {
                         JOptionPane.showMessageDialog(null, "Debe Selecionar Todos Los Datos");
                     }
@@ -336,6 +338,9 @@ public class JPConsultaInventario extends javax.swing.JPanel {
                     JOptionPane.showMessageDialog(null, "Excepcion AL Confirmar Factura : " + e);
                     System.err.println("ERROR en EVENTO BOTON CONFIRMAR FACTURA : " + e);
                     Logger.getLogger(JPConsultaInventario.class.getName()).log(Level.SEVERE, null, e);
+                    busy.setEnabled(false);
+                    busy.setVisible(false);
+                    busy.setBusy(false);
                 }
             }
         };
@@ -358,12 +363,18 @@ public class JPConsultaInventario extends javax.swing.JPanel {
                 this.almacenHasta = null;
                 //Controles ComboBox
                 this.comboBoxAlmacenDesde.setSelectedIndex(-1);
-
+                jXButtonImprimir.setEnabled(false);
+                busy.setEnabled(false);
+                busy.setVisible(false);
+                busy.setBusy(false);
             }
         } catch (Exception e) {
             Logger.getLogger(JPConsultaInventario.class.getName()).log(Level.SEVERE, null, e);
             JOptionPane.showMessageDialog(null, "Por Favor, Seleccione Un Pedido Valido Para Continuar.!!!");
             System.err.println("ERROR ó Excepcion Boton Reiniciar Todo Desde Pedido : " + e);
+            busy.setEnabled(false);
+            busy.setVisible(false);
+            busy.setBusy(false);
         }
 
 
@@ -391,7 +402,7 @@ public class JPConsultaInventario extends javax.swing.JPanel {
                     Map<String, Object> parametro = new HashMap<>();
                     String s = "";                                      //jtableListaProductosInventarioTienda
                     TableModelReport dataSourse = new TableModelReport(jXTablaConsultarMercanciaInventarios.getModel());
-                    parametro.put("tienda", almacenDesde.getDescripcion());
+                    parametro.put("tienda", almacenDesde.getNombre());
                     parametro.put("REPORT_DATA_SOURSE", dataSourse);
                     //JasperCompileManager.compileReport(rutaJrxml);
                     JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ListadoInventarioTienda.jasper"));

@@ -90,7 +90,6 @@ public class JPMecanciaEnProceso extends javax.swing.JPanel {
 
     }
 
-     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -242,6 +241,7 @@ public class JPMecanciaEnProceso extends javax.swing.JPanel {
 
         jXButtonImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1418331399_Print.png"))); // NOI18N
         jXButtonImprimir.setText("Imprimir");
+        jXButtonImprimir.setEnabled(false);
         jXButtonImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jXButtonImprimirActionPerformed(evt);
@@ -322,6 +322,7 @@ public class JPMecanciaEnProceso extends javax.swing.JPanel {
 
                         // jXButtonConfirmar.setEnabled(false);
                         jXButtonReiniciar.setEnabled(true);
+                        jXButtonImprimir.setEnabled(true);
                     } else {
                         JOptionPane.showMessageDialog(null, "Debe Selecionar Todos Los Datos");
                     }
@@ -362,12 +363,17 @@ public class JPMecanciaEnProceso extends javax.swing.JPanel {
 
                 //Controles ComboBox
                 this.comboBoxAlmacenDesde.setSelectedIndex(-1);
+                jXButtonImprimir.setEnabled(false);
 
             }
         } catch (Exception e) {
             Logger.getLogger(JPMecanciaEnProceso.class.getName()).log(Level.SEVERE, null, e);
             JOptionPane.showMessageDialog(null, "Por Favor, Seleccione Un Pedido Valido Para Continuar.!!!");
             System.err.println("ERROR ó Excepcion Boton Reiniciar Todo Desde Pedido : " + e);
+            //Busy
+            busy.setEnabled(false);
+            busy.setVisible(false);
+            busy.setBusy(false);
         }
 
 
@@ -380,7 +386,7 @@ public class JPMecanciaEnProceso extends javax.swing.JPanel {
     }//GEN-LAST:event_comboBoxAlmacenDesdeMouseClicked
 
     private void jXButtonImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXButtonImprimirActionPerformed
-      Thread hilo = new Thread() {
+        Thread hilo = new Thread() {
 
             @Override
             public void run() {
@@ -395,8 +401,8 @@ public class JPMecanciaEnProceso extends javax.swing.JPanel {
                     Map<String, Object> parametro = new HashMap<>();
                     String s = "";                                      //jtableListaProductosInventarioTienda
                     TableModelReport dataSourse = new TableModelReport(jXTableMercanciaEnProceso.getModel());
-                    parametro.put("tienda", almacenDesde.getDescripcion());
-                    parametro.put("REPORT_DATA_SOURSE", dataSourse); 
+                    parametro.put("tienda", almacenDesde.getNombre());
+                    parametro.put("REPORT_DATA_SOURSE", dataSourse);
                     //JasperCompileManager.compileReport(rutaJrxml);
                     JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ListadoInventarioTienda.jasper"));
 

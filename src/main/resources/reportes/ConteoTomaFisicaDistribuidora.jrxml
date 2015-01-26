@@ -62,11 +62,7 @@
 		<band height="27" splitType="Stretch"/>
 	</title>
 	<pageHeader>
-		<band height="223" splitType="Stretch">
-			<rectangle radius="0">
-				<reportElement mode="Transparent" x="0" y="0" width="555" height="222" forecolor="#000000" backcolor="#FFFFFF" uuid="735b3c24-ddf6-4292-b589-b2e62d750724"/>
-				<graphicElement fill="Solid"/>
-			</rectangle>
+		<band height="186" splitType="Stretch">
 			<staticText>
 				<reportElement x="139" y="0" width="294" height="37" uuid="8245c650-e2b7-45e0-a87f-a958c66e3e1a"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -75,32 +71,52 @@
 				<text><![CDATA[Toma Fisica Distribuidoras.]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="61" y="139" width="100" height="20" uuid="1014807f-4705-4960-b69e-533a095f677b"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA["Nro Factura: " + $P{facturas}]]></textFieldExpression>
+				<reportElement x="131" y="57" width="100" height="20" uuid="1014807f-4705-4960-b69e-533a095f677b"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{facturas}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="61" y="53" width="100" height="20" uuid="4882eaef-ef2e-4e46-8305-881a36e2d744"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA["Fecha: "+$P{fecha}]]></textFieldExpression>
+				<reportElement x="131" y="132" width="100" height="20" uuid="4882eaef-ef2e-4e46-8305-881a36e2d744"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{fecha}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="61" y="96" width="100" height="20" uuid="4aaa60ce-500f-4412-b368-cc11a74321f6"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA["Almacen: "+$P{almacen}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="61" y="181" width="100" height="20" uuid="00815abb-2c18-4d21-947d-2c6dd9dfae7f"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA["Ayudante: "+$P{usuario}]]></textFieldExpression>
+				<reportElement x="131" y="93" width="100" height="20" uuid="00815abb-2c18-4d21-947d-2c6dd9dfae7f"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{usuario}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy">
-				<reportElement x="411" y="53" width="100" height="20" uuid="ad51bd4f-cce9-4fbc-9f47-7fb0cdafd123"/>
+				<reportElement x="433" y="33" width="100" height="20" uuid="ad51bd4f-cce9-4fbc-9f47-7fb0cdafd123"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="31" y="57" width="100" height="20" uuid="371ff74f-a924-4dff-9baf-9c5b8d9e4eff"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nro de Factura:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="93" width="100" height="20" uuid="2e55f2d1-76f5-441c-8dcb-a7c38fba6e71"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ayudante:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="132" width="100" height="20" uuid="60167277-8ded-4a2c-a26f-d021d1aa8de9"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de Factura:]]></text>
+			</staticText>
+			<rectangle radius="0">
+				<reportElement mode="Transparent" x="0" y="0" width="555" height="185" forecolor="#000000" backcolor="#FFFFFF" uuid="735b3c24-ddf6-4292-b589-b2e62d750724"/>
+				<graphicElement fill="Solid"/>
+			</rectangle>
 		</band>
 	</pageHeader>
 	<columnHeader>

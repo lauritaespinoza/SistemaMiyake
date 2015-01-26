@@ -250,13 +250,13 @@ public class JDsalidaParaTiendaPendientes extends javax.swing.JDialog {
                     Map<String, Object> parametro = new HashMap<>();
                     String s = "";                                      //jtableListaProductosInventarioTienda
                     TableModelReport dataSourse = new TableModelReport(jtListaSalidaPendientes_.getModel());
-                    parametro.put("tienda", al_actual.getDescripcion());
+                    parametro.put("tienda", al_actual.getNombre());
                     parametro.put("REPORT_DATA_SOURSE", dataSourse);
                     JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ListadoAsignacionesPendientes.jasper"));
                     jasperPrint = JasperFillManager.fillReport(reporte, parametro, dataSourse);
                     JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
                     jasperViewer.setModalExclusionType(Dialog.ModalExclusionType.TOOLKIT_EXCLUDE);
-                    jasperViewer.setTitle("Reporte de Toma Fisica Distribuidoras.");
+                    jasperViewer.setTitle("Reporte de Toma Fisica Tiendas.");
                     jasperViewer.setVisible(true); 
 
                 } catch (JRException | HeadlessException e) {

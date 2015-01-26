@@ -303,6 +303,7 @@
                   <Image iconType="3" name="/icon_almacen/1418331399_Print.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Imprimir"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jXButtonImprimirActionPerformed"/>
