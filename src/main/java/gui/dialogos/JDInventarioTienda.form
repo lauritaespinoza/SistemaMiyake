@@ -87,6 +87,7 @@
           <Font name="Verdana" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Aceptar"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_AceptarProductoSeleccionado_ActionPerformed"/>
@@ -97,7 +98,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Verdana" size="14" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Cancelar"/>
+        <Property name="text" type="java.lang.String" value="Salir"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonCancelarExit_ActionPerformed"/>
@@ -180,6 +181,7 @@
           <Font name="Verdana" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Imprimir"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="imprimir_InventarioTiendas_ActionPerformed"/>

@@ -37,9 +37,8 @@ public class JDInventarioTienda extends javax.swing.JDialog {
 
     public InventarioTienda inv = null;
     private int pos = -1;
-    private Almacen tienda= null;
+    private Almacen tienda = null;
     // public final File  archivo = new File(this.getClass().getResource("/JavaHelp/JavaHelp/ejemplo.hs").getFile());
-
 
     public JDInventarioTienda(java.awt.Frame parent, boolean modal,
             final List<List> inventarioTienda, Almacen alamcenDesde) throws Exception {
@@ -93,6 +92,7 @@ public class JDInventarioTienda extends javax.swing.JDialog {
 
         boton_AceptarProductoSeleccionado_.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         boton_AceptarProductoSeleccionado_.setText("Aceptar");
+        boton_AceptarProductoSeleccionado_.setEnabled(false);
         boton_AceptarProductoSeleccionado_.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boton_AceptarProductoSeleccionado_ActionPerformed(evt);
@@ -100,7 +100,7 @@ public class JDInventarioTienda extends javax.swing.JDialog {
         });
 
         botonCancelarExit_.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        botonCancelarExit_.setText("Cancelar");
+        botonCancelarExit_.setText("Salir");
         botonCancelarExit_.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCancelarExit_ActionPerformed(evt);
@@ -134,6 +134,7 @@ public class JDInventarioTienda extends javax.swing.JDialog {
 
         imprimir_InventarioTiendas_.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         imprimir_InventarioTiendas_.setText("Imprimir");
+        imprimir_InventarioTiendas_.setEnabled(false);
         imprimir_InventarioTiendas_.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 imprimir_InventarioTiendas_ActionPerformed(evt);
@@ -242,7 +243,7 @@ public class JDInventarioTienda extends javax.swing.JDialog {
                     String s = "";                                      //jtableListaProductosInventarioTienda
                     TableModelReport dataSourse = new TableModelReport(jtableListaProductosInventarioTienda.getModel());
                     parametro.put("tienda", tienda.getDescripcion());
-                    parametro.put("REPORT_DATA_SOURSE", dataSourse); 
+                    parametro.put("REPORT_DATA_SOURSE", dataSourse);
                     //JasperCompileManager.compileReport(rutaJrxml);
                     JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ListadoInventarioTienda.jasper"));
 
@@ -267,7 +268,10 @@ public class JDInventarioTienda extends javax.swing.JDialog {
                             + "Por Favor Vuelva a Intentarlo.");
                     Logger.getLogger(JDInventarioTienda.class.getName()).log(Level.SEVERE, null, e);
                     System.err.println("Seleccionando Productos Disponible en Inventario" + e);
-
+                    //busy
+                    busy.setEnabled(false);
+                    busy.setVisible(false);
+                    busy.setBusy(false);
                 }
                 //busy
                 busy.setEnabled(false);
@@ -277,7 +281,10 @@ public class JDInventarioTienda extends javax.swing.JDialog {
             }
         };
         hilo.start();
-
+        //busy
+        busy.setEnabled(false);
+        busy.setVisible(false);
+        busy.setBusy(false);
 
     }//GEN-LAST:event_imprimir_InventarioTiendas_ActionPerformed
 
@@ -390,14 +397,18 @@ public class JDInventarioTienda extends javax.swing.JDialog {
     private void listarProductosInventarioTienda(List<List> inventarioTienda) {
 
         try {
+            if (!inventarioTienda.isEmpty()) {
+                imprimir_InventarioTiendas_.setEnabled(true);
+                boton_AceptarProductoSeleccionado_.setEnabled(true);
+            }
             JavaUtil.displayResult(inventarioTienda, jtableListaProductosInventarioTienda);
-        jtableListaProductosInventarioTienda.setEditable(false);
-        pos = -1;
-        inv = null;
+            jtableListaProductosInventarioTienda.setEditable(false);
+            pos = -1;
+            inv = null;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error Listando Producto Del Inventario : " + e);
             Logger.getLogger(JDInventarioTienda.class.getName()).log(Level.SEVERE, null, e);
         }
-        
+
     }
 }

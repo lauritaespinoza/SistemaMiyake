@@ -87,13 +87,10 @@
 		<field name="TIENDA" class="java.lang.String"/>
 		<field name="CODIGO" class="java.lang.Integer"/>
 		<field name="DESCRIPCION" class="java.lang.String"/>
-		<field name="SINDESC" class="java.lang.String"/>
 		<field name="DESCUENTO" class="java.lang.String"/>
-		<field name="CONDESC" class="java.lang.String"/>
 		<field name="CREACION" class="java.util.Date"/>
 		<field name="MODIFICACION" class="java.util.Date"/>
 		<field name="EXISTENCIA" class="java.lang.Integer"/>
-		<field name="ENVIADO" class="java.lang.Integer"/>
 	</subDataset>
 	<parameter name="facturas" class="java.lang.Integer"/>
 	<parameter name="fecha" class="java.util.Date"/>
@@ -151,7 +148,9 @@
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement x="0" y="0" width="66" height="30" uuid="b40c0ca3-51ee-494e-b987-d6f5cc11c800"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
 								<text><![CDATA[CODIGO]]></text>
 							</staticText>
 						</jr:columnHeader>
@@ -167,7 +166,9 @@
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement x="0" y="0" width="193" height="30" uuid="9452d61b-f524-4fe5-9e03-bd5d3dff4736"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
 								<text><![CDATA[DESCRIPCION]]></text>
 							</staticText>
 						</jr:columnHeader>
@@ -183,23 +184,21 @@
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement x="0" y="0" width="83" height="30" uuid="b54e92a9-1902-4ab7-b9ce-ebeb5d7c4fce"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
 								<text><![CDATA[PRECIO]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table 3_TD" height="23" rowSpan="1">
-							<textField isBlankWhenNull="true">
-								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="83" height="20" uuid="bcba1ca5-655a-4129-af04-bce65a01562c"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{CONDESC}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
+						<jr:detailCell style="table 3_TD" height="23" rowSpan="1"/>
 					</jr:column>
 					<jr:column width="113" uuid="432a3de8-619d-4b61-852e-23e2e3bfdb1a">
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement x="0" y="0" width="113" height="30" uuid="abeeae1e-8b3e-4124-ba81-b986b08424e9"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
 								<text><![CDATA[FECHA]]></text>
 							</staticText>
 						</jr:columnHeader>
@@ -215,7 +214,9 @@
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement x="0" y="0" width="100" height="30" uuid="c85bda22-f296-453f-a18d-168b4d1a96ba"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
 								<text><![CDATA[EXISTENCIA]]></text>
 							</staticText>
 						</jr:columnHeader>
