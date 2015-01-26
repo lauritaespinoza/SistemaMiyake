@@ -256,7 +256,7 @@ public class JDsalidaParaTiendaPendientes extends javax.swing.JDialog {
                     jasperPrint = JasperFillManager.fillReport(reporte, parametro, dataSourse);
                     JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
                     jasperViewer.setModalExclusionType(Dialog.ModalExclusionType.TOOLKIT_EXCLUDE);
-                    jasperViewer.setTitle("Reporte de Toma Fisica Tiendas.");
+                    jasperViewer.setTitle("Listado Asignaciones Pendientes.");
                     jasperViewer.setVisible(true); 
 
                 } catch (JRException | HeadlessException e) {
