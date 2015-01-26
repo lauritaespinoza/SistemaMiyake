@@ -41,7 +41,7 @@ public class JDInventarioTienda extends javax.swing.JDialog {
     // public final File  archivo = new File(this.getClass().getResource("/JavaHelp/JavaHelp/ejemplo.hs").getFile());
 
     public JDInventarioTienda(java.awt.Frame parent, boolean modal,
-            final List<List> inventarioTienda, Almacen alamcenDesde) throws Exception {
+            final List<List> inventarioTienda, final Almacen alamcenDesde) throws Exception {
         super(parent, modal);
         initComponents();
         //Recibi Tienda
@@ -177,22 +177,23 @@ public class JDInventarioTienda extends javax.swing.JDialog {
                     .addComponent(jScrollPane2))
                 .addGap(28, 28, 28))
             .addGroup(layout.createSequentialGroup()
-                .addGap(107, 107, 107)
+                .addGap(218, 218, 218)
                 .addComponent(txtTitulo)
-                .addGap(34, 34, 34)
-                .addComponent(ayuda, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(ayuda, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(ayuda)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
+                        .addComponent(ayuda))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(txtTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 15, Short.MAX_VALUE)
                 .addComponent(jXBarraBusquedaProductosEntrantes, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
@@ -242,7 +243,7 @@ public class JDInventarioTienda extends javax.swing.JDialog {
                     Map<String, Object> parametro = new HashMap<>();
                     String s = "";                                      //jtableListaProductosInventarioTienda
                     TableModelReport dataSourse = new TableModelReport(jtableListaProductosInventarioTienda.getModel());
-                    parametro.put("tienda", tienda.getDescripcion());
+                    parametro.put("tienda", tienda.getNombre());
                     parametro.put("REPORT_DATA_SOURSE", dataSourse);
                     //JasperCompileManager.compileReport(rutaJrxml);
                     JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ListadoInventarioTienda.jasper"));

@@ -179,6 +179,7 @@ public abstract class JavaUtil {
             InventarioTienda ivt = (InventarioTienda) o;
             oneRow.add(ivt.getAlmacen().getNombre());
             oneRow.add(ivt.getProducto().getIdProducto());
+            oneRow.add(ivt.getProducto().getReferenciaProducto());
             oneRow.add(ivt.getProducto().getDescripcion());
             oneRow.add(dosDecimales.format(ivt.getPrecioSinDescuento() == null ? 0f : ivt.getPrecioSinDescuento()).trim());
             oneRow.add(ivt.getDescuento().toString() + "%");
@@ -350,6 +351,7 @@ public abstract class JavaUtil {
         if (o instanceof InventarioTienda) {
             header.add("TIENDA");//
             header.add("CODIGO");
+            header.add("REFERENCIA");
             header.add("DESCRIPCION");
             header.add("PRECIO SIN DESCUENTO");//
             header.add("DESCUENTO");

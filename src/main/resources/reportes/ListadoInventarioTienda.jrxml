@@ -91,6 +91,7 @@
 		<field name="CREACION" class="java.util.Date"/>
 		<field name="MODIFICACION" class="java.util.Date"/>
 		<field name="EXISTENCIA" class="java.lang.Integer"/>
+		<field name="REFERENCIA" class="java.lang.String"/>
 	</subDataset>
 	<parameter name="facturas" class="java.lang.Integer"/>
 	<parameter name="fecha" class="java.util.Date"/>
@@ -127,10 +128,22 @@
 				<reportElement x="383" y="37" width="72" height="20" uuid="29f77082-d79c-4251-ba72-6dd8a8313f5a"/>
 				<text><![CDATA[Fecha:]]></text>
 			</staticText>
+			<rectangle radius="0">
+				<reportElement mode="Transparent" x="0" y="0" width="555" height="103" forecolor="#000000" backcolor="#FFFFFF" uuid="45708438-090d-4923-b00c-41abb88f9568"/>
+				<graphicElement fill="Solid"/>
+			</rectangle>
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="28" splitType="Stretch"/>
+		<band height="28" splitType="Stretch">
+			<staticText>
+				<reportElement x="247" y="6" width="67" height="22" uuid="e5099120-ef77-4654-882d-919a83e2009c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Cooper Black" size="14"/>
+				</textElement>
+				<text><![CDATA[Detalle]]></text>
+			</staticText>
+		</band>
 	</columnHeader>
 	<detail>
 		<band height="56" splitType="Stretch">
@@ -162,10 +175,28 @@
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="193" uuid="923a7257-42a2-4c55-80f0-0ac1746d62db">
+					<jr:column width="107" uuid="923a7257-42a2-4c55-80f0-0ac1746d62db">
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="193" height="30" uuid="9452d61b-f524-4fe5-9e03-bd5d3dff4736"/>
+								<reportElement x="0" y="0" width="107" height="30" uuid="66b21f5e-3442-47fa-afc6-e439a1a0f21d"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[REFERENCIA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 3_TD" height="23" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="107" height="23" uuid="66d5e5a1-1353-43a5-bf0f-1b429c87813a"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{REFERENCIA}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="177" uuid="05b9683c-9165-434d-b747-56ec0645e4dc">
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="177" height="30" uuid="601ac208-c555-4b50-825c-b6eadc7b5123"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font isBold="true"/>
 								</textElement>
@@ -173,24 +204,12 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="23" rowSpan="1">
-							<textField isBlankWhenNull="true">
-								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="193" height="20" uuid="6b21dc6b-0314-40cd-9ab3-8ed50fa3950f"/>
+							<textField>
+								<reportElement x="0" y="0" width="177" height="23" uuid="7d1d422b-5fc2-4ccf-9976-8a73d3b0ec4c"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{DESCRIPCION}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
-					</jr:column>
-					<jr:column width="83" uuid="05b9683c-9165-434d-b747-56ec0645e4dc">
-						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="83" height="30" uuid="b54e92a9-1902-4ab7-b9ce-ebeb5d7c4fce"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font isBold="true"/>
-								</textElement>
-								<text><![CDATA[PRECIO]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="table 3_TD" height="23" rowSpan="1"/>
 					</jr:column>
 					<jr:column width="113" uuid="432a3de8-619d-4b61-852e-23e2e3bfdb1a">
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">

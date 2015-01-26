@@ -736,8 +736,8 @@ public class Asignar1 extends javax.swing.JPanel {
                         almacenDesde = (Almacen) resultListAlmacen.get(posTi2);
                         tiendaHasta = (Almacen) resultListAlmacen.get(posTi);
                         //COnstruir Consulta
-                        String sql = "SELECT i FROM InventarioTienda i WHERE i.cantidad > 0 and i.inventarioTiendaPK.idAlmacen =" + almacenDesde.getIdAlmacen();
-                        resultListInventarioTienda = ObjectModelDAO.getResultQuery(sql);
+                        String sql_inv_almacen = "SELECT i FROM InventarioTienda i WHERE i.cantidad > 0 and i.inventarioTiendaPK.idAlmacen =" + almacenDesde.getIdAlmacen();
+                        resultListInventarioTienda = ObjectModelDAO.getResultQuery(sql_inv_almacen);
 
                         //Controles ComboBox 
                         comboBoxUsuarios.setEnabled(false);
@@ -1258,6 +1258,10 @@ public class Asignar1 extends javax.swing.JPanel {
                                 + "Por Favor Vuelva a Intentarlo.");
                         Logger.getLogger(Distribuidora1.class.getName()).log(Level.SEVERE, null, e);
                         System.err.println("Seleccionando Facturas" + e);
+                        //busy
+                        busy.setEnabled(false);
+                        busy.setVisible(false);
+                        busy.setBusy(false);
 
                     }
 
