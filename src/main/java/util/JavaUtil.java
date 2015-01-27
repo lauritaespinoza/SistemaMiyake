@@ -401,13 +401,13 @@ public abstract class JavaUtil {
         }
 
         if (o instanceof SalidaParaTienda) {
-            header.add("NRO");
-            header.add("ALMACEN DISTRIBUIDOR");
+            header.add("NRO DE ASIGNACION");
+            header.add("ALMACEN ORIGEN");
             header.add("ASIGNADO POR");
-            header.add("ALMACEN ASIGNADO");
-            header.add("ESTATUS DE PEDIDO");
-            header.add("TOTAL");
-            header.add("FECHA");
+            header.add("TIENDA DESTINO");
+            header.add("ESTATUS DEL PEDIDO");
+            header.add("TOTAL DEL PEDIDO");
+            header.add("FECHA DE EMISION");
         }
 
         if (o instanceof SalidaParaTiendaDetalle) {

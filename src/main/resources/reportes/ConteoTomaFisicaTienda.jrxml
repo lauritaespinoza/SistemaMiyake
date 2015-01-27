@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d5577b7f-8af4-42d3-89dd-5946fe8d0798">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="2"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -51,10 +51,11 @@
 		<field name="Cantidad" class="java.lang.Integer"/>
 		<field name="Nro Bulto" class="java.lang.Integer"/>
 	</subDataset>
-	<parameter name="facturas" class="java.lang.Integer"/>
+	<parameter name="NroAsignacion" class="java.lang.Integer"/>
 	<parameter name="fecha" class="java.util.Date"/>
 	<parameter name="usuario" class="java.lang.String"/>
-	<parameter name="almacen" class="java.lang.String"/>
+	<parameter name="almacenDesde" class="java.lang.String"/>
+	<parameter name="almacenHasta" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -62,24 +63,58 @@
 		<band height="18" splitType="Stretch"/>
 	</title>
 	<pageHeader>
-		<band height="103" splitType="Stretch">
+		<band height="202" splitType="Stretch">
 			<staticText>
-				<reportElement x="189" y="0" width="196" height="37" uuid="8245c650-e2b7-45e0-a87f-a958c66e3e1a"/>
+				<reportElement x="189" y="0" width="196" height="24" uuid="8245c650-e2b7-45e0-a87f-a958c66e3e1a"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="16"/>
+					<font fontName="Cooper Black" size="18"/>
 				</textElement>
-				<text><![CDATA[Toma Fisica Distribuidoras.]]></text>
+				<text><![CDATA[Toma Fisica Tiendas.]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="385" y="37" width="100" height="20" uuid="4882eaef-ef2e-4e46-8305-881a36e2d744"/>
+				<reportElement x="134" y="52" width="100" height="20" uuid="e4125f79-a0da-431c-ac95-b36b5b0c939f"/>
+				<textFieldExpression><![CDATA[$P{NroAsignacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="134" y="85" width="100" height="20" uuid="47809397-2833-4dcd-8569-fe75b83493ee"/>
+				<textFieldExpression><![CDATA[$P{almacenDesde}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="134" y="118" width="100" height="20" uuid="8c740966-8423-40d6-af41-d24f02d89e65"/>
+				<textFieldExpression><![CDATA[$P{almacenHasta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="134" y="154" width="100" height="20" uuid="4882eaef-ef2e-4e46-8305-881a36e2d744"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA["Fecha: "+$P{fecha}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="13" y="37" width="100" height="20" uuid="4aaa60ce-500f-4412-b368-cc11a74321f6"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA["Almacen: "+$P{almacen}]]></textFieldExpression>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="425" y="23" width="100" height="20" uuid="1a0c8177-c275-407e-8268-8413136a7852"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="34" y="52" width="100" height="20" uuid="54aa09e5-5a9a-4be4-9020-3d8f0298f23d"/>
+				<text><![CDATA[Nro Asignacion:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="34" y="85" width="100" height="20" uuid="ecb82bcb-1bd9-4116-b4e1-ef6e889c9d43"/>
+				<text><![CDATA[Almacen Origen:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="34" y="118" width="100" height="20" uuid="eba9c04d-7bc5-40f8-9e67-a9c7cc6a3733"/>
+				<text><![CDATA[Tienda Destino:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="34" y="154" width="100" height="20" uuid="af7b1cf6-c36f-4e00-9178-7bf63b1ea385"/>
+				<text><![CDATA[Fecha Emision:]]></text>
+			</staticText>
+			<rectangle radius="0">
+				<reportElement mode="Transparent" x="0" y="0" width="555" height="202" forecolor="#000000" backcolor="#FFFFFF" uuid="39a7654b-5995-4e66-95c5-0e24c4b0fd6f"/>
+				<graphicElement fill="Solid"/>
+			</rectangle>
 		</band>
 	</pageHeader>
 	<columnHeader>
@@ -88,7 +123,7 @@
 	<detail>
 		<band height="67" splitType="Stretch">
 			<componentElement>
-				<reportElement key="table 1" style="table 1" x="0" y="0" width="555" height="61" uuid="29c4abb6-e632-43a4-8d1c-802214ccbea2"/>
+				<reportElement key="table 1" style="table 1" x="0" y="0" width="555" height="67" uuid="29c4abb6-e632-43a4-8d1c-802214ccbea2"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="Table Dataset 1" uuid="f00bc1d9-48a2-46fd-8c63-1b6c23c8eb17">
 						<dataSourceExpression><![CDATA[$P{REPORT_DATA_SOURCE}]]></dataSourceExpression>
@@ -138,17 +173,17 @@
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="103" uuid="219060f7-fb0a-42ba-9ab0-3465743d94eb">
+					<jr:column width="164" uuid="219060f7-fb0a-42ba-9ab0-3465743d94eb">
 						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="103" height="30" uuid="fdf79e1f-6978-459f-8af1-5316e1cd2333"/>
+								<reportElement x="0" y="0" width="164" height="30" uuid="fdf79e1f-6978-459f-8af1-5316e1cd2333"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Descripcion]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="103" height="20" uuid="3ebc85d9-aa9b-4c29-a893-8206342fe349"/>
+								<reportElement x="0" y="0" width="164" height="20" uuid="3ebc85d9-aa9b-4c29-a893-8206342fe349"/>
 								<textFieldExpression><![CDATA[$F{Descripcion}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -187,9 +222,6 @@
 			</componentElement>
 		</band>
 	</detail>
-	<columnFooter>
-		<band height="17" splitType="Stretch"/>
-	</columnFooter>
 	<pageFooter>
 		<band height="30" splitType="Stretch">
 			<textField>

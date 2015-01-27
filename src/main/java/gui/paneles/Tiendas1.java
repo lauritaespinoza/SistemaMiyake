@@ -1396,8 +1396,10 @@ public class Tiendas1 extends javax.swing.JPanel {
                     Map<String, Object> parametro = new HashMap<>();
                     String s = "";
                     TableModelReport dataSourse = new TableModelReport(jTDetalleRegistroTiendas.getModel());
-                    parametro.put("almacen", almacenActual.getNombre());
+                    parametro.put("almacenHasta", sa.getIdAlmacenHasta().getNombre());
+                    parametro.put("almacenDesde", sa.getIdAlmacenDesde().getNombre());
                     parametro.put("fecha", fechaRegistro);
+                    parametro.put("NroAsignacion", sa.getIdSalida());
                     parametro.put("REPORT_DATA_SOURSE", dataSourse);
                     //JasperCompileManager.compileReport(rutaJrxml);
                     JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ConteoTomaFisicaTienda.jasper"));
@@ -1435,7 +1437,7 @@ public class Tiendas1 extends javax.swing.JPanel {
 //                        // Nada
 //                    }
                 } catch (JRException | HeadlessException e) {
-                    JOptionPane.showMessageDialog(null, "Sea Detectado Un Problema Con Proceso de Selección de Asignaciónes,"
+                    JOptionPane.showMessageDialog(null, "Sea Detectado Un Problema Con Impresion de Asignaciónes,"
                             + "Por Favor Vuelva a Intentarlo.");
                     Logger.getLogger(Distribuidora1.class.getName()).log(Level.SEVERE, null, e);
                     System.err.println("Seleccionando Asignación" + e);
@@ -1758,9 +1760,11 @@ public class Tiendas1 extends javax.swing.JPanel {
                         Map<String, Object> parametro = new HashMap<>();
                         String s = "";
                         TableModelReport dataSourse = new TableModelReport(jTDetalleRegistroTiendas.getModel());
-                        parametro.put("almacen", almacenActual.getNombre());
-                        parametro.put("fecha", fechaRegistro);
-                        parametro.put("REPORT_DATA_SOURSE", dataSourse);
+                         parametro.put("almacenHasta", sa.getIdAlmacenHasta().getNombre());
+                    parametro.put("almacenDesde", sa.getIdAlmacenDesde().getNombre());
+                    parametro.put("fecha", fechaRegistro);
+                    parametro.put("NroAsignacion", sa.getIdSalida());
+                    parametro.put("REPORT_DATA_SOURSE", dataSourse);
                         //JasperCompileManager.compileReport(rutaJrxml);
                         JasperReport reporte = (JasperReport) JRLoader.loadObject(this.getClass().getResourceAsStream("/reportes/ConteoTomaFisicaTienda.jasper"));
 
@@ -1778,7 +1782,10 @@ public class Tiendas1 extends javax.swing.JPanel {
                                 + "Por Favor Vuelva a Intentarlo.");
                         Logger.getLogger(Distribuidora1.class.getName()).log(Level.SEVERE, null, e);
                         System.err.println("Seleccionando Asignacion" + e);
-
+                        //busy
+                        busy.setEnabled(false);
+                        busy.setVisible(false);
+                        busy.setBusy(false);
                     }
 
                 }

@@ -1215,7 +1215,7 @@ public class Distribuidora1 extends javax.swing.JPanel {
                                             + "Descripcion: " + detalle.getProducto().getDescripcion() + "\n"
                                             + "Cantidad Faltante: " + dr.getConteoFaltante() + "\n"
                                             + "Bolivares Faltante: " + dr.getTotalFaltante() + "\n");
-                                    //botonGenerarNotas.setEnabled(true);
+                                    botonGenerarNotas.setEnabled(true);
                                 }
 
                                 ObjectModelDAO.saveObject(ncdd);
