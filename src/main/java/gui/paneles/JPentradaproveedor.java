@@ -134,6 +134,7 @@ public class JPentradaproveedor extends javax.swing.JPanel {
         lb_np = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         lb_renglones = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
 
         jLabel10.setText("Precio Actual");
 
@@ -385,8 +386,6 @@ public class JPentradaproveedor extends javax.swing.JPanel {
                 tablaMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tabla);
-        tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         procesarEP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415667649_041.png"))); // NOI18N
         procesarEP.setText("Procesar");
@@ -416,44 +415,62 @@ public class JPentradaproveedor extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 956, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(panel_detalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_detalleLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(panel_detalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addGroup(panel_detalleLayout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(procesarEP))
-                            .addGroup(panel_detalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lb_renglones, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel15))))
+                        .addGap(42, 42, 42)
+                        .addComponent(lb_renglones, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panel_detalleLayout.createSequentialGroup()
                         .addGap(51, 51, 51)
                         .addComponent(lb_np, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panel_detalleLayout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(lb_pd, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(18, 18, 18)
+                        .addComponent(lb_pd, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel_detalleLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel2))
+                    .addGroup(panel_detalleLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panel_detalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel1)))
+                    .addGroup(panel_detalleLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(procesarEP)))
+                .addContainerGap())
+            .addGroup(panel_detalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panel_detalleLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         panel_detalleLayout.setVerticalGroup(
             panel_detalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_detalleLayout.createSequentialGroup()
-                .addGap(130, 130, 130)
-                .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panel_detalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_detalleLayout.createSequentialGroup()
+                        .addGap(130, 130, 130)
+                        .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(panel_detalleLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lb_renglones, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
+                .addGap(33, 33, 33)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addGap(14, 14, 14)
                 .addComponent(lb_pd, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(lb_np, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(procesarEP, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(procesarEP, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
+            .addGroup(panel_detalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panel_detalleLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         busy.setVisible(false);
@@ -730,6 +747,7 @@ public class JPentradaproveedor extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lb_np;
     private javax.swing.JLabel lb_pd;
     private javax.swing.JLabel lb_renglones;

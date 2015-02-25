@@ -196,7 +196,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cb_salidasregistradas, 0, 576, Short.MAX_VALUE))))
+                        .addComponent(cb_salidasregistradas, 0, 577, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,7 +264,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
                     .addComponent(checkboxRevisado)
                     .addComponent(jRadioButtonRevisado)
                     .addComponent(jRadioButtonPendiente))
-                .addContainerGap(189, Short.MAX_VALUE))
+                .addContainerGap(190, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,7 +307,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
         panelFinalLayout.setHorizontalGroup(
             panelFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFinalLayout.createSequentialGroup()
-                .addContainerGap(626, Short.MAX_VALUE)
+                .addContainerGap(629, Short.MAX_VALUE)
                 .addComponent(bImprimirEtiquetas)
                 .addGap(40, 40, 40)
                 .addGroup(panelFinalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -387,11 +387,11 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
         panelTabla.setLayout(panelTablaLayout);
         panelTablaLayout.setHorizontalGroup(
             panelTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 999, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1002, Short.MAX_VALUE)
         );
         panelTablaLayout.setVerticalGroup(
             panelTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
         );
 
         jPanel3.add(panelTabla, java.awt.BorderLayout.CENTER);
@@ -402,7 +402,14 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void createMDB() throws IOException, SQLException {
-        File archivo = new File("Etiquetas.mdb");
+        File archivo = new File("C:/Etiquetado Bulto Miyake/Etiquetas.mdb");
+       //File archivo = new File("\\\\MIYAKE-FACTURA\\Etiquetado Bulto Miyake/Etiquetas.mdb3"); 
+        ///Etiquetado Bulto Miyake/
+        
+        if(archivo.exists()){
+            archivo.delete();
+        }
+        
         archivo.createNewFile();
         Database db = DatabaseBuilder.create(Database.FileFormat.V2000, archivo);
         Table newTable = new TableBuilder("Tbl_Etiquetas")
@@ -437,12 +444,14 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
         Calendar now = Calendar.getInstance();
 
         for (Object rslDetalle : resultListProductoSalida) {
-            SalidaParaTiendaDetalle detalle = (SalidaParaTiendaDetalle) rslDetalle;
+            //resultListProductoSalida es una lista de vectores de 3 indices
+            //   en el primer indice esta el SalidaParaTiendaDetalle
+            SalidaParaTiendaDetalle detalle = (SalidaParaTiendaDetalle) ((Object [])rslDetalle)[0];
             String hql = "";
 
             hql = "FROM InventarioTienda ivt WHERE ivt.producto.idProducto = " + detalle.getProducto().getIdProducto()
                     + "AND ivt.almacen.idAlmacen=" + detalle.getSalidaParaTienda().getIdAlmacenHasta().getIdAlmacen();
-
+            
 //            hql = "FROM InventarioTiendaPK ivt WHERE ivt.idProducto.idProducto = " + detalle.getProducto().getIdProducto()
 //                    + " AND ppt.idAlmacen.idAlmacen= " + detalle.getSalidaParaTienda().getIdAlmacenHasta().getIdAlmacen();
             List listadoProductosConPrecio = ObjectModelDAO.getResultQuery(hql);
@@ -740,6 +749,7 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
     private void bImprimirEtiquetasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bImprimirEtiquetasActionPerformed
         if (checkboxRevisado.isSelected()) {
             String filePath = "C:/Etiquetado Bulto Miyake/Imprime.bat";
+           //String filePath = "\\\\MIYAKE-FACTURA\\Etiquetado Bulto Miyake/Imprime.bat";
             try {
                 createMDB();
                 Process p = Runtime.getRuntime().exec(filePath);
