@@ -118,7 +118,7 @@ public class JPimprimirEtiquetaParticular extends javax.swing.JPanel {
         jScrollPane1.setViewportView(listadoProductosADescontar);
 
         btn_imprimirEtiquetas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/inventario.png"))); // NOI18N
-        btn_imprimirEtiquetas.setText("Imprimir Etiquedas");
+        btn_imprimirEtiquetas.setText("Imprimir Etiquetas");
         btn_imprimirEtiquetas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_imprimirEtiquetasActionPerformed(evt);
@@ -278,21 +278,6 @@ public class JPimprimirEtiquetaParticular extends javax.swing.JPanel {
         return false;
     }
 
-    boolean verificarcantidad(int cant) {
-        int codigo = ivt.getProducto().getIdProducto();
-        int almacen = ivt.getAlmacen().getIdAlmacen();
-
-        String sql = "SELECT i.cantidad FROM InventarioTienda i WHERE i.inventarioTiendaPK.idProducto = " + codigo
-                + " AND i.inventarioTiendaPK.idAlmacen = " + almacen;
-        List consulta = ObjectModelDAO.getResultQuery(sql);
-
-        int cantConsultada = Integer.parseInt(consulta.get(0).toString());
-
-        if (cant <= cantConsultada) {
-            return true;
-        }
-        return false;
-    }
 
     private void listadoProductosADescontarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_listadoProductosADescontarKeyReleased
 
@@ -312,8 +297,8 @@ public class JPimprimirEtiquetaParticular extends javax.swing.JPanel {
                 return;
             }
             int cantidadingresada = Integer.parseInt(listadoProductosADescontar.getModel().getValueAt(pos, 4).toString());
-            if (!verificarcantidad(cantidadingresada)) {
-                JOptionPane.showMessageDialog(null, "No dispone de la cantidad ingresada en Inventario");
+            if (cantidadingresada<=0) {
+                JOptionPane.showMessageDialog(null, "La cantidad debe ser mayor a cero");
                 return;
             } else {
                 ivt.setCantidad(cantidadingresada);
