@@ -33,6 +33,7 @@ import gui.paneles.JPproveedor;
 import gui.paneles.JPsalida_p_tienda;
 import gui.paneles.JPubicacion;
 import gui.paneles.JPexportData;
+import gui.paneles.JPimprimirEtiquetaParticular;
 import gui.paneles.JPnotaCreditoDebito;
 import gui.paneles.JPreduccionInventarioParticular;
 import gui.paneles.JPusuario;
@@ -88,6 +89,7 @@ public class FventanaIncial extends javax.swing.JFrame {
     private static final String tabNotaCredito = "Notas de Crédito en Tienda";
     private static final String tabNotaDebito = "Notas de Débito en Tienda";
     private static final String tabReduccionInventario = "Reducir Productos de Inventario";
+     private static final String tabEtiquedaParticular = "Impreción de Etiquetas Particulares";
 
     private BufferedImage bg;
 
@@ -98,7 +100,7 @@ public class FventanaIncial extends javax.swing.JFrame {
 
     public FventanaIncial() {
         initComponents();
-    }
+    } 
 
     public FventanaIncial(List<List> user) {
         FventanaIncial.listaUsuarioMain = user;
@@ -275,6 +277,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         jmConsultarInventario = new javax.swing.JMenuItem();
         menuControlPrecio = new javax.swing.JPopupMenu();
         jmImprimirEtiquetas = new javax.swing.JMenuItem();
+        jmImprimirEtiquetasParticular = new javax.swing.JMenuItem();
         jmMenuActualizarPrecio = new javax.swing.JMenu();
         jmConsultarPrecio = new javax.swing.JMenuItem();
         jmModificarPrecio = new javax.swing.JMenuItem();
@@ -357,6 +360,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         jMenuItemAPDConsultar = new javax.swing.JMenuItem();
         jMenuItemAPDModificar = new javax.swing.JMenuItem();
         jMenuItemImprimirEtiquetas = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenuEstadoEnvios_ = new javax.swing.JMenu();
         jMenuMercanciaProceso_ = new javax.swing.JMenuItem();
         jMenuExistenciaFisica = new javax.swing.JMenuItem();
@@ -675,6 +679,15 @@ public class FventanaIncial extends javax.swing.JFrame {
         });
         menuControlPrecio.add(jmImprimirEtiquetas);
 
+        jmImprimirEtiquetasParticular.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/ImprimirEtiquetas.png"))); // NOI18N
+        jmImprimirEtiquetasParticular.setText("Imprimir Etiquetas Particulares");
+        jmImprimirEtiquetasParticular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmImprimirEtiquetasParticularActionPerformed(evt);
+            }
+        });
+        menuControlPrecio.add(jmImprimirEtiquetasParticular);
+
         jmMenuActualizarPrecio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/ActualizarPRecio.png"))); // NOI18N
         jmMenuActualizarPrecio.setText("Actualizar Precios");
 
@@ -839,7 +852,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         AsignarMercancia_boton_.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         AsignarMercancia_boton_.setBorderPainted(false);
         AsignarMercancia_boton_.setContentAreaFilled(false);
-        AsignarMercancia_boton_.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        AsignarMercancia_boton_.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         AsignarMercancia_boton_.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 AsignarMercancia_boton_MouseEntered(evt);
@@ -911,7 +924,7 @@ public class FventanaIncial extends javax.swing.JFrame {
         TomaFisicaTiendas_boton_.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         TomaFisicaTiendas_boton_.setBorderPainted(false);
         TomaFisicaTiendas_boton_.setContentAreaFilled(false);
-        TomaFisicaTiendas_boton_.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        TomaFisicaTiendas_boton_.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         TomaFisicaTiendas_boton_.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 TomaFisicaTiendas_boton_MouseEntered(evt);
@@ -1274,6 +1287,14 @@ public class FventanaIncial extends javax.swing.JFrame {
             }
         });
         jMenuGestionPrecios_.add(jMenuItemImprimirEtiquetas);
+
+        jMenuItem1.setText("Imprimir Etiquetas Particulares");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenuGestionPrecios_.add(jMenuItem1);
 
         menuDistribuidor.add(jMenuGestionPrecios_);
 
@@ -2488,6 +2509,14 @@ public class FventanaIncial extends javax.swing.JFrame {
         jButtonInventarioParticular.setBorderPainted(false);
     }//GEN-LAST:event_jButtonInventarioParticularMouseExited
 
+    private void jmImprimirEtiquetasParticularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmImprimirEtiquetasParticularActionPerformed
+       addPaneles(tabEtiquedaParticular, JPimprimirEtiquetaParticular.class, null, null);
+    }//GEN-LAST:event_jmImprimirEtiquetasParticularActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+       addPaneles(tabEtiquedaParticular, JPimprimirEtiquetaParticular.class, null, null);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -2541,6 +2570,7 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuGestionAlmacenes_;
     private javax.swing.JMenu jMenuGestionContactos;
     private javax.swing.JMenu jMenuGestionPrecios_;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItemAPDConsultar;
     private javax.swing.JMenuItem jMenuItemAPDModificar;
     private javax.swing.JMenuItem jMenuItemAbrirCerrar;
@@ -2644,6 +2674,7 @@ public class FventanaIncial extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmEliminarProveedor;
     private javax.swing.JMenuItem jmExistenciaFisica;
     private javax.swing.JMenuItem jmImprimirEtiquetas;
+    private javax.swing.JMenuItem jmImprimirEtiquetasParticular;
     private javax.swing.JMenuItem jmInventarioDiario;
     private javax.swing.JMenu jmMenuActualizarPrecio;
     private javax.swing.JMenuItem jmMercanciaProceso;

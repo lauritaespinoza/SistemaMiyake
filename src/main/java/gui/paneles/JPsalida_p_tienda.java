@@ -405,11 +405,11 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
         File archivo = new File("C:/Etiquetado Bulto Miyake/Etiquetas.mdb");
        //File archivo = new File("\\\\MIYAKE-FACTURA\\Etiquetado Bulto Miyake/Etiquetas.mdb3"); 
         ///Etiquetado Bulto Miyake/
-        
-        if(archivo.exists()){
+
+        if (archivo.exists()) {
             archivo.delete();
         }
-        
+
         archivo.createNewFile();
         Database db = DatabaseBuilder.create(Database.FileFormat.V2000, archivo);
         Table newTable = new TableBuilder("Tbl_Etiquetas")
@@ -446,12 +446,12 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
         for (Object rslDetalle : resultListProductoSalida) {
             //resultListProductoSalida es una lista de vectores de 3 indices
             //   en el primer indice esta el SalidaParaTiendaDetalle
-            SalidaParaTiendaDetalle detalle = (SalidaParaTiendaDetalle) ((Object [])rslDetalle)[0];
+            SalidaParaTiendaDetalle detalle = (SalidaParaTiendaDetalle) ((Object[]) rslDetalle)[0];
             String hql = "";
 
             hql = "FROM InventarioTienda ivt WHERE ivt.producto.idProducto = " + detalle.getProducto().getIdProducto()
                     + "AND ivt.almacen.idAlmacen=" + detalle.getSalidaParaTienda().getIdAlmacenHasta().getIdAlmacen();
-            
+
 //            hql = "FROM InventarioTiendaPK ivt WHERE ivt.idProducto.idProducto = " + detalle.getProducto().getIdProducto()
 //                    + " AND ppt.idAlmacen.idAlmacen= " + detalle.getSalidaParaTienda().getIdAlmacenHasta().getIdAlmacen();
             List listadoProductosConPrecio = ObjectModelDAO.getResultQuery(hql);
@@ -749,10 +749,11 @@ public class JPsalida_p_tienda extends javax.swing.JPanel {
     private void bImprimirEtiquetasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bImprimirEtiquetasActionPerformed
         if (checkboxRevisado.isSelected()) {
             String filePath = "C:/Etiquetado Bulto Miyake/Imprime.bat";
-           //String filePath = "\\\\MIYAKE-FACTURA\\Etiquetado Bulto Miyake/Imprime.bat";
+            //String filePath = "\\\\MIYAKE-FACTURA\\Etiquetado Bulto Miyake/Imprime.bat";
             try {
                 createMDB();
                 Process p = Runtime.getRuntime().exec(filePath);
+                JOptionPane.showMessageDialog(this, "Se han generado las etiquetas..");
             } catch (Exception e) {
                 e.printStackTrace();
             }

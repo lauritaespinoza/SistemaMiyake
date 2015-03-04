@@ -124,17 +124,18 @@ public class JPentradaproveedor extends javax.swing.JPanel {
         ruta = new javax.swing.JLabel();
         recibido_por = new javax.swing.JLabel();
         panel_detalle = new org.jdesktop.swingx.JXTaskPane();
-        busy = new org.jdesktop.swingx.JXBusyLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabla = new org.jdesktop.swingx.JXTable();
-        procesarEP = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         lb_pd = new javax.swing.JLabel();
         lb_np = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         lb_renglones = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        procesarEP = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        busy = new org.jdesktop.swingx.JXBusyLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabla = new org.jdesktop.swingx.JXTable();
 
         jLabel10.setText("Precio Actual");
 
@@ -286,47 +287,41 @@ public class JPentradaproveedor extends javax.swing.JPanel {
         facturaLayout.setHorizontalGroup(
             facturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(facturaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(34, Short.MAX_VALUE)
                 .addGroup(facturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, facturaLayout.createSequentialGroup()
+                    .addGroup(facturaLayout.createSequentialGroup()
                         .addGroup(facturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(facturaLayout.createSequentialGroup()
-                                .addGroup(facturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5))
-                                .addGap(29, 29, 29)
-                                .addGroup(facturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(nro_factura, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(recibido_por, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(124, 124, 124)
-                                .addGroup(facturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(facturaLayout.createSequentialGroup()
-                                        .addGroup(facturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel8)
-                                            .addComponent(jLabel6))
-                                        .addGap(26, 26, 26)
-                                        .addComponent(cb_proveedor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(facturaLayout.createSequentialGroup()
-                                        .addComponent(jLabel9)
-                                        .addGap(64, 64, 64)
-                                        .addComponent(cb_tienda, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(facturaLayout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(26, 26, 26)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ruta, javax.swing.GroupLayout.PREFERRED_SIZE, 738, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(125, 125, 125))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, facturaLayout.createSequentialGroup()
-                        .addComponent(embarcado_via, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(312, 312, 312))))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addGap(29, 29, 29)
+                        .addGroup(facturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nro_factura, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(recibido_por, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(124, 124, 124)
+                        .addGroup(facturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel9))
+                        .addGap(26, 26, 26)
+                        .addGroup(facturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(embarcado_via, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(facturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(cb_proveedor, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cb_tienda, javax.swing.GroupLayout.Alignment.LEADING, 0, 413, Short.MAX_VALUE))))
+                    .addGroup(facturaLayout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(26, 26, 26)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ruta, javax.swing.GroupLayout.PREFERRED_SIZE, 738, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(36, 36, 36))
         );
         facturaLayout.setVerticalGroup(
             facturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(facturaLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(13, 13, 13)
                 .addGroup(facturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(facturaLayout.createSequentialGroup()
                         .addGroup(facturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -341,7 +336,7 @@ public class JPentradaproveedor extends javax.swing.JPanel {
                             .addComponent(jLabel5)
                             .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(facturaLayout.createSequentialGroup()
-                        .addGroup(facturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(facturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
                             .addComponent(cb_tienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
@@ -366,6 +361,23 @@ public class JPentradaproveedor extends javax.swing.JPanel {
         panel_detalle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon_almacen/1416789183_data-16.png"))); // NOI18N
         panel_detalle.setTitle("Tabla de productos por archivo");
         panel_detalle.setAutoscrolls(true);
+        panel_detalle.getContentPane().setLayout(new javax.swing.BoxLayout(panel_detalle.getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
+
+        jLabel2.setText("° Nuevos Productos");
+
+        jLabel15.setText("° Renglones");
+
+        procesarEP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415667649_041.png"))); // NOI18N
+        procesarEP.setText("Procesar");
+        procesarEP.setToolTipText("Debe Registrar todos los productos nuevos ademas ajustar los precios diferentes");
+        procesarEP.setEnabled(false);
+        procesarEP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                procesarEPActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("° Precio diferente");
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -386,94 +398,80 @@ public class JPentradaproveedor extends javax.swing.JPanel {
                 tablaMouseClicked(evt);
             }
         });
+        jScrollPane1.setViewportView(tabla);
+        tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-        procesarEP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/1415667649_041.png"))); // NOI18N
-        procesarEP.setText("Procesar");
-        procesarEP.setToolTipText("Debe Registrar todos los productos nuevos ademas ajustar los precios diferentes");
-        procesarEP.setEnabled(false);
-        procesarEP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                procesarEPActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("° Precio diferente");
-
-        jLabel2.setText("° Nuevos Productos");
-
-        jLabel15.setText("° Renglones");
-
-        javax.swing.GroupLayout panel_detalleLayout = new javax.swing.GroupLayout(panel_detalle.getContentPane());
-        panel_detalle.getContentPane().setLayout(panel_detalleLayout);
-        panel_detalleLayout.setHorizontalGroup(
-            panel_detalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_detalleLayout.createSequentialGroup()
-                .addGroup(panel_detalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_detalleLayout.createSequentialGroup()
-                        .addGap(439, 439, 439)
-                        .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 956, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(panel_detalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_detalleLayout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(lb_renglones, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panel_detalleLayout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(lb_np, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panel_detalleLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(lb_pd, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panel_detalleLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel2))
-                    .addGroup(panel_detalleLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(panel_detalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel15)
-                            .addComponent(jLabel1)))
-                    .addGroup(panel_detalleLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(procesarEP)))
-                .addContainerGap())
-            .addGroup(panel_detalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panel_detalleLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1097, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(439, 439, 439)
+                            .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 956, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jLabel2))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jLabel1))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(10, 10, 10)
+                            .addComponent(procesarEP))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addComponent(lb_renglones, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jLabel15))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addComponent(lb_pd, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addComponent(lb_np, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
-        panel_detalleLayout.setVerticalGroup(
-            panel_detalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_detalleLayout.createSequentialGroup()
-                .addGroup(panel_detalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_detalleLayout.createSequentialGroup()
-                        .addGap(130, 130, 130)
-                        .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panel_detalleLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel15)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lb_renglones, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(jLabel1)
-                .addGap(14, 14, 14)
-                .addComponent(lb_pd, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(lb_np, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(procesarEP, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
-            .addGroup(panel_detalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panel_detalleLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 349, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(130, 130, 130)
+                            .addComponent(busy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel15)
+                            .addGap(22, 22, 22)
+                            .addComponent(lb_renglones, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel1)
+                            .addGap(18, 18, 18)
+                            .addComponent(lb_pd, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel2)
+                            .addGap(26, 26, 26)
+                            .addComponent(lb_np, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(procesarEP, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(19, 19, 19)))
+                    .addContainerGap()))
         );
 
         busy.setVisible(false);
+
+        jScrollPane2.setViewportView(jPanel1);
+
+        panel_detalle.getContentPane().add(jScrollPane2);
 
         add(panel_detalle, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -562,135 +560,6 @@ public class JPentradaproveedor extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_cb_tiendaActionPerformed
 
-    private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
-        if (evt.getClickCount() == 2 && tabla.getSelectedRow() != -1) {
-            String valor = (String) tabla.getValueAt(tabla.getSelectedRow(), tabla.getColumnCount() - 1);
-            switch (valor) {
-                case EXCELreader.cons_nuevo:
-                    if (JOptionPane.showConfirmDialog(this, "El producto no existe, ¿desea crearlo?", "Nuevo Producto",
-                            JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-                        Producto productoNuevo = new Producto(
-                                excelReader.getListAt(tabla.getSelectedRow(), EXCELreader.descripcion_producto),
-                                excelReader.getListAt(tabla.getSelectedRow(), EXCELreader.referencia_producto),
-                                Float.parseFloat(excelReader.getListAt(tabla.getSelectedRow(), EXCELreader.precio_producto)),
-                                pos_proveedor != -1 ? (Proveedor) proveedores.get(pos_proveedor) : null
-                        );
-
-                        JDproducto jdp = new JDproducto(null, true, productoNuevo);
-                        jdp.setVisible(true);
-                        if (jdp.ultimoCreado != null) {//si creo un nuevo producto
-                            Double precioT = jdp.ultimoCreado.getPrecioOriginal()
-                                    * Double.parseDouble(excelReader.getListAt(tabla.getSelectedRow(), EXCELreader.cantidad_producto));
-                            //cambia el reader
-                            excelReader.setListAt(tabla.getSelectedRow(), EXCELreader.descripcion_producto, jdp.ultimoCreado.getDescripcion());
-                            excelReader.setListAt(tabla.getSelectedRow(), EXCELreader.precio_producto, (Math.round(jdp.ultimoCreado.getPrecioOriginal() * 100.0) / 100.0) + "");
-                            excelReader.setListAt(tabla.getSelectedRow(), EXCELreader.referencia_producto, jdp.ultimoCreado.getReferenciaProducto());
-                            excelReader.setListAt(tabla.getSelectedRow(), EXCELreader.precioTotal_producto, (Math.round(precioT * 100.0) / 100.0) + "");
-                            excelReader.setNp(excelReader.getNp() - 1);
-                            //cambia la tabla y textfield
-                            tabla.getModel().setValueAt(jdp.ultimoCreado.getReferenciaProducto(), tabla.getSelectedRow(), EXCELreader.referencia_producto);
-                            tabla.getModel().setValueAt(jdp.ultimoCreado.getDescripcion(), tabla.getSelectedRow(), EXCELreader.descripcion_producto);
-                            tabla.getModel().setValueAt((Math.round(jdp.ultimoCreado.getPrecioOriginal() * 100.0) / 100.0), tabla.getSelectedRow(), EXCELreader.precio_producto);
-                            tabla.getModel().setValueAt((Math.round(precioT * 100.0) / 100.0), tabla.getSelectedRow(), EXCELreader.precioTotal_producto);
-                            tabla.getModel().setValueAt(EXCELreader.cons_correcto, tabla.getSelectedRow(), tabla.getColumnCount() - 1);
-                            lb_np.setText(excelReader.getNp() + "");
-                        }
-                    }
-                    break;
-                case EXCELreader.cons_diferente:
-
-                    if (JOptionPane.showConfirmDialog(this, "El producto actual tiene diferente precio, ¿desea modificarlo?",
-                            "Diferencia de Precio", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-                        //obtiene el precio del producto leido, desde la lista del reader
-                        precioleido.setText(excelReader.getListAt(tabla.getSelectedRow(), EXCELreader.precio_producto));
-                        precioescogido.setText(precioleido.getText());
-                        precioleido.setSelected(true);
-                        precioescogido.setEnabled(false);
-
-                        //idAlmacen 1 porque es el DEPOSITO CENTRAL
-                        String hql = "FROM InventarioTienda ivt WHERE ivt.almacen.idAlmacen=1 AND ivt.producto.referenciaProducto=:referencia";
-                        DaoQuery q = ObjectModelDAO.createQueryDAO(hql);
-                        q.getQuery().setParameter("referencia", excelReader.getListAt(tabla.getSelectedRow(), EXCELreader.referencia_producto));
-                        List resultList = ObjectModelDAO.getResultQuery(q);
-                        if (resultList.size() != 1) {
-                            JOptionPane.showMessageDialog(null, "Error, no se encontró el producto");
-                            return;
-                        }
-                        InventarioTienda ppt = (InventarioTienda) resultList.get(0);
-                        precioactual.setText(JavaUtil.dosDecimales.format(ppt.getPrecioSinDescuento()).replace(",", "."));
-                        boolean sw;
-                        do {//repite mientras coloque algo que no es numero
-                            sw = false;
-                            if (JOptionPane.showConfirmDialog(null, panel_diferencia,
-                                    "Elección de Precio", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-                                try {//si eligio si
-                                    Double.parseDouble(precioescogido.getText());
-                                    Double precioU = Double.parseDouble(precioescogido.getText());
-                                    Double precioT = (Double.parseDouble(precioescogido.getText())
-                                            * Double.parseDouble(excelReader.getListAt(tabla.getSelectedRow(), EXCELreader.cantidad_producto)));
-                                    //cambia el reader
-                                    excelReader.setListAt(tabla.getSelectedRow(), EXCELreader.precio_producto, precioescogido.getText());
-                                    excelReader.setListAt(tabla.getSelectedRow(), EXCELreader.precioTotal_producto, precioT + "");
-                                    excelReader.setPd(excelReader.getPd() - 1);
-                                    //cambia la tabla y textfield
-                                    tabla.getModel().setValueAt(precioU, tabla.getSelectedRow(), EXCELreader.precio_producto);
-                                    tabla.getModel().setValueAt(precioT, tabla.getSelectedRow(), EXCELreader.precioTotal_producto);
-                                    tabla.getModel().setValueAt(EXCELreader.cons_correcto, tabla.getSelectedRow(), tabla.getColumnCount() - 1);
-
-                                    lb_pd.setText(excelReader.getPd() + "");
-                                    //cambia la bd
-                                    ppt.setPrecioSinDescuento(precioU.floatValue());
-                                    ObjectModelDAO.updateObject(ppt);
-                                } catch (Exception e) {
-                                    sw = true;
-                                    JOptionPane.showMessageDialog(this, "Debe ingresar un valor correcto, ejemplo: 1234.56\n" + e.getMessage());
-                                }
-                            }//sino eligio si entonces termina y no pasa nada
-                        } while (sw);
-                    }
-                    break;
-            }
-            setProcess();
-        }
-    }//GEN-LAST:event_tablaMouseClicked
-
-    private void procesarEPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_procesarEPActionPerformed
-        //MAPEAR ENTRADA PORVEEDOR Y ACTUALIZSAR EL SAVE
-
-        if (!canProcess()) {
-            JOptionPane.showMessageDialog(this, "Se deben completar todos los campos, ademas "
-                    + "deben estar correctos todos los productos de entrada.");
-            return;
-        }
-
-        Factura nuevaFactura = new Factura(
-                Integer.parseInt(nro_factura.getText()),
-                fecha.getDate(),
-                0,//inicialmente es 0 lueg de agregar el detalle se modifica por la sumatoria
-                recibido_por.getText(),
-                "",
-                embarcado_via.getText(),
-                (Almacen) tiendas.get(pos_tienda),
-                (Proveedor) proveedores.get(pos_proveedor)
-        );
-
-        Integer id_factura = (Integer) ObjectModelDAO.saveObject(nuevaFactura);
-        String rutaFinal = cons_rutaFacturasDigitales + "factura_" + id_factura + ".xlsx";
-        //copia el archivo en el servidor
-        try {
-            copyFile(ruta.getText(), rutaFinal);
-        } catch (IOException ex) {
-            Logger.getLogger(JDentradaproveedor.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        nuevaFactura.setRutaArchivo(rutaFinal);
-        ObjectModelDAO.updateObject(nuevaFactura);
-        excelReader.procesarEXCEL(nuevaFactura);
-
-        JOptionPane.showMessageDialog(null, "Se ha registrado la factura");
-
-        //ya se registraron todos, puede cerrar o algo. **PENDIENTE**
-    }//GEN-LAST:event_procesarEPActionPerformed
-
     private void precioactualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precioactualActionPerformed
         precioescogido.setText(precioactual.getText());
         precioescogido.setEnabled(false);
@@ -720,6 +589,135 @@ public class JPentradaproveedor extends javax.swing.JPanel {
         
     }//GEN-LAST:event_nro_facturaKeyTyped
 
+    private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
+        if (evt.getClickCount() == 2 && tabla.getSelectedRow() != -1) {
+            String valor = (String) tabla.getValueAt(tabla.getSelectedRow(), tabla.getColumnCount() - 1);
+            switch (valor) {
+                case EXCELreader.cons_nuevo:
+                if (JOptionPane.showConfirmDialog(this, "El producto no existe, ¿desea crearlo?", "Nuevo Producto",
+                    JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                Producto productoNuevo = new Producto(
+                    excelReader.getListAt(tabla.getSelectedRow(), EXCELreader.descripcion_producto),
+                    excelReader.getListAt(tabla.getSelectedRow(), EXCELreader.referencia_producto),
+                    Float.parseFloat(excelReader.getListAt(tabla.getSelectedRow(), EXCELreader.precio_producto)),
+                    pos_proveedor != -1 ? (Proveedor) proveedores.get(pos_proveedor) : null
+                );
+
+                JDproducto jdp = new JDproducto(null, true, productoNuevo);
+                jdp.setVisible(true);
+                if (jdp.ultimoCreado != null) {//si creo un nuevo producto
+                    Double precioT = jdp.ultimoCreado.getPrecioOriginal()
+                    * Double.parseDouble(excelReader.getListAt(tabla.getSelectedRow(), EXCELreader.cantidad_producto));
+                    //cambia el reader
+                    excelReader.setListAt(tabla.getSelectedRow(), EXCELreader.descripcion_producto, jdp.ultimoCreado.getDescripcion());
+                    excelReader.setListAt(tabla.getSelectedRow(), EXCELreader.precio_producto, (Math.round(jdp.ultimoCreado.getPrecioOriginal() * 100.0) / 100.0) + "");
+                    excelReader.setListAt(tabla.getSelectedRow(), EXCELreader.referencia_producto, jdp.ultimoCreado.getReferenciaProducto());
+                    excelReader.setListAt(tabla.getSelectedRow(), EXCELreader.precioTotal_producto, (Math.round(precioT * 100.0) / 100.0) + "");
+                    excelReader.setNp(excelReader.getNp() - 1);
+                    //cambia la tabla y textfield
+                    tabla.getModel().setValueAt(jdp.ultimoCreado.getReferenciaProducto(), tabla.getSelectedRow(), EXCELreader.referencia_producto);
+                    tabla.getModel().setValueAt(jdp.ultimoCreado.getDescripcion(), tabla.getSelectedRow(), EXCELreader.descripcion_producto);
+                    tabla.getModel().setValueAt((Math.round(jdp.ultimoCreado.getPrecioOriginal() * 100.0) / 100.0), tabla.getSelectedRow(), EXCELreader.precio_producto);
+                    tabla.getModel().setValueAt((Math.round(precioT * 100.0) / 100.0), tabla.getSelectedRow(), EXCELreader.precioTotal_producto);
+                    tabla.getModel().setValueAt(EXCELreader.cons_correcto, tabla.getSelectedRow(), tabla.getColumnCount() - 1);
+                    lb_np.setText(excelReader.getNp() + "");
+                }
+            }
+            break;
+            case EXCELreader.cons_diferente:
+
+            if (JOptionPane.showConfirmDialog(this, "El producto actual tiene diferente precio, ¿desea modificarlo?",
+                "Diferencia de Precio", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            //obtiene el precio del producto leido, desde la lista del reader
+            precioleido.setText(excelReader.getListAt(tabla.getSelectedRow(), EXCELreader.precio_producto));
+            precioescogido.setText(precioleido.getText());
+            precioleido.setSelected(true);
+            precioescogido.setEnabled(false);
+
+            //idAlmacen 1 porque es el DEPOSITO CENTRAL
+            String hql = "FROM InventarioTienda ivt WHERE ivt.almacen.idAlmacen=1 AND ivt.producto.referenciaProducto=:referencia";
+            DaoQuery q = ObjectModelDAO.createQueryDAO(hql);
+            q.getQuery().setParameter("referencia", excelReader.getListAt(tabla.getSelectedRow(), EXCELreader.referencia_producto));
+            List resultList = ObjectModelDAO.getResultQuery(q);
+            if (resultList.size() != 1) {
+                JOptionPane.showMessageDialog(null, "Error, no se encontró el producto");
+                return;
+            }
+            InventarioTienda ppt = (InventarioTienda) resultList.get(0);
+            precioactual.setText(JavaUtil.dosDecimales.format(ppt.getPrecioSinDescuento()).replace(",", "."));
+            boolean sw;
+            do {//repite mientras coloque algo que no es numero
+                sw = false;
+                if (JOptionPane.showConfirmDialog(null, panel_diferencia,
+                    "Elección de Precio", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                try {//si eligio si
+                    Double.parseDouble(precioescogido.getText());
+                    Double precioU = Double.parseDouble(precioescogido.getText());
+                    Double precioT = (Double.parseDouble(precioescogido.getText())
+                        * Double.parseDouble(excelReader.getListAt(tabla.getSelectedRow(), EXCELreader.cantidad_producto)));
+                    //cambia el reader
+                    excelReader.setListAt(tabla.getSelectedRow(), EXCELreader.precio_producto, precioescogido.getText());
+                    excelReader.setListAt(tabla.getSelectedRow(), EXCELreader.precioTotal_producto, precioT + "");
+                    excelReader.setPd(excelReader.getPd() - 1);
+                    //cambia la tabla y textfield
+                    tabla.getModel().setValueAt(precioU, tabla.getSelectedRow(), EXCELreader.precio_producto);
+                    tabla.getModel().setValueAt(precioT, tabla.getSelectedRow(), EXCELreader.precioTotal_producto);
+                    tabla.getModel().setValueAt(EXCELreader.cons_correcto, tabla.getSelectedRow(), tabla.getColumnCount() - 1);
+
+                    lb_pd.setText(excelReader.getPd() + "");
+                    //cambia la bd
+                    ppt.setPrecioSinDescuento(precioU.floatValue());
+                    ObjectModelDAO.updateObject(ppt);
+                } catch (Exception e) {
+                    sw = true;
+                    JOptionPane.showMessageDialog(this, "Debe ingresar un valor correcto, ejemplo: 1234.56\n" + e.getMessage());
+                }
+            }//sino eligio si entonces termina y no pasa nada
+        } while (sw);
+        }
+        break;
+        }
+        setProcess();
+        }
+    }//GEN-LAST:event_tablaMouseClicked
+
+    private void procesarEPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_procesarEPActionPerformed
+        //MAPEAR ENTRADA PORVEEDOR Y ACTUALIZSAR EL SAVE
+
+        if (!canProcess()) {
+            JOptionPane.showMessageDialog(this, "Se deben completar todos los campos, ademas "
+                + "deben estar correctos todos los productos de entrada.");
+            return;
+        }
+
+        Factura nuevaFactura = new Factura(
+            Integer.parseInt(nro_factura.getText()),
+            fecha.getDate(),
+            0,//inicialmente es 0 lueg de agregar el detalle se modifica por la sumatoria
+            recibido_por.getText(),
+            "",
+            embarcado_via.getText(),
+            (Almacen) tiendas.get(pos_tienda),
+            (Proveedor) proveedores.get(pos_proveedor)
+        );
+
+        Integer id_factura = (Integer) ObjectModelDAO.saveObject(nuevaFactura);
+        String rutaFinal = cons_rutaFacturasDigitales + "factura_" + id_factura + ".xlsx";
+        //copia el archivo en el servidor
+        try {
+            copyFile(ruta.getText(), rutaFinal);
+        } catch (IOException ex) {
+            Logger.getLogger(JDentradaproveedor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        nuevaFactura.setRutaArchivo(rutaFinal);
+        ObjectModelDAO.updateObject(nuevaFactura);
+        excelReader.procesarEXCEL(nuevaFactura);
+
+        JOptionPane.showMessageDialog(null, "Se ha registrado la factura");
+
+        //ya se registraron todos, puede cerrar o algo. **PENDIENTE**
+    }//GEN-LAST:event_procesarEPActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.jdesktop.swingx.JXBusyLabel busy;
@@ -746,6 +744,7 @@ public class JPentradaproveedor extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lb_np;
